@@ -59,3 +59,10 @@ The `pr/all` commits in these crates are prover-only; their messages state the p
 
 `leanvm_core/` is unchanged from `0b850750`. `src/kat.rs` tests `hash::grind_lane` against the scalar permutation
 in place of the removed `hash::keccak_f_many`.
+
+
+leanvm-fast-verify:
+
+| file | edit | why |
+|---|---|---|
+| `keccak_gkr/witness.rs` | `every` returns 1: every round's state is stored, none recomputed in the layer passes | prover time on the 4C/8T Zen 4 target; the proof bytes are unchanged |

@@ -28,11 +28,107 @@ namespace Lvm.VF
 
 open RecursionFast Lvm Lvm.Replay Lvm.Loop Lvm.QLink Lvm.QSig Lvm.Bits Lvm.BitsTab Lvm.M3 Lvm.SigBits Lvm.QAsm
 
+/-! ## `mleF` over arrays -/
+
+theorem mleF_add : ∀ (r : List FE) (f g : Nat → FE), mleF r (fun x => f x + g x) = mleF r f + mleF r g
+  | [], _, _ => rfl
+  | r :: rs, f, g => by
+    simp only [mleF]
+    rw [mleF_add rs (fun x => f (2 * x)) (fun x => g (2 * x)),
+      mleF_add rs (fun x => f (2 * x + 1)) (fun x => g (2 * x + 1))]
+    ring
+
+theorem mleF_smul (c : FE) : ∀ (r : List FE) (f : Nat → FE), mleF r (fun x => c * f x) = c * mleF r f
+  | [], _ => rfl
+  | r :: rs, f => by
+    simp only [mleF]
+    rw [mleF_smul c rs (fun x => f (2 * x)), mleF_smul c rs (fun x => f (2 * x + 1))]
+    ring
+
+/-- Folding the lowest variable first. -/
+theorem mleF_fold (r : FE) (rs : List FE) (f : Nat → FE) :
+    mleF (r :: rs) f = mleF rs (fun x => f (2 * x) + r * (f (2 * x + 1) - f (2 * x))) := by
+  rw [mleF_add, mleF_smul]
+  have h : mleF rs (fun x => f (2 * x + 1) - f (2 * x)) = mleF rs (fun x => f (2 * x + 1)) - mleF rs (fun x => f (2 * x)) := by
+    have e : (fun x => f (2 * x + 1) - f (2 * x)) = fun x => f (2 * x + 1) + (-1 : FE) * f (2 * x) := by
+      funext x; ring
+    rw [e, mleF_add, mleF_smul]; ring
+  rw [h]; rfl
+
+/-- `mleF` reads `f` below `2^|r|` only. -/
+theorem mleF_congr : ∀ (r : List FE) (f g : Nat → FE), (∀ i < 2 ^ r.length, f i = g i) → mleF r f = mleF r g
+  | [], f, g, h => h 0 (by simp)
+  | r :: rs, f, g, h => by
+    simp only [mleF]
+    have h0 : ∀ i < 2 ^ rs.length, f (2 * i) = g (2 * i) := fun i hi =>
+      h _ (by simp only [List.length_cons, Nat.pow_succ]; omega)
+    have h1 : ∀ i < 2 ^ rs.length, f (2 * i + 1) = g (2 * i + 1) := fun i hi =>
+      h _ (by simp only [List.length_cons, Nat.pow_succ]; omega)
+    rw [mleF_congr rs _ _ h0, mleF_congr rs _ _ h1]
+
+/-- One fold of an array at the lowest variable. -/
+def foldA (r : FE) (A : Array FE) : Array FE :=
+  Array.ofFn (n := (A.size + 1) / 2) fun j =>
+    let a := A.getD (2 * j.val) 0
+    a + r * (A.getD (2 * j.val + 1) 0 - a)
+
+/-- `mleF` over an array, folded in place level by level. -/
+def mleA : List FE → Array FE → FE
+  | [], A => A.getD 0 0
+  | r :: rs, A => mleA rs (foldA r A)
+
+theorem getD_foldA (r : FE) (A : Array FE) (j : Nat) :
+    (foldA r A).getD j 0 = A.getD (2 * j) 0 + r * (A.getD (2 * j + 1) 0 - A.getD (2 * j) 0) := by
+  unfold foldA
+  by_cases hj : j < (A.size + 1) / 2
+  · simp [Array.getD_eq_getD_getElem?, hj]
+  · have h1 : A.getD (2 * j) 0 = 0 := by
+      simp [Array.getD_eq_getD_getElem?, Array.getElem?_eq_none (show A.size ≤ 2 * j by omega)]
+    have h2 : A.getD (2 * j + 1) 0 = 0 := by
+      simp [Array.getD_eq_getD_getElem?, Array.getElem?_eq_none (show A.size ≤ 2 * j + 1 by omega)]
+    rw [h1, h2]
+    simp [Array.getD_eq_getD_getElem?, hj]
+
+theorem mleA_eq : ∀ (r : List FE) (A : Array FE), mleA r A = mleF r (fun i => A.getD i 0)
+  | [], _ => rfl
+  | r :: rs, A => by
+    rw [mleA, mleA_eq rs, mleF_fold]
+    simp only [getD_foldA]
+
+/-- `mleF` of base-field values: the first fold is a base × extension product. -/
+def mleK : List FE → Array FK → FE
+  | [], A => FE.ofK (A.getD 0 0)
+  | r :: rs, A => mleA rs (Array.ofFn (n := (A.size + 1) / 2) fun j =>
+      let a := A.getD (2 * j.val) 0
+      FE.ofK a + FE.smulBase (A.getD (2 * j.val + 1) 0 - a) r)
+
+theorem ofK_sub (a b : FK) : FE.ofK (a - b) = FE.ofK a - FE.ofK b := by
+  show FE.ofK (a + b) = FE.ofK a + FE.ofK b
+  exact FE.toExt3_injective (by simp only [FE.toExt3_ofK, FE.toExt3_add, FK.toBF64_add, map_add])
+
+theorem mleK_eq : ∀ (r : List FE) (A : Array FK), mleK r A = mleF r (fun i => FE.ofK (A.getD i 0))
+  | [], _ => rfl
+  | r :: rs, A => by
+    rw [mleK, mleA_eq, mleF_fold]
+    congr 1; funext j
+    by_cases hj : j < (A.size + 1) / 2
+    · simp only [Array.getD_eq_getD_getElem?, Array.getElem?_ofFn, hj, dite_true, Option.getD_some]
+      rw [FE.smulBase_eq_mul, ofK_sub]; ring
+    · have h1 : A.getD (2 * j) 0 = 0 := by
+        simp [Array.getD_eq_getD_getElem?, Array.getElem?_eq_none (show A.size ≤ 2 * j by omega)]
+      have h2 : A.getD (2 * j + 1) 0 = 0 := by
+        simp [Array.getD_eq_getD_getElem?, Array.getElem?_eq_none (show A.size ≤ 2 * j + 1 by omega)]
+      rw [h1, h2]
+      simp [Array.getD_eq_getD_getElem?, hj]; rfl
+
+
 /-! ## Cached `BITS` tables -/
 
 /-- An address column read from a cache `A` of powers (row `x` uses `A[S.row x]`). -/
 def adrColA (S : BSpec) (A : Array FK) : ColSrc :=
-  .fix (fun x => A.getD (S.row x) 0) fun r => mleF r fun x => FE.ofK (A.getD (S.row x) 0)
+  let B := Array.ofFn (n := 2 ^ S.τ) fun x => A.getD (S.row x.val) 0
+  .fix (fun x => A.getD (S.row x) 0) fun r =>
+    if r.length ≤ S.τ then mleK r B else mleF r fun x => FE.ofK (A.getD (S.row x) 0)
 
 /-- Column `c` of the cached table (`BSpec.col` with the caches). -/
 def colA (S : BSpec) (W : Array FK) (O : Array (Array FK)) (c : Nat) : ColSrc :=
@@ -56,7 +152,16 @@ theorem adrColA_eq (S : BSpec) (A : Array FK) (a : Nat → Nat)
     (h : ∀ x < max S.n 1, A.getD x 0 = FK.x ^ a x) : adrColA S A = S.adrCol a := by
   have h' : ∀ x, A.getD (S.row x) 0 = FK.x ^ a (S.row x) := fun x => h _ (row_lt S x)
   unfold adrColA BSpec.adrCol
-  simp only [h', mleF_eq]
+  simp only [h']
+  congr 1
+  funext r
+  split
+  · rename_i hl
+    rw [mleK_eq, ← mleF_eq]
+    refine mleF_congr _ _ _ fun i hi => ?_
+    have hi' : i < 2 ^ S.τ := Nat.lt_of_lt_of_le hi (Nat.pow_le_pow_right (by decide) hl)
+    simp [Array.getD_eq_getD_getElem?, hi', h']
+  · rw [mleF_eq]
 
 /-- **The cached table is the table** when the caches hold the powers of the real rows' cells. -/
 theorem tabA_eq (S : BSpec) (W : Array FK) (O : Array (Array FK))
@@ -145,14 +250,30 @@ theorem posTabsA_eq (C : QCfg) (bpl : Nat → Nat → Bool × Nat) :
     rw [getD_map_toArray _ _ j _ hj, getD_range _ _ _ _ hx, posCellF_eq, List.getD_eq_getElem?_getD,
       List.getElem?_eq_getElem hj, Option.getD_some]
 
-/-- The aux tables with the position classes cached (then the `s'` byte-shift class, `sSpec`). -/
+/-- A `BITS` table with its address columns' powers cached over the real rows. -/
+def tabC (S : BSpec) : Tab :=
+  let m := max S.n 1
+  tabA S ((List.range m).map fun x => FK.x ^ S.wc x).toArray
+    (S.outs.zipIdx.map fun (_, j) => ((List.range m).map fun x => FK.x ^ S.oc j x).toArray).toArray
+
+theorem tabC_eq (S : BSpec) : tabC S = S.tab := by
+  unfold tabC
+  apply tabA_eq
+  · intro x hx; exact getD_range _ _ _ _ hx
+  · intro j hj x hx
+    have hj' : j < (S.outs.zipIdx.map fun (u : BOut × Nat) => u.2).length := by simpa using hj
+    rw [getD_map_toArray _ _ j _ (by simpa using hj), getD_range _ _ _ _ hx]
+    simp [List.getElem_zipIdx]
+
+/-- The aux tables, cached (the signature classes, the position classes, the `s'` byte-shift class). -/
 def auxF (C : QCfg) (D : QData) : List Tab :=
-  (sigSpecs (sigIn C) (sigOut C) (bplOf D)).map BSpec.tab ++ posTabsA C (fun c => bplOf D (6 + c)) ++
-    [(sSpec C (bplOf D (6 + nPosCls C))).tab]
+  (sigSpecs (sigIn C) (sigOut C) (bplOf D)).map tabC ++ posTabsA C (fun c => bplOf D (6 + c)) ++
+    [tabC (sSpec C (bplOf D (6 + nPosCls C)))]
 
 theorem auxF_eq (C : QCfg) (D : QData) : auxF C D = aux C D := by
+  have h : tabC = BSpec.tab := funext tabC_eq
   unfold auxF aux bspecs
-  rw [List.map_append, List.map_append, posTabsA_eq]
+  rw [List.map_append, List.map_append, posTabsA_eq, h]
   rfl
 
 /-! ## Group closed forms with a box memo
@@ -407,6 +528,134 @@ theorem grpEvalGU_eq (G : PG) (g : Grp) : grpEvalGU (unifT G) G g = grpEvalG G g
       exact pieceEvalGU_eq G _ _ r' _ (unifH_spec G n _)
   simp only [hp]
 
+/-! ## Base-field coefficient tables
+
+A piece's coefficients are base-field values (`FE.ofK`): `mleK` folds the first variable with base ×
+extension products and the rest over arrays, without closures. `kArr` checks the coefficients once, when
+the table is built. -/
+
+/-- Column `c`'s coefficients of a piece as base-field words, when every one has zero `y`, `y²` parts
+(checked when the table is built). -/
+def kArr (bc : BC) (pe : M3.PE) (c : FCol) : Option (Array FK) :=
+  let A := Array.ofFn (n := 2 ^ pe.p.a) fun i => coefF bc pe c i.val
+  if A.all (fun x => x.c₁ == 0 && x.c₂ == 0) then some (A.map (·.c₀)) else none
+
+theorem kArr_spec (bc : BC) (pe : M3.PE) (c : FCol) (K : Array FK) (h : kArr bc pe c = some K) :
+    ∀ i < 2 ^ pe.p.a, coefF bc pe c i = FE.ofK (K.getD i 0) := by
+  intro i hi
+  unfold kArr at h
+  dsimp only at h
+  split at h
+  · rename_i hall
+    obtain rfl := Option.some.inj h
+    have hz := (Array.all_eq_true.mp hall) i (by simpa using hi)
+    simp only [Array.getElem_ofFn, Bool.and_eq_true, beq_iff_eq] at hz
+    simp only [Array.getD_eq_getD_getElem?, Array.getElem?_map, Array.getElem?_ofFn, hi, dite_true,
+      Option.map_some, Option.getD_some]
+    obtain ⟨h1, h2⟩ := hz
+    revert h1 h2
+    cases coefF bc pe c i
+    intro h1 h2; simp only at h1 h2; subst h1 h2; rfl
+  · simp at h
+
+/-- `pieceEvalGU` with a base-field coefficient table `k` (`kArr`, or `none`). -/
+def pieceEvalGK (u : Option (List Nat)) (k : Option (Array FK)) (G : PG) (pe : M3.PE) (c : FCol)
+    (r : List FE) : FE :=
+  let bc := G.C.bc pe.p.blk
+  let rI := r.drop bc.B.lsize
+  match k with
+  | some K =>
+    if rI.length ≤ pe.p.a then
+      match c, u with
+      | .res, some s0 | .arg _, some s0 => boxMul (mleK rI K) bc.B.dims s0 (r.take bc.B.lsize)
+      | .k, _ | .k', _ => mleK rI K
+      | _, _ => pieceEvalGU u G pe c r
+    else pieceEvalGU u G pe c r
+  | none => pieceEvalGU u G pe c r
+
+theorem pieceEvalGK_eq (u : Option (List Nat)) (k : Option (Array FK)) (G : PG) (pe : M3.PE) (c : FCol)
+    (r : List FE) (hk : ∀ K, k = some K → kArr (G.C.bc pe.p.blk) pe c = some K) :
+    pieceEvalGK u k G pe c r = pieceEvalGU u G pe c r := by
+  unfold pieceEvalGK
+  cases k with
+  | none => rfl
+  | some K =>
+    have hK := kArr_spec _ _ _ K (hk K rfl)
+    simp only
+    split
+    · rename_i hl
+      have hm : mleK (r.drop (G.C.bc pe.p.blk).B.lsize) K =
+          mleF (r.drop (G.C.bc pe.p.blk).B.lsize) (coefF (G.C.bc pe.p.blk) pe c) := by
+        rw [mleK_eq]
+        refine mleF_congr _ _ _ fun i hi => (hK i ?_).symm
+        exact Nat.lt_of_lt_of_le hi (Nat.pow_le_pow_right (by decide) hl)
+      split
+      · simp only [pieceEvalGU, hm]
+      · simp only [pieceEvalGU, hm]
+      · simp only [pieceEvalGU, pieceEvalGM, hm]
+      · simp only [pieceEvalGU, pieceEvalGM, hm]
+      · rfl
+    · rfl
+
+/-- Per piece, its columns' base-field coefficient tables (`kArr`), built once. -/
+def kT (G : PG) : Array (List (FCol × Option (Array FK))) :=
+  G.pes.map fun pe => [.res, .arg 0, .arg 1, .arg 2, .k, .k'].map fun c => (c, kArr (G.C.bc pe.p.blk) pe c)
+
+/-- The table for piece `n`, column `c`. -/
+def kH (K : Array (List (FCol × Option (Array FK)))) (n : Nat) (c : FCol) : Option (Array FK) :=
+  match (K.getD n []).find? (fun x => x.1 == c) with
+  | some x => x.2
+  | none => none
+
+theorem kH_spec (G : PG) (n : Nat) (c : FCol) (A : Array FK) (h : kH (kT G) n c = some A) :
+    kArr (G.C.bc (G.pe n).p.blk) (G.pe n) c = some A := by
+  unfold kH at h
+  split at h
+  · rename_i x hx
+    have hm := List.mem_of_find?_eq_some hx
+    have hc : x.1 = c := by simpa using List.find?_some hx
+    by_cases hn : n < G.pes.size
+    · have hU : (kT G).getD n [] = [.res, .arg 0, .arg 1, .arg 2, .k, .k'].map fun c =>
+          (c, kArr (G.C.bc G.pes[n].p.blk) G.pes[n] c) := by
+        simp [kT, Array.getD_eq_getD_getElem?, hn]
+      rw [hU] at hm
+      obtain ⟨c', -, rfl⟩ := List.mem_map.mp hm
+      simp only at hc h; subst hc
+      have hpe : G.pe n = G.pes[n] := by unfold PG.pe; rw [dif_pos hn]
+      rw [hpe]; exact h
+    · have hU : (kT G).getD n [] = [] := by
+        simp [kT, Array.getD_eq_getD_getElem?, Array.getElem?_eq_none (by simpa using Nat.le_of_not_lt hn)]
+      rw [hU] at hm; simp at hm
+  · simp at h
+
+/-- `pieceFixEvalGU` with the base-field tables. -/
+def pieceFixEvalGK (U : Array (List (FCol × Option (List Nat)))) (K : Array (List (FCol × Option (Array FK))))
+    (n : Nat) (G : PG) (pe : M3.PE) (c : FCol) (r : List FE) : FE :=
+  match c with
+  | .F => fixFEvalG G pe.p r
+  | c => pieceEvalGK (unifH U n c) (kH K n c) G pe c r
+
+/-- **`grpEvalGU` with the base-field tables.** -/
+def grpEvalGK (U : Array (List (FCol × Option (List Nat)))) (K : Array (List (FCol × Option (Array FK))))
+    (G : PG) (g : Grp) (c : FCol) (r : List FE) : FE :=
+  (g.mem.map fun (n, off) ↦
+    let pe := G.pe n
+    let h := heightF G.C pe.p
+    eqSel (off >>> h) (r.drop h) * pieceFixEvalGK U K n G pe c (r.take h)).foldl (· + ·) 0
+
+theorem grpEvalGK_eq (U : Array (List (FCol × Option (List Nat)))) (G : PG) (g : Grp) :
+    grpEvalGK U (kT G) G g = grpEvalGU U G g := by
+  funext c r
+  unfold grpEvalGK grpEvalGU
+  refine congrArg (List.foldl (· + ·) 0) ?_
+  apply List.map_congr_left
+  rintro ⟨n, off⟩ -
+  have hp : ∀ r', pieceFixEvalGK U (kT G) n G (G.pe n) c r' = pieceFixEvalGU U n G (G.pe n) c r' := by
+    intro r'
+    cases c <;> simp only [pieceFixEvalGK, pieceFixEvalGU] <;>
+      exact pieceEvalGK_eq _ _ G _ _ r' (kH_spec G n _)
+  simp only [hp]
+
 /-! ## The header-independent tables -/
 
 /-- The input arrays before `PUB`. -/
@@ -436,6 +685,8 @@ theorem arrs_split (C : QCfg) (D : QData) (P : Pub) :
 structure Pre where
   /-- The uniform-stride hints (kept so that they are built once with the parts). -/
   unif : Array (List (FCol × Option (List Nat)))
+  /-- The base-field coefficient tables (built once with the parts). -/
+  kt : Array (List (FCol × Option (Array FK)))
   /-- The groups' tables. -/
   grps : List Tab
   /-- The input arrays' tables before `PUB`. -/
@@ -448,10 +699,12 @@ structure Pre where
 /-- **The parts** of `QAsm.tabs C G D`. -/
 def pre (C : QCfg) (G : PG) (D : QData) : Pre :=
   let U := unifT G
+  let K := kT G
   { unif := U
+    kt := K
     grps := (List.range D.groups.length).map fun i =>
     shapeTab (D.groups.getD i default).σ (D.groups.getD i default).τ (grpFix G.C.Q (D.groups.getD i default))
-      (grpEvalGU U G (D.groups.getD i default)) (plOf D i)
+      (grpEvalGK U K G (D.groups.getD i default)) (plOf D i)
     head := (arrsHead C D).map InArr.tab
     tail := (arrsTail C D).map InArr.tab
     aux := auxF C D }
@@ -465,7 +718,7 @@ theorem tabsPre_eq (C : QCfg) (G : PG) (D : QData) (P : Pub) :
     tabsPre (pre C G D) C D P = QAsm.tabs C G D P := by
   unfold tabsPre pre QAsm.tabs lvmTabsC
   rw [arrs_split, auxF_eq]
-  simp only [List.map_append, List.map_cons, List.map_nil, grpEvalGU_eq]
+  simp only [List.map_append, List.map_cons, List.map_nil, grpEvalGK_eq, grpEvalGU_eq]
 
 /-! ## `V_S` at `P20` -/
 
@@ -508,10 +761,52 @@ theorem stackBlocksF_eq (bs : List NBlock) : stackBlocksF bs = stackBlocks bs :=
   rw [stack_fold _ [] 0]
   simp
 
-/-- `busFinalR` with `stackBlocksF`. -/
+/-- `cpolyForm` with base × extension products, none for a unit coefficient. -/
+def cpolyFormK (w : FE) (P : CPoly) : Form :=
+  ⟨P.map fun m => (m.2, if m.1 == 1 then w else FE.smulBase m.1 w)⟩
+
+theorem cpolyFormK_eq : cpolyFormK = cpolyForm := by
+  funext w P
+  unfold cpolyFormK cpolyForm
+  congr 1
+  apply List.map_congr_left
+  intro m _
+  congr 1
+  split
+  · rename_i h
+    rw [eq_of_beq h]; exact (mul_one w).symm
+  · exact FE.smulBase_eq_mul _ _ |>.trans (mul_comm _ _)
+
+/-- `leafForm` with `cpolyFormK`. -/
+def leafFormK (eqα : List FE) (β : FE) (k : Key) (cnt : CPoly) : Form :=
+  formSum ([Form.const (β + FE.smulBase k.sep (eqα.getD 0 0)), cpolyFormK (eqα.getD 1 0) k.addr,
+    cpolyFormK (eqα.getD 2 0) cnt] ++ k.val.zipIdx.map fun (P, l) => cpolyFormK (eqα.getD (3 + l) 0) P)
+
+theorem leafFormK_eq : leafFormK = leafForm := by
+  funext eqα β k cnt
+  unfold leafFormK leafForm
+  rw [cpolyFormK_eq, FE.smulBase_eq_mul, mul_comm]
+
+/-- `sideBlocks` with `leafFormK`. -/
+def sideBlocksK (tabs : List Tab) (eqα : List FE) (β : FE) : List (List NBlock) :=
+  let ts := tabs.zipIdx
+  [ts.flatMap fun (t, j) =>
+      t.reads.map (fun r => ⟨j, t.τ, leafFormK eqα β r.1 [(FK.x, [r.2])]⟩) ++
+        t.seeds.map (fun s => ⟨j, t.τ, leafFormK eqα β s.1 (CPoly.const 1)⟩),
+   ts.flatMap fun (t, j) =>
+      t.reads.map (fun r => ⟨j, t.τ, leafFormK eqα β r.1 (CPoly.var r.2)⟩) ++
+        t.seeds.map (fun s => ⟨j, t.τ, leafFormK eqα β s.1 (CPoly.var s.2)⟩),
+   ts.flatMap fun (t, j) => t.counts.map fun c => ⟨j, t.τ, Form.col c.val⟩]
+
+theorem sideBlocksK_eq : sideBlocksK = sideBlocks := by
+  funext tabs eqα β
+  unfold sideBlocksK sideBlocks
+  rw [leafFormK_eq]
+
+/-- `busFinalR` with `stackBlocksF` and `sideBlocksK`. -/
 def busFinalRF (tabs : List Tab) (i : BusIn) : BusOut :=
   let eqα := eqKernel i.alphas
-  let sides := (sideBlocks tabs eqα i.beta).map fun bs =>
+  let sides := (sideBlocksK tabs eqα i.beta).map fun bs =>
     (stackBlocksF bs).map fun (b, off) => (b, blockWeight i.point b.κ off)
   let bucket (s : List (NBlock × FE)) : Array (List (List Nat × FE)) :=
     s.foldl (fun acc (b, w) => acc.modify b.tab fun ts =>
@@ -525,7 +820,7 @@ def busFinalRF (tabs : List Tab) (i : BusIn) : BusOut :=
 theorem busFinalRF_eq : busFinalRF = busFinalR := by
   funext tabs i
   unfold busFinalRF busFinalR
-  simp only [stackBlocksF_eq]
+  simp only [stackBlocksF_eq, sideBlocksK_eq]
 
 /-- **The `P20` M3 instance**: `M3.real P20 tabs20F` with `busFinalRF`. -/
 def m20F : M3 :=

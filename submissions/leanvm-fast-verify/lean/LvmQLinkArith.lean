@@ -373,19 +373,19 @@ theorem foldl_add_map (g : Nat → FE) : ∀ (l : List Nat) (a : FE),
 
 /-- **`contShift` in closed form**: the trace's continuation rows `[1, B)` and the WOTS leaf's rows
 `[K + 1, K + 32)` (`K = 2^r + 399`), each an interval of the shift sum. -/
-theorem contShift_eq (p : Params) (rho rho' : List FE) (h1 : rho.length = p.ksLog)
+theorem contShiftRef_eq (p : Params) (rho rho' : List FE) (h1 : rho.length = p.ksLog)
     (h2 : rho'.length = p.ksLog) (hB : 1 ≤ spongeBlocks p) (hB2 : spongeBlocks p ≤ 2 ^ p.ksLog)
     (hK : 2 ^ p.recRowsLog + 431 ≤ 2 ^ p.ksLog) :
-    contShift p rho rho' = preSum rho rho' (spongeBlocks p - 1) +
+    contShiftRef p rho rho' = preSum rho rho' (spongeBlocks p - 1) +
       preSum rho rho' (2 ^ p.recRowsLog + 399 + 31) + preSum rho rho' (2 ^ p.recRowsLog + 399) := by
   have hg : ∀ i, 1 ≤ i → i < 2 ^ p.ksLog → (eqKernelA rho).getD i 0 * (eqKernelA rho').getD (i - 1) 0 =
       eqW rho' (i - 1) * eqW rho (i - 1 + 1) := by
     intro i hi1 hi2
     rw [eqKernelA_getD _ (by rw [h1]; exact hi2), eqKernelA_getD _ (by rw [h2]; omega),
       Nat.sub_add_cancel hi1]; ring
-  have hc : contShift p rho rho' =
+  have hc : contShiftRef p rho rho' =
       ((contRows p).map fun i => (eqKernelA rho).getD i 0 * (eqKernelA rho').getD (i - 1) 0).sum := by
-    unfold contShift; rw [foldl_add_map, zero_add]
+    unfold contShiftRef; rw [foldl_add_map, zero_add]
   rw [hc, contRows, List.map_append, List.sum_append]
   generalize hR : 2 ^ p.recRowsLog = R at *
   have hA : (((List.range (spongeBlocks p - 1)).map (· + 1)).map fun i =>
@@ -409,5 +409,33 @@ theorem contShift_eq (p : Params) (rho rho' : List FE) (h1 : rho.length = p.ksLo
   have h22 := CharTwo.add_self_eq_zero (preSum rho rho' (R + 399))
   rw [hA, hS, hP]
   linear_combination -h22
+
+theorem preCFV_eq : ∀ (x y : List FE) (H : Nat), Lvm.preCFV x y H = preCF x y H
+  | x0 :: x, y0 :: y, H => by
+    rw [show Lvm.preCFV (x0 :: x) (y0 :: y) H = Lvm.preStepV x0 y0 (H % 2 = 1) (Lvm.preCFV x y (H / 2)) from rfl,
+      show preCF (x0 :: x) (y0 :: y) H = preStep x0 y0 (H % 2 = 1) (preCF x y (H / 2)) from rfl,
+      preCFV_eq x y (H / 2)]
+    rfl
+  | [], _, _ => rfl
+  | _ :: _, [], _ => rfl
+
+/-- **The fast `contShift` is the row sum.** -/
+theorem contShift_fast (p : Params) (rho rho' : List FE) : contShift p rho rho' = contShiftRef p rho rho' := by
+  unfold contShift
+  split
+  · rename_i h
+    obtain ⟨h1, h2, hB, hB2, hK⟩ := h
+    have hl : rho.length = rho'.length := h1.trans h2.symm
+    rw [contShiftRef_eq p rho rho' h1 h2 hB hB2 hK, preCFV_eq, preCFV_eq, preCFV_eq, preCF_eq _ _ _ hl,
+      preCF_eq _ _ _ hl, preCF_eq _ _ _ hl]
+  · rfl
+
+/-- **`contShift` in closed form** (`contShiftRef_eq`). -/
+theorem contShift_eq (p : Params) (rho rho' : List FE) (h1 : rho.length = p.ksLog)
+    (h2 : rho'.length = p.ksLog) (hB : 1 ≤ spongeBlocks p) (hB2 : spongeBlocks p ≤ 2 ^ p.ksLog)
+    (hK : 2 ^ p.recRowsLog + 431 ≤ 2 ^ p.ksLog) :
+    contShift p rho rho' = preSum rho rho' (spongeBlocks p - 1) +
+      preSum rho rho' (2 ^ p.recRowsLog + 399 + 31) + preSum rho rho' (2 ^ p.recRowsLog + 399) := by
+  rw [contShift_fast]; exact contShiftRef_eq p rho rho' h1 h2 hB hB2 hK
 
 end Lvm.Q1

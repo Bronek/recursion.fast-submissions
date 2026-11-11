@@ -24,16 +24,11 @@ pub(crate) fn words(block: &[u64], j: usize) -> &[u64; BLOCK_WORDS] {
     block[j * BLOCK_WORDS..][..BLOCK_WORDS].try_into().expect("eight words")
 }
 
-/// Rounds between two stored states of a batch of depth `depth`: the largest divisor of the
-/// checkpoint interval that divides `depth`, so that every committed state is stored. Each
-/// layer's passes recompute a round that is not stored, once per block, which more threads
-/// absorb: they store fewer states.
-pub fn every(depth: usize) -> usize {
-    let mut k = if crate::lv::parallel::num_threads() >= 8 { 4 } else { 2 };
-    while !depth.is_multiple_of(k) {
-        k /= 2;
-    }
-    k
+/// Rounds between two stored states of a batch of depth `depth`: 1, every round is stored. On the
+/// 4C/8T Zen 4 target recomputing an unstored round in each layer's passes costs more than storing
+/// it, and the extra states fit the prover's memory cap.
+pub fn every(_depth: usize) -> usize {
+    1
 }
 
 /// Built only by [`Shape::new`], whose bounds keep the committed column's sizes from wrapping.

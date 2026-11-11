@@ -167,7 +167,8 @@ theorem contRows_bound : ∀ i ∈ contRows P20, 1 ≤ i ∧ i < 2 ^ 15 := by
 theorem toExt3_contShift (rho rho' : List FE) (h1 : rho.length = 15) (h2 : rho'.length = 15) :
     FE.toExt3 (Lvm.contShift P20 rho rho') =
       Lvm.KG.contShiftE (contRows P20) (rho.map FE.toExt3) (rho'.map FE.toExt3) := by
-  unfold Lvm.contShift Lvm.KG.contShiftE
+  rw [Lvm.Q1.contShift_fast]
+  unfold Lvm.contShiftRef Lvm.KG.contShiftE
   have hb0 := contRows_bound
   generalize contRows P20 = rows at hb0 ⊢
   have hf : ∀ (g : ℕ → FE) (l : List ℕ), l.foldl (fun acc i => acc + g i) 0 = Lvm.sumE (l.map g) :=

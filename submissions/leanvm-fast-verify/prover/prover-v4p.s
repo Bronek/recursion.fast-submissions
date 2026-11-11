@@ -381,7 +381,7 @@ _RINvMNtCsevLNFiNqfJP_4core3stre16trim_end_matchesReECs7rukeAxmHeC_10lvm_prover_
 	cmpb	$-64, (%rdi,%r14)
 	jge	.LBB1_31
 .LBB1_39:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2104(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2103(%rip), %r8
 	xorl	%edx, %edx
 	movq	%r14, %rcx
 	callq	_RNvNtCsevLNFiNqfJP_4core3str16slice_error_fail_lvm_v4p
@@ -4750,7 +4750,7 @@ _RINvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt6layersNtNtB5_8twiddles14Addi
 .LBB9_494:
 	movabsq	$-1152921504606846973, %rax
 	andq	%rax, %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2027(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2026(%rip), %rdx
 	movq	24(%rsp), %rdi
 	callq	_RNvNvNtCsevLNFiNqfJP_4core5slice20copy_from_slice_impl17len_mismatch_fail_lvm_v4p
 .LBB9_495:
@@ -5314,7 +5314,7 @@ _RINvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt6layersNtNtB5_8twiddles14Addi
 .LBB10_48:
 	.cfi_def_cfa_offset 240
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2044(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2043(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB10_47:
@@ -10978,67 +10978,67 @@ _RINvNtCsevLNFiNqfJP_4core5array11try_from_fnINtNtNtB4_3ops9try_trait17NeverShor
 .LBB52_60:
 	.cfi_def_cfa_offset 176
 	movq	%r9, %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1733(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_83:
 	movq	%r10, %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1733(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_69:
 	movq	%r13, %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1736(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
 	movq	%rcx, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_67:
 	movq	%r14, %r8
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
 	movq	%r8, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_61:
 	movq	%r10, %r8
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
 	movq	%r8, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_75:
 	movq	8(%rsp), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1736(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
 	movq	%rcx, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_70:
 	movq	%rbx, %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1733(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_87:
 	movq	%r10, %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1736(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
 	movq	%rcx, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_66:
 	movq	%r15, %r8
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
 	movq	%r8, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_53:
 	movq	%rbp, %r8
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
 	movq	%r8, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_73:
 	movq	%r9, %r8
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
 	movq	%r8, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_79:
 	movq	%rbx, %r8
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
 	movq	%r8, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_54:
 	movq	%r12, %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1736(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
 	movq	%rcx, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_55:
@@ -11048,76 +11048,76 @@ _RINvNtCsevLNFiNqfJP_4core5array11try_from_fnINtNtNtB4_3ops9try_trait17NeverShor
 	jae	.LBB52_97
 	cmpq	%rsi, %rcx
 	jae	.LBB52_99
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1738(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1737(%rip), %rdx
 	movl	$24, %esi
 	movq	%r10, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_59:
 	movq	%rdx, %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1733(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_62:
 	movq	%rdx, %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1736(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
 	movq	%rcx, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_63:
 	movq	%rbp, %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1736(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
 	movq	%rcx, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_71:
 	movq	%r12, %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1733(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_76:
 	movq	48(%rsp), %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1733(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_78:
 	movq	%r12, %r8
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
 	movq	%r8, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_80:
 	movq	16(%rsp), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1736(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
 	movq	%rcx, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_86:
 	movq	%r14, %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1736(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
 	movq	%rcx, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_89:
 	movq	40(%rsp), %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1733(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_93:
 	movq	24(%rsp), %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1733(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_94:
 	movq	24(%rsp), %rax
 .LBB52_95:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1733(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_96:
 	movq	%r15, %r8
 .LBB52_97:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1734(%rip), %rdx
 	movq	%r8, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB52_98:
 	movq	%rbp, %rcx
 .LBB52_99:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1736(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1735(%rip), %rdx
 	movq	%rcx, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .Lfunc_end52:
@@ -11137,10 +11137,10 @@ _RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedAAyj19_j8_BM_ECs7rukeAxmHeC_1
 	movq	%rdi, (%rax)
 	leaq	16(%rsp), %rdx
 	movq	%rsi, (%rdx)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1448(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1447(%rip), %rcx
 	movq	%rcx, (%rsp)
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.70(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1447(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1446(%rip), %r8
 	movq	%rax, %rdi
 	movq	%rcx, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking19assert_failed_inner_lvm_v4p
@@ -11160,10 +11160,10 @@ _RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedANtNtNtNtNtCs7rukeAxmHeC_10lv
 	movq	%rdi, (%rax)
 	leaq	16(%rsp), %rdx
 	movq	%rsi, (%rdx)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1425(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1424(%rip), %rcx
 	movq	%rcx, (%rsp)
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.71(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1424(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1423(%rip), %r8
 	pushq	$9
 	.cfi_adjust_cfa_offset 8
 	popq	%r9
@@ -11235,10 +11235,10 @@ _RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedAyj19_BM_ECs7rukeAxmHeC_10lvm
 	movq	%rdi, (%rax)
 	leaq	16(%rsp), %rdx
 	movq	%rsi, (%rdx)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1446(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1445(%rip), %rcx
 	movq	%rcx, (%rsp)
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.32(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1445(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1444(%rip), %r8
 	pushq	$17
 	.cfi_adjust_cfa_offset 8
 	popq	%r9
@@ -11262,10 +11262,10 @@ _RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedINtNtB4_6option6OptionRNtNtCs
 	movq	%rdi, (%rax)
 	leaq	16(%rsp), %rdx
 	movq	%rsi, (%rdx)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1703(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1702(%rip), %rcx
 	movq	%rcx, (%rsp)
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.73(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1702(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1701(%rip), %r8
 	pushq	$41
 	.cfi_adjust_cfa_offset 8
 	popq	%r9
@@ -11387,10 +11387,10 @@ _RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtNtCs7rukeAxmHeC_10lvm_pro
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.126(%rip), %rcx
 	leaq	16(%rsp), %rdx
 	movq	%rcx, (%rdx)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1537(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1536(%rip), %rcx
 	movq	%rcx, (%rsp)
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.33(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1536(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1535(%rip), %r8
 	pushq	$53
 	.cfi_adjust_cfa_offset 8
 	popq	%r9
@@ -11489,10 +11489,10 @@ _RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedRShBM_ECs7rukeAxmHeC_10lvm_pr
 	movq	%rdi, (%rax)
 	leaq	16(%rsp), %rdx
 	movq	%rsi, (%rdx)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1615(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1614(%rip), %rcx
 	movq	%rcx, (%rsp)
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.80(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1614(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1613(%rip), %r8
 	pushq	$55
 	.cfi_adjust_cfa_offset 8
 	popq	%r9
@@ -11542,11 +11542,11 @@ _RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedShAhj20_ECs7rukeAxmHeC_10lvm_
 	movq	$32, 8(%rax)
 	leaq	16(%rsp), %rdx
 	movq	%rsi, (%rdx)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1451(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1450(%rip), %rcx
 	movq	%rcx, (%rsp)
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.81(%rip), %rsi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.31(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1450(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1449(%rip), %r8
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking19assert_failed_inner_lvm_v4p
 .Lfunc_end69:
@@ -11565,10 +11565,10 @@ _RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedTjjjjEBM_ECs7rukeAxmHeC_10lvm
 	movq	%rdi, (%rax)
 	leaq	16(%rsp), %rdx
 	movq	%rsi, (%rdx)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1626(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1625(%rip), %rcx
 	movq	%rcx, (%rsp)
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.82(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1625(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1624(%rip), %r8
 	pushq	$79
 	.cfi_adjust_cfa_offset 8
 	popq	%r9
@@ -12904,16 +12904,16 @@ _RINvNtNtCsgHYyB3hU8Ec_3std3sys9backtrace28___rust_begin_short_backtraceNCNCNvNt
 	callq	_RINvMNtNtCsgHYyB3hU8Ec_3std4sync9once_lockINtB3_8OnceLockNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8topology8TopologyE10initializeNCINvB2_11get_or_initNCNvBV_8topology0E0zEB11__lvm_v4p
 	jmp	.LBB78_37
 .LBB78_59:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1533(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1534(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1532(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1533(%rip), %rdx
 	movl	$29, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB78_57:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1529(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1528(%rip), %rdx
 	movq	%r12, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB78_46:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1530(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1529(%rip), %rdx
 	movq	%r12, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB78_2:
@@ -12935,7 +12935,7 @@ _RINvNtNtCsgHYyB3hU8Ec_3std3sys9backtrace28___rust_begin_short_backtraceNCNCNvNt
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.605(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB78_55:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1528(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1527(%rip), %rdx
 	movq	%r12, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB78_43:
@@ -39706,7 +39706,7 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	retq
 .LBB165_21:
 	.cfi_def_cfa %rbp, 16
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1768(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1767(%rip), %rcx
 	movl	$8, %esi
 	xorl	%edi, %edi
 	movq	%r8, %rdx
@@ -39715,34 +39715,34 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 .LBB165_74:
 	movq	%rcx, %rdi
 .LBB165_75:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1769(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1768(%rip), %rcx
 	movq	24(%rsp), %rdx
 	movq	%rdx, %rsi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB165_78:
 	movq	%rbx, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1769(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1768(%rip), %rcx
 	movq	24(%rsp), %rdx
 	movq	%rdx, %rsi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB165_81:
 	movq	%r11, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1769(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1768(%rip), %rcx
 	movq	24(%rsp), %rdx
 	movq	%rdx, %rsi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB165_84:
 	movq	%r10, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1769(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1768(%rip), %rcx
 	movq	24(%rsp), %rdx
 	movq	%rdx, %rsi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB165_32:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1342(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1341(%rip), %rcx
 	movl	$1600, %edx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -39773,7 +39773,7 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	xorl	%edi, %edi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB165_60:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1341(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1340(%rip), %rdx
 	movl	$1600, %esi
 	movq	%rax, %rdi
 	vzeroupper
@@ -39788,11 +39788,11 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	movl	$102400, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB165_103:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1254(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1253(%rip), %rdi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB165_104:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1255(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1254(%rip), %rdx
 	movq	%rax, %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -39809,7 +39809,7 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	movl	$73728, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB165_52:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1340(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1339(%rip), %rdx
 	movl	$16, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -42291,7 +42291,7 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	jmp	.LBB166_42
 .LBB166_25:
 	leaq	8(%rdi), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1808(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1807(%rip), %rcx
 	movq	952(%rsp), %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -42304,13 +42304,13 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	cmpq	%rdx, %rcx
 	jae	.LBB166_15
 .LBB166_12:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1809(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1808(%rip), %rcx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB166_15:
 	movq	960(%rsp), %rdi
 	leaq	8(%rdi), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1809(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1808(%rip), %rcx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB166_47:
@@ -42324,7 +42324,7 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB166_16:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1810(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1809(%rip), %rdx
 	movq	%rax, %rdi
 	movq	%r14, %rsi
 	vzeroupper
@@ -42340,13 +42340,13 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB166_45:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1811(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1810(%rip), %rdx
 	movq	%rax, %rdi
 	movq	72(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB166_46:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1812(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1811(%rip), %rdx
 	movq	%rax, %rdi
 	movq	200(%rsp), %rsi
 	vzeroupper
@@ -43439,12 +43439,12 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	retq
 .LBB167_34:
 	.cfi_def_cfa_offset 624
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1769(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1768(%rip), %rcx
 	movq	%rsi, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB167_20:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1768(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1767(%rip), %rcx
 	movl	$8, %esi
 	xorl	%edi, %edi
 	movq	%r9, %rdx
@@ -43483,13 +43483,13 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 .LBB167_39:
 	movq	%r15, %r8
 .LBB167_40:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1239(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1238(%rip), %rdx
 	movq	%r8, %rdi
 	movq	%r15, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB167_36:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1238(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1237(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	vzeroupper
@@ -44805,7 +44805,7 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	retq
 .LBB168_49:
 	.cfi_def_cfa_offset 1584
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1196(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1195(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%r12, %rdx
 	vzeroupper
@@ -44813,13 +44813,13 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 .LBB168_73:
 	movq	184(%rsp), %rdx
 	andl	$7, %edx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1768(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1767(%rip), %rcx
 	movl	$8, %esi
 	xorl	%edi, %edi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB168_60:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1769(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1768(%rip), %rcx
 	movq	184(%rsp), %rdx
 	movq	%rdx, %rsi
 	vzeroupper
@@ -44852,7 +44852,7 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB168_71:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1254(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1253(%rip), %rdi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB168_61:
@@ -44861,7 +44861,7 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB168_72:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1255(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1254(%rip), %rdx
 	movq	%rax, %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -45265,7 +45265,7 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	vpaddq	.LCPI169_0(%rip), %ymm0, %ymm0
 	vmovdqu	%ymm0, 400(%rsp)
 	movq	(%rdi), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1760(%rip), %r14
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1759(%rip), %r14
 	movq	%r8, 24(%rsp)
 	movq	%rdx, 256(%rsp)
 	movq	%rdi, 8(%rsp)
@@ -45667,7 +45667,7 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	movq	56(%rsp), %rax
 	movq	%rax, %rcx
 	cmpq	$5, %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1761(%rip), %r15
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1760(%rip), %r15
 	vmovdqa64	%zmm22, %zmm20
 	vmovdqa64	%xmm28, %xmm26
 	jne	.LBB169_20
@@ -46088,13 +46088,13 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTTINtNtCs1C1l
 	retq
 .LBB169_61:
 	.cfi_def_cfa_offset 496
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1769(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1768(%rip), %rcx
 	movq	88(%rsp), %rdx
 	movq	%rdx, %rsi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB169_22:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1768(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1767(%rip), %rcx
 	movl	$8, %esi
 	xorl	%edi, %edi
 	vzeroupper
@@ -48406,7 +48406,7 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTuANtNtNtNtNt
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB172_32:
 	leaq	8(%rdi), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1808(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1807(%rip), %rcx
 	movq	240(%rsp), %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -49520,14 +49520,14 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel16drain_into_slotsTuINtNtCs1C1l
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB174_20:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1993(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %r8
 	leaq	24(%rsp), %rdi
 	leaq	104(%rsp), %rsi
 	xorl	%edx, %edx
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB174_63:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1993(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %r8
 	leaq	96(%rsp), %rdi
 	leaq	24(%rsp), %rsi
 	xorl	%edx, %edx
@@ -52386,38 +52386,38 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8for_eachNCINvB4_11map_collectA
 	movq	%rax, 1712(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 1720(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1170(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1171(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1169(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1170(%rip), %rdx
 	leaq	1712(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB179_75:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1176(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1175(%rip), %rcx
 	movq	%rsi, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB179_73:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1175(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1174(%rip), %rcx
 	movl	$12800, %esi
 	xorl	%edi, %edi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB179_14:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1211(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1212(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1210(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1211(%rip), %rdx
 	movl	$20, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB179_41:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1209(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1210(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1208(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1209(%rip), %rdx
 	movl	$15, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB179_32:
 	testq	%r15, %r15
 	jne	.LBB179_76
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1174(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1173(%rip), %rdi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB179_76:
@@ -52425,8 +52425,8 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8for_eachNCINvB4_11map_collectA
 	movq	%rax, 1712(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 1720(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1172(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1173(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1171(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1172(%rip), %rdx
 	leaq	1712(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -52440,11 +52440,11 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8for_eachNCINvB4_11map_collectA
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.688(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB179_72:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1169(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1168(%rip), %rdx
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB179_74:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1169(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1168(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	vzeroupper
@@ -52862,18 +52862,18 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8for_eachNCINvB4_11map_collectI
 	shlq	$3, %r10
 	movq	$1024, 40(%rsp)
 	movq	%r10, 48(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1993(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %r8
 	leaq	40(%rsp), %rdi
 	leaq	48(%rsp), %rsi
 	xorl	%edx, %edx
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB180_27:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1332(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1331(%rip), %rdx
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB180_26:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1331(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1330(%rip), %rdx
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB180_23:
@@ -59199,13 +59199,13 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8for_eachNCINvB4_19for_each_chu
 	retq
 .LBB197_23:
 	.cfi_def_cfa_offset 112
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1359(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1358(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%r8, %rsi
 	movq	%r11, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB197_30:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1360(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1359(%rip), %rcx
 	movq	%r10, %rdi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -59519,7 +59519,7 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8for_eachNCINvB4_19for_each_chu
 	movq	%r9, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB198_29:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1993(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %r8
 	leaq	24(%rsp), %rdi
 	leaq	32(%rsp), %rsi
 	xorl	%edx, %edx
@@ -61441,17 +61441,17 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8for_eachNCINvB4_19for_each_chu
 	cmpq	%rdx, %r9
 	jae	.LBB204_26
 .LBB204_23:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1809(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1808(%rip), %rcx
 	movq	%rax, %rdi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB204_26:
 	leaq	8(%rdi), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1809(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1808(%rip), %rcx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB204_27:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1810(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1809(%rip), %rdx
 	movq	%rcx, %rdi
 	movq	%r14, %rsi
 	vzeroupper
@@ -61481,13 +61481,13 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8for_eachNCINvB4_19for_each_chu
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB204_50:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1811(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1810(%rip), %rdx
 	movq	%rcx, %rdi
 	movq	32(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB204_49:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1812(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1811(%rip), %rdx
 	movq	%rcx, %rdi
 	movq	24(%rsp), %rsi
 	vzeroupper
@@ -63190,8 +63190,8 @@ _RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8for_eachNCINvB4_19for_each_chu
 	movq	%rax, 88(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 96(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1522(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1523(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1521(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1522(%rip), %rdx
 	leaq	88(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -69614,19 +69614,19 @@ _RNCNCINvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir14fold_all_lanesNCNvMs_NtNt
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB217_185:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1358(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1357(%rip), %rcx
 	movq	%r13, %rdi
 	movq	%r10, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB217_186:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1357(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1356(%rip), %rcx
 	movq	%r12, %rdi
 	movq	%r9, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB217_187:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1352(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1351(%rip), %rdx
 	movl	$64, %edi
 	movl	$64, %esi
 	vzeroupper
@@ -69662,8 +69662,8 @@ _RNCNCINvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir14fold_all_lanesNCNvMs_NtNt
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB217_193:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1353(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1354(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1352(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1353(%rip), %rdx
 	movl	$67, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
@@ -69731,7 +69731,7 @@ _RNCNCINvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir14fold_all_lanesNCNvMs_NtNt
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB217_205:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1356(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1355(%rip), %rdx
 	movq	%rax, %rdi
 	movq	792(%rsp), %rsi
 	vzeroupper
@@ -69755,7 +69755,7 @@ _RNCNCINvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir14fold_all_lanesNCNvMs_NtNt
 	movq	440(%rsp), %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB217_210:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1355(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1354(%rip), %rdi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_rem_by_zero_lvm_v4p
 .LBB217_211:
@@ -78740,7 +78740,7 @@ _RNCNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt4deepNtB4_8DeepPass12with_me
 .LBB229_582:
 	movabsq	$-1152921504606846973, %rax
 	andq	%rax, %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2027(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2026(%rip), %rdx
 	movq	24(%rsp), %rdi
 	callq	_RNvNvNtCsevLNFiNqfJP_4core5slice20copy_from_slice_impl17len_mismatch_fail_lvm_v4p
 .LBB229_583:
@@ -78793,7 +78793,7 @@ _RNCNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt4deepNtB4_8DeepPass12with_me
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB229_592:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1236(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1235(%rip), %rdx
 	movl	$19, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -78877,7 +78877,7 @@ _RNCNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt4deepNtB4_8DeepPass12with_me
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB229_610:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1237(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1236(%rip), %rdx
 	movq	%r15, %rsi
 	vzeroupper
 	callq	_RNvNvNtCsevLNFiNqfJP_4core5slice20copy_from_slice_impl17len_mismatch_fail_lvm_v4p
@@ -79324,8 +79324,8 @@ _RNCNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt6cosetsNtNtB6_8twiddles14Add
 	movq	%rax, 104(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 112(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1522(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1523(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1521(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1522(%rip), %rdx
 	leaq	104(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -80265,7 +80265,7 @@ _RNCNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt8gatheredNtB4_12GatheredPass
 	movq	%rax, %rbx
 	jmp	.LBB231_22
 .LBB231_130:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1237(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1236(%rip), %rdx
 	movq	%r15, %rdi
 	vzeroupper
 	callq	_RNvNvNtCsevLNFiNqfJP_4core5slice20copy_from_slice_impl17len_mismatch_fail_lvm_v4p
@@ -80470,7 +80470,7 @@ _RNCNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt8gatheredNtB4_12GatheredPass
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB231_132:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1361(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1360(%rip), %rdi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB231_122:
@@ -80487,7 +80487,7 @@ _RNCNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt8gatheredNtB4_12GatheredPass
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB231_126:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1236(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1235(%rip), %rdx
 	movl	$19, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -85146,7 +85146,7 @@ _RNCNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt8gatheredNtB4_12GatheredPass
 	movabsq	$-1152921504606846973, %rax
 	movq	16(%rsp), %rsi
 	andq	%rax, %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2027(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2026(%rip), %rdx
 	movq	32(%rsp), %rdi
 	callq	_RNvNvNtCsevLNFiNqfJP_4core5slice20copy_from_slice_impl17len_mismatch_fail_lvm_v4p
 .LBB232_557:
@@ -85159,7 +85159,7 @@ _RNCNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt8gatheredNtB4_12GatheredPass
 .LBB232_559:
 	movabsq	$-1152921504606846973, %rax
 	andq	%rax, %r14
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2027(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2026(%rip), %rdx
 	movq	32(%rsp), %rdi
 	movq	%r14, %rsi
 	callq	_RNvNvNtCsevLNFiNqfJP_4core5slice20copy_from_slice_impl17len_mismatch_fail_lvm_v4p
@@ -85172,7 +85172,7 @@ _RNCNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt8gatheredNtB4_12GatheredPass
 .LBB232_560:
 	movabsq	$-1152921504606846973, %rax
 	andq	%rax, %rbx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2027(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2026(%rip), %rdx
 	movq	32(%rsp), %rdi
 	movq	%rbx, %rsi
 	callq	_RNvNvNtCsevLNFiNqfJP_4core5slice20copy_from_slice_impl17len_mismatch_fail_lvm_v4p
@@ -85190,7 +85190,7 @@ _RNCNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt8gatheredNtB4_12GatheredPass
 .LBB232_564:
 	movabsq	$-1152921504606846973, %rax
 	andq	%rax, %r15
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2027(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2026(%rip), %rdx
 	movq	32(%rsp), %rdi
 	movq	%r15, %rsi
 	callq	_RNvNvNtCsevLNFiNqfJP_4core5slice20copy_from_slice_impl17len_mismatch_fail_lvm_v4p
@@ -85307,7 +85307,7 @@ _RNCNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt8gatheredNtB4_12GatheredPass
 	movq	360(%rsp), %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB232_587:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1361(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1360(%rip), %rdi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB232_588:
@@ -88817,68 +88817,68 @@ _RNCNvMs5_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6proverNtB7_5Round4fold
 	retq
 .LBB236_29:
 	.cfi_def_cfa_offset 208
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1279(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1278(%rip), %rcx
 	movl	$4800, %esi
 	xorl	%edi, %edi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB236_30:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1281(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1280(%rip), %rcx
 	movl	$4800, %esi
 	xorl	%edi, %edi
 	movq	%r9, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB236_31:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1280(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1279(%rip), %rcx
 	movq	%r8, %rdi
 	movq	%rax, %rsi
 	movq	%rax, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB236_32:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1282(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1281(%rip), %rcx
 	movq	%rax, %rdi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB236_33:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1282(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1281(%rip), %rcx
 	movq	%r9, %rdi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB236_34:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1281(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1280(%rip), %rcx
 	movl	$4800, %esi
 	xorl	%edi, %edi
 	movq	%r8, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB236_35:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1282(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1281(%rip), %rcx
 	movq	%r10, %rdi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB236_36:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1280(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1279(%rip), %rcx
 	movq	%r10, %rdi
 	movq	%rax, %rsi
 	movq	%rax, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB236_37:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1279(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1278(%rip), %rcx
 	movl	$4800, %esi
 	xorl	%edi, %edi
 	movq	%r9, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB236_38:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1282(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1281(%rip), %rcx
 	movq	%r8, %rdi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB236_39:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1281(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1280(%rip), %rcx
 	movl	$4800, %esi
 	xorl	%edi, %edi
 	movq	%rax, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB236_40:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1280(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1279(%rip), %rcx
 	movq	%r9, %rdi
 	movq	%rax, %rsi
 	movq	%rax, %rdx
@@ -97024,7 +97024,7 @@ _RNCNvMs_NtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basisNtB6_5Terms7
 	jne	.LBB239_639
 	jmp	.LBB239_634
 .LBB239_654:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1993(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %r8
 	leaq	1456(%rsp), %rdi
 	leaq	7176(%rsp), %rsi
 	xorl	%edx, %edx
@@ -98496,14 +98496,14 @@ _RNCNvMs_NtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basisNtB6_5Terms7
 	jne	.LBB239_762
 	jmp	.LBB239_757
 .LBB239_777:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1993(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %r8
 	leaq	5632(%rsp), %rdi
 	leaq	1456(%rsp), %rsi
 	xorl	%edx, %edx
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB239_778:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1359(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1358(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%rax, %rsi
 	movq	%r8, %rdx
@@ -98745,7 +98745,7 @@ _RNCNvMs_NtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basisNtB6_5Terms7
 	retq
 .LBB239_817:
 	.cfi_def_cfa_offset 15424
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1360(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1359(%rip), %rcx
 	movq	%r10, %rdi
 	movq	320(%rsp), %rdx
 	movq	%rdx, %rsi
@@ -100094,7 +100094,7 @@ _RNCNvMsc_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6proverNtB7_5Round9fold
 	subq	%rdi, %r10
 	jae	.LBB241_44
 	movq	%rdi, %r9
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1282(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1281(%rip), %rcx
 	movq	%r9, %rdi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -100141,37 +100141,37 @@ _RNCNvMsc_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6proverNtB7_5Round9fold
 	leaq	(%r12,%rdi,8), %rdi
 	jmp	.LBB241_18
 .LBB241_46:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1281(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1280(%rip), %rcx
 	movl	$4800, %esi
 	xorl	%edi, %edi
 	movq	%r10, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB241_47:
 	movq	%rcx, %r9
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1282(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1281(%rip), %rcx
 	movq	%r9, %rdi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB241_49:
 	movq	%r8, %r9
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1282(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1281(%rip), %rcx
 	movq	%r9, %rdi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB241_50:
 	movq	%rdi, %r9
 .LBB241_51:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1282(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1281(%rip), %rcx
 	movq	%r9, %rdi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB241_52:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1280(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1279(%rip), %rcx
 	movq	%r11, %rsi
 	movq	%r11, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB241_53:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1279(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1278(%rip), %rcx
 	movl	$4800, %esi
 	xorl	%edi, %edi
 	movq	%rbx, %rdx
@@ -104496,7 +104496,7 @@ _RNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6stream3run0B7__lvm_v4p:
 	movq	%rax, 64(%rsp)
 	movq	%r14, 72(%rsp)
 	movq	%r13, 80(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1462(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1461(%rip), %rsi
 	leaq	64(%rsp), %rdi
 	movl	$3, %edx
 	callq	_RNCNvNtCs7rukeAxmHeC_10lvm_prover4proc10read_chains_0B5__lvm_v4p
@@ -104699,7 +104699,7 @@ _RNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6stream3run0B7__lvm_v4p:
 	movq	%r15, 88(%rsp)
 	movq	%rax, %r15
 	movabsq	$-9187201950435737472, %r12
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1465(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1464(%rip), %rsi
 	leaq	64(%rsp), %rdi
 	movl	$7, %edx
 	callq	_RNCNvNtCs7rukeAxmHeC_10lvm_prover4proc10read_chains_0B5__lvm_v4p
@@ -104983,19 +104983,19 @@ _RNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6stream3run0B7__lvm_v4p:
 	adcb	$1, %al
 .LBB253_110:
 	movb	%al, (%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1463(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1462(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.939(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1464(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1463(%rip), %r8
 	movq	%rsp, %rdx
 	movl	$1, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
 .LBB253_111:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1466(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1467(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1465(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1466(%rip), %rdx
 	movl	$5, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB253_112:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1468(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1467(%rip), %r8
 	movq	%rax, %rdi
 	movq	%rdx, %rsi
 	movq	%r9, %rdx
@@ -105055,9 +105055,9 @@ _RNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6stream3run0B7__lvm_v4p:
 	movq	%rbp, (%rsp)
 	movq	%rax, 8(%rsp)
 	movq	%rbp, 16(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1469(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1468(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.930(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1470(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1469(%rip), %r8
 	movq	%rsp, %rdx
 	movl	$15, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -105715,10 +105715,10 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layers2_0B9_
 	movq	%r15, %rdi
 	vzeroupper
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1760-896(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1759-896(%rip), %rax
 	xorl	%ecx, %ecx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1760(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1761(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1759(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1760(%rip), %rsi
 	jmp	.LBB254_41
 	.p2align	4
 .LBB254_45:
@@ -105974,7 +105974,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layers2_0B9_
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB254_346:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1260(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1259(%rip), %rcx
 	movl	$4, %edi
 	movq	%rbx, %rsi
 	movq	%rbx, %rdx
@@ -106046,7 +106046,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layers2_0B9_
 	movq	$1600, 120(%rsp)
 	movq	$0, 528(%rsp)
 .LBB254_2:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1343(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1342(%rip), %r8
 	leaq	528(%rsp), %rdi
 	leaq	120(%rsp), %rsi
 	xorl	%edx, %edx
@@ -107895,7 +107895,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layers2_0B9_
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB254_306:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1336(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1335(%rip), %rdx
 	movl	$7, %edi
 	movl	$7, %esi
 	vzeroupper
@@ -108707,7 +108707,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layers4_0B9_
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB255_142:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1252(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1251(%rip), %rcx
 	movl	$4, %edi
 	movq	%r14, %rsi
 	movq	%r14, %rdx
@@ -109034,7 +109034,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layers4_0B9_
 .LBB255_141:
 	vmovups	%xmm0, 8(%r14)
 	movq	%rax, (%r14)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1336(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1335(%rip), %rdx
 	movl	$9, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -109055,8 +109055,8 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layers4_0B9_
 	movq	80(%rsp), %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB255_135:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1194(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1195(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1193(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1194(%rip), %rdx
 	movl	$70, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .Lfunc_end255:
@@ -109874,16 +109874,16 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layers5_0B9_
 	jmp	.LBB256_71
 .LBB256_167:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1256(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1255(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB256_168:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1257(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1256(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB256_159:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1259(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1258(%rip), %rcx
 	movq	%r14, %rdi
 	movq	%rax, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -109893,7 +109893,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layers5_0B9_
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB256_161:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1258(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1257(%rip), %rcx
 	movq	352(%rsp), %rdx
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -110529,7 +110529,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layers5_0B9_
 	movb	$1, 540(%rbp)
 	jmp	.LBB256_96
 .LBB256_166:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1336(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1335(%rip), %rdx
 	movl	$9, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -110550,8 +110550,8 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layers5_0B9_
 	movq	%rbp, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB256_157:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1194(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1195(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1193(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1194(%rip), %rdx
 	movl	$70, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .Lfunc_end256:
@@ -111225,7 +111225,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layers_0B9__
 	callq	*syscall@GOTPCREL(%rip)
 	jmp	.LBB257_82
 .LBB257_148:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1337(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1336(%rip), %rdx
 	movl	$257, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB257_139:
@@ -111234,16 +111234,16 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layers_0B9__
 	movq	%r12, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB257_141:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1339(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1338(%rip), %rdx
 	movl	$1600, %esi
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB257_140:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1338(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1337(%rip), %rdx
 	movl	$257, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB257_147:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1253(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1252(%rip), %rcx
 	movl	$5, %edi
 	movq	%r14, %rsi
 	movq	%r14, %rdx
@@ -112945,8 +112945,8 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf13prove_balances1_0B9
 	movabsq	$384307168202282325, %r15
 	jmp	.LBB260_37
 .LBB260_349:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1842(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1843(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1841(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1842(%rip), %rdx
 	movl	$53, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -113384,17 +113384,17 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf13prove_balances1_0B9
 	movq	%rsi, %rax
 	jmp	.LBB260_128
 .LBB260_351:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1845(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1844(%rip), %rdx
 	movq	88(%rsp), %rdi
 	movq	%rdi, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB260_348:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1841(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1840(%rip), %rdx
 	movq	%r15, %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB260_350:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1844(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1843(%rip), %rdx
 	movq	%r15, %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -114592,7 +114592,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf13prove_balances1_0B9
 .LBB260_307:
 	movq	%rax, 40(%rsp)
 .LBB260_308:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1839(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1838(%rip), %rcx
 	movq	%rbx, %rdi
 	movq	40(%rsp), %rdx
 	movq	%rdx, %rsi
@@ -114602,7 +114602,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf13prove_balances1_0B9
 .LBB260_311:
 	movq	%rax, 64(%rsp)
 .LBB260_312:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1838(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1837(%rip), %rcx
 	movq	64(%rsp), %rdx
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -114611,7 +114611,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf13prove_balances1_0B9
 .LBB260_315:
 	movq	%rax, 128(%rsp)
 .LBB260_316:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1837(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1836(%rip), %rcx
 	movq	%rbx, %rdi
 	movq	128(%rsp), %rdx
 	movq	%rdx, %rsi
@@ -114624,7 +114624,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf13prove_balances1_0B9
 .LBB260_298:
 	movq	%rax, 40(%rsp)
 .LBB260_299:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1840(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1839(%rip), %rcx
 	movq	40(%rsp), %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB260_180:
@@ -114764,7 +114764,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf13prove_balances1_0B9
 	movl	$64, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB260_295:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1836(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1835(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -116713,7 +116713,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf13prove_balances3_0B9
 	vzeroupper
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec17capacity_overflow_lvm_v4p
 .LBB261_144:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1856(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1855(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%r14, %rsi
 	movq	%r11, %rdx
@@ -116764,7 +116764,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf13prove_balances3_0B9
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB261_113:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1855(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1854(%rip), %rdx
 	movq	136(%rsp), %rdi
 	movq	%rdi, %rsi
 	vzeroupper
@@ -118357,8 +118357,8 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf13prove_balances4_0B9
 	movq	%rax, 200(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 208(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1522(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1523(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1521(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1522(%rip), %rdx
 	leaq	200(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -121500,7 +121500,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce32transpose_forward_nt
 	retq
 .LBB265_268:
 	.cfi_def_cfa_offset 816
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1915(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1914(%rip), %rcx
 	movq	%r8, %rdi
 	movq	%rdx, %rsi
 	movq	48(%rsp), %rdx
@@ -121515,7 +121515,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce32transpose_forward_nt
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB265_270:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1914(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1913(%rip), %rdx
 	movl	$19, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -121545,7 +121545,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce32transpose_forward_nt
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB265_275:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1912(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1911(%rip), %rdi
 	vzeroupper
 	callq	_RNvNtNtNtCsevLNFiNqfJP_4core3num3imp9int_log1030panic_for_nonpositive_argument_lvm_v4p
 .LBB265_276:
@@ -121571,7 +121571,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce32transpose_forward_nt
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB265_280:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1913(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1912(%rip), %rdx
 	movq	%rbp, %rdi
 	movq	48(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -122584,8 +122584,8 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir17ligero_commit_ext0B9__lvm_v4
 	xorl	%edx, %edx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB267_87:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1369(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1371(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1368(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1370(%rip), %rdx
 	movl	$15, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB267_59:
@@ -122710,7 +122710,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepar
 	movq	16(%rax), %r13
 	movq	224(%rsi), %rax
 	movq	(%rax), %rbp
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1223(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1222(%rip), %rax
 	movq	%rax, 8(%rsp)
 	movq	$14, 16(%rsp)
 	movl	$-1, 32(%rsp)
@@ -122862,8 +122862,8 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepar
 	testq	%rdx, %rdx
 	je	.LBB268_5
 .LBB268_9:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1224(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1225(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1223(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1224(%rip), %rdx
 	movl	$74, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB268_8:
@@ -122885,14 +122885,14 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepar
 	retq
 .LBB268_10:
 	.cfi_def_cfa_offset 304
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1226(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1225(%rip), %r8
 	leaq	128(%rsp), %rdi
 	leaq	8(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB268_11:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1227(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1228(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1226(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1227(%rip), %rdx
 	movl	$60, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .Lfunc_end268:
@@ -123078,7 +123078,7 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepar
 	movq	%rax, 288(%rbp)
 	incq	368(%rbp)
 	movq	%rdi, 200(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1223(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1222(%rip), %rax
 	movq	%rax, 912(%rsp)
 	movq	$14, 920(%rsp)
 	movl	$-1, 936(%rsp)
@@ -123621,8 +123621,8 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepar
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB269_219:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1229(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1230(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1228(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1229(%rip), %rdx
 	movl	$45, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB269_38:
@@ -124309,8 +124309,8 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepar
 	movb	$1, 540(%rbp)
 	jmp	.LBB269_85
 .LBB269_225:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1381(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1382(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1380(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1381(%rip), %rdx
 	movl	$57, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB269_184:
@@ -124788,12 +124788,12 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepar
 	retq
 .LBB270_13:
 	.cfi_def_cfa_offset 32
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1925(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1924(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%r8, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB270_12:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1926(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1925(%rip), %rcx
 	movq	%rax, %rdi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -124806,9 +124806,9 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepar
 	movq	%rax, %r10
 .LBB270_7:
 	movq	%r10, 8(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1923(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1922(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.940(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1924(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1923(%rip), %r8
 	leaq	8(%rsp), %rdx
 	movl	$13, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -124878,12 +124878,12 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepar
 	retq
 .LBB271_13:
 	.cfi_def_cfa_offset 32
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1925(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1924(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%r8, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB271_12:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1926(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1925(%rip), %rcx
 	movq	%rax, %rdi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -124896,9 +124896,9 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepar
 	movq	%rax, %r10
 .LBB271_7:
 	movq	%r10, 8(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1923(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1922(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.940(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1924(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1923(%rip), %r8
 	leaq	8(%rsp), %rdx
 	movl	$13, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -125276,18 +125276,18 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir6commits_0B9__lvm_v4p:
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
 	jmp	.LBB272_40
 .LBB272_41:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1362(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1364(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1361(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1363(%rip), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB272_42:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1365(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1366(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1364(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1365(%rip), %rdx
 	movl	$69, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB272_43:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1367(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1368(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1366(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1367(%rip), %rdx
 	movl	$65, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB272_2:
@@ -125296,8 +125296,8 @@ _RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir6commits_0B9__lvm_v4p:
 	movq	%rbx, %rsi
 	jmp	.LBB272_3
 .LBB272_48:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1369(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1370(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1368(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1369(%rip), %rdx
 	movl	$15, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB272_45:
@@ -129524,7 +129524,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_rqtest_lvm_v4p:
 	vmovdqu	%ymm0, 352(%rsp)
 	vmovdqu	%ymm0, 320(%rsp)
 	vmovdqu	%ymm0, 288(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1497(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1496(%rip), %rsi
 	leaq	288(%rsp), %rdi
 	movl	$1, %edx
 	vzeroupper
@@ -130806,8 +130806,8 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_rqtest_lvm_v4p:
 	movq	%rax, 288(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 296(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1987(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1988(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1986(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1987(%rip), %r8
 	leaq	752(%rsp), %rdi
 	leaq	1712(%rsp), %rsi
 	leaq	288(%rsp), %rcx
@@ -132750,12 +132750,12 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_rqtest_lvm_v4p:
 	movb	$1, %r12b
 	jmp	.LBB359_608
 .LBB359_580:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1333(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1332(%rip), %rdx
 	movq	%r15, %rdi
 	movq	%r15, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_581:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1334(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1333(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_582:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.339(%rip), %rdx
@@ -132769,8 +132769,8 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_rqtest_lvm_v4p:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.341(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_585:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1979(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1980(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1978(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1979(%rip), %rdx
 	movl	$84, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB359_586:
@@ -132786,26 +132786,26 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_rqtest_lvm_v4p:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.338(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_589:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1982(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1983(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1981(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1982(%rip), %r8
 	leaq	176(%rsp), %rdi
 	leaq	1576(%rsp), %rsi
 	movl	$77, %ecx
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedAhj20_BM_ECs7rukeAxmHeC_10lvm_prover_lvm_v4p
 .LBB359_590:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1985(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1986(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1984(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1985(%rip), %r8
 	leaq	176(%rsp), %rdi
 	leaq	96(%rsp), %rsi
 	movl	$39, %ecx
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedAhj20_BM_ECs7rukeAxmHeC_10lvm_prover_lvm_v4p
 .LBB359_591:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1321(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1320(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_592:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1322(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1321(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_593:
 	movl	$8, %edi
@@ -132854,14 +132854,14 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_rqtest_lvm_v4p:
 	movq	%r13, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB359_600:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1313(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1312(%rip), %rdx
 	movq	%r14, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_601:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1284(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1283(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_602:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1283(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1282(%rip), %rdx
 	movq	672(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_603:
@@ -134270,8 +134270,8 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_rqtest_lvm_v4p:
 .LBB359_825:
 	movq	296(%rsp), %rsi
 	callq	_RINvNtCsevLNFiNqfJP_4core3ptr9drop_glueINtNtB4_6result6ResultuINtNtCs1C1lLj4PWSY_5alloc5boxed3BoxDNtNtCs7rukeAxmHeC_10lvm_prover6oracle6OracleEL_EEEB1C__lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1514(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1515(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1513(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1514(%rip), %rdx
 	movl	$57, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB359_826:
@@ -134325,26 +134325,26 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_rqtest_lvm_v4p:
 	movq	24(%rsp), %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB359_837:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1318(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1317(%rip), %rdx
 	movq	%r10, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_838:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1316(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1315(%rip), %rdx
 	movq	%r10, %rdi
 	movq	%rcx, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_839:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1317(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1316(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_840:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1315(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1314(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_841:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1320(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1319(%rip), %rdx
 	movq	%r10, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_842:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1319(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1318(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_843:
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
@@ -134380,7 +134380,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_rqtest_lvm_v4p:
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_849:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1690(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1689(%rip), %rdx
 	movq	%r11, %rdi
 	movq	%r11, %rsi
 	vzeroupper
@@ -134394,12 +134394,12 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_rqtest_lvm_v4p:
 	movl	$5624, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB359_852:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1981(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1980(%rip), %rdx
 	movq	%r13, %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_853:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1984(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1983(%rip), %rdx
 	movl	$4542, %edi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -134412,7 +134412,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_rqtest_lvm_v4p:
 	movq	856(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB359_856:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1314(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1313(%rip), %rdx
 	movq	864(%rsp), %rdi
 	movq	%rdi, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -137702,7 +137702,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_sprove_lvm_v4p:
 	vmovdqu	%ymm0, 496(%rsp)
 	vmovdqu	%ymm0, 464(%rsp)
 	vmovdqu	%ymm0, 432(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1497(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1496(%rip), %rsi
 	leaq	432(%rsp), %rdi
 	movl	$1, %edx
 	vzeroupper
@@ -138156,7 +138156,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_sprove_lvm_v4p:
 	movq	%rax, 432(%rsp)
 	leaq	_RNvNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel4init4INIT_lvm_v4p(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.20(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1532(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1531(%rip), %r8
 	leaq	432(%rsp), %rdx
 	xorl	%esi, %esi
 	vzeroupper
@@ -138188,8 +138188,8 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_sprove_lvm_v4p:
 .LBB360_516:
 	movq	440(%rsp), %rsi
 	callq	_RINvNtCsevLNFiNqfJP_4core3ptr9drop_glueINtNtB4_6result6ResultuINtNtCs1C1lLj4PWSY_5alloc5boxed3BoxDNtNtCs7rukeAxmHeC_10lvm_prover6oracle6OracleEL_EEEB1C__lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1514(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1515(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1513(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1514(%rip), %rdx
 	movl	$57, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB360_517:
@@ -139631,7 +139631,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 	cmpq	$0, (%r14,%rcx)
 	leaq	8(%rcx), %rcx
 	jne	.LBB361_217
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1477(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1476(%rip), %rdi
 	movl	$29, %esi
 	callq	_RNvNtCs7rukeAxmHeC_10lvm_prover7service5fatal_lvm_v4p
 .LBB361_220:
@@ -139867,7 +139867,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 	movq	%rbx, 64(%rsp)
 	leaq	_RNvNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel4init4INIT_lvm_v4p(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.20(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1532(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1531(%rip), %r8
 	leaq	64(%rsp), %rdx
 	xorl	%esi, %esi
 	vzeroupper
@@ -139888,8 +139888,8 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 .LBB361_269:
 	movq	72(%rsp), %rsi
 	callq	_RINvNtCsevLNFiNqfJP_4core3ptr9drop_glueINtNtB4_6result6ResultuINtNtCs1C1lLj4PWSY_5alloc5boxed3BoxDNtNtCs7rukeAxmHeC_10lvm_prover6oracle6OracleEL_EEEB1C__lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1514(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1515(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1513(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1514(%rip), %rdx
 	movl	$57, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB361_270:
@@ -141990,13 +141990,13 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 	callq	*bcmp@GOTPCREL(%rip)
 	testl	%eax, %eax
 	jne	.LBB361_805
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1700(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1699(%rip), %rcx
 	leaq	1936(%rsp), %rdi
 	movl	$11, %r8d
 	movq	%r15, %rsi
 	movq	%rbx, %rdx
 	callq	_RNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6stream3run0B7__lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1701(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1700(%rip), %rcx
 	leaq	1984(%rsp), %rdi
 	movl	$11, %r8d
 	movq	%r15, %rsi
@@ -142107,7 +142107,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 	jne	.LBB361_805
 	cmpl	$1885697139, (%rdi)
 	jne	.LBB361_805
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1697(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1696(%rip), %rcx
 	leaq	736(%rsp), %rdi
 	movl	$9, %r8d
 	movq	%r15, %rsi
@@ -142206,7 +142206,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 	movq	%rax, 2032(%rsp)
 	leaq	_RNvXs1g_NtCsevLNFiNqfJP_4core3fmtReNtB6_5Debug3fmtCs7rukeAxmHeC_10lvm_prover_lvm_v4p(%rip), %rax
 	movq	%rax, 2040(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1705(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1704(%rip), %rsi
 	leaq	64(%rsp), %rdi
 	leaq	2032(%rsp), %rdx
 	callq	_RNvNvNtCs1C1lLj4PWSY_5alloc3fmt6format12format_inner_lvm_v4p
@@ -142311,7 +142311,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 	vzeroupper
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
 .LBB361_674:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1698(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1697(%rip), %rcx
 	leaq	736(%rsp), %rdi
 	movl	$8, %r8d
 	movq	%r15, %rsi
@@ -142341,7 +142341,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 	vzeroupper
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
 .LBB361_677:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1699(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1698(%rip), %rcx
 	leaq	1984(%rsp), %rdi
 	movl	$10, %r8d
 	movq	%r15, %rsi
@@ -143192,7 +143192,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 	callq	_RNvMNtNtCsgHYyB3hU8Ec_3std6thread6scopedNtB2_9ScopeData8overflow_lvm_v4p
 .LBB361_805:
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.73(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1696(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1695(%rip), %rdx
 	movl	$40, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB361_806:
@@ -143222,7 +143222,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 	movb	%al, 72(%rsp)
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.935(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1481(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1480(%rip), %r8
 	leaq	64(%rsp), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -143494,7 +143494,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 	movq	%rbx, 80(%rsp)
 	leaq	_RNvXs7_NtNtCsevLNFiNqfJP_4core3fmt5floatdNtB7_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 88(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1474(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1473(%rip), %rdi
 	leaq	64(%rsp), %rsi
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std2io5stdio7__eprint_lvm_v4p
 	jmp	.LBB361_870
@@ -143511,7 +143511,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 	movq	%r14, 64(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 72(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1473(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1472(%rip), %rdi
 	leaq	64(%rsp), %rsi
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std2io5stdio7__eprint_lvm_v4p
 .LBB361_861:
@@ -143753,12 +143753,12 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 .LBB361_898:
 	ud2
 .LBB361_899:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1190(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1192(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1189(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1191(%rip), %rdx
 	movl	$41, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB361_900:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1193(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1192(%rip), %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13unwrap_failed_lvm_v4p
 .LBB361_901:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.583(%rip), %rdx
@@ -143772,13 +143772,13 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 	movb	$1, _RNvNtCs7rukeAxmHeC_10lvm_prover5alloc5STATE_lvm_v4p+4(%rip)
 	jmp	.LBB361_746
 .LBB361_904:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1482(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1481(%rip), %rdx
 	movl	$4, %esi
 	movq	%r12, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB361_905:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.169(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1487(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1486(%rip), %rdx
 	movl	$49, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB361_906:
@@ -143801,7 +143801,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover10cmd_stream_lvm_v4p:
 	movb	%bpl, 72(%rsp)
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.935(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1488(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1487(%rip), %r8
 	leaq	64(%rsp), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -144776,8 +144776,8 @@ _RNvCs7rukeAxmHeC_10lvm_prover12cmd_selftest_lvm_v4p:
 .LBB363_23:
 	movq	72(%rsp), %rsi
 	callq	_RINvNtCsevLNFiNqfJP_4core3ptr9drop_glueINtNtB4_6result6ResultuINtNtCs1C1lLj4PWSY_5alloc5boxed3BoxDNtNtCs7rukeAxmHeC_10lvm_prover6oracle6OracleEL_EEEB1C__lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1514(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1515(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1513(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1514(%rip), %rdx
 	movl	$57, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB363_5:
@@ -144786,7 +144786,7 @@ _RNvCs7rukeAxmHeC_10lvm_prover12cmd_selftest_lvm_v4p:
 	movq	%rax, 64(%rsp)
 	leaq	_RNvNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel4init4INIT_lvm_v4p(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.20(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1532(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1531(%rip), %r8
 	leaq	64(%rsp), %rdx
 	xorl	%esi, %esi
 	callq	_RNvMs0_NtNtNtNtCsgHYyB3hU8Ec_3std3sys4sync4once5futexNtB5_4Once4call_lvm_v4p
@@ -148733,7 +148733,7 @@ _RNvMNtNtCs7rukeAxmHeC_10lvm_prover3lvm3recNtB2_10RecWitness10from_child_lvm_v4p
 	vmovdqu	%ymm0, 368(%rsp)
 	vmovdqu	%ymm0, 336(%rsp)
 	vmovdqu	%ymm0, 304(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1497(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1496(%rip), %rsi
 	leaq	304(%rsp), %rdi
 	movl	$1, %edx
 	vzeroupper
@@ -150059,8 +150059,8 @@ _RNvMNtNtCs7rukeAxmHeC_10lvm_prover3lvm3recNtB2_10RecWitness10from_child_lvm_v4p
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB381_193:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.356(%rip), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1583(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1584(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1582(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1583(%rip), %r8
 	leaq	832(%rsp), %rdi
 	movl	$39, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
@@ -152298,7 +152298,7 @@ _RNvMNtNtCs7rukeAxmHeC_10lvm_prover3lvm6streamNtB2_3Ctx4sign_lvm_v4p:
 	vptest	%ymm0, %ymm0
 	je	.LBB386_19
 .LBB386_21:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1475(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1474(%rip), %rdi
 	movl	$42, %esi
 	vzeroupper
 	callq	_RNvNtCs7rukeAxmHeC_10lvm_prover7service5fatal_lvm_v4p
@@ -152335,7 +152335,7 @@ _RNvMNtNtCs7rukeAxmHeC_10lvm_prover3lvm6streamNtB2_3Ctx4sign_lvm_v4p:
 	vmovdqu	%ymm0, 240(%rsp)
 	vmovdqu	%ymm0, 208(%rsp)
 	vmovdqu	%ymm0, 176(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1497(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1496(%rip), %rsi
 	leaq	176(%rsp), %rdi
 	movl	$1, %edx
 	vzeroupper
@@ -152996,8 +152996,8 @@ _RNvMNtNtCs7rukeAxmHeC_10lvm_prover3lvm6streamNtB2_3Ctx6attach_lvm_v4p:
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc5alloc18handle_alloc_error_lvm_v4p
 .LBB387_57:
 	addq	$200, %rbp
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1546(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1547(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1545(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1546(%rip), %r8
 	leaq	464(%rsp), %rsi
 	movl	$83, %ecx
 	movq	%rbp, %rdi
@@ -155618,8 +155618,8 @@ _RNvMNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11fiat_shamir10transcriptNtB2_11ProverSt
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB394_17:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1510(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1511(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1509(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1510(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB394_15:
@@ -155852,8 +155852,8 @@ _RNvMNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11fiat_shamir10transcriptNtB2_11ProverSt
 	retq
 .LBB395_15:
 	.cfi_def_cfa_offset 192
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1510(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1511(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1509(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1510(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB395_14:
@@ -156652,8 +156652,8 @@ _RNvMNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs6merkleNtB2_13MerkleBuilder6absorb_l
 	movl	$53, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB399_28:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1181(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1182(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1180(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1181(%rip), %rdx
 	movl	$59, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB399_27:
@@ -156664,8 +156664,8 @@ _RNvMNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs6merkleNtB2_13MerkleBuilder6absorb_l
 	movl	$21, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB399_29:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1183(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1184(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1182(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1183(%rip), %rdx
 	movl	$57, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB399_12:
@@ -156682,15 +156682,15 @@ _RNvMNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs6merkleNtB2_13MerkleBuilder6absorb_l
 	cmpq	%r12, %rax
 	je	.LBB399_14
 .LBB399_30:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1185(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1186(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1184(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1185(%rip), %r8
 	leaq	8(%rsp), %rdi
 	movq	%rsp, %rsi
 	movl	$37, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB399_32:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1188(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1189(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1187(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1188(%rip), %rdx
 	movl	$45, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB399_7:
@@ -156702,7 +156702,7 @@ _RNvMNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs6merkleNtB2_13MerkleBuilder6absorb_l
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1094(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB399_31:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1187(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1186(%rip), %rdx
 	movq	%rax, %rdi
 	movq	%r12, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -157714,12 +157714,12 @@ _RNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt4planNtB2_4Plan3new_lvm_v4p:
 	movq	%rax, 8(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 16(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1522(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1523(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1521(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1522(%rip), %rdx
 	leaq	8(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB403_22:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2013(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2012(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .Lfunc_end403:
 	.size	_RNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt4planNtB2_4Plan3new_lvm_v4p, .Lfunc_end403-_RNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt4planNtB2_4Plan3new_lvm_v4p
@@ -158268,8 +158268,8 @@ _RNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt8openingsNtNtB4_8twiddles14Add
 	movq	%rax, 384(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 392(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1522(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1523(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1521(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1522(%rip), %rdx
 	leaq	384(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB405_40:
@@ -159460,19 +159460,19 @@ _RNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt8openingsNtNtB4_8twiddles14Add
 	movq	%r8, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB405_253:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2028(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2027(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%rbx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB405_254:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2029(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2028(%rip), %rcx
 	movq	%r13, %rdi
 	movq	(%rsp), %rdx
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB405_255:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1379(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1380(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1378(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1379(%rip), %rdx
 	movl	$67, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -160724,7 +160724,7 @@ _RNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt8openingsNtNtB4_8twiddles14Add
 	jmp	.LBB405_372
 .LBB405_448:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2044(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2043(%rip), %rdx
 	movl	$19, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -162460,7 +162460,7 @@ _RNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt8twiddlesNtB2_14AdditiveNttF64
 .LBB408_107:
 	.cfi_def_cfa_offset 6480
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2030(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2029(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB408_47:
@@ -162487,12 +162487,12 @@ _RNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt8twiddlesNtB2_14AdditiveNttF64
 	movq	296(%rsp), %r14
 	jmp	.LBB408_24
 .LBB408_40:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2031(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2030(%rip), %rdx
 	movq	%r12, %rdi
 	movq	%r14, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB408_41:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2032(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2031(%rip), %rdx
 	movq	%r14, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB408_105:
@@ -163691,8 +163691,8 @@ _RNvMs0_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_6Extent3new_
 	.cfi_def_cfa_offset 48
 	pushq	%rbx
 	.cfi_def_cfa_offset 56
-	subq	$24, %rsp
-	.cfi_def_cfa_offset 80
+	pushq	%rax
+	.cfi_def_cfa_offset 64
 	.cfi_offset %rbx, -56
 	.cfi_offset %r12, -48
 	.cfi_offset %r13, -40
@@ -163700,35 +163700,11 @@ _RNvMs0_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_6Extent3new_
 	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
 	movq	%rdx, %rbx
-	movq	%rdi, %r14
-	movl	_RNvNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8topology8topology8TOPOLOGY_lvm_v4p+16(%rip), %eax
-	testl	%eax, %eax
-	jne	.LBB412_1
-.LBB412_2:
-	movq	_RNvNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8topology8topology8TOPOLOGY_lvm_v4p+8(%rip), %rax
-	addq	_RNvNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8topology8topology8TOPOLOGY_lvm_v4p(%rip), %rax
-	xorl	%edx, %edx
-	cmpq	$8, %rax
-	setae	%dl
-	leaq	2(,%rdx,2), %rax
-	.p2align	4
-.LBB412_3:
-	movq	%rax, %r15
-	leaq	-1(%rax), %rdx
-	shrq	%rax
-	testq	%rcx, %rdx
-	jne	.LBB412_3
-	testq	%r15, %r15
-	je	.LBB412_17
-	tzcntq	%r15, %rax
-	movl	$24, %ecx
-	shrxq	%rax, %rcx, %rax
-	imulq	$12800, %rax, %rcx
-	addq	$12800, %rcx
-	movq	%rbx, %rax
+	movl	$320000, %ecx
+	movq	%rdx, %rax
 	mulq	%rcx
-	jo	.LBB412_16
-	movq	%rax, %r12
+	jo	.LBB412_11
+	movq	%rax, %r15
 	leaq	(,%rax,8), %rbp
 	shrq	$61, %rax
 	sete	%al
@@ -163736,54 +163712,53 @@ _RNvMs0_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_6Extent3new_
 	cmpq	%rcx, %rbp
 	setb	%cl
 	testb	%cl, %al
-	jne	.LBB412_7
+	jne	.LBB412_2
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec17capacity_overflow_lvm_v4p
-.LBB412_7:
-	movq	%rsi, 16(%rsp)
+.LBB412_2:
+	movq	%rdi, %r14
 	testq	%rbp, %rbp
-	je	.LBB412_8
+	movq	%rsi, (%rsp)
+	je	.LBB412_3
 	movl	$8, %edi
 	movq	%rbp, %rsi
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc5alloc_lvm_v4p
 	testq	%rax, %rax
-	je	.LBB412_19
+	je	.LBB412_13
 	movq	%rax, %r13
-	movq	%r12, %rcx
+	movq	%r15, %r12
 	testq	%rbx, %rbx
-	je	.LBB412_12
-.LBB412_13:
-	movq	%rcx, 8(%rsp)
+	je	.LBB412_7
+.LBB412_8:
 	movl	$1, %edi
 	movq	%rbx, %rsi
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc5alloc_lvm_v4p
 	testq	%rax, %rax
-	je	.LBB412_20
+	je	.LBB412_14
 	movq	%rax, %rbp
 	movq	%rax, %rdi
 	xorl	%esi, %esi
 	movq	%rbx, %rdx
 	callq	*memset@GOTPCREL(%rip)
-	movq	8(%rsp), %rcx
-	jmp	.LBB412_15
-.LBB412_8:
+	jmp	.LBB412_10
+.LBB412_3:
 	movl	$8, %r13d
-	xorl	%ecx, %ecx
+	xorl	%r12d, %r12d
 	testq	%rbx, %rbx
-	jne	.LBB412_13
-.LBB412_12:
+	jne	.LBB412_8
+.LBB412_7:
 	movl	$1, %ebp
-.LBB412_15:
-	movq	16(%rsp), %rax
+.LBB412_10:
+	movq	(%rsp), %rax
 	movq	%rax, 48(%r14)
 	movq	%rbx, 56(%r14)
-	movq	%r15, 64(%r14)
-	movq	%rcx, (%r14)
+	movq	$1, 64(%r14)
+	movq	%r12, (%r14)
 	movq	%r13, 8(%r14)
-	movq	%r12, 16(%r14)
+	movq	%r15, 16(%r14)
 	movq	%rbx, 24(%r14)
 	movq	%rbp, 32(%r14)
 	movq	%rbx, 40(%r14)
-	addq	$24, %rsp
+	addq	$8, %rsp
 	.cfi_def_cfa_offset 56
 	popq	%rbx
 	.cfi_def_cfa_offset 48
@@ -163798,27 +163773,17 @@ _RNvMs0_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_6Extent3new_
 	popq	%rbp
 	.cfi_def_cfa_offset 8
 	retq
-.LBB412_1:
-	.cfi_def_cfa_offset 80
-	movq	%rcx, %r15
-	movq	%rsi, %r12
-	callq	_RINvMNtNtCsgHYyB3hU8Ec_3std4sync9once_lockINtB3_8OnceLockNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8topology8TopologyE10initializeNCINvB2_11get_or_initNCNvBV_8topology0E0zEB11__lvm_v4p
-	movq	%r12, %rsi
-	movq	%r15, %rcx
-	jmp	.LBB412_2
-.LBB412_16:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1165(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1166(%rip), %rdx
+.LBB412_11:
+	.cfi_def_cfa_offset 64
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1164(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1165(%rip), %rdx
 	movl	$31, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
-.LBB412_17:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1164(%rip), %rdi
-	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
-.LBB412_19:
+.LBB412_13:
 	movl	$8, %edi
 	movq	%rbp, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
-.LBB412_20:
+.LBB412_14:
 	movl	$1, %edi
 	movq	%rbx, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
@@ -163887,37 +163852,37 @@ _RNvMs0_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_6Extent5roun
 	movq	%rax, 8(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 16(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1170(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1171(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1169(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1170(%rip), %rdx
 	leaq	8(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB413_16:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1176(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1175(%rip), %rcx
 	movq	%rax, %rdi
 	movq	%rsi, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB413_17:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1175(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1174(%rip), %rcx
 	movl	$12800, %esi
 	xorl	%edi, %edi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB413_14:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1169(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1168(%rip), %rdx
 	movq	%rcx, %rdi
 	movq	%rax, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB413_4:
 	testq	%rsi, %rsi
 	jne	.LBB413_15
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1174(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1173(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB413_15:
 	leaq	24(%rsp), %rax
 	movq	%rax, 8(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 16(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1172(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1173(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1171(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1172(%rip), %rdx
 	leaq	8(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .Lfunc_end413:
@@ -164111,7 +164076,7 @@ _RNvMs0_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_6Extent5slot
 	movq	%rbp, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB414_23:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1178(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1177(%rip), %rax
 	movq	%rdx, %rdi
 	movq	%rax, %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -164123,7 +164088,7 @@ _RNvMs0_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_6Extent5slot
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.513(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB414_28:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1177(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1176(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_rem_by_zero_lvm_v4p
 .Lfunc_end414:
 	.size	_RNvMs0_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_6Extent5slots_lvm_v4p, .Lfunc_end414-_RNvMs0_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_6Extent5slots_lvm_v4p
@@ -164282,17 +164247,17 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness5sta
 	movq	(%rsp), %rax
 	jmp	.LBB415_20
 .LBB415_24:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1211(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1212(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1210(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1211(%rip), %rdx
 	movl	$20, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB415_9:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1209(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1210(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1208(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1209(%rip), %rdx
 	movl	$15, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB415_14:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1213(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1212(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_rem_by_zero_lvm_v4p
 .Lfunc_end415:
 	.size	_RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness5state_lvm_v4p, .Lfunc_end415-_RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness5state_lvm_v4p
@@ -164316,20 +164281,20 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	.cfi_def_cfa_offset 48
 	pushq	%rbx
 	.cfi_def_cfa_offset 56
-	subq	$472, %rsp
-	.cfi_def_cfa_offset 528
+	subq	$456, %rsp
+	.cfi_def_cfa_offset 512
 	.cfi_offset %rbx, -56
 	.cfi_offset %r12, -48
 	.cfi_offset %r13, -40
 	.cfi_offset %r14, -32
 	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
-	movq	%rsi, 296(%rsp)
-	movq	%rdx, 304(%rsp)
+	movq	%rsi, 304(%rsp)
+	movq	%rdx, 312(%rsp)
 	movl	$1, %eax
 	shlxq	%rsi, %rax, %rax
 	cmpq	%rax, %r8
-	ja	.LBB416_218
+	ja	.LBB416_211
 	movq	%r9, %r12
 	movq	%r8, %r15
 	movq	%rcx, %rbp
@@ -164337,17 +164302,16 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	movq	%rdi, %r13
 	leaq	511(%r8), %r14
 	shrq	$9, %r14
-	leaq	400(%rsp), %rdi
+	leaq	384(%rsp), %rdi
 	xorl	%esi, %esi
 	movq	%r14, %rdx
-	movq	%rbx, %rcx
 	callq	_RNvMs0_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_6Extent3new_lvm_v4p
 	testq	%rbx, %rbx
-	je	.LBB416_217
+	je	.LBB416_210
 	movabsq	$9223372036854775800, %rcx
 	cmpq	$24, %rbx
-	movq	%r15, 16(%rsp)
-	movq	%rbp, 8(%rsp)
+	movq	%r15, 8(%rsp)
+	movq	%rbp, 16(%rsp)
 	ja	.LBB416_3
 	movl	$24, %eax
 	xorl	%edx, %edx
@@ -164365,32 +164329,32 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	cmpq	%rcx, %r15
 	setbe	%cl
 	testb	%cl, %al
-	je	.LBB416_219
+	je	.LBB416_212
 	testq	%r15, %r15
 	je	.LBB416_7
 	movl	$8, %edi
 	movq	%r15, %rsi
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc5alloc_lvm_v4p
-	movq	%rax, 72(%rsp)
+	movq	%rax, 88(%rsp)
 	testq	%rax, %rax
-	je	.LBB416_220
+	je	.LBB416_213
 	movq	%r14, %r15
 	jmp	.LBB416_10
 .LBB416_7:
 	movl	$8, %eax
-	movq	%rax, 72(%rsp)
+	movq	%rax, 88(%rsp)
 	xorl	%r15d, %r15d
 .LBB416_10:
-	leaq	192(%rsp), %rdi
-	leaq	400(%rsp), %rsi
+	leaq	160(%rsp), %rdi
+	leaq	384(%rsp), %rsi
 	callq	_RNvMs0_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_6Extent5slots_lvm_v4p
 	cmpq	$25, %rbx
-	jae	.LBB416_221
-	movq	%r12, (%rsp)
-	movq	192(%rsp), %rax
+	jae	.LBB416_214
+	movq	%r12, 56(%rsp)
+	movq	160(%rsp), %rax
 	movq	%rax, 24(%rsp)
-	movq	200(%rsp), %rsi
-	movq	208(%rsp), %r12
+	movq	168(%rsp), %rsi
+	movq	176(%rsp), %r12
 	movq	%r14, %rax
 	orq	%rbp, %rax
 	shrq	$32, %rax
@@ -164409,43 +164373,43 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	cmovbq	%rax, %rdi
 	movabsq	$164703072086692426, %rcx
 	cmpq	%rcx, %rdi
-	jae	.LBB416_219
-	movq	%rax, 144(%rsp)
+	jae	.LBB416_212
+	movq	%rax, 80(%rsp)
 	leaq	(%r12,%r12,4), %rax
 	movq	%rsi, %rcx
 	leaq	(%rsi,%rax,8), %rbx
 	subq	%rdx, %r14
 	imulq	$56, %rdi, %rsi
-	movq	%rdi, 48(%rsp)
+	movq	%rdi, 40(%rsp)
 	testq	%rdi, %rdi
-	movq	%r13, 264(%rsp)
-	movq	%r15, 360(%rsp)
-	movq	%rsi, 32(%rsp)
-	movq	%rcx, 64(%rsp)
+	movq	%r13, 272(%rsp)
+	movq	%r15, 344(%rsp)
+	movq	%rsi, 72(%rsp)
+	movq	%rcx, 48(%rsp)
 	je	.LBB416_16
 	movl	$8, %edi
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc5alloc_lvm_v4p
 	testq	%rax, %rax
-	je	.LBB416_222
-	movq	%rax, 40(%rsp)
+	je	.LBB416_215
+	movq	%rax, 32(%rsp)
 	addq	$48, %rax
 	xorl	%ecx, %ecx
 	xorl	%r15d, %r15d
-	movq	72(%rsp), %rsi
+	movq	88(%rsp), %rsi
 	movq	%r14, %rdx
-	movq	64(%rsp), %r13
-	movq	48(%rsp), %r10
+	movq	48(%rsp), %r13
+	movq	40(%rsp), %r10
 	jmp	.LBB416_19
 	.p2align	4
 .LBB416_21:
 	movq	(%r13), %rdi
 	vmovups	8(%r13), %ymm0
 	addq	$40, %r13
-	vmovups	%ymm0, 96(%rsp)
+	vmovups	%ymm0, 112(%rsp)
 .LBB416_22:
 	incq	%r15
-	vmovups	96(%rsp), %ymm0
-	vmovups	%ymm0, 192(%rsp)
+	vmovups	112(%rsp), %ymm0
+	vmovups	%ymm0, 160(%rsp)
 	cmpq	%rdx, %rbp
 	movq	%rbp, %r8
 	cmovaq	%rcx, %r8
@@ -164453,7 +164417,7 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	cmovaq	%rcx, %rsi
 	subq	%r8, %rdx
 	movq	%rdi, -48(%rax)
-	vmovups	192(%rsp), %ymm0
+	vmovups	160(%rsp), %ymm0
 	vmovups	%ymm0, -40(%rax)
 	movq	%rsi, -8(%rax)
 	movq	%rbp, (%rax)
@@ -164478,7 +164442,7 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	jmp	.LBB416_29
 .LBB416_16:
 	movl	$8, %eax
-	movq	%rax, 40(%rsp)
+	movq	%rax, 32(%rsp)
 	xorl	%r15d, %r15d
 	movq	%rcx, %r13
 	cmpq	%r13, %rbx
@@ -164502,37 +164466,37 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
 	jmp	.LBB416_28
 .LBB416_29:
-	leaq	304(%rsp), %rbx
+	leaq	312(%rsp), %rbx
 	movq	24(%rsp), %rax
 	testq	%rax, %rax
 	je	.LBB416_31
 	shlq	$3, %rax
 	leaq	(%rax,%rax,4), %rdx
 	movl	$8, %esi
-	movq	64(%rsp), %rdi
+	movq	48(%rsp), %rdi
 	vzeroupper
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
 .LBB416_31:
-	movq	8(%rsp), %rax
-	movq	%rax, 96(%rsp)
 	movq	16(%rsp), %rax
+	movq	%rax, 112(%rsp)
+	movq	8(%rsp), %rax
+	movq	%rax, 120(%rsp)
+	movq	%rbx, 128(%rsp)
+	leaq	112(%rsp), %rax
+	movq	%rax, 320(%rsp)
+	movq	32(%rsp), %r13
+	movq	%r13, 160(%rsp)
+	movq	$1, 168(%rsp)
+	movq	%r15, 176(%rsp)
+	leaq	320(%rsp), %rax
+	movq	%rax, 96(%rsp)
+	leaq	160(%rsp), %rax
 	movq	%rax, 104(%rsp)
-	movq	%rbx, 112(%rsp)
 	leaq	96(%rsp), %rax
-	movq	%rax, 312(%rsp)
-	movq	40(%rsp), %r13
-	movq	%r13, 192(%rsp)
-	movq	$1, 200(%rsp)
-	movq	%r15, 208(%rsp)
-	leaq	312(%rsp), %rax
-	movq	%rax, 80(%rsp)
-	leaq	192(%rsp), %rax
-	movq	%rax, 88(%rsp)
-	leaq	80(%rsp), %rax
-	movq	%rax, 272(%rsp)
+	movq	%rax, 280(%rsp)
 	cmpb	$0, %fs:_RNvNCNKNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel7IN_TASK0s_023___RUST_STD_INTERNAL_VAL_lvm_v4p@TPOFF
 	movabsq	$9223372036854775800, %r12
-	jne	.LBB416_230
+	jne	.LBB416_225
 	movb	$1, %fs:_RNvNCNKNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel7IN_TASK0s_023___RUST_STD_INTERNAL_VAL_lvm_v4p@TPOFF
 	movl	_RNvNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8topology8topology8TOPOLOGY_lvm_v4p+16(%rip), %eax
 	testl	%eax, %eax
@@ -164564,8 +164528,8 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	testb	%cl, %cl
 	jne	.LBB416_46
 .LBB416_48:
-	movl	%eax, 16(%rsp)
-	leaq	272(%rsp), %rax
+	movl	%eax, 8(%rsp)
+	leaq	280(%rsp), %rax
 	movq	%rax, 512(%r13)
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.151(%rip), %rax
 	movq	%rax, 520(%r13)
@@ -164576,7 +164540,7 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	lock		incq	(%r13)
 	movq	584(%r13), %rax
 	testq	%rax, %rax
-	je	.LBB416_231
+	je	.LBB416_226
 	shlq	$3, %rax
 	leaq	(%rax,%rax,2), %rcx
 	cmpq	$24, %rcx
@@ -164600,11 +164564,11 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	cmpq	%rax, %rcx
 	je	.LBB416_57
 	.p2align	4
-.LBB416_223:
+.LBB416_216:
 	pause
 	movq	384(%r13), %rcx
 	cmpq	%rax, %rcx
-	jne	.LBB416_223
+	jne	.LBB416_216
 .LBB416_57:
 	leaq	544(%r13), %r12
 	movl	$1, %ecx
@@ -164636,7 +164600,7 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	xchgl	%eax, (%r12)
 	cmpl	$2, %eax
 	je	.LBB416_72
-	cmpb	$0, 16(%rsp)
+	cmpb	$0, 8(%rsp)
 	jne	.LBB416_77
 .LBB416_74:
 	movq	_RNvNtNtCsgHYyB3hU8Ec_3std9panicking11panic_count18GLOBAL_PANIC_COUNT_lvm_v4p(%rip), %rax
@@ -164650,14 +164614,15 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	movabsq	$9223372036854775800, %r12
 	je	.LBB416_78
 	testq	%rdi, %rdi
-	movq	40(%rsp), %r13
+	movq	32(%rsp), %r13
 	je	.LBB416_82
-	jmp	.LBB416_80
+.LBB416_80:
+	callq	_RNvNtCsgHYyB3hU8Ec_3std5panic13resume_unwind_lvm_v4p
 .LBB416_50:
 	movq	576(%r13), %r12
 	addq	$-24, %rcx
 	xorl	%ebx, %ebx
-	movq	%rcx, 8(%rsp)
+	movq	%rcx, 16(%rsp)
 	jmp	.LBB416_51
 	.p2align	4
 .LBB416_52:
@@ -164683,14 +164648,14 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	xorl	%eax, %eax
 	vzeroupper
 	callq	*syscall@GOTPCREL(%rip)
-	movq	8(%rsp), %rcx
+	movq	16(%rsp), %rcx
 	jmp	.LBB416_52
-.LBB416_218:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1214(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1215(%rip), %rdx
+.LBB416_211:
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1213(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1214(%rip), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
-.LBB416_221:
+.LBB416_214:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.0(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.524(%rip), %rdx
 	movl	$55, %esi
@@ -164703,7 +164668,7 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 .LBB416_36:
 	testq	%r15, %r15
 	je	.LBB416_37
-	leaq	272(%rsp), %rdi
+	leaq	280(%rsp), %rdi
 	xorl	%esi, %esi
 	movq	%r15, %rdx
 	vzeroupper
@@ -164729,15 +164694,15 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 .LBB416_37:
 	movb	$0, %fs:_RNvNCNKNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel7IN_TASK0s_023___RUST_STD_INTERNAL_VAL_lvm_v4p@TPOFF
 .LBB416_86:
-	cmpq	$0, 48(%rsp)
+	cmpq	$0, 40(%rsp)
 	je	.LBB416_88
 	movl	$8, %esi
 	movq	%r13, %rdi
-	movq	32(%rsp), %rdx
+	movq	72(%rsp), %rdx
 	vzeroupper
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
 .LBB416_88:
-	movq	144(%rsp), %rax
+	movq	80(%rsp), %rax
 	movq	%rax, %rbx
 	shlq	$4, %rbx
 	shrq	$60, %rax
@@ -164746,7 +164711,7 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	setbe	%cl
 	testb	%cl, %al
 	jne	.LBB416_89
-.LBB416_219:
+.LBB416_212:
 	vzeroupper
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec17capacity_overflow_lvm_v4p
 .LBB416_89:
@@ -164758,8 +164723,8 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc5alloc_lvm_v4p
 	movq	%rax, 16(%rsp)
 	testq	%rax, %rax
-	movq	(%rsp), %r12
-	je	.LBB416_224
+	movq	56(%rsp), %r12
+	je	.LBB416_217
 	cmpq	%r14, %rbp
 	jbe	.LBB416_94
 .LBB416_93:
@@ -164768,15 +164733,15 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 .LBB416_90:
 	movl	$8, %eax
 	movq	%rax, 16(%rsp)
-	movq	$0, 144(%rsp)
-	movq	(%rsp), %r12
+	movq	$0, 80(%rsp)
+	movq	56(%rsp), %r12
 	cmpq	%r14, %rbp
 	ja	.LBB416_93
 .LBB416_94:
 	movq	16(%rsp), %rax
 	addq	$8, %rax
 	xorl	%r15d, %r15d
-	movq	72(%rsp), %rcx
+	movq	88(%rsp), %rcx
 	.p2align	4
 .LBB416_95:
 	movq	%rcx, -8(%rax)
@@ -164792,165 +164757,171 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	vzeroupper
 	callq	*malloc@GOTPCREL(%rip)
 	testq	%rax, %rax
-	je	.LBB416_225
-	movq	464(%rsp), %rcx
-	vmovups	400(%rsp), %ymm0
-	vmovups	432(%rsp), %ymm1
-	movq	%rcx, 64(%rax)
-	vmovups	%ymm1, 32(%rax)
-	movq	%rax, 40(%rsp)
-	vmovups	%ymm0, (%rax)
-	movq	296(%rsp), %rdi
-	movq	304(%rsp), %r14
-	movl	%edi, %r13d
+	je	.LBB416_218
+	movq	%rax, %rbp
+	movq	448(%rsp), %rax
+	vmovups	384(%rsp), %ymm0
+	vmovups	416(%rsp), %ymm1
+	movq	%rax, 64(%rbp)
+	vmovups	%ymm1, 32(%rbp)
+	vmovups	%ymm0, (%rbp)
+	movq	304(%rsp), %r13
+	movq	312(%rsp), %rdi
+	movq	%r13, 24(%rsp)
 	andl	$63, %r13d
 	movl	$1, %eax
-	shlxq	%r13, %rax, %rax
-	shrq	$9, %rax
-	movq	%rax, 8(%rsp)
-	cmpq	%rax, %r15
-	movq	16(%rsp), %rbp
-	movq	%rdi, 64(%rsp)
-	movq	%r14, 24(%rsp)
-	jae	.LBB416_98
-	leaq	192(%rsp), %rdi
-	movl	$1, %edx
-	movq	%r15, %rsi
-	movq	%r14, %rcx
+	shlxq	%r13, %rax, %r14
+	shrq	$9, %r14
+	cmpq	%r14, %r15
+	movq	%rdi, 8(%rsp)
+	movq	%rbp, 48(%rsp)
+	jb	.LBB416_99
+	movq	$-1, %rcx
+	xorl	%edx, %edx
+	jmp	.LBB416_116
+.LBB416_99:
+	movl	$2560000, %edi
 	vzeroupper
-	callq	_RNvMs0_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_6Extent3new_lvm_v4p
-	testq	%r14, %r14
-	je	.LBB416_217
-	cmpq	$24, %r14
-	ja	.LBB416_101
+	callq	*malloc@GOTPCREL(%rip)
+	testq	%rax, %rax
+	je	.LBB416_219
+	movq	%rax, %rbx
+	movl	$1, %edi
+	callq	*malloc@GOTPCREL(%rip)
+	testq	%rax, %rax
+	je	.LBB416_220
+	movb	$0, (%rax)
+	movq	%r15, 208(%rsp)
+	movq	$1, 216(%rsp)
+	movq	$1, 224(%rsp)
+	movq	$320000, 160(%rsp)
+	movq	%rbx, 168(%rsp)
+	movq	$320000, 176(%rsp)
+	movq	$1, 184(%rsp)
+	movq	%rax, 192(%rsp)
+	movq	$1, 200(%rsp)
+	movq	8(%rsp), %rcx
+	testq	%rcx, %rcx
+	je	.LBB416_210
+	cmpq	$24, %rcx
+	movq	%rax, 72(%rsp)
+	ja	.LBB416_103
 	movl	$24, %eax
 	xorl	%edx, %edx
-	divl	%r14d
+	divl	%ecx
 	movl	%eax, %ebx
-	movq	%rbp, 16(%rsp)
+	movq	%r14, 64(%rsp)
 	movl	$8, %ebp
-	cmpq	$24, %r14
-	jbe	.LBB416_104
-	jmp	.LBB416_106
-.LBB416_98:
-	movq	$-1, %r9
-	jmp	.LBB416_114
-.LBB416_101:
+	cmpq	$24, %rcx
+	jbe	.LBB416_106
+	jmp	.LBB416_108
+.LBB416_103:
 	xorl	%ebx, %ebx
-	movq	%rbp, 16(%rsp)
+	movq	%r14, 64(%rsp)
 	movl	$8, %ebp
-	cmpq	$24, %r14
-	ja	.LBB416_106
-.LBB416_104:
+	cmpq	$24, %rcx
+	ja	.LBB416_108
+.LBB416_106:
 	imulq	$102400, %rbx, %r12
 	movl	$8, %edi
 	movq	%r12, %rsi
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc5alloc_lvm_v4p
 	testq	%rax, %rax
-	je	.LBB416_226
+	je	.LBB416_221
 	movq	%rax, %rbp
-.LBB416_106:
-	imulq	$12800, %rbx, %rbx
-	leaq	96(%rsp), %rdi
-	leaq	192(%rsp), %rsi
+.LBB416_108:
+	imulq	$12800, %rbx, %r14
+	leaq	112(%rsp), %rdi
+	leaq	160(%rsp), %rsi
 	callq	_RNvMs0_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_6Extent5slots_lvm_v4p
-	movq	104(%rsp), %rax
-	movq	112(%rsp), %r12
+	movq	120(%rsp), %rbx
+	movq	128(%rsp), %r12
 	testq	%r12, %r12
-	movq	%rax, %rcx
+	movq	%rbx, %rcx
 	cmoveq	%r12, %rcx
 	movl	$8, %esi
-	movq	%r14, %rdi
+	movq	8(%rsp), %rdi
 	xorl	%edx, %edx
 	movq	%rbp, 32(%rsp)
 	movq	%rbp, %r8
-	movq	%rbx, 48(%rsp)
-	movq	%rbx, %r9
-	movq	%rax, %rbx
+	movq	%r14, 40(%rsp)
+	movq	%r14, %r9
 	callq	_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witness16block_lanes_into_lvm_v4p
 	testq	%r12, %r12
-	movq	16(%rsp), %rbp
-	je	.LBB416_111
-	leaq	8(%rbx), %r14
-	jmp	.LBB416_108
+	movq	64(%rsp), %r14
+	je	.LBB416_113
+	leaq	8(%rbx), %rbp
+	jmp	.LBB416_110
 	.p2align	4
-.LBB416_110:
-	addq	$40, %r14
+.LBB416_112:
+	addq	$40, %rbp
 	decq	%r12
-	je	.LBB416_111
-.LBB416_108:
-	movq	-8(%r14), %rdx
+	je	.LBB416_113
+.LBB416_110:
+	movq	-8(%rbp), %rdx
 	testq	%rdx, %rdx
-	je	.LBB416_110
-	movq	(%r14), %rdi
+	je	.LBB416_112
+	movq	(%rbp), %rdi
 	shlq	$4, %rdx
 	movl	$8, %esi
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
-	jmp	.LBB416_110
-.LBB416_111:
-	movq	96(%rsp), %rax
+	jmp	.LBB416_112
+.LBB416_113:
+	leaq	168(%rsp), %r12
+	movq	112(%rsp), %rax
 	testq	%rax, %rax
-	je	.LBB416_113
+	je	.LBB416_115
 	shlq	$3, %rax
 	leaq	(%rax,%rax,4), %rdx
 	movl	$8, %esi
 	movq	%rbx, %rdi
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
-.LBB416_113:
-	movq	192(%rsp), %r9
-	vmovups	200(%rsp), %xmm0
-	vmovaps	%xmm0, 160(%rsp)
-	movq	216(%rsp), %rax
-	movq	%rax, 176(%rsp)
-	movq	224(%rsp), %rbx
-	movq	232(%rsp), %rax
-	movq	%rax, 352(%rsp)
-	movq	240(%rsp), %rax
-	movq	%rax, 344(%rsp)
-	movq	248(%rsp), %rax
-	movq	%rax, 336(%rsp)
-	movq	256(%rsp), %rax
-	movq	%rax, 328(%rsp)
-	movq	(%rsp), %r12
-	movq	64(%rsp), %rdi
-	movq	24(%rsp), %r14
+.LBB416_115:
+	vmovups	(%r12), %xmm0
+	vmovaps	%xmm0, 240(%rsp)
+	movq	16(%r12), %rax
+	movq	%rax, 256(%rsp)
+	movl	$320000, %ecx
+	movq	56(%rsp), %r12
+	movq	48(%rsp), %rbp
+	movq	8(%rsp), %rdi
 	movq	32(%rsp), %rdx
-.LBB416_114:
-	xorl	%eax, %eax
-	cmpq	$-1, %r9
-	cmovneq	%rdx, %rax
-	movq	%rdi, 384(%rsp)
-	movq	%r14, 392(%rsp)
-	movq	%rax, 312(%rsp)
-	movq	48(%rsp), %rax
-	movq	%rax, 320(%rsp)
-	testq	%r14, %r14
-	je	.LBB416_227
-	movq	528(%rsp), %rcx
-	cmpq	$24, %r14
+.LBB416_116:
+	movq	24(%rsp), %rax
+	movq	%rax, 368(%rsp)
+	movq	%rdi, 376(%rsp)
+	movq	%rdx, 320(%rsp)
+	movq	40(%rsp), %rax
+	movq	%rax, 328(%rsp)
+	testq	%rdi, %rdi
+	je	.LBB416_222
+	movq	%rcx, 56(%rsp)
+	movq	512(%rsp), %rcx
+	cmpq	$24, %rdi
 	movq	%rdx, 32(%rsp)
-	ja	.LBB416_116
+	ja	.LBB416_118
 	movl	$24, %eax
 	xorl	%edx, %edx
-	divl	%r14d
+	divl	%edi
 	movl	%eax, %edx
-	jmp	.LBB416_118
-.LBB416_116:
-	xorl	%edx, %edx
+	jmp	.LBB416_120
 .LBB416_118:
+	xorl	%edx, %edx
+.LBB416_120:
 	leaq	(%rdx,%rdx,4), %rax
 	leaq	(%rax,%rax,4), %rax
-	shlxq	%r13, %rax, %r13
-	cmpq	%r13, %rcx
-	jb	.LBB416_228
-	cmpq	$24, %r14
-	jbe	.LBB416_121
+	shlxq	%r13, %rax, %rbx
+	cmpq	%rbx, %rcx
+	movq	272(%rsp), %r13
+	jb	.LBB416_223
+	cmpq	$24, %rdi
+	jbe	.LBB416_123
 	xorl	%eax, %eax
-	jmp	.LBB416_122
-.LBB416_121:
+	jmp	.LBB416_124
+.LBB416_123:
 	movb	$24, %al
 	movzbl	%al, %eax
-	divb	%r14b
+	divb	%dil
 	movzbl	%al, %eax
 	leaq	(%rax,%rax,4), %rax
 	leaq	(%rax,%rax,4), %rax
@@ -164958,117 +164929,116 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	lzcntq	%rax, %rsi
 	movl	$64, %eax
 	subq	%rsi, %rax
-.LBB416_122:
-	addl	%edi, %eax
+.LBB416_124:
+	addl	24(%rsp), %eax
 	movl	$1, %esi
 	shlxq	%rax, %rsi, %rax
 	cmpq	%rax, %rcx
-	ja	.LBB416_228
+	ja	.LBB416_223
 	imulq	$12800, %rdx, %rax
 	movq	%r15, %rdx
 	shlq	$4, %rdx
-	movq	%rbp, %rsi
+	movq	16(%rsp), %rsi
 	.p2align	4
-.LBB416_124:
+.LBB416_126:
 	testq	%rdx, %rdx
-	je	.LBB416_127
+	je	.LBB416_129
 	addq	$-16, %rdx
 	cmpq	%rax, 8(%rsi)
 	leaq	16(%rsi), %rsi
-	je	.LBB416_124
-.LBB416_126:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1766(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1767(%rip), %rdx
+	je	.LBB416_126
+.LBB416_128:
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1765(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1766(%rip), %rdx
 	movl	$89, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
-.LBB416_127:
-	cmpq	$-1, %r9
-	je	.LBB416_129
-	cmpq	%rax, 48(%rsp)
-	jne	.LBB416_126
 .LBB416_129:
-	subq	%r13, %rcx
-	movq	%r9, (%rsp)
-	je	.LBB416_131
-	leaq	(%r12,%r13,8), %rdi
+	cmpq	%r14, %r15
+	jae	.LBB416_131
+	cmpq	%rax, 40(%rsp)
+	jne	.LBB416_128
+.LBB416_131:
+	subq	%rbx, %rcx
+	je	.LBB416_133
+	leaq	(%r12,%rbx,8), %rdi
 	shlq	$3, %rcx
 	xorl	%esi, %esi
 	movq	%rcx, %rdx
 	vzeroupper
 	callq	*memset@GOTPCREL(%rip)
-	movq	(%rsp), %r9
-.LBB416_131:
-	movq	8(%rsp), %rdx
-	cmpq	$16, %rdx
+	movq	8(%rsp), %rdi
+.LBB416_133:
+	cmpq	$16, %r14
 	movl	$16, %eax
-	cmovbq	%rdx, %rax
-	movq	%rax, 368(%rsp)
-	leaq	384(%rsp), %rcx
-	movq	%rcx, 192(%rsp)
+	cmovbq	%r14, %rax
+	movq	%rax, 352(%rsp)
 	leaq	368(%rsp), %rcx
-	movq	%rcx, 200(%rsp)
-	movq	%rbp, 208(%rsp)
-	movq	%r15, 216(%rsp)
-	leaq	312(%rsp), %rcx
-	movq	%rcx, 224(%rsp)
-	leaq	192(%rsp), %rcx
-	movq	%rcx, 376(%rsp)
-	testq	%rdx, %rdx
-	je	.LBB416_229
+	movq	%rcx, 160(%rsp)
+	leaq	352(%rsp), %rcx
+	movq	%rcx, 168(%rsp)
+	movq	16(%rsp), %rcx
+	movq	%rcx, 176(%rsp)
+	movq	%r15, 184(%rsp)
+	leaq	320(%rsp), %rcx
+	movq	%rcx, 192(%rsp)
+	leaq	160(%rsp), %rcx
+	movq	%rcx, 360(%rsp)
+	testq	%r14, %r14
+	je	.LBB416_224
 	shlq	$9, %rax
-	movq	%r12, 96(%rsp)
-	movq	%rax, 104(%rsp)
-	movq	%r13, 112(%rsp)
+	movq	%r12, 112(%rsp)
+	movq	%rax, 120(%rsp)
+	movq	%rbx, 128(%rsp)
 	tzcntq	%rax, %rcx
-	shrxq	%rcx, %r13, %r12
+	shrxq	%rcx, %rbx, %r12
 	decq	%rax
-	andq	%r13, %rax
+	andq	%rbx, %rax
 	cmpq	$1, %rax
 	sbbq	$-1, %r12
-	leaq	376(%rsp), %rax
-	movq	%rax, 272(%rsp)
-	leaq	96(%rsp), %rax
+	leaq	360(%rsp), %rax
 	movq	%rax, 280(%rsp)
-	leaq	272(%rsp), %rax
+	leaq	112(%rsp), %rax
 	movq	%rax, 288(%rsp)
+	leaq	280(%rsp), %rax
+	movq	%rax, 296(%rsp)
 	cmpb	$0, %fs:_RNvNCNKNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel7IN_TASK0s_023___RUST_STD_INTERNAL_VAL_lvm_v4p@TPOFF
-	jne	.LBB416_230
+	jne	.LBB416_225
 	movb	$1, %fs:_RNvNCNKNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel7IN_TASK0s_023___RUST_STD_INTERNAL_VAL_lvm_v4p@TPOFF
 	movl	_RNvNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8topology8topology8TOPOLOGY_lvm_v4p+16(%rip), %eax
 	testl	%eax, %eax
-	movq	264(%rsp), %r14
-	movq	40(%rsp), %r13
-	jne	.LBB416_134
+	movq	80(%rsp), %rbx
+	jne	.LBB416_136
 	cmpq	$2, %r12
-	jb	.LBB416_137
-.LBB416_136:
+	jb	.LBB416_139
+.LBB416_138:
 	movq	_RNvNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8topology8topology8TOPOLOGY_lvm_v4p+8(%rip), %rax
 	addq	_RNvNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8topology8topology8TOPOLOGY_lvm_v4p(%rip), %rax
 	cmpq	$2, %rax
-	jb	.LBB416_137
+	jb	.LBB416_139
 	movl	_RNvNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel4pool4POOL_lvm_v4p+8(%rip), %eax
 	testl	%eax, %eax
-	jne	.LBB416_140
-.LBB416_141:
+	jne	.LBB416_149
+.LBB416_150:
 	movq	_RNvNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel4pool4POOL_lvm_v4p(%rip), %r13
-	leaq	536(%r13), %r14
+	leaq	536(%r13), %rax
+	movq	%rax, 64(%rsp)
 	movl	$1, %ecx
 	xorl	%eax, %eax
 	lock		cmpxchgl	%ecx, 536(%r13)
-	jne	.LBB416_142
+	jne	.LBB416_151
 	movq	_RNvNtNtCsgHYyB3hU8Ec_3std9panicking11panic_count18GLOBAL_PANIC_COUNT_lvm_v4p(%rip), %rax
 	shlq	%rax
 	testq	%rax, %rax
-	jne	.LBB416_145
-.LBB416_144:
-	xorl	%eax, %eax
-	movzbl	540(%r13), %ecx
-	testb	%cl, %cl
-	jne	.LBB416_147
-.LBB416_149:
-	movl	%eax, 156(%rsp)
-	leaq	288(%rsp), %rax
+	jne	.LBB416_154
+.LBB416_153:
+	xorl	%ecx, %ecx
+	movzbl	540(%r13), %eax
+	testb	%al, %al
+	jne	.LBB416_156
+.LBB416_157:
+	movl	%ecx, 156(%rsp)
+	leaq	296(%rsp), %rax
 	movq	%rax, 512(%r13)
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.139(%rip), %rax
 	movq	%rax, 520(%r13)
@@ -165079,12 +165049,12 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	lock		incq	(%r13)
 	movq	584(%r13), %rax
 	testq	%rax, %rax
-	je	.LBB416_231
+	je	.LBB416_226
 	shlq	$3, %rax
-	leaq	(%rax,%rax,2), %r12
-	cmpq	$24, %r12
-	jne	.LBB416_151
-.LBB416_154:
+	leaq	(%rax,%rax,2), %rbx
+	cmpq	$24, %rbx
+	jne	.LBB416_159
+.LBB416_162:
 	movq	%r13, %rdi
 	vzeroupper
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel5drain_lvm_v4p
@@ -165092,95 +165062,97 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	movabsq	$9223372036854775800, %rdx
 	addq	$8, %rdx
 	.p2align	4
-.LBB416_155:
+.LBB416_163:
 	movq	%rax, %rcx
 	orq	%rdx, %rcx
 	lock		cmpxchgq	%rcx, 256(%r13)
-	jne	.LBB416_155
+	jne	.LBB416_163
 	movb	$63, %cl
 	bzhiq	%rcx, %rax, %rax
 	movq	384(%r13), %rcx
 	cmpq	%rax, %rcx
-	je	.LBB416_158
+	je	.LBB416_166
 	.p2align	4
-.LBB416_232:
+.LBB416_227:
 	pause
 	movq	384(%r13), %rcx
 	cmpq	%rax, %rcx
-	jne	.LBB416_232
-.LBB416_158:
-	leaq	544(%r13), %r12
+	jne	.LBB416_227
+.LBB416_166:
+	leaq	544(%r13), %rbx
 	movl	$1, %ecx
 	xorl	%eax, %eax
 	lock		cmpxchgl	%ecx, 544(%r13)
-	movq	(%rsp), %r9
-	leaq	536(%r13), %r14
-	jne	.LBB416_159
-.LBB416_160:
+	movq	48(%rsp), %rbp
+	movq	8(%rsp), %rdi
+	jne	.LBB416_167
 	movq	_RNvNtNtCsgHYyB3hU8Ec_3std9panicking11panic_count18GLOBAL_PANIC_COUNT_lvm_v4p(%rip), %rax
 	shlq	%rax
 	testq	%rax, %rax
-	movq	16(%rsp), %rbp
-	jne	.LBB416_165
+	jne	.LBB416_173
+.LBB416_169:
 	xorl	%eax, %eax
 	movzbl	548(%r13), %ecx
 	testb	%cl, %cl
-	jne	.LBB416_167
-.LBB416_168:
-	movq	552(%r13), %rdi
-	movq	560(%r13), %rsi
+	jne	.LBB416_175
+.LBB416_177:
+	movq	552(%r13), %r12
+	movq	560(%r13), %rcx
 	movq	$0, 552(%r13)
 	testb	%al, %al
-	jne	.LBB416_172
+	jne	.LBB416_181
 	movq	_RNvNtNtCsgHYyB3hU8Ec_3std9panicking11panic_count18GLOBAL_PANIC_COUNT_lvm_v4p(%rip), %rax
 	shlq	%rax
 	testq	%rax, %rax
-	jne	.LBB416_170
-.LBB416_172:
+	jne	.LBB416_179
+.LBB416_181:
 	xorl	%eax, %eax
-	xchgl	%eax, (%r12)
+	xchgl	%eax, (%rbx)
 	cmpl	$2, %eax
-	je	.LBB416_173
+	je	.LBB416_182
 	cmpb	$0, 156(%rsp)
-	jne	.LBB416_178
-.LBB416_175:
+	jne	.LBB416_187
+.LBB416_184:
 	movq	_RNvNtNtCsgHYyB3hU8Ec_3std9panicking11panic_count18GLOBAL_PANIC_COUNT_lvm_v4p(%rip), %rax
 	shlq	%rax
 	testq	%rax, %rax
-	jne	.LBB416_176
-.LBB416_178:
+	jne	.LBB416_185
+.LBB416_187:
 	xorl	%eax, %eax
-	xchgl	%eax, (%r14)
+	movq	64(%rsp), %rsi
+	xchgl	%eax, (%rsi)
 	cmpl	$2, %eax
-	je	.LBB416_179
-	testq	%rdi, %rdi
-	movq	264(%rsp), %r14
-	movq	40(%rsp), %r13
-	je	.LBB416_181
-.LBB416_80:
+	movq	80(%rsp), %rbx
+	je	.LBB416_188
+	testq	%r12, %r12
+	movq	272(%rsp), %r13
+	je	.LBB416_141
+.LBB416_190:
+	movq	%r12, %rdi
+	movq	%rcx, %rsi
 	callq	_RNvNtCsgHYyB3hU8Ec_3std5panic13resume_unwind_lvm_v4p
-.LBB416_151:
-	movq	576(%r13), %rbp
-	addq	$-24, %r12
-	xorl	%r14d, %r14d
-	jmp	.LBB416_152
+.LBB416_159:
+	movq	576(%r13), %r12
+	addq	$-24, %rbx
+	xorl	%ebp, %ebp
+	jmp	.LBB416_160
 	.p2align	4
-.LBB416_153:
-	addq	$24, %r14
-	cmpq	%r14, %r12
-	je	.LBB416_154
-.LBB416_152:
-	movzbl	40(%rbp,%r14), %eax
+.LBB416_161:
+	addq	$24, %rbp
+	cmpq	%rbp, %rbx
+	je	.LBB416_162
+.LBB416_160:
+	movzbl	40(%r12,%rbp), %eax
 	testb	%al, %al
-	je	.LBB416_153
-	movl	32(%rbp,%r14), %eax
+	je	.LBB416_161
+	movl	32(%r12,%rbp), %eax
 	testl	%eax, %eax
-	jne	.LBB416_153
-	movq	24(%rbp,%r14), %rsi
+	jne	.LBB416_161
+	movq	24(%r12,%rbp), %rsi
 	movl	$1, %eax
 	xchgl	%eax, 40(%rsi)
 	cmpl	$-1, %eax
-	jne	.LBB416_153
+	jne	.LBB416_161
 	addq	$40, %rsi
 	movl	$202, %edi
 	movl	$129, %edx
@@ -165188,24 +165160,24 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	xorl	%eax, %eax
 	vzeroupper
 	callq	*syscall@GOTPCREL(%rip)
-	jmp	.LBB416_153
-.LBB416_230:
+	jmp	.LBB416_161
+.LBB416_225:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.102(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.103(%rip), %rdx
 	movl	$97, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
-.LBB416_228:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1764(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1765(%rip), %rdx
+.LBB416_223:
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1763(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1764(%rip), %rdx
 	movl	$91, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
-.LBB416_225:
+.LBB416_218:
 	movl	$8, %edi
 	movl	$72, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc5alloc18handle_alloc_error_lvm_v4p
-.LBB416_231:
+.LBB416_226:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.101(%rip), %rcx
 	movl	$1, %edi
 	xorl	%esi, %esi
@@ -165232,12 +165204,12 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	testb	%cl, %cl
 	je	.LBB416_48
 .LBB416_46:
-	movq	%rbx, 160(%rsp)
-	movb	%al, 168(%rsp)
+	movq	%rbx, 240(%rsp)
+	movb	%al, 248(%rsp)
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.937(%rip), %rcx
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.98(%rip), %r8
-	leaq	160(%rsp), %rdx
+	leaq	240(%rsp), %rdx
 	movl	$43, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -165255,16 +165227,16 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	testb	%cl, %cl
 	je	.LBB416_67
 .LBB416_66:
-	movq	%r12, 160(%rsp)
-	movb	%al, 168(%rsp)
+	movq	%r12, 240(%rsp)
+	movb	%al, 248(%rsp)
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.932(%rip), %rcx
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.100(%rip), %r8
-	leaq	160(%rsp), %rdx
+	leaq	240(%rsp), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
 .LBB416_72:
-	movq	%rdi, 8(%rsp)
+	movq	%rdi, 16(%rsp)
 	movl	$202, %edi
 	movq	%rsi, 24(%rsp)
 	movq	%r12, %rsi
@@ -165273,12 +165245,12 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	xorl	%eax, %eax
 	callq	*syscall@GOTPCREL(%rip)
 	movq	24(%rsp), %rsi
-	movq	8(%rsp), %rdi
-	cmpb	$0, 16(%rsp)
+	movq	16(%rsp), %rdi
+	cmpb	$0, 8(%rsp)
 	je	.LBB416_74
 	jmp	.LBB416_77
 .LBB416_78:
-	movq	%rdi, 8(%rsp)
+	movq	%rdi, 16(%rsp)
 	movl	$202, %edi
 	movq	%rsi, %r13
 	movq	%rbx, %rsi
@@ -165287,175 +165259,142 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	xorl	%eax, %eax
 	callq	*syscall@GOTPCREL(%rip)
 	movq	%r13, %rsi
-	movq	8(%rsp), %rdi
+	movq	16(%rsp), %rdi
 	testq	%rdi, %rdi
-	movq	40(%rsp), %r13
+	movq	32(%rsp), %r13
 	je	.LBB416_82
 	jmp	.LBB416_80
-.LBB416_229:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1381(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1382(%rip), %rdx
+.LBB416_224:
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1380(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1381(%rip), %rdx
 	movl	$57, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
-.LBB416_134:
+.LBB416_136:
 	vzeroupper
 	callq	_RINvMNtNtCsgHYyB3hU8Ec_3std4sync9once_lockINtB3_8OnceLockNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8topology8TopologyE10initializeNCINvB2_11get_or_initNCNvBV_8topology0E0zEB11__lvm_v4p
-	movq	(%rsp), %r9
+	movq	8(%rsp), %rdi
 	cmpq	$2, %r12
-	jae	.LBB416_136
-.LBB416_137:
+	jae	.LBB416_138
+.LBB416_139:
 	testq	%r12, %r12
-	je	.LBB416_181
-	leaq	288(%rsp), %rdi
+	je	.LBB416_141
+	leaq	296(%rsp), %rdi
 	xorl	%esi, %esi
 	movq	%r12, %rdx
 	vzeroupper
 	callq	_RNCINvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8for_eachNCINvB4_19for_each_chunks_mutNtNtNtNtB6_10primitives5field6gf2_643F64Kj1_NCINvB4_10chunks_mutB1m_NCNvNtNtB6_10keccak_gkr7witness5place0E0E0E0B8__lvm_v4p
-	movq	(%rsp), %r9
-.LBB416_181:
+	movq	8(%rsp), %rdi
+.LBB416_141:
 	movb	$0, %fs:_RNvNCNKNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel7IN_TASK0s_023___RUST_STD_INTERNAL_VAL_lvm_v4p@TPOFF
-	cmpq	$-1, %r9
-	je	.LBB416_233
-	movq	48(%rsp), %rdx
+	cmpq	%r14, %r15
+	movq	72(%rsp), %r12
+	jae	.LBB416_145
+	movq	40(%rsp), %rdx
 	testq	%rdx, %rdx
-	je	.LBB416_184
+	je	.LBB416_144
 	shlq	$3, %rdx
 	movl	$8, %esi
 	movq	32(%rsp), %rdi
 	vzeroupper
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
-	movq	(%rsp), %r9
-.LBB416_184:
-	movq	176(%rsp), %rax
-	movq	%rax, 208(%rsp)
-	vmovaps	160(%rsp), %xmm0
-	vmovaps	%xmm0, 192(%rsp)
-	movq	352(%rsp), %r8
-	movq	344(%rsp), %rdi
-	movq	336(%rsp), %r10
-	movq	328(%rsp), %r11
-	movq	64(%r13), %rcx
+	movq	8(%rsp), %rdi
+.LBB416_144:
+	movq	256(%rsp), %rax
+	movq	%rax, 176(%rsp)
+	vmovaps	240(%rsp), %xmm0
+	vmovaps	%xmm0, 160(%rsp)
+.LBB416_145:
+	movq	64(%rbp), %rcx
 	testq	%rcx, %rcx
-	jne	.LBB416_186
-	jmp	.LBB416_234
-.LBB416_233:
-	movq	64(%r13), %rcx
-	testq	%rcx, %rcx
-	je	.LBB416_234
-.LBB416_186:
-	movq	24(%rsp), %rax
-	movq	%rax, %rdx
-	orq	%rcx, %rdx
-	shrq	$32, %rdx
-	je	.LBB416_187
+	je	.LBB416_228
+	movq	%rdi, %rax
+	orq	%rcx, %rax
+	shrq	$32, %rax
+	je	.LBB416_147
+	movq	%rdi, %rax
 	xorl	%edx, %edx
 	divq	%rcx
 	testq	%rdx, %rdx
-	jne	.LBB416_234
-.LBB416_190:
-	cmpq	$0, 48(%r13)
-	jne	.LBB416_235
-	cmpq	%rcx, %r11
-	sete	%al
-	movb	$1, %dl
-	cmpq	$-1, %r9
-	jne	.LBB416_192
-	testb	%dl, %dl
-	je	.LBB416_236
-.LBB416_194:
-	cmpq	8(%rsp), %r15
-	seta	%al
-	cmpq	56(%r13), %r15
-	ja	.LBB416_195
-	testb	%al, %al
-	jne	.LBB416_237
-.LBB416_197:
-	cmpq	$-1, %r9
-	sete	%al
-	cmpq	$1, %r10
+	jne	.LBB416_228
+.LBB416_193:
+	cmpq	$0, 48(%rbp)
+	jne	.LBB416_229
+	cmpq	%r14, %r15
+	setb	%al
+	cmpq	$1, %rcx
 	setne	%dl
-	cmpq	8(%rsp), %r15
-	jne	.LBB416_198
-	xorl	%eax, %eax
+	testb	%dl, %al
+	jne	.LBB416_230
+	cmpq	%r14, %r15
+	seta	%al
+	cmpq	56(%rbp), %r15
+	ja	.LBB416_196
 	testb	%al, %al
-	jne	.LBB416_205
-.LBB416_201:
-	movq	40(%r13), %rdx
+	jne	.LBB416_231
+.LBB416_198:
+	movq	40(%rbp), %rdx
 	cmpq	%rdx, %r15
-	ja	.LBB416_238
-	movq	32(%r13), %rax
+	ja	.LBB416_232
+	movq	32(%rbp), %rax
 	xorl	%edx, %edx
 	.p2align	4
-.LBB416_203:
+.LBB416_200:
 	cmpq	%rdx, %r15
-	je	.LBB416_211
+	je	.LBB416_204
 	cmpb	$0, (%rax,%rdx)
 	leaq	1(%rdx), %rdx
-	jne	.LBB416_203
-	jmp	.LBB416_210
-.LBB416_211:
-	cmpq	$-1, %r9
-	je	.LBB416_212
-	movq	%rdi, %rsi
-	notq	%rsi
-	cmpq	%r10, %rsi
-	cmovaeq	%r10, %rsi
-	cmpq	%r8, %rsi
-	ja	.LBB416_239
-	xorl	%eax, %eax
-	.p2align	4
-.LBB416_208:
-	cmpq	%rax, %rsi
-	je	.LBB416_212
-	cmpb	$0, (%rbx,%rax)
-	leaq	1(%rax), %rax
-	jne	.LBB416_208
-.LBB416_210:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1207(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1208(%rip), %rdx
+	jne	.LBB416_200
+.LBB416_203:
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1206(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1207(%rip), %rdx
 	movl	$69, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
-.LBB416_212:
-	movq	64(%rsp), %rax
-	movq	%rax, 96(%r14)
+.LBB416_204:
+	cmpq	%r14, %r15
+	jae	.LBB416_205
+	cmpb	$0, (%r12)
+	je	.LBB416_203
+.LBB416_205:
 	movq	24(%rsp), %rax
-	movq	%rax, 104(%r14)
-	movq	$1, (%r14)
-	movq	%r13, 8(%r14)
-	movq	$1, 16(%r14)
-	movq	%r15, 112(%r14)
-	vmovaps	192(%rsp), %xmm0
-	movq	%r9, 24(%r14)
-	vmovups	%xmm0, 32(%r14)
-	movq	208(%rsp), %rax
-	movq	%rax, 48(%r14)
-	movq	%rbx, 56(%r14)
-	movq	%r8, 64(%r14)
-	movq	%rdi, 72(%r14)
-	movq	%r10, 80(%r14)
-	movq	%r11, 88(%r14)
-	movq	%rcx, 120(%r14)
-	movq	144(%rsp), %rdx
-	testq	%rdx, %rdx
-	je	.LBB416_214
-	shlq	$4, %rdx
+	movq	%rax, 96(%r13)
+	movq	%rdi, 104(%r13)
+	movq	$1, (%r13)
+	movq	%rbp, 8(%r13)
+	movq	$1, 16(%r13)
+	movq	%r15, 112(%r13)
+	vmovaps	160(%rsp), %xmm0
+	movq	56(%rsp), %rax
+	movq	%rax, 24(%r13)
+	vmovups	%xmm0, 32(%r13)
+	movq	176(%rsp), %rax
+	movq	%rax, 48(%r13)
+	movq	%r12, 56(%r13)
+	movq	$1, 64(%r13)
+	movq	%r15, 72(%r13)
+	movq	$1, 80(%r13)
+	movq	$1, 88(%r13)
+	movq	%rcx, 120(%r13)
+	testq	%rbx, %rbx
+	je	.LBB416_207
+	shlq	$4, %rbx
 	movl	$8, %esi
-	movq	%rbp, %rdi
+	movq	16(%rsp), %rdi
+	movq	%rbx, %rdx
 	vzeroupper
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
-.LBB416_214:
-	movq	360(%rsp), %rdx
+.LBB416_207:
+	movq	344(%rsp), %rdx
 	testq	%rdx, %rdx
-	je	.LBB416_216
+	je	.LBB416_209
 	shlq	$3, %rdx
 	movl	$8, %esi
-	movq	72(%rsp), %rdi
+	movq	88(%rsp), %rdi
 	vzeroupper
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
-.LBB416_216:
-	addq	$472, %rsp
+.LBB416_209:
+	addq	$456, %rsp
 	.cfi_def_cfa_offset 56
 	popq	%rbx
 	.cfi_def_cfa_offset 48
@@ -165471,214 +165410,198 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB5_7Witness8gen
 	.cfi_def_cfa_offset 8
 	vzeroupper
 	retq
-.LBB416_187:
-	.cfi_def_cfa_offset 528
+.LBB416_147:
+	.cfi_def_cfa_offset 512
+	movl	%edi, %eax
 	xorl	%edx, %edx
 	divl	%ecx
 	testq	%rdx, %rdx
-	je	.LBB416_190
-.LBB416_234:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1197(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1198(%rip), %rdx
+	je	.LBB416_193
+.LBB416_228:
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1196(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1197(%rip), %rdx
 	movl	$63, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
-.LBB416_195:
+.LBB416_196:
 	movb	$1, %al
 	testb	%al, %al
-	je	.LBB416_197
-.LBB416_237:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1203(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1204(%rip), %rdx
+	je	.LBB416_198
+.LBB416_231:
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1202(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1203(%rip), %rdx
 	movl	$63, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
-.LBB416_238:
+.LBB416_232:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.523(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%r15, %rsi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
-.LBB416_239:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.523(%rip), %rcx
-	xorl	%edi, %edi
-	movq	%r8, %rdx
-	vzeroupper
-	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
-.LBB416_235:
-	movq	$0, 96(%rsp)
-	addq	$48, %r13
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1199(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1200(%rip), %r8
-	leaq	96(%rsp), %rsi
+.LBB416_229:
+	movq	$0, 112(%rsp)
+	addq	$48, %rbp
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1198(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1199(%rip), %r8
+	leaq	112(%rsp), %rsi
 	movl	$47, %ecx
-	movq	%r13, %rdi
+	movq	%rbp, %rdi
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
-.LBB416_198:
-	orb	%dl, %al
-	testb	%al, %al
-	je	.LBB416_201
-.LBB416_205:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1205(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1206(%rip), %rdx
-	movl	$96, %esi
+.LBB416_230:
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1200(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1201(%rip), %rdx
+	movl	$67, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB416_69:
-	movq	%rdi, 8(%rsp)
+	movq	%rdi, 16(%rsp)
 	movq	%rsi, 24(%rsp)
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std9panicking11panic_count17is_zero_slow_path_lvm_v4p
 	movq	24(%rsp), %rsi
-	movq	8(%rsp), %rdi
+	movq	16(%rsp), %rdi
 	testb	%al, %al
 	jne	.LBB416_71
 	movb	$1, 548(%r13)
 	jmp	.LBB416_71
 .LBB416_75:
-	movq	%rdi, 8(%rsp)
+	movq	%rdi, 16(%rsp)
 	movq	%rsi, %r12
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std9panicking11panic_count17is_zero_slow_path_lvm_v4p
 	movq	%r12, %rsi
-	movq	8(%rsp), %rdi
+	movq	16(%rsp), %rdi
 	testb	%al, %al
 	jne	.LBB416_77
 	movb	$1, 540(%r13)
 	jmp	.LBB416_77
-.LBB416_140:
+.LBB416_149:
 	vzeroupper
 	callq	_RINvMNtNtCsgHYyB3hU8Ec_3std4sync9once_lockINtB3_8OnceLockRNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel4PoolE10initializeNCINvB2_11get_or_initNCNvBW_4pool0E0zEB10__lvm_v4p
-	jmp	.LBB416_141
-.LBB416_142:
-	movq	%r14, %rdi
+	jmp	.LBB416_150
+.LBB416_151:
+	leaq	536(%r13), %rdi
 	vzeroupper
 	callq	_RNvMNtNtNtNtCsgHYyB3hU8Ec_3std3sys4sync5mutex5futexNtB2_5Mutex14lock_contended_lvm_v4p
 	movq	_RNvNtNtCsgHYyB3hU8Ec_3std9panicking11panic_count18GLOBAL_PANIC_COUNT_lvm_v4p(%rip), %rax
 	shlq	%rax
 	testq	%rax, %rax
-	je	.LBB416_144
-.LBB416_145:
+	je	.LBB416_153
+.LBB416_154:
 	vzeroupper
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std9panicking11panic_count17is_zero_slow_path_lvm_v4p
-	xorb	$1, %al
-	movzbl	540(%r13), %ecx
-	testb	%cl, %cl
-	je	.LBB416_149
-.LBB416_147:
-	movq	%r14, 80(%rsp)
-	movb	%al, 88(%rsp)
+	movl	%eax, %ecx
+	xorb	$1, %cl
+	movzbl	540(%r13), %eax
+	testb	%al, %al
+	je	.LBB416_157
+.LBB416_156:
+	movq	64(%rsp), %rax
+	movq	%rax, 96(%rsp)
+	movb	%cl, 104(%rsp)
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.937(%rip), %rcx
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.98(%rip), %r8
-	leaq	80(%rsp), %rdx
+	leaq	96(%rsp), %rdx
 	movl	$43, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
-.LBB416_159:
-	movq	%r12, %rdi
+.LBB416_167:
+	movq	%rbx, %rdi
 	callq	_RNvMNtNtNtNtCsgHYyB3hU8Ec_3std3sys4sync5mutex5futexNtB2_5Mutex14lock_contended_lvm_v4p
-	movq	(%rsp), %r9
-	jmp	.LBB416_160
-.LBB416_165:
+	movq	8(%rsp), %rdi
+	movq	_RNvNtNtCsgHYyB3hU8Ec_3std9panicking11panic_count18GLOBAL_PANIC_COUNT_lvm_v4p(%rip), %rax
+	shlq	%rax
+	testq	%rax, %rax
+	je	.LBB416_169
+.LBB416_173:
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std9panicking11panic_count17is_zero_slow_path_lvm_v4p
-	movq	(%rsp), %r9
+	movq	8(%rsp), %rdi
 	xorb	$1, %al
 	movzbl	548(%r13), %ecx
 	testb	%cl, %cl
-	je	.LBB416_168
-.LBB416_167:
-	movq	%r12, 80(%rsp)
-	movb	%al, 88(%rsp)
+	je	.LBB416_177
+.LBB416_175:
+	movq	%rbx, 96(%rsp)
+	movb	%al, 104(%rsp)
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.932(%rip), %rcx
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.100(%rip), %r8
-	leaq	80(%rsp), %rdx
+	leaq	96(%rsp), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
-.LBB416_173:
-	movq	%rdi, 136(%rsp)
+.LBB416_182:
 	movl	$202, %edi
-	movq	%rsi, 56(%rsp)
-	movq	%r12, %rsi
+	movq	%rbx, %rsi
 	movl	$129, %edx
+	movq	%rcx, %rbx
 	movl	$1, %ecx
 	xorl	%eax, %eax
 	callq	*syscall@GOTPCREL(%rip)
-	movq	56(%rsp), %rsi
-	movq	136(%rsp), %rdi
-	movq	(%rsp), %r9
+	movq	%rbx, %rcx
+	movq	8(%rsp), %rdi
 	cmpb	$0, 156(%rsp)
-	je	.LBB416_175
-	jmp	.LBB416_178
-.LBB416_179:
-	movq	%rdi, %r12
+	je	.LBB416_184
+	jmp	.LBB416_187
+.LBB416_188:
 	movl	$202, %edi
-	movq	%rsi, %r13
-	movq	%r14, %rsi
 	movl	$129, %edx
+	movq	%rcx, %r13
 	movl	$1, %ecx
 	xorl	%eax, %eax
 	callq	*syscall@GOTPCREL(%rip)
-	movq	%r13, %rsi
-	movq	%r12, %rdi
-	movq	(%rsp), %r9
-	testq	%rdi, %rdi
-	movq	264(%rsp), %r14
-	movq	40(%rsp), %r13
-	je	.LBB416_181
-	jmp	.LBB416_80
-.LBB416_192:
-	movl	%eax, %edx
-	testb	%dl, %dl
-	jne	.LBB416_194
-.LBB416_236:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1201(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1202(%rip), %rdx
-	movl	$67, %esi
-	vzeroupper
-	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
-.LBB416_170:
-	movq	%rdi, 136(%rsp)
-	movq	%rsi, 56(%rsp)
+	movq	%r13, %rcx
+	movq	8(%rsp), %rdi
+	testq	%r12, %r12
+	movq	272(%rsp), %r13
+	je	.LBB416_141
+	jmp	.LBB416_190
+.LBB416_179:
+	movq	%rcx, 336(%rsp)
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std9panicking11panic_count17is_zero_slow_path_lvm_v4p
-	movq	56(%rsp), %rsi
-	movq	136(%rsp), %rdi
-	movq	(%rsp), %r9
+	movq	336(%rsp), %rcx
+	movq	8(%rsp), %rdi
 	testb	%al, %al
-	jne	.LBB416_172
+	jne	.LBB416_181
 	movb	$1, 548(%r13)
-	jmp	.LBB416_172
-.LBB416_176:
-	movq	%rdi, %r12
-	movq	%rsi, 56(%rsp)
+	jmp	.LBB416_181
+.LBB416_185:
+	movq	%rcx, %rbx
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std9panicking11panic_count17is_zero_slow_path_lvm_v4p
-	movq	56(%rsp), %rsi
-	movq	%r12, %rdi
-	movq	(%rsp), %r9
+	movq	%rbx, %rcx
+	movq	8(%rsp), %rdi
 	testb	%al, %al
-	jne	.LBB416_178
+	jne	.LBB416_187
 	movb	$1, 540(%r13)
-	jmp	.LBB416_178
-.LBB416_217:
+	jmp	.LBB416_187
+.LBB416_210:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.702(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
-.LBB416_220:
+.LBB416_213:
 	movl	$8, %edi
 	movq	%r15, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
-.LBB416_222:
+.LBB416_215:
 	movl	$8, %edi
-	movq	32(%rsp), %rsi
+	movq	72(%rsp), %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
-.LBB416_227:
+.LBB416_222:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1055(%rip), %rdi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
-.LBB416_224:
+.LBB416_217:
 	movl	$8, %edi
 	movq	%rbx, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
-.LBB416_226:
+.LBB416_219:
+	movl	$8, %edi
+	movl	$2560000, %esi
+	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
+.LBB416_220:
+	movl	$1, %edi
+	movl	$1, %esi
+	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
+.LBB416_221:
 	movl	$8, %edi
 	movq	%r12, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
@@ -166376,7 +166299,7 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whirNtB5_14SumcheckProver12glue_
 	retq
 .LBB417_4:
 	.cfi_def_cfa_offset 336
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1220(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1219(%rip), %r8
 	leaq	80(%rsp), %rdi
 	leaq	104(%rsp), %rsi
 	xorl	%edx, %edx
@@ -166425,12 +166348,12 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whirNtB5_14SumcheckProver12glue_
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
 .LBB417_76:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1218(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1219(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1217(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1218(%rip), %rdx
 	movl	$53, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB417_77:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1531(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1530(%rip), %rdi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB417_75:
@@ -167073,7 +166996,7 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whirNtB5_14SumcheckProver13intro
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB418_86:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1221(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1220(%rip), %r8
 	leaq	216(%rsp), %rdi
 	leaq	304(%rsp), %rsi
 	xorl	%edx, %edx
@@ -167420,7 +167343,7 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whirNtB5_14SumcheckProver4fold_l
 	movq	%rax, 288(%r12)
 	incq	368(%r12)
 	movq	%rdi, 64(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1223(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1222(%rip), %rax
 	movq	%rax, 272(%rsp)
 	movq	$14, 280(%rsp)
 	movl	$-1, 296(%rsp)
@@ -168496,19 +168419,19 @@ _RNvMs1_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs6merkleNtB5_7CutTree3cap_lvm_v4p:
 	retq
 .LBB421_9:
 	.cfi_def_cfa_offset 48
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1234(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1233(%rip), %rcx
 	movq	%r14, %rdi
 	movq	%rax, %rsi
 	movq	%r8, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB421_7:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.195(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1231(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1230(%rip), %rdx
 	movl	$61, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB421_8:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1232(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1233(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1231(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1232(%rip), %rdx
 	movl	$47, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB421_11:
@@ -169436,15 +169359,15 @@ _RNvMs3_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_4Toks1u_lvm_v4p:
 	adcb	$1, %dl
 .LBB425_27:
 	movb	%dl, 7(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1248(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1247(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.939(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1249(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1248(%rip), %r8
 	leaq	7(%rsp), %rdx
 	movl	$21, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
 .LBB425_28:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1246(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1247(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1245(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1246(%rip), %rdx
 	movl	$22, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB425_30:
@@ -169998,7 +169921,7 @@ _RNvMs3_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs6merkleNtB5_10LeafHasher4hash_lvm
 	jne	.LBB427_27
 .LBB427_54:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.0(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1261(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1260(%rip), %rdx
 	movl	$55, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -170139,27 +170062,27 @@ _RNvMs3_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs6merkleNtB5_10LeafHasher4hash_lvm
 	retq
 .LBB427_42:
 	.cfi_def_cfa_offset 144
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1265(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1264(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%rdx, %rsi
 	movq	%rax, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB427_46:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1266(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1265(%rip), %rcx
 	movq	%r9, %rsi
 	movq	%r9, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB427_56:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1264(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1263(%rip), %rcx
 	movq	%rsi, %rdi
 	movq	%r8, %rsi
 	movq	%r8, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB427_49:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1263(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1262(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%rdx, %rsi
 	movq	%rax, %rdx
@@ -170167,7 +170090,7 @@ _RNvMs3_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs6merkleNtB5_10LeafHasher4hash_lvm
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB427_55:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.0(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1262(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1261(%rip), %rdx
 	movl	$55, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -170322,13 +170245,13 @@ _RNvMs3_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs6merkleNtB5_10LeafHasher6staged_l
 	retq
 .LBB428_9:
 	.cfi_def_cfa_offset 272
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1267(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1268(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1266(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1267(%rip), %rdx
 	movl	$41, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB428_11:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1269(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1270(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1268(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1269(%rip), %rdx
 	movl	$55, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -173002,12 +172925,12 @@ _RNvMs5_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6proverNtB5_5Round8add_pa
 	retq
 .LBB450_112:
 	.cfi_def_cfa_offset 416
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1989(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1988(%rip), %rcx
 	movq	%r9, %rsi
 	movq	%r9, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB450_8:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1990(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1989(%rip), %rcx
 	movq	%r14, %rsi
 	movq	%r14, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -173225,13 +173148,13 @@ _RNvMs7_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled10fval_basic_lvm_
 	vmovq	%xmm0, %rdx
 	jmp	.LBB451_38
 .LBB451_31:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1283(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1282(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB451_32:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1284(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1283(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB451_33:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1285(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1284(%rip), %rdx
 	movq	%r14, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB451_37:
@@ -174857,7 +174780,7 @@ _RNvMs7_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled3new_lvm_v4p:
 	callq	*%r13
 	jmp	.LBB452_232
 .LBB452_237:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1271(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1270(%rip), %rcx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB452_238:
@@ -175599,7 +175522,7 @@ _RNvMs7_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled5pinst_lvm_v4p:
 	cmpq	%r8, %rax
 	jb	.LBB453_6
 .LBB453_21:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1289(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1288(%rip), %rdx
 	movq	%rax, %rdi
 	movq	%r8, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -175689,12 +175612,12 @@ _RNvMs7_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled5pinst_lvm_v4p:
 	retq
 .LBB453_22:
 	.cfi_def_cfa_offset 128
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1287(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1286(%rip), %rdx
 	movq	%rbx, %rdi
 	movq	%r8, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB453_23:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1288(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1287(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_rem_by_zero_lvm_v4p
 .LBB453_24:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.557(%rip), %rdx
@@ -175702,7 +175625,7 @@ _RNvMs7_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled5pinst_lvm_v4p:
 	movq	%rax, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB453_26:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1286(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1285(%rip), %rdx
 	movq	%rbx, %rdi
 	movq	%rax, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -175923,7 +175846,7 @@ _RNvMs7_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled6interp_lvm_v4p:
 	cmpq	$-1, %rdx
 	je	.LBB454_31
 .LBB454_33:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1292(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1291(%rip), %rdi
 	movl	$51, %esi
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std2io5stdio7__eprint_lvm_v4p
 	movq	16(%r15), %rax
@@ -178815,7 +178738,7 @@ _RNvMs7_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled6interp_lvm_v4p:
 	leaq	232(%rsp), %rcx
 	movq	%rcx, 480(%rsp)
 	movq	%rax, 488(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1295(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1294(%rip), %rdi
 	leaq	448(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std2io5stdio7__eprint_lvm_v4p
@@ -179081,7 +179004,7 @@ _RNvMs7_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled6interp_lvm_v4p:
 	leaq	400(%rsp), %rcx
 	movq	%rcx, 512(%rsp)
 	movq	%rax, 520(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1294(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1293(%rip), %rdi
 	leaq	448(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std2io5stdio7__eprint_lvm_v4p
@@ -179144,8 +179067,8 @@ _RNvMs7_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled6interp_lvm_v4p:
 .LBB454_511:
 	.cfi_def_cfa_offset 944
 	addq	$48, %r15
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1290(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1291(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1289(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1290(%rip), %r8
 	leaq	448(%rsp), %rdi
 	movl	$23, %ecx
 	movq	%r15, %rsi
@@ -179205,7 +179128,7 @@ _RNvMs7_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled6interp_lvm_v4p:
 	movq	%r12, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB454_520:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1293(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1292(%rip), %rdx
 	movq	%rdi, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -180728,8 +180651,8 @@ _RNvMs8_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled10tables_ext_lvm_
 	movl	$1, %r9d
 	jmp	.LBB455_38
 .LBB455_244:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1303(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1304(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1302(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1303(%rip), %rdx
 	movl	$28, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
@@ -181174,40 +181097,40 @@ _RNvMs8_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled10tables_ext_lvm_
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13unwrap_failed_lvm_v4p
 .LBB455_109:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1298(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1297(%rip), %rdx
 	movq	%rax, %rdi
 	movq	%r8, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB455_110:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1299(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1298(%rip), %rdx
 	movq	%rcx, %rdi
 	movq	%r8, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB455_297:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1311(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1310(%rip), %rdx
 	movq	%rax, %rdi
 	movq	8(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB455_307:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1312(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1311(%rip), %rdx
 	movq	%r8, %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB455_286:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1308(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1307(%rip), %rdx
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB455_288:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1309(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1308(%rip), %rdx
 	movq	%rax, %rdi
 	movq	8(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB455_290:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1310(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1309(%rip), %rdx
 	movq	%rbx, %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -181220,13 +181143,13 @@ _RNvMs8_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled10tables_ext_lvm_
 	movq	(%rax), %r8
 	cmpq	%rsi, %r8
 	jae	.LBB455_108
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1297(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1296(%rip), %rdx
 	movq	%rcx, %rdi
 	movq	64(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB455_108:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1296(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1295(%rip), %rdx
 	movq	%r8, %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -181244,26 +181167,26 @@ _RNvMs8_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled10tables_ext_lvm_
 	movq	%r15, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB455_311:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1300(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1299(%rip), %rdx
 	movq	8(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB455_169:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1301(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1300(%rip), %rdx
 	movq	%rbx, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB455_136:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1283(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1282(%rip), %rdx
 	movq	336(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB455_137:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1284(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1283(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB455_310:
 	movl	$8, %edi
 	movq	%rbp, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB455_312:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1302(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1301(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	vzeroupper
@@ -181274,17 +181197,17 @@ _RNvMs8_NtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopirNtB5_8Compiled10tables_ext_lvm_
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB455_258:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1305(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1304(%rip), %rdx
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB455_260:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1306(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1305(%rip), %rdx
 	movq	%rax, %rdi
 	movq	8(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB455_263:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1307(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1306(%rip), %rdx
 	movq	%rbx, %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -181542,7 +181465,7 @@ _RNvMs_NtCs7rukeAxmHeC_10lvm_prover6keccakNtB4_9Keccak2566update_lvm_v4p:
 	retq
 .LBB458_3:
 	.cfi_def_cfa_offset 48
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1323(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1322(%rip), %rcx
 	movl	$136, %edx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .Lfunc_end458:
@@ -181625,14 +181548,14 @@ _RNvMs_NtCs7rukeAxmHeC_10lvm_prover6keccakNtB4_9Keccak2568finalize_lvm_v4p:
 	retq
 .LBB459_3:
 	.cfi_def_cfa_offset 368
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1325(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1324(%rip), %rcx
 	movl	$136, %edx
 	xorl	%edi, %edi
 	movq	%r14, %rsi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB459_2:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1324(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1323(%rip), %rdx
 	movl	$136, %edi
 	movl	$136, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -182284,7 +182207,7 @@ _RNvMs_NtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkrNtNtB4_7witness7Witness5prov
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1328(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1327(%rip), %rdi
 	movl	$7, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 	movq	208(%rsp), %rax
@@ -182643,14 +182566,14 @@ _RNvMs_NtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkrNtNtB4_7witness7Witness5prov
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
 	movl	$5, %esi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1330(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1329(%rip), %rdi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 	movq	872(%rsp), %rax
 	testq	%rax, %rax
 	jne	.LBB460_112
 	jmp	.LBB460_113
 .LBB460_88:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1329(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1328(%rip), %rax
 	movq	%rax, 1792(%rsp)
 	movq	$8, 1800(%rsp)
 	movl	$-1, 1816(%rsp)
@@ -184363,35 +184286,35 @@ _RNvMs_NtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkrNtNtB4_7witness7Witness5prov
 	callq	*syscall@GOTPCREL(%rip)
 	jmp	.LBB460_333
 .LBB460_429:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1726(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1725(%rip), %rdx
 	movq	%r14, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB460_430:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1326(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1327(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1325(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1326(%rip), %r8
 	leaq	872(%rsp), %rdi
 	leaq	1792(%rsp), %rsi
 	movl	$105, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB460_433:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1519(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1518(%rip), %r8
 	leaq	1792(%rsp), %rdi
 	leaq	544(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB460_434:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1521(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1520(%rip), %rcx
 	movl	$4, %edi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB460_436:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1791(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1790(%rip), %r8
 	leaq	368(%rsp), %rdi
 	leaq	1328(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB460_93:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1727(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1726(%rip), %rcx
 	xorl	%edi, %edi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB460_57:
@@ -184413,7 +184336,7 @@ _RNvMs_NtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkrNtNtB4_7witness7Witness5prov
 	movq	88(%r15), %rsi
 	jmp	.LBB460_60
 .LBB460_443:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1721(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1720(%rip), %rcx
 	movl	$5, %edi
 	movq	%rsi, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -184442,7 +184365,7 @@ _RNvMs_NtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkrNtNtB4_7witness7Witness5prov
 	movq	88(%r15), %rsi
 	jmp	.LBB460_123
 .LBB460_445:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1720(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1719(%rip), %rcx
 	movq	%r13, %rdi
 	movq	%rbp, %rsi
 	movq	%rbp, %rdx
@@ -184549,7 +184472,7 @@ _RNvMs_NtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkrNtNtB4_7witness7Witness5prov
 	movq	64(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB460_460:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1725(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1724(%rip), %rdx
 	movq	%r12, %rdi
 	movq	%r12, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -184572,11 +184495,11 @@ _RNvMs_NtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkrNtNtB4_7witness7Witness5prov
 .LBB460_234:
 	movq	%r8, %rdi
 .LBB460_235:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1719(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1718(%rip), %rdx
 	movq	%r14, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB460_459:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1733(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1732(%rip), %rcx
 	movq	%r15, %rsi
 	movq	%r15, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -184992,12 +184915,12 @@ _RNvMs_NtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkrNtNtB4_7witness7Witness5prov
 	retq
 .LBB460_423:
 	.cfi_def_cfa_offset 8000
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1724(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1723(%rip), %rcx
 	movq	328(%rsp), %rdx
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB460_392:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1723(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1722(%rip), %rcx
 	movl	$64, %esi
 	xorl	%edi, %edi
 	xorl	%edx, %edx
@@ -185113,7 +185036,7 @@ _RNvMs_NtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkrNtNtB4_7witness7Witness5prov
 	movl	$38400, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB460_440:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1520(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1519(%rip), %rdx
 	movq	%rax, %rdi
 	movq	%r12, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -185134,7 +185057,7 @@ _RNvMs_NtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkrNtNtB4_7witness7Witness5prov
 	movb	$1, 540(%r14)
 	jmp	.LBB460_359
 .LBB460_130:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1728(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1727(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -185155,7 +185078,7 @@ _RNvMs_NtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkrNtNtB4_7witness7Witness5prov
 	movq	%rbp, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB460_422:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1722(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1721(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -185346,7 +185269,7 @@ _RNvMs_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB4_4Slot5store_l
 .LBB462_2:
 	testq	%rsi, %rsi
 	jne	.LBB462_15
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1346(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1345(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB462_5:
 	movl	%esi, %eax
@@ -185434,8 +185357,8 @@ _RNvMs_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB4_4Slot5store_l
 	jmpq	*memcpy@GOTPCREL(%rip)
 .LBB462_14:
 	.cfi_def_cfa_offset 80
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1344(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1345(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1343(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1344(%rip), %rdx
 	movl	$33, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB462_16:
@@ -185446,7 +185369,7 @@ _RNvMs_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witnessNtB4_4Slot5store_l
 	movl	$63, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB462_13:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1347(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1346(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .Lfunc_end462:
@@ -185753,40 +185676,40 @@ _RNvMs_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leafNtB4_9LeafBlock4fill
 	retq
 .LBB463_29:
 	.cfi_def_cfa_offset 96
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1350(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1349(%rip), %rdx
 	movq	%rcx, %rdi
 	movq	%r9, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB463_32:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1350(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1349(%rip), %rdx
 	movq	%r10, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB463_16:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1348(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1347(%rip), %rdx
 	movq	%rax, %rdi
 	movq	%r9, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB463_20:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1348(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1347(%rip), %rdx
 	movq	%rcx, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB463_37:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1351(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1350(%rip), %rdx
 	movq	%rax, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB463_26:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1349(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1348(%rip), %rdx
 	movq	%rax, %rdi
 	movq	%r9, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB463_39:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1349(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1348(%rip), %rdx
 	movq	%rcx, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -186516,7 +186439,7 @@ _RNvMs_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whirNtB4_13LigeroWitness4open_lvm
 	cmpq	%rdx, %rax
 	jbe	.LBB464_81
 .LBB464_131:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1925(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1924(%rip), %rcx
 	xorl	%edi, %edi
 	movq	152(%rsp), %rsi
 	vzeroupper
@@ -186539,14 +186462,14 @@ _RNvMs_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whirNtB4_13LigeroWitness4open_lvm
 	movq	40(%rsp), %rdi
 	jmp	.LBB464_43
 .LBB464_33:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1926(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1925(%rip), %rcx
 	movq	%r10, %rsi
 	movq	%r10, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB464_88:
 	movq	80(%rsp), %rsi
 .LBB464_89:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1926(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1925(%rip), %rcx
 	movq	%rbx, %rdi
 	movq	%rsi, %rdx
 	vzeroupper
@@ -186560,7 +186483,7 @@ _RNvMs_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whirNtB4_13LigeroWitness4open_lvm
 	cmpq	%r8, %rcx
 	jne	.LBB464_17
 .LBB464_32:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1925(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1924(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%r14, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -186612,9 +186535,9 @@ _RNvMs_NtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whirNtB4_13LigeroWitness4open_lvm
 .LBB464_86:
 	movq	%r12, 352(%rsp)
 .LBB464_13:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1923(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1922(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.940(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1924(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1923(%rip), %r8
 	leaq	352(%rsp), %rdx
 	movl	$13, %esi
 	vzeroupper
@@ -186818,8 +186741,8 @@ _RNvMs_NtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt6encodeNtNtB6_8twiddles14Add
 	addq	$8, %rdx
 	cmpq	%r9, %r12
 	jbe	.LBB465_23
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2019(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2020(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2018(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2019(%rip), %rdx
 	movl	$55, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB465_26:
@@ -187035,13 +186958,13 @@ _RNvMs_NtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt6encodeNtNtB6_8twiddles14Add
 	callq	*%r13
 	jmp	.LBB465_56
 .LBB465_61:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1372(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1373(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1371(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1372(%rip), %rdx
 	movl	$49, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB465_62:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1374(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1375(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1373(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1374(%rip), %rdx
 	movl	$32, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB465_63:
@@ -187050,31 +186973,31 @@ _RNvMs_NtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt6encodeNtNtB6_8twiddles14Add
 	movq	%r8, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB465_64:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1377(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1378(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1376(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1377(%rip), %r8
 	leaq	336(%rsp), %rdi
 	leaq	448(%rsp), %rsi
 	movl	$81, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB465_65:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2016(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2017(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2015(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2016(%rip), %rdx
 	movl	$73, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB465_66:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1362(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2018(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1361(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2017(%rip), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB465_67:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2021(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2022(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2020(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2021(%rip), %rdx
 	movl	$85, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB465_68:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.355(%rip), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2023(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2024(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2022(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2023(%rip), %r8
 	leaq	448(%rsp), %rdi
 	movl	$61, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
@@ -188290,8 +188213,8 @@ _RNvMs_NtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt6encodeNtNtB6_8twiddles14Add
 	movq	%rax, 448(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 456(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1522(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1523(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1521(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1522(%rip), %rdx
 	leaq	448(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -188565,8 +188488,8 @@ _RNvMs_NtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt6encodeNtNtB6_8twiddles14Add
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB465_293:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1381(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1382(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1380(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1381(%rip), %rdx
 	movl	$57, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -188963,7 +188886,7 @@ _RNvMs_NtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt6encodeNtNtB6_8twiddles14Add
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1117(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB465_357:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1376(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1375(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB465_358:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1108(%rip), %rdi
@@ -191714,11 +191637,11 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat11clmul_tiers_lvm_v4p:
 	callq	*malloc@GOTPCREL(%rip)
 	testq	%rax, %rax
 	je	.LBB471_4
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1391(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1390(%rip), %rcx
 	movq	%rcx, (%rax)
 	movq	$5, 8(%rax)
 	movq	$1, 16(%rax)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1390(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1389(%rip), %rcx
 	movq	%rcx, 24(%rax)
 	movq	$1, 8(%rsp)
 	movq	%rax, 16(%rsp)
@@ -191730,17 +191653,17 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat11clmul_tiers_lvm_v4p:
 	movq	%rcx, 32(%rax)
 	movq	$6, 40(%rax)
 	movq	$1, 48(%rax)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1392(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1391(%rip), %rcx
 	movq	%rcx, 56(%rax)
 	movq	$2, 24(%rsp)
 	cmpq	$2, 8(%rsp)
 	je	.LBB471_2
 .LBB471_3:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1394(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1393(%rip), %rcx
 	movq	%rcx, 64(%rax)
 	movq	$6, 72(%rax)
 	movq	$1, 80(%rax)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1393(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1392(%rip), %rcx
 	movq	%rcx, 88(%rax)
 	movq	$3, 24(%rsp)
 	vmovups	8(%rsp), %xmm0
@@ -191959,7 +191882,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat4info_lvm_v4p:
 	movq	%r12, %rdi
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
 .LBB472_22:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1398(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1397(%rip), %rax
 	movq	%rax, 40(%rsp)
 	movq	$22, 48(%rsp)
 	movl	_RNvNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8topology8topology8TOPOLOGY_lvm_v4p+16(%rip), %eax
@@ -191986,7 +191909,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat4info_lvm_v4p:
 	leaq	32(%rsp), %rcx
 	movq	%rcx, 120(%rsp)
 	movq	%rax, 128(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1399(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1398(%rip), %rsi
 	leaq	56(%rsp), %rdx
 	movq	24(%rsp), %rdi
 	callq	_RNvNvNtCs1C1lLj4PWSY_5alloc3fmt6format12format_inner_lvm_v4p
@@ -192162,17 +192085,17 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat5field_lvm_v4p:
 	cmpq	%rcx, %rax
 	jne	.LBB473_1
 	movq	$2, 552(%rsp)
-	vmovups	.Lanon.2e24e836c13f239343f864e080f18d36.1400(%rip), %ymm0
+	vmovups	.Lanon.2e24e836c13f239343f864e080f18d36.1399(%rip), %ymm0
 	vmovups	%ymm0, 560(%rsp)
-	vmovups	.Lanon.2e24e836c13f239343f864e080f18d36.1400+32(%rip), %ymm0
+	vmovups	.Lanon.2e24e836c13f239343f864e080f18d36.1399+32(%rip), %ymm0
 	vmovups	%ymm0, 592(%rsp)
-	vmovups	.Lanon.2e24e836c13f239343f864e080f18d36.1400+64(%rip), %ymm0
+	vmovups	.Lanon.2e24e836c13f239343f864e080f18d36.1399+64(%rip), %ymm0
 	vmovups	%ymm0, 624(%rsp)
-	vmovups	.Lanon.2e24e836c13f239343f864e080f18d36.1400+96(%rip), %ymm0
+	vmovups	.Lanon.2e24e836c13f239343f864e080f18d36.1399+96(%rip), %ymm0
 	vmovups	%ymm0, 656(%rsp)
-	vmovups	.Lanon.2e24e836c13f239343f864e080f18d36.1400+128(%rip), %ymm0
+	vmovups	.Lanon.2e24e836c13f239343f864e080f18d36.1399+128(%rip), %ymm0
 	vmovups	%ymm0, 688(%rsp)
-	vmovups	.Lanon.2e24e836c13f239343f864e080f18d36.1400+160(%rip), %ymm0
+	vmovups	.Lanon.2e24e836c13f239343f864e080f18d36.1399+160(%rip), %ymm0
 	vmovups	%ymm0, 720(%rsp)
 	vmovdqa	.LCPI473_0(%rip), %xmm0
 	vpbroadcastq	.LCPI473_1(%rip), %xmm10
@@ -193805,8 +193728,8 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat5field_lvm_v4p:
 	testb	%al, %al
 	jne	.LBB473_2
 .LBB473_225:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1433(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1434(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1432(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1433(%rip), %r8
 	leaq	144(%rsp), %rdi
 	leaq	240(%rsp), %rsi
 	movl	$37, %ecx
@@ -194659,21 +194582,21 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat5field_lvm_v4p:
 	cmpq	$1, %rax
 	je	.LBB473_146
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.356(%rip), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1411(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1412(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1410(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1411(%rip), %r8
 	leaq	544(%rsp), %rdi
 	movl	$15, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_643F64BM_EBW__lvm_v4p
 .LBB473_79:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1430(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1429(%rip), %r8
 	leaq	240(%rsp), %rdi
 	leaq	880(%rsp), %rsi
 	xorl	%edx, %edx
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field8gf2_64x34F192BM_EBW__lvm_v4p
 .LBB473_241:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1431(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1432(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1430(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1431(%rip), %r8
 	leaq	144(%rsp), %rdi
 	leaq	240(%rsp), %rsi
 	movl	$23, %ecx
@@ -195551,14 +195474,14 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat5field_lvm_v4p:
 .LBB473_239:
 	leaq	(%rsp,%r13), %rdi
 	addq	$240, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1426(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1427(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1425(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1426(%rip), %r8
 	leaq	768(%rsp), %rsi
 	movl	$9, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field8gf2_64x34F192BM_EBW__lvm_v4p
 .LBB473_240:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1428(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1429(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1427(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1428(%rip), %r8
 	leaq	1008(%rsp), %rdi
 	leaq	768(%rsp), %rsi
 	movl	$29, %ecx
@@ -195568,8 +195491,8 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat5field_lvm_v4p:
 	movq	%rax, 544(%rsp)
 	leaq	_RNvXs1i_NtCsevLNFiNqfJP_4core3fmtRReNtB6_7Display3fmtCs7rukeAxmHeC_10lvm_prover_lvm_v4p(%rip), %rax
 	movq	%rax, 552(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1403(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1404(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1402(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1403(%rip), %r8
 	leaq	240(%rsp), %rdi
 	leaq	144(%rsp), %rsi
 	leaq	544(%rsp), %rcx
@@ -195666,8 +195589,8 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat5field_lvm_v4p:
 	je	.LBB473_176
 .LBB473_207:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.515(%rip), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1413(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1414(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1412(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1413(%rip), %r8
 	leaq	544(%rsp), %rdi
 	movl	$17, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field8gf2_64x34F192BM_EBW__lvm_v4p
@@ -195781,7 +195704,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat5field_lvm_v4p:
 	movq	%r13, 240(%rsp)
 	movq	%rax, 248(%rsp)
 	movq	%r13, 256(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1398(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1397(%rip), %rax
 	movq	%rax, 144(%rsp)
 	movq	$22, 152(%rsp)
 	leaq	416(%rsp), %rax
@@ -195795,7 +195718,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat5field_lvm_v4p:
 	movq	%rax, 576(%rsp)
 	leaq	_RNvXs1g_NtCsevLNFiNqfJP_4core3fmtReNtB6_5Debug3fmtCs7rukeAxmHeC_10lvm_prover_lvm_v4p(%rip), %rax
 	movq	%rax, 584(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1415(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1414(%rip), %rdi
 	leaq	544(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std2io5stdio6__print_lvm_v4p
@@ -195868,68 +195791,68 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat5field_lvm_v4p:
 	retq
 .LBB473_230:
 	.cfi_def_cfa_offset 1120
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1401(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1402(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1400(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1401(%rip), %r8
 	leaq	544(%rsp), %rdi
 	leaq	144(%rsp), %rsi
 	movl	$17, %ecx
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedooECs7rukeAxmHeC_10lvm_prover_lvm_v4p
 .LBB473_231:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1405(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1406(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1404(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1405(%rip), %r8
 	leaq	240(%rsp), %rdi
 	leaq	544(%rsp), %rsi
 	movl	$15, %ecx
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedyyEB4__lvm_v4p
 .LBB473_232:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1407(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1408(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1406(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1407(%rip), %r8
 	leaq	240(%rsp), %rdi
 	leaq	544(%rsp), %rsi
 	movl	$13, %ecx
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedyyEB4__lvm_v4p
 .LBB473_131:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1409(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1410(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1408(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1409(%rip), %r8
 	leaq	240(%rsp), %rdi
 	leaq	544(%rsp), %rsi
 	movl	$21, %ecx
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_643F64BM_EBW__lvm_v4p
 .LBB473_235:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1416(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1417(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1415(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1416(%rip), %r8
 	leaq	544(%rsp), %rdi
 	leaq	928(%rsp), %rsi
 	movl	$17, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field8gf2_64x34F192BM_EBW__lvm_v4p
 .LBB473_236:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1418(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1419(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1417(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1418(%rip), %r8
 	leaq	240(%rsp), %rdi
 	leaq	544(%rsp), %rsi
 	movl	$23, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field8gf2_64x34F192BM_EBW__lvm_v4p
 .LBB473_237:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1420(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1421(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1419(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1420(%rip), %r8
 	leaq	144(%rsp), %rdi
 	leaq	240(%rsp), %rsi
 	movl	$27, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field8gf2_64x34F192BM_EBW__lvm_v4p
 .LBB473_195:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1422(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1423(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1421(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1422(%rip), %r8
 	leaq	144(%rsp), %rdi
 	leaq	240(%rsp), %rsi
 	movl	$37, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field8gf2_64x34F192BM_EBW__lvm_v4p
 .LBB473_1:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1436(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1437(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1435(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1436(%rip), %r8
 	leaq	240(%rsp), %rdi
 	leaq	544(%rsp), %rsi
 	movl	$21, %ecx
@@ -196337,10 +196260,10 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat6keccak_lvm_v4p:
 	.cfi_offset %r13, -40
 	.cfi_offset %r14, -32
 	.cfi_offset %r15, -24
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1438(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1437(%rip), %rax
 	movq	%rax, 864(%rsp)
 	movq	$64, 872(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1439(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1438(%rip), %rax
 	movq	%rax, 880(%rsp)
 	movq	$64, 888(%rsp)
 	vxorps	%xmm0, %xmm0, %xmm0
@@ -196371,7 +196294,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat6keccak_lvm_v4p:
 	cmpq	$64, 912(%rsp)
 	jne	.LBB474_258
 	movq	904(%rsp), %rbx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1438(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1437(%rip), %rsi
 	movl	$64, %edx
 	movq	%rbx, %rdi
 	callq	*bcmp@GOTPCREL(%rip)
@@ -196396,7 +196319,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat6keccak_lvm_v4p:
 	vmovaps	%ymm0, 960(%rsp)
 	vmovaps	%ymm0, 928(%rsp)
 	vmovaps	%ymm0, 896(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1441(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1440(%rip), %rsi
 	leaq	896(%rsp), %rbx
 	movl	$3, %edx
 	movq	%rbx, %rdi
@@ -196412,7 +196335,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat6keccak_lvm_v4p:
 	cmpq	$64, 912(%rsp)
 	jne	.LBB474_259
 	movq	904(%rsp), %rbx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1439(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1438(%rip), %rsi
 	movl	$64, %edx
 	movq	%rbx, %rdi
 	callq	*bcmp@GOTPCREL(%rip)
@@ -196448,7 +196371,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat6keccak_lvm_v4p:
 	cmpq	$64, 912(%rsp)
 	jne	.LBB474_260
 	movq	904(%rsp), %rbx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1438(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1437(%rip), %rsi
 	movl	$64, %edx
 	movq	%rbx, %rdi
 	callq	*bcmp@GOTPCREL(%rip)
@@ -196484,7 +196407,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat6keccak_lvm_v4p:
 	cmpq	$64, 912(%rsp)
 	jne	.LBB474_261
 	movq	904(%rsp), %rbx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1439(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1438(%rip), %rsi
 	movl	$64, %edx
 	movq	%rbx, %rdi
 	callq	*bcmp@GOTPCREL(%rip)
@@ -199765,7 +199688,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat6keccak_lvm_v4p:
 	movq	%rax, 2608(%rsp)
 	leaq	_RNvXs1i_NtCsevLNFiNqfJP_4core3fmtReNtB6_7Display3fmtCs7rukeAxmHeC_10lvm_prover_lvm_v4p(%rip), %rax
 	movq	%rax, 2616(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1449(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1448(%rip), %rdi
 	leaq	2592(%rsp), %rsi
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std2io5stdio6__print_lvm_v4p
 	movq	584(%rsp), %rdi
@@ -199820,37 +199743,37 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat6keccak_lvm_v4p:
 	movq	%rax, 896(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 904(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1455(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1456(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1454(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1455(%rip), %r8
 	leaq	3200(%rsp), %rdi
 	leaq	3776(%rsp), %rsi
 	leaq	896(%rsp), %rcx
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedAhj20_BM_ECs7rukeAxmHeC_10lvm_prover_lvm_v4p
 .LBB474_257:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1457(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1456(%rip), %r8
 	leaq	2592(%rsp), %rdi
 	leaq	3200(%rsp), %rsi
 	xorl	%edx, %edx
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedAhj20_BM_ECs7rukeAxmHeC_10lvm_prover_lvm_v4p
 .LBB474_258:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1440(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1439(%rip), %rdx
 	leaq	896(%rsp), %rdi
 	leaq	864(%rsp), %rsi
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtCs1C1lLj4PWSY_5alloc6string6StringReECs7rukeAxmHeC_10lvm_prover_lvm_v4p
 .LBB474_259:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1442(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1441(%rip), %rdx
 	leaq	896(%rsp), %rdi
 	leaq	880(%rsp), %rsi
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtCs1C1lLj4PWSY_5alloc6string6StringReECs7rukeAxmHeC_10lvm_prover_lvm_v4p
 .LBB474_260:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1443(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1442(%rip), %rdx
 	leaq	896(%rsp), %rdi
 	leaq	864(%rsp), %rsi
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtCs1C1lLj4PWSY_5alloc6string6StringReECs7rukeAxmHeC_10lvm_prover_lvm_v4p
 .LBB474_261:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1444(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1443(%rip), %rdx
 	leaq	896(%rsp), %rdi
 	leaq	880(%rsp), %rsi
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtCs1C1lLj4PWSY_5alloc6string6StringReECs7rukeAxmHeC_10lvm_prover_lvm_v4p
@@ -199964,8 +199887,8 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat6keccak_lvm_v4p:
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB474_273:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2084(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2085(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2083(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2084(%rip), %rdx
 	movl	$71, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
@@ -200018,14 +199941,14 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat6keccak_lvm_v4p:
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB474_296:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1452(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1451(%rip), %rcx
 	movq	%rsi, %rdi
 	movq	%r13, %rsi
 	movq	72(%rsp), %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB474_297:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1325(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1324(%rip), %rcx
 	movl	$136, %edx
 	xorl	%edi, %edi
 	movq	%r12, %rsi
@@ -200175,7 +200098,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat6keccak_lvm_v4p:
 	movl	$7400, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB474_322:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1324(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1323(%rip), %rdx
 	movl	$136, %edi
 	movl	$136, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -200530,7 +200453,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat6oracle_lvm_v4p:
 	vzeroupper
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec17capacity_overflow_lvm_v4p
 .LBB475_27:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1458(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1457(%rip), %rdi
 	movl	$91, %esi
 	vzeroupper
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std2io5stdio6__print_lvm_v4p
@@ -200555,8 +200478,8 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover3kat6oracle_lvm_v4p:
 	movq	%rax, 256(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 264(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1459(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1460(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1458(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1459(%rip), %r8
 	leaq	48(%rsp), %rdi
 	leaq	80(%rsp), %rsi
 	leaq	256(%rsp), %rcx
@@ -202169,7 +202092,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5alloc6memlog_lvm_v4p:
 	movq	%r13, 8(%rsp)
 	shrq	$20, %r12
 	movq	%r12, 16(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1485(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1484(%rip), %rdx
 	movq	%rbx, %rdi
 	movq	%r15, %rsi
 	callq	_RNCNvNtCs7rukeAxmHeC_10lvm_prover5alloc6memlogs_0B5__lvm_v4p
@@ -202201,7 +202124,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5alloc6memlog_lvm_v4p:
 	leaq	32(%rsp), %rcx
 	movq	%rcx, 120(%rsp)
 	movq	%rax, 128(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1486(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1485(%rip), %rdi
 	leaq	40(%rsp), %rsi
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std2io5stdio7__eprint_lvm_v4p
 	testq	%r14, %r14
@@ -202251,7 +202174,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5alloc6memlog_lvm_v4p:
 	movb	%al, 48(%rsp)
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.935(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1484(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1483(%rip), %r8
 	leaq	40(%rsp), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -203052,7 +202975,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5batch5prove_lvm_v4p:
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
 	vmovapd	%xmm0, 96(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1489(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1488(%rip), %rbx
 	movl	$7, %esi
 	movq	%rbx, %rdi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing6record_lvm_v4p
@@ -203118,7 +203041,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5batch5prove_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1490(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1489(%rip), %rbx
 	movl	$4, %esi
 	movq	%rbx, %rdi
 	vmovapd	%xmm0, 96(%rsp)
@@ -203166,7 +203089,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5batch5prove_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1491(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1490(%rip), %rbx
 	movl	$6, %esi
 	movq	%rbx, %rdi
 	vmovapd	%xmm0, 64(%rsp)
@@ -203252,7 +203175,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5batch5prove_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1492(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1491(%rip), %rbx
 	movl	$12, %esi
 	movq	%rbx, %rdi
 	vmovapd	%xmm0, 144(%rsp)
@@ -203298,7 +203221,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5batch5prove_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1493(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1492(%rip), %rbx
 	movl	$3, %esi
 	movq	%rbx, %rdi
 	vmovapd	%xmm0, 144(%rsp)
@@ -203381,7 +203304,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5batch5prove_lvm_v4p:
 	movl	$1, %r13d
 	jmp	.LBB478_84
 .LBB478_59:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1901(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1900(%rip), %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13unwrap_failed_lvm_v4p
 .LBB478_35:
 	leaq	-12(%rdi), %rcx
@@ -203455,13 +203378,13 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5batch5prove_lvm_v4p:
 	addq	$-56, %rdx
 	cmpq	%rcx, %rdi
 	jbe	.LBB478_86
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1884(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1885(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1883(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1884(%rip), %rdx
 	movl	$97, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB478_89:
 	movq	%r12, 128(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1872(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1871(%rip), %rax
 	movq	%rax, 2896(%rsp)
 	movq	$11, 2904(%rsp)
 	movl	$-1, 2920(%rsp)
@@ -203768,7 +203691,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5batch5prove_lvm_v4p:
 	movzbl	%al, %eax
 	cmpl	$2, %eax
 	jne	.LBB478_108
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1527(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1526(%rip), %rsi
 	leaq	2896(%rsp), %rdi
 	movl	$8, %edx
 	callq	_RNvNvNtCsgHYyB3hU8Ec_3std3env3var5inner_lvm_v4p
@@ -203810,7 +203733,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5batch5prove_lvm_v4p:
 	vcvtsi2sd	%edx, %xmm15, %xmm1
 	vdivsd	.LCPI478_20(%rip), %xmm1, %xmm1
 	vaddsd	%xmm0, %xmm1, %xmm0
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1873(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1872(%rip), %rdi
 	movl	$5, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 	jmp	.LBB478_115
@@ -203893,7 +203816,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5batch5prove_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1494(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1493(%rip), %rbx
 	movl	$8, %esi
 	movq	%rbx, %rdi
 	vmovapd	%xmm0, 48(%rsp)
@@ -204096,7 +204019,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5batch5prove_lvm_v4p:
 	movl	$65, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB478_153:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1902(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1901(%rip), %r8
 	leaq	7680(%rsp), %rdi
 	leaq	1056(%rsp), %rsi
 	xorl	%edx, %edx
@@ -204106,13 +204029,13 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5batch5prove_lvm_v4p:
 	movl	$48, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc5alloc18handle_alloc_error_lvm_v4p
 .LBB478_162:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1882(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1883(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1881(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1882(%rip), %rdx
 	movl	$81, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB478_150:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1888(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1887(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB478_156:
@@ -204446,7 +204369,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6format6sig_ok_lvm_v4p:
 	vmovups	%ymm0, 880(%rsp)
 	vmovups	%ymm0, 848(%rsp)
 	vmovups	%ymm0, 816(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1495(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1494(%rip), %rax
 	leaq	816(%rsp), %rbx
 	movl	$1, %edx
 	movq	%rbx, %rdi
@@ -204517,7 +204440,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6format6sig_ok_lvm_v4p:
 	vmovups	%ymm0, 80(%rsp)
 	movl	$1, %edx
 	movq	%r12, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1500(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1499(%rip), %rsi
 	vzeroupper
 	callq	_RNvMs_NtCs7rukeAxmHeC_10lvm_prover6keccakNtB4_9Keccak2566update_lvm_v4p
 	movl	$8, %edx
@@ -204640,7 +204563,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6format6sig_ok_lvm_v4p:
 	vmovups	%ymm0, 80(%rsp)
 	movl	$1, %edx
 	movq	%r15, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1498(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1497(%rip), %rsi
 	vzeroupper
 	callq	_RNvMs_NtCs7rukeAxmHeC_10lvm_prover6keccakNtB4_9Keccak2566update_lvm_v4p
 	movl	$32, %edx
@@ -204679,7 +204602,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6format6sig_ok_lvm_v4p:
 	vmovups	%ymm0, 80(%rsp)
 	movl	$1, %edx
 	movq	%r15, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1498(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1497(%rip), %rsi
 	vzeroupper
 	callq	_RNvMs_NtCs7rukeAxmHeC_10lvm_prover6keccakNtB4_9Keccak2566update_lvm_v4p
 	movl	$32, %edx
@@ -204698,14 +204621,14 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6format6sig_ok_lvm_v4p:
 	sete	%al
 	jmp	.LBB480_21
 .LBB480_22:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1325(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1324(%rip), %rcx
 	movl	$136, %edx
 	xorl	%edi, %edi
 	movq	%r13, %rsi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB480_23:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1324(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1323(%rip), %rdx
 	movl	$136, %edi
 	movl	$136, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -205262,7 +205185,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6format8toy_sign_lvm_v4p:
 	vmovups	%ymm0, 896(%rsp)
 	vmovups	%ymm0, 864(%rsp)
 	vmovups	%ymm0, 832(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1495(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1494(%rip), %rsi
 	leaq	832(%rsp), %rbx
 	movl	$1, %edx
 	movq	%rbx, %rdi
@@ -205362,7 +205285,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6format8toy_sign_lvm_v4p:
 	vmovups	%ymm0, 16(%rsp)
 	movl	$1, %edx
 	movq	%r13, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1500(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1499(%rip), %rsi
 	vzeroupper
 	callq	_RNvMs_NtCs7rukeAxmHeC_10lvm_prover6keccakNtB4_9Keccak2566update_lvm_v4p
 	movl	$8, %edx
@@ -205453,7 +205376,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6format8toy_sign_lvm_v4p:
 	movq	368(%rsp), %rcx
 	jmp	.LBB482_17
 .LBB482_9:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1325(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1324(%rip), %rcx
 	movl	$136, %edx
 	xorl	%edi, %edi
 	movq	%r15, %rsi
@@ -205518,7 +205441,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6format8toy_sign_lvm_v4p:
 	vmovups	%ymm0, 80(%rsp)
 	vmovups	%ymm0, 48(%rsp)
 	vmovups	%ymm0, 16(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1498(%rip), %r12
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1497(%rip), %r12
 	leaq	16(%rsp), %rbp
 	movl	$1, %edx
 	movq	%rbp, %rdi
@@ -205994,12 +205917,12 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6format8toy_sign_lvm_v4p:
 	retq
 .LBB482_24:
 	.cfi_def_cfa_offset 1232
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1324(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1323(%rip), %rdx
 	movl	$136, %edi
 	movl	$136, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB482_19:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1496(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1495(%rip), %rdx
 	movq	392(%rsp), %rdi
 	movq	%rdi, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -206736,7 +206659,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6keccak18keccak_f_x8_avx512_lvm_v4p:
 	leaq	192(%rdi), %rax
 	movq	%rax, 88(%rsp)
 	xorl	%r14d, %r14d
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1501(%rip), %r13
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1500(%rip), %r13
 	movabsq	$-3689348814741910323, %r12
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.182(%rip), %r15
 	jmp	.LBB484_1
@@ -207381,7 +207304,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6oracle10hash_items_lvm_v4p:
 	movq	%r12, 24(%rsp)
 	leaq	40(%rsp), %rcx
 	movq	%rcx, 32(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1505(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1504(%rip), %r8
 	leaq	16(%rsp), %rcx
 	movq	%r13, %rsi
 	movq	%rbx, %rdx
@@ -207465,14 +207388,14 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6oracle10hash_items_lvm_v4p:
 	retq
 .LBB487_9:
 	.cfi_def_cfa_offset 144
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1504(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1503(%rip), %r8
 	leaq	48(%rsp), %rdi
 	leaq	16(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB487_10:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1510(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1511(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1509(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1510(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .Lfunc_end487:
@@ -207535,7 +207458,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6oracle11hash_padded_lvm_v4p:
 	movq	%r13, 24(%rsp)
 	leaq	56(%rsp), %rcx
 	movq	%rcx, 32(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1509(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1508(%rip), %r8
 	leaq	8(%rsp), %rcx
 	movq	%r12, %rsi
 	movq	%rbx, %rdx
@@ -207616,19 +207539,19 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6oracle11hash_padded_lvm_v4p:
 	retq
 .LBB488_10:
 	.cfi_def_cfa_offset 144
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1506(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1505(%rip), %r8
 	leaq	40(%rsp), %rdi
 	leaq	8(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB488_11:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1507(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1508(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1506(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1507(%rip), %rdx
 	movl	$41, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB488_12:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1510(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1511(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1509(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1510(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .Lfunc_end488:
@@ -207742,7 +207665,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6oracle6report_lvm_v4p:
 	leaq	_RNvXs7_NtNtCsevLNFiNqfJP_4core3fmt5floatdNtB7_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 248(%rsp)
 	leaq	264(%rsp), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1513(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1512(%rip), %rsi
 	movq	%rbx, %rdx
 	callq	_RNvNvNtCs1C1lLj4PWSY_5alloc3fmt6format12format_inner_lvm_v4p
 	movq	80(%rsp), %rdx
@@ -207806,7 +207729,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6oracle6report_lvm_v4p:
 	movq	%rax, 224(%rsp)
 	leaq	_RNvXs7_NtNtCsevLNFiNqfJP_4core3fmt5floatdNtB7_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 232(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1512(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1511(%rip), %rsi
 	leaq	32(%rsp), %rdi
 	leaq	160(%rsp), %rdx
 	vzeroupper
@@ -208124,7 +208047,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover7service11open_stream_lvm_v4p:
 	movq	%rax, 24(%rsp)
 	leaq	_RNvXs1i_NtCsevLNFiNqfJP_4core3fmtRNtNtCs1C1lLj4PWSY_5alloc6string6StringNtB6_7Display3fmtCs7rukeAxmHeC_10lvm_prover_lvm_v4p(%rip), %rax
 	movq	%rax, 32(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1517(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1516(%rip), %rsi
 	leaq	136(%rsp), %rdi
 	leaq	8(%rsp), %rdx
 	callq	_RNvNvNtCs1C1lLj4PWSY_5alloc3fmt6format12format_inner_lvm_v4p
@@ -208332,7 +208255,7 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover7service5fatal_lvm_v4p:
 	movq	%rax, 24(%rsp)
 	leaq	_RNvXs1i_NtCsevLNFiNqfJP_4core3fmtReNtB6_7Display3fmtCs7rukeAxmHeC_10lvm_prover_lvm_v4p(%rip), %rax
 	movq	%rax, 32(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1518(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1517(%rip), %rdi
 	leaq	24(%rsp), %rsi
 	callq	_RNvNtNtCsgHYyB3hU8Ec_3std2io5stdio7__eprint_lvm_v4p
 	callq	_RNvNtCsgHYyB3hU8Ec_3std7process4exit_lvm_v4p
@@ -208483,7 +208406,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p:
 	movb	%al, 32(%rsp)
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.934(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1525(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1524(%rip), %r8
 	leaq	24(%rsp), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -208876,7 +208799,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing6report_lvm_v4p:
 	movb	%bpl, 56(%rsp)
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.934(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1526(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1525(%rip), %r8
 	leaq	48(%rsp), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -209005,8 +208928,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel5drain_lvm_v4p:
 	retq
 .LBB496_16:
 	.cfi_def_cfa_offset 64
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1533(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1534(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1532(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1533(%rip), %rdx
 	movl	$29, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB496_2:
@@ -209612,7 +209535,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm2m311loop_tables_lvm_v4p:
 	retq
 .LBB498_34:
 	.cfi_def_cfa_offset 528
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1535(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1534(%rip), %rcx
 	movq	%r12, %rdi
 	movq	%r13, %rsi
 	vzeroupper
@@ -213598,8 +213521,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm2m311spec_tables_lvm_v4p:
 	movq	%r8, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB499_608:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1541(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1542(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1540(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1541(%rip), %r8
 	leaq	352(%rsp), %rdi
 	leaq	208(%rsp), %rsi
 	movl	$65, %ecx
@@ -213618,7 +213541,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm2m311spec_tables_lvm_v4p:
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB499_611:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1538(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1537(%rip), %rcx
 	movq	%r12, %rdi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -213627,7 +213550,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm2m311spec_tables_lvm_v4p:
 	movl	$24, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc5alloc18handle_alloc_error_lvm_v4p
 .LBB499_613:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1539(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1538(%rip), %rcx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB499_614:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.363(%rip), %rdx
@@ -213644,7 +213567,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm2m311spec_tables_lvm_v4p:
 	leaq	_RNvXs8_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impmNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 216(%rsp)
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.990(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1540(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1539(%rip), %rdx
 	leaq	208(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB499_617:
@@ -214607,15 +214530,15 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm2m314default_groups_lvm_v4p:
 	retq
 .LBB501_112:
 	.cfi_def_cfa_offset 288
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1543(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1542(%rip), %r8
 	leaq	128(%rsp), %rdi
 	leaq	40(%rsp), %rsi
 	xorl	%edx, %edx
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB501_105:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1544(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1545(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1543(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1544(%rip), %rdx
 	movl	$26, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
@@ -214743,8 +214666,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm2m35prove_lvm_v4p:
 	orq	64(%rcx), %rdx
 	leaq	136(%rcx), %rcx
 	jne	.LBB502_1
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1552(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1553(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1551(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1552(%rip), %rdx
 	movl	$91, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB502_4:
@@ -215155,7 +215078,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm2m35prove_lvm_v4p:
 	movq	16(%r13), %rax
 	jmp	.LBB502_69
 .LBB502_56:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1554(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1553(%rip), %r8
 	leaq	1216(%rsp), %rdi
 	leaq	832(%rsp), %rsi
 	xorl	%edx, %edx
@@ -215431,7 +215354,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm2m35prove_lvm_v4p:
 	movq	%rbp, %rdi
 	movq	%r13, %rsi
 	callq	_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf19fingerprint_weights_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1846(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1845(%rip), %rsi
 	leaq	1704(%rsp), %r15
 	movq	%r15, %rdi
 	callq	_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf19fingerprint_weights_lvm_v4p
@@ -215571,7 +215494,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm2m35prove_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1847(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1846(%rip), %rdi
 	movl	$10, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 .LBB502_105:
@@ -215690,7 +215613,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm2m35prove_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1848(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1847(%rip), %rdi
 	movl	$7, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 .LBB502_124:
@@ -216123,7 +216046,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm2m35prove_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1849(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1848(%rip), %rdi
 	movl	$13, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 .LBB502_188:
@@ -216241,7 +216164,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm2m35prove_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1850(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1849(%rip), %rdi
 	movl	$10, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 .LBB502_207:
@@ -217889,30 +217812,30 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm2m35prove_lvm_v4p:
 .LBB502_417:
 	leaq	624(%rsp), %rdi
 	leaq	752(%rsp), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1860(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1861(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1859(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1860(%rip), %r8
 	movl	$111, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB502_418:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1862(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1863(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1861(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1862(%rip), %rdx
 	movl	$79, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB502_419:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1864(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1865(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1863(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1864(%rip), %rdx
 	movl	$75, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB502_420:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1858(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1859(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1857(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1858(%rip), %rdx
 	movl	$65, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB502_421:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1866(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1867(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1865(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1866(%rip), %rdx
 	movl	$107, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -219561,36 +219484,36 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm3acc10acc_out_of_lvm_v4p:
 	retq
 .LBB505_95:
 	.cfi_def_cfa_offset 384
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1557(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1558(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1556(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1557(%rip), %rdx
 	movl	$49, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB505_18:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1559(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1558(%rip), %r8
 	leaq	200(%rsp), %rdi
 	leaq	64(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB505_100:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1561(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1560(%rip), %rcx
 	xorl	%edi, %edi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB505_32:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1560(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1559(%rip), %r8
 	leaq	200(%rsp), %rdi
 	leaq	64(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB505_94:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1564(%rip), %rdx
-	movq	%r12, %rdi
-	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
-.LBB505_91:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1563(%rip), %rdx
 	movq	%r12, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
-.LBB505_88:
+.LBB505_91:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1562(%rip), %rdx
+	movq	%r12, %rdi
+	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
+.LBB505_88:
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1561(%rip), %rdx
 	movq	%r14, %rdi
 	movq	48(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -219921,8 +219844,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm3acc6phi_at_lvm_v4p:
 	cmpq	%rax, %r8
 	jbe	.LBB508_12
 .LBB508_15:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1577(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1578(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1576(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1577(%rip), %rdx
 	movl	$81, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB508_16:
@@ -221455,7 +221378,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm3rec13padded_blocks_lvm_v4p:
 	jmp	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
 .LBB511_17:
 	.cfi_def_cfa_offset 64
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1582(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1581(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%r15, %rsi
 	movq	%rbx, %rdx
@@ -221465,7 +221388,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm3rec13padded_blocks_lvm_v4p:
 	movq	%rbx, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB511_18:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1581(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1580(%rip), %rdx
 	movq	%r15, %rdi
 	movq	%rbx, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -221562,8 +221485,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm3rec7two_msg_lvm_v4p:
 .LBB512_6:
 	.cfi_def_cfa_offset 80
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.356(%rip), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1583(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1584(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1582(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1583(%rip), %r8
 	movq	%rsp, %rdi
 	movl	$39, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
@@ -222697,7 +222620,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_ch_lvm_v4p:
 	testq	%rbx, %rbx
 	jne	.LBB514_4
 .LBB514_55:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1596(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1595(%rip), %rcx
 	xorl	%edi, %edi
 	movq	80(%rsp), %rsi
 	xorl	%edx, %edx
@@ -222732,7 +222655,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_ch_lvm_v4p:
 	callq	*syscall@GOTPCREL(%rip)
 	jmp	.LBB514_57
 .LBB514_62:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1595(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1594(%rip), %rcx
 	movq	80(%rsp), %rdi
 	movq	%r14, %rsi
 	movq	%rbx, %rdx
@@ -223529,7 +223452,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_ch_lvm_v4p:
 	movq	144(%rsp), %rax
 	movq	%rax, 792(%rsp)
 	movq	$3, 800(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1580(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1579(%rip), %rax
 	movq	%rax, 808(%rsp)
 	movq	$3, 816(%rsp)
 	leaq	728(%rsp), %rdi
@@ -225163,7 +225086,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_ch_lvm_v4p:
 	movq	%r15, 784(%rsp)
 	movq	%rbx, 792(%rsp)
 	movq	%r14, 800(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1586(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1585(%rip), %rax
 	movq	%rax, 808(%rsp)
 	movq	$4, 816(%rsp)
 	leaq	752(%rsp), %rdi
@@ -225563,7 +225486,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_ch_lvm_v4p:
 	movl	$56, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc5alloc18handle_alloc_error_lvm_v4p
 .LBB514_290:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1594(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1593(%rip), %rdx
 	movq	%rax, %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -225731,7 +225654,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_ch_lvm_v4p:
 	xorl	%esi, %esi
 	xorl	%eax, %eax
 .LBB514_318:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1592(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1591(%rip), %rdx
 	movq	%rax, %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -225741,7 +225664,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_ch_lvm_v4p:
 .LBB514_320:
 	xorl	%ecx, %ecx
 .LBB514_321:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1588(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1587(%rip), %rdx
 	movq	%rcx, %rdi
 	movq	%rcx, %rsi
 	vzeroupper
@@ -225750,7 +225673,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_ch_lvm_v4p:
 	movabsq	$1152921504606846974, %rax
 	movq	256(%rsp), %rdi
 	andq	%rax, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1587(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1586(%rip), %rdx
 	movq	128(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -225791,21 +225714,21 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_ch_lvm_v4p:
 	xorl	%esi, %esi
 	xorl	%eax, %eax
 .LBB514_340:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1590(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1589(%rip), %rdx
 	movq	%rax, %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB514_341:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1602(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1601(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB514_342:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1591(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1590(%rip), %rdx
 	movq	%rax, %rdi
 	movq	80(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB514_343:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1593(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1592(%rip), %rdx
 	movq	%rax, %rdi
 	movq	80(%rsp), %rsi
 	vzeroupper
@@ -225823,7 +225746,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_ch_lvm_v4p:
 	movq	%rbp, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB514_347:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1601(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1600(%rip), %rdx
 	movq	8(%rsp), %rdi
 	movq	%rdi, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -225864,7 +225787,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_ch_lvm_v4p:
 	movl	$320, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB514_357:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1585(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1584(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	vzeroupper
@@ -225874,7 +225797,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_ch_lvm_v4p:
 	movq	%r13, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB514_359:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1596(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1595(%rip), %rcx
 	xorl	%edi, %edi
 	movq	80(%rsp), %rsi
 	movq	%rbx, %rdx
@@ -227235,7 +227158,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link9sumcheck2_lvm_v4p:
 	testq	%rax, %rax
 	jne	.LBB515_10
 .LBB515_108:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1603(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1602(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	vzeroupper
@@ -227264,8 +227187,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link9sumcheck2_lvm_v4p:
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
 .LBB515_194:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1533(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1534(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1532(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1533(%rip), %rdx
 	movl	$29, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
@@ -227322,19 +227245,19 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link9sumcheck2_lvm_v4p:
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB515_110:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1604(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1603(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB515_111:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1605(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1604(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB515_112:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1606(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1605(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	vzeroupper
@@ -227930,9 +227853,9 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove11whir_config_lvm_v4p:
 	jmp	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
 .LBB516_69:
 	.cfi_def_cfa_offset 112
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1898(%rip), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1899(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1900(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1897(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1898(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1899(%rip), %r8
 	movl	$73, %ecx
 	movq	%rax, %rdi
 	vzeroupper
@@ -227942,8 +227865,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove11whir_config_lvm_v4p:
 	movq	%r12, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB516_64:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1896(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1897(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1895(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1896(%rip), %rdx
 	movl	$36, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB516_65:
@@ -229409,7 +229332,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1624(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1623(%rip), %rbx
 	movl	$12, %esi
 	movq	%rbx, %rdi
 	vmovapd	%xmm0, 16(%rsp)
@@ -230959,8 +230882,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	jne	.LBB517_400
 	jmp	.LBB517_367
 .LBB517_402:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1659(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1660(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1658(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1659(%rip), %rdx
 	movl	$89, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -230984,7 +230907,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1489(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1488(%rip), %rbx
 	movl	$7, %esi
 	movq	%rbx, %rdi
 	vmovapd	%xmm0, 16(%rsp)
@@ -231110,7 +231033,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1491(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1490(%rip), %rbx
 	movl	$6, %esi
 	movq	%rbx, %rdi
 	vmovapd	%xmm0, 16(%rsp)
@@ -231465,7 +231388,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	callq	_RNvMNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11fiat_shamir10transcriptNtB2_11ProverState5flush_lvm_v4p
 	movq	%rbx, %rdi
 	callq	_RNvMNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11fiat_shamir10transcriptNtB2_11ProverState5flush_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1579(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1578(%rip), %rsi
 	movl	$2, %edx
 	movq	%rbx, %rdi
 	callq	_RNvMNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11fiat_shamir10transcriptNtB2_11ProverState11add_scalars_lvm_v4p
@@ -232344,7 +232267,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	224(%rsp), %rbp
 	jmp	.LBB517_407
 .LBB517_587:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1657(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1656(%rip), %rcx
 	movq	464(%rsp), %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -232375,7 +232298,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	368(%rsp), %rax
 	leaq	(%rbx,%rax), %r13
 	addq	$-8, %r13
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1580(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1579(%rip), %rbx
 	leaq	848(%rsp), %r12
 	movq	400(%rsp), %rbp
 .LBB517_593:
@@ -232412,7 +232335,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	%r12, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB517_598:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1661(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1660(%rip), %rcx
 	movq	240(%rsp), %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -232521,7 +232444,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	vcvtsi2sd	%edx, %xmm15, %xmm1
 	vdivsd	.LCPI517_2(%rip), %xmm1, %xmm1
 	vaddsd	%xmm0, %xmm1, %xmm0
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1636(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1635(%rip), %rbx
 	movl	$10, %esi
 	movq	%rbx, %rdi
 	vmovsd	%xmm0, 16(%rsp)
@@ -233519,7 +233442,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	%rbx, 1464(%rsp)
 	vmovdqa	%xmm2, 16(%rsp)
 	vmovdqa	%xmm2, 1472(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1573(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1572(%rip), %rsi
 	leaq	2544(%rsp), %rdi
 	movl	$13, %edx
 	callq	_RNvNtNtNtCsgHYyB3hU8Ec_3std3sys3env4unix6getenv_lvm_v4p
@@ -233653,7 +233576,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	224(%rsp), %r12
 	leaq	(,%rbp,2), %rax
 	addq	%rbp, %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1637(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1636(%rip), %rcx
 	movq	%rcx, (%r12,%rax,8)
 	movq	$9, 8(%r12,%rax,8)
 	vmovsd	16(%rsp), %xmm0
@@ -233667,7 +233590,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	vcvtsi2sd	%edx, %xmm15, %xmm1
 	vdivsd	.LCPI517_2(%rip), %xmm1, %xmm1
 	vaddsd	%xmm0, %xmm1, %xmm0
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1638(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1637(%rip), %rbx
 	movl	$3, %esi
 	movq	%rbx, %rdi
 	vmovsd	%xmm0, 16(%rsp)
@@ -233785,12 +233708,12 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	leaq	1440(%rsp), %rsi
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedTjjjjEBM_ECs7rukeAxmHeC_10lvm_prover_lvm_v4p
 .LBB517_707:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1619(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1620(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1618(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1619(%rip), %rdx
 	movl	$49, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB517_708:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1658(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1657(%rip), %rcx
 	movq	464(%rsp), %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -234456,8 +234379,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movl	$24, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc5alloc18handle_alloc_error_lvm_v4p
 .LBB517_782:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1663(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1664(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1662(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1663(%rip), %rdx
 	movl	$95, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -234526,8 +234449,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	vzeroupper
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB517_793:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1617(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1618(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1616(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1617(%rip), %r8
 	leaq	2544(%rsp), %rdi
 	leaq	1440(%rsp), %rsi
 	movl	$49, %ecx
@@ -234583,21 +234506,21 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 .LBB517_802:
 	ud2
 .LBB517_803:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1190(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1192(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1189(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1191(%rip), %rdx
 	movl	$41, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB517_804:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1193(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1192(%rip), %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13unwrap_failed_lvm_v4p
 .LBB517_805:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.169(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1623(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1622(%rip), %rdx
 	movl	$49, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB517_806:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1632(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1631(%rip), %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13unwrap_failed_lvm_v4p
 .LBB517_807:
 	leaq	40(%rsp), %rdi
@@ -234639,43 +234562,43 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	152(%rsp), %r14
 	jmp	.LBB517_761
 .LBB517_813:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1712(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1711(%rip), %rcx
 	movq	%rbp, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB517_814:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1718(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1717(%rip), %rcx
 	movq	312(%rsp), %rdi
 	movq	%rbp, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB517_815:
 	addq	%rcx, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1715(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1714(%rip), %rdx
 	movq	64(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_816:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1713(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1712(%rip), %rdx
 	movq	64(%rsp), %rdi
 	movq	%rdi, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_817:
 	addq	%rcx, %r13
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1714(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1713(%rip), %rdx
 	movq	%r13, %rdi
 	movq	240(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_818:
 	addq	%rcx, %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1716(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1715(%rip), %rdx
 	movq	%rax, %rdi
 	movq	464(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_819:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1717(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1716(%rip), %rdx
 	movq	%rbp, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -234729,8 +234652,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	leaq	4048(%rsp), %rcx
 	movq	%rcx, 1456(%rsp)
 	movq	%rax, 1464(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1548(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1549(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1547(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1548(%rip), %rdx
 	leaq	1440(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -234760,8 +234683,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	-16(%rbx), %rax
 	cmpq	-8(%rbx), %rax
 	jbe	.LBB517_831
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1627(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1628(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1626(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1627(%rip), %rdx
 	movl	$73, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB517_835:
@@ -234775,9 +234698,9 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	jmp	.LBB517_843
 .LBB517_837:
 	movq	%r12, 1440(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1621(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1620(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.931(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1622(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1621(%rip), %r8
 	leaq	1440(%rsp), %rdx
 	movl	$12, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -234989,20 +234912,20 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	jne	.LBB517_869
 	jmp	.LBB517_903
 .LBB517_864:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1711(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1710(%rip), %rdx
 	movq	464(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_865:
 	subq	$-128, %rbp
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1566(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1567(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1565(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1566(%rip), %r8
 	leaq	1440(%rsp), %rdi
 	movl	$71, %ecx
 	movq	%rbp, %rsi
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB517_866:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1568(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1567(%rip), %r8
 	leaq	1440(%rsp), %rdi
 	leaq	3904(%rsp), %rsi
 	xorl	%edx, %edx
@@ -235017,8 +234940,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	leaq	2544(%rsp), %rcx
 	movq	%rcx, 1456(%rsp)
 	movq	%rax, 1464(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1569(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1570(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1568(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1569(%rip), %rdx
 	leaq	1440(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB517_868:
@@ -235142,8 +235065,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	jne	.LBB517_888
 	jmp	.LBB517_903
 .LBB517_883:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1571(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1572(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1570(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1571(%rip), %r8
 	movl	$31, %ecx
 	movq	%r15, %rdi
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field8gf2_64x34F192BM_EBW__lvm_v4p
@@ -235187,8 +235110,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	jne	.LBB517_673
 .LBB517_893:
 	leaq	1464(%rsp), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1575(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1576(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1574(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1575(%rip), %r8
 	leaq	2320(%rsp), %rdi
 	movl	$165, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field8gf2_64x34F192BM_EBW__lvm_v4p
@@ -235307,18 +235230,18 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	jne	.LBB517_918
 	jmp	.LBB517_903
 .LBB517_906:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1665(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1664(%rip), %rdx
 	movq	240(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_907:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1550(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1549(%rip), %rdx
 	movq	%rax, %rdi
 	movq	%rbx, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_908:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1551(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1550(%rip), %rdx
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_909:
@@ -235347,19 +235270,19 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	jne	.LBB517_646
 	jmp	.LBB517_647
 .LBB517_910:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1565(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1564(%rip), %r8
 	leaq	1440(%rsp), %rdi
 	leaq	2544(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB517_911:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1656(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1655(%rip), %rcx
 	movq	160(%rsp), %rdi
 	movq	%r13, %rsi
 	movq	464(%rsp), %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB517_912:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1662(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1661(%rip), %rdx
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_913:
@@ -235379,7 +235302,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	2560(%rsp), %rbx
 	jmp	.LBB517_493
 .LBB517_915:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1556(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1555(%rip), %r8
 	leaq	1136(%rsp), %rdi
 	leaq	528(%rsp), %rsi
 	xorl	%edx, %edx
@@ -235493,7 +235416,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	vcvtsi2sd	%edx, %xmm15, %xmm1
 	vdivsd	.LCPI517_2(%rip), %xmm1, %xmm1
 	vaddsd	%xmm0, %xmm1, %xmm0
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1643(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1642(%rip), %rbx
 	movl	$6, %esi
 	movq	%rbx, %rdi
 	vmovsd	%xmm0, 16(%rsp)
@@ -235551,7 +235474,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	vcvtsi2sd	%edx, %xmm15, %xmm1
 	vdivsd	.LCPI517_2(%rip), %xmm1, %xmm1
 	vaddsd	%xmm0, %xmm1, %xmm0
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1644(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1643(%rip), %rbx
 	movl	$7, %esi
 	movq	%rbx, %rdi
 	vmovsd	%xmm0, 16(%rsp)
@@ -235597,15 +235520,15 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	jne	.LBB517_949
 	jmp	.LBB517_1339
 .LBB517_937:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1639(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1640(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1638(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1639(%rip), %rdx
 	movl	$47, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB517_938:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1641(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1640(%rip), %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13unwrap_failed_lvm_v4p
 .LBB517_939:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1642(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1641(%rip), %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13unwrap_failed_lvm_v4p
 .LBB517_940:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1022(%rip), %rdi
@@ -235884,7 +235807,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	vcvtsi2sd	%edx, %xmm15, %xmm1
 	vdivsd	.LCPI517_2(%rip), %xmm1, %xmm1
 	vaddsd	%xmm0, %xmm1, %xmm0
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1649(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1648(%rip), %rbx
 	movl	$6, %esi
 	movq	%rbx, %rdi
 	vmovsd	%xmm0, 80(%rsp)
@@ -235943,7 +235866,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	vzeroupper
 	callq	_RNvNtCsgHYyB3hU8Ec_3std5panic13resume_unwind_lvm_v4p
 .LBB517_975:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1335(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1334(%rip), %rdx
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_976:
@@ -236319,15 +236242,15 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	je	.LBB517_1096
 	jmp	.LBB517_1267
 .LBB517_1042:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1631(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1630(%rip), %rdx
 	movq	%rbp, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_1043:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1633(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1632(%rip), %rdx
 	movq	%rbp, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_1044:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1634(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1633(%rip), %rdx
 	movq	%rbp, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_1045:
@@ -236432,7 +236355,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	%rax, 112(%rsp)
 	jmp	.LBB517_967
 .LBB517_1067:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1555(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1554(%rip), %rcx
 	movl	$5, %esi
 	xorl	%edi, %edi
 	xorl	%edx, %edx
@@ -236450,12 +236373,12 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movl	$40, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB517_1071:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1629(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1628(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_1072:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1630(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1629(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -236472,7 +236395,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	%rbx, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB517_1076:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1635(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1634(%rip), %rdx
 	movq	%rbp, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_1077:
@@ -236484,26 +236407,26 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	1384(%rsp), %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB517_1079:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1574(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1573(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_1080:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1655(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1654(%rip), %rcx
 	movq	312(%rsp), %rdi
 	movq	%r14, %rsi
 	movq	464(%rsp), %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB517_1081:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1645(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1646(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1644(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1645(%rip), %rdx
 	movl	$17, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB517_1082:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1647(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1646(%rip), %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13unwrap_failed_lvm_v4p
 .LBB517_1083:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1648(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1647(%rip), %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13unwrap_failed_lvm_v4p
 .LBB517_1084:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.102(%rip), %rdi
@@ -236667,7 +236590,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	%r12, 528(%rsp)
 	leaq	1136(%rsp), %rax
 	movq	%rax, 536(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1597(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1596(%rip), %rax
 	movq	%rax, 544(%rsp)
 	leaq	736(%rsp), %rdi
 	leaq	527(%rsp), %rbx
@@ -236680,7 +236603,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	%r12, 528(%rsp)
 	leaq	1120(%rsp), %rax
 	movq	%rax, 536(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1598(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1597(%rip), %rax
 	movq	%rax, 544(%rsp)
 	leaq	1136(%rsp), %rdi
 	leaq	528(%rsp), %rcx
@@ -237429,7 +237352,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	vcvtsi2sd	%edx, %xmm15, %xmm1
 	vdivsd	.LCPI517_2(%rip), %xmm1, %xmm1
 	vaddsd	%xmm0, %xmm1, %xmm0
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1650(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1649(%rip), %rbx
 	movl	$7, %esi
 	movq	%rbx, %rdi
 	vmovsd	%xmm0, 64(%rsp)
@@ -237764,7 +237687,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	vcvtsi2sd	%edx, %xmm15, %xmm1
 	vdivsd	.LCPI517_2(%rip), %xmm1, %xmm1
 	vaddsd	%xmm0, %xmm1, %xmm0
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1651(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1650(%rip), %rbx
 	movl	$8, %esi
 	movq	%rbx, %rdi
 	vmovsd	%xmm0, 16(%rsp)
@@ -237892,7 +237815,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	vcvtsi2sd	%edx, %xmm15, %xmm1
 	vdivsd	.LCPI517_2(%rip), %xmm1, %xmm1
 	vaddsd	%xmm0, %xmm1, %xmm0
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1652(%rip), %rbx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1651(%rip), %rbx
 	movl	$9, %esi
 	movq	%rbx, %rdi
 	vmovsd	%xmm0, 16(%rsp)
@@ -238157,7 +238080,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	xorl	%edx, %edx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB517_1247:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1599(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1598(%rip), %rcx
 	xorl	%edi, %edi
 	movq	304(%rsp), %rsi
 	movq	240(%rsp), %rdx
@@ -238331,20 +238254,20 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	56(%rsp), %rbp
 	jmp	.LBB517_1173
 .LBB517_1278:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1653(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1654(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1652(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1653(%rip), %rdx
 	movl	$69, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB517_1279:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1607(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1608(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1606(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1607(%rip), %r8
 	leaq	1120(%rsp), %rdi
 	leaq	528(%rsp), %rsi
 	movl	$13, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB517_1280:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1609(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1610(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1608(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1609(%rip), %r8
 	leaq	736(%rsp), %rdi
 	leaq	528(%rsp), %rsi
 	movl	$5, %ecx
@@ -238635,8 +238558,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	%rax, 544(%rsp)
 	leaq	_RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params6QClassNtB6_5Debug3fmtBC__lvm_v4p(%rip), %rax
 	movq	%rax, 552(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1611(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1612(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1610(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1611(%rip), %r8
 	leaq	736(%rsp), %rdi
 	leaq	528(%rsp), %rcx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
@@ -238674,13 +238597,13 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movq	112(%rsp), %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB517_1342:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1555(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1554(%rip), %rcx
 	movl	$5, %esi
 	xorl	%edi, %edi
 	movq	64(%rsp), %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB517_1344:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1600(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1599(%rip), %rcx
 	xorl	%edi, %edi
 	movq	328(%rsp), %rsi
 	xorl	%edx, %edx
@@ -238694,7 +238617,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	movl	$1400, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB517_1348:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1695(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1694(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_1349:
@@ -238714,7 +238637,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.662(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB517_1354:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1600(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1599(%rip), %rcx
 	xorl	%edi, %edi
 	movq	328(%rsp), %rsi
 	movq	%rbx, %rdx
@@ -238722,13 +238645,13 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm5prove5prove_lvm_v4p:
 .LBB517_1355:
 	cmpq	$32, %rdx
 	jb	.LBB517_1357
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1613(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1612(%rip), %rcx
 	movl	$8, %edi
 	movl	$5624, %esi
 	movq	%rbx, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB517_1357:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1616(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1615(%rip), %rcx
 	movl	$32, %edi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -238870,7 +238793,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir10parse_blob_lvm_v4p:
 	movq	%rax, 104(%rsp)
 	cmpq	$7, %rax
 	jne	.LBB518_764
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1666(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1665(%rip), %rsi
 	movl	$7, %edx
 	callq	*bcmp@GOTPCREL(%rip)
 	testl	%eax, %eax
@@ -240653,7 +240576,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir10parse_blob_lvm_v4p:
 	.cfi_def_cfa_offset 544
 	cmpq	$3, %r14
 	jne	.LBB518_770
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1671(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1670(%rip), %rsi
 	movl	$3, %edx
 	movq	%rbx, %rdi
 	callq	*bcmp@GOTPCREL(%rip)
@@ -242273,9 +242196,9 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir10parse_blob_lvm_v4p:
 	movb	$2, %al
 .LBB518_704:
 	movb	%al, 96(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1248(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1247(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.939(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1249(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1248(%rip), %r8
 	leaq	96(%rsp), %rdx
 	movl	$21, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -242374,8 +242297,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir10parse_blob_lvm_v4p:
 	vmovaps	%xmm0, 464(%rsp)
 	jmp	.LBB518_380
 .LBB518_736:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1246(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1247(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1245(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1246(%rip), %rdx
 	movl	$22, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB518_738:
@@ -242472,9 +242395,9 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir10parse_blob_lvm_v4p:
 .LBB518_763:
 	movq	$0, 96(%rsp)
 .LBB518_764:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1667(%rip), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1668(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1669(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1666(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1667(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1668(%rip), %r8
 	leaq	96(%rsp), %rdi
 	movl	$35, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedINtNtB4_6option6OptionReEBM_ECs7rukeAxmHeC_10lvm_prover_lvm_v4p
@@ -242495,8 +242418,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir10parse_blob_lvm_v4p:
 	movq	%rax, 96(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 104(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1250(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1251(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1249(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1250(%rip), %rdx
 	leaq	96(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB518_770:
@@ -242506,13 +242429,13 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir10parse_blob_lvm_v4p:
 	movq	%rax, 96(%rsp)
 	leaq	_RNvXs1g_NtCsevLNFiNqfJP_4core3fmtReNtB6_5Debug3fmtCs7rukeAxmHeC_10lvm_prover_lvm_v4p(%rip), %rax
 	movq	%rax, 104(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1672(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1673(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1671(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1672(%rip), %rdx
 	leaq	96(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB518_771:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1686(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1687(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1685(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1686(%rip), %rdx
 	movl	$57, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB518_773:
@@ -242551,8 +242474,8 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir10parse_blob_lvm_v4p:
 	movq	%rax, 96(%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 104(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1688(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1689(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1687(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1688(%rip), %rdx
 	leaq	96(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB518_779:
@@ -242592,9 +242515,9 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir10parse_blob_lvm_v4p:
 	leaq	96(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB518_782:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1679(%rip), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1680(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1681(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1678(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1679(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1680(%rip), %r8
 	leaq	384(%rsp), %rdi
 	movl	$75, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedReBM_ECs7rukeAxmHeC_10lvm_prover_lvm_v4p
@@ -242613,18 +242536,18 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir10parse_blob_lvm_v4p:
 	movq	%rbx, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB518_785:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1683(%rip), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1684(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1685(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1682(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1683(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1684(%rip), %r8
 	leaq	96(%rsp), %rdi
 	movl	$57, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedReBM_ECs7rukeAxmHeC_10lvm_prover_lvm_v4p
 .LBB518_786:
 	movq	$0, 96(%rsp)
 .LBB518_787:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1675(%rip), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1676(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1677(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1674(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1675(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1676(%rip), %r8
 	leaq	96(%rsp), %rdi
 	movl	$81, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedINtNtB4_6option6OptionReEBM_ECs7rukeAxmHeC_10lvm_prover_lvm_v4p
@@ -242971,10 +242894,10 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params10query_list_lvm_v4p:
 	movl	$32, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc5alloc18handle_alloc_error_lvm_v4p
 .LBB519_43:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1692(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1691(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB519_44:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1691(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1690(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .Lfunc_end519:
 	.size	_RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params10query_list_lvm_v4p, .Lfunc_end519-_RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params10query_list_lvm_v4p
@@ -244574,12 +244497,12 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params6phases_lvm_v4p:
 	movl	$120, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB522_7:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1693(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1692(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB522_110:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1694(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1693(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -246135,7 +246058,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6stream4read_lvm_v4p:
 	leaq	96(%rsp), %r13
 	movq	%r13, 24(%rsp)
 	movq	%r15, 32(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1704(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1703(%rip), %rsi
 	leaq	112(%rsp), %rdi
 	leaq	8(%rsp), %rdx
 	callq	_RNvNvNtCs1C1lLj4PWSY_5alloc3fmt6format12format_inner_lvm_v4p
@@ -246232,7 +246155,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6stream7stmt_of_lvm_v4p:
 	vmovups	%ymm0, 112(%rsp)
 	vmovups	%ymm0, 80(%rsp)
 	vmovups	%ymm0, 48(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1502(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1501(%rip), %rsi
 	leaq	48(%rsp), %r12
 	movl	$1, %edx
 	movq	%r12, %rdi
@@ -246265,7 +246188,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6stream7stmt_of_lvm_v4p:
 	vmovups	%ymm0, 112(%rsp)
 	vmovups	%ymm0, 80(%rsp)
 	vmovups	%ymm0, 48(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1503(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1502(%rip), %rsi
 	leaq	48(%rsp), %r15
 	movl	$1, %edx
 	movq	%r15, %rdi
@@ -246466,7 +246389,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6stream9header_of_lvm_v4p:
 	retq
 .LBB529_6:
 	.cfi_def_cfa_offset 48
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1706(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1705(%rip), %rdi
 	movl	$41, %esi
 	callq	_RNvNtCs7rukeAxmHeC_10lvm_prover7service5fatal_lvm_v4p
 .LBB529_7:
@@ -246724,12 +246647,12 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6tables11cont_column_lvm_v4p:
 	retq
 .LBB530_42:
 	.cfi_def_cfa_offset 64
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1707(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1708(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1706(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1707(%rip), %rdx
 	movl	$40, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB530_44:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1710(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1709(%rip), %rdx
 	movq	%rbx, %rdi
 	movq	%rbx, %rsi
 	vzeroupper
@@ -246741,7 +246664,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm6tables11cont_column_lvm_v4p:
 .LBB530_40:
 	movq	%rax, %rdi
 .LBB530_41:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1709(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1708(%rip), %rdx
 	movq	%rbx, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -247586,20 +247509,20 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4open12slot_weights_lvm_v4p:
 	jmp	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
 .LBB532_13:
 	.cfi_def_cfa_offset 96
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1732(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1731(%rip), %rcx
 	movq	%rsi, %rdi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB532_26:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1730(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1729(%rip), %rdx
 	movq	%rdi, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB532_20:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1731(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1730(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB532_25:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1729(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1728(%rip), %rdx
 	movq	8(%rsp), %rdi
 	movq	%rdi, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -248066,7 +247989,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4open4fold_lvm_v4p:
 	retq
 .LBB534_38:
 	.cfi_def_cfa_offset 544
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2043(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2042(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .Lfunc_end534:
 	.size	_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4open4fold_lvm_v4p, .Lfunc_end534-_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4open4fold_lvm_v4p
@@ -250972,14 +250895,14 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1742(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1741(%rip), %rdi
 	movl	$7, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 	movq	16(%r14), %rdx
 	cmpq	$4, %rdx
 	ja	.LBB536_26
 .LBB536_104:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1743(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1742(%rip), %rcx
 	movl	$5, %esi
 	xorl	%edi, %edi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -251021,7 +250944,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1746(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1745(%rip), %rdi
 	movl	$4, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 	jmp	.LBB536_119
@@ -251029,8 +250952,8 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	movq	%r12, %rdi
 	vzeroupper
 	callq	*free@GOTPCREL(%rip)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1744(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1745(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1743(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1744(%rip), %rdx
 	movl	$40, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB536_111:
@@ -252160,11 +252083,11 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	xorl	%eax, %eax
 	jmp	.LBB536_173
 .LBB536_168:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1758(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1757(%rip), %rdx
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_169:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1759(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1758(%rip), %rdx
 	movq	%rax, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -252424,7 +252347,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1747(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1746(%rip), %rdi
 	movl	$6, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 	jmp	.LBB536_200
@@ -252738,13 +252661,13 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1751(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1750(%rip), %rdi
 	movl	$6, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 .LBB536_224:
 	movq	1888(%rsp), %rax
 	leaq	(%rax,%rbp,8), %rbx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1752(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1751(%rip), %rax
 	movq	%rax, 3040(%rsp)
 	movq	$4, 3048(%rsp)
 	movl	$-1, 3064(%rsp)
@@ -259695,24 +259618,24 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	callq	_RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5alloc6global11GlobalAlloc7dealloc_lvm_v4p
 	jmp	.LBB536_217
 .LBB536_800:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1280(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1279(%rip), %rcx
 	movq	%r13, %rdi
 	movq	96(%rsp), %rdx
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB536_801:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1279(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1278(%rip), %rcx
 	movl	$4800, %esi
 	xorl	%edi, %edi
 	movq	%r15, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB536_802:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1282(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1281(%rip), %rcx
 	movq	(%rsp), %rdx
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB536_803:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1281(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1280(%rip), %rcx
 	movl	$4800, %esi
 	xorl	%edi, %edi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -261343,7 +261266,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	movq	%rax, %rbp
 	xorl	%eax, %eax
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.593(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1740(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1739(%rip), %rdx
 	movq	%rbp, %rsi
 .LBB536_875:
 	movl	(%rcx,%rax,4), %r8d
@@ -261705,43 +261628,43 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	movq	%rbx, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB536_927:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1274(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1273(%rip), %rdx
 	movq	%r15, %rdi
 	movq	%r15, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_928:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1275(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1274(%rip), %rdx
 	movq	%r15, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_929:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1750(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1749(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB536_930:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1278(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1277(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%rbx, %rsi
 	movq	%r10, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB536_931:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1276(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1275(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%r15, %rsi
 	movq	(%rsp), %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB536_932:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1386(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1385(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%rbx, %rsi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB536_933:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1389(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1388(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%rdx, %rsi
 	movq	(%rsp), %rdx
@@ -261749,18 +261672,18 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB536_934:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.0(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1277(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1276(%rip), %rdx
 	movl	$55, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB536_935:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.0(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1385(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1384(%rip), %rdx
 	movl	$55, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB536_936:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1387(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1386(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%rdx, %rsi
 	movq	(%rsp), %rdx
@@ -261910,12 +261833,12 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
 .LBB536_958:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.0(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1383(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1382(%rip), %rdx
 	movl	$55, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB536_959:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.0(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1272(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1271(%rip), %rdx
 	movl	$55, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB536_960:
@@ -261937,18 +261860,18 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
 .LBB536_962:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1336(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1335(%rip), %rdx
 	movl	$9, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_963:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1273(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1272(%rip), %rcx
 	movq	%r12, %rdi
 	movq	%r8, %rsi
 	movq	%r8, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB536_964:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1384(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1383(%rip), %rcx
 	movq	%r12, %rdi
 	movq	%r13, %rsi
 	movq	%r13, %rdx
@@ -261958,22 +261881,22 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	movq	%r12, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB536_966:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1748(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1747(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_967:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1749(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1748(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_968:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1336(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1335(%rip), %rdx
 	movl	$3, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_969:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1388(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1387(%rip), %rdi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB536_970:
@@ -261987,7 +261910,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_972:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1757(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1756(%rip), %rdx
 	movq	368(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_973:
@@ -262008,7 +261931,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	movq	%r13, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB536_976:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1753(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1752(%rip), %rcx
 	movl	$4800, %esi
 	xorl	%edi, %edi
 	movq	%r15, %rdx
@@ -262016,7 +261939,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 .LBB536_977:
 	leaq	(%r14,%rcx), %rdi
 	decq	%rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1739(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1738(%rip), %rdx
 	movl	$320, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -262039,7 +261962,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	vzeroupper
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB536_982:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1336(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1335(%rip), %rdx
 	movl	$9, %edi
 	movl	$9, %esi
 	vzeroupper
@@ -262060,25 +261983,25 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	movq	%rbp, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_987:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1788(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1787(%rip), %rdx
 	movq	%r14, %rdi
 	movq	%r14, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_988:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1789(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1788(%rip), %rdx
 	movl	$1600, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_989:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1790(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1789(%rip), %rdx
 	movl	$1600, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_990:
 	andl	$63, %r8d
 	orq	%r8, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1741(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1740(%rip), %rdx
 	movl	$1600, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_991:
@@ -262090,17 +262013,17 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr6prover11prove_layer_lvm_v4p:
 	movl	$264, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB536_993:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1754(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1753(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_994:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1755(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1754(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB536_995:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1756(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1755(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -265732,7 +265655,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witness16block_lanes_into_lv
 	callq	_RNCINvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witness5blockNCNvB4_16block_lanes_into0Es_0Ba__lvm_v4p
 	jmp	.LBB539_27
 .LBB539_35:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1762(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1761(%rip), %r8
 	leaq	808(%rsp), %rdi
 	leaq	272(%rsp), %rsi
 	xorl	%edx, %edx
@@ -265758,11 +265681,11 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witness16block_lanes_into_lv
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.702(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB539_38:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1346(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1345(%rip), %rdi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB539_40:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1347(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1346(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	vzeroupper
@@ -265973,7 +265896,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witness20transpose64_portabl
 .LBB540_16:
 	pushq	%rax
 	.cfi_def_cfa_offset 16
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1763(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1762(%rip), %rdx
 	movl	$64, %esi
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -266454,7 +266377,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witness6linear_lvm_v4p:
 	je	.LBB541_56
 	cmpq	16(%rsp), %rdx
 	je	.LBB541_57
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1740(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1739(%rip), %rax
 	movq	(%rax,%rdx,8), %r12
 	movq	%r12, %r10
 	shlq	$6, %r10
@@ -266532,33 +266455,33 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witness6linear_lvm_v4p:
 	retq
 .LBB541_41:
 	.cfi_def_cfa_offset 41056
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1776(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1775(%rip), %rcx
 	movl	$64, %esi
 	xorl	%edi, %edi
 	movq	%r9, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB541_54:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1777(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1776(%rip), %rcx
 	movq	%r10, %rdi
 	movq	%rsi, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB541_6:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1774(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1773(%rip), %rcx
 	movl	$64, %esi
 	xorl	%edi, %edi
 	movq	%r11, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB541_35:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1778(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1777(%rip), %rcx
 	movq	%r10, %rdi
 	movq	%rsi, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB541_34:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1775(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1774(%rip), %rcx
 	movl	$64, %esi
 	xorl	%edi, %edi
 	movq	%r9, %rdx
@@ -266566,35 +266489,35 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witness6linear_lvm_v4p:
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB541_46:
 	movq	%r8, %r10
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1777(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1776(%rip), %rcx
 	movq	%r10, %rdi
 	movq	%rsi, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB541_56:
 	shlq	$6, %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1773(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1772(%rip), %rcx
 	movq	%rdx, %rdi
 	movq	32(%rsp), %rdx
 	movq	%rdx, %rsi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB541_57:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1770(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1769(%rip), %rcx
 	movl	$64, %esi
 	xorl	%edi, %edi
 	movq	24(%rsp), %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB541_58:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1772(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1771(%rip), %rcx
 	movq	%r10, %rdi
 	movq	8(%rsp), %rdx
 	movq	%rdx, %rsi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB541_25:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1771(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1770(%rip), %rcx
 	movl	$64, %esi
 	xorl	%edi, %edi
 	movq	%r9, %rdx
@@ -266783,46 +266706,46 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witness8chi_iota_lvm_v4p:
 	retq
 .LBB542_14:
 	.cfi_def_cfa_offset 96
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1787(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1786(%rip), %rcx
 	movq	%rsi, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB542_3:
 	andl	$63, %esi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1780(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1779(%rip), %rcx
 	movq	%rsi, %rdx
 	movl	$64, %esi
 	xorl	%edi, %edi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB542_19:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1786(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1785(%rip), %rcx
 	movq	%r10, %rdi
 	movq	%rsi, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB542_17:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1781(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1780(%rip), %rcx
 	movl	$64, %esi
 	xorl	%edi, %edi
 	movq	%r9, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB542_30:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1785(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1784(%rip), %rcx
 	movq	%r10, %rdi
 	movq	%rsi, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB542_23:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1782(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1781(%rip), %rcx
 	movl	$64, %esi
 	xorl	%edi, %edi
 	movq	%r9, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB542_31:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1784(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1783(%rip), %rcx
 	movq	8(%rsp), %rdx
 	movq	%rdx, %rsi
 	vzeroupper
@@ -266830,7 +266753,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witness8chi_iota_lvm_v4p:
 .LBB542_26:
 	movq	8(%rsp), %rdx
 	andl	$63, %edx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1783(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1782(%rip), %rcx
 	movl	$64, %esi
 	xorl	%edi, %edi
 	vzeroupper
@@ -266841,7 +266764,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr7witness8chi_iota_lvm_v4p:
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB542_11:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1779(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1778(%rip), %rdx
 	movq	8(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -267132,18 +267055,18 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives11multilinear11fold_ladder_lv
 	retq
 .LBB544_8:
 	.cfi_def_cfa_offset 80
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1792(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1791(%rip), %rdx
 	movq	%rcx, %rdi
 	movq	(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB544_10:
 	incq	%rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1793(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1792(%rip), %rdx
 	movq	%rcx, %rdi
 	movq	(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB544_14:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1794(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1793(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -267786,14 +267709,14 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives11multilinear12mle_eval_par_l
 	xorl	%edi, %edi
 	jmp	.LBB545_91
 .LBB545_100:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1795(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1794(%rip), %r8
 	leaq	80(%rsp), %rdi
 	leaq	128(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB545_99:
 	movq	%rbp, %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1796(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1795(%rip), %rcx
 	movq	%r12, %rdi
 	movq	%rbp, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -268329,15 +268252,15 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives11multilinear13fill_eq_table_
 	callq	*%r13
 	jmp	.LBB546_42
 .LBB546_72:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1797(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1798(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1796(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1797(%rip), %r8
 	leaq	56(%rsp), %rdi
 	leaq	104(%rsp), %rsi
 	movl	$61, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB546_73:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1799(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1798(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB546_7:
@@ -268347,11 +268270,11 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives11multilinear13fill_eq_table_
 	shlq	$5, %rsi
 	jne	.LBB546_9
 .LBB546_77:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1531(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1530(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB546_78:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1381(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1382(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1380(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1381(%rip), %rdx
 	movl	$57, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB546_79:
@@ -268913,7 +268836,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives11multilinear16fill_eq_doubli
 	retq
 .LBB547_13:
 	.cfi_def_cfa_offset 64
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1802(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1801(%rip), %rax
 	xorl	%edi, %edi
 	movq	%rcx, %rdx
 	movq	%rax, %rcx
@@ -268921,7 +268844,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives11multilinear16fill_eq_doubli
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB547_14:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1801(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1800(%rip), %rdx
 	movl	$19, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -269238,7 +269161,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives11multilinear8mle_eval_lvm_v4
 	retq
 .LBB548_24:
 	.cfi_def_cfa_offset 208
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1803(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1802(%rip), %r8
 	leaq	120(%rsp), %rdi
 	leaq	48(%rsp), %rsi
 	xorl	%edx, %edx
@@ -275558,7 +275481,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core11constraints5prove_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1804(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1803(%rip), %rdi
 	movl	$16, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 	movq	1272(%rsp), %rax
@@ -275566,7 +275489,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core11constraints5prove_lvm_v4p:
 	jne	.LBB554_532
 	jmp	.LBB554_533
 .LBB554_559:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1807(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1806(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%rbx, %rsi
 	movq	%r8, %rdx
@@ -275598,8 +275521,8 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core11constraints5prove_lvm_v4p:
 	movl	$128, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB554_565:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1381(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1382(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1380(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1381(%rip), %rdx
 	movl	$57, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -275654,13 +275577,13 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core11constraints5prove_lvm_v4p:
 	movq	520(%rsp), %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB554_572:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1805(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1804(%rip), %rdx
 	movq	%r13, %rdi
 	movq	248(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB554_573:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1806(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1805(%rip), %rdx
 	movq	%r13, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB554_574:
@@ -276757,7 +276680,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core11constraints9message_e_lvm_
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB556_131:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1813(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1812(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB556_3:
@@ -277300,17 +277223,17 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core3gkr13products_into_lvm_v4p:
 	retq
 .LBB557_8:
 	.cfi_def_cfa_offset 64
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1821(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1820(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB557_9:
 	addq	$2, %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1822(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1821(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB557_6:
 	addq	$3, %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1823(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1822(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .Lfunc_end557:
@@ -285015,7 +284938,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core3gkr20prove_product_triple_l
 	movq	%r12, %rdi
 	jmp	.LBB558_565
 .LBB558_96:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1814(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1813(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%r15, %rsi
 	vzeroupper
@@ -285024,7 +284947,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core3gkr20prove_product_triple_l
 	vzeroupper
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec17capacity_overflow_lvm_v4p
 .LBB558_102:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1816(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1815(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%r15, %rsi
 	vzeroupper
@@ -285054,8 +284977,8 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core3gkr20prove_product_triple_l
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB558_877:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1533(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1534(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1532(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1533(%rip), %rdx
 	movl	$29, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
@@ -285097,13 +285020,13 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core3gkr20prove_product_triple_l
 	movl	$187, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB558_858:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1818(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1819(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1817(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1818(%rip), %rdx
 	movl	$191, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB558_362:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1180(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1179(%rip), %rcx
 	movl	$4, %esi
 	xorl	%edi, %edi
 	vzeroupper
@@ -285120,8 +285043,8 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core3gkr20prove_product_triple_l
 	jne	.LBB558_191
 .LBB558_79:
 	leaq	1952(%rsp), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1832(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1833(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1831(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1832(%rip), %r8
 	leaq	1928(%rsp), %rdi
 	movl	$67, %ecx
 	vzeroupper
@@ -285184,7 +285107,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core3gkr20prove_product_triple_l
 	movq	88(%rdi), %rsi
 	jmp	.LBB558_201
 .LBB558_178:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1820(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1819(%rip), %rdx
 	movq	%r14, %rdi
 	movq	104(%rsp), %rsi
 	vzeroupper
@@ -285194,7 +285117,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core3gkr20prove_product_triple_l
 	movq	%r13, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB558_177:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1815(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1814(%rip), %rdx
 	movq	%r15, %rdi
 	movq	528(%rsp), %rsi
 	vzeroupper
@@ -285212,7 +285135,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core3gkr20prove_product_triple_l
 	movl	$48, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc5alloc18handle_alloc_error_lvm_v4p
 .LBB558_870:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1835(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1834(%rip), %rcx
 	movl	$1, %edi
 	xorl	%esi, %esi
 	xorl	%edx, %edx
@@ -285260,8 +285183,8 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core3gkr20prove_product_triple_l
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB558_854:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1824(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1825(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1823(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1824(%rip), %rdx
 	movl	$145, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB558_439:
@@ -285293,36 +285216,36 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core3gkr20prove_product_triple_l
 	movq	%rbx, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB558_184:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1826(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1825(%rip), %rdx
 	movq	24(%rsp), %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB558_185:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1827(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1826(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB558_187:
 	movq	%rdx, %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1828(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1827(%rip), %rdx
 	movq	24(%rsp), %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB558_188:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1829(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1828(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB558_189:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1830(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1829(%rip), %rdx
 	movq	24(%rsp), %rdi
 	movq	528(%rsp), %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB558_190:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1831(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1830(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	vzeroupper
@@ -285338,7 +285261,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core3gkr20prove_product_triple_l
 	movl	$64, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB558_853:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1834(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1833(%rip), %rcx
 	movq	%r15, %rdi
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -285366,7 +285289,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core3gkr20prove_product_triple_l
 	movq	%r12, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB558_865:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1817(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1816(%rip), %rdi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB558_871:
@@ -285409,7 +285332,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core3gkr20prove_product_triple_l
 	vzeroupper
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB558_704:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1179(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1178(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB558_611:
 	movq	%r14, %rdi
@@ -286188,16 +286111,16 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf15accumulate_form_lvm_v
 	vmovdqa	16(%rsp), %xmm6
 	jmp	.LBB560_9
 .LBB560_10:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1853(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1854(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1852(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1853(%rip), %rdx
 	movl	$183, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB560_27:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1852(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1851(%rip), %rdx
 	movq	%rax, %rdi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB560_18:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1851(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1850(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .Lfunc_end560:
 	.size	_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf15accumulate_form_lvm_v4p, .Lfunc_end560-_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf15accumulate_form_lvm_v4p
@@ -286456,7 +286379,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf15padded_products_lvm_v
 	retq
 .LBB561_9:
 	.cfi_def_cfa_offset 64
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1857(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1856(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%rbx, %rsi
 	movq	%r12, %rdx
@@ -286944,7 +286867,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf6layout_lvm_v4p:
 	retq
 .LBB563_51:
 	.cfi_def_cfa_offset 112
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1869(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1868(%rip), %rdi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13unwrap_failed_lvm_v4p
 .LBB563_52:
@@ -286952,8 +286875,8 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf6layout_lvm_v4p:
 	movq	%rax, (%rsp)
 	leaq	_RNvXsd_NtNtNtCsevLNFiNqfJP_4core3fmt3num3impyNtB9_7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 8(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1870(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1871(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1869(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1870(%rip), %rdx
 	movq	%rsp, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -286978,7 +286901,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv11leanvm_core4leaf6layout_lvm_v4p:
 	jne	.LBB563_38
 	jmp	.LBB563_39
 .LBB563_50:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1868(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1867(%rip), %rdx
 	movq	%r14, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -287060,7 +286983,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open23open_mixed_whir_stacked
 	leaq	2320(%rsp), %rsi
 	movq	%r14, %rdx
 	callq	_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6powers_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1872(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1871(%rip), %rax
 	movq	%rax, 2320(%rsp)
 	movq	$11, 2328(%rsp)
 	movl	$-1, 2344(%rsp)
@@ -287636,8 +287559,8 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open23open_mixed_whir_stacked
 	callq	_RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basis13initial_basis_lvm_v4p
 	jmp	.LBB564_34
 .LBB564_79:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1875(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1876(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1874(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1875(%rip), %rdx
 	movl	$113, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
@@ -287694,7 +287617,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open23open_mixed_whir_stacked
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1873(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1872(%rip), %rdi
 	movl	$5, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 .LBB564_34:
@@ -287816,13 +287739,13 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open23open_mixed_whir_stacked
 	jne	.LBB564_30
 	jmp	.LBB564_32
 .LBB564_80:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1878(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1879(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1877(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1878(%rip), %rdx
 	movl	$70, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB564_59:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1877(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1876(%rip), %rcx
 	movq	%rbp, %rdi
 	movq	104(%rsp), %rdx
 	vzeroupper
@@ -288159,7 +288082,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11ring_switch12fold_1b_rows_lvm_v4p:
 	callq	*%r12
 	jmp	.LBB565_39
 .LBB565_81:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1890(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1889(%rip), %r8
 	leaq	48(%rsp), %rdi
 	leaq	120(%rsp), %rsi
 	xorl	%edx, %edx
@@ -288691,8 +288614,8 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11ring_switch13prove_prepare_lvm_v4p:
 	callq	*syscall@GOTPCREL(%rip)
 	jmp	.LBB566_27
 .LBB566_70:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1891(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1892(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1890(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1891(%rip), %r8
 	leaq	104(%rsp), %rdi
 	leaq	128(%rsp), %rsi
 	movl	$95, %ecx
@@ -288932,9 +288855,9 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11ring_switch13prove_prepare_lvm_v4p:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.761(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB566_3:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1893(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1892(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.928(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1894(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1893(%rip), %r8
 	leaq	15(%rsp), %rdx
 	movl	$25, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -289364,7 +289287,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11ring_switch24build_coordinate_weigh
 	.cfi_offset %rbp, -16
 	movq	%rdi, 8(%rsp)
 	xorl	%edi, %edi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1895(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1894(%rip), %rdx
 	movabsq	$6148914691236517205, %r8
 	.p2align	4
 .LBB569_1:
@@ -290276,34 +290199,34 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce12induce_basis_lvm_v4p:
 	callq	*syscall@GOTPCREL(%rip)
 	jmp	.LBB570_87
 .LBB570_47:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1906(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1905(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%rbx, %rsi
 	movq	8(%rsp), %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB570_199:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1911(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1910(%rip), %rdx
 	movq	%rbx, %rdi
 	movq	%r14, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB570_200:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1904(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1903(%rip), %rcx
 	movq	%rbx, %rdi
 	movq	8(%rsp), %rdx
 	movq	%rdx, %rsi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB570_202:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1903(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1902(%rip), %r8
 	leaq	296(%rsp), %rdi
 	leaq	416(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB570_201:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1905(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1904(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB570_209:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1381(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1382(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1380(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1381(%rip), %rdx
 	movl	$57, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB570_60:
@@ -290537,7 +290460,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce12induce_basis_lvm_v4p:
 	xorl	%edx, %edx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB570_207:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1916(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1915(%rip), %rdx
 	movq	%r14, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB570_75:
@@ -291138,18 +291061,18 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce14eval_sk_at_vks_lvm_v4p
 	testq	%rdi, %rdi
 	jne	.LBB571_35
 .LBB571_41:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1908(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1907(%rip), %rdx
 	movq	%rdi, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB571_36:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1910(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1909(%rip), %rdx
 	movq	%rcx, %rdi
 	movq	%rbx, %rsi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB571_35:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1909(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1908(%rip), %rdx
 	movq	%rsi, %rdi
 	movq	%rbx, %rsi
 	vzeroupper
@@ -291160,7 +291083,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce14eval_sk_at_vks_lvm_v4p
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB571_6:
 	movq	$0, 16(%r12)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1907(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1906(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -291284,7 +291207,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce30induce_sumcheck_poly_a
 	movq	%r15, %rsi
 	callq	_RNvMNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt8twiddlesNtB2_14AdditiveNttF648standard_lvm_v4p
 	movq	%r15, 184(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1917(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1916(%rip), %rax
 	movq	%rax, 80(%rsp)
 	movq	$3, 88(%rsp)
 	movl	$-1, 104(%rsp)
@@ -292339,7 +292262,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce30induce_sumcheck_poly_a
 	movabsq	$-9187201950435737472, %r8
 	jmp	.LBB572_199
 .LBB572_195:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1921(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1920(%rip), %rcx
 	movq	%r12, %rdx
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -292413,7 +292336,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce30induce_sumcheck_poly_a
 	callq	_RNCNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce32transpose_forward_ntt_sparse_exts1_0B9__lvm_v4p
 	jmp	.LBB572_170
 .LBB572_117:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1922(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1921(%rip), %rcx
 	movq	%rsi, %rdi
 	movq	%r8, %rsi
 	vzeroupper
@@ -292423,7 +292346,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce30induce_sumcheck_poly_a
 	movl	$8, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc5alloc18handle_alloc_error_lvm_v4p
 .LBB572_251:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1919(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1918(%rip), %rdx
 	movq	%r12, %rdi
 	movq	%rax, %rsi
 	vzeroupper
@@ -292526,10 +292449,10 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce30induce_sumcheck_poly_a
 	movq	168(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB572_118:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1918(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1917(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB572_196:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1920(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1919(%rip), %rdi
 	vzeroupper
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB572_124:
@@ -293839,17 +293762,17 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir11fold_blocks_lvm_v4p:
 .LBB573_44:
 	.cfi_def_cfa_offset 208
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1929(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1928(%rip), %rdx
 	movl	$19, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB573_42:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.0(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1928(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1927(%rip), %rdx
 	movl	$55, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB573_43:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1927(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1926(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB573_40:
 	movl	$8, %edi
@@ -294408,8 +294331,8 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir16round_msg_blocks_lvm_v4p:
 	testq	%rdx, %rdx
 	je	.LBB575_6
 .LBB575_43:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1931(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1932(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1930(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1931(%rip), %rdx
 	movl	$60, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB575_10:
@@ -296046,19 +295969,19 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir16round_msg_blocks_lvm_v4p:
 .LBB575_45:
 	.cfi_def_cfa_offset 1088
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1934(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1933(%rip), %rdx
 	movl	$19, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB575_42:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1930(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1929(%rip), %r8
 	leaq	720(%rsp), %rdi
 	leaq	728(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB575_44:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.0(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1933(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1932(%rip), %rdx
 	movl	$55, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .Lfunc_end575:
@@ -296258,7 +296181,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir17ligero_commit_ext_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1917(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1916(%rip), %rdi
 	movl	$3, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 .LBB576_21:
@@ -296382,7 +296305,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir17ligero_commit_ext_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1936(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1935(%rip), %rdi
 	movl	$6, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 .LBB576_41:
@@ -296431,7 +296354,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir17ligero_commit_ext_lvm_v4p:
 	jne	.LBB576_37
 	jmp	.LBB576_39
 .LBB576_42:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1935(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1934(%rip), %r8
 	leaq	640(%rsp), %rdi
 	leaq	256(%rsp), %rsi
 	xorl	%edx, %edx
@@ -296888,7 +296811,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1948(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1947(%rip), %rdi
 	movl	$8, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 .LBB578_34:
@@ -297092,7 +297015,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
 	movl	$8, %esi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1948(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1947(%rip), %rdi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 	jmp	.LBB578_46
 .LBB578_63:
@@ -297159,7 +297082,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	jb	.LBB578_503
 	movq	192(%rsp), %rax
 	movq	8(%rax), %r12
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1953(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1952(%rip), %rax
 	movq	%rax, 560(%rsp)
 	movq	$6, 568(%rsp)
 	movl	$-1, 584(%rsp)
@@ -297351,7 +297274,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	leaq	2048(%rsp), %rsi
 	movq	%r14, %rdx
 	callq	_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6powers_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1957(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1956(%rip), %rax
 	movq	%rax, 560(%rsp)
 	movq	$4, 568(%rsp)
 	movl	$-1, 584(%rsp)
@@ -298278,7 +298201,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	movq	%rbx, %rdi
 	jmp	.LBB578_449
 .LBB578_222:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1244(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1243(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%rdx, %rsi
 	movq	%rax, %rdx
@@ -298359,18 +298282,18 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	movl	$35, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB578_234:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1245(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1244(%rip), %rcx
 	movq	%r12, %rsi
 	movq	%r12, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB578_235:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1243(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1242(%rip), %rcx
 	movq	%rsi, %rdi
 	movq	%r8, %rsi
 	movq	%r8, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB578_236:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1242(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1241(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%rdx, %rsi
 	movq	%rax, %rdx
@@ -298602,7 +298525,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	leaq	1608(%rsp), %rdi
 	movq	%r13, %rsi
 	callq	_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce14eval_sk_at_vks_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1958(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1957(%rip), %rax
 	movq	%rax, 560(%rsp)
 	movq	$6, 568(%rsp)
 	movl	$-1, 584(%rsp)
@@ -298650,7 +298573,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	movq	%r14, %rsi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 .LBB578_267:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1959(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1958(%rip), %rax
 	movq	%rax, 560(%rsp)
 	movq	$9, 568(%rsp)
 	movl	$-1, 584(%rsp)
@@ -298944,7 +298867,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 .LBB578_307:
 	movq	%r14, %rcx
 	shlq	$5, %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1948(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1947(%rip), %rdx
 	movq	%rdx, (%rax,%rcx)
 	movq	$8, 8(%rax,%rcx)
 	vmovsd	%xmm1, 16(%rax,%rcx)
@@ -299039,7 +298962,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	leaq	2(%rbp), %rbx
 	movq	192(%rsp), %rax
 	movq	16(%rax,%rbp,8), %r14
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1953(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1952(%rip), %rax
 	movq	%rax, 560(%rsp)
 	movq	$6, 568(%rsp)
 	movl	$-1, 584(%rsp)
@@ -299105,7 +299028,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 .LBB578_330:
 	xorl	%ecx, %ecx
 .LBB578_331:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1957(%rip), %r14
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1956(%rip), %r14
 	leaq	1632(%rsp), %rdi
 	movq	2704(%rsp), %rsi
 	movq	24(%rsp), %rdx
@@ -299199,7 +299122,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	movq	24(%rsp), %r13
 	movq	%r13, %rsi
 	callq	_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs11whir_induce14eval_sk_at_vks_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1958(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1957(%rip), %rax
 	movq	%rax, 96(%rsp)
 	movq	$6, 104(%rsp)
 	movl	$-1, 120(%rsp)
@@ -299258,7 +299181,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	movq	%r14, %rsi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 .LBB578_340:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1959(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1958(%rip), %rax
 	movq	%rax, 96(%rsp)
 	movq	$9, 104(%rsp)
 	movl	$-1, 120(%rsp)
@@ -299998,12 +299921,12 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	jmp	.LBB578_203
 .LBB578_450:
 	leaq	.Lanon.a7876a2aec9e03f592978148d283b4e2.20(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2082(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2081(%rip), %rdx
 	movl	$35, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB578_451:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1943(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1944(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1942(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1943(%rip), %rdx
 	movl	$51, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB578_452:
@@ -300040,7 +299963,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	leaq	2112(%rsp), %rsi
 	movq	%rbx, %rdx
 	callq	_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6powers_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1968(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1967(%rip), %rax
 	movq	%rax, 560(%rsp)
 	movq	$11, 568(%rsp)
 	movl	$-1, 584(%rsp)
@@ -300312,49 +300235,49 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	movl	$8, %esi
 	jmp	.LBB578_423
 .LBB578_494:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1937(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1936(%rip), %r8
 	leaq	560(%rsp), %rdi
 	leaq	1440(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB578_495:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1938(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1937(%rip), %r8
 	leaq	1632(%rsp), %rdi
 	leaq	560(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB578_496:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1939(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1940(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1938(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1939(%rip), %rdx
 	movl	$32, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB578_497:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.355(%rip), %rsi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1969(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1968(%rip), %r8
 	leaq	560(%rsp), %rdi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB578_498:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1941(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1942(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1940(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1941(%rip), %r8
 	leaq	1632(%rsp), %rdi
 	leaq	560(%rsp), %rsi
 	movl	$57, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB578_499:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1945(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1944(%rip), %r8
 	leaq	1632(%rsp), %rdi
 	leaq	560(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB578_500:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1946(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1947(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1945(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1946(%rip), %rdx
 	movl	$80, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB578_501:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1216(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1217(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1215(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1216(%rip), %rdx
 	movl	$49, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB578_502:
@@ -300365,8 +300288,8 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	movl	$75, %ecx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedmmECsgHYyB3hU8Ec_3std_lvm_v4p
 .LBB578_503:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1951(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1952(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1950(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1951(%rip), %rdx
 	movl	$45, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB578_504:
@@ -300382,7 +300305,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	movb	%r12b, 104(%rsp)
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.934(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1525(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1524(%rip), %r8
 	leaq	96(%rsp), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -300398,12 +300321,12 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB578_508:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.0(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1241(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1240(%rip), %rdx
 	movl	$55, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB578_509:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1961(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1962(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1960(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1961(%rip), %rdx
 	movl	$52, %esi
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
@@ -300449,25 +300372,25 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	movq	%r15, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB578_519:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1954(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1953(%rip), %rdx
 	movl	$1, %edi
 	movq	232(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB578_520:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1955(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1954(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB578_521:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1956(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1955(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB578_522:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1240(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1239(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB578_523:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1949(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1948(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -300480,7 +300403,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	movq	1000(%rsp), %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB578_526:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1950(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1949(%rip), %rdx
 	xorl	%edi, %edi
 	xorl	%esi, %esi
 	vzeroupper
@@ -300490,17 +300413,17 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	movq	64(%rsp), %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB578_528:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1964(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1963(%rip), %rdx
 	movq	224(%rsp), %rdi
 	movq	%rdi, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB578_529:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1963(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1962(%rip), %rdx
 	movq	%rbx, %rdi
 	movq	232(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB578_530:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1965(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1964(%rip), %rdx
 	movq	168(%rsp), %rdi
 	movq	%rdi, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -300513,11 +300436,11 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared
 	movq	%r13, %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB578_533:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1966(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1965(%rip), %rdx
 	movq	%r13, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB578_534:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1967(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1966(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .Lfunc_end578:
 	.size	_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared_basis_lvm_v4p, .Lfunc_end578-_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir36recursive_prover_with_prepared_basis_lvm_v4p
@@ -301025,7 +300948,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir6commit_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1917(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1916(%rip), %rdi
 	movl	$3, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 .LBB579_54:
@@ -301147,7 +301070,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir6commit_lvm_v4p:
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1936(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1935(%rip), %rdi
 	movl	$6, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 .LBB579_74:
@@ -301220,23 +301143,23 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir6commit_lvm_v4p:
 	jne	.LBB579_70
 	jmp	.LBB579_72
 .LBB579_80:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1976(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1977(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1975(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1976(%rip), %rdx
 	movl	$83, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB579_77:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1970(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1971(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1969(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1970(%rip), %rdx
 	movl	$103, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB579_78:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1972(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1973(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1971(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1972(%rip), %rdx
 	movl	$87, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB579_79:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1974(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1975(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1973(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1974(%rip), %r8
 	leaq	624(%rsp), %rdi
 	leaq	192(%rsp), %rsi
 	movl	$57, %ecx
@@ -302438,7 +302361,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs4whir8send_ood_lvm_v4p:
 	retq
 .LBB581_110:
 	.cfi_def_cfa_offset 640
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1222(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1221(%rip), %r8
 	leaq	128(%rsp), %rdi
 	leaq	400(%rsp), %rsi
 	xorl	%edx, %edx
@@ -303035,7 +302958,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs6merkle9hash_many_lvm_v4p:
 	jmpq	*memcpy@GOTPCREL(%rip)
 .LBB583_12:
 	.cfi_def_cfa_offset 64
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1978(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1977(%rip), %rdx
 	movq	%r14, %rdi
 	movq	%r15, %rsi
 	callq	_RNvNvNtCsevLNFiNqfJP_4core5slice20copy_from_slice_impl17len_mismatch_fail_lvm_v4p
@@ -305378,55 +305301,55 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649frobenius_lvm
 	.cfi_def_cfa_offset 96
 	movq	%rcx, %rdi
 .LBB585_2:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1991(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB585_4:
 	movq	%r11, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1991(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB585_6:
 	movq	%rax, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1991(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB585_8:
 	movq	%rdx, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1991(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB585_10:
 	movq	%r10, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1991(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB585_12:
 	movq	%r9, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1991(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB585_14:
 	movq	%rbx, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1991(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB585_17:
 	movq	%r15, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1991(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB585_19:
 	movq	%r14, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1991(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB585_21:
 	movq	%r13, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1991(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB585_23:
 	movq	%r12, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1991(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB585_26:
 	movq	%rbp, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1991(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB585_29:
 	movq	%r8, %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1991(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .Lfunc_end585:
 	.size	_RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649frobenius_lvm_v4p, .Lfunc_end585-_RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649frobenius_lvm_v4p
@@ -305538,7 +305461,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field8gf2_64x38dot_base_lv
 	retq
 .LBB586_6:
 	.cfi_def_cfa_offset 32
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1993(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1992(%rip), %r8
 	leaq	8(%rsp), %rdi
 	leaq	16(%rsp), %rsi
 	xorl	%edx, %edx
@@ -305873,16 +305796,16 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basis12extend_table_lv
 	movq	%r13, %rsi
 	jmp	.LBB587_4
 .LBB587_32:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1994(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1993(%rip), %rdx
 	movq	%r14, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB587_35:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1996(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1995(%rip), %rdx
 	movq	%rcx, %rdi
 	movq	%r14, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB587_33:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1995(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1994(%rip), %rdx
 	movq	%rcx, %rdi
 	movq	%r14, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -306097,7 +306020,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basis13initial_basis_l
 	vaddsd	%xmm0, %xmm1, %xmm0
 	vxorpd	%xmm1, %xmm1, %xmm1
 	vmovsd	%xmm1, %xmm0, %xmm0 {%k1}
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2003(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2002(%rip), %rdi
 	movl	$7, %esi
 	callq	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing3add_lvm_v4p
 .LBB588_28:
@@ -307750,7 +307673,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basis13initial_basis_l
 	movq	%rbx, %rsi
 	callq	_RNvNtCsgHYyB3hU8Ec_3std5panic13resume_unwind_lvm_v4p
 .LBB588_260:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2005(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2004(%rip), %rcx
 	movq	%rax, %rsi
 	movq	16(%rsp), %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -307783,7 +307706,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basis13initial_basis_l
 	callq	*syscall@GOTPCREL(%rip)
 	jmp	.LBB588_262
 .LBB588_267:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2012(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2011(%rip), %rcx
 	movq	%r13, %rdi
 	movq	%r15, %rsi
 	movq	%r15, %rdx
@@ -307793,25 +307716,25 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basis13initial_basis_l
 	movl	$8, %esi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc5alloc18handle_alloc_error_lvm_v4p
 .LBB588_269:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1997(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1996(%rip), %r8
 	leaq	432(%rsp), %rdi
 	leaq	472(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB588_270:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1998(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1997(%rip), %r8
 	leaq	440(%rsp), %rdi
 	leaq	448(%rsp), %rsi
 	xorl	%edx, %edx
 	callq	_RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedjjEB4__lvm_v4p
 .LBB588_271:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1999(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2000(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1998(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1999(%rip), %rdx
 	movl	$87, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB588_272:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2001(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2002(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2000(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2001(%rip), %r8
 	leaq	80(%rsp), %rdi
 	leaq	472(%rsp), %rsi
 	movl	$61, %ecx
@@ -307998,7 +307921,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basis13initial_basis_l
 	vmovupd	%xmm1, 16(%rax,%rcx)
 .LBB588_306:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2011(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2010(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB588_307:
@@ -308077,11 +308000,11 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basis13initial_basis_l
 	jmp	.LBB588_322
 .LBB588_319:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.0(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2004(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2003(%rip), %rdx
 	movl	$55, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB588_320:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2006(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2005(%rip), %rcx
 	xorl	%edi, %edi
 	movq	%rbp, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
@@ -308099,7 +308022,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basis13initial_basis_l
 	vmovupd	%xmm1, 16(%rax,%rcx)
 .LBB588_323:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2010(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2009(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB588_324:
@@ -308131,8 +308054,8 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basis13initial_basis_l
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.782(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB588_331:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1381(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1382(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1380(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1381(%rip), %rdx
 	movl	$57, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB588_332:
@@ -308353,7 +308276,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basis13initial_basis_l
 	vmovupd	%xmm1, 16(%rax,%rcx)
 .LBB588_369:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2008(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2007(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB588_370:
@@ -308370,7 +308293,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basis13initial_basis_l
 	vmovupd	%xmm1, 16(%rax,%rcx)
 .LBB588_372:
 	leaq	.Lanon.44eb4ea3062d9b6d5982ee4991888f34.8(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2009(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2008(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB588_373:
@@ -308528,7 +308451,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs10stack_open5basis13initial_basis_l
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.256(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB588_395:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2007(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2006(%rip), %rdx
 	movq	952(%rsp), %rdi
 	movq	%rdi, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
@@ -309563,7 +309486,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt5stage16fill_stage_tiles_lvm_v4
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB590_112:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.0(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2015(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2014(%rip), %rdx
 	movl	$55, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB590_117:
@@ -309598,7 +309521,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt5stage16fill_stage_tiles_lvm_v4
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking18panic_bounds_check_lvm_v4p
 .LBB590_120:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2014(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2013(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .Lfunc_end590:
 	.size	_RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt5stage16fill_stage_tiles_lvm_v4p, .Lfunc_end590-_RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt5stage16fill_stage_tiles_lvm_v4p
@@ -310001,7 +309924,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt6source9replicate_lvm_v4p:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.786(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .LBB591_63:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2025(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2024(%rip), %rdi
 	callq	_RNvNtNtCsevLNFiNqfJP_4core9panicking11panic_const23panic_const_div_by_zero_lvm_v4p
 .Lfunc_end591:
 	.size	_RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt6source9replicate_lvm_v4p, .Lfunc_end591-_RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt6source9replicate_lvm_v4p
@@ -310289,13 +310212,13 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt7kernels15butterfly_lanes_lvm_v
 	vzeroupper
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking5panic_lvm_v4p
 .LBB592_25:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2026(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2025(%rip), %rcx
 	movq	%r13, %rdi
 	movq	%rbx, %rsi
 	movq	%rbx, %rdx
 	callq	_RNvNtNtCsevLNFiNqfJP_4core5slice5index16slice_index_fail_lvm_v4p
 .LBB592_30:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2027(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2026(%rip), %rdx
 	movq	%r15, %rdi
 	callq	_RNvNvNtCsevLNFiNqfJP_4core5slice20copy_from_slice_impl17len_mismatch_fail_lvm_v4p
 .Lfunc_end592:
@@ -311158,7 +311081,7 @@ _RNvXCs7rukeAxmHeC_10lvm_proverNtB2_6SharedNtNtB2_6oracle6Oracle3ask_lvm_v4p:
 	retq
 .LBB597_62:
 	.cfi_def_cfa_offset 336
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2079(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2078(%rip), %rcx
 	movq	%r13, %rdi
 	movq	112(%rsp), %rdx
 	movq	%rdx, %rsi
@@ -311183,7 +311106,7 @@ _RNvXCs7rukeAxmHeC_10lvm_proverNtB2_6SharedNtNtB2_6oracle6Oracle3ask_lvm_v4p:
 	movb	%al, 56(%rsp)
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.933(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2072(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2071(%rip), %r8
 	leaq	48(%rsp), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -311212,7 +311135,7 @@ _RNvXCs7rukeAxmHeC_10lvm_proverNtB2_6SharedNtNtB2_6oracle6Oracle3ask_lvm_v4p:
 	movq	%rax, 64(%rsp)
 	leaq	_RNvXs3_NtNtCsevLNFiNqfJP_4core2io5errorNtB5_5ErrorNtNtB9_3fmt7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 72(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2077(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2076(%rip), %rsi
 	leaq	24(%rsp), %rdi
 	leaq	48(%rsp), %rdx
 	callq	_RNvNvNtCs1C1lLj4PWSY_5alloc3fmt6format12format_inner_lvm_v4p
@@ -311284,7 +311207,7 @@ _RNvXCs7rukeAxmHeC_10lvm_proverNtB2_6SharedNtNtB2_6oracle6Oracle3ask_lvm_v4p:
 	movzbl	(%rcx,%rdx), %ecx
 	jmp	.LBB597_57
 .LBB597_68:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2074(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2073(%rip), %rdi
 	movl	$40, %esi
 	callq	_RNvNtCs7rukeAxmHeC_10lvm_prover7service5fatal_lvm_v4p
 .LBB597_55:
@@ -311313,7 +311236,7 @@ _RNvXCs7rukeAxmHeC_10lvm_proverNtB2_6SharedNtNtB2_6oracle6Oracle3ask_lvm_v4p:
 	movq	%rbx, 96(%rsp)
 	leaq	_RNvXsb_NtCs1C1lLj4PWSY_5alloc6borrowINtB5_3CoweENtNtCsevLNFiNqfJP_4core3fmt7Display3fmtCs7rukeAxmHeC_10lvm_prover_lvm_v4p(%rip), %rax
 	movq	%rax, 104(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2075(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2074(%rip), %rsi
 	leaq	208(%rsp), %rdi
 	leaq	48(%rsp), %rdx
 	callq	_RNvNvNtCs1C1lLj4PWSY_5alloc3fmt6format12format_inner_lvm_v4p
@@ -311335,7 +311258,7 @@ _RNvXCs7rukeAxmHeC_10lvm_proverNtB2_6SharedNtNtB2_6oracle6Oracle3ask_lvm_v4p:
 	movq	%rax, 64(%rsp)
 	leaq	_RNvXs3_NtNtCsevLNFiNqfJP_4core2io5errorNtB5_5ErrorNtNtB9_3fmt7Display3fmt_lvm_v4p(%rip), %rax
 	movq	%rax, 72(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2078(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2077(%rip), %rsi
 .LBB597_4:
 	leaq	128(%rsp), %rdi
 	leaq	48(%rsp), %rdx
@@ -311352,14 +311275,14 @@ _RNvXCs7rukeAxmHeC_10lvm_proverNtB2_6SharedNtNtB2_6oracle6Oracle3ask_lvm_v4p:
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.900(%rip), %rcx
 	movq	%rcx, 64(%rsp)
 	movq	%rax, 72(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2080(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2079(%rip), %rsi
 	jmp	.LBB597_4
 .LBB597_2:
 	movl	$1, %edi
 	movq	112(%rsp), %rsi
 	callq	_RNvNtCs1C1lLj4PWSY_5alloc7raw_vec12handle_error_lvm_v4p
 .LBB597_38:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2073(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2072(%rip), %rdi
 	movl	$19, %esi
 	callq	_RNvNtCs7rukeAxmHeC_10lvm_prover7service5fatal_lvm_v4p
 .LBB597_15:
@@ -311396,7 +311319,7 @@ _RNvXCs7rukeAxmHeC_10lvm_proverNtB2_6SharedNtNtB2_6oracle6Oracle3ask_lvm_v4p:
 	movq	64(%rsp), %rsi
 	callq	_RNvNtCs7rukeAxmHeC_10lvm_prover7service5fatal_lvm_v4p
 .LBB597_72:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2076(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2075(%rip), %rcx
 	movl	$16, %edi
 	movl	$48, %edx
 	movq	%r13, %rsi
@@ -312616,7 +312539,7 @@ _RNvXs1_NtNtNtCsevLNFiNqfJP_4core4iter8adapters7flattenINtB5_7FlatMapINtNtB7_9en
 	leaq	16(%rsp), %rcx
 	movq	%rcx, 40(%rsp)
 	movq	%rax, 48(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2066(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2065(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.730(%rip), %rdx
 	leaq	24(%rsp), %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
@@ -317381,8 +317304,8 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRINtNtCs1C1lLj4PWSY_5alloc3vec3VecNtNtNtCs7ruk
 	jne	.LBB618_8
 	testl	$8388608, %r14d
 	jne	.LBB618_3
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2087(%rip), %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1495(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2086(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1494(%rip), %rsi
 	movq	8(%rsp), %rcx
 	cmpb	$0, (%rcx)
 	cmovneq	%rax, %rsi
@@ -317406,8 +317329,8 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRINtNtCs1C1lLj4PWSY_5alloc3vec3VecNtNtNtCs7ruk
 	vmovaps	%xmm0, 16(%rsp)
 	leaq	7(%rsp), %rax
 	movq	%rax, 32(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2087(%rip), %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1495(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2086(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1494(%rip), %rsi
 	movq	8(%rsp), %rcx
 	cmpb	$0, (%rcx)
 	cmovneq	%rax, %rsi
@@ -317482,9 +317405,9 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRINtNtCs1C1lLj4PWSY_5alloc3vec3VecNtNtNtCs7ruk
 	jne	.LBB618_23
 	movq	8(%rsp), %rax
 	cmpb	$0, (%rax,%r15)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2087(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2086(%rip), %rsi
 	jne	.LBB618_16
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1495(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1494(%rip), %rsi
 .LBB618_16:
 	movl	$1, %edx
 	movq	%rbx, %rdi
@@ -317499,9 +317422,9 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRINtNtCs1C1lLj4PWSY_5alloc3vec3VecNtNtNtCs7ruk
 	movq	%rax, 32(%rsp)
 	movq	8(%rsp), %rax
 	cmpb	$0, (%rax,%r15)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2087(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2086(%rip), %rsi
 	jne	.LBB618_19
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1495(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1494(%rip), %rsi
 .LBB618_19:
 	movl	$1, %edx
 	movq	%rbp, %rdi
@@ -317737,26 +317660,26 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtCs7rukeAxmHeC_10lvm_prover6format3SigNtB6
 	movq	%rax, 24(%rsp)
 	movq	(%rsi), %rdi
 	movq	8(%rsi), %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2036(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2035(%rip), %rsi
 	movl	$3, %edx
 	callq	*24(%rax)
 	movq	%r14, 8(%rsp)
 	movb	%al, 16(%rsp)
 	movb	$0, 17(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2037(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2036(%rip), %rsi
 	leaq	_RNvXsX_NtNtCsevLNFiNqfJP_4core3fmt3numyNtB7_5Debug3fmt_lvm_v4p(%rip), %r8
 	leaq	8(%rsp), %r14
 	movl	$3, %edx
 	movq	%r14, %rdi
 	movq	%r15, %rcx
 	callq	_RNvMs2_NtNtCsevLNFiNqfJP_4core3fmt8buildersNtB5_11DebugStruct5field_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2038(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2037(%rip), %rsi
 	leaq	_RNvXsr_NtCs1C1lLj4PWSY_5alloc3vecINtB5_3VecAhj20_ENtNtCsevLNFiNqfJP_4core3fmt5Debug3fmtCs7rukeAxmHeC_10lvm_prover_lvm_v4p(%rip), %r8
 	movl	$3, %edx
 	movq	%r14, %rdi
 	movq	%rbx, %rcx
 	callq	_RNvMs2_NtNtCsevLNFiNqfJP_4core3fmt8buildersNtB5_11DebugStruct5field_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2039(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2038(%rip), %rsi
 	leaq	_RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRINtNtCs1C1lLj4PWSY_5alloc3vec3VecAhj20_ENtB6_5Debug3fmtCs7rukeAxmHeC_10lvm_prover_lvm_v4p(%rip), %r8
 	leaq	24(%rsp), %rcx
 	movl	$4, %edx
@@ -317843,20 +317766,20 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm3acc3AccN
 	movq	%rax, 16(%rsp)
 	movq	(%rsi), %rdi
 	movq	8(%rsi), %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2040(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2039(%rip), %rsi
 	movl	$3, %edx
 	callq	*24(%rax)
 	movq	%rbx, (%rsp)
 	movb	%al, 8(%rsp)
 	movb	$0, 9(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2041(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2040(%rip), %rsi
 	leaq	_RNvXsr_NtCs1C1lLj4PWSY_5alloc3vecINtB5_3VecNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field8gf2_64x34F192ENtNtCsevLNFiNqfJP_4core3fmt5Debug3fmtBP__lvm_v4p(%rip), %r8
 	movq	%rsp, %rbx
 	movl	$2, %edx
 	movq	%rbx, %rdi
 	movq	%r14, %rcx
 	callq	_RNvMs2_NtNtCsevLNFiNqfJP_4core3fmt8buildersNtB5_11DebugStruct5field_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2042(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2041(%rip), %rsi
 	leaq	_RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field8gf2_64x34F192NtB6_5Debug3fmtBG__lvm_v4p(%rip), %r8
 	leaq	16(%rsp), %rcx
 	movl	$1, %edx
@@ -317907,8 +317830,8 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir2T
 .Lfunc_begin624:
 	.cfi_startproc
 	movq	(%rdi), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2087(%rip), %rdx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1495(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2086(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1494(%rip), %rax
 	cmpb	$0, (%rcx)
 	cmovneq	%rdx, %rax
 	movq	(%rsi), %rdi
@@ -317987,7 +317910,7 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10prim
 	movq	(%rsi), %r14
 	movq	8(%rsi), %r13
 	movq	24(%r13), %r12
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2086(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2085(%rip), %rsi
 	movl	$3, %edx
 	movq	%r14, %rdi
 	callq	*%r12
@@ -318096,13 +318019,13 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10prim
 	movq	%rax, 16(%rsp)
 	movq	(%rsi), %rdi
 	movq	8(%rsi), %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2089(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2088(%rip), %rsi
 	movl	$4, %edx
 	callq	*24(%rax)
 	movq	%r14, (%rsp)
 	movb	%al, 8(%rsp)
 	movb	$0, 9(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2090(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2089(%rip), %rsi
 	leaq	_RNvXsX_NtNtCsevLNFiNqfJP_4core3fmt3numyNtB7_5Debug3fmt_lvm_v4p(%rip), %r14
 	movq	%rsp, %r12
 	movl	$2, %edx
@@ -318110,13 +318033,13 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10prim
 	movq	%r15, %rcx
 	movq	%r14, %r8
 	callq	_RNvMs2_NtNtCsevLNFiNqfJP_4core3fmt8buildersNtB5_11DebugStruct5field_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2091(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2090(%rip), %rsi
 	movl	$2, %edx
 	movq	%r12, %rdi
 	movq	%rbx, %rcx
 	movq	%r14, %r8
 	callq	_RNvMs2_NtNtCsevLNFiNqfJP_4core3fmt8buildersNtB5_11DebugStruct5field_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2092(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2091(%rip), %rsi
 	leaq	_RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRyNtB6_5Debug3fmtCs7rukeAxmHeC_10lvm_prover_lvm_v4p(%rip), %r8
 	leaq	16(%rsp), %rcx
 	movl	$2, %edx
@@ -318188,26 +318111,26 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtCs7rukeAxmHeC_10lvm_prover6format6Signed
 	movq	%rax, 24(%rsp)
 	movq	(%rsi), %rdi
 	movq	8(%rsi), %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2051(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2050(%rip), %rsi
 	movl	$6, %edx
 	callq	*24(%rax)
 	movq	%r14, 8(%rsp)
 	movb	%al, 16(%rsp)
 	movb	$0, 17(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2052(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2051(%rip), %rsi
 	leaq	_RNvXsr_NtCs1C1lLj4PWSY_5alloc3vecINtB5_3VechENtNtCsevLNFiNqfJP_4core3fmt5Debug3fmtCs7rukeAxmHeC_10lvm_prover_lvm_v4p(%rip), %r8
 	leaq	8(%rsp), %r14
 	movl	$2, %edx
 	movq	%r14, %rdi
 	movq	%r15, %rcx
 	callq	_RNvMs2_NtNtCsevLNFiNqfJP_4core3fmt8buildersNtB5_11DebugStruct5field_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2053(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2052(%rip), %rsi
 	leaq	_RNvXsr_NtCs1C1lLj4PWSY_5alloc3vecINtB5_3VecTIBw_hEAhj20_EENtNtCsevLNFiNqfJP_4core3fmt5Debug3fmtCs7rukeAxmHeC_10lvm_prover_lvm_v4p(%rip), %r8
 	movl	$2, %edx
 	movq	%r14, %rdi
 	movq	%rbx, %rcx
 	callq	_RNvMs2_NtNtCsevLNFiNqfJP_4core3fmt8buildersNtB5_11DebugStruct5field_lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2054(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2053(%rip), %rsi
 	leaq	_RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtCs7rukeAxmHeC_10lvm_prover6format3SigNtB6_5Debug3fmtBA__lvm_v4p(%rip), %r8
 	leaq	24(%rsp), %rcx
 	movl	$3, %edx
@@ -318283,7 +318206,7 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5
 	movq	(%rsi), %r14
 	movq	8(%rsi), %rax
 	movq	24(%rax), %r12
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2059(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2058(%rip), %rsi
 	movl	$5, %edx
 	movq	%r14, %rdi
 	callq	*%r12
@@ -318294,7 +318217,7 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5
 .LBB630_22:
 	movb	%bpl, 48(%rsp)
 	movb	$1, 49(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2062(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2061(%rip), %rsi
 	leaq	_RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRINtNtCs1C1lLj4PWSY_5alloc3vec3VecNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir2TyENtB6_5Debug3fmtB19__lvm_v4p(%rip), %r8
 	leaq	40(%rsp), %rdi
 	leaq	56(%rsp), %rcx
@@ -318406,7 +318329,7 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5
 	jne	.LBB630_22
 	movq	(%rbx), %rdi
 	movq	8(%rbx), %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2061(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2060(%rip), %rsi
 	movl	$2, %edx
 	callq	*24(%rax)
 	testb	%al, %al
@@ -318418,8 +318341,8 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5
 	callq	*24(%rax)
 	testb	%al, %al
 	jne	.LBB630_22
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2087(%rip), %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1495(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2086(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1494(%rip), %rsi
 	cmpb	$0, 24(%r15)
 	cmovneq	%rax, %rsi
 	movq	(%rbx), %rdi
@@ -318457,7 +318380,7 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5
 	vmovaps	%xmm0, 16(%rsp)
 	leaq	15(%rsp), %rax
 	movq	%rax, 32(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2061(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2060(%rip), %rsi
 	leaq	16(%rsp), %rdi
 	movl	$2, %edx
 	callq	_RNvXs0_NtNtCsevLNFiNqfJP_4core3fmt8buildersNtB5_10PadAdapterNtB7_5Write9write_str_lvm_v4p
@@ -318469,8 +318392,8 @@ _RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5
 	callq	_RNvXs0_NtNtCsevLNFiNqfJP_4core3fmt8buildersNtB5_10PadAdapterNtB7_5Write9write_str_lvm_v4p
 	testb	%al, %al
 	jne	.LBB630_21
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2087(%rip), %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1495(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2086(%rip), %rax
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1494(%rip), %rsi
 	cmpb	$0, 24(%r15)
 	cmovneq	%rax, %rsi
 	leaq	16(%rsp), %rdi
@@ -320777,7 +320700,7 @@ _RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5al
 	callq	*strlen@GOTPCREL(%rip)
 	cmpq	$6, %rax
 	jne	.LBB652_11
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1479(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1478(%rip), %rsi
 	movl	$6, %edx
 	movq	%rbx, %rdi
 	callq	*bcmp@GOTPCREL(%rip)
@@ -321096,7 +321019,7 @@ _RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5al
 	movb	%bpl, 48(%rsp)
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.935(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2067(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2066(%rip), %r8
 	leaq	40(%rsp), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -321143,7 +321066,7 @@ _RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5al
 	movb	%bpl, 48(%rsp)
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.935(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2068(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2067(%rip), %r8
 	leaq	40(%rsp), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -321216,7 +321139,7 @@ _RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5al
 	callq	*strlen@GOTPCREL(%rip)
 	cmpq	$6, %rax
 	jne	.LBB653_5
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1479(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1478(%rip), %rsi
 	movl	$6, %edx
 	movq	%rbx, %rdi
 	callq	*bcmp@GOTPCREL(%rip)
@@ -321273,8 +321196,8 @@ _RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5al
 	cmpq	%r8, %rsi
 	jne	.LBB653_15
 .LBB653_17:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2070(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2071(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2069(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2070(%rip), %rdx
 	movl	$19, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6option13expect_failed_lvm_v4p
 .LBB653_18:
@@ -321427,7 +321350,7 @@ _RNvXs_NtCs7rukeAxmHeC_10lvm_prover5allocNtB4_5CacheNtNtNtCsevLNFiNqfJP_4core5al
 	movb	%bl, 16(%rsp)
 	leaq	.Lanon.8034cc74746c0f700f1d2bb865899118.151(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.935(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2069(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2068(%rip), %r8
 	leaq	8(%rsp), %rdx
 	movl	$43, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core6result13unwrap_failed_lvm_v4p
@@ -321886,7 +321809,7 @@ _RNvXs_NtNtCs1C1lLj4PWSY_5alloc3vec21spec_from_iter_nestedINtB6_3VechEINtB4_18Sp
 	jmp	.LBB656_22
 .LBB656_35:
 	leaq	.Lanon.a7876a2aec9e03f592978148d283b4e2.20(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2082(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2081(%rip), %rdx
 	movl	$35, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB656_36:
@@ -321914,7 +321837,7 @@ _RNvXs_NtNtCsgHYyB3hU8Ec_3std4sync6poisonINtB4_11PoisonErrorINtNtB4_5mutex10Mute
 	movq	(%rsi), %rbx
 	movq	8(%rsi), %rax
 	movq	24(%rax), %rax
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2083(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2082(%rip), %rsi
 	movl	$11, %edx
 	movq	%rbx, %rdi
 	movq	%rax, %r14
@@ -323748,7 +323671,7 @@ _RNvXsv_NtCsevLNFiNqfJP_4core5arrayNtB5_17TryFromSliceErrorNtNtB7_3fmt5Debug3fmt
 	movq	(%rsi), %rbx
 	movq	8(%rsi), %r12
 	movq	24(%r12), %r15
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2101(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.2100(%rip), %rsi
 	movl	$17, %edx
 	movq	%rbx, %rdi
 	callq	*%r15
@@ -326633,7 +326556,7 @@ lvm_main_v4p:
 	vmovdqu	%ymm0, 336(%rsp)
 	vmovdqu	%ymm0, 304(%rsp)
 	vmovdqu	%ymm0, 272(%rsp)
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1497(%rip), %rsi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1496(%rip), %rsi
 	leaq	272(%rsp), %rdi
 	movl	$1, %edx
 	vzeroupper
@@ -327308,7 +327231,7 @@ lvm_main_v4p:
 	movq	%rax, 272(%rsp)
 	leaq	_RNvNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel4init4INIT_lvm_v4p(%rip), %rdi
 	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.20(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1532(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1531(%rip), %r8
 	leaq	272(%rsp), %rdx
 	xorl	%esi, %esi
 	vzeroupper
@@ -327355,8 +327278,8 @@ lvm_main_v4p:
 .LBB677_511:
 	movq	280(%rsp), %rsi
 	callq	_RINvNtCsevLNFiNqfJP_4core3ptr9drop_glueINtNtB4_6result6ResultuINtNtCs1C1lLj4PWSY_5alloc5boxed3BoxDNtNtCs7rukeAxmHeC_10lvm_prover6oracle6OracleEL_EEEB1C__lvm_v4p
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1514(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1515(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1513(%rip), %rdi
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1514(%rip), %rdx
 	movl	$57, %esi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .LBB677_512:
@@ -328664,7 +328587,7 @@ _RNvNvMs_NtCs1C1lLj4PWSY_5alloc3vecINtB6_3VecppE9split_off13assert_failed_lvm_v4
 	movq	%rax, 24(%rsi)
 .Ltmp335:
 	leaq	.Lanon.a7876a2aec9e03f592978148d283b4e2.37(%rip), %rdi
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1499(%rip), %rdx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1498(%rip), %rdx
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking9panic_fmt_lvm_v4p
 .Ltmp336:
 .Lfunc_end692:
@@ -329543,10 +329466,10 @@ _RINvNtCsevLNFiNqfJP_4core9panicking13assert_failedINtNtB4_6option6OptionjEBM_EB
 	leaq	-16(%rbp), %rdx
 	movq	%rsi, (%rdx)
 .Ltmp488:
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1454(%rip), %rcx
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1453(%rip), %rcx
 	movq	%rcx, (%rsp)
 	leaq	.Lanon.5d0660bf846720b84d5030bddeaa2fb9.4(%rip), %rcx
-	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1453(%rip), %r8
+	leaq	.Lanon.2e24e836c13f239343f864e080f18d36.1452(%rip), %r8
 	movq	%rax, %rdi
 	movq	%rcx, %rsi
 	callq	_RNvNtCsevLNFiNqfJP_4core9panicking19assert_failed_inner_lvm_v4p
@@ -454327,7 +454250,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.177:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000;\001\000\000\005\000\000"
+	.asciz	"\034\000\000\000\000\000\000\0006\001\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.177, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.178,@object
@@ -455424,7 +455347,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.331:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\302\001\000\000)\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\275\001\000\000)\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.331, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.332,@object
@@ -455432,7 +455355,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.332:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\301\001\000\0004\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\274\001\000\0004\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.332, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.333,@object
@@ -456728,7 +456651,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.513:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\246\000\000\000,\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\241\000\000\000,\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.513, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.514,@object
@@ -456805,7 +456728,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.523:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\013\002\000\000\026\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\006\002\000\000\026\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.523, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.524,@object
@@ -456813,7 +456736,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.524:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\277\001\000\000M\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\272\001\000\000M\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.524, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.525,@object
@@ -458101,7 +458024,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.694:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000x\001\000\000%\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000s\001\000\000%\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.694, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.695,@object
@@ -458109,7 +458032,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.695:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000x\001\000\000\f\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000s\001\000\000\f\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.695, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.696,@object
@@ -458117,7 +458040,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.696:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\243\001\000\000%\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\236\001\000\000%\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.696, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.697,@object
@@ -458125,7 +458048,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.697:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\243\001\000\000\036\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\236\001\000\000\036\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.697, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.698,@object
@@ -458139,7 +458062,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.699:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\253\001\000\000A\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\246\001\000\000A\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.699, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.700,@object
@@ -458147,7 +458070,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.700:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\254\001\000\0002\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\247\001\000\0002\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.700, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.701,@object
@@ -458155,7 +458078,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.701:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\254\001\000\000\"\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\247\001\000\000\"\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.701, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.702,@object
@@ -458163,7 +458086,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.702:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000q\001\000\000\r\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000l\001\000\000\r\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.702, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.703,@object
@@ -458171,7 +458094,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.703:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000*\001\000\000!\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000%\001\000\000!\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.703, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.704,@object
@@ -460631,7 +460554,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1054:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000:\000\000\000\t\000\000"
+	.asciz	"\034\000\000\000\000\000\000\0005\000\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1054, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1055,@object
@@ -460639,7 +460562,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1055:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000N\000\000\000\t\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000I\000\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1055, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1056,@object
@@ -461457,53 +461380,53 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1163, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1164,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1164,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1164,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1164:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\220\000\000\000\033\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1164, 24
+	.ascii	"an extent's words fit in memory"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1164, 31
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1165,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1165,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1165:
-	.ascii	"an extent's words fit in memory"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1165, 31
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1166,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1166,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1165,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1166:
+.Lanon.2e24e836c13f239343f864e080f18d36.1165:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\221\000\000\000\016\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1166, 24
+	.asciz	"\034\000\000\000\000\000\000\000\214\000\000\000\016\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1165, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1168,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1168,"aw",@progbits
+	.p2align	3, 0x0
+.Lanon.2e24e836c13f239343f864e080f18d36.1168:
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
+	.asciz	"\034\000\000\000\000\000\000\000\255\000\000\0000\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1168, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1169,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1169,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1169:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\262\000\000\0000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1169, 24
+	.asciz	"\006block \300\f was not run"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1169, 22
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1170,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1170,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1170:
-	.asciz	"\006block \300\f was not run"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1170, 22
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
+	.asciz	"\034\000\000\000\000\000\000\000\255\000\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1170, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1171,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1171,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1171:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\262\000\000\000\t\000\000"
+	.asciz	"\006round \300\016 is not stored"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1171, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1172,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1172,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1172:
-	.asciz	"\006round \300\016 is not stored"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
+	.asciz	"\034\000\000\000\000\000\000\000\256\000\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1172, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1173,@object
@@ -461511,7 +461434,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1173:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\263\000\000\000\t\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\257\000\000\000\026\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1173, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1174,@object
@@ -461519,7 +461442,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1174:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\264\000\000\000\026\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\257\000\000\000W\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1174, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1175,@object
@@ -461527,7 +461450,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1175:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\264\000\000\000W\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\257\000\000\000\024\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1175, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1176,@object
@@ -461535,7 +461458,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1176:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\264\000\000\000\024\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\247\000\000\000\023\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1176, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1177,@object
@@ -461543,15 +461466,15 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1177:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\254\000\000\000\023\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\247\000\000\000\022\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1177, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1178,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1178,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1178:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\254\000\000\000\022\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
+	.asciz	"\031\000\000\000\000\000\000\000\266\001\000\000:\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1178, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1179,@object
@@ -461559,291 +461482,277 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1179:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000\266\001\000\000:\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\374\001\000\000\024\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1179, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1180,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1180,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1180,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1180:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000\374\001\000\000\024\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1180, 24
+	.ascii	"an aligned power-of-two block"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1180, 29
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1181,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1181,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1181:
-	.ascii	"an aligned power-of-two block"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1181, 29
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1182,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1182,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1181,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1182:
+.Lanon.2e24e836c13f239343f864e080f18d36.1181:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
 	.asciz	"\024\000\000\000\000\000\000\000;\001\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1182, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1181, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1182,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1182,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1182:
+	.ascii	"the block is inside the tree"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1182, 28
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1183,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1183,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1183:
-	.ascii	"the block is inside the tree"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1183, 28
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1184,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1184,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1183,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1184:
+.Lanon.2e24e836c13f239343f864e080f18d36.1183:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
 	.asciz	"\024\000\000\000\000\000\000\000?\001\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1184, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1183, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1184,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1184,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1184:
+	.ascii	"blocks of one size"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1184, 18
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1185,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1185,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1185,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1185:
-	.ascii	"blocks of one size"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1185, 18
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
+	.asciz	"\024\000\000\000\000\000\000\000D\001\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1185, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1186,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1186,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1186:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\000D\001\000\000\t\000\000"
+	.asciz	"\024\000\000\000\000\000\000\000F\001\000\000\016\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1186, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1187,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1187,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1187,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1187:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\000F\001\000\000\016\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1187, 24
+	.ascii	"a block absorbed twice"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1187, 22
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1188,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1188,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1188:
-	.ascii	"a block absorbed twice"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1188, 22
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1189,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1189,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1188,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1189:
+.Lanon.2e24e836c13f239343f864e080f18d36.1188:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
 	.asciz	"\024\000\000\000\000\000\000\000E\001\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1189, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1188, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1189,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1189,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1189:
+	.ascii	"threads should not terminate unexpectedly"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1189, 41
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1190,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1190,"a",@progbits
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1190:
-	.ascii	"threads should not terminate unexpectedly"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1190, 41
+	.asciz	"/rustc/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/library/std/src/thread/lifecycle.rs"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1190, 84
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1191,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1191,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1191:
-	.asciz	"/rustc/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/library/std/src/thread/lifecycle.rs"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1191, 84
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1190
+	.asciz	"S\000\000\000\000\000\000\000\342\000\000\000\016\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1191, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1192,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1192,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1192:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1191
-	.asciz	"S\000\000\000\000\000\000\000\342\000\000\000\016\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1190
+	.asciz	"S\000\000\000\000\000\000\000\346\000\000\000\016\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1192, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1193,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1193,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1193,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1193:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1191
-	.asciz	"S\000\000\000\000\000\000\000\346\000\000\000\016\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1193, 24
+	.ascii	"assertion failed: fold.len() == B / 2 && (B / 2).is_multiple_of(GROUP)"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1193, 70
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1194,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1194,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1194,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1194:
-	.ascii	"assertion failed: fold.len() == B / 2 && (B / 2).is_multiple_of(GROUP)"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1194, 70
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
+	.asciz	"\033\000\000\000\000\000\000\000*\001\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1194, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1195,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1195,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1195:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000*\001\000\000\t\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000F\001\000\000D\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1195, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1196,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1196,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1196,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1196:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000F\001\000\000D\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1196, 24
+	.ascii	"every committed state is stored"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1196, 31
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1197,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1197,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1197,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1197:
-	.ascii	"every committed state is stored"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1197, 31
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
+	.asciz	"\034\000\000\000\000\000\000\000\373\001\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1197, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1198,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1198,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1198,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1198:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\000\002\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1198, 24
+	.ascii	"extents are consecutive"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1198, 23
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1199,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1199,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1199,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1199:
-	.ascii	"extents are consecutive"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1199, 23
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
+	.asciz	"\034\000\000\000\000\000\000\000\376\001\000\000\r\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1199, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1200,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1200,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1200,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1200:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\003\002\000\000\r\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1200, 24
+	.ascii	"assertion failed: padding.as_ref().is_none_or(|p| p.every == every)"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1200, 67
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1201,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1201,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1201,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1201:
-	.ascii	"assertion failed: padding.as_ref().is_none_or(|p| p.every == every)"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1201, 67
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
+	.asciz	"\034\000\000\000\000\000\000\000\002\002\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1201, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1202,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1202,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1202,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1202:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\007\002\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1202, 24
+	.ascii	"assertion failed: written <= end && written <= shape.n_blocks()"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1202, 63
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1203,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1203,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1203:
-	.ascii	"assertion failed: written <= end && written <= shape.n_blocks()"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1203, 63
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1204,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1204,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1203,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1204:
+.Lanon.2e24e836c13f239343f864e080f18d36.1203:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\b\002\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1204, 24
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1205,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1205,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1205:
-	.ascii	"assertion failed: written == shape.n_blocks() || padding.as_ref().is_some_and(|p| p.blocks == 1)"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1205, 96
+	.asciz	"\034\000\000\000\000\000\000\000\003\002\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1203, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1206,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1206,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1206,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1206:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\t\002\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1206, 24
+	.ascii	"a block of the witness was not run"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1206, 34
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1207,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1207,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1207,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1207:
-	.ascii	"a block of the witness was not run"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1207, 34
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
+	.asciz	"\034\000\000\000\000\000\000\000\n\002\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1207, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1208,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1208,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1208,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1208:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\017\002\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1208, 24
+	.ascii	"a written block"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1208, 15
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1209,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1209,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1209,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1209:
-	.ascii	"a written block"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1209, 15
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
+	.asciz	"\034\000\000\000\000\000\000\000B\002\000\000@\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1209, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1210,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1210,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1210,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1210:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000G\002\000\000@\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1210, 24
+	.ascii	"a block of the batch"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1210, 20
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1211,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1211,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1211,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1211:
-	.ascii	"a block of the batch"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1211, 20
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
+	.asciz	"\034\000\000\000\000\000\000\000?\002\000\0001\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1211, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1212,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1212,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1212:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000D\002\000\0001\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000'\002\000\000\034\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1212, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1213,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1213,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1213,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1213:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000,\002\000\000\034\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1213, 24
+	.ascii	"assertion failed: inputs.len() <= shape.n()"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1213, 43
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1214,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1214,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1214,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1214:
-	.ascii	"assertion failed: inputs.len() <= shape.n()"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1214, 43
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
+	.asciz	"\034\000\000\000\000\000\000\000\263\001\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1214, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1215,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1215,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1215,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1215:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\270\001\000\000\t\000\000"
+	.ascii	"the lane rounds are over"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1215, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1216,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1216,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1216,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1216:
-	.ascii	"the lane rounds are over"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
+	.asciz	"\022\000\000\000\000\000\000\000\300\003\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1216, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1217,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1217,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1217,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1217:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\300\003\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1217, 24
+	.ascii	"glue without introduce_new"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1217, 26
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1218,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1218,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1218,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1218:
-	.ascii	"glue without introduce_new"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1218, 26
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
+	.asciz	"\022\000\000\000\000\000\000\000\355\003\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1218, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1219,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1219,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1219:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\355\003\000\000\t\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000\361\003\000\000\r\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1219, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1220,@object
@@ -461851,7 +461760,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1220:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\361\003\000\000\r\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000\326\003\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1220, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1221,@object
@@ -461859,123 +461768,123 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1221:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\326\003\000\000\t\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000\337\003\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1221, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1222,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1222,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1222,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1222:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\337\003\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1222, 24
+	.ascii	"Sumcheck round"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1222, 14
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1223,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1223,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1223:
-	.ascii	"Sumcheck round"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1223, 14
+	.ascii	"assertion failed: lane_block > 0 && stack.len().is_multiple_of(lane_block)"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1223, 74
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1224,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1224,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1224,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1224:
-	.ascii	"assertion failed: lane_block > 0 && stack.len().is_multiple_of(lane_block)"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1224, 74
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
+	.asciz	"\022\000\000\000\000\000\000\000\207\003\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1224, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1225,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1225,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1225:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\207\003\000\000\t\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000\211\003\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1225, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1226,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1226,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1226,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1226:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\211\003\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1226, 24
+	.ascii	"assertion failed: lane_block.is_multiple_of(lift.lift_len())"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1226, 60
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1227,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1227,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1227:
-	.ascii	"assertion failed: lane_block.is_multiple_of(lift.lift_len())"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1227, 60
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1228,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1228,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1227,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1228:
+.Lanon.2e24e836c13f239343f864e080f18d36.1227:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
 	.asciz	"\022\000\000\000\000\000\000\000\212\003\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1228, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1227, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1228,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1228,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1228:
+	.ascii	"the lift is taken by the last lane round only"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1228, 45
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1229,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1229,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1229,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1229:
-	.ascii	"the lift is taken by the last lane round only"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1229, 45
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
+	.asciz	"\022\000\000\000\000\000\000\000\253\003\000\000)\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1229, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1230,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1230,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1230:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\253\003\000\000)\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
+	.asciz	"\024\000\000\000\000\000\000\000x\001\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1230, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1231,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1231,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1231,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1231:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\000x\001\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1231, 24
+	.ascii	"the cap level is stored"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1231, 23
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1232,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1232,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1232,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1232:
-	.ascii	"the cap level is stored"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1232, 23
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
+	.asciz	"\024\000\000\000\000\000\000\000z\001\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1232, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1233,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1233,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1233:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\000z\001\000\000\t\000\000"
+	.asciz	"\024\000\000\000\000\000\000\000|\001\000\000\023\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1233, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1234,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1234,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1234:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\000|\001\000\000\023\000\000"
+	.asciz	"src/lv/pcs/ntt/drain.rs"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1234, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1235,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1235,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1235:
-	.asciz	"src/lv/pcs/ntt/drain.rs"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1234
+	.asciz	"\027\000\000\000\000\000\000\000p\000\000\000$\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1235, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1236,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1236,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1236:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1235
-	.asciz	"\027\000\000\000\000\000\000\000p\000\000\000$\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1234
+	.asciz	"\027\000\000\000\000\000\000\000\236\000\000\000\035\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1236, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1237,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1237,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1237:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1235
-	.asciz	"\027\000\000\000\000\000\000\000\236\000\000\000\035\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
+	.asciz	"\033\000\000\000\000\000\000\000\357\001\000\000B\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1237, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1238,@object
@@ -461983,15 +461892,15 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1238:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\357\001\000\000B\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\363\001\000\000\031\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1238, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1239,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1239,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1239:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\363\001\000\000\031\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
+	.asciz	"\024\000\000\000\000\000\000\000\337\001\000\000(\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1239, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1240,@object
@@ -461999,7 +461908,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1240:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\000\337\001\000\000(\000\000"
+	.asciz	"\024\000\000\000\000\000\000\000\342\001\000\000\027\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1240, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1241,@object
@@ -462007,7 +461916,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1241:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\000\342\001\000\000\027\000\000"
+	.asciz	"\024\000\000\000\000\000\000\000\345\001\000\000>\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1241, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1242,@object
@@ -462015,7 +461924,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1242:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\000\345\001\000\000>\000\000"
+	.asciz	"\024\000\000\000\000\000\000\000\345\001\000\0007\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1242, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1243,@object
@@ -462023,7 +461932,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1243:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\000\345\001\000\0007\000\000"
+	.asciz	"\024\000\000\000\000\000\000\000\345\001\000\000\033\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1243, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1244,@object
@@ -462031,57 +461940,57 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1244:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\000\345\001\000\000\033\000\000"
+	.asciz	"\024\000\000\000\000\000\000\000\345\001\000\000\024\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1244, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1245,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1245,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1245,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1245:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\000\345\001\000\000\024\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1245, 24
+	.ascii	"LoopIR blob: truncated"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1245, 22
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1246,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1246,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1246:
-	.ascii	"LoopIR blob: truncated"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1246, 22
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1247,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1247,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1246,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1247:
+.Lanon.2e24e836c13f239343f864e080f18d36.1246:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
 	.asciz	"\021\000\000\000\000\000\000\000\343\000\000\000\027\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1247, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1246, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1247,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1247,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1247:
+	.ascii	"LoopIR blob: a number"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1247, 21
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1248,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1248,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1248:
-	.ascii	"LoopIR blob: a number"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1248, 21
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1249,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1249,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1248,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1249:
+.Lanon.2e24e836c13f239343f864e080f18d36.1248:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
 	.asciz	"\021\000\000\000\000\000\000\000\343\000\000\000@\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1249, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1248, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1249,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.1249:
+	.asciz	"\022LoopIR blob: type \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1249, 21
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1250,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1250,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1250:
-	.asciz	"\022LoopIR blob: type \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1250, 21
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
+	.asciz	"\021\000\000\000\000\000\000\000\354\000\000\000\022\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1250, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1251,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1251,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1251:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\354\000\000\000\022\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
+	.asciz	"\033\000\000\000\000\000\000\000\313\002\000\0003\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1251, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1252,@object
@@ -462089,7 +461998,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1252:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\313\002\000\0003\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000d\002\000\000?\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1252, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1253,@object
@@ -462097,7 +462006,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1253:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000d\002\000\000?\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\025\002\000\000\035\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1253, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1254,@object
@@ -462105,7 +462014,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1254:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\025\002\000\000\035\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\026\002\000\000=\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1254, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1255,@object
@@ -462113,7 +462022,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1255:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\026\002\000\000=\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\021\003\000\000(\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1255, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1256,@object
@@ -462121,7 +462030,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1256:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\021\003\000\000(\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\022\003\000\000,\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1256, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1257,@object
@@ -462129,7 +462038,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1257:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\022\003\000\000,\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\n\003\000\000\r\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1257, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1258,@object
@@ -462137,7 +462046,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1258:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\n\003\000\000\r\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\t\003\000\000\016\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1258, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1259,@object
@@ -462145,15 +462054,15 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1259:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\t\003\000\000\016\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\225\002\000\0009\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1259, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1260,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1260,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1260:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\225\002\000\0009\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
+	.asciz	"\024\000\000\000\000\000\000\0004\002\000\000.\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1260, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1261,@object
@@ -462161,7 +462070,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1261:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\0004\002\000\000.\000\000"
+	.asciz	"\024\000\000\000\000\000\000\0004\002\000\000O\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1261, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1262,@object
@@ -462169,7 +462078,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1262:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\0004\002\000\000O\000\000"
+	.asciz	"\024\000\000\000\000\000\000\0006\002\000\000K\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1262, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1263,@object
@@ -462177,7 +462086,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1263:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\0006\002\000\000K\000\000"
+	.asciz	"\024\000\000\000\000\000\000\0006\002\000\000D\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1263, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1264,@object
@@ -462185,7 +462094,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1264:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\0006\002\000\000D\000\000"
+	.asciz	"\024\000\000\000\000\000\000\0006\002\000\000(\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1264, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1265,@object
@@ -462193,51 +462102,51 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1265:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\0006\002\000\000(\000\000"
+	.asciz	"\024\000\000\000\000\000\000\0006\002\000\000!\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1265, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1266,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1266,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1266,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1266:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\0006\002\000\000!\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1266, 24
+	.ascii	"a leaf holds its row"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1266, 20
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1267,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1267,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1267:
-	.ascii	"a leaf holds its row"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1267, 20
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1268,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1268,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1267,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1268:
+.Lanon.2e24e836c13f239343f864e080f18d36.1267:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
 	.asciz	"\024\000\000\000\000\000\000\000\b\002\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1268, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1267, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1268,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1268,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1268:
+	.ascii	"a padded leaf fits the tile"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1268, 27
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1269,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1269,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1269,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1269:
-	.ascii	"a padded leaf fits the tile"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1269, 27
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
+	.asciz	"\024\000\000\000\000\000\000\000\020\002\000\000\r\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1269, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1270,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1270,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1270:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\000\020\002\000\000\r\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
+	.asciz	"\021\000\000\000\000\000\000\000\310\001\000\000K\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1270, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1271,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1271,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1271:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\310\001\000\000K\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
+	.asciz	"\033\000\000\000\000\000\000\000\277\003\000\000B\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1271, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1272,@object
@@ -462245,7 +462154,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1272:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\277\003\000\000B\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\300\003\000\000;\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1272, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1273,@object
@@ -462253,7 +462162,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1273:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\300\003\000\000;\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000P\003\000\000-\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1273, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1274,@object
@@ -462261,7 +462170,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1274:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000P\003\000\000-\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000V\003\000\0005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1274, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1275,@object
@@ -462269,7 +462178,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1275:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000V\003\000\0005\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\214\003\000\000&\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1275, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1276,@object
@@ -462277,7 +462186,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1276:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\214\003\000\000&\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\233\003\000\000\016\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1276, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1277,@object
@@ -462285,7 +462194,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1277:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\233\003\000\000\016\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\232\003\000\000-\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1277, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1278,@object
@@ -462293,7 +462202,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1278:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\232\003\000\000-\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\350\003\000\000#\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1278, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1279,@object
@@ -462301,7 +462210,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1279:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\350\003\000\000#\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\350\003\000\000\022\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1279, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1280,@object
@@ -462309,7 +462218,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1280:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\350\003\000\000\022\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\346\003\000\0006\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1280, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1281,@object
@@ -462317,15 +462226,15 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1281:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\346\003\000\0006\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\346\003\000\000\023\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1281, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1282,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1282,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1282:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\346\003\000\000\023\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
+	.asciz	"\021\000\000\000\000\000\000\000+\002\000\000\027\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1282, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1283,@object
@@ -462333,7 +462242,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1283:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000+\002\000\000\027\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000+\002\000\000\"\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1283, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1284,@object
@@ -462341,7 +462250,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1284:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000+\002\000\000\"\000\000"
+	.asciz	"\021\000\000\000\000\000\000\0004\002\000\000*\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1284, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1285,@object
@@ -462349,7 +462258,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1285:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\0004\002\000\000*\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000!\002\000\0004\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1285, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1286,@object
@@ -462357,7 +462266,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1286:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000!\002\000\0004\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000&\002\000\000\034\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1286, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1287,@object
@@ -462365,7 +462274,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1287:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000&\002\000\000\034\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000'\002\000\000\032\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1287, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1288,@object
@@ -462373,62 +462282,62 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1288:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000'\002\000\000\032\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000'\002\000\000(\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1288, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1289,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1289,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1289,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1289:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000'\002\000\000(\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1289, 24
+	.ascii	"input sizes"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1289, 11
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1290,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1290,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1290:
-	.ascii	"input sizes"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1290, 11
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1291,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1291,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1290,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1291:
+.Lanon.2e24e836c13f239343f864e080f18d36.1290:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
 	.asciz	"\021\000\000\000\000\000\000\000Q\002\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1291, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1290, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1291,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1291,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1291:
+	.ascii	"lvm qdebug: interp start\n"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1291, 25
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1292,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1292,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1292:
-	.ascii	"lvm qdebug: interp start\n"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1292, 25
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1293,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1293,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1292,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1293:
+.Lanon.2e24e836c13f239343f864e080f18d36.1292:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
 	.asciz	"\021\000\000\000\000\000\000\000]\002\000\000\"\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1293, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1292, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1293,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.1293:
+	.asciz	"!lvm qdebug: assert0 fails: block \300\013 iteration \300\005 row \300\b (cells \300\001 \300\002)\n"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1293, 72
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1294,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1294:
-	.asciz	"!lvm qdebug: assert0 fails: block \300\013 iteration \300\005 row \300\b (cells \300\001 \300\002)\n"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1294, 72
+	.asciz	" lvm qdebug: readd misses: block \300\013 iteration \300\005 row \300\001\n"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1294, 57
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1295,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1295,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1295:
-	.asciz	" lvm qdebug: readd misses: block \300\013 iteration \300\005 row \300\001\n"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1295, 57
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
+	.asciz	"\021\000\000\000\000\000\000\000\357\002\000\0007\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1295, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1296,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1296,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1296:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\357\002\000\0007\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\357\002\000\000\025\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1296, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1297,@object
@@ -462436,7 +462345,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1297:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\357\002\000\000\025\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\357\002\000\000\030\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1297, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1298,@object
@@ -462444,7 +462353,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1298:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\357\002\000\000\030\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\357\002\000\000\035\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1298, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1299,@object
@@ -462452,7 +462361,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1299:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\357\002\000\000\035\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\310\002\000\000\032\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1299, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1300,@object
@@ -462460,7 +462369,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1300:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\310\002\000\000\032\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\310\002\000\000+\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1300, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1301,@object
@@ -462468,29 +462377,29 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1301:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\310\002\000\000+\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\327\002\000\0005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1301, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1302,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1302,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1302,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1302:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\327\002\000\0005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1302, 24
+	.ascii	"readd: the cell (interp.inb)"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1302, 28
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1303,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1303,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1303,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1303:
-	.ascii	"readd: the cell (interp.inb)"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1303, 28
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
+	.asciz	"\021\000\000\000\000\000\000\000\331\002\000\000.\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1303, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1304,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1304,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1304:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\331\002\000\000.\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\332\002\000\0002\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1304, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1305,@object
@@ -462498,7 +462407,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1305:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\332\002\000\0002\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\333\002\000\000\026\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1305, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1306,@object
@@ -462506,7 +462415,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1306:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\333\002\000\000\026\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\333\002\000\000%\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1306, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1307,@object
@@ -462514,7 +462423,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1307:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\333\002\000\000%\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\322\002\000\0002\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1307, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1308,@object
@@ -462522,7 +462431,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1308:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\322\002\000\0002\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\323\002\000\000\026\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1308, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1309,@object
@@ -462530,7 +462439,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1309:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\323\002\000\000\026\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\323\002\000\000'\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1309, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1310,@object
@@ -462538,7 +462447,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1310:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\323\002\000\000'\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\320\002\000\000\032\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1310, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1311,@object
@@ -462546,7 +462455,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1311:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\320\002\000\000\032\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\320\002\000\000.\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1311, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1312,@object
@@ -462554,7 +462463,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1312:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\320\002\000\000.\000\000"
+	.asciz	"\021\000\000\000\000\000\000\0002\003\000\000Q\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1312, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1313,@object
@@ -462562,7 +462471,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1313:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\0002\003\000\000Q\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\023\003\000\000\035\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1313, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1314,@object
@@ -462570,7 +462479,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1314:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\023\003\000\000\035\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\036\003\000\000L\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1314, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1315,@object
@@ -462578,7 +462487,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1315:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\036\003\000\000L\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\036\003\000\000`\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1315, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1316,@object
@@ -462586,7 +462495,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1316:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\036\003\000\000`\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\036\003\000\000m\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1316, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1317,@object
@@ -462594,7 +462503,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1317:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\036\003\000\000m\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\036\003\000\000|\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1317, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1318,@object
@@ -462602,7 +462511,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1318:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\036\003\000\000|\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000)\003\000\000E\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1318, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1319,@object
@@ -462610,7 +462519,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1319:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000)\003\000\000E\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000)\003\000\000S\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1319, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1320,@object
@@ -462618,7 +462527,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1320:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000)\003\000\000S\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\032\003\000\000r\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1320, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1321,@object
@@ -462626,15 +462535,15 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1321:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\032\003\000\000r\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\032\003\000\000\203\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1321, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1322,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1322,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1322:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000\032\003\000\000\203\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.592
+	.asciz	"\r\000\000\000\000\000\000\000\004\001\000\000\025\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1322, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1323,@object
@@ -462642,7 +462551,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1323:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.592
-	.asciz	"\r\000\000\000\000\000\000\000\004\001\000\000\025\000\000"
+	.asciz	"\r\000\000\000\000\000\000\000\033\001\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1323, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1324,@object
@@ -462650,63 +462559,63 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1324:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.592
-	.asciz	"\r\000\000\000\000\000\000\000\033\001\000\000\t\000\000"
+	.asciz	"\r\000\000\000\000\000\000\000\032\001\000\000\f\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1324, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1325,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1325,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1325,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1325:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.592
-	.asciz	"\r\000\000\000\000\000\000\000\032\001\000\000\f\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1325, 24
+	.ascii	"the openings are claims on the whole committed block"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1325, 52
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1326,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1326,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1326:
-	.ascii	"the openings are claims on the whole committed block"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1326, 52
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1327,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1327,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1326,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1327:
+.Lanon.2e24e836c13f239343f864e080f18d36.1326:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.491
 	.asciz	"\030\000\000\000\000\000\000\000\265\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1327, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1326, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1327,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1327,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1327:
+	.ascii	"Outputs"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1327, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1328,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1328,"a",@progbits
+	.section	.rodata.cst8,"aM",@progbits,8
 .Lanon.2e24e836c13f239343f864e080f18d36.1328:
-	.ascii	"Outputs"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1328, 7
+	.ascii	"Openings"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1328, 8
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1329,@object
-	.section	.rodata.cst8,"aM",@progbits,8
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1329,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1329:
-	.ascii	"Openings"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1329, 8
+	.ascii	"Layer"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1329, 5
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1330,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1330,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1330,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1330:
-	.ascii	"Layer"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1330, 5
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
+	.asciz	"\016\000\000\000\000\000\000\000x\000\000\000\034\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1330, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1331,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1331,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1331:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
-	.asciz	"\016\000\000\000\000\000\000\000x\000\000\000\034\000\000"
+	.asciz	"\016\000\000\000\000\000\000\000u\000\000\000 \000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1331, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1332,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1332,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1332:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
-	.asciz	"\016\000\000\000\000\000\000\000u\000\000\000 \000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.336
+	.asciz	"\017\000\000\000\000\000\000\000C\000\000\000\025\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1332, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1333,@object
@@ -462714,31 +462623,31 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1333:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.336
-	.asciz	"\017\000\000\000\000\000\000\000C\000\000\000\025\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000C\000\000\000\030\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1333, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1334,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1334,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1334:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.336
-	.asciz	"\017\000\000\000\000\000\000\000C\000\000\000\030\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.687
+	.asciz	"\021\000\000\000\000\000\000\000\216\000\000\000\035\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1334, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1335,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1335,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1335:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.687
-	.asciz	"\021\000\000\000\000\000\000\000\216\000\000\000\035\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.174
+	.asciz	"\032\000\000\000\000\000\000\000p\000\000\000\033\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1335, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1336,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1336,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1336:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.174
-	.asciz	"\032\000\000\000\000\000\000\000p\000\000\000\033\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
+	.asciz	"\033\000\000\000\000\000\000\000\237\000\000\000\021\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1336, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1337,@object
@@ -462746,7 +462655,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1337:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\237\000\000\000\021\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\246\000\000\000\027\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1337, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1338,@object
@@ -462754,7 +462663,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1338:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\246\000\000\000\027\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\246\000\000\000\021\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1338, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1339,@object
@@ -462762,7 +462671,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1339:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\246\000\000\000\021\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\313\000\000\000!\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1339, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1340,@object
@@ -462770,7 +462679,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1340:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\313\000\000\000!\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\301\000\000\000\"\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1340, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1341,@object
@@ -462778,37 +462687,37 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1341:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\301\000\000\000\"\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\300\000\000\000%\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1341, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1342,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1342,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1342:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\300\000\000\000%\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.308
+	.asciz	"\034\000\000\000\000\000\000\000-\001\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1342, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1343,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1343,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1343,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1343:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.308
-	.asciz	"\034\000\000\000\000\000\000\000-\001\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1343, 24
+	.ascii	"assertion failed: round <= ROUNDS"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1343, 33
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1344,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1344,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1344,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1344:
-	.ascii	"assertion failed: round <= ROUNDS"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1344, 33
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
+	.asciz	"\034\000\000\000\000\000\000\000|\000\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1344, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1345,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1345,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1345:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\201\000\000\000\t\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000~\000\000\000%\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1345, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1346,@object
@@ -462816,15 +462725,15 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1346:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\203\000\000\000%\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000~\000\000\000$\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1346, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1347,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1347,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1347:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\203\000\000\000$\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
+	.asciz	"\032\000\000\000\000\000\000\000\363\000\000\0009\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1347, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1348,@object
@@ -462832,7 +462741,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1348:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000\363\000\000\0009\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000\364\000\000\000=\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1348, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1349,@object
@@ -462840,7 +462749,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1349:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000\364\000\000\000=\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000\364\000\000\000K\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1349, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1350,@object
@@ -462848,37 +462757,37 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1350:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000\364\000\000\000K\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000\366\000\000\000?\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1350, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1351,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1351,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1351:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000\366\000\000\000?\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.758
+	.asciz	"\031\000\000\000\000\000\000\000F\001\000\000\021\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1351, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1352,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1352,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1352,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1352:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.758
-	.asciz	"\031\000\000\000\000\000\000\000F\001\000\000\021\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1352, 24
+	.ascii	"assertion failed: start + out.len() <= block_len * self.eq_hi.len()"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1352, 67
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1353,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1353,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1353,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1353:
-	.ascii	"assertion failed: start + out.len() <= block_len * self.eq_hi.len()"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1353, 67
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.758
+	.asciz	"\031\000\000\000\000\000\000\000/\001\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1353, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1354,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1354,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1354:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.758
-	.asciz	"\031\000\000\000\000\000\000\000/\001\000\000\t\000\000"
+	.asciz	"\031\000\000\000\000\000\000\0003\001\000\000\026\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1354, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1355,@object
@@ -462886,7 +462795,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1355:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.758
-	.asciz	"\031\000\000\000\000\000\000\0003\001\000\000\026\000\000"
+	.asciz	"\031\000\000\000\000\000\000\0005\001\000\000\"\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1355, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1356,@object
@@ -462894,7 +462803,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1356:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.758
-	.asciz	"\031\000\000\000\000\000\000\0005\001\000\000\"\000\000"
+	.asciz	"\031\000\000\000\000\000\000\0006\001\000\000I\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1356, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1357,@object
@@ -462902,15 +462811,15 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1357:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.758
-	.asciz	"\031\000\000\000\000\000\000\0006\001\000\000I\000\000"
+	.asciz	"\031\000\000\000\000\000\000\0006\001\000\000+\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1357, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1358,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1358,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1358:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.758
-	.asciz	"\031\000\000\000\000\000\000\0006\001\000\000+\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
+	.asciz	"\036\000\000\000\000\000\000\000\256\000\000\000$\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1358, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1359,@object
@@ -462918,171 +462827,171 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1359:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000\256\000\000\000$\000\000"
+	.asciz	"\036\000\000\000\000\000\000\000\256\000\000\000\024\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1359, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1360,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1360,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1360:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000\256\000\000\000\024\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1234
+	.asciz	"\027\000\000\000\000\000\000\0006\000\000\000\027\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1360, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1361,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1361,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1361,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1361:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1235
-	.asciz	"\027\000\000\000\000\000\000\0006\000\000\000\027\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1361, 24
+	.ascii	"a row holds its lanes"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1361, 21
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1362,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1362,"a",@progbits
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1362:
-	.ascii	"a row holds its lanes"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1362, 21
+	.asciz	"src/lv/pcs/ntt/encode.rs"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1362, 25
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1363,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1363,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1363:
-	.asciz	"src/lv/pcs/ntt/encode.rs"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1363, 25
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1362
+	.asciz	"\030\000\000\000\000\000\000\000p\000\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1363, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1364,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1364,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1364,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1364:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1363
-	.asciz	"\030\000\000\000\000\000\000\000p\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1364, 24
+	.ascii	"a codeword has at least two cosets"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1364, 34
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1365,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1365,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1365,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1365:
-	.ascii	"a codeword has at least two cosets"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1365, 34
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1362
+	.asciz	"\030\000\000\000\000\000\000\000q\000\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1365, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1366,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1366,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.cst32,"aM",@progbits,32
 .Lanon.2e24e836c13f239343f864e080f18d36.1366:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1363
-	.asciz	"\030\000\000\000\000\000\000\000q\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1366, 24
+	.ascii	"the message is whole lane blocks"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1366, 32
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1367,@object
-	.section	.rodata.cst32,"aM",@progbits,32
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1367,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1367:
-	.ascii	"the message is whole lane blocks"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1367, 32
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1362
+	.asciz	"\030\000\000\000\000\000\000\000s\000\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1367, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1368,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1368,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1368,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1368:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1363
-	.asciz	"\030\000\000\000\000\000\000\000s\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1368, 24
+	.ascii	"the encode runs"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1368, 15
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1369,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1369,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1369,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1369:
-	.ascii	"the encode runs"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1369, 15
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1362
+	.asciz	"\030\000\000\000\000\000\000\000\211\000\000\000\024\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1369, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1370,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1370,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1370:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1363
-	.asciz	"\030\000\000\000\000\000\000\000\211\000\000\000\024\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1362
+	.asciz	"\030\000\000\000\000\000\000\000\251\000\000\000\024\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1370, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1371,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1371,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1371,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1371:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1363
-	.asciz	"\030\000\000\000\000\000\000\000\251\000\000\000\024\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1371, 24
+	.ascii	"assertion failed: log_d <= self.log_domain_size()"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1371, 49
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1372,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1372,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1372,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1372:
-	.ascii	"assertion failed: log_d <= self.log_domain_size()"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1372, 49
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1362
+	.asciz	"\030\000\000\000\000\000\000\000\341\000\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1372, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1373,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1373,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.cst32,"aM",@progbits,32
 .Lanon.2e24e836c13f239343f864e080f18d36.1373:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1363
-	.asciz	"\030\000\000\000\000\000\000\000\341\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1373, 24
+	.ascii	"assertion failed: start <= log_d"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1373, 32
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1374,@object
-	.section	.rodata.cst32,"aM",@progbits,32
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1374,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1374:
-	.ascii	"assertion failed: start <= log_d"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1374, 32
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1362
+	.asciz	"\030\000\000\000\000\000\000\000\342\000\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1374, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1375,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1375,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1375:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1363
-	.asciz	"\030\000\000\000\000\000\000\000\342\000\000\000\t\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1362
+	.asciz	"\030\000\000\000\000\000\000\000\356\000\000\000\021\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1375, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1376,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1376,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1376,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1376:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1363
-	.asciz	"\030\000\000\000\000\000\000\000\356\000\000\000\021\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1376, 24
+	.ascii	"a partial buffer needs the gathered pass"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1376, 40
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1377,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1377,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1377,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1377:
-	.ascii	"a partial buffer needs the gathered pass"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1377, 40
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1362
+	.asciz	"\030\000\000\000\000\000\000\000\355\000\000\000\r\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1377, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1378,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1378,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1378,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1378:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1363
-	.asciz	"\030\000\000\000\000\000\000\000\355\000\000\000\r\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1378, 24
+	.ascii	"one gathered pass reads the lanes"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1378, 33
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1379,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1379,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1379:
-	.ascii	"one gathered pass reads the lanes"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1379, 33
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1380,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1380,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1379,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1380:
+.Lanon.2e24e836c13f239343f864e080f18d36.1379:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.278
 	.asciz	"\032\000\000\000\000\000\000\000\246\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1380, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1379, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1380,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1380,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1380:
+	.ascii	"chunk width must be non-zero"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1380, 28
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1381,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1381,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1381,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1381:
-	.ascii	"chunk width must be non-zero"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1381, 28
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.96
+	.asciz	"\026\000\000\000\000\000\000\000\262\001\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1381, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1382,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1382,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1382:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.96
-	.asciz	"\026\000\000\000\000\000\000\000\262\001\000\000\t\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
+	.asciz	"\033\000\000\000\000\000\000\000\330\004\000\000B\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1382, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1383,@object
@@ -463090,7 +462999,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1383:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\330\004\000\000B\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\331\004\000\000;\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1383, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1384,@object
@@ -463098,7 +463007,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1384:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\331\004\000\000;\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\260\004\000\000\016\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1384, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1385,@object
@@ -463106,7 +463015,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1385:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\260\004\000\000\016\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\257\004\000\000-\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1385, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1386,@object
@@ -463114,7 +463023,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1386:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\257\004\000\000-\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\235\004\000\000'\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1386, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1387,@object
@@ -463122,7 +463031,7 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1387:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\235\004\000\000'\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\230\004\000\000\033\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1387, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1388,@object
@@ -463130,16 +463039,8 @@ _RNvXsI_NtCsgHYyB3hU8Ec_3std7processNtB5_10ExitStatusNtNtCsevLNFiNqfJP_4core3fmt
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1388:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\230\004\000\000\033\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1388, 24
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1389,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1389,"aw",@progbits
-	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1389:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
 	.asciz	"\033\000\000\000\000\000\000\000\227\004\000\000 \000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1389, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1388, 24
 
 	.type	_RNvNCNKNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel7IN_TASK0s_023___RUST_STD_INTERNAL_VAL_lvm_v4p,@object
 	.section	.tbss._RNvNCNKNvNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel7IN_TASK0s_023___RUST_STD_INTERNAL_VAL,"awT",@nobits
@@ -463162,363 +463063,371 @@ _RNvNCNKNvNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt7scratch12with_scratch7
 	.zero	7
 	.size	_RNvNCNKNvNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt7scratch12with_scratch7SCRATCH0023___RUST_STD_INTERNAL_VAL_lvm_v4p, 40
 
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1390,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1390,"aw",@progbits
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1389,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1389,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1390:
+.Lanon.2e24e836c13f239343f864e080f18d36.1389:
 	.asciz	"\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000"
 	.quad	_RNSNvYNvNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_648software11clmul_holesINtNtNtCsevLNFiNqfJP_4core3ops8function6FnOnceTyyEE9call_once6vtableBg__lvm_v4p
 	.quad	_RNvYNvNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_648software11clmul_holesINtNtNtCsevLNFiNqfJP_4core3ops8function5FnMutTyyEE8call_mutBe__lvm_v4p
 	.quad	_RNvYNvNtNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_648software11clmul_holesINtNtNtCsevLNFiNqfJP_4core3ops8function2FnTyyEE4callBe__lvm_v4p
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1390, 48
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1389, 48
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1390,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1390,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1390:
+	.ascii	"holes"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1390, 5
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1391,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1391,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1391,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1391:
-	.ascii	"holes"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1391, 5
+	.asciz	"\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000"
+	.quad	_RNSNvYNCNvNtCs7rukeAxmHeC_10lvm_prover3kat11clmul_tiers0INtNtNtCsevLNFiNqfJP_4core3ops8function6FnOnceTyyEE9call_once6vtableBa__lvm_v4p
+	.quad	_RNCNvNtCs7rukeAxmHeC_10lvm_prover3kat11clmul_tiers0B5__lvm_v4p
+	.quad	_RNCNvNtCs7rukeAxmHeC_10lvm_prover3kat11clmul_tiers0B5__lvm_v4p
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1391, 48
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1392,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1392,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1392:
 	.asciz	"\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000"
-	.quad	_RNSNvYNCNvNtCs7rukeAxmHeC_10lvm_prover3kat11clmul_tiers0INtNtNtCsevLNFiNqfJP_4core3ops8function6FnOnceTyyEE9call_once6vtableBa__lvm_v4p
-	.quad	_RNCNvNtCs7rukeAxmHeC_10lvm_prover3kat11clmul_tiers0B5__lvm_v4p
-	.quad	_RNCNvNtCs7rukeAxmHeC_10lvm_prover3kat11clmul_tiers0B5__lvm_v4p
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1392, 48
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1393,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1393,"aw",@progbits
-	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1393:
-	.asciz	"\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000"
 	.quad	_RNSNvYNCNvNtCs7rukeAxmHeC_10lvm_prover3kat11clmul_tierss0_0INtNtNtCsevLNFiNqfJP_4core3ops8function6FnOnceTyyEE9call_once6vtableBa__lvm_v4p
 	.quad	_RNCNvNtCs7rukeAxmHeC_10lvm_prover3kat11clmul_tierss0_0B5__lvm_v4p
 	.quad	_RNCNvNtCs7rukeAxmHeC_10lvm_prover3kat11clmul_tierss0_0B5__lvm_v4p
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1393, 48
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1392, 48
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1393,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1393,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1393:
+	.ascii	"pclmul"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1393, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1394,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1394,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1394:
-	.ascii	"pclmul"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1394, 6
+	.ascii	"avx512f"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1394, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1395,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1395,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1395:
-	.ascii	"avx512f"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1395, 7
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1396,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1396,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1396:
 	.ascii	"pclmulqdq"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1396, 9
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1395, 9
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1397,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1397,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1397:
+	.ascii	"compile-time pclmulqdq"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1397, 22
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1398,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1398,"a",@progbits
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1398:
-	.ascii	"compile-time pclmulqdq"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1398, 22
+	.asciz	"\bvariant \300\020 (compile-time: \300\016); K product: \300\025; Keccak batch width \300\n; threads \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1398, 80
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1399,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1399,"a",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1399:
-	.asciz	"\bvariant \300\020 (compile-time: \300\016); K product: \300\025; Keccak batch width \300\n; threads \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1399, 80
+	.ascii	"\025f`\365\327\207\016\225\370lk\236\\'a,#\271-\004\240\274\000\037\006\267\352\251\220\242\274m\332\375\3170\376\244\020LM9\375\304L\377o\362\366\365\272Z\303\017\212\210I\006+\023\274L\250h\276\312\0030a\257\336\237\214k\324\325\032\023\272\217\005\2507\365W\004\027\0345Q\241\214\t\31426-mjx\274\242\024h\305B\200l\0365k\242l\034\005\274\177\016vTmf\244\245\200\210\300\324\347\361\330\356\340\na)\345\023R\376\342\330K\303;\004\371\362\353\"\323*\200L\025g\252\000\310\212\fM<\035ev\017m:\264;\270\362\016\200\317L\324M\006\315\306\341\357\033\230\342`z\\\334W"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1399, 192
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1400,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1400,"a",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
 .Lanon.2e24e836c13f239343f864e080f18d36.1400:
-	.ascii	"\025f`\365\327\207\016\225\370lk\236\\'a,#\271-\004\240\274\000\037\006\267\352\251\220\242\274m\332\375\3170\376\244\020LM9\375\304L\377o\362\366\365\272Z\303\017\212\210I\006+\023\274L\250h\276\312\0030a\257\336\237\214k\324\325\032\023\272\217\005\2507\365W\004\027\0345Q\241\214\t\31426-mjx\274\242\024h\305B\200l\0365k\242l\034\005\274\177\016vTmf\244\245\200\210\300\324\347\361\330\356\340\na)\345\023R\376\342\330K\303;\004\371\362\353\"\323*\200L\025g\252\000\310\212\fM<\035ev\017m:\264;\270\362\016\200\317L\324M\006\315\306\341\357\033\230\342`z\\\334W"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1400, 192
+	.ascii	"mul_wide"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1400, 8
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1401,@object
-	.section	.rodata.cst8,"aM",@progbits,8
-.Lanon.2e24e836c13f239343f864e080f18d36.1401:
-	.ascii	"mul_wide"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1401, 8
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1402,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1402,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1401,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1402:
+.Lanon.2e24e836c13f239343f864e080f18d36.1401:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\234\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1402, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1401, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1402,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.1402:
+	.asciz	"\013clmul tier \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1402, 14
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1403,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.Lanon.2e24e836c13f239343f864e080f18d36.1403:
-	.asciz	"\013clmul tier \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1403, 14
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1404,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1404,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1403,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1404:
+.Lanon.2e24e836c13f239343f864e080f18d36.1403:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\236\000\000\000\r\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1404, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1403, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1404,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1404,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1404:
+	.ascii	"F64 mul"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1404, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1405,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1405,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1405:
-	.ascii	"F64 mul"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1405, 7
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1406,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1406,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1405,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1406:
+.Lanon.2e24e836c13f239343f864e080f18d36.1405:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\240\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1406, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1405, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1406,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1406,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1406:
+	.ascii	"reduce"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1406, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1407,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1407,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1407:
-	.ascii	"reduce"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1407, 6
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1408,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1408,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1407,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1408:
+.Lanon.2e24e836c13f239343f864e080f18d36.1407:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\241\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1408, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1407, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1408,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1408,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1408:
+	.ascii	"F64 square"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1408, 10
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1409,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1409,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1409:
-	.ascii	"F64 square"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1409, 10
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1410,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1410,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1409,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1410:
+.Lanon.2e24e836c13f239343f864e080f18d36.1409:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\242\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1410, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1409, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1410,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1410,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1410:
+	.ascii	"F64 inv"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1410, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1411,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1411,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1411:
-	.ascii	"F64 inv"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1411, 7
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1412,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1412,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1411,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1412:
+.Lanon.2e24e836c13f239343f864e080f18d36.1411:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\246\000\000\000\r\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1412, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1411, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1412,@object
+	.section	.rodata.cst8,"aM",@progbits,8
+.Lanon.2e24e836c13f239343f864e080f18d36.1412:
+	.ascii	"F192 inv"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1412, 8
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1413,@object
-	.section	.rodata.cst8,"aM",@progbits,8
-.Lanon.2e24e836c13f239343f864e080f18d36.1413:
-	.ascii	"F192 inv"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1413, 8
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1414,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1414,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1413,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1414:
+.Lanon.2e24e836c13f239343f864e080f18d36.1413:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\300\000\000\000\r\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1414, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1413, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1414,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.1414:
+	.asciz	"\017kat field: ok (\300% random pairs + corners; clmul tiers \300\013; dispatch \300\002)\n"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1414, 73
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1415,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.rodata.cst8,"aM",@progbits,8
 .Lanon.2e24e836c13f239343f864e080f18d36.1415:
-	.asciz	"\017kat field: ok (\300% random pairs + corners; clmul tiers \300\013; dispatch \300\002)\n"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1415, 73
+	.ascii	"F192 mul"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1415, 8
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1416,@object
-	.section	.rodata.cst8,"aM",@progbits,8
-.Lanon.2e24e836c13f239343f864e080f18d36.1416:
-	.ascii	"F192 mul"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1416, 8
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1417,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1417,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1416,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1417:
+.Lanon.2e24e836c13f239343f864e080f18d36.1416:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\256\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1417, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1416, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1417,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1417,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1417:
+	.ascii	"F192 square"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1417, 11
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1418,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1418,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1418:
-	.ascii	"F192 square"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1418, 11
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1419,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1419,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1418,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1419:
+.Lanon.2e24e836c13f239343f864e080f18d36.1418:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\260\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1419, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1418, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1419,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1419,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1419:
+	.ascii	"F192 mul_base"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1419, 13
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1420,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1420,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1420:
-	.ascii	"F192 mul_base"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1420, 13
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1421,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1421,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1420,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1421:
+.Lanon.2e24e836c13f239343f864e080f18d36.1420:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\261\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1421, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1420, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1421,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1421,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1421:
+	.ascii	"mul_base_unreduced"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1421, 18
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1422,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1422,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1422:
-	.ascii	"mul_base_unreduced"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1422, 18
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1423,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1423,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1422,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1423:
+.Lanon.2e24e836c13f239343f864e080f18d36.1422:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\262\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1423, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1422, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1423,@object
+	.section	.rodata.cst4,"aM",@progbits,4
+.Lanon.2e24e836c13f239343f864e080f18d36.1423:
+	.ascii	"mul2"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1423, 4
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1424,@object
-	.section	.rodata.cst4,"aM",@progbits,4
-.Lanon.2e24e836c13f239343f864e080f18d36.1424:
-	.ascii	"mul2"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1424, 4
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1425,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1425,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1424,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1425:
+.Lanon.2e24e836c13f239343f864e080f18d36.1424:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\274\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1425, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1424, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1425,@object
+	.section	.rodata.cst4,"aM",@progbits,4
+.Lanon.2e24e836c13f239343f864e080f18d36.1425:
+	.ascii	"mul4"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1425, 4
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1426,@object
-	.section	.rodata.cst4,"aM",@progbits,4
-.Lanon.2e24e836c13f239343f864e080f18d36.1426:
-	.ascii	"mul4"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1426, 4
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1427,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1427,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1426,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1427:
+.Lanon.2e24e836c13f239343f864e080f18d36.1426:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\270\000\000\000\r\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1427, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1426, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1427,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1427,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1427:
+	.ascii	"mul_unreduced4"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1427, 14
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1428,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1428,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1428,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1428:
-	.ascii	"mul_unreduced4"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1428, 14
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
+	.asciz	"\n\000\000\000\000\000\000\000\271\000\000\000\r\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1428, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1429,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1429,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1429:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
-	.asciz	"\n\000\000\000\000\000\000\000\271\000\000\000\r\000\000"
+	.asciz	"\n\000\000\000\000\000\000\000\216\000\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1429, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1430,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1430,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1430,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1430:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
-	.asciz	"\n\000\000\000\000\000\000\000\216\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1430, 24
+	.ascii	"F192 vector"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1430, 11
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1431,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1431,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1431:
-	.ascii	"F192 vector"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1431, 11
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1432,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1432,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1431,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1432:
+.Lanon.2e24e836c13f239343f864e080f18d36.1431:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\217\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1432, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1431, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1432,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1432,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1432:
+	.ascii	"F192 square vector"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1432, 18
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1433,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1433,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1433:
-	.ascii	"F192 square vector"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1433, 18
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1434,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1434,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1433,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1434:
+.Lanon.2e24e836c13f239343f864e080f18d36.1433:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\220\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1434, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1433, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1435,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1435,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1435:
+	.ascii	"F64 vector"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1435, 10
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1436,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1436,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1436:
-	.ascii	"F64 vector"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1436, 10
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1437,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1437,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1436,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1437:
+.Lanon.2e24e836c13f239343f864e080f18d36.1436:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\212\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1437, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1436, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1437,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1437,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1437:
+	.ascii	"c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1437, 64
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1438,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1438,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1438:
-	.ascii	"c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
+	.ascii	"4e03657aea45a94fc7d47ba826c8d667c0d1e6e33a64a036ec44f58fa12d6c45"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1438, 64
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1439,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1439,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1439:
-	.ascii	"4e03657aea45a94fc7d47ba826c8d667c0d1e6e33a64a036ec44f58fa12d6c45"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1439, 64
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1440,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1440,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1439,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1440:
+.Lanon.2e24e836c13f239343f864e080f18d36.1439:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000!\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1440, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1439, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1440,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1440,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1440:
+	.ascii	"abc"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1440, 3
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1441,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1441,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1441,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1441:
-	.ascii	"abc"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1441, 3
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
+	.asciz	"\n\000\000\000\000\000\000\000\"\000\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1441, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1442,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1442,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1442:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
-	.asciz	"\n\000\000\000\000\000\000\000\"\000\000\000\005\000\000"
+	.asciz	"\n\000\000\000\000\000\000\000#\000\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1442, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1443,@object
@@ -463526,277 +463435,269 @@ _RNvNCNKNvNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv3pcs3ntt7scratch12with_scratch7
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1443:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
-	.asciz	"\n\000\000\000\000\000\000\000#\000\000\000\005\000\000"
+	.asciz	"\n\000\000\000\000\000\000\000$\000\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1443, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1444,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1444,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
 .Lanon.2e24e836c13f239343f864e080f18d36.1444:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
-	.asciz	"\n\000\000\000\000\000\000\000$\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1444, 24
+	.ascii	"keccak_f"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1444, 8
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1445,@object
-	.section	.rodata.cst8,"aM",@progbits,8
-.Lanon.2e24e836c13f239343f864e080f18d36.1445:
-	.ascii	"keccak_f"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1445, 8
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1446,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1446,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1445,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1446:
+.Lanon.2e24e836c13f239343f864e080f18d36.1445:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000E\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1446, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1445, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1446,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.1446:
+	.asciz	"\rkeccak_f_x8 (\300\001)"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1446, 18
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1447,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.Lanon.2e24e836c13f239343f864e080f18d36.1447:
-	.asciz	"\rkeccak_f_x8 (\300\001)"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1447, 18
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1448,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1448,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1447,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1448:
+.Lanon.2e24e836c13f239343f864e080f18d36.1447:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000V\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1448, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1447, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1448,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.1448:
+	.asciz	"#kat keccak: ok (leanVM batch width \300\n, x8 tier \300\002)\n"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1448, 53
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1449,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1449:
-	.asciz	"#kat keccak: ok (leanVM batch width \300\n, x8 tier \300\002)\n"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1449, 53
+	.asciz	"\nhash_many \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1449, 13
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1450,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1450,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1450:
-	.asciz	"\nhash_many \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1450, 13
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
+	.asciz	"\n\000\000\000\000\000\000\000L\000\000\000\r\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1450, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1451,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1451,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1451:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
-	.asciz	"\n\000\000\000\000\000\000\000L\000\000\000\r\000\000"
+	.asciz	"\n\000\000\000\000\000\000\000L\000\000\000A\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1451, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1452,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1452,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1452:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
-	.asciz	"\n\000\000\000\000\000\000\000L\000\000\000A\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1452, 24
+	.asciz	"\013grind_lane \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1452, 14
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1453,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.Lanon.2e24e836c13f239343f864e080f18d36.1453:
-	.asciz	"\013grind_lane \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1453, 14
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1454,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1454,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1453,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1454:
+.Lanon.2e24e836c13f239343f864e080f18d36.1453:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000?\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1454, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1453, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1454,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.1454:
+	.asciz	"\007length \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1454, 10
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1455,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1455,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1455:
-	.asciz	"\007length \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1455, 10
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
+	.asciz	"\n\000\000\000\000\000\000\000(\000\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1455, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1456,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1456,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1456:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
-	.asciz	"\n\000\000\000\000\000\000\000(\000\000\000\t\000\000"
+	.asciz	"\n\000\000\000\000\000\000\000+\000\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1456, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1457,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1457,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1457,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1457:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
-	.asciz	"\n\000\000\000\000\000\000\000+\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1457, 24
+	.ascii	"kat oracle: ok (Keyed = Keccak-256(k \342\200\226 q))\n"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1457, 45
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1458,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1458,"a",@progbits
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1458:
-	.ascii	"kat oracle: ok (Keyed = Keccak-256(k \342\200\226 q))\n"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1458, 45
+	.asciz	"\006keyed \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1458, 9
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1459,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.Lanon.2e24e836c13f239343f864e080f18d36.1459:
-	.asciz	"\006keyed \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1459, 9
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1460,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1460,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1459,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1460:
+.Lanon.2e24e836c13f239343f864e080f18d36.1459:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.580
 	.asciz	"\n\000\000\000\000\000\000\000\360\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1460, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1459, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1460,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1460,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1460:
+	.ascii	"LVM_HEAP_MIB"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1460, 12
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1461,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1461,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1461:
-	.ascii	"LVM_HEAP_MIB"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1461, 12
+	.ascii	"\"n\""
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1461, 3
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1462,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1462,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1462:
-	.ascii	"\"n\""
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1462, 3
+	.byte	110
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1462, 1
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1463,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1463,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1463:
-	.byte	110
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1463, 1
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1464,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1464,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1463,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1464:
+.Lanon.2e24e836c13f239343f864e080f18d36.1463:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.581
 	.asciz	"\013\000\000\000\000\000\000\000\240\000\000\000}\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1464, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1463, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1464,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1464,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1464:
+	.ascii	"\"start\""
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1464, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1465,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1465,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1465:
-	.ascii	"\"start\""
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1465, 7
+	.ascii	"start"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1465, 5
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1466,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1466,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1466,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1466:
-	.ascii	"start"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1466, 5
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.581
+	.asciz	"\013\000\000\000\000\000\000\000\242\000\000\000\031\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1466, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1467,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1467,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1467:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.581
-	.asciz	"\013\000\000\000\000\000\000\000\242\000\000\000\031\000\000"
+	.asciz	"\013\000\000\000\000\000\000\000\243\000\000\0000\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1467, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1468,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1468,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1468,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1468:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.581
-	.asciz	"\013\000\000\000\000\000\000\000\243\000\000\0000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1468, 24
+	.ascii	"start: 32 bytes"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1468, 15
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1469,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1469,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1469:
-	.ascii	"start: 32 bytes"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1469, 15
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1470,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1470,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1469,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1470:
+.Lanon.2e24e836c13f239343f864e080f18d36.1469:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.581
 	.asciz	"\013\000\000\000\000\000\000\000\243\000\000\000H\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1470, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1469, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1470,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1470,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1470:
+	.ascii	"LVM_REL"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1470, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1471,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1471,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1471:
-	.ascii	"LVM_REL"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1471, 7
+	.ascii	"LVM_TSU_JOIN"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1471, 12
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1472,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1472,"a",@progbits
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1472:
-	.ascii	"LVM_TSU_JOIN"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1472, 12
+	.asciz	"\fTSU release \300\005 MiB\n"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1472, 21
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1473,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1473,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1473:
-	.asciz	"\fTSU release \300\005 MiB\n"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1473, 21
+	.asciz	"\fTSU release \300\017 MiB joined in \305 \000\000p\004\000\003 s\n"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1473, 42
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1474,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1474,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1474:
-	.asciz	"\fTSU release \300\017 MiB joined in \305 \000\000p\004\000\003 s\n"
+	.ascii	"SIGN answers differ from the QUERY answers"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1474, 42
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1475,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1475,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1475:
-	.ascii	"SIGN answers differ from the QUERY answers"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1475, 42
+	.ascii	"LVM_ARENA_THP"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1475, 13
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1476,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1476,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1476:
-	.ascii	"LVM_ARENA_THP"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1476, 13
+	.ascii	"heap pre-touch: out of memory"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1476, 29
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1477,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1477,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1477:
-	.ascii	"heap pre-touch: out of memory"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1477, 29
+	.ascii	"LVM_TSU_EXIT"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1477, 12
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1478,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1478,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1478:
-	.ascii	"LVM_TSU_EXIT"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1478, 12
+	.ascii	"system"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1478, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1479,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1479,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1479:
-	.ascii	"system"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1479, 6
+	.ascii	"LVM_ALLOC"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1479, 9
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1480,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1480,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1480,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1480:
-	.ascii	"LVM_ALLOC"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1480, 9
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.351
+	.asciz	"\f\000\000\000\000\000\000\000\337\000\000\0003\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1480, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1481,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1481,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1481:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.351
-	.asciz	"\f\000\000\000\000\000\000\000\337\000\000\0003\000\000"
+	.asciz	"\f\000\000\000\000\000\000\000\353\000\000\000\022\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1481, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1482,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1482,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1482,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1482:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.351
-	.asciz	"\f\000\000\000\000\000\000\000\353\000\000\000\022\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1482, 24
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1483,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1483,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1483:
 	.ascii	"LVM_NO_THP"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1483, 10
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1482, 10
 
 	.type	_RNvNtCs7rukeAxmHeC_10lvm_prover5alloc5STATE_lvm_v4p,@object
 	.section	.data._RNvNtCs7rukeAxmHeC_10lvm_prover5alloc5STATE,"aw",@progbits
@@ -463807,200 +463708,200 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover5alloc5STATE_lvm_v4p:
 	.asciz	"\000\000\000\000\000\000\000\000\b\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\b\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
 	.size	_RNvNtCs7rukeAxmHeC_10lvm_prover5alloc5STATE_lvm_v4p, 80
 
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1484,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1484,"aw",@progbits
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1483,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1483,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1484:
+.Lanon.2e24e836c13f239343f864e080f18d36.1483:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.351
 	.asciz	"\f\000\000\000\000\000\000\000\314\000\000\000#\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1484, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1483, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1484,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1484,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1484:
+	.ascii	"VmRSS:"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1484, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1485,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1485,"a",@progbits
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1485:
-	.ascii	"VmRSS:"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1485, 6
+	.asciz	"\007MEMLOG \300\f mapped_mib=\300\n live_mib=\300\020 phase_peak_mib=\300\t rss_mib=\300\t hwm_mib=\300\001\n"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1485, 78
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1486,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1486,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1486:
-	.asciz	"\007MEMLOG \300\f mapped_mib=\300\n live_mib=\300\020 phase_peak_mib=\300\t rss_mib=\300\t hwm_mib=\300\001\n"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1486, 78
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.351
+	.asciz	"\f\000\000\000\000\000\000\000\251\000\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1486, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1487,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1487,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1487:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.351
-	.asciz	"\f\000\000\000\000\000\000\000\251\000\000\000\t\000\000"
+	.asciz	"\f\000\000\000\000\000\000\000\262\000\000\000#\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1487, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1488,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1488,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1488,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1488:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.351
-	.asciz	"\f\000\000\000\000\000\000\000\262\000\000\000#\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1488, 24
+	.ascii	"witness"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1488, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1489,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1489,"a",@progbits
+	.section	.rodata.cst4,"aM",@progbits,4
 .Lanon.2e24e836c13f239343f864e080f18d36.1489:
-	.ascii	"witness"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1489, 7
+	.ascii	"seed"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1489, 4
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1490,@object
-	.section	.rodata.cst4,"aM",@progbits,4
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1490,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1490:
-	.ascii	"seed"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1490, 4
+	.ascii	"commit"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1490, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1491,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1491,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1491:
-	.ascii	"commit"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1491, 6
+	.ascii	"output claim"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1491, 12
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1492,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1492,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1492:
-	.ascii	"output claim"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1492, 12
+	.ascii	"gkr"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1492, 3
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1493,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1493,"a",@progbits
+	.section	.rodata.cst8,"aM",@progbits,8
 .Lanon.2e24e836c13f239343f864e080f18d36.1493:
-	.ascii	"gkr"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1493, 3
+	.ascii	"pcs open"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1493, 8
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1494,@object
-	.section	.rodata.cst8,"aM",@progbits,8
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1494,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1494:
-	.ascii	"pcs open"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1494, 8
+	.byte	75
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1494, 1
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1495,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1495,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1495:
-	.byte	75
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1495, 1
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1496,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1496,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1495,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1496:
+.Lanon.2e24e836c13f239343f864e080f18d36.1495:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.590
 	.asciz	"\r\000\000\000\000\000\000\000\336\000\000\000\030\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1496, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1495, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1496,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1496,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1496:
+	.byte	84
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1496, 1
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1497,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1497,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1497:
-	.byte	84
+	.byte	77
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1497, 1
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1498,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1498,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1498:
-	.byte	77
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1498, 1
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1499,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1499,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1498,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1499:
+.Lanon.2e24e836c13f239343f864e080f18d36.1498:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.590
 	.asciz	"\r\000\000\000\000\000\000\000f\000\000\000\023\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1499, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1498, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1499,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1499,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1499:
+	.byte	87
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1499, 1
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1500,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1500,"a",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1500:
-	.byte	87
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1500, 1
+	.asciz	"\000\000\000\000\000\000\000\000\006\000\000\000\000\000\000\000\f\000\000\000\000\000\000\000\022\000\000\000\000\000\000\000\030\000\000\000\000\000\000\000\003\000\000\000\000\000\000\000\t\000\000\000\000\000\000\000\n\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\026\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\007\000\000\000\000\000\000\000\r\000\000\000\000\000\000\000\023\000\000\000\000\000\000\000\024\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\005\000\000\000\000\000\000\000\013\000\000\000\000\000\000\000\021\000\000\000\000\000\000\000\027\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\b\000\000\000\000\000\000\000\016\000\000\000\000\000\000\000\017\000\000\000\000\000\000\000\025\000\000\000\000\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1500, 200
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1501,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1501,"a",@progbits
-	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1501:
-	.asciz	"\000\000\000\000\000\000\000\000\006\000\000\000\000\000\000\000\f\000\000\000\000\000\000\000\022\000\000\000\000\000\000\000\030\000\000\000\000\000\000\000\003\000\000\000\000\000\000\000\t\000\000\000\000\000\000\000\n\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\026\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\007\000\000\000\000\000\000\000\r\000\000\000\000\000\000\000\023\000\000\000\000\000\000\000\024\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\005\000\000\000\000\000\000\000\013\000\000\000\000\000\000\000\021\000\000\000\000\000\000\000\027\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\b\000\000\000\000\000\000\000\016\000\000\000\000\000\000\000\017\000\000\000\000\000\000\000\025\000\000\000\000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1501, 200
+	.byte	76
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1501, 1
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1502,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1502,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1502:
-	.byte	76
+	.byte	78
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1502, 1
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1503,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1503,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1503,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1503:
-	.byte	78
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1503, 1
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.69
+	.asciz	"\r\000\000\000\000\000\000\000\241\000\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1503, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1504,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1504,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1504:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.69
-	.asciz	"\r\000\000\000\000\000\000\000\241\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1504, 24
+	.asciz	"\000\000\000\000\000\000\000\000\030\000\000\000\000\000\000\000\b\000\000\000\000\000\000"
+	.quad	_RNSNvYNCNvNtCs7rukeAxmHeC_10lvm_prover6oracle10hash_items0INtNtNtCsevLNFiNqfJP_4core3ops8function6FnOnceTjQINtNtCs1C1lLj4PWSY_5alloc3vec3VechEEE9call_once6vtableBa__lvm_v4p
+	.quad	_RNCNvNtCs7rukeAxmHeC_10lvm_prover6oracle10hash_items0B5__lvm_v4p
+	.quad	_RNCNvNtCs7rukeAxmHeC_10lvm_prover6oracle10hash_items0B5__lvm_v4p
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1504, 48
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1505,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1505,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1505:
-	.asciz	"\000\000\000\000\000\000\000\000\030\000\000\000\000\000\000\000\b\000\000\000\000\000\000"
-	.quad	_RNSNvYNCNvNtCs7rukeAxmHeC_10lvm_prover6oracle10hash_items0INtNtNtCsevLNFiNqfJP_4core3ops8function6FnOnceTjQINtNtCs1C1lLj4PWSY_5alloc3vec3VechEEE9call_once6vtableBa__lvm_v4p
-	.quad	_RNCNvNtCs7rukeAxmHeC_10lvm_prover6oracle10hash_items0B5__lvm_v4p
-	.quad	_RNCNvNtCs7rukeAxmHeC_10lvm_prover6oracle10hash_items0B5__lvm_v4p
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1505, 48
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1506,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1506,"aw",@progbits
-	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1506:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.69
 	.asciz	"\r\000\000\000\000\000\000\000\251\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1506, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1505, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1506,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1506,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1506:
+	.ascii	"assertion failed: row_bytes <= leaf_bytes"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1506, 41
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1507,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1507,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1507,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1507:
-	.ascii	"assertion failed: row_bytes <= leaf_bytes"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1507, 41
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.69
+	.asciz	"\r\000\000\000\000\000\000\000\252\000\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1507, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1508,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1508,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1508:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.69
-	.asciz	"\r\000\000\000\000\000\000\000\252\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1508, 24
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1509,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1509,"aw",@progbits
-	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1509:
 	.asciz	"\000\000\000\000\000\000\000\000 \000\000\000\000\000\000\000\b\000\000\000\000\000\000"
 	.quad	_RNSNvYNCNvNtCs7rukeAxmHeC_10lvm_prover6oracle11hash_padded0INtNtNtCsevLNFiNqfJP_4core3ops8function6FnOnceTjQINtNtCs1C1lLj4PWSY_5alloc3vec3VechEEE9call_once6vtableBa__lvm_v4p
 	.quad	_RNCNvNtCs7rukeAxmHeC_10lvm_prover6oracle11hash_padded0B5__lvm_v4p
 	.quad	_RNCNvNtCs7rukeAxmHeC_10lvm_prover6oracle11hash_padded0B5__lvm_v4p
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1509, 48
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1508, 48
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1509,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1509,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1509:
+	.ascii	"no oracle installed"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1509, 19
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1510,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1510,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1510:
-	.ascii	"no oracle installed"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1510, 19
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1511,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1511,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1510,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1511:
+.Lanon.2e24e836c13f239343f864e080f18d36.1510:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.69
 	.asciz	"\r\000\000\000\000\000\000\000>\000\000\000\022\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1511, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1510, 24
 
 	.type	_RNvNtCs7rukeAxmHeC_10lvm_prover6oracle5STATS_lvm_v4p,@object
 	.section	.bss._RNvNtCs7rukeAxmHeC_10lvm_prover6oracle5STATS,"aw",@nobits
@@ -464018,48 +463919,48 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover6oracle6ORACLE_lvm_v4p:
 	.zero	4
 	.size	_RNvNtCs7rukeAxmHeC_10lvm_prover6oracle6ORACLE_lvm_v4p, 24
 
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1511,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1511,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1511:
+	.asciz	"\030  oracle total requests \303 \000\000(\t\000\t queries \303 \000\000(\n\000\007 bytes \303 \000\000(\r\000\007 perms \303 \000\000(\013\000\006 wait \307 \000\0008\b\000\003\000\024 s (thread-seconds)\n"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1511, 117
+
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1512,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1512,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1512:
-	.asciz	"\030  oracle total requests \303 \000\000(\t\000\t queries \303 \000\000(\n\000\007 bytes \303 \000\000(\r\000\007 perms \303 \000\000(\013\000\006 wait \307 \000\0008\b\000\003\000\024 s (thread-seconds)\n"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1512, 117
+	.asciz	"\t  oracle \303 \000\000\b\005\000\n requests \303 \000\000(\t\000\t queries \303 \000\000(\n\000\007 bytes \303 \000\000(\r\000\007 perms \303 \000\000(\013\000\006 wait \307 \000\0008\b\000\003\000\003 s\n"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1512, 103
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1513,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1513,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1513:
-	.asciz	"\t  oracle \303 \000\000\b\005\000\n requests \303 \000\000(\t\000\t queries \303 \000\000(\n\000\007 bytes \303 \000\000(\r\000\007 perms \303 \000\000(\013\000\006 wait \307 \000\0008\b\000\003\000\003 s\n"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1513, 103
+	.ascii	"the oracle is installed once"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1513, 28
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1514,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1514,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1514:
-	.ascii	"the oracle is installed once"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1514, 28
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1515,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1515,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1514,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1515:
+.Lanon.2e24e836c13f239343f864e080f18d36.1514:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.69
 	.asciz	"\r\000\000\000\000\000\000\0009\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1515, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1514, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1515,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1515,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1515:
+	.ascii	"LVM_BATCH_KIB"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1515, 13
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1516,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1516,"a",@progbits
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1516:
-	.ascii	"LVM_BATCH_KIB"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1516, 13
+	.asciz	"\016/proc/self/fd/\300\001/\300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1516, 20
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1517,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1517:
-	.asciz	"\016/proc/self/fd/\300\001/\300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1517, 20
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1518,@object
-.Lanon.2e24e836c13f239343f864e080f18d36.1518:
 	.asciz	"\034lvm-prover: oracle service: \300\001\n"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1518, 33
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1517, 33
 
 	.type	_RNvNtCs7rukeAxmHeC_10lvm_prover7service7BATCH_B.0_lvm_v4p,@object
 	.section	.bss._RNvNtCs7rukeAxmHeC_10lvm_prover7service7BATCH_B.0,"aw",@nobits
@@ -464068,12 +463969,20 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover7service7BATCH_B.0_lvm_v4p:
 	.quad	0
 	.size	_RNvNtCs7rukeAxmHeC_10lvm_prover7service7BATCH_B.0_lvm_v4p, 8
 
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1518,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1518,"aw",@progbits
+	.p2align	3, 0x0
+.Lanon.2e24e836c13f239343f864e080f18d36.1518:
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.491
+	.asciz	"\030\000\000\000\000\000\000\000\246\000\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1518, 24
+
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1519,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1519,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1519:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.491
-	.asciz	"\030\000\000\000\000\000\000\000\246\000\000\000\005\000\000"
+	.asciz	"\030\000\000\000\000\000\000\000\251\000\000\000\"\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1519, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1520,@object
@@ -464081,30 +463990,22 @@ _RNvNtCs7rukeAxmHeC_10lvm_prover7service7BATCH_B.0_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1520:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.491
-	.asciz	"\030\000\000\000\000\000\000\000\251\000\000\000\"\000\000"
+	.asciz	"\030\000\000\000\000\000\000\000\247\000\000\000\"\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1520, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1521,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1521,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1521:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.491
-	.asciz	"\030\000\000\000\000\000\000\000\247\000\000\000\"\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1521, 24
+	.asciz	"\024not a power of two: \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1521, 23
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1522,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.Lanon.2e24e836c13f239343f864e080f18d36.1522:
-	.asciz	"\024not a power of two: \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1522, 23
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1523,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1523,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1522,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1523:
+.Lanon.2e24e836c13f239343f864e080f18d36.1522:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.91
 	.asciz	"\030\000\000\000\000\000\000\000l\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1523, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1522, 24
 
 	.type	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing2ON.0_lvm_v4p,@object
 	.section	.data._RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing2ON.0,"aw",@progbits
@@ -464112,19 +464013,19 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing2ON.0_lvm_v4p:
 	.byte	2
 	.size	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing2ON.0_lvm_v4p, 1
 
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1524,@object
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1523,@object
 	.section	.rodata.str1.1,"aMS",@progbits,1
-.Lanon.2e24e836c13f239343f864e080f18d36.1524:
+.Lanon.2e24e836c13f239343f864e080f18d36.1523:
 	.asciz	"src/lv/tracing.rs"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1524, 18
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1523, 18
 
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1525,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1525,"aw",@progbits
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1524,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1524,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1525:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1524
+.Lanon.2e24e836c13f239343f864e080f18d36.1524:
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1523
 	.asciz	"\021\000\000\000\000\000\000\0008\000\000\000\036\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1525, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1524, 24
 
 	.type	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p,@object
 	.section	.data._RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE,"aw",@progbits
@@ -464135,26 +464036,34 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.asciz	"\000\000\000\000\000\000\000\000\b\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
 	.size	_RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p, 32
 
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1526,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1526,"aw",@progbits
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1525,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1525,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1526:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1524
+.Lanon.2e24e836c13f239343f864e080f18d36.1525:
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1523
 	.asciz	"\021\000\000\000\000\000\000\000J\000\000\000\032\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1526, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1525, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1526,@object
+	.section	.rodata.cst8,"aM",@progbits,8
+.Lanon.2e24e836c13f239343f864e080f18d36.1526:
+	.ascii	"LVM_PROF"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1526, 8
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1527,@object
-	.section	.rodata.cst8,"aM",@progbits,8
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1527,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1527:
-	.ascii	"LVM_PROF"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1527, 8
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.96
+	.asciz	"\026\000\000\000\000\000\000\000\261\000\000\000\031\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1527, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1528,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1528,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1528:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.96
-	.asciz	"\026\000\000\000\000\000\000\000\261\000\000\000\031\000\000"
+	.asciz	"\026\000\000\000\000\000\000\000\333\000\000\000\025\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1528, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1529,@object
@@ -464162,7 +464071,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1529:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.96
-	.asciz	"\026\000\000\000\000\000\000\000\333\000\000\000\025\000\000"
+	.asciz	"\026\000\000\000\000\000\000\000\337\000\000\000\025\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1529, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1530,@object
@@ -464170,7 +464079,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1530:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.96
-	.asciz	"\026\000\000\000\000\000\000\000\337\000\000\000\025\000\000"
+	.asciz	"\026\000\000\000\000\000\000\000(\000\000\000\n\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1530, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1531,@object
@@ -464178,51 +464087,51 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1531:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.96
-	.asciz	"\026\000\000\000\000\000\000\000(\000\000\000\n\000\000"
+	.asciz	"\026\000\000\000\000\000\000\000\201\000\000\000\n\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1531, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1532,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1532,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1532,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1532:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.96
-	.asciz	"\026\000\000\000\000\000\000\000\201\000\000\000\n\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1532, 24
+	.ascii	"drain without a published job"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1532, 29
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1533,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1533,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1533,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1533:
-	.ascii	"drain without a published job"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1533, 29
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.96
+	.asciz	"\026\000\000\000\000\000\000\000\353\000\000\0003\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1533, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1534,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1534,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1534:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.96
-	.asciz	"\026\000\000\000\000\000\000\000\353\000\000\0003\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
+	.asciz	"\r\000\000\000\000\000\000\000\324\001\000\000#\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1534, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1535,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1535,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1535,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1535:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
-	.asciz	"\r\000\000\000\000\000\000\000\324\001\000\000#\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1535, 24
+	.ascii	"public arrays are K arrays"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1535, 26
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1536,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1536,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1536,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1536:
-	.ascii	"public arrays are K arrays"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1536, 26
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
+	.asciz	"\r\000\000\000\000\000\000\0007\002\000\000\021\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1536, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1537,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1537,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1537:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
-	.asciz	"\r\000\000\000\000\000\000\0007\002\000\000\021\000\000"
+	.asciz	"\r\000\000\000\000\000\000\000W\002\000\0000\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1537, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1538,@object
@@ -464230,7 +464139,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1538:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
-	.asciz	"\r\000\000\000\000\000\000\000W\002\000\0000\000\000"
+	.asciz	"\r\000\000\000\000\000\000\000S\002\000\000>\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1538, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1539,@object
@@ -464238,79 +464147,79 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1539:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
-	.asciz	"\r\000\000\000\000\000\000\000S\002\000\000>\000\000"
+	.asciz	"\r\000\000\000\000\000\000\000T\002\000\000!\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1539, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1540,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1540,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.cst32,"aM",@progbits,32
 .Lanon.2e24e836c13f239343f864e080f18d36.1540:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
-	.asciz	"\r\000\000\000\000\000\000\000T\002\000\000!\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1540, 24
+	.ascii	"a placement per committed column"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1540, 32
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1541,@object
-	.section	.rodata.cst32,"aM",@progbits,32
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1541,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1541:
-	.ascii	"a placement per committed column"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1541, 32
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
+	.asciz	"\r\000\000\000\000\000\000\000)\002\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1541, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1542,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1542,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1542:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
-	.asciz	"\r\000\000\000\000\000\000\000)\002\000\000\t\000\000"
+	.asciz	"\r\000\000\000\000\000\000\000\354\000\000\000\r\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1542, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1543,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1543,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1543,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1543:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
-	.asciz	"\r\000\000\000\000\000\000\000\354\000\000\000\r\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1543, 24
+	.ascii	"the pieces fill the groups"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1543, 26
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1544,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1544,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1544:
-	.ascii	"the pieces fill the groups"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1544, 26
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1545,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1545,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1544,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1545:
+.Lanon.2e24e836c13f239343f864e080f18d36.1544:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
 	.asciz	"\r\000\000\000\000\000\000\000\350\000\000\000(\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1545, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1544, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1545,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1545,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1545:
+	.ascii	"the program's inputs are the stream lanes"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1545, 41
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1546,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1546,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1546:
-	.ascii	"the program's inputs are the stream lanes"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1546, 41
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1547,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1547,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1546,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1547:
+.Lanon.2e24e836c13f239343f864e080f18d36.1546:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
 	.asciz	"\r\000\000\000\000\000\000\000\365\001\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1547, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1546, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1547,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.1547:
+	.asciz	"!the recursion tables fit C_main (\300\005 > 2^\300\001)"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1547, 45
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1548,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1548,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1548:
-	.asciz	"!the recursion tables fit C_main (\300\005 > 2^\300\001)"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1548, 45
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
+	.asciz	"\r\000\000\000\000\000\000\000\256\001\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1548, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1549,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1549,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1549:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
-	.asciz	"\r\000\000\000\000\000\000\000\256\001\000\000\005\000\000"
+	.asciz	"\r\000\000\000\000\000\000\000\253\001\000\000\f\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1549, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1550,@object
@@ -464318,29 +464227,29 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1550:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
-	.asciz	"\r\000\000\000\000\000\000\000\253\001\000\000\f\000\000"
+	.asciz	"\r\000\000\000\000\000\000\000\253\001\000\000\017\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1550, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1551,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1551,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1551,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1551:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
-	.asciz	"\r\000\000\000\000\000\000\000\253\001\000\000\017\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1551, 24
+	.ascii	"only sumcheck tables (WP-9 M3R.real's filter)"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1551, 45
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1552,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1552,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1552,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1552:
-	.ascii	"only sumcheck tables (WP-9 M3R.real's filter)"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1552, 45
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
+	.asciz	"\r\000\000\000\000\000\000\000R\001\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1552, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1553,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1553,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1553:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
-	.asciz	"\r\000\000\000\000\000\000\000R\001\000\000\005\000\000"
+	.asciz	"\r\000\000\000\000\000\000\000Z\001\000\000\r\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1553, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1554,@object
@@ -464348,7 +464257,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1554:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
-	.asciz	"\r\000\000\000\000\000\000\000Z\001\000\000\r\000\000"
+	.asciz	"\r\000\000\000\000\000\000\000\017\002\000\000\023\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1554, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1555,@object
@@ -464356,21 +464265,21 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1555:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
-	.asciz	"\r\000\000\000\000\000\000\000\017\002\000\000\023\000\000"
+	.asciz	"\r\000\000\000\000\000\000\000\022\002\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1555, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1556,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1556,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1556,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1556:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.290
-	.asciz	"\r\000\000\000\000\000\000\000\022\002\000\000\005\000\000"
+	.ascii	"the proof holds a header"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1556, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1557,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1557,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1557,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1557:
-	.ascii	"the proof holds a header"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
+	.asciz	"\016\000\000\000\000\000\000\000\342\000\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1557, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1558,@object
@@ -464378,7 +464287,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1558:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
-	.asciz	"\016\000\000\000\000\000\000\000\342\000\000\000\005\000\000"
+	.asciz	"\016\000\000\000\000\000\000\000\t\001\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1558, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1559,@object
@@ -464386,7 +464295,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1559:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
-	.asciz	"\016\000\000\000\000\000\000\000\t\001\000\000\005\000\000"
+	.asciz	"\016\000\000\000\000\000\000\000\f\001\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1559, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1560,@object
@@ -464394,7 +464303,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1560:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
-	.asciz	"\016\000\000\000\000\000\000\000\f\001\000\000\005\000\000"
+	.asciz	"\016\000\000\000\000\000\000\000\r\001\000\000#\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1560, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1561,@object
@@ -464402,7 +464311,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1561:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
-	.asciz	"\016\000\000\000\000\000\000\000\r\001\000\000#\000\000"
+	.asciz	"\016\000\000\000\000\000\000\000\345\000\000\000\"\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1561, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1562,@object
@@ -464410,7 +464319,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1562:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
-	.asciz	"\016\000\000\000\000\000\000\000\345\000\000\000\"\000\000"
+	.asciz	"\016\000\000\000\000\000\000\000\373\000\000\0002\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1562, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1563,@object
@@ -464418,7 +464327,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1563:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
-	.asciz	"\016\000\000\000\000\000\000\000\373\000\000\0002\000\000"
+	.asciz	"\016\000\000\000\000\000\000\000\375\000\000\000\035\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1563, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1564,@object
@@ -464426,190 +464335,190 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1564:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
-	.asciz	"\016\000\000\000\000\000\000\000\375\000\000\000\035\000\000"
+	.asciz	"\016\000\000\000\000\000\000\000\231\000\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1564, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1565,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1565,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1565,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1565:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
-	.asciz	"\016\000\000\000\000\000\000\000\231\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1565, 24
+	.ascii	"the table point has \317\204* coordinates"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1565, 35
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1566,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1566,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1566,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1566:
-	.ascii	"the table point has \317\204* coordinates"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1566, 35
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
+	.asciz	"\016\000\000\000\000\000\000\000\302\000\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1566, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1567,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1567,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1567:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
-	.asciz	"\016\000\000\000\000\000\000\000\302\000\000\000\005\000\000"
+	.asciz	"\016\000\000\000\000\000\000\000\303\000\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1567, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1568,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1568,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1568:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
-	.asciz	"\016\000\000\000\000\000\000\000\303\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1568, 24
+	.asciz	"\017nFix \342\211\244 2^dk (\300\005 > 2^\300\001)"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1568, 27
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1569,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.Lanon.2e24e836c13f239343f864e080f18d36.1569:
-	.asciz	"\017nFix \342\211\244 2^dk (\300\005 > 2^\300\001)"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1569, 27
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1570,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1570,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1569,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1570:
+.Lanon.2e24e836c13f239343f864e080f18d36.1569:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
 	.asciz	"\016\000\000\000\000\000\000\000\304\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1570, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1569, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1570,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1570,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1570:
+	.ascii	"h(0) = acc_in.y"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1570, 15
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1571,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1571,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1571:
-	.ascii	"h(0) = acc_in.y"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1571, 15
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1572,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1572,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1571,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1572:
+.Lanon.2e24e836c13f239343f864e080f18d36.1571:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
 	.asciz	"\016\000\000\000\000\000\000\000\321\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1572, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1571, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1572,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1572,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1572:
+	.ascii	"LVM_ACC_CHECK"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1572, 13
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1573,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1573,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1573:
-	.ascii	"LVM_ACC_CHECK"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1573, 13
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1574,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1574,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1573,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1574:
+.Lanon.2e24e836c13f239343f864e080f18d36.1573:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
 	.asciz	"\016\000\000\000\000\000\000\000\327\000\000\000L\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1574, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1573, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1574,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1574,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1574:
+	.ascii	"\316\246\314\203(accOut.pt) = accOut.y (the incoming claim and the fixed evaluations are true)"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1574, 82
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1575,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1575,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1575:
-	.ascii	"\316\246\314\203(accOut.pt) = accOut.y (the incoming claim and the fixed evaluations are true)"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1575, 82
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1576,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1576,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1575,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1576:
+.Lanon.2e24e836c13f239343f864e080f18d36.1575:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
 	.asciz	"\016\000\000\000\000\000\000\000\330\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1576, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1575, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1576,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1576,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1576:
+	.ascii	"every fixed column is at most 2^\317\204* high"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1576, 40
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1577,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1577,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1577:
-	.ascii	"every fixed column is at most 2^\317\204* high"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1577, 40
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1578,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1578,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1577,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1578:
+.Lanon.2e24e836c13f239343f864e080f18d36.1577:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.375
 	.asciz	"\016\000\000\000\000\000\000\000\203\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1578, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1577, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1578,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1578,"a",@progbits
+	.p2align	3, 0x0
+.Lanon.2e24e836c13f239343f864e080f18d36.1578:
+	.asciz	"\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1578, 48
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1579,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1579,"a",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1579:
-	.asciz	"\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1579, 48
+	.zero	72
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1579, 72
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1580,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1580,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1580,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1580:
-	.zero	72
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1580, 72
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.380
+	.asciz	"\016\000\000\000\000\000\000\0003\000\000\000\006\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1580, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1581,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1581,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1581:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.380
-	.asciz	"\016\000\000\000\000\000\000\0003\000\000\000\006\000\000"
+	.asciz	"\016\000\000\000\000\000\000\0002\000\000\000\006\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1581, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1582,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1582,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1582,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1582:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.380
-	.asciz	"\016\000\000\000\000\000\000\0002\000\000\000\006\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1582, 24
+	.ascii	"a one-block message"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1582, 19
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1583,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1583,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1583,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1583:
-	.ascii	"a one-block message"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1583, 19
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.380
+	.asciz	"\016\000\000\000\000\000\000\000G\000\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1583, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1584,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1584,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1584:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.380
-	.asciz	"\016\000\000\000\000\000\000\000G\000\000\000\005\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
+	.asciz	"\017\000\000\000\000\000\000\000\367\000\000\000\020\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1584, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1585,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1585,"aw",@progbits
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1585,"a",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1585:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000\367\000\000\000\020\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1585, 24
+	.asciz	"\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1585, 96
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1586,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1586,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1586,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1586:
-	.asciz	"\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1586, 96
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
+	.asciz	"\017\000\000\000\000\000\000\000\347\000\000\000*\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1586, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1587,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1587,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1587:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000\347\000\000\000*\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000\347\000\000\0001\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1587, 24
 
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1588,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1588,"aw",@progbits
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1589,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1589,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1588:
+.Lanon.2e24e836c13f239343f864e080f18d36.1589:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000\347\000\000\0001\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1588, 24
+	.asciz	"\017\000\000\000\000\000\000\000\347\000\000\000B\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1589, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1590,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1590,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1590:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000\347\000\000\000B\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000\347\000\000\000H\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1590, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1591,@object
@@ -464617,7 +464526,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1591:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000\347\000\000\000H\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000\347\000\000\000O\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1591, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1592,@object
@@ -464625,7 +464534,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1592:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000\347\000\000\000O\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000\347\000\000\000U\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1592, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1593,@object
@@ -464633,7 +464542,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1593:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000\347\000\000\000U\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000\347\000\000\000`\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1593, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1594,@object
@@ -464641,7 +464550,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1594:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000\347\000\000\000`\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000\255\000\000\000/\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1594, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1595,@object
@@ -464649,43 +464558,43 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1595:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000\255\000\000\000/\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000\255\000\000\000\"\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1595, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1596,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1596,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1596:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000\255\000\000\000\"\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1596, 24
+	.asciz	"\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\b\000\000\000\000\000\000"
+	.quad	_RNSNvYNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_kss2_0INtNtNtCsevLNFiNqfJP_4core3ops8function6FnOnceTjEE9call_once6vtableBc__lvm_v4p
+	.quad	_RNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_kss2_0B7__lvm_v4p
+	.quad	_RNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_kss2_0B7__lvm_v4p
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1596, 48
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1597,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1597,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1597:
 	.asciz	"\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\b\000\000\000\000\000\000"
-	.quad	_RNSNvYNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_kss2_0INtNtNtCsevLNFiNqfJP_4core3ops8function6FnOnceTjEE9call_once6vtableBc__lvm_v4p
-	.quad	_RNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_kss2_0B7__lvm_v4p
-	.quad	_RNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_kss2_0B7__lvm_v4p
+	.quad	_RNSNvYNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_kss3_0INtNtNtCsevLNFiNqfJP_4core3ops8function6FnOnceTjEE9call_once6vtableBc__lvm_v4p
+	.quad	_RNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_kss3_0B7__lvm_v4p
+	.quad	_RNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_kss3_0B7__lvm_v4p
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1597, 48
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1598,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1598,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1598:
-	.asciz	"\000\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\b\000\000\000\000\000\000"
-	.quad	_RNSNvYNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_kss3_0INtNtNtCsevLNFiNqfJP_4core3ops8function6FnOnceTjEE9call_once6vtableBc__lvm_v4p
-	.quad	_RNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_kss3_0B7__lvm_v4p
-	.quad	_RNCNvNtNtCs7rukeAxmHeC_10lvm_prover3lvm4link8prove_kss3_0B7__lvm_v4p
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1598, 48
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
+	.asciz	"\017\000\000\000\000\000\000\000$\001\000\000\023\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1598, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1599,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1599,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1599:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000$\001\000\000\023\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000\026\001\000\000\034\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1599, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1600,@object
@@ -464693,7 +464602,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1600:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000\026\001\000\000\034\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000u\000\000\000-\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1600, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1601,@object
@@ -464701,7 +464610,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1601:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000u\000\000\000-\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000s\000\000\000(\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1601, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1602,@object
@@ -464709,7 +464618,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1602:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000s\000\000\000(\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000g\000\000\000\031\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1602, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1603,@object
@@ -464717,7 +464626,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1603:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000g\000\000\000\031\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000g\000\000\000\"\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1603, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1604,@object
@@ -464725,7 +464634,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1604:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000g\000\000\000\"\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000g\000\000\000+\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1604, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1605,@object
@@ -464733,171 +464642,171 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1605:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000g\000\000\000+\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000g\000\000\0004\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1605, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1606,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1606,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1606,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1606:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.303
-	.asciz	"\017\000\000\000\000\000\000\000g\000\000\0004\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1606, 24
+	.ascii	"piSize"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1606, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1607,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1607,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1607:
-	.ascii	"piSize"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1607, 6
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1608,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1608,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1607,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1608:
+.Lanon.2e24e836c13f239343f864e080f18d36.1607:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
 	.asciz	"\020\000\000\000\000\000\000\0002\001\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1608, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1607, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1608,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1608,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1608:
+	.ascii	"qS"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1608, 2
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1609,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1609,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1609:
-	.ascii	"qS"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1609, 2
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1610,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1610,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1609,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1610:
+.Lanon.2e24e836c13f239343f864e080f18d36.1609:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
 	.asciz	"\020\000\000\000\000\000\000\0004\001\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1610, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1609, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1610,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.1610:
+	.asciz	"\006query \300\002 (\300\b) length"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1610, 22
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1611,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1611,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1611:
-	.asciz	"\006query \300\002 (\300\b) length"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1611, 22
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
+	.asciz	"\020\000\000\000\000\000\000\0006\001\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1611, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1612,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1612,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1612:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\0006\001\000\000\t\000\000"
+	.asciz	"\020\000\000\000\000\000\000\0008\001\000\000(\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1612, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1613,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1613,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1613,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1613:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\0008\001\000\000(\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1613, 24
+	.ascii	"the seed carries the header"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1613, 27
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1614,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1614,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1614,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1614:
-	.ascii	"the seed carries the header"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1614, 27
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
+	.asciz	"\020\000\000\000\000\000\000\0008\001\000\000\r\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1614, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1615,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1615,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1615:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\0008\001\000\000\r\000\000"
+	.asciz	"\020\000\000\000\000\000\000\0008\001\000\000\032\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1615, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1616,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1616,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1616,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1616:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\0008\001\000\000\032\000\000"
+	.ascii	"acc_in has D coordinates"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1616, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1617,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1617,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1617,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1617:
-	.ascii	"acc_in has D coordinates"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
+	.asciz	"\020\000\000\000\000\000\000\000z\000\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1617, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1618,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1618,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1618,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1618:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000z\000\000\000\005\000\000"
+	.ascii	"1 \342\211\244 n \342\211\244 2^log_n (A1)"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1618, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1619,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1619,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1619,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1619:
-	.ascii	"1 \342\211\244 n \342\211\244 2^log_n (A1)"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
+	.asciz	"\020\000\000\000\000\000\000\000|\000\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1619, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1620,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1620,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1620,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1620:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000|\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1620, 24
+	.ascii	"LVM_REC_DUMP"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1620, 12
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1621,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1621,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1621,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1621:
-	.ascii	"LVM_REC_DUMP"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1621, 12
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
+	.asciz	"\020\000\000\000\000\000\000\000\202\000\000\000+\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1621, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1622,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1622,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1622:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\202\000\000\000+\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\204\000\000\000\027\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1622, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1623,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1623,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1623,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1623:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\204\000\000\000\027\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1623, 24
+	.ascii	"chain+sponge"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1623, 12
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1624,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1624,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1624:
-	.ascii	"chain+sponge"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1624, 12
+	.ascii	"the tables' M3 numbers are the record's"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1624, 39
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1625,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1625,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1625:
-	.ascii	"the tables' M3 numbers are the record's"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1625, 39
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1626,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1626,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1625,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1626:
+.Lanon.2e24e836c13f239343f864e080f18d36.1625:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
 	.asciz	"\020\000\000\000\000\000\000\000\227\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1626, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1625, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1626,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1626,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1626:
+	.ascii	"written table columns do not overlap"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1626, 36
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1627,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1627,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1627,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1627:
-	.ascii	"written table columns do not overlap"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1627, 36
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
+	.asciz	"\020\000\000\000\000\000\000\000\254\000\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1627, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1628,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1628,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1628:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\254\000\000\000\005\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\301\000\000\000\"\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1628, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1629,@object
@@ -464905,7 +464814,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1629:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\301\000\000\000\"\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\301\000\000\0003\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1629, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1630,@object
@@ -464913,7 +464822,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1630:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\301\000\000\0003\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\326\000\000\000=\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1630, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1631,@object
@@ -464921,7 +464830,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1631:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\326\000\000\000=\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\326\000\000\000A\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1631, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1632,@object
@@ -464929,7 +464838,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1632:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\326\000\000\000A\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\326\000\000\000c\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1632, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1633,@object
@@ -464937,7 +464846,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1633:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\326\000\000\000c\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\325\000\000\000b\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1633, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1634,@object
@@ -464945,47 +464854,47 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1634:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\325\000\000\000b\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\324\000\000\000`\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1634, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1635,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1635,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1635,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1635:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\324\000\000\000`\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1635, 24
+	.ascii	"bus+tables"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1635, 10
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1636,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1636,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1636:
-	.ascii	"bus+tables"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1636, 10
+	.ascii	"line eval"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1636, 9
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1637,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1637,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1637:
-	.ascii	"line eval"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1637, 9
+	.ascii	"acc"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1637, 3
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1638,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1638,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1638:
-	.ascii	"acc"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1638, 3
+	.ascii	"two segments: the committed outputs' word claim"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1638, 47
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1639,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1639,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1639,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1639:
-	.ascii	"two segments: the committed outputs' word claim"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1639, 47
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
+	.asciz	"\020\000\000\000\000\000\000\000\356\000\000\000\025\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1639, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1640,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1640,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1640:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\356\000\000\000\025\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\361\000\000\000-\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1640, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1641,@object
@@ -464993,41 +464902,41 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1641:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\361\000\000\000-\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\362\000\000\000c\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1641, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1642,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1642,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1642,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1642:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\362\000\000\000c\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1642, 24
+	.ascii	"CH gkr"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1642, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1643,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1643,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1643:
-	.ascii	"CH gkr"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1643, 6
+	.ascii	"CH link"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1643, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1644,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1644,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1644:
-	.ascii	"CH link"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1644, 7
+	.ascii	"the KS word claim"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1644, 17
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1645,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1645,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1645,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1645:
-	.ascii	"the KS word claim"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1645, 17
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
+	.asciz	"\020\000\000\000\000\000\000\000\016\001\000\000@\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1645, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1646,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1646,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1646:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\016\001\000\000@\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\020\001\000\000/\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1646, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1647,@object
@@ -465035,53 +464944,53 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1647:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\020\001\000\000/\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\021\001\000\000e\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1647, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1648,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1648,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1648,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1648:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\021\001\000\000e\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1648, 24
+	.ascii	"KS gkr"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1648, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1649,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1649,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1649:
-	.ascii	"KS gkr"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1649, 6
+	.ascii	"KS link"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1649, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1650,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1650,"a",@progbits
+	.section	.rodata.cst8,"aM",@progbits,8
 .Lanon.2e24e836c13f239343f864e080f18d36.1650:
-	.ascii	"KS link"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1650, 7
+	.ascii	"open rec"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1650, 8
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1651,@object
-	.section	.rodata.cst8,"aM",@progbits,8
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1651,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1651:
-	.ascii	"open rec"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1651, 8
+	.ascii	"open main"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1651, 9
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1652,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1652,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1652:
-	.ascii	"open main"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1652, 9
+	.ascii	"the schedule ends with an FS query"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1652, 34
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1653,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1653,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1653,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1653:
-	.ascii	"the schedule ends with an FS query"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1653, 34
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
+	.asciz	"\020\000\000\000\000\000\000\000)\001\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1653, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1654,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1654,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1654:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000)\001\000\000\005\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\n\001\000\000+\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1654, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1655,@object
@@ -465089,7 +464998,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1655:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\n\001\000\000+\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\352\000\000\000.\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1655, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1656,@object
@@ -465097,7 +465006,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1656:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\352\000\000\000.\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\260\000\000\000\026\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1656, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1657,@object
@@ -465105,29 +465014,29 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1657:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\260\000\000\000\026\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\263\000\000\000Q\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1657, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1658,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1658,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1658,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1658:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\263\000\000\000Q\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1658, 24
+	.ascii	"a pre-placed column holds the table's values"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1658, 44
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1659,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1659,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1659,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1659:
-	.ascii	"a pre-placed column holds the table's values"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1659, 44
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
+	.asciz	"\020\000\000\000\000\000\000\000\267\000\000\000\025\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1659, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1660,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1660,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1660:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\267\000\000\000\025\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\263\000\000\000+\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1660, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1661,@object
@@ -465135,211 +465044,211 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1661:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\263\000\000\000+\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\237\000\000\000\036\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1661, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1662,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1662,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1662,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1662:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\237\000\000\000\036\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1662, 24
+	.ascii	"a written table column stays in the free region"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1662, 47
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1663,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1663,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1663,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1663:
-	.ascii	"a written table column stays in the free region"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1663, 47
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
+	.asciz	"\020\000\000\000\000\000\000\000\246\000\000\000\021\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1663, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1664,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1664,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1664:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\246\000\000\000\021\000\000"
+	.asciz	"\020\000\000\000\000\000\000\000\221\000\000\000\r\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1664, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1665,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1665,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1665,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1665:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.669
-	.asciz	"\020\000\000\000\000\000\000\000\221\000\000\000\r\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1665, 24
+	.ascii	"LOOPIR1"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1665, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1666,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1666,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1666,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1666:
-	.ascii	"LOOPIR1"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1666, 7
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1665
+	.asciz	"\007\000\000\000\000\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1666, 16
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1667,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1667,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1667,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1667:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1666
-	.asciz	"\007\000\000\000\000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1667, 16
+	.ascii	"LoopIR blob magic"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1667, 17
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1668,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1668,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1668:
-	.ascii	"LoopIR blob magic"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1668, 17
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1669,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1669,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1668,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1669:
+.Lanon.2e24e836c13f239343f864e080f18d36.1668:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
 	.asciz	"\021\000\000\000\000\000\000\000/\001\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1669, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1668, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1669,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1669,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1669:
+	.ascii	"M3"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1669, 2
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1670,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1670,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1670:
-	.ascii	"M3"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1670, 2
+	.ascii	"M3B"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1670, 3
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1671,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1671,"a",@progbits
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1671:
-	.ascii	"M3B"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1671, 3
+	.asciz	"\030LoopIR blob: unexpected \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1671, 27
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1672,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.Lanon.2e24e836c13f239343f864e080f18d36.1672:
-	.asciz	"\030LoopIR blob: unexpected \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1672, 27
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1673,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1673,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1672,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1673:
+.Lanon.2e24e836c13f239343f864e080f18d36.1672:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
 	.asciz	"\021\000\000\000\000\000\000\000\232\001\000\000\030\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1673, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1672, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1673,@object
+	.section	.rodata.cst4,"aM",@progbits,4
+.Lanon.2e24e836c13f239343f864e080f18d36.1673:
+	.ascii	"BITS"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1673, 4
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1674,@object
-	.section	.rodata.cst4,"aM",@progbits,4
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1674,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1674:
-	.ascii	"BITS"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1674, 4
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1673
+	.asciz	"\004\000\000\000\000\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1674, 16
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1675,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1675,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1675,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1675:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1674
-	.asciz	"\004\000\000\000\000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1675, 16
+	.ascii	"LoopIR blob: the M3B section's BITS part"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1675, 40
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1676,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1676,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1676:
-	.ascii	"LoopIR blob: the M3B section's BITS part"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1676, 40
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1677,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1677,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1676,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1677:
+.Lanon.2e24e836c13f239343f864e080f18d36.1676:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
 	.asciz	"\021\000\000\000\000\000\000\000v\001\000\000\025\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1677, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1676, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1677,@object
+	.section	.rodata.cst4,"aM",@progbits,4
+.Lanon.2e24e836c13f239343f864e080f18d36.1677:
+	.ascii	"PUBX"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1677, 4
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1678,@object
-	.section	.rodata.cst4,"aM",@progbits,4
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1678,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1678:
-	.ascii	"PUBX"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1678, 4
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1677
+	.asciz	"\004\000\000\000\000\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1678, 16
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1679,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1679,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1679,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1679:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1678
-	.asciz	"\004\000\000\000\000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1679, 16
+	.ascii	"LoopIR blob: PUBX after the BITS part"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1679, 37
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1680,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1680,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1680:
-	.ascii	"LoopIR blob: PUBX after the BITS part"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1680, 37
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1681,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1681,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1680,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1681:
+.Lanon.2e24e836c13f239343f864e080f18d36.1680:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
 	.asciz	"\021\000\000\000\000\000\000\000\221\001\000\000\025\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1681, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1680, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1681,@object
+	.section	.rodata.cst4,"aM",@progbits,4
+.Lanon.2e24e836c13f239343f864e080f18d36.1681:
+	.ascii	"FREE"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1681, 4
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1682,@object
-	.section	.rodata.cst4,"aM",@progbits,4
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1682,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1682:
-	.ascii	"FREE"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1682, 4
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1681
+	.asciz	"\004\000\000\000\000\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1682, 16
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1683,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1683,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1683,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1683:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1682
-	.asciz	"\004\000\000\000\000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1683, 16
+	.ascii	"LoopIR blob: FREE after PUBX"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1683, 28
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1684,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1684,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1684:
-	.ascii	"LoopIR blob: FREE after PUBX"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1684, 28
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1685,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1685,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1684,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1685:
+.Lanon.2e24e836c13f239343f864e080f18d36.1684:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
 	.asciz	"\021\000\000\000\000\000\000\000\224\001\000\000\031\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1685, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1684, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1685,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1685,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1685:
+	.ascii	"LoopIR blob: trailing tokens"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1685, 28
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1686,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1686,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1686:
-	.ascii	"LoopIR blob: trailing tokens"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1686, 28
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1687,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1687,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1686,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1687:
+.Lanon.2e24e836c13f239343f864e080f18d36.1686:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
 	.asciz	"\021\000\000\000\000\000\000\000\234\001\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1687, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1686, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1687,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.1687:
+	.asciz	"\020LoopIR blob: op \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1687, 19
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1688,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1688,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1688:
-	.asciz	"\020LoopIR blob: op \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1688, 19
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
+	.asciz	"\021\000\000\000\000\000\000\000@\001\000\000\032\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1688, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1689,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1689,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1689:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000@\001\000\000\032\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000@\003\000\000\027\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1689, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1690,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1690,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1690:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.334
-	.asciz	"\021\000\000\000\000\000\000\000@\003\000\000\027\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.681
+	.asciz	"\021\000\000\000\000\000\000\000f\001\000\000\031\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1690, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1691,@object
@@ -465347,7 +465256,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1691:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.681
-	.asciz	"\021\000\000\000\000\000\000\000f\001\000\000\031\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000o\001\000\000\031\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1691, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1692,@object
@@ -465355,7 +465264,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1692:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.681
-	.asciz	"\021\000\000\000\000\000\000\000o\001\000\000\031\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000:\001\000\0005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1692, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1693,@object
@@ -465363,7 +465272,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1693:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.681
-	.asciz	"\021\000\000\000\000\000\000\000:\001\000\0005\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000:\001\000\000c\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1693, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1694,@object
@@ -465371,98 +465280,98 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1694:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.681
-	.asciz	"\021\000\000\000\000\000\000\000:\001\000\000c\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\204\001\000\000\031\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1694, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1695,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1695,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1695:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.681
-	.asciz	"\021\000\000\000\000\000\000\000\204\001\000\000\031\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.315
+	.asciz	"\021\000\000\000\000\000\000\000;\001\000\000\016\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1695, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1696,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1696,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1696,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1696:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.315
-	.asciz	"\021\000\000\000\000\000\000\000;\001\000\000\016\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1696, 24
+	.ascii	"prev.stmt"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1696, 9
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1697,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1697,"a",@progbits
+	.section	.rodata.cst8,"aM",@progbits,8
 .Lanon.2e24e836c13f239343f864e080f18d36.1697:
-	.ascii	"prev.stmt"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1697, 9
+	.ascii	"prev.bin"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1697, 8
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1698,@object
-	.section	.rodata.cst8,"aM",@progbits,8
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1698,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1698:
-	.ascii	"prev.bin"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1698, 8
+	.ascii	"chain.json"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1698, 10
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1699,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1699,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1699:
-	.ascii	"chain.json"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1699, 10
+	.ascii	"chainA.json"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1699, 11
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1700,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1700,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1700:
-	.ascii	"chainA.json"
+	.ascii	"chainB.json"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1700, 11
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1701,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1701,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1701:
-	.ascii	"chainB.json"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1701, 11
+	.ascii	"the file parses back"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1701, 20
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1702,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1702,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1702:
-	.ascii	"the file parses back"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1702, 20
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1703,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1703,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1702,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1703:
+.Lanon.2e24e836c13f239343f864e080f18d36.1702:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.315
 	.asciz	"\021\000\000\000\000\000\000\000>\001\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1703, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1702, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1703,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.1703:
+	.asciz	"\300\001/\300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1703, 5
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1704,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1704:
-	.asciz	"\300\001/\300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1704, 5
+	.asciz	"\025not a 64-hex digest: \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1704, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1705,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1705,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1705:
-	.asciz	"\025not a 64-hex digest: \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1705, 24
+	.ascii	"the proof is not an S proof with a header"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1705, 41
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1706,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1706,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1706:
-	.ascii	"the proof is not an S proof with a header"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1706, 41
+	.ascii	"assertion failed: blocks <= 1 << rec_log"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1706, 40
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1707,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1707,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1707,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1707:
-	.ascii	"assertion failed: blocks <= 1 << rec_log"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1707, 40
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.687
+	.asciz	"\021\000\000\000\000\000\000\000\240\000\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1707, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1708,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1708,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1708:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.687
-	.asciz	"\021\000\000\000\000\000\000\000\240\000\000\000\005\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\246\000\000\000\n\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1708, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1709,@object
@@ -465470,7 +465379,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1709:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.687
-	.asciz	"\021\000\000\000\000\000\000\000\246\000\000\000\n\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\242\000\000\000\n\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1709, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1710,@object
@@ -465478,7 +465387,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1710:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.687
-	.asciz	"\021\000\000\000\000\000\000\000\242\000\000\000\n\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\306\000\000\000\r\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1710, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1711,@object
@@ -465486,7 +465395,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1711:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.687
-	.asciz	"\021\000\000\000\000\000\000\000\306\000\000\000\r\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\302\000\000\000?\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1711, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1712,@object
@@ -465494,7 +465403,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1712:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.687
-	.asciz	"\021\000\000\000\000\000\000\000\302\000\000\000?\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\332\000\000\0002\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1712, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1713,@object
@@ -465502,7 +465411,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1713:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.687
-	.asciz	"\021\000\000\000\000\000\000\000\332\000\000\0002\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\332\000\000\000\r\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1713, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1714,@object
@@ -465510,7 +465419,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1714:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.687
-	.asciz	"\021\000\000\000\000\000\000\000\332\000\000\000\r\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\333\000\000\000-\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1714, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1715,@object
@@ -465518,7 +465427,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1715:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.687
-	.asciz	"\021\000\000\000\000\000\000\000\333\000\000\000-\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\333\000\000\000\r\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1715, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1716,@object
@@ -465526,7 +465435,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1716:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.687
-	.asciz	"\021\000\000\000\000\000\000\000\333\000\000\000\r\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\325\000\000\000\r\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1716, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1717,@object
@@ -465534,15 +465443,15 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1717:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.687
-	.asciz	"\021\000\000\000\000\000\000\000\325\000\000\000\r\000\000"
+	.asciz	"\021\000\000\000\000\000\000\000\321\000\000\000?\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1717, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1718,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1718,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1718:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.687
-	.asciz	"\021\000\000\000\000\000\000\000\321\000\000\000?\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
+	.asciz	"\031\000\000\000\000\000\000\000\252\000\000\000\020\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1718, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1719,@object
@@ -465550,7 +465459,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1719:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000\252\000\000\000\020\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\204\000\000\000(\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1719, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1720,@object
@@ -465558,7 +465467,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1720:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000\204\000\000\000(\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\204\000\000\000\"\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1720, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1721,@object
@@ -465566,7 +465475,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1721:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000\204\000\000\000\"\000\000"
+	.asciz	"\031\000\000\000\000\000\000\0001\002\000\000J\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1721, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1722,@object
@@ -465574,7 +465483,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1722:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\0001\002\000\000J\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000/\002\000\0003\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1722, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1723,@object
@@ -465582,7 +465491,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1723:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000/\002\000\0003\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000/\002\000\000\024\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1723, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1724,@object
@@ -465590,7 +465499,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1724:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000/\002\000\000\024\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000'\002\000\000!\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1724, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1725,@object
@@ -465598,7 +465507,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1725:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000'\002\000\000!\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000'\002\000\000-\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1725, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1726,@object
@@ -465606,7 +465515,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1726:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000'\002\000\000-\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\024\002\000\000\034\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1726, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1727,@object
@@ -465614,7 +465523,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1727:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000\024\002\000\000\034\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\227\001\000\000\024\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1727, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1728,@object
@@ -465622,7 +465531,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1728:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000\227\001\000\000\024\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\\\000\000\000%\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1728, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1729,@object
@@ -465630,7 +465539,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1729:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000\\\000\000\000%\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\\\000\000\000>\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1729, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1730,@object
@@ -465638,7 +465547,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1730:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000\\\000\000\000>\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\\\000\000\000\020\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1730, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1731,@object
@@ -465646,7 +465555,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1731:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000\\\000\000\000\020\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000W\000\000\000)\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1731, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1732,@object
@@ -465654,7 +465563,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1732:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000W\000\000\000)\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\260\001\000\000=\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1732, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1733,@object
@@ -465662,7 +465571,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1733:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000\260\001\000\000=\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000f\000\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1733, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1734,@object
@@ -465670,7 +465579,7 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1734:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000f\000\000\000\t\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000f\000\000\000(\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1734, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1735,@object
@@ -465678,30 +465587,22 @@ _RNvNtNtCs7rukeAxmHeC_10lvm_prover2lv7tracing5TABLE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1735:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000f\000\000\000(\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000f\000\000\000O\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1735, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1736,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1736,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1736:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.383
-	.asciz	"\031\000\000\000\000\000\000\000f\000\000\000O\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1736, 24
+	.asciz	"src/lv/keccak_gkr/keccak.rs"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1736, 28
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1737,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.Lanon.2e24e836c13f239343f864e080f18d36.1737:
-	.asciz	"src/lv/keccak_gkr/keccak.rs"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1737, 28
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1738,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1738,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1737,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1738:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1737
+.Lanon.2e24e836c13f239343f864e080f18d36.1737:
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1736
 	.asciz	"\033\000\000\000\000\000\000\000\"\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1738, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1737, 24
 
 	.type	_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p,@object
 	.section	.rodata._RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE,"a",@progbits
@@ -465711,75 +465612,83 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.zero	4
 	.size	_RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p, 2248
 
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1738,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1738,"aw",@progbits
+	.p2align	3, 0x0
+.Lanon.2e24e836c13f239343f864e080f18d36.1738:
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1736
+	.asciz	"\033\000\000\000\000\000\000\000Q\000\000\000*\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1738, 24
+
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1739,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1739,"aw",@progbits
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1739,"a",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1739:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1737
-	.asciz	"\033\000\000\000\000\000\000\000Q\000\000\000*\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1739, 24
+	.asciz	"\000\000\000\000\000\000\000\000\n\000\000\000\000\000\000\000\024\000\000\000\000\000\000\000\005\000\000\000\000\000\000\000\017\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\013\000\000\000\000\000\000\000\025\000\000\000\000\000\000\000\006\000\000\000\000\000\000\000\007\000\000\000\000\000\000\000\021\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\f\000\000\000\000\000\000\000\026\000\000\000\000\000\000\000\027\000\000\000\000\000\000\000\b\000\000\000\000\000\000\000\022\000\000\000\000\000\000\000\003\000\000\000\000\000\000\000\r\000\000\000\000\000\000\000\016\000\000\000\000\000\000\000\030\000\000\000\000\000\000\000\t\000\000\000\000\000\000\000\023\000\000\000\000\000\000\000\004\000\000\000\000\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1739, 200
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1740,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1740,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1740,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1740:
-	.asciz	"\000\000\000\000\000\000\000\000\n\000\000\000\000\000\000\000\024\000\000\000\000\000\000\000\005\000\000\000\000\000\000\000\017\000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\013\000\000\000\000\000\000\000\025\000\000\000\000\000\000\000\006\000\000\000\000\000\000\000\007\000\000\000\000\000\000\000\021\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\f\000\000\000\000\000\000\000\026\000\000\000\000\000\000\000\027\000\000\000\000\000\000\000\b\000\000\000\000\000\000\000\022\000\000\000\000\000\000\000\003\000\000\000\000\000\000\000\r\000\000\000\000\000\000\000\016\000\000\000\000\000\000\000\030\000\000\000\000\000\000\000\t\000\000\000\000\000\000\000\023\000\000\000\000\000\000\000\004\000\000\000\000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1740, 200
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1736
+	.asciz	"\033\000\000\000\000\000\000\000D\000\000\000 \000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1740, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1741,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1741,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1741,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1741:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1737
-	.asciz	"\033\000\000\000\000\000\000\000D\000\000\000 \000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1741, 24
+	.ascii	"Product"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1741, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1742,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1742,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1742:
-	.ascii	"Product"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1742, 7
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1743,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1743,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1742,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1743:
+.Lanon.2e24e836c13f239343f864e080f18d36.1742:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
 	.asciz	"\033\000\000\000\000\000\000\000\027\005\000\000-\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1743, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1742, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1743,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1743,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1743:
+	.ascii	"the challenge lies in no proper subfield"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1743, 40
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1744,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1744,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1744:
-	.ascii	"the challenge lies in no proper subfield"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1744, 40
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1745,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1745,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1744,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1745:
+.Lanon.2e24e836c13f239343f864e080f18d36.1744:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
 	.asciz	"\033\000\000\000\000\000\000\000\036\005\000\000$\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1745, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1744, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1745,@object
+	.section	.rodata.cst4,"aM",@progbits,4
+.Lanon.2e24e836c13f239343f864e080f18d36.1745:
+	.ascii	"Skip"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1745, 4
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1746,@object
-	.section	.rodata.cst4,"aM",@progbits,4
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1746,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1746:
-	.ascii	"Skip"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1746, 4
+	.ascii	"Groups"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1746, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1747,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1747,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1747,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1747:
-	.ascii	"Groups"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1747, 6
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
+	.asciz	"\033\000\000\000\000\000\000\000D\005\000\000\030\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1747, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1748,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1748,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1748:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000D\005\000\000\030\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000E\005\000\000&\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1748, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1749,@object
@@ -465787,35 +465696,35 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1749:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000E\005\000\000&\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000Q\005\000\000,\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1749, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1750,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1750,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1750,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1750:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000Q\005\000\000,\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1750, 24
+	.ascii	"Tables"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1750, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1751,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1751,"a",@progbits
+	.section	.rodata.cst4,"aM",@progbits,4
 .Lanon.2e24e836c13f239343f864e080f18d36.1751:
-	.ascii	"Tables"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1751, 6
+	.ascii	"Tail"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1751, 4
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1752,@object
-	.section	.rodata.cst4,"aM",@progbits,4
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1752,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1752:
-	.ascii	"Tail"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1752, 4
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
+	.asciz	"\033\000\000\000\000\000\000\000\177\005\000\000\025\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1752, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1753,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1753,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1753:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\177\005\000\000\025\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\234\005\000\000\022\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1753, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1754,@object
@@ -465823,7 +465732,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1754:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\234\005\000\000\022\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\234\005\000\000\033\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1754, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1755,@object
@@ -465831,7 +465740,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1755:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\234\005\000\000\033\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000\234\005\000\000$\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1755, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1756,@object
@@ -465839,7 +465748,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1756:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000\234\005\000\000$\000\000"
+	.asciz	"\033\000\000\000\000\000\000\000e\005\000\000^\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1756, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1757,@object
@@ -465847,7 +465756,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1757:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\000e\005\000\000^\000\000"
+	.asciz	"\033\000\000\000\000\000\000\0002\005\000\0001\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1757, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1758,@object
@@ -465855,73 +465764,73 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1758:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\0002\005\000\0001\000\000"
+	.asciz	"\033\000\000\000\000\000\000\0002\005\000\000a\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1758, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1759,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1759,"aw",@progbits
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1759,"a",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1759:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.300
-	.asciz	"\033\000\000\000\000\000\000\0002\005\000\000a\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1759, 24
+	.asciz	"\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\002\000\000\000\000\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1759, 144
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1760,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1760,"a",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1760:
-	.asciz	"\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\002\000\000\000\000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1760, 144
+	.asciz	"\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\002\000\000\000\000\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1760, 64
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1761,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1761,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1761,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1761:
-	.asciz	"\002\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\002\000\000\000\000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1761, 64
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
+	.asciz	"\034\000\000\000\000\000\000\000q\001\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1761, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1762,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1762,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1762:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000v\001\000\000\005\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\333\000\000\000\027\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1762, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1763,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1763,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1763,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1763:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\340\000\000\000\027\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1763, 24
+	.ascii	"assertion failed: committed.len() >= slots * n && committed.len() <= 1 << shape.stack_log()"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1763, 91
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1764,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1764,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1764,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1764:
-	.ascii	"assertion failed: committed.len() >= slots * n && committed.len() <= 1 << shape.stack_log()"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1764, 91
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
+	.asciz	"\034\000\000\000\000\000\000\000\227\001\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1764, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1765,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1765,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1765,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1765:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\234\001\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1765, 24
+	.ascii	"assertion failed: lanes.iter().chain(&padding).all(|l| l.len() == lanes_len(shape.depth))"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1765, 89
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1766,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1766,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1766,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1766:
-	.ascii	"assertion failed: lanes.iter().chain(&padding).all(|l| l.len() == lanes_len(shape.depth))"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1766, 89
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
+	.asciz	"\034\000\000\000\000\000\000\000\230\001\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1766, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1767,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1767,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1767:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\235\001\000\000\005\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\030\000\000\000\035\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1767, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1768,@object
@@ -465929,7 +465838,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1768:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\030\000\000\000\035\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\030\000\000\000\n\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1768, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1769,@object
@@ -465937,7 +465846,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1769:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\030\000\000\000\n\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\017\001\000\000\034\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1769, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1770,@object
@@ -465945,7 +465854,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1770:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\024\001\000\000\034\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\021\001\000\000&\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1770, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1771,@object
@@ -465953,7 +465862,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1771:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\026\001\000\000&\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\021\001\000\000\025\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1771, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1772,@object
@@ -465961,7 +465870,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1772:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\026\001\000\000\025\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\017\001\000\000\017\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1772, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1773,@object
@@ -465969,7 +465878,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1773:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\024\001\000\000\017\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\372\000\000\000 \000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1773, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1774,@object
@@ -465977,7 +465886,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1774:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\377\000\000\000 \000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\372\000\000\000:\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1774, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1775,@object
@@ -465985,7 +465894,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1775:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\377\000\000\000:\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\377\000\000\000+\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1775, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1776,@object
@@ -465993,7 +465902,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1776:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\004\001\000\000+\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\377\000\000\000\027\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1776, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1777,@object
@@ -466001,7 +465910,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1777:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\004\001\000\000\027\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\372\000\000\000*\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1777, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1778,@object
@@ -466009,7 +465918,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1778:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\377\000\000\000*\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000&\001\000\000\024\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1778, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1779,@object
@@ -466017,7 +465926,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1779:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000+\001\000\000\024\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\035\001\000\000\023\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1779, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1780,@object
@@ -466025,7 +465934,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1780:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\"\001\000\000\023\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\036\001\000\000\023\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1780, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1781,@object
@@ -466033,7 +465942,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1781:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000#\001\000\000\023\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\037\001\000\000\023\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1781, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1782,@object
@@ -466041,7 +465950,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1782:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000$\001\000\000\023\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000!\001\000\000!\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1782, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1783,@object
@@ -466049,7 +465958,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1783:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000&\001\000\000!\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000!\001\000\000\034\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1783, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1784,@object
@@ -466057,7 +465966,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1784:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000&\001\000\000\034\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\037\001\000\000\016\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1784, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1785,@object
@@ -466065,7 +465974,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1785:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000$\001\000\000\016\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\036\001\000\000\016\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1785, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1786,@object
@@ -466073,15 +465982,15 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1786:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000#\001\000\000\016\000\000"
+	.asciz	"\034\000\000\000\000\000\000\000\035\001\000\000\016\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1786, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1787,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1787,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1787:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.176
-	.asciz	"\034\000\000\000\000\000\000\000\"\001\000\000\016\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.396
+	.asciz	"\035\000\000\000\000\000\000\0007\000\000\000\023\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1787, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1788,@object
@@ -466089,7 +465998,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1788:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.396
-	.asciz	"\035\000\000\000\000\000\000\0007\000\000\000\023\000\000"
+	.asciz	"\035\000\000\000\000\000\000\0008\000\000\000\f\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1788, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1789,@object
@@ -466097,7 +466006,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1789:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.396
-	.asciz	"\035\000\000\000\000\000\000\0008\000\000\000\f\000\000"
+	.asciz	"\035\000\000\000\000\000\000\0009\000\000\000\f\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1789, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1790,@object
@@ -466105,15 +466014,15 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1790:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.396
-	.asciz	"\035\000\000\000\000\000\000\0009\000\000\000\f\000\000"
+	.asciz	"\035\000\000\000\000\000\000\000B\000\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1790, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1791,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1791,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1791:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.396
-	.asciz	"\035\000\000\000\000\000\000\000B\000\000\000\005\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.704
+	.asciz	" \000\000\000\000\000\000\000\356\000\000\000 \000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1791, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1792,@object
@@ -466121,7 +466030,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1792:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.704
-	.asciz	" \000\000\000\000\000\000\000\356\000\000\000 \000\000"
+	.asciz	" \000\000\000\000\000\000\000\356\000\000\000,\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1792, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1793,@object
@@ -466129,7 +466038,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1793:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.704
-	.asciz	" \000\000\000\000\000\000\000\356\000\000\000,\000\000"
+	.asciz	" \000\000\000\000\000\000\000\361\000\000\000\b\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1793, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1794,@object
@@ -466137,7 +466046,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1794:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.704
-	.asciz	" \000\000\000\000\000\000\000\361\000\000\000\b\000\000"
+	.asciz	" \000\000\000\000\000\000\000\262\000\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1794, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1795,@object
@@ -466145,45 +466054,45 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1795:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.704
-	.asciz	" \000\000\000\000\000\000\000\262\000\000\000\005\000\000"
+	.asciz	" \000\000\000\000\000\000\000\270\000\000\000\037\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1795, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1796,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1796,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1796,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1796:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.704
-	.asciz	" \000\000\000\000\000\000\000\270\000\000\000\037\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1796, 24
+	.ascii	"out must have length 2^r.len()"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1796, 30
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1797,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1797,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1797,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1797:
-	.ascii	"out must have length 2^r.len()"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1797, 30
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.704
+	.asciz	" \000\000\000\000\000\000\000A\000\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1797, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1798,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1798,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1798:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.704
-	.asciz	" \000\000\000\000\000\000\000A\000\000\000\005\000\000"
+	.asciz	" \000\000\000\000\000\000\000E\000\000\000\035\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1798, 24
 
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1799,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1799,"aw",@progbits
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1800,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1800,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1799:
+.Lanon.2e24e836c13f239343f864e080f18d36.1800:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.704
-	.asciz	" \000\000\000\000\000\000\000E\000\000\000\035\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1799, 24
+	.asciz	" \000\000\000\000\000\000\000a\000\000\000(\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1800, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1801,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1801,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1801:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.704
-	.asciz	" \000\000\000\000\000\000\000a\000\000\000(\000\000"
+	.asciz	" \000\000\000\000\000\000\000a\000\000\000\033\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1801, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1802,@object
@@ -466191,29 +466100,29 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1802:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.704
-	.asciz	" \000\000\000\000\000\000\000a\000\000\000\033\000\000"
+	.asciz	" \000\000\000\000\000\000\000\237\000\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1802, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1803,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1803,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
 .Lanon.2e24e836c13f239343f864e080f18d36.1803:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.704
-	.asciz	" \000\000\000\000\000\000\000\237\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1803, 24
+	.ascii	"Constraint evals"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1803, 16
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1804,@object
-	.section	.rodata.cst16,"aM",@progbits,16
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1804,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1804:
-	.ascii	"Constraint evals"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1804, 16
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.293
+	.asciz	"!\000\000\000\000\000\000\000\271\001\000\000\026\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1804, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1805,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1805,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1805:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.293
-	.asciz	"!\000\000\000\000\000\000\000\271\001\000\000\026\000\000"
+	.asciz	"!\000\000\000\000\000\000\000\314\001\000\000\f\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1805, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1806,@object
@@ -466221,7 +466130,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1806:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.293
-	.asciz	"!\000\000\000\000\000\000\000\314\001\000\000\f\000\000"
+	.asciz	"!\000\000\000\000\000\000\000\262\001\000\000!\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1806, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1807,@object
@@ -466229,7 +466138,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1807:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.293
-	.asciz	"!\000\000\000\000\000\000\000\262\001\000\000!\000\000"
+	.asciz	"!\000\000\000\000\000\000\000\260\000\000\000\033\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1807, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1808,@object
@@ -466237,7 +466146,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1808:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.293
-	.asciz	"!\000\000\000\000\000\000\000\260\000\000\000\033\000\000"
+	.asciz	"!\000\000\000\000\000\000\000\254\000\000\000\032\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1808, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1809,@object
@@ -466245,7 +466154,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1809:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.293
-	.asciz	"!\000\000\000\000\000\000\000\254\000\000\000\032\000\000"
+	.asciz	"!\000\000\000\000\000\000\000\311\000\000\000 \000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1809, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1810,@object
@@ -466253,7 +466162,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1810:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.293
-	.asciz	"!\000\000\000\000\000\000\000\311\000\000\000 \000\000"
+	.asciz	"!\000\000\000\000\000\000\000\312\000\000\000\r\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1810, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1811,@object
@@ -466261,7 +466170,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1811:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.293
-	.asciz	"!\000\000\000\000\000\000\000\312\000\000\000\r\000\000"
+	.asciz	"!\000\000\000\000\000\000\000\312\000\000\000\025\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1811, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1812,@object
@@ -466269,15 +466178,15 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1812:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.293
-	.asciz	"!\000\000\000\000\000\000\000\312\000\000\000\025\000\000"
+	.asciz	"!\000\000\000\000\000\000\000\030\001\000\000\037\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1812, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1813,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1813,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1813:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.293
-	.asciz	"!\000\000\000\000\000\000\000\030\001\000\000\037\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
+	.asciz	"\031\000\000\000\000\000\000\000X\000\000\000;\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1813, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1814,@object
@@ -466285,7 +466194,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1814:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000X\000\000\000;\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000^\000\000\000\r\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1814, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1815,@object
@@ -466293,7 +466202,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1815:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000^\000\000\000\r\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000P\000\000\0002\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1815, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1816,@object
@@ -466301,29 +466210,29 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1816:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000P\000\000\0002\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\031\000\000\000\013\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1816, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1817,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1817,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1817,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1817:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000\031\000\000\000\013\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1817, 24
+	.ascii	"internal error: entered unreachable code: the final binary layer has at most two explicit nodes"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1817, 95
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1818,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1818,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1818,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1818:
-	.ascii	"internal error: entered unreachable code: the final binary layer has at most two explicit nodes"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1818, 95
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
+	.asciz	"\031\000\000\000\000\000\000\000\225\000\000\000\022\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1818, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1819,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1819,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1819:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000\225\000\000\000\022\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\215\000\000\000&\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1819, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1820,@object
@@ -466331,7 +466240,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1820:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000\215\000\000\000&\000\000"
+	.asciz	"\031\000\000\000\000\000\000\0002\000\000\000\016\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1820, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1821,@object
@@ -466339,7 +466248,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1821:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\0002\000\000\000\016\000\000"
+	.asciz	"\031\000\000\000\000\000\000\0002\000\000\000 \000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1821, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1822,@object
@@ -466347,29 +466256,29 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1822:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\0002\000\000\000 \000\000"
+	.asciz	"\031\000\000\000\000\000\000\0003\000\000\000$\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1822, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1823,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1823,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1823,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1823:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\0003\000\000\000$\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1823, 24
+	.ascii	"batched trees must be nonempty prefixes of the first tree's logical tree"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1823, 72
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1824,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1824,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1824,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1824:
-	.ascii	"batched trees must be nonempty prefixes of the first tree's logical tree"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1824, 72
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
+	.asciz	"\031\000\000\000\000\000\000\000\032\003\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1824, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1825,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1825,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1825:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000\032\003\000\000\005\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000#\003\000\000\033\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1825, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1826,@object
@@ -466377,7 +466286,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1826:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000#\003\000\000\033\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000#\003\000\000\037\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1826, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1827,@object
@@ -466385,7 +466294,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1827:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000#\003\000\000\037\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000#\003\000\000-\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1827, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1828,@object
@@ -466393,7 +466302,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1828:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000#\003\000\000-\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000#\003\000\0001\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1828, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1829,@object
@@ -466401,7 +466310,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1829:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000#\003\000\0001\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000#\003\000\000?\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1829, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1830,@object
@@ -466409,29 +466318,29 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1830:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000#\003\000\000?\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000#\003\000\000C\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1830, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1831,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1831,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1831,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1831:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000#\003\000\000C\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1831, 24
+	.ascii	"the first two products must agree"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1831, 33
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1832,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1832,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1832,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1832:
-	.ascii	"the first two products must agree"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1832, 33
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
+	.asciz	"\031\000\000\000\000\000\000\000$\003\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1832, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1833,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1833,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1833:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000$\003\000\000\005\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000`\003\000\000-\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1833, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1834,@object
@@ -466439,15 +466348,15 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1834:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000`\003\000\000-\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000O\003\000\000)\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1834, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1835,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1835,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1835:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.43
-	.asciz	"\031\000\000\000\000\000\000\000O\003\000\000)\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
+	.asciz	"\032\000\000\000\000\000\000\000\310\001\000\000\016\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1835, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1836,@object
@@ -466455,7 +466364,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1836:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000\310\001\000\000\016\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000\314\001\000\000F\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1836, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1837,@object
@@ -466463,7 +466372,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1837:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000\314\001\000\000F\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000\313\001\000\0005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1837, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1838,@object
@@ -466471,7 +466380,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1838:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000\313\001\000\0005\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000\313\001\000\000\033\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1838, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1839,@object
@@ -466479,7 +466388,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1839:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000\313\001\000\000\033\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000\304\001\000\000\037\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1839, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1840,@object
@@ -466487,29 +466396,29 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1840:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000\304\001\000\000\037\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000j\001\000\000\034\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1840, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1841,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1841,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1841,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1841:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000j\001\000\000\034\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1841, 24
+	.ascii	"the blocks tile the leaves"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1841, 26
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1842,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1842,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1842,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1842:
-	.ascii	"the blocks tile the leaves"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1842, 26
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
+	.asciz	"\032\000\000\000\000\000\000\000i\001\000\000\r\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1842, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1843,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1843,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1843:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000i\001\000\000\r\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000t\001\000\000$\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1843, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1844,@object
@@ -466517,76 +466426,76 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1844:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000t\001\000\000$\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000p\001\000\000\037\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1844, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1845,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1845,"aw",@progbits
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1845,"a",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1845:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000p\001\000\000\037\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1845, 24
+	.zero	96
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1845, 96
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1846,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1846,"a",@progbits
-	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1846:
-	.zero	96
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1846, 96
+	.ascii	"Bus leaves"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1846, 10
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1847,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1847,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1847:
-	.ascii	"Bus leaves"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1847, 10
+	.ascii	"Bus GKR"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1847, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1848,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1848,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1848:
-	.ascii	"Bus GKR"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1848, 7
+	.ascii	"Bus decompose"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1848, 13
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1849,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1849,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1849:
-	.ascii	"Bus decompose"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1849, 13
+	.ascii	"Bus tables"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1849, 10
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1850,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1850,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1850,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1850:
-	.ascii	"Bus tables"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1850, 10
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
+	.asciz	"\032\000\000\000\000\000\000\000@\002\000\000%\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1850, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1851,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1851,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1851:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000@\002\000\000%\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000A\002\000\000)\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1851, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1852,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1852,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1852,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1852:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000A\002\000\000)\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1852, 24
+	.ascii	"internal error: entered unreachable code: a table's bus block carries no virtual coordinate"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1852, 91
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1853,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1853,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1853,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1853:
-	.ascii	"internal error: entered unreachable code: a table's bus block carries no virtual coordinate"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1853, 91
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
+	.asciz	"\032\000\000\000\000\000\000\000I\002\000\000\r\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1853, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1854,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1854,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1854:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000I\002\000\000\r\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000\326\002\000\000\f\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1854, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1855,@object
@@ -466594,7 +466503,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1855:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000\326\002\000\000\f\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000\333\002\000\000:\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1855, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1856,@object
@@ -466602,85 +466511,85 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1856:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000\333\002\000\000:\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000F\001\000\0002\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1856, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1857,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1857,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.cst32,"aM",@progbits,32
 .Lanon.2e24e836c13f239343f864e080f18d36.1857:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000F\001\000\0002\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1857, 24
+	.ascii	"bus layout is too large to bound"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1857, 32
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1858,@object
-	.section	.rodata.cst32,"aM",@progbits,32
-.Lanon.2e24e836c13f239343f864e080f18d36.1858:
-	.ascii	"bus layout is too large to bound"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1858, 32
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1859,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1859,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1858,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1859:
+.Lanon.2e24e836c13f239343f864e080f18d36.1858:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
 	.asciz	"\032\000\000\000\000\000\000\000\210\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1859, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1858, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1859,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1859,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1859:
+	.ascii	"push/pull bus blocks are paired, so their layouts match"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1859, 55
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1860,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1860,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1860:
-	.ascii	"push/pull bus blocks are paired, so their layouts match"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1860, 55
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1861,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1861,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1860,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1861:
+.Lanon.2e24e836c13f239343f864e080f18d36.1860:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
 	.asciz	"\032\000\000\000\000\000\000\000\235\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1861, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1860, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1861,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1861,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1861:
+	.ascii	"count sums fewer bus messages than push"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1861, 39
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1862,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1862,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1862:
-	.ascii	"count sums fewer bus messages than push"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1862, 39
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1863,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1863,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1862,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1863:
+.Lanon.2e24e836c13f239343f864e080f18d36.1862:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
 	.asciz	"\032\000\000\000\000\000\000\000\241\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1863, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1862, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1863,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1863,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1863:
+	.ascii	"a tuple's coordinates index its slots"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1863, 37
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1864,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1864,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1864:
-	.ascii	"a tuple's coordinates index its slots"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1864, 37
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1865,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1865,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1864,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1865:
+.Lanon.2e24e836c13f239343f864e080f18d36.1864:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
 	.asciz	"\032\000\000\000\000\000\000\000\250\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1865, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1864, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1865,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1865,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1865:
+	.ascii	"bus layout exceeds the unground F192 soundness budget"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1865, 53
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1866,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1866,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1866,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1866:
-	.ascii	"bus layout exceeds the unground F192 soundness budget"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1866, 53
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
+	.asciz	"\032\000\000\000\000\000\000\000\251\000\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1866, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1867,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1867,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1867:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.22
-	.asciz	"\032\000\000\000\000\000\000\000\251\000\000\000\005\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.753
+	.asciz	"\031\000\000\000\000\000\000\000#\000\000\000\031\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1867, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1868,@object
@@ -466688,197 +466597,197 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1868:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.753
-	.asciz	"\031\000\000\000\000\000\000\000#\000\000\000\031\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000#\000\000\000#\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1868, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1869,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1869,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1869:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.753
-	.asciz	"\031\000\000\000\000\000\000\000#\000\000\000#\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1869, 24
+	.asciz	"\006kappa \300\034 is a log-size, not a length"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1869, 38
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1870,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.Lanon.2e24e836c13f239343f864e080f18d36.1870:
-	.asciz	"\006kappa \300\034 is a log-size, not a length"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1870, 38
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1871,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1871,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1870,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1871:
+.Lanon.2e24e836c13f239343f864e080f18d36.1870:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.753
 	.asciz	"\031\000\000\000\000\000\000\000$\000\000\000\r\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1871, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1870, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1871,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1871,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1871:
+	.ascii	"Ring switch"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1871, 11
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1872,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1872,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1872:
-	.ascii	"Ring switch"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1872, 11
+	.ascii	"Basis"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1872, 5
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1873,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1873,"a",@progbits
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.1873:
-	.ascii	"Basis"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1873, 5
+	.asciz	"src/lv/pcs/stack_open.rs"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1873, 25
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1874,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1874,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1874:
-	.asciz	"src/lv/pcs/stack_open.rs"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1874, 25
+	.ascii	"assertion failed: offset % (1usize << low_point.len()) == 0 &&\n    offset + (1 << low_point.len()) <= stack.len()"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1874, 113
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1875,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1875,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1875,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1875:
-	.ascii	"assertion failed: offset % (1usize << low_point.len()) == 0 &&\n    offset + (1 << low_point.len()) <= stack.len()"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1875, 113
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1873
+	.asciz	"\030\000\000\000\000\000\000\000\003\001\000\000\025\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1875, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1876,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1876,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1876:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1874
-	.asciz	"\030\000\000\000\000\000\000\000\003\001\000\000\025\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1873
+	.asciz	"\030\000\000\000\000\000\000\000\013\001\000\000>\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1876, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1877,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1877,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1877,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1877:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1874
-	.asciz	"\030\000\000\000\000\000\000\000\013\001\000\000>\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1877, 24
+	.ascii	"assertion failed: r.offset % len == 0 && r.offset + len <= stack.len()"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1877, 70
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1878,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1878,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1878:
-	.ascii	"assertion failed: r.offset % len == 0 && r.offset + len <= stack.len()"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1878, 70
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1879,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1879,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1878,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1879:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1874
+.Lanon.2e24e836c13f239343f864e080f18d36.1878:
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1873
 	.asciz	"\030\000\000\000\000\000\000\000\n\001\000\000\021\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1879, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1878, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1881,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1881,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1881:
+	.ascii	"q_keccak slice must fit inside the stack"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1881, 40
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1882,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1882,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1882,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1882:
-	.ascii	"q_keccak slice must fit inside the stack"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1882, 40
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1873
+	.asciz	"\030\000\000\000\000\000\000\000\240\000\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1882, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1883,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1883,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1883,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1883:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1874
-	.asciz	"\030\000\000\000\000\000\000\000\240\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1883, 24
+	.ascii	"every claim must live inside the committed lanes"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1883, 48
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1884,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1884,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1884,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1884:
-	.ascii	"every claim must live inside the committed lanes"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1884, 48
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1885,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1885,"aw",@progbits
-	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1885:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1874
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1873
 	.asciz	"\030\000\000\000\000\000\000\000\244\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1885, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1884, 24
 
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1888,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1888,"aw",@progbits
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1887,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1887,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1888:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1874
+.Lanon.2e24e836c13f239343f864e080f18d36.1887:
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1873
 	.asciz	"\030\000\000\000\000\000\000\000\301\000\000\000,\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1888, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1887, 24
 
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1890,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1890,"aw",@progbits
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1889,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1889,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1890:
+.Lanon.2e24e836c13f239343f864e080f18d36.1889:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.758
 	.asciz	"\031\000\000\000\000\000\000\000\253\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1890, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1889, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1890,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1890,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1890:
+	.ascii	"packed witness must have 2^|suffix_point| words"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1890, 47
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1891,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1891,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1891:
-	.ascii	"packed witness must have 2^|suffix_point| words"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1891, 47
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1892,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1892,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1891,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1892:
+.Lanon.2e24e836c13f239343f864e080f18d36.1891:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.758
 	.asciz	"\031\000\000\000\000\000\000\000\245\001\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1892, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1891, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1892,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1892,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1892:
+	.ascii	"one slice per packing bit"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1892, 25
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1893,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1893,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1893:
-	.ascii	"one slice per packing bit"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1893, 25
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1894,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1894,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1893,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1894:
+.Lanon.2e24e836c13f239343f864e080f18d36.1893:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.758
 	.asciz	"\031\000\000\000\000\000\000\000\253\001\000\000!\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1894, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1893, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1894,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1894,"a",@progbits
+	.p2align	3, 0x0
+.Lanon.2e24e836c13f239343f864e080f18d36.1894:
+	.asciz	" \000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\b\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\001\000\000\000\000\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1894, 48
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1895,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1895,"a",@progbits
-	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1895:
-	.asciz	" \000\000\000\000\000\000\000\020\000\000\000\000\000\000\000\b\000\000\000\000\000\000\000\004\000\000\000\000\000\000\000\002\000\000\000\000\000\000\000\001\000\000\000\000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1895, 48
+	.ascii	"assertion failed: !levels.is_empty()"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1895, 36
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1896,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1896,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1896:
-	.ascii	"assertion failed: !levels.is_empty()"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1896, 36
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1897,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1897,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1896,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1897:
+.Lanon.2e24e836c13f239343f864e080f18d36.1896:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.763
 	.asciz	"\031\000\000\000\000\000\000\000G\004\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1897, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1896, 24
 
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1898,@object
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1897,@object
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1898:
+.Lanon.2e24e836c13f239343f864e080f18d36.1897:
 	.asciz	"\006\000\000\000\000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1898, 8
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1897, 8
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1898,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1898,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1898:
+	.ascii	"level 0 folds the 64 lanes of a leaf"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1898, 36
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1899,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1899,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1899,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1899:
-	.ascii	"level 0 folds the 64 lanes of a leaf"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1899, 36
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.763
+	.asciz	"\031\000\000\000\000\000\000\000H\004\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1899, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1900,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1900,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1900:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.763
-	.asciz	"\031\000\000\000\000\000\000\000H\004\000\000\005\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000%\004\000\000\030\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1900, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1901,@object
@@ -466886,15 +466795,15 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1901:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.763
-	.asciz	"\031\000\000\000\000\000\000\000%\004\000\000\030\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000.\004\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1901, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1902,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1902,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1902:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.763
-	.asciz	"\031\000\000\000\000\000\000\000.\004\000\000\005\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
+	.asciz	"\031\000\000\000\000\000\000\000u\000\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1902, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1903,@object
@@ -466902,7 +466811,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1903:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000u\000\000\000\005\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\205\000\000\000(\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1903, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1904,@object
@@ -466910,7 +466819,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1904:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000\205\000\000\000(\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\203\000\000\000\020\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1904, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1905,@object
@@ -466918,7 +466827,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1905:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000\203\000\000\000\020\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\201\000\000\000*\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1905, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1906,@object
@@ -466926,7 +466835,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1906:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000\201\000\000\000*\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000!\000\000\000\f\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1906, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1907,@object
@@ -466934,7 +466843,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1907:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000!\000\000\000\f\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000)\000\000\000(\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1907, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1908,@object
@@ -466942,7 +466851,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1908:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000)\000\000\000(\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000)\000\000\0004\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1908, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1909,@object
@@ -466950,7 +466859,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1909:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000)\000\000\0004\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000+\000\000\000\030\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1909, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1910,@object
@@ -466958,7 +466867,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1910:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000+\000\000\000\030\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\251\000\000\000\031\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1910, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1911,@object
@@ -466966,7 +466875,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1911:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000\251\000\000\000\031\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000D\001\000\000!\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1911, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1912,@object
@@ -466974,7 +466883,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1912:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000D\001\000\000!\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000G\001\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1912, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1913,@object
@@ -466982,7 +466891,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1913:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000G\001\000\000\t\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000V\001\000\000E\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1913, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1914,@object
@@ -466990,7 +466899,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1914:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000V\001\000\000E\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000V\001\000\000\"\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1914, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1915,@object
@@ -466998,29 +466907,29 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1915:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000V\001\000\000\"\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000=\000\000\000%\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1915, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1916,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1916,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1916,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1916:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000=\000\000\000%\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1916, 24
+	.ascii	"NTT"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1916, 3
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1917,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1917,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1917,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1917:
-	.ascii	"NTT"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1917, 3
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
+	.asciz	"\031\000\000\000\000\000\000\000\370\000\000\000\021\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1917, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1918,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1918,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1918:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000\370\000\000\000\021\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\022\001\000\000\016\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1918, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1919,@object
@@ -467028,7 +466937,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1919:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000\022\001\000\000\016\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\026\001\000\000\031\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1919, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1920,@object
@@ -467036,7 +466945,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1920:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000\026\001\000\000\031\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\027\001\000\000\030\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1920, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1921,@object
@@ -467044,29 +466953,29 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1921:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000\027\001\000\000\030\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000\022\001\000\000'\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1921, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1922,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1922,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1922,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1922:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.206
-	.asciz	"\031\000\000\000\000\000\000\000\022\001\000\000'\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1922, 24
+	.ascii	"a fetched row"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1922, 13
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1923,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1923,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1923,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1923:
-	.ascii	"a fetched row"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1923, 13
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
+	.asciz	"\022\000\000\000\000\000\000\0006\004\000\000%\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1923, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1924,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1924,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1924:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\0006\004\000\000%\000\000"
+	.asciz	"\022\000\000\000\000\000\000\0007\004\000\000\033\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1924, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1925,@object
@@ -467074,7 +466983,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1925:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\0007\004\000\000\033\000\000"
+	.asciz	"\022\000\000\000\000\000\000\0007\004\000\000\n\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1925, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1926,@object
@@ -467082,7 +466991,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1926:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\0007\004\000\000\n\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000\244\002\000\000,\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1926, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1927,@object
@@ -467090,7 +466999,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1927:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\244\002\000\000,\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000\245\002\000\000\031\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1927, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1928,@object
@@ -467098,7 +467007,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1928:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\245\002\000\000\031\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000\246\002\000\000\032\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1928, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1929,@object
@@ -467106,29 +467015,29 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1929:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\246\002\000\000\032\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000\216\002\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1929, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1930,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1930,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1930,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1930:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\216\002\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1930, 24
+	.ascii	"assertion failed: block > 0 && f.len().is_multiple_of(block)"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1930, 60
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1931,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1931,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1931,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1931:
-	.ascii	"assertion failed: block > 0 && f.len().is_multiple_of(block)"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1931, 60
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
+	.asciz	"\022\000\000\000\000\000\000\000\217\002\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1931, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1932,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1932,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1932:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\217\002\000\000\005\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000\221\002\000\000\025\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1932, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1933,@object
@@ -467136,7 +467045,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1933:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\221\002\000\000\025\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000\222\002\000\000'\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1933, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1934,@object
@@ -467144,151 +467053,151 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1934:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\222\002\000\000'\000\000"
+	.asciz	"\022\000\000\000\000\000\000\0002\001\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1934, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1935,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1935,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1935,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1935:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\0002\001\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1935, 24
+	.ascii	"Merkle"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1935, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1936,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1936,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1936,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1936:
-	.ascii	"Merkle"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1936, 6
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
+	.asciz	"\022\000\000\000\000\000\000\000Y\004\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1936, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1937,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1937,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1937:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000Y\004\000\000\005\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000Z\004\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1937, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1938,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1938,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.cst32,"aM",@progbits,32
 .Lanon.2e24e836c13f239343f864e080f18d36.1938:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000Z\004\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1938, 24
+	.ascii	"assertion failed: initial_k >= 1"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1938, 32
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1939,@object
-	.section	.rodata.cst32,"aM",@progbits,32
-.Lanon.2e24e836c13f239343f864e080f18d36.1939:
-	.ascii	"assertion failed: initial_k >= 1"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1939, 32
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1940,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1940,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1939,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1940:
+.Lanon.2e24e836c13f239343f864e080f18d36.1939:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
 	.asciz	"\022\000\000\000\000\000\000\000[\004\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1940, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1939, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1940,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1940,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1940:
+	.ascii	"witness is whole lane blocks"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1940, 28
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1941,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1941,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1941:
-	.ascii	"witness is whole lane blocks"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1941, 28
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1942,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1942,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1941,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1942:
+.Lanon.2e24e836c13f239343f864e080f18d36.1941:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
 	.asciz	"\022\000\000\000\000\000\000\000j\004\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1942, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1941, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1942,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1942,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1942:
+	.ascii	"at most 2^initial_k lanes"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1942, 25
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1943,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1943,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1943,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1943:
-	.ascii	"at most 2^initial_k lanes"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1943, 25
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
+	.asciz	"\022\000\000\000\000\000\000\000k\004\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1943, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1944,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1944,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1944:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000k\004\000\000\005\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000s\004\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1944, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1945,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1945,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1945,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1945:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000s\004\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1945, 24
+	.ascii	"assertion failed: (n_lanes..=num_interleaved_0).contains(&prover_data.row_words)"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1945, 80
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1946,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1946,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1946:
-	.ascii	"assertion failed: (n_lanes..=num_interleaved_0).contains(&prover_data.row_words)"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1946, 80
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1947,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1947,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1946,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1947:
+.Lanon.2e24e836c13f239343f864e080f18d36.1946:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
 	.asciz	"\022\000\000\000\000\000\000\000t\004\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1947, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1946, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1947,@object
+	.section	.rodata.cst8,"aM",@progbits,8
+.Lanon.2e24e836c13f239343f864e080f18d36.1947:
+	.ascii	"Sumcheck"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1947, 8
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1948,@object
-	.section	.rodata.cst8,"aM",@progbits,8
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1948,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1948:
-	.ascii	"Sumcheck"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1948, 8
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
+	.asciz	"\022\000\000\000\000\000\000\000\232\004\000\000O\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1948, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1949,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1949,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1949:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\232\004\000\000O\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000\246\004\000\0000\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1949, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1950,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1950,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1950,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1950:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\246\004\000\0000\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1950, 24
+	.ascii	"assertion failed: n1 >= log_num_interleaved_1"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1950, 45
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1951,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1951,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1951:
-	.ascii	"assertion failed: n1 >= log_num_interleaved_1"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1951, 45
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1952,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1952,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1951,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1952:
+.Lanon.2e24e836c13f239343f864e080f18d36.1951:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
 	.asciz	"\022\000\000\000\000\000\000\000\305\004\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1952, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1951, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1952,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1952,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1952:
+	.ascii	"Commit"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1952, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1953,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1953,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1953,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1953:
-	.ascii	"Commit"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1953, 6
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
+	.asciz	"\022\000\000\000\000\000\000\000\316\004\000\000\030\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1953, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1954,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1954,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1954:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\316\004\000\000\030\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000\330\004\000\000\"\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1954, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1955,@object
@@ -467296,47 +467205,47 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1955:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\330\004\000\000\"\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000\333\004\000\000'\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1955, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1956,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1956,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.cst4,"aM",@progbits,4
 .Lanon.2e24e836c13f239343f864e080f18d36.1956:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\333\004\000\000'\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1956, 24
+	.ascii	"Open"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1956, 4
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1957,@object
-	.section	.rodata.cst4,"aM",@progbits,4
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1957,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1957:
-	.ascii	"Open"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1957, 4
+	.ascii	"Induce"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1957, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1958,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1958,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1958:
-	.ascii	"Induce"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1958, 6
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1959,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1959,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1959:
 	.ascii	"Introduce"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1959, 9
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1958, 9
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1960,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1960,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1960:
+	.ascii	"assertion failed: n_next >= log_num_interleaved_next"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1960, 52
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1961,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1961,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1961,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1961:
-	.ascii	"assertion failed: n_next >= log_num_interleaved_next"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1961, 52
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
+	.asciz	"\022\000\000\000\000\000\000\000I\005\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1961, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1962,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1962,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1962:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000I\005\000\000\t\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000R\005\000\000\034\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1962, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1963,@object
@@ -467344,7 +467253,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1963:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000R\005\000\000\034\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000Z\005\000\000&\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1963, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1964,@object
@@ -467352,7 +467261,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1964:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000Z\005\000\000&\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000[\005\000\000+\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1964, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1965,@object
@@ -467360,7 +467269,7 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1965:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000[\005\000\000+\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000 \005\000\000*\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1965, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1966,@object
@@ -467368,165 +467277,165 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1966:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000 \005\000\000*\000\000"
+	.asciz	"\022\000\000\000\000\000\000\000!\005\000\0002\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1966, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1967,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1967,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1967,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1967:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000!\005\000\0002\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1967, 24
+	.ascii	"Final level"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1967, 11
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1968,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1968,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1968:
-	.ascii	"Final level"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1968, 11
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1969,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1969,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1968,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1969:
+.Lanon.2e24e836c13f239343f864e080f18d36.1968:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
 	.asciz	"\022\000\000\000\000\000\000\000`\004\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1969, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1968, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1969,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1969,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1969:
+	.ascii	"log_inv_rate must be >= 1 for a non-trivial RS code"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1969, 51
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1970,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1970,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1970:
-	.ascii	"log_inv_rate must be >= 1 for a non-trivial RS code"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1970, 51
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1971,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1971,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1970,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1971:
+.Lanon.2e24e836c13f239343f864e080f18d36.1970:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
 	.asciz	"\022\000\000\000\000\000\000\000\241\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1971, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1970, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1971,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1971,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1971:
+	.ascii	"witness must be wider than the interleaving"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1971, 43
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1972,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1972,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1972:
-	.ascii	"witness must be wider than the interleaving"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1972, 43
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1973,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1973,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1972,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1973:
+.Lanon.2e24e836c13f239343f864e080f18d36.1972:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
 	.asciz	"\022\000\000\000\000\000\000\000\242\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1973, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1972, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1973,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1973,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1973:
+	.ascii	"message is whole lane blocks"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1973, 28
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1974,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1974,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1974:
-	.ascii	"message is whole lane blocks"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1974, 28
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1975,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1975,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1974,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1975:
+.Lanon.2e24e836c13f239343f864e080f18d36.1974:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
 	.asciz	"\022\000\000\000\000\000\000\000\245\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1975, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1974, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1975,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1975,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.1975:
+	.ascii	"at most 2^log_batch_size lanes carry data"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1975, 41
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1976,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1976,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1976,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1976:
-	.ascii	"at most 2^log_batch_size lanes carry data"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1976, 41
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
+	.asciz	"\022\000\000\000\000\000\000\000\246\000\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1976, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1977,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1977,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1977:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.209
-	.asciz	"\022\000\000\000\000\000\000\000\246\000\000\000\005\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
+	.asciz	"\024\000\000\000\000\000\000\000\201\002\000\000\t\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1977, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1978,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1978,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1978,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1978:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.27
-	.asciz	"\024\000\000\000\000\000\000\000\201\002\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1978, 24
+	.ascii	"assertion failed: format::sig_ok(&vk, &msg, &sig) && format::sig_ok(&vk2, &m, &sig2)"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1978, 84
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1979,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1979,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1979,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1979:
-	.ascii	"assertion failed: format::sig_ok(&vk, &msg, &sig) && format::sig_ok(&vk2, &m, &sig2)"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1979, 84
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.380
+	.asciz	"\016\000\000\000\000\000\000\000\330\000\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1979, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1980,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1980,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1980:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.380
-	.asciz	"\016\000\000\000\000\000\000\000\330\000\000\000\t\000\000"
+	.asciz	"\016\000\000\000\000\000\000\000\342\000\000\0001\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1980, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1981,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1981,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1981,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1981:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.380
-	.asciz	"\016\000\000\000\000\000\000\000\342\000\000\0001\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1981, 24
+	.ascii	"Y of the last trace row is traceDigest"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1981, 38
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1982,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1982,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1982,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1982:
-	.ascii	"Y of the last trace row is traceDigest"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1982, 38
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.380
+	.asciz	"\016\000\000\000\000\000\000\000\342\000\000\000\t\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1982, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1983,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1983,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1983:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.380
-	.asciz	"\016\000\000\000\000\000\000\000\342\000\000\000\t\000\000"
+	.asciz	"\016\000\000\000\000\000\000\000\343\000\000\0001\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1983, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1984,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1984,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1984,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1984:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.380
-	.asciz	"\016\000\000\000\000\000\000\000\343\000\000\0001\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1984, 24
+	.ascii	"the walk reaches vk"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1984, 19
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1985,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1985,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1985:
-	.ascii	"the walk reaches vk"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1985, 19
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1986,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1986,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1985,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1986:
+.Lanon.2e24e836c13f239343f864e080f18d36.1985:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.380
 	.asciz	"\016\000\000\000\000\000\000\000\343\000\000\000\t\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1986, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1985, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1986,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.1986:
+	.asciz	"\004n = \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1986, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1987,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1987,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1987:
-	.asciz	"\004n = \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1987, 7
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.380
+	.asciz	"\016\000\000\000\000\000\000\000\310\000\000\000\r\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1987, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1988,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1988,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1988:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.380
-	.asciz	"\016\000\000\000\000\000\000\000\310\000\000\000\r\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.428
+	.asciz	"\032\000\000\000\000\000\000\000/\002\000\0004\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1988, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1989,@object
@@ -467534,16 +467443,8 @@ _RNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10keccak_gkr4rmfe4RMFE_lvm_v4p:
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1989:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.428
-	.asciz	"\032\000\000\000\000\000\000\000/\002\000\0004\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1989, 24
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1990,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1990,"aw",@progbits
-	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.1990:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.428
 	.asciz	"\032\000\000\000\000\000\000\000/\002\000\000T\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1990, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1989, 24
 
 	.type	_RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm_v4p,@object
 	.section	.rodata._RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS,"a",@progbits
@@ -467552,26 +467453,34 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.ascii	"\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\033\000\000\000\000\000\000\000\032\000\000\000\000\000\000\000E\001\000\000\000\000\000\000D\001\000\000\000\000\000\000^\001\000\000\000\000\000\000_\001\000\000\000\000\000\000\267\035\000\000\000\000\000\000\266\035\000\000\000\000\000\000\254\035\000\000\000\000\000\000\255\035\000\000\000\000\000\000\362\034\000\000\000\000\000\000\363\034\000\000\000\000\000\000\351\034\000\000\000\000\000\000\350\034\000\000\000\000\000\000\000\000\000\000\000\000\000\000\021\020\001\000\000\000\000\000\253\261\032\000\000\000\000\000\272\241\033\000\000\000\000\000\025EQ\001\000\000\000\000\004UP\001\000\000\000\000\276\364K\001\000\000\000\000\257\344J\001\000\000\000\000\307\266m\034\000\000\000\000\326\246l\034\000\000\000\000l\007w\034\000\000\000\000}\027v\034\000\000\000\000\322\363<\035\000\000\000\000\303\343=\035\000\000\000\000yB&\035\000\000\000\000hR'\035\000\000\000\000\000\000\000\000\000\000\000\000\001\001\000\001\001\000\000\000\033\033\000\033\033\000\000\000\032\032\000\032\032\000\000\000ED\001ED\001\000\000DE\001DE\001\000\000^_\001^_\001\000\000_^\001_^\001\000\000\267\252\035\267\252\035\000\000\266\253\035\266\253\035\000\000\254\261\035\254\261\035\000\000\255\260\035\255\260\035\000\000\362\356\034\362\356\034\000\000\363\357\034\363\357\034\000\000\351\365\034\351\365\034\000\000\350\364\034\350\364\034\000\000\000\000\000\000\000\000\000\000\021\001\021\020\001\021\001\000\253\032\253\261\032\253\032\000\272\033\272\241\033\272\033\000\025P\024EQ\024P\001\004Q\005UP\005Q\001\276J\277\364K\277J\001\257K\256\344J\256K\001\307q\333\266m\333q\034\326p\312\246l\312p\034lkp\007wpk\034}ja\027vaj\034\322!\317\363<\317!\035\303 \336\343=\336 \035y;dB&d;\035h:uR'u:\035\000\000\000\000\000\000\000\000\032\000\001\000\000\000\001\000^\001\033\000\000\000\033\000D\001\032\000\000\000\032\000\362\034E\001\000\000E\001\350\034D\001\000\000D\001\254\035^\001\000\000^\001\266\035_\001\000\000_\001\246\r\266\035\000\000\267\035\274\r\267\035\000\000\266\035\370\f\255\035\000\000\254\035\342\f\254\035\000\000\255\035T\021\363\034\000\000\362\034N\021\362\034\000\000\363\034\n\020\350\034\000\000\351\034\020\020\351\034\000\000\350\034\000\000\000\000\000\000\000\000\241\241\n\020\001\000\021\020\340\365\340\260\032\000\253\261AT\352\240\033\000\272\241\271\357)XQ\001\025E\030N#HP\001\004UY\032\311\350K\001\276\364\370\273\303\370J\001\257\344\311\266\253\253l\034\307\266h\027\241\273m\034\326\246)CK\033v\034l\007\210\342A\013w\034}\027pY\202\363=\035\322\363\321\370\210\343<\035\303\343\220\254bC'\035yB1\rhS&\035hR\000\000\000\000\000\000\000\000\032\001\032\033\032\001\000\001^\032^D_\032\000\033D\033D_E\033\000\032\351Y\363\253\357Y\001E\363X\351\260\365X\001D\267C\255\357\260C\001^\255B\267\364\252B\001_\271\273\272\034\267\273\034\267\243\272\240\007\255\272\034\266\347\241\344X\350\241\034\254\375\240\376C\362\240\034\255P\342I\267X\342\035\362J\343S\254B\343\035\363\016\370\027\363\007\370\035\351\024\371\r\350\035\371\035\350\000\000\000\000\000\000\000\000\n\252\261\013\020\252\013\020\365\016E\372\260\017\373\260\377\244\364\361\240\245\360\240~\213\267xY\226eYt!\006sI<nI\213\205\362\202\351\231\236\351\201/C\211\3713\225\371\323q\034\307\267m\333\266\331\333\255\314\247\307\320\246&\177Y=\007b \006,\325\3506\027\310+\026\255\372\253\277\356\373\276\357\247P\032\264\376Q\265\377X\364\356E^\364E_R^_NN^NO\000\000\000\000\000\000\000\000D\001\000\000\032\000\000\000\254\035\000\000^\001\000\000\350\034\000\000D\001\000\000T\021\001\000\362\034\000\000\020\020\001\000\350\034\000\000\370\f\001\000\254\035\000\000\274\r\001\000\266\035\000\000\034\254\032\000\246\r\001\000X\255\032\000\274\r\001\000\260\261\032\000\370\f\001\000\364\260\032\000\342\f\001\000H\275\033\000T\021\001\000\f\274\033\000N\021\001\000\344\240\033\000\n\020\001\000\240\241\033\000\020\020\001\000\000\000\000\000\000\000\000\000\004UP\001\272\241\033\000l\007w\034\276\364K\001hR'\035\004UP\001\024DQ\000\323\363<\035\020\021\001\001iR'\035xC&\034m\007w\034|\026v\035\327\246l\034\307\255m\007\335\267m\035\303\370=\006g\026v\035\253\252\032\033cC&\034\257\377J\032\331\342=\034\323\351<\007\016DQ\000\327\274l\006\264\345J\000\277\356K\033\260\260\032\001\273\273\033\032\n\021\001\001\000\000\000\000\000\000\000\000\032D\001D_\033\000\032E\255\035\254\357B\001^_\351\034\350\260Y\001D\366I\021U\267\376\035\362\354\r\020\021\350\345\035\350\263\344\f\371X\274\034\254\251\240\r\275\007\247\034\266\t\n\255\006\026\035\026\247\023N\254BI\006\026\275L\247\260\252\371_\027\371V\343\261\356\246D\027\343\377C\274S\241\343\013U\345\007\275\027\376\370\013O\272\356\241\377N\241\n\013\240\252\240\273\021\272\n\021\000\000\000\000\000\000\000\000A\356OT\352\036\353\240Y\244Q\032\311:\324\350\030J\036N#$?Hk\213eY\2025\236\362*e*\rh+uR2/4CK\017J\032s\301{\027\241\021\241\272\226p\332\266\261\252\260\252\327\236\225\342[\264[\n\317\324\213\254x\220dB\216:\304\370\222\216\217\342\375\373\277\3573\237.X\274\025\360\273\331\201\305\370\244_\356\365\372\245\372\260\345\261\241\241\020\273\021\020\000\000\000\000\000\000\000\000\350\034\032\000D\001^\001\370\f_\001\254\035\362\034\020\020E\001\350\034\254\035S\275\351\034T\021\247\r\273\241\363\034\020\020\371\f\253\261\266\035\370\fU\021C\255\254\035\274\r\013\020]\370\354\f\035\254\240\241\265\344\366\fY\255\376\240\245\364\263\r\261\261R\275M\350\251\r\365\260\f\274\016E\005\020I\275\007\254\346Y\037\020\r\274Y\255\366IZ\021\345\240\365\260\036U@\021\241\241\253\261\000\000\000\000\000\000\000\000]O\235\274\037U\356\365\034^\231\350&\006\245\357A\021\004T9SK\032\334\363\364\3642Y\227\267\201\274iH-\fyB\300\255m\034\024_2X\235\342\360\240\013\n\334\255\335\267\365\365\357\261v\035\200\370hI\360\344\230\350\301\351l\035\311\267\323\362\234\246\361\241\326\342=\007\001D\001\001\335\350\341\252\\\013\234\275\302\275\017_\035\032\230\351\373\356DE@U\005U\344\273\252\260\000\000\000\000\000\000\000\000D\033\350\356\260CE\033\267C\371\252X\342\261C\363X\021D\350\241\364XK\342U\007\246\021C\342\017\371\275\351\026R\006\371\374\241\254\255\376\363\362\241\270\272DCN\260\267\272\355\020\017F\272\245\354\020\251\013\347\250\n\346\251\013ZS\366\354\342G]S\036H\036\002R\004\030H\246\362ZA\034\264\257\362\342\351\262\257\254\367\352\351\021\261\243\353DV\036\261U\252K\005\364\025[\252\000\000\000\000\000\000\000\000\224\270\230\232\270\230\232\270\305\204\347\322\204\347\322\204Q<\177H<\177H<\230\347l\316\346l\316\346\f_\364T^\364T^]c\213\034b\213\034b\311\333\023\206\332\023\206\3320m\034\307q\034\307q\244\325\204]\311\204]\311\365\351\373\025\365\373\025\365aQc\217Mc\217M\250\212p\t\227p\t\227<2\350\223/\350\223/m\016\227\333\023\227\333\023\371\266\017A\253\017A\253\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\274\r\001\000\000\000\000\000\275\r\001\000\000\000\000\000PEQ\000\001\000\000\000QEQ\000\001\000\000\000\354HP\000\001\000\000\000\355HP\000\001\000\000\000\300\370{\377\356\r\001\000\301\370{\377\356\r\001\000|\365z\377\356\r\001\000}\365z\377\356\r\001\000\220\275*\377\357\r\001\000\221\275*\377\357\r\001\000,\260+\377\357\r\001\000-\260+\377\357\r\001\000\000\000\000\000\000\000\000\000\033\021\021\020\001\021\000\000\344\334\261\007va\327\021\377\315\240\027wp\327\021\034K,R^\025UU\007Z=B_\004UU\370\227\235U(t\202D\343\206\214E)e\202D\343\204\237\034*)1\026\370\225\216\f+81\026\007X.\033\\H\346\007\034I?\013]Y\346\007\377\317\263Nt<dC\344\336\242^u-dC\033\023\002I\002]\263R\000\002\023Y\003L\263R\000\000\000\000\000\000\000\000^\001\032\032\001\001\000\001\007S\b\364\013\253\f\275YR\022\356\n\252\f\274\314\222J\215\307/\t\033\222\223P\227\306.\t\032\313\301By\314\204\005\246\225\300Xc\315\205\005\2473\031N!\365Nd\252m\030T;\364Od\2534JF\325\376\345h\027jK\\\317\377\344h\026\377\213\004\2542am\261\241\212\036\2663`m\260\370\330\fX9\312a\f\246\331\026B8\313a\r\000\000\000\000\000\000\000\000W\255\357\n\373\256\256\273TY0y\371D>\344\003\364\337s\002\352\220_\251>\313*N6\214\033\376\223$ \265\230\"\240\375g\373S\267r\262\377\252\312\024YL\334\034DRg\247\355g\314\034V\005\312H\347\234b\262\355\006>\227\224\236\210\"\262Q\223x\236e&\214\t\373Yl\307)\372\220M\254\364\203\315\322T>\366\257\000\\\276\320\276\256\251\370\255\263\264+\020\000\022\000\000\000\000\000\000\000\000O\021\032\000D\001_\001\277B\302\274\352\345^D\360S\330\274\256\344\001E\370\006\262\2736\007{\345\267\027\250\273r\006$\344GDp\007\334\342%\241\bUj\007\230\343z\240\f\005\341\313\264\311s\263C\024\373\313\360\310,\262\263G#w^,-\367\374V9w\032-r\366\364\003Sp\202\316\bV\273\022Ip\306\317WWKA\221\314h+V\022\004P\213\314,*\t\023\000\000\000\000\000\000\000\000\227!\004*\237\026\346]\364\353\334\016\321+gQc\312\330$N=\201\f\364\003Z\266\345\315\254\256c\"^\234z\333J\363\000\350\206\2704\346\313\377\227\311\202\222\253\360-\242\006\001\260\t\n \226\022\221 \264#\2256pO\362\352l\007\333\013\361Ce\313h-D\035\027\036\362\002\352\277\357\355:\274e#\356\225p\373\334\341\006\3516\261>\306]\355\221\3102\233\241\320\273\260\000\000\000\000\000\000\000\000\370\020J\357O\377\365\261\342|\260]\326]\320\341\032l\372\262\231\242%P\212\020\366\240\035u\361\br\000\274OR\212\004\271hlF\375\313(!\351\220|\f\022\204\327\324Xp\274\237`\367&\331G\210\254\325\217\270\331,\366\222\300/=!{\t\246j\320e\322n\204\374\027\372\254i\300\352S(O\002\274#/\245\254\335\376\030\320\331\235<\016\370\256\340\300\223rs\361\r\037\000\000\000\000\000\000\000\000]\363\211s5\227\365\031B\023\310\315\226\322\035\353\037\340A\276\243E\350\362\330\314dcbX\215\376\205?\355\020W\317x\347\232\337\254\256\364\212\220\025\307,%\335\301\035e\f\312hNcP\202\025\373\227\233\307\020e\025\340\342\210{\206\256\306P\b\020\325\210\017\335\363\307\375\t\022\244*\0002\332\230\005OW\243s\007Mm\034P\267\342\315\244\b\205\356\rDk\276\221\237p\367\000\000\000\000\000\000\000\000\345\241\033\001C\255\032\000\222\000a\272\322T'\007w\241z\273\221\371=\007\342_\250\r\037\374\341\364\007\376\263\f\\Q\373\364p_\311\267\315\250\306\363\225\376\322\266\216\005\334\363z\231v\364\355\313\245C\2378m\365\256f\277C\350\231\027N?\237\202D\r8\fO|2\230D\230\306\336\371\3627D\267}g\305\370\261\232^\267\n\306\277C cc\260\357g\244Bc\316y\260\000\000\000\000\000\000\000\000\335#\323\001\263\204\357X\212\377z\342_U\b\351W\334\251\343\354\321\347\261\272\266\314vq\2233\347g\225\037w\302\027\334\2770I\266\224.\306;\016\355je\225\235B\324V\004\000:\223\033~\344[\331#\351\222\250\372\013\003\216\377@qD+\354\262S\334\223p\367\257\003\352\276\266\366\345j\355\327\274c\225%\344\331i8\3444I\214\0075\270\337U\351j_\006\206<0\r\000\000\000\000\000\000\000\000\t\235\333\036\314\035(\250\223v\260\"U\230$\247\232\353k<\231\205\f\017\020>\365>\227\214N\253\031\243. [\221f\003\203HE\034\302\024j\f\212\325\236\002\016\tB\244)\240>\361)\n|\001 =\345\357\345\027T\251\272\326\216\323|\222X\246\263KU\315\260\217p\0169\236\313\317\276\2062\2520\003\020\321r\233\032\002\252\350{\355\353\036\026\r\243u\240\363'\003>\245\000\000\000\000\000\000\000\000\341Hiw3\272\016\356$#3\207\314\327\236\025\305kZ\360\377m\220\373\270\006\001l\334\237+\033YNh\033\357%%\365\234%2\353\020H\265\016}m[\234#\362\273\340\316\037/\233RK5\261/WF\354a\361;_\352<\034\034\236\234\253\244\013tuk\255&\245Jv\031.\367\216\324\036\252\227QG\200\275n\020DR:\035pB\003\200\277\263rt\007q\271\216Q\000\000\000\000\000\000\000\000\035\342\006\001\350\026I\343\362\023\200wk\"F]\357\361\206v\2034\017\276\231><\271\001.M\r\204\334:\270\3518\004\356k-\274\316j\f\013Pv\317\272\317\202\032B\263\364\343\343\024S[Z\272\351\001\345\025\273M\023Y\006\360cc8y\034\347\033\022eb\320oU\004m\335\337\255Ru\027\267p?\331\254\272c^T\237\316_\3329WQ\352\202,Y\333\321A\030\t\000\000\000\000\000\000\000\000/\\\253\307\016R\307B^\376cyU:\225\270q\242\310\276[hR\372\334\023\213(\216,\300\245\363O \357\200~\007\347\202\355\350Q\333\026U\035\255\261C\226\325D\222_\241\357>\326?'dP\216\263\225\0211u\243\022\377\021]\257j\035\361\350\320M\366hdO6\252}\374\265\376\261\013\244\365R\240\0369\277Yc\267#\002\326\207\34411M\f^}@\352c\366\017\000\000\000\000\000\000\000\000\372g\302\217\354F\331\b\223\310~\033\304\\6\257i\257\274\224(\032\357\247\231\312oj,L\346Jc\255\255\345\300\n?B\n\002\021q\350\020\320\345\360e\323\376\004V\t\355\371\367\nBS\224\021\374\003\220\310\315\277\322\310\364j?tY\227\310'S\220X\266\326{\216\376[`=e(\177\330\367\266\232Z\247\247\223\236.\276\363\365\0333\273\204\301\031\t\222\331\274W\302\030\021\000\000\000\000\000\000\000\000m\215\221\375z\323\037\024\212\367\232o\304\210\020p\347z\013\222\276[\017d\005\373-\324\371\n\262\025hv\274)\203\331\255\001\217\f\267\273=\202\242e\342\201&FGQ\275qK\237\216.l\364\263/&\022\037\323\026'\254;\301h\024A\250|\243_\254\345\205\274\322\257\274KNd\243\372\225\376\001:#\3512\007\357-\036.\304\2239\225Qv\021J\251\036\250h+\245\016^\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000bo\021B\3055\325\266co\021B\3055\325\266\365e\371b\252k\337\246\364e\371b\252k\337\246\227\n\350 o^\n\020\226\n\350 o^\n\020\241\016(fv\207\315C\240\016(fv\207\315C\303a9$\263\262\030\365\302a9$\263\262\030\365Tk\321\004\334\354\022\345Uk\321\004\334\354\022\3456\004\300F\031\331\307S7\004\300F\031\331\307S\000\000\000\000\000\000\000\000\347\377\240\316G9\337\271\031\207\030D@\312\024I\376x\270\212\007\363\313\360\306\202\222\301-sd\244!}2\017jJ\273\035\337\005\212\205m\271p\3558\372*K*\200\257Tgs\304\202\254\321\226\354\200\214dL\353\350IU~\364\334\306\354\033\202\245\231\013|\b\253\"]\034\241\361VC\201\242\362HF\016\366\215\306\233-\361\270vN\007\301h\346\001_\211\356\311\206Q9\270\000\000\000\000\000\000\000\000\210\345\217$\007(\210\341\316\365\2423\307t\032\374F\020-\027\300\\\222\035Z\261\2706\367\033\313\246\322T7\022\3603CG\224D\032\0050o\321Z\034\241\225!7GY\2731\312q\005$:e\024\271/\376!#\022\355\365\377?\3236\343N\177\350w\332\\\022\344f\367\tk{\3113\323!\256\262\343\236F\027\324\t&S\245\216k\000\024U\264N-k\344$\023}<\257\000\000\000\000\000\000\000\000%;s\207\265\234\260\375\205\2013\025Tf\305F\240\272@\222\341\372u\273$\277\030~\313\212r[\001\204k\371~\026\302\246\241>+k\237\354\267\035\204\005X\354*p\007\340\261\201\000\270\300\300W\022\224\272s?u\\\347\3574\0003\255\224\246\222T\021;@*!:\"\251\225>\030\306\013J%I\260\005kA\276\326\225\264\020\277+\323_,\340\0175\204XT\352\260P\362\000\000\000\000\000\000\000\000\306A\321>\225\206\r\030\232\t\f\246\224\217o\340\\H\335\230\001\tb\370\322!\246\223\251Yu\005\024`w\255<\337x\035H(\2525=\326\032\345\216i{\013\250P\027\375S\017\025\246 \357\b\364\225N\304\230\265i\005\354\311\006\031\000\264`g\024\017G\310>!\346j\f\201.\2635\211\266}\361Gob\013\0340p\351\033'\277\223\0359\022\021\335fn\255\210\277\037\t\000\000\000\000\000\000\000\000\331\027\261X\3673\317\250k\223R\3073\"\366\254\262\204\343\237\304\0219\004\261h\350!\252\310\240\032h\177Yy]\373o\262\332\373\272\346\231\352V\266\003\354\013\276n\331\231\036\210O\025H\352{\246AQX\244\020\035Hi\351\343\334G\217\331YP\355:\313\366\327.j\237E9'\375i@\263\006[\3400L1\267\200\311\363R\264\257\256s\221\360\367\213\243\036\366\204\242?_\000\000\000\000\000\000\000\000\373\2623\331\003\242x@\006\304\304\024A\210\032\265\375v\367\315B*b\365\272\352\334\235\257t\312\260AX\357D\254\326\262\360\274.\030\211\356\374\320\005G\234+P\355^\250E\327\361\235\033\314\006YD,C\256\302\317\244!\004\3215Y\017\215\216C\361*\207j\326\216,;\261m\033A\206cr\223\364\226\251r_`\320\353\264k\337\205\222\"\372\211A\220m\266K!X\361\001\000\000\000\000\000\000\000\000\274r\376\203*\306\342\270\346U\370Bp.t\262Z'\006\301Z\350\226\n\0015\0060\300\252-^\275G\370\263\352l\317\346\347`\376r\260\204Y\354[\022\000\361\232B\273T\332\217\356\252JF\002\357f\375\020)`\200\340W<\332\026\350:hv]\200\250\350k\020\256\224\345\333\272\350\232\212\354/\261g\310\026\031\240*\315\t=\357\020\330\372\302[\003\201\235\356[\320\004\271\273\000\000\000\000\000\000\000\000\277\212\333\321lV\224\030,\230\340g)\201\373\034\223\022;\266E\327o\004\265\233@\307Q\333\025X\n\021\233\026=\215\201@\231\003\240\240xZ\356D&\211{q\024\fz\\;\235A\177\274\361\233\f\204\027\232\256\320\247\017\024\027\005\241\030\225p`\020\250\217z\311\371&\364\b\216\006\001\270\355*\216T1\214\332i\201|\032L\242\236\341\337\304\253uH\035\024:\016\250\375\341P\000\000\000\000\000\000\000\000\337\373\334\251\276\202\257@\254\277\\\"\370\344a\256sD\200\213Ff\316\356D}R\033\326\007\244B\233\206\216\262h\205\013\002\350\302\0169.\343\305\35479\322\220\220aj\254H\263\210\017\367\264\234\242\227HT\246I63\342\344\f\324-\017P\375\f;\367\b\204\261\322RL\f\316\332\024!\2638\340\3235\006\275\2371\227\240\240q\2066\331WYN\177\212Z\237g\325\366\016\000\000\000\000\000\000\000\000\334Wev\0062\207\273qf\205\210\201q\340\362\2551\340\376\207CgIhci-\330\027b\373\2644\f[\336%\345@\031\005\354\245Yf\202\t\305R\211\323_T\005\262k\337\362\245\030D\025\027\267\210\227\323\036v\222\254\032\271w-\2315\365\345\306\356\022[\237\007r^\003\274\233\210\300Sw\354\337\353\376\376\306a\360Wr\332\036\000A\"\227\036\256\215{vG\020\020\245\000\000\000\000\000\000\000\000\255\357\206bG\370\253\031T\266\2074)E\267\346\371Y\001Vn\275\034\377\367Z\345\321\314\254]\240Z\265c\263\213T\366\271\243\354b\345\345\351\352F\016\003\344\207\242\021A_r\337\013\240^.K\270\3370\215\302\031\326\340\241&i\214\224wk\374^\213\206\n\3660\223WG\205\205\356q\222\202\026\030(jh\023\325z\275\001\3213iE\273\307\241\376|\334\357'\374?\n\347\000\000\000\000\000\000\000\000)Uh\351\303\304@\341,\227cm\202~g\241\005\302\013\204A\272'@U\260\321\226\272M\273\267|\345\271\177y\211\373Vy'\262\37383\334\026Pr\332\022\373\367\234\367N\030w\244\221\274}\245gM\037MRx=Db\217\024\311\023\302\032\004K\332| \320\006Z\345\033\250\2462+\361\306\0222\375\316\333\3505\206\3637?\305_\251\217\241\263\036j\255\266jK\341R\000\000\000\000\000\000\000\000\031\356\362\222\375'V\366\324\017_\b\005\332SV\315\341\255\232\370\375\005\240~&\332T\212\354\364\260g\310(\306w\313\242F\252)\205\\\2176\247\346\263\307w\316r\021\361\020e\331\000dJnE\351|7\362\366\267I\023\037\261\326_lO\264\026\277\2508\255\376\262\223@I\033\377\3320\300\202\261Y\002\021(\242=\245\347\257\317\360\2058\305X\342\017\326\036w\2528\177\264\371\000\000\000\000\000\000\000\000\246/\330d?I\302\361\210?\026\244\205,t\274.\020\316\300\272e\266MN\223\fz\360\223i\247\350\274\324\036\317\332\253V\306\254\032\336u\277\035\033`\203\302\272J\366\337\352\361\240\302\240\366W$\nW\217\032\304\311\036\346\373y\237\324\004s{P\266\337\260\f`L2\222G\2773\316\332\006\304M\255\031\034\026\2769\215\217\\7\f\330~\203\3509\021\221#\000\032\274\241\373\340\000\000\000\000\000\000\000\000\032p\272\257yk\034\251\334\357d\277)\203\360\332\306\237\336\020P\350\354s\251\347\210\3619TC_\263\2272^@?_\366u\b\354N\020\327\263\205oxV\341i\274\257,b4\342\004\222\223,\306xDX\253\353\3700o\276\333\206\273\273\020\334\034\244\253<\024\302{\300\265\313\323j\365\253\307o\231\321\243\320Z\322\254s0\027<\016J\202D\237C\rL\264\345\373/\203\352"
 	.size	_RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm_v4p, 6144
 
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1991,@object
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1990,@object
 	.section	.rodata.str1.1,"aMS",@progbits,1
-.Lanon.2e24e836c13f239343f864e080f18d36.1991:
+.Lanon.2e24e836c13f239343f864e080f18d36.1990:
 	.asciz	"src/lv/primitives/field/gf2_64.rs"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1991, 34
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1990, 34
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1991,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1991,"aw",@progbits
+	.p2align	3, 0x0
+.Lanon.2e24e836c13f239343f864e080f18d36.1991:
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1990
+	.asciz	"!\000\000\000\000\000\000\000\225\000\000\000\027\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1991, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1992,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1992,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1992:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1991
-	.asciz	"!\000\000\000\000\000\000\000\225\000\000\000\027\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.231
+	.asciz	"#\000\000\000\000\000\000\000n\001\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1992, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1993,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1993,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1993:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.231
-	.asciz	"#\000\000\000\000\000\000\000n\001\000\000\005\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
+	.asciz	"\036\000\000\000\000\000\000\0006\000\000\000\030\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1993, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1994,@object
@@ -467579,7 +467488,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1994:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\0006\000\000\000\030\000\000"
+	.asciz	"\036\000\000\000\000\000\000\000>\000\000\000\030\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1994, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1995,@object
@@ -467587,7 +467496,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1995:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000>\000\000\000\030\000\000"
+	.asciz	"\036\000\000\000\000\000\000\000:\000\000\000\030\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1995, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1996,@object
@@ -467595,7 +467504,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1996:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000:\000\000\000\030\000\000"
+	.asciz	"\036\000\000\000\000\000\000\000e\001\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1996, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1997,@object
@@ -467603,57 +467512,57 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.1997:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000e\001\000\000\005\000\000"
+	.asciz	"\036\000\000\000\000\000\000\000f\001\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1997, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1998,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1998,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1998,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.1998:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000f\001\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1998, 24
+	.ascii	"a lane block holds at least one row of bits"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1998, 43
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.1999,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.1999,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.1999:
-	.ascii	"a lane block holds at least one row of bits"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1999, 43
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2000,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2000,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.1999,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.2000:
+.Lanon.2e24e836c13f239343f864e080f18d36.1999:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
 	.asciz	"\036\000\000\000\000\000\000\000g\001\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2000, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.1999, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2000,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2000,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.2000:
+	.ascii	"the stack is whole lane blocks"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2000, 30
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2001,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2001,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.2001:
-	.ascii	"the stack is whole lane blocks"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2001, 30
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2002,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2002,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2001,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.2002:
+.Lanon.2e24e836c13f239343f864e080f18d36.2001:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
 	.asciz	"\036\000\000\000\000\000\000\000m\001\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2002, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2001, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2002,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2002,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.2002:
+	.ascii	"Repeats"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2002, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2003,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2003,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2003,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2003:
-	.ascii	"Repeats"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2003, 7
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
+	.asciz	"\036\000\000\000\000\000\000\000\266\001\000\000\027\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2003, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2004,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2004,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2004:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000\266\001\000\000\027\000\000"
+	.asciz	"\036\000\000\000\000\000\000\000\276\001\000\000%\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2004, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2005,@object
@@ -467661,7 +467570,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2005:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000\276\001\000\000%\000\000"
+	.asciz	"\036\000\000\000\000\000\000\000\270\001\000\000\035\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2005, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2006,@object
@@ -467669,7 +467578,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2006:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000\270\001\000\000\035\000\000"
+	.asciz	"\036\000\000\000\000\000\000\000\246\001\000\000\033\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2006, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2007,@object
@@ -467677,7 +467586,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2007:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000\246\001\000\000\033\000\000"
+	.asciz	"\036\000\000\000\000\000\000\000\250\001\000\000#\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2007, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2008,@object
@@ -467685,7 +467594,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2008:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000\250\001\000\000#\000\000"
+	.asciz	"\036\000\000\000\000\000\000\000\251\001\000\000 \000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2008, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2009,@object
@@ -467693,7 +467602,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2009:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000\251\001\000\000 \000\000"
+	.asciz	"\036\000\000\000\000\000\000\000\210\001\000\000#\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2009, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2010,@object
@@ -467701,7 +467610,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2010:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000\210\001\000\000#\000\000"
+	.asciz	"\036\000\000\000\000\000\000\000\211\001\000\000 \000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2010, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2011,@object
@@ -467709,23 +467618,23 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2011:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000\211\001\000\000 \000\000"
+	.asciz	"\036\000\000\000\000\000\000\000\215\001\000\000\016\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2011, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2012,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2012,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2012:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.45
-	.asciz	"\036\000\000\000\000\000\000\000\215\001\000\000\016\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1109
+	.asciz	"\026\000\000\000\000\000\000\000u\000\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2012, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2013,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2013,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2013:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.1109
-	.asciz	"\026\000\000\000\000\000\000\000u\000\000\000\005\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.430
+	.asciz	"\027\000\000\000\000\000\000\000\333\000\000\000\025\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2013, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2014,@object
@@ -467733,87 +467642,87 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2014:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.430
-	.asciz	"\027\000\000\000\000\000\000\000\333\000\000\000\025\000\000"
+	.asciz	"\027\000\000\000\000\000\000\000\352\000\000\000\037\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2014, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2015,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2015,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2015,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2015:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.430
-	.asciz	"\027\000\000\000\000\000\000\000\352\000\000\000\037\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2015, 24
+	.ascii	"a commitment needs at least one lane"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2015, 36
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2016,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2016,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2016,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2016:
-	.ascii	"a commitment needs at least one lane"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2016, 36
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.430
+	.asciz	"\027\000\000\000\000\000\000\000(\000\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2016, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2017,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2017,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2017:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.430
-	.asciz	"\027\000\000\000\000\000\000\000(\000\000\000\005\000\000"
+	.asciz	"\027\000\000\000\000\000\000\000)\000\000\000\005\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2017, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2018,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2018,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2018,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2018:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.430
-	.asciz	"\027\000\000\000\000\000\000\000)\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2018, 24
+	.ascii	"a block lies in the message"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2018, 27
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2019,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2019,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.2019:
-	.ascii	"a block lies in the message"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2019, 27
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2020,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2020,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2019,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.2020:
+.Lanon.2e24e836c13f239343f864e080f18d36.2019:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.430
 	.asciz	"\027\000\000\000\000\000\000\000*\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2020, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2019, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2020,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2020,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.2020:
+	.ascii	"a codeword row must fit the transpose tile"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2020, 42
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2021,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2021,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.2021:
-	.ascii	"a codeword row must fit the transpose tile"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2021, 42
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2022,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2022,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2021,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.2022:
+.Lanon.2e24e836c13f239343f864e080f18d36.2021:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.430
 	.asciz	"\027\000\000\000\000\000\000\0002\000\000\000\005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2022, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2021, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2022,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2022,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.2022:
+	.ascii	"row tiles must cover every row"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2022, 30
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2023,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2023,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2023,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2023:
-	.ascii	"row tiles must cover every row"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2023, 30
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.430
+	.asciz	"\027\000\000\000\000\000\000\0009\000\000\000\005\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2023, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2024,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2024,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2024:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.430
-	.asciz	"\027\000\000\000\000\000\000\0009\000\000\000\005\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.785
+	.asciz	"\030\000\000\000\000\000\000\000T\000\000\000\024\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2024, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2025,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2025,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2025:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.785
-	.asciz	"\030\000\000\000\000\000\000\000T\000\000\000\024\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.222
+	.asciz	"\031\000\000\000\000\000\000\000k\001\000\000'\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2025, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2026,@object
@@ -467821,15 +467730,15 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2026:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.222
-	.asciz	"\031\000\000\000\000\000\000\000k\001\000\000'\000\000"
+	.asciz	"\031\000\000\000\000\000\000\000k\001\000\000\023\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2026, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2027,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2027,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2027:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.222
-	.asciz	"\031\000\000\000\000\000\000\000k\001\000\000\023\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.278
+	.asciz	"\032\000\000\000\000\000\000\000\022\000\000\0006\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2027, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2028,@object
@@ -467837,15 +467746,15 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2028:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.278
-	.asciz	"\032\000\000\000\000\000\000\000\022\000\000\0006\000\000"
+	.asciz	"\032\000\000\000\000\000\000\000\022\000\000\000%\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2028, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2029,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2029,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2029:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.278
-	.asciz	"\032\000\000\000\000\000\000\000\022\000\000\000%\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.510
+	.asciz	"\032\000\000\000\000\000\000\000\031\000\000\000 \000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2029, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2030,@object
@@ -467853,7 +467762,7 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2030:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.510
-	.asciz	"\032\000\000\000\000\000\000\000\031\000\000\000 \000\000"
+	.asciz	"\032\000\000\000\000\000\000\000\022\000\000\000$\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2030, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2031,@object
@@ -467861,16 +467770,8 @@ _RNvNtNtNtNtCs7rukeAxmHeC_10lvm_prover2lv10primitives5field6gf2_649FROBENIUS_lvm
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2031:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.510
-	.asciz	"\032\000\000\000\000\000\000\000\022\000\000\000$\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2031, 24
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2032,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2032,"aw",@progbits
-	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.2032:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.510
 	.asciz	"\032\000\000\000\000\000\000\000\022\000\000\0005\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2032, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2031, 24
 
 	.type	_RNvNvNtCs7rukeAxmHeC_10lvm_prover4proc10heap_arena4DONE_lvm_v4p,@object
 	.section	.bss._RNvNvNtCs7rukeAxmHeC_10lvm_prover4proc10heap_arena4DONE,"aw",@nobits
@@ -467926,141 +467827,149 @@ _RNvNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8topology8topology8TOPOLOGY_lv
 	.zero	4
 	.size	_RNvNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8topology8topology8TOPOLOGY_lvm_v4p, 24
 
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2035,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2035,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.2035:
+	.ascii	"Sig"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2035, 3
+
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2036,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2036,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2036:
-	.ascii	"Sig"
+	.ascii	"idx"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2036, 3
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2037,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2037,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2037:
-	.ascii	"idx"
+	.ascii	"ots"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2037, 3
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2038,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2038,"a",@progbits
+	.section	.rodata.cst4,"aM",@progbits,4
 .Lanon.2e24e836c13f239343f864e080f18d36.2038:
-	.ascii	"ots"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2038, 3
+	.ascii	"path"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2038, 4
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2039,@object
-	.section	.rodata.cst4,"aM",@progbits,4
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2039,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2039:
-	.ascii	"path"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2039, 4
+	.ascii	"Acc"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2039, 3
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2040,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2040,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2040:
-	.ascii	"Acc"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2040, 3
+	.ascii	"pt"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2040, 2
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2041,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2041,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2041:
-	.ascii	"pt"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2041, 2
+	.byte	121
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2041, 1
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2042,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2042,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2042,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2042:
-	.byte	121
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2042, 1
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.926
+	.asciz	"N\000\000\000\000\000\000\000o\007\000\000\021\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2042, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2043,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2043,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2043:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.926
-	.asciz	"N\000\000\000\000\000\000\000o\007\000\000\021\000\000"
+	.asciz	"N\000\000\000\000\000\000\000\342\013\000\000+\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2043, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2044,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2044,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata.cst4,"aM",@progbits,4
 .Lanon.2e24e836c13f239343f864e080f18d36.2044:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.926
-	.asciz	"N\000\000\000\000\000\000\000\342\013\000\000+\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2044, 24
+	.ascii	"Seed"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2044, 4
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2045,@object
-	.section	.rodata.cst4,"aM",@progbits,4
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2045,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2045:
-	.ascii	"Seed"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2045, 4
+	.ascii	"Fs"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2045, 2
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2046,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2046,"a",@progbits
+	.section	.rodata.cst4,"aM",@progbits,4
 .Lanon.2e24e836c13f239343f864e080f18d36.2046:
-	.ascii	"Fs"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2046, 2
+	.ascii	"Leaf"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2046, 4
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2047,@object
-	.section	.rodata.cst4,"aM",@progbits,4
 .Lanon.2e24e836c13f239343f864e080f18d36.2047:
-	.ascii	"Leaf"
+	.ascii	"Node"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2047, 4
 
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2048,@object
-.Lanon.2e24e836c13f239343f864e080f18d36.2048:
-	.ascii	"Node"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2048, 4
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2050,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2050,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.2050:
+	.ascii	"Signed"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2050, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2051,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2051,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2051:
-	.ascii	"Signed"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2051, 6
+	.ascii	"pi"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2051, 2
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2052,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2052,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2052:
-	.ascii	"pi"
+	.ascii	"tr"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2052, 2
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2053,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2053,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2053:
-	.ascii	"tr"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2053, 2
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2054,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2054,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.2054:
 	.ascii	"sig"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2054, 3
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2053, 3
 
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2059,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2059,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.2059:
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2058,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2058,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.2058:
 	.ascii	"Shape"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2059, 5
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2058, 5
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2060,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2060,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.2060:
+	.ascii	"ty"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2060, 2
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2061,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2061,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.2061:
-	.ascii	"ty"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2061, 2
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2062,@object
 	.section	.rodata.cst4,"aM",@progbits,4
-.Lanon.2e24e836c13f239343f864e080f18d36.2062:
+.Lanon.2e24e836c13f239343f864e080f18d36.2061:
 	.ascii	"args"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2062, 4
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2061, 4
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2065,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.2065:
+	.asciz	"\021min > max. min = \300\b, max = \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2065, 30
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2066,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2066,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2066:
-	.asciz	"\021min > max. min = \300\b, max = \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2066, 30
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.351
+	.asciz	"\f\000\000\000\000\000\000\000i\000\000\000#\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2066, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2067,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2067,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2067:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.351
-	.asciz	"\f\000\000\000\000\000\000\000i\000\000\000#\000\000"
+	.asciz	"\f\000\000\000\000\000\000\000\200\000\000\000#\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2067, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2068,@object
@@ -468068,214 +467977,206 @@ _RNvNvNtNtNtCs7rukeAxmHeC_10lvm_prover2lv8parallel8topology8topology8TOPOLOGY_lv
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2068:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.351
-	.asciz	"\f\000\000\000\000\000\000\000\200\000\000\000#\000\000"
+	.asciz	"\f\000\000\000\000\000\000\000\211\000\000\000#\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2068, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2069,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2069,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2069,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2069:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.351
-	.asciz	"\f\000\000\000\000\000\000\000\211\000\000\000#\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2069, 24
+	.ascii	"unknown large block"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2069, 19
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2070,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2070,"a",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2070,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2070:
-	.ascii	"unknown large block"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2070, 19
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.351
+	.asciz	"\f\000\000\000\000\000\000\000\213\000\000\0007\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2070, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2071,@object
 	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2071,"aw",@progbits
 	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2071:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.351
-	.asciz	"\f\000\000\000\000\000\000\000\213\000\000\0007\000\000"
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.485
+	.asciz	"\016\000\000\000\000\000\000\000F\001\000\000$\000\000"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2071, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2072,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2072,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2072,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2072:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.485
-	.asciz	"\016\000\000\000\000\000\000\000F\001\000\000$\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2072, 24
+	.ascii	"QUERY: short answer"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2072, 19
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2073,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2073,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2073:
-	.ascii	"QUERY: short answer"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2073, 19
+	.ascii	"QUERY: the service closed the connection"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2073, 40
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2074,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2074,"a",@progbits
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.2074:
-	.ascii	"QUERY: the service closed the connection"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2074, 40
+	.asciz	"\007QUERY (\300\034 bytes) refused with status \300\001 \300\002: \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2074, 47
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2075,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.Lanon.2e24e836c13f239343f864e080f18d36.2075:
-	.asciz	"\007QUERY (\300\034 bytes) refused with status \300\001 \300\002: \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2075, 47
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2076,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2076,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2075,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.2076:
+.Lanon.2e24e836c13f239343f864e080f18d36.2075:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.485
 	.asciz	"\016\000\000\000\000\000\000\000f\001\000\0003\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2076, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2075, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2076,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.2076:
+	.asciz	"\007QUERY (\300\017 bytes): read: \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2076, 27
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2077,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.2077:
-	.asciz	"\007QUERY (\300\017 bytes): read: \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2077, 27
+	.asciz	"\007QUERY (\300\020 bytes): write: \300"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2077, 28
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2078,@object
-.Lanon.2e24e836c13f239343f864e080f18d36.2078:
-	.asciz	"\007QUERY (\300\020 bytes): write: \300"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2078, 28
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2079,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2079,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2078,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.2079:
+.Lanon.2e24e836c13f239343f864e080f18d36.2078:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.485
 	.asciz	"\016\000\000\000\000\000\000\000T\001\000\000\"\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2079, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2078, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2079,@object
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.Lanon.2e24e836c13f239343f864e080f18d36.2079:
+	.asciz	"\031a Fiat\342\200\223Shamir query of \300\033 bytes is above queryCap = \300\031 (the service refuses it)"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2079, 83
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2080,@object
-	.section	.rodata.str1.1,"aMS",@progbits,1
 .Lanon.2e24e836c13f239343f864e080f18d36.2080:
-	.asciz	"\031a Fiat\342\200\223Shamir query of \300\033 bytes is above queryCap = \300\031 (the service refuses it)"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2080, 83
+	.asciz	"/rustc/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/library/alloc/src/vec/spec_from_iter_nested.rs"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2080, 95
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2081,@object
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2081,"aw",@progbits
+	.p2align	3, 0x0
 .Lanon.2e24e836c13f239343f864e080f18d36.2081:
-	.asciz	"/rustc/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/library/alloc/src/vec/spec_from_iter_nested.rs"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2081, 95
+	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.2080
+	.asciz	"^\000\000\000\000\000\000\0009\000\000\000\022\000\000"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2081, 24
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2082,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2082,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2082,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2082:
-	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.2081
-	.asciz	"^\000\000\000\000\000\000\0009\000\000\000\022\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2082, 24
+	.ascii	"PoisonError"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2082, 11
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2083,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2083,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2083:
-	.ascii	"PoisonError"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2083, 11
+	.ascii	"assertion failed: words <= RATE_LANES && byte_offset + 8 * words <= len"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2083, 71
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2084,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2084,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.2084:
-	.ascii	"assertion failed: words <= RATE_LANES && byte_offset + 8 * words <= len"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2084, 71
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2085,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2085,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2084,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.2085:
+.Lanon.2e24e836c13f239343f864e080f18d36.2084:
 	.quad	.Lanon.2e24e836c13f239343f864e080f18d36.178
 	.asciz	"\031\000\000\000\000\000\000\000\363\001\000\000\r\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2085, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2084, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2085,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2085,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.2085:
+	.ascii	"F64"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2085, 3
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2086,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2086,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2086:
-	.ascii	"F64"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2086, 3
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2087,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2087,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.2087:
 	.byte	69
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2087, 1
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2086, 1
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2088,@object
+	.section	.rodata.cst4,"aM",@progbits,4
+.Lanon.2e24e836c13f239343f864e080f18d36.2088:
+	.ascii	"F192"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2088, 4
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2089,@object
-	.section	.rodata.cst4,"aM",@progbits,4
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2089,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2089:
-	.ascii	"F192"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2089, 4
+	.ascii	"c0"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2089, 2
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2090,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2090,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2090:
-	.ascii	"c0"
+	.ascii	"c1"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2090, 2
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2091,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2091,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2091:
-	.ascii	"c1"
+	.ascii	"c2"
 	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2091, 2
 
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2092,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2092,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.2092:
-	.ascii	"c2"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2092, 2
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2101,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2101,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.2101:
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2100,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2100,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.2100:
 	.ascii	"TryFromSliceError"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2101, 17
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2100, 17
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2102,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2102,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.2102:
+	.ascii	"Q0"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2102, 2
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2103,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2103,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.2103:
-	.ascii	"Q0"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2103, 2
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2104,@object
-	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2104,"aw",@progbits
+	.section	.data.rel.ro..Lanon.2e24e836c13f239343f864e080f18d36.2103,"aw",@progbits
 	.p2align	3, 0x0
-.Lanon.2e24e836c13f239343f864e080f18d36.2104:
+.Lanon.2e24e836c13f239343f864e080f18d36.2103:
 	.quad	.Lanon.8034cc74746c0f700f1d2bb865899118.41
 	.asciz	"O\000\000\000\000\000\000\000\277\004\000\000$\000\000"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2104, 24
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2103, 24
+
+	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2104,@object
+	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2104,"a",@progbits
+.Lanon.2e24e836c13f239343f864e080f18d36.2104:
+	.ascii	"MulAdd"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2104, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2105,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2105,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2105:
-	.ascii	"MulAdd"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2105, 6
+	.ascii	"Lin"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2105, 3
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2106,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2106,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2106:
-	.ascii	"Lin"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2106, 3
+	.ascii	"Assert0"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2106, 7
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2107,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2107,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2107:
-	.ascii	"Assert0"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2107, 7
+	.ascii	"LoadE"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2107, 5
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2108,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2108,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2108:
-	.ascii	"LoadE"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2108, 5
+	.ascii	"FixMul"
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2108, 6
 
 	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2109,@object
 	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2109,"a",@progbits
 .Lanon.2e24e836c13f239343f864e080f18d36.2109:
-	.ascii	"FixMul"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2109, 6
-
-	.type	.Lanon.2e24e836c13f239343f864e080f18d36.2110,@object
-	.section	.rodata..Lanon.2e24e836c13f239343f864e080f18d36.2110,"a",@progbits
-.Lanon.2e24e836c13f239343f864e080f18d36.2110:
 	.ascii	"Readd"
-	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2110, 5
+	.size	.Lanon.2e24e836c13f239343f864e080f18d36.2109, 5
 
 	.type	.Lanon.50d5bca7fcb5f9a5d3dbb5bd347e0faa.0,@object
 	.section	.rodata.str1.1,"aMS",@progbits,1
@@ -474607,11 +474508,11 @@ _RNvNvNtNtNtNtCsgHYyB3hU8Ec_3std3sys12thread_local5guard3key6enable5DTORS_lvm_v4
 	.section	.rodata..Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params6QClassNtB6_5Debug3fmtBC_.6372.rel,"a",@progbits
 	.p2align	2, 0x0
 .Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params6QClassNtB6_5Debug3fmtBC_.6372.rel:
-	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2103-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params6QClassNtB6_5Debug3fmtBC_.6372.rel
+	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2102-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params6QClassNtB6_5Debug3fmtBC_.6372.rel
+	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2044-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params6QClassNtB6_5Debug3fmtBC_.6372.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2045-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params6QClassNtB6_5Debug3fmtBC_.6372.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2046-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params6QClassNtB6_5Debug3fmtBC_.6372.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2047-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params6QClassNtB6_5Debug3fmtBC_.6372.rel
-	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2048-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params6QClassNtB6_5Debug3fmtBC_.6372.rel
 	.size	.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6params6QClassNtB6_5Debug3fmtBC_.6372.rel, 20
 
 	.type	.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_,@object
@@ -474625,12 +474526,12 @@ _RNvNvNtNtNtNtCsgHYyB3hU8Ec_3std3sys12thread_local5guard3key6enable5DTORS_lvm_v4
 	.section	.rodata..Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6373.rel,"a",@progbits
 	.p2align	2, 0x0
 .Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6373.rel:
+	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2104-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6373.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2105-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6373.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2106-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6373.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2107-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6373.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2108-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6373.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2109-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6373.rel
-	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2110-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6373.rel
 	.size	.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6373.rel, 24
 
 	.type	.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6374,@object
@@ -474644,12 +474545,12 @@ _RNvNvNtNtNtNtCsgHYyB3hU8Ec_3std3sys12thread_local5guard3key6enable5DTORS_lvm_v4
 	.section	.rodata..Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6375.rel,"a",@progbits
 	.p2align	2, 0x0
 .Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6375.rel:
+	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2104-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6375.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2105-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6375.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2106-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6375.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2107-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6375.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2108-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6375.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2109-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6375.rel
-	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2110-.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6375.rel
 	.size	.Lswitch.table._RNvXs1g_NtCsevLNFiNqfJP_4core3fmtRRNtNtNtCs7rukeAxmHeC_10lvm_prover3lvm6loopir5ShapeNtB6_5Debug3fmtBD_.6375.rel, 24
 
 	.type	.Lswitch.table._RNvXs3_NtCs7rukeAxmHeC_10lvm_prover6oracleNtB5_5ClassNtNtCsevLNFiNqfJP_4core3fmt5Debug3fmt,@object
@@ -474663,10 +474564,10 @@ _RNvNvNtNtNtNtCsgHYyB3hU8Ec_3std3sys12thread_local5guard3key6enable5DTORS_lvm_v4
 	.section	.rodata..Lswitch.table._RNvXs3_NtCs7rukeAxmHeC_10lvm_prover6oracleNtB5_5ClassNtNtCsevLNFiNqfJP_4core3fmt5Debug3fmt.6376.rel,"a",@progbits
 	.p2align	2, 0x0
 .Lswitch.table._RNvXs3_NtCs7rukeAxmHeC_10lvm_prover6oracleNtB5_5ClassNtNtCsevLNFiNqfJP_4core3fmt5Debug3fmt.6376.rel:
+	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2044-.Lswitch.table._RNvXs3_NtCs7rukeAxmHeC_10lvm_prover6oracleNtB5_5ClassNtNtCsevLNFiNqfJP_4core3fmt5Debug3fmt.6376.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2045-.Lswitch.table._RNvXs3_NtCs7rukeAxmHeC_10lvm_prover6oracleNtB5_5ClassNtNtCsevLNFiNqfJP_4core3fmt5Debug3fmt.6376.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2046-.Lswitch.table._RNvXs3_NtCs7rukeAxmHeC_10lvm_prover6oracleNtB5_5ClassNtNtCsevLNFiNqfJP_4core3fmt5Debug3fmt.6376.rel
 	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2047-.Lswitch.table._RNvXs3_NtCs7rukeAxmHeC_10lvm_prover6oracleNtB5_5ClassNtNtCsevLNFiNqfJP_4core3fmt5Debug3fmt.6376.rel
-	.long	.Lanon.2e24e836c13f239343f864e080f18d36.2048-.Lswitch.table._RNvXs3_NtCs7rukeAxmHeC_10lvm_prover6oracleNtB5_5ClassNtNtCsevLNFiNqfJP_4core3fmt5Debug3fmt.6376.rel
 	.size	.Lswitch.table._RNvXs3_NtCs7rukeAxmHeC_10lvm_prover6oracleNtB5_5ClassNtNtCsevLNFiNqfJP_4core3fmt5Debug3fmt.6376.rel, 16
 
 	.type	.Lswitch.table._RNvXNtNtCsevLNFiNqfJP_4core2io5errorNtB2_5ErrorNtNtB6_3fmt5Debug3fmt,@object

@@ -148,11 +148,31 @@ def contRows (p : Params) : List Nat :=
   (List.range (spongeBlocks p - 1)).map (· + 1) ++
     (List.range 31).map (2 ^ p.recRowsLog + 399 + 1 + ·)
 
-/-- `Sc(ρ, ρ') = Σ_{i : cont_i = 1} eq(ρ, i) eq(ρ', i − 1)`. -/
-def contShift (p : Params) (rho rho' : List FE) : FE :=
+/-- `Sc(ρ, ρ') = Σ_{i : cont_i = 1} eq(ρ, i) eq(ρ', i − 1)`, summed over the rows. -/
+def contShiftRef (p : Params) (rho rho' : List FE) : FE :=
   let e := eqKernelA rho
   let e' := eqKernelA rho'
   (contRows p).foldl (fun acc i => acc + e.getD i 0 * e'.getD (i - 1) 0) 0
+
+/-- One level of `preCFV` (`Q1.preStep`). -/
+def preStepV (x0 y0 : FE) (h : Bool) (r : FE × FE × FE) : FE × FE × FE :=
+  let E1 := if h then r.2.1 + r.2.2 else r.2.1
+  ((1 + y0) * x0 * E1 + y0 * (1 + x0) * r.1,
+   (1 + y0) * (1 + x0) * E1 + y0 * x0 * r.2.1,
+   (if h then y0 * x0 else (1 + y0) * (1 + x0)) * r.2.2)
+
+/-- The shift prefix sums in closed form (`Q1.preCF`; `Q1.preCF_eq`). -/
+def preCFV : List FE → List FE → Nat → FE × FE × FE
+  | x0 :: x, y0 :: y, H => preStepV x0 y0 (H % 2 = 1) (preCFV x y (H / 2))
+  | _, _, H => (FE.ofK (if H % 2 = 0 then 0 else 1), FE.ofK (if H % 2 = 0 then 0 else 1), 1)
+
+/-- `contShiftRef` from three prefix sums (`Q1.contShift_fast`) when the shapes allow it. -/
+def contShift (p : Params) (rho rho' : List FE) : FE :=
+  if rho.length = p.ksLog ∧ rho'.length = p.ksLog ∧ 1 ≤ spongeBlocks p ∧ spongeBlocks p ≤ 2 ^ p.ksLog ∧
+      2 ^ p.recRowsLog + 431 ≤ 2 ^ p.ksLog then
+    (preCFV rho rho' (spongeBlocks p - 1)).1 + (preCFV rho rho' (2 ^ p.recRowsLog + 399 + 31)).1 +
+      (preCFV rho rho' (2 ^ p.recRowsLog + 399)).1
+  else contShiftRef p rho rho'
 
 /-- The `KS` link's check and claims. -/
 def ksLink0 (p : Params) (i : KsLinkIn) : Bool × List (Com × BlockClaim) :=
