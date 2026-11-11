@@ -1,0 +1,104 @@
+//! A stand-in for the `tracing` crate's `info_span!`, the only part leanVM's prover crates use.
+//! A span is a named timer: with `LVM_PROF=1` every closed span adds its wall time to a table
+//! that `report` prints (top-level spans of the same name are summed); otherwise it is free.
+
+use std::sync::Mutex;
+use std::sync::atomic::{AtomicU8, Ordering};
+use std::time::Instant;
+
+static ON: AtomicU8 = AtomicU8::new(2);
+static TABLE: Mutex<Vec<(&'static str, f64, u64)>> = Mutex::new(Vec::new());
+
+pub fn enabled() -> bool {
+    match ON.load(Ordering::Relaxed) {
+        2 => {
+            let on = std::env::var("LVM_PROF").is_ok_and(|v| v == "1");
+            ON.store(on as u8, Ordering::Relaxed);
+            on
+        }
+        v => v == 1,
+    }
+}
+
+pub struct Span {
+    name: &'static str,
+    start: Option<Instant>,
+}
+
+impl Span {
+    pub fn new(name: &'static str) -> Self {
+        Self { name, start: None }
+    }
+    pub fn in_scope<R>(&self, f: impl FnOnce() -> R) -> R {
+        let t = enabled().then(Instant::now);
+        let r = f();
+        if let Some(t) = t {
+            add(self.name, t.elapsed().as_secs_f64());
+        }
+        r
+    }
+    /// Timed from here to the drop.
+    pub fn entered(mut self) -> Self {
+        self.start = enabled().then(Instant::now);
+        self
+    }
+}
+
+impl Drop for Span {
+    fn drop(&mut self) {
+        if let Some(t) = self.start.take() {
+            add(self.name, t.elapsed().as_secs_f64());
+        }
+    }
+}
+
+fn add(name: &'static str, s: f64) {
+    let mut t = TABLE.lock().unwrap();
+    match t.iter_mut().find(|e| e.0 == name) {
+        Some(e) => {
+            e.1 += s;
+            e.2 += 1;
+        }
+        None => t.push((name, s, 1)),
+    }
+}
+
+/// Process CPU seconds (all threads) and the oracle service's CPU seconds (`LVM_SVC_PID`, from
+/// `/proc/<pid>/stat`, 10 ms ticks), for the per-stage `PCPU` lines of `LVM_PROF=1`.
+pub fn cpu_now() -> (f64, f64) {
+    #[repr(C)]
+    struct Ts {
+        s: i64,
+        ns: i64,
+    }
+    unsafe extern "C" {
+        fn clock_gettime(clk: i32, ts: *mut Ts) -> i32;
+    }
+    let mut t = Ts { s: 0, ns: 0 };
+    unsafe { clock_gettime(2, &mut t) };
+    let svc = std::env::var("LVM_SVC_PID").ok().and_then(|p| std::fs::read_to_string(format!("/proc/{p}/stat")).ok()).map_or(0.0, |st| {
+        let f: Vec<&str> = st.rsplit(')').next().unwrap_or("").split_whitespace().collect();
+        let tk = |i: usize| f.get(i).and_then(|x| x.parse::<f64>().ok()).unwrap_or(0.0);
+        (tk(11) + tk(12)) / 100.0
+    });
+    (t.s as f64 + t.ns as f64 * 1e-9, svc)
+}
+
+/// Record a named interval measured elsewhere (the drivers' own stages).
+pub fn record(name: &'static str, s: f64) {
+    if enabled() {
+        add(name, s);
+    }
+}
+
+pub fn report() -> String {
+    let t = TABLE.lock().unwrap();
+    t.iter().map(|(n, s, c)| format!("  span {n:<24} {:>9.3} s  ×{c}\n", s)).collect()
+}
+
+macro_rules! info_span {
+    ($name:expr $(, $($rest:tt)*)?) => {
+        $crate::lv::tracing::Span::new($name)
+    };
+}
+pub(crate) use info_span;
