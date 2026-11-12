@@ -47,7 +47,7 @@ emit() {
     --config 'profile.release.panic="abort"' --config 'profile.release.debug=false' \
     --config 'profile.release.incremental=false' \
     -- --emit "asm=$raw" ${!flags_var} -C llvm-args=-align-all-functions=4 \
-    --remap-path-prefix "$here=leanvm-inspired/prover" --remap-path-prefix "$HOME=~")
+    --remap-path-prefix "$here=prover" --remap-path-prefix "$HOME=~")
   if [ ! -s "$raw" ]; then
     # cargo skips rustc when the crate is fresh: rebuild from a clean target directory, once
     (cd "$here" && CARGO_TARGET_DIR="$work/target-$v" cargo clean --release --manifest-path "$here/Cargo.toml")
@@ -57,7 +57,7 @@ emit() {
       --config 'profile.release.panic="abort"' --config 'profile.release.debug=false' \
       --config 'profile.release.incremental=false' \
       -- --emit "asm=$raw" ${!flags_var} -C llvm-args=-align-all-functions=4 \
-      --remap-path-prefix "$here=leanvm-inspired/prover" --remap-path-prefix "$HOME=~")
+      --remap-path-prefix "$here=prover" --remap-path-prefix "$HOME=~")
     [ -s "$raw" ] || { echo "build-asm: rustc wrote no assembly for $v" >&2; exit 1; }
   fi
   python3 -I "$here/tools/asm-compat.py" "$raw" "$work/compat-$v.s"
@@ -71,12 +71,14 @@ mkdir -p "$work/build"
 rm -f "$work"/build/*.s "$work/build/prover"
 cp "$here/dispatch.s" "$work/build/dispatch.s"
 for v in $variants; do cp "$work/prover-$v.s" "$work/build/prover-$v.s"; done
-# the runner's link step, verbatim but for the directory (outside its sandbox)
-(cd "$work/build" && /usr/bin/gcc -static -O2 -pthread "$work"/build/*.s -o "$work/build/prover" -lm)
+# the runner's link step, verbatim but for the directory (outside its sandbox). The runner's glob sorts in C order
+# (dispatch.s, prover-v2.s, prover-v4.s, prover-v4p.s); a shell glob sorts in the locale's collation, which may put
+# prover-v4p.s before prover-v4.s, and the link order changes the binary (the same code, laid out differently).
+(cd "$work/build" && LC_ALL=C /usr/bin/gcc -static -O2 -pthread $(LC_ALL=C ls -d -- "$work"/build/*.s) -o "$work/build/prover" -lm)
 if [ "$install" = 1 ]; then
   for v in $variants; do cp "$work/prover-$v.s" "$here/prover-$v.s"; done
 fi
-for f in "$work"/build/*.s; do
+for f in $(LC_ALL=C ls -d -- "$work"/build/*.s); do
   echo "build-asm: $(basename "$f") $(wc -c < "$f") bytes, sha256 $(sha256sum "$f" | cut -d' ' -f1)"
 done
 echo "build-asm: $work/build/prover $(wc -c < "$work/build/prover") bytes, sha256 $(sha256sum "$work/build/prover" | cut -d' ' -f1)"
