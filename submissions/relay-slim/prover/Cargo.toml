@@ -1,0 +1,38 @@
+# The native prover of the `leanvm-inspired` entry (BLUEPRINT §8). One std-only crate, no
+# dependencies: leanVM's prover crates are vendored as modules under `src/lv/` (tools/vendor.py,
+# edits in src/lv/PATCHES.md). The submitted form is the generated `prover-*.s` (build-asm.sh).
+#   CARGO_TARGET_DIR=<outside this directory> cargo build --release --offline
+[package]
+name = "lvm-prover"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+publish = false
+autobins = false
+autotests = false
+autobenches = false
+autoexamples = false
+
+[[bin]]
+name = "lvm-prover"
+path = "src/main.rs"
+
+[dependencies]
+
+[features]
+# leanVM's cfg names, never enabled here (declared so the vendored `cfg`s stay as written)
+bench = []
+test-util = []
+
+[lints.rust]
+unexpected_cfgs = { level = "warn" }
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+lto = "fat"
+debug = false
+panic = "abort"
+
+[profile.test]
+opt-level = 3

@@ -1,0 +1,314 @@
+-- Vendored from `CompPoly/CompPoly/Data/Vector/Basic.lean` (the contract's pin of the package) as `LvmMlVector` for lvm (WP-2).
+/-
+Copyright (c) 2025 CompPoly. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Quang Dao, Chung Thai Nguyen
+-/
+
+import Batteries.Data.Vector.Lemmas
+import LvmMlListLemmas
+import Mathlib.Algebra.BigOperators.Fin
+import Mathlib.Algebra.Order.Star.Basic
+import Mathlib.Algebra.Order.Sub.Basic
+import Mathlib.Data.List.Fold
+import Mathlib.Data.Matrix.Mul
+import Mathlib.Tactic.Ring
+
+/-!
+# Definitions and lemmas for `Vector`
+
+`accumulateProducts` separates product accumulation from reduction. Its reduction theorem
+recovers `dotProduct` whenever reduction preserves zero, addition, and the chosen products.
+-/
+
+section
+universe u
+
+namespace Vector
+
+-- TODO this is also defined in VCV-io, so is awkward as an Arklib dependency
+-- added _temp as a temporary fix
+@[elab_as_elim]
+def induction₂_temp {α β} {motive : {n : ℕ} → Vector α n → Vector β n → Sort*}
+    (v_empty : motive #v[] #v[])
+  (v_insert : {n : ℕ} → (hd : α) → (tl : Vector α n) → (hd' : β) → (tl' : Vector β n) →
+      motive tl tl' → motive (tl.insertIdx 0 hd) (tl'.insertIdx 0 hd')) {m : ℕ} :
+    (v : Vector α m) → (v' : Vector β m) → motive v v' := by induction m with
+  | zero => exact fun v v' => match v, v' with | ⟨⟨[]⟩, rfl⟩, ⟨⟨[]⟩, rfl⟩ => v_empty
+  | succ n ih => exact fun v v' => match hv : v, hv' : v' with
+    | ⟨⟨hd :: tl⟩, hSize⟩, ⟨⟨hd' :: tl'⟩, hSize'⟩ => by
+      simpa [Vector.insertIdx] using
+        v_insert hd ⟨⟨tl⟩, by simpa using hSize⟩ hd' ⟨⟨tl'⟩, by simpa using hSize'⟩
+        (ih ⟨⟨tl⟩, by simpa using hSize⟩ ⟨⟨tl'⟩, by simpa using hSize'⟩)
+
+/-- The empty vector. -/
+def nil {α} : Vector α 0 := ⟨#[], rfl⟩ -- Vector.emptyWithCapacity 0
+
+/-- Construct a vector by prepending an element to the front of a vector,
+using `insertIdx` at `0`. -/
+def cons {α} {n : ℕ} (hd : α) (tl : Vector α n) : Vector α (n + 1) :=
+  tl.insertIdx 0 hd
+
+@[simp]
+theorem head_cons {α} {n : ℕ} (hd : α) (tl : Vector α n) : (cons hd tl).head = hd := by
+  simp only [head, cons, insertIdx_zero, getElem_cast, zero_lt_one, getElem_append_left, getElem_mk,
+    List.getElem_toArray, List.getElem_cons_zero]
+
+lemma cons_get_eq {α} {n : ℕ} (hd : α) (tl : Vector α n) (i : Fin (n + 1)) :
+    (cons hd tl).get i =
+      if hi: i.val == 0 then hd else tl.get (⟨i.val - 1, by
+        simp only [beq_iff_eq, Fin.val_eq_zero_iff] at hi
+        apply Nat.sub_lt_left_of_lt_add
+        · by_contra hi_ne_gt_1
+          simp only [not_le, Nat.lt_one_iff, Fin.val_eq_zero_iff] at hi_ne_gt_1
+          contradiction
+        · have hi_lt:= i.isLt; omega
+      ⟩) := by
+  simp only [cons, get_eq_getElem, Vector.insertIdx_zero, Vector.getElem_cast]
+  split
+  · -- head position: read from the singleton prefix
+    next h =>
+      have h0 : i.val = 0 := by simpa using h
+      rw [Vector.getElem_append_left (by omega)]
+      simp [h0]
+  · -- tail position: read from `tl`, shifted past the singleton prefix
+    next h =>
+      have h0 : i.val ≠ 0 := by simpa using h
+      rw [Vector.getElem_append_right (by omega) (by omega)]
+
+@[simp]
+lemma cons_empty_tail_eq_nil {α} (hd : α) (tl : Vector α 0) :
+    cons hd tl = ⟨#[hd], rfl⟩ := by
+  apply Vector.toArray_inj.mp
+  simp only [Nat.reduceAdd]
+  rw [cons]
+  simp only [insertIdx_size_self, toArray_push]
+  have hl_toArray: tl.toArray = #[] := by
+    simp only [toArray_eq_empty_iff]
+  rw [hl_toArray]
+  simp only [Array.push_empty]
+
+@[simp]
+theorem tail_cons {α} {n : ℕ} (hd : α) (tl : Vector α n) : (cons hd tl).tail = tl := by
+  rw [cons, Vector.insertIdx]
+  simp only [Nat.add_one_sub_one, Array.insertIdx_zero, tail_eq_cast_extract, extract_mk,
+    Array.extract_append, List.extract_toArray, List.extract_eq_take_drop, add_tsub_cancel_right,
+    List.drop_succ_cons, List.drop_nil, List.take_nil, List.size_toArray, List.length_cons,
+    List.length_nil, tsub_self, Array.take_eq_extract, Array.empty_append, cast_mk, mk_eq,
+    Array.extract_eq_self_iff, size_toArray, le_refl, and_self, or_true]
+
+@[simp]
+theorem cons_toList_eq_List_cons {α} {n : ℕ} (hd : α) (tl : Vector α n) :
+    (cons hd tl).toList = hd :: tl.toList := by
+  simp only [toList, cons, insertIdx]
+  rw [Array.toList_insertIdx]
+  simp only [List.insertIdx_zero]
+
+theorem foldl_eq_toList_foldl {α β} {n : ℕ} (f : β → α → β) (init : β) (v : Vector α n) :
+    v.foldl (f:=f) (b:=init) = v.toList.foldl (f:=f) (init:=init) := by
+  rw [Vector.foldl]
+  rw [←Array.foldl_toList]
+  rfl
+
+theorem foldl_succ
+    {α β} {n : ℕ} [NeZero n] (f : β → α → β) (init : β) (v : Vector α n) :
+    v.foldl (f:=f) (b:=init) = v.tail.foldl (f:=f) (b:=f init v.head) := by
+  rw [foldl_eq_toList_foldl, foldl_eq_toList_foldl]
+  rw [toList_tail]
+  have h_ne : v.toList ≠ [] := by
+    simp only [ne_eq, toList_eq_nil_iff]
+    exact NeZero.ne n
+  rw [List.foldl_split_inner f init v.toList h_ne]
+  congr 2
+  simp only [head, List.head_eq_getElem, getElem_toList]
+
+-- evaluation cons (hd:=6) (tl:=⟨#[2, 3], rfl⟩)
+
+theorem zipWith_cons {α β γ} {n : ℕ} (f : α → β → γ)
+    (a : α) (b : Vector α n) (c : β) (d : Vector β n) :
+  zipWith f (cons a b) (cons c d) = cons (f a c) (zipWith f b d) := by
+  apply Vector.toList_inj.mp
+  conv_lhs => simp only [toList_zipWith]
+  simp_rw [cons_toList_eq_List_cons]
+  rw [List.zipWith_cons_cons]
+  conv_rhs => rw [toList_zipWith]
+
+variable {R : Type*} {n : ℕ}
+
+/-- Inner product between two vectors of the same size. Should be faster than `_root_.dotProduct`
+    due to efficient operations on `Vector`s. -/
+def dotProduct [Zero R] [Add R] [Mul R] (a b : Vector R n) : R :=
+  a.zipWith (· * ·) b |>.foldl (· + ·) 0
+
+@[inherit_doc]
+scoped notation:80 a " *ᵥ " b => dotProduct a b
+
+/-- Accumulate paired products from equal-length vectors, from left to right, starting at `init`.
+The products and accumulator lie in `W`; no reduction is performed. -/
+def accumulateProducts {W : Type*} [Add W] (product : R → R → W) (init : W)
+    (a b : Vector R n) : W :=
+  a.zipWith product b |>.foldl (· + ·) init
+
+/-- If reduction preserves addition and each paired product, reducing the accumulator gives
+the reduced initial value plus the dot product of the input vectors. -/
+theorem reduce_accumulateProducts {W : Type*} [AddZero W] [AddMonoid R] [Mul R]
+    (reduce : W →+ R) (product : R → R → W)
+    (hproduct : ∀ x y, reduce (product x y) = x * y) (init : W) (a b : Vector R n) :
+    reduce (accumulateProducts product init a b) = reduce init + dotProduct a b := by
+  have hmap : (a.zipWith product b).map reduce = a.zipWith (· * ·) b := by
+    ext i
+    simp only [getElem_map, getElem_zipWith, hproduct]
+  calc
+    reduce (accumulateProducts product init a b) =
+        ((a.zipWith product b).map reduce).foldl (· + ·) (reduce init) :=
+      (foldl_map_hom (fun x y => (map_add reduce x y).symm)).symm
+    _ = (a.zipWith (· * ·) b).foldl (· + ·) (reduce init) := by rw [hmap]
+    _ = reduce init + dotProduct a b := by
+      simpa only [dotProduct, _root_.add_zero] using
+        (foldl_assoc (op := (· + ·)) (xs := a.zipWith (· * ·) b)
+          (a₁ := reduce init) (a₂ := 0))
+
+/-- Reducing a product accumulator initialized at zero recovers the dot product. -/
+theorem reduce_accumulateProducts_zero {W : Type*} [AddZero W] [AddMonoid R] [Mul R]
+    (reduce : W →+ R) (product : R → R → W)
+    (hproduct : ∀ x y, reduce (product x y) = x * y) (a b : Vector R n) :
+    reduce (accumulateProducts product 0 a b) = dotProduct a b := by
+  rw [reduce_accumulateProducts reduce product hproduct, map_zero, _root_.zero_add]
+
+/-- Ordinary multiplication is an eager product accumulator, with identity reduction. -/
+theorem accumulateProducts_mul [AddMonoid R] [Mul R] (init : R) (a b : Vector R n) :
+    accumulateProducts (· * ·) init a b = init + dotProduct a b :=
+  reduce_accumulateProducts (AddMonoidHom.id R) (· * ·) (fun _ _ => rfl) init a b
+
+@[simp]
+lemma dotProduct_cons [AddCommMonoid R] [Mul R] (a : R) (b : Vector R n) (c : R) (d : Vector R n) :
+    dotProduct (cons a b) (cons c d) = a * c + dotProduct b d := by
+  unfold dotProduct
+  rw [zipWith_cons]
+  simp_rw [foldl_eq_toList_foldl]
+  rw [cons_toList_eq_List_cons]
+  have h : ∀ (init : R) (L : List R),
+      List.foldl (fun x1 x2 => x1 + x2) init L = init + List.foldl (fun x1 x2 => x1 + x2) 0 L := by
+    intro init L
+    induction L generalizing init with
+    | nil => simp
+    | cons x xs ih =>
+      show List.foldl _ (init + x) xs = init + List.foldl _ (0 + x) xs
+      rw [ih (init + x), ih (0 + x), _root_.zero_add, _root_.add_assoc]
+  rw [List.foldl_cons]
+  show List.foldl _ (0 + a * c) _ = _
+  rw [_root_.zero_add, h]
+
+/-- A matrix represented as iterated vectors in row-major order.
+`m` is the number of rows, and `n` is the number of columns -/
+def Matrix (α : Type*) (m n : ℕ) := Vector (Vector α n) m
+
+namespace Matrix
+
+variable {α : Type*}
+
+/- Note `Vector.flatten` converts a `Vector (m * n)` into a `Matrix α m n` -/
+/-- Matrix-vector multiplication over `α`.
+`M` is given as a vector of row-vectors. -/
+def mulVec [Zero α] [Add α] [Mul α] {numRows numCols : Nat}
+    (M : Vector (Vector α numCols) numRows)
+  (x : Vector α numCols) : Vector α numRows :=
+  M.map (fun row => row *ᵥ x)
+
+/-- Convert a flat row-major vector of length `m*n` into an `m × n` row-major matrix
+represented as `Vector (Vector α n) m`. -/
+def ofFlatten {m n : ℕ} (v : Vector α (m * n)) : Matrix α m n :=
+  (Vector.finRange m).map (fun i => (v.extract (i.val * n) (i.val * n + n)).cast
+    (by
+    -- Why can't `omega`, `aesop`, `grind`, etc. solve this?
+      rcases i with ⟨i, h⟩
+      have : i * n + n ≤ m * n := by
+        calc
+        _ = (i + 1) * n := by ring
+        _ ≤ m * n := by gcongr; exact h
+      simp [this]))
+
+/-- Convert to a `Fin`-indexed matrix (the definition in Mathlib): `Fin m → Fin n → α` -/
+def toFinMatrix {m n : ℕ} (matrix : Matrix α m n) : _root_.Matrix (Fin m) (Fin n) α :=
+  fun i j => (matrix.get i).get j
+
+/-- Convert from a `Fin`-indexed matrix (the definition in Mathlib): `Fin m → Fin n → α` -/
+def ofFinMatrix {m n : ℕ} (matrix : _root_.Matrix (Fin m) (Fin n) α) : Matrix α m n :=
+  Vector.ofFn (fun i => Vector.ofFn (fun j => matrix i j))
+
+/-- Transpose a matrix by swapping rows and columns. -/
+@[simp]
+def transpose {m n : ℕ} (matrix : Matrix α m n) : Matrix α n m :=
+  ofFn (fun j => ofFn (fun i => (matrix.get i).get j))
+
+end Matrix
+
+end Vector
+
+section RootDotProduct
+
+open Vector
+
+variable {R : Type*} [AddCommMonoid R] [Mul R] {n : ℕ}
+
+@[simp]
+lemma dotProduct_cons (a : R) (b : Vector R n) (c : R) (d : Vector R n) :
+    _root_.dotProduct (cons a b).get (cons c d).get = a * c + _root_.dotProduct b.get d.get := by
+  unfold _root_.dotProduct
+  if h_n: n = 0 then
+    subst h_n
+    simp only [cons_empty_tail_eq_nil]
+    simp_all only [Nat.reduceAdd, Finset.univ_unique, Fin.default_eq_zero,
+                  Fin.isValue, Finset.sum_singleton,
+                  Finset.univ_eq_empty, Finset.sum_empty, _root_.add_zero]
+    rfl
+  else
+    -- ⊢ ∑ i, (cons a b).get i * (cons c d).get i = a * c + ∑ i, b.get i * d.get i
+    rw [Fin.sum_univ_succ]
+    rw [cons_get_eq, cons_get_eq]
+    simp only [Fin.coe_ofNat_eq_mod, Nat.zero_mod, BEq.rfl, ↓reduceDIte]
+    congr
+    funext i
+    simp_rw [cons_get_eq]
+    simp only [Fin.val_succ, Nat.reduceBeqDiff, Bool.false_eq_true, ↓reduceDIte,
+      add_tsub_cancel_right, Fin.eta]
+
+end RootDotProduct
+
+namespace Vector
+
+variable {R : Type*} [AddCommMonoid R] [Mul R] {n : ℕ}
+
+theorem dotProduct_eq_root_dotProduct (a b : Vector R n) :
+    dotProduct a b = _root_.dotProduct a.get b.get := by
+  refine induction₂_temp ?_ (fun hd tl hd' tl' ih => ?_) a b
+  · simp [dotProduct, _root_.dotProduct]
+  · simp [Vector.cast]
+    -- By definition of dot product, we can expand the right-hand side.
+    simp [dotProduct];
+    -- By definition of dot product, we can expand the right-hand side.
+    -- The left-hand side is the foldl of the zipWith operation on the two arrays,
+    -- which is equivalent to the dot product of the corresponding vectors.
+    simp [_root_.dotProduct];
+    convert dotProduct_cons hd tl hd' tl' using 1;
+    · -- The array's foldl of the zipWith operation is the same as the dot product
+      -- of the vectors because the vector's dot product is defined as the sum
+      -- of the products of corresponding elements.
+      simp [dotProduct, Vector.cons];
+      simp +decide [ Vector.foldl, Vector.zipWith ];
+    · simp +decide [ Fin.sum_univ_succ, ih ];
+      rfl
+
+end Vector
+
+namespace Vector
+
+/-- A ring homomorphism maps a dot product to the dot product of the mapped vectors. -/
+theorem map_dotProduct {R S : Type*} [NonAssocSemiring R] [NonAssocSemiring S]
+    (f : R →+* S) {n : ℕ} (a b : Vector R n) :
+    f (dotProduct a b) = dotProduct (a.map f) (b.map f) := by
+  rw [dotProduct_eq_root_dotProduct, f.map_dotProduct, dotProduct_eq_root_dotProduct]
+  congr 1 <;> funext i <;>
+    simp only [Function.comp_apply, Vector.get_eq_getElem, Vector.getElem_map]
+
+end Vector

@@ -1,0 +1,4 @@
+# The toolchain the `.s` files are generated with (build-asm.sh); the same pin as the earlier entries.
+[toolchain]
+channel = "1.99.0"
+profile = "minimal"
