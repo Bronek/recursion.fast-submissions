@@ -26,6 +26,10 @@ test-util = []
 # Test builds only (never in the submitted `.s`): `prove` asserts that each stack is zero past its
 # occupied lanes, the ones its root leaves carry.
 selfcheck = []
+# The scheduling's controls, test builds only, never the `.s`: faults (`LVM_P2_FAULT_IN`, `LVM_P2_FAULT_WORD`:
+# `lvm::tables::fault`; `LVM_P1_SKIP_PATCH`: `lvm::stream`; `LVM_LANES_FAULT_PAST`: `lvm::prove`), the patch refused
+# (`LVM_P1_REFUSE_PATCH`: the tables are rebuilt), and `prove`'s check that nothing lies past the placements
+np12-faults = []
 
 [lints.rust]
 unexpected_cfgs = { level = "warn" }

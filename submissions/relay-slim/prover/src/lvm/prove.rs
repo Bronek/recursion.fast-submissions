@@ -88,6 +88,26 @@ fn mixed(c: Claim) -> MixedClaim {
     }
 }
 
+/// `words` around two disjoint blocks `a` and `b`: the two blocks, mutable, and the words outside both, as `(offset,
+/// words)` pieces.
+fn carve(words: &mut [F64], a: std::ops::Range<usize>, b: std::ops::Range<usize>) -> (&mut [F64], &mut [F64], [(usize, &[F64]); 3]) {
+    assert!(a.end <= b.start || b.end <= a.start, "the blocks are disjoint");
+    let (x, y) = if a.start < b.start { (a.clone(), b.clone()) } else { (b.clone(), a.clone()) };
+    let (p0, r) = words.split_at_mut(x.start);
+    let (bx, r) = r.split_at_mut(x.end - x.start);
+    let (p1, r) = r.split_at_mut(y.start - x.end);
+    let (by, p2) = r.split_at_mut(y.end - y.start);
+    let rest = [(0, &*p0), (x.end, &*p1), (y.end, &*p2)];
+    if a.start < b.start { (bx, by, rest) } else { (by, bx, rest) }
+}
+
+/// P2 and P1: the tape witness's lanes that run beside the recursion-table build; the others start when the tables are
+/// built. A block writes 25 rounds of 1600 × 512 bits (2.5 MB) and is bound by memory bandwidth more than by the
+/// core, so two lanes all but keep pace with the walk, while seven slow the walk (an SMT sibling's share) and starve
+/// the table build, the stage's critical path at short chains (measured on 4C/8T Zen 5: two lanes until the tables are
+/// built, then all, beat seven throughout by 7–20 ms per step at 2^17–2^19).
+const TAPE_EARLY_LANES: usize = 2;
+
 fn whir_config(levels: &[Level], grind: usize, ood: bool) -> crate::lv::pcs::whir::ProverConfig {
     config_of_levels(&levels.iter().map(|l| (l.fold, l.rate, l.cap, l.t)).collect::<Vec<_>>(), grind, ood)
 }
@@ -98,10 +118,14 @@ fn whir_config(levels: &[Level], grind: usize, ood: bool) -> crate::lv::pcs::whi
 /// The second argument reads `len` words at offset `o` of `C_rec` (`true`) or `C_main` (`false`).
 pub type Col<'a> = dyn Fn(bool, usize, usize) -> Vec<F64> + 'a;
 pub type Build<'a> = dyn Fn(&Header, &Col) -> Vec<crate::lvm::m3::TableW> + Sync + 'a;
+/// P1: `(from, to, tables)` turns the tables built for header `from` into those of `to`, which differs from
+/// `from` in `h` alone; false if they must be rebuilt instead (`Ctx::patch_tables`).
+pub type Patch<'a> = dyn Fn(&Header, &Header, &mut [crate::lvm::m3::TableW]) -> bool + Sync + 'a;
 
 /// Prove the `S` statement of `hd` (with `hd.h` filled in here) at parameter set `p` on the installed oracle.
-/// The recursion tables are `rec.tables`, or `build`'s (then `p` must already carry their M3 numbers).
-pub fn prove(p: &Params, mut hd: Header, mut rec: RecWitness, build: Option<&Build>) -> SProof {
+/// The recursion tables are `rec.tables`, or `build`'s (then `p` must already carry their M3 numbers). With `patch`,
+/// `build` runs from the start on `hd` as given (its `h` a placeholder), and `patch` brings the tables to the real `h`.
+pub fn prove(p: &Params, mut hd: Header, mut rec: RecWitness, build: Option<&Build>, patch: Option<&Patch>) -> SProof {
     rec.tables.retain(crate::lvm::m3::active);
     // with recursion tables, the schedule's bus and table numbers are theirs (the program `Q` fixes them;
     // the record `P20`/`P8` carries them once `Q` is final)
@@ -147,19 +171,50 @@ pub fn prove(p: &Params, mut hd: Header, mut rec: RecWitness, build: Option<&Bui
     // P-QUICK lever 3 (prover-only: the same columns and tables, computed in another order): the serial chain
     // walk runs on its own thread; meanwhile this thread runs the sponge walk, allocates the commitments and
     // writes KS's lanes, σ' and the stream. The recursion tables need `h = chainEnd s n` (the header) and read C_rec
-    // and C_main outside the `D` block: they are built on a third thread once the walk is done, beside the tape's
-    // GKR witness (which commits nothing). P-FIX: KS's GKR witness is generated on a fourth thread beside the walk,
-    // into the KS slots `[ks_off, ks_off + 50·2^ks_log)`, so that the build starts as soon as `h` is known. A read that would touch `D` or those slots is not served there:
-    // the build is then redone after both are written (the old order).
+    // and C_main outside the `D` block: they are built on a third thread once the walk is done. P-FIX: KS's GKR
+    // witness is generated on a fourth thread beside the walk, into the KS slots `[ks_off, ks_off + 50·2^ks_log)`, so
+    // that the build starts as soon as `h` is known. A read that would touch `D` or those slots is not served there:
+    // the build is then redone after both are written (the old order). P2: the tape's GKR witness (which commits
+    // nothing) runs behind the walk on the fourth thread once KS's is done, on the pool's thread count less the
+    // walk's, each block as soon as the walk has published the `Y` rows its inputs read ([`tables::Feed`]); all but
+    // `TAPE_EARLY_LANES` of those threads wait for the tables. P1: with `patch`, the tables are built from the
+    // start on the header's placeholder `h` and patched once the walk has ended (`h` reaches them through the header
+    // array's value column alone: `Ctx::patch_tables`, which says when it cannot apply and the tables are rebuilt).
     let (d_lo, d_hi) = (lay.d_off, lay.d_off + (1usize << lay.d_vars()));
     let (k_lo, k_hi) = (lay.ks_off, lay.ks_off + (50usize << lay.ks_log));
     let rec_msg = std::mem::take(&mut rec.msg);
     let t0w = Instant::now();
     let tl = std::env::var_os("LVM_LOG").is_some();
-    let (chain, ks, mut cmain, mut crec, tape_w, ks_w, built, h) = std::thread::scope(|sc| {
+    let big = 1usize << p.log_n;
+    // the tape's written rows (S1): the `n` live ones, or every row (dense: rows `≥ n` hold the zero input)
+    let rows = if dense { big } else { n };
+    // SAFETY: every element is written before it is read. `Y`'s live rows are written by the walk, and read only
+    // after it has published their block; its dead rows by the walk's thread once the walk is done, before the scope
+    // ends. Each block of tape inputs is written by the lane the counter hands the block to, before the block runs.
+    let mut y = unsafe { crate::lv::primitives::uninit_vec::<[u64; 4]>(big) };
+    let mut tape_in = unsafe { crate::lv::primitives::uninit_vec::<[u64; LANES]>(rows) };
+    let (y_live, y_dead) = y.split_at_mut(n);
+    let feed = tables::Feed::new(&hd.s, n);
+    let in_blocks: Vec<std::sync::Mutex<Option<&mut [[u64; LANES]]>>> =
+        tape_in.chunks_mut(crate::lv::keccak_gkr::witness::BLOCK).map(|b| std::sync::Mutex::new(Some(b))).collect();
+    let lanes = crate::lv::parallel::num_threads().saturating_sub(1).max(1);
+    // the tape's lanes past the first `TAPE_EARLY_LANES` start once the recursion tables are built
+    let tables_done = std::sync::OnceLock::<()>::new();
+    if build.is_none() {
+        let _ = tables_done.set(());
+    }
+    let (ks, mut cmain, mut crec, tape_w, ks_w, built, h) = std::thread::scope(|sc| {
         let (tx, rx) = std::sync::mpsc::channel();
-        let s = hd.s;
-        let walk = sc.spawn(move || Chain::run_gated_notify(p.log_n, &s, n, dense, move |h| tx.send(h).expect("the end of the chain")));
+        let (feed, in_blocks, tables_done) = (&feed, &in_blocks, &tables_done);
+        let walk = sc.spawn(move || {
+            let h = feed.walk(y_live);
+            tx.send(tables::lanes_digest(&h)).expect("the end of the chain");
+            // rows `≥ n`: `Y = Keccak-f(0)[0..4)`
+            let mut z = [0u64; LANES];
+            crate::lv::primitives::hash::keccak_f(&mut z);
+            y_dead.fill([z[0], z[1], z[2], z[3]]);
+            t0w.elapsed().as_secs_f64()
+        });
         let ks = Sponge::run(p.ks_log, cont, rec_msg);
         let t_s = t0w.elapsed().as_secs_f64();
         let mut cmain = vec![F64::ZERO; 1 << p.nu_main];
@@ -169,45 +224,75 @@ pub fn prove(p: &Params, mut hd: Header, mut rec: RecWitness, build: Option<&Bui
         for (i, &w) in rec.sigma.iter().enumerate() {
             crec[lay.rec_col(REC_STREAM_COLS) + i] = F64(w);
         }
-        let (chain, ks_w, tape_w, built, h) = std::thread::scope(|si| {
-            let (lo, rest) = cmain.split_at_mut(k_lo);
-            let (kblk, hi) = rest.split_at_mut(k_hi - k_lo);
-            let (lo, hi, cr, ks_r) = (&*lo, &*hi, &crec, &ks);
-            // KS's GKR witness beside the walk, into its slots
-            let ksj = si.spawn(move || {
+        let (ks_w, tape_w, built, h) = std::thread::scope(|si| {
+            // C_main around the two blocks written beside the table build: `D` (this thread, once the walk has ended)
+            // and KS's GKR slots (KS's witness); the build reads the rest
+            let (dblk, kblk, rest) = carve(&mut cmain, d_lo..d_hi, k_lo..k_hi);
+            let (cr, ks_r) = (&crec, &ks);
+            let tables_for = |hd_b: Header| {
+                build.map(|b| {
+                    si.spawn(move || {
+                        let hit = std::cell::Cell::new(false);
+                        let col = |r: bool, o: usize, len: usize| -> Vec<F64> {
+                            let e = o + len;
+                            if r {
+                                cr[o..e].to_vec()
+                            } else if let Some((at, w)) = rest.iter().find(|(at, w)| *at <= o && e <= at + w.len()) {
+                                w[o - at..e - at].to_vec()
+                            } else {
+                                // the read touches `D` or KS's slots
+                                hit.set(true);
+                                vec![F64::ZERO; len]
+                            }
+                        };
+                        let t = b(&hd_b, &col);
+                        let _ = tables_done.set(());
+                        let t_b = t0w.elapsed().as_secs_f64();
+                        (!hit.get()).then_some((t, t_b))
+                    })
+                })
+            };
+            // P1: with a patch, the tables are built from the start, on the placeholder `h`
+            let early = if patch.is_some() { tables_for(hd.clone()) } else { None };
+            // KS's GKR witness beside the walk, into its slots; then the tape's, behind the walk
+            let wj = si.spawn(move || {
                 let w = crate::lv::keccak_gkr::Witness::generate(ks_r.shape, &ks_r.inputs, kblk);
-                (w, t0w.elapsed().as_secs_f64())
+                let t_k = t0w.elapsed().as_secs_f64();
+                let start = |i: usize| {
+                    if i >= TAPE_EARLY_LANES {
+                        tables_done.wait();
+                    }
+                };
+                let tape = crate::lv::keccak_gkr::Witness::generate_uncommitted_by(Chain::tape_shape(p.log_n), rows, lanes, start, |g| {
+                    let block = in_blocks[g].lock().unwrap().take().expect("a block of tape inputs is taken once");
+                    let inputs = feed.inputs(g, block);
+                    #[cfg(feature = "np12-faults")]
+                    let inputs = tables::fault::tape_block(g, inputs);
+                    inputs
+                });
+                #[cfg(feature = "np12-faults")]
+                let tape = {
+                    let mut tape = tape;
+                    tables::fault::tape_word(&mut tape);
+                    tape
+                };
+                (w, t_k, tape, t0w.elapsed().as_secs_f64())
             });
             let h = rx.recv().expect("the walk reaches row n − 1");
             let t_h = t0w.elapsed().as_secs_f64();
-            let mut hd_b = hd.clone();
-            hd_b.h = h;
-            let tabs = build.map(|b| {
-                si.spawn(move || {
-                    let hit = std::cell::Cell::new(false);
-                    let col = |r: bool, o: usize, len: usize| -> Vec<F64> {
-                        let e = o + len;
-                        if r {
-                            cr[o..e].to_vec()
-                        } else if (o < d_hi && e > d_lo) || (o < k_hi && e > k_lo) {
-                            hit.set(true);
-                            vec![F64::ZERO; len]
-                        } else if e <= k_lo {
-                            lo[o..e].to_vec()
-                        } else {
-                            hi[o - k_hi..e - k_hi].to_vec()
-                        }
-                    };
-                    let t = b(&hd_b, &col);
-                    let t_b = t0w.elapsed().as_secs_f64();
-                    (!hit.get()).then_some((t, t_b))
-                })
-            });
-            let chain = walk.join().expect("the chain walk");
-            let t_w = t0w.elapsed().as_secs_f64();
-            let tape_w = crate::lv::keccak_gkr::Witness::generate_uncommitted(chain.shape, &chain.inputs);
-            let t_g = t0w.elapsed().as_secs_f64();
-            let (ks_w, t_k) = ksj.join().expect("KS's GKR witness");
+            let tabs = if patch.is_some() {
+                early
+            } else {
+                let mut hd_b = hd.clone();
+                hd_b.h = h;
+                tables_for(hd_b)
+            };
+            // `D` (S2) from the published rows, beside the tape witness and the tables
+            let mut z = [0u64; LANES];
+            crate::lv::primitives::hash::keccak_f(&mut z);
+            feed.write_d(dblk, [z[0], z[1], z[2], z[3]]);
+            let t_w = walk.join().expect("the chain walk");
+            let (ks_w, t_k, tape_w, t_g) = wj.join().expect("KS's and the tape's GKR witnesses");
             let built = tabs.map(|t| t.join().expect("the recursion tables"));
             if tl {
                 let t_b = built.as_ref().and_then(|b| b.as_ref().map(|x| x.1));
@@ -215,18 +300,28 @@ pub fn prove(p: &Params, mut hd: Header, mut rec: RecWitness, build: Option<&Bui
                     "lvm: witness timeline n={n}: sponge {t_s:.3}, alloc {t_a:.3}, h at {t_h:.3}, KS witness {t_k:.3}, walk {t_w:.3}, tape witness {t_g:.3}, tables {t_b:?} s"
                 );
             }
-            (chain, ks_w, tape_w, built.map(|b| b.map(|x| x.0)), h)
+            (ks_w, tape_w, built.map(|b| b.map(|x| x.0)), h)
         });
-        tables::write_d(&lay, &chain, &mut cmain);
-        (chain, ks, cmain, crec, tape_w, ks_w, built, h)
+        (ks, cmain, crec, tape_w, ks_w, built, h)
     });
+    drop((in_blocks, feed));
+    let chain = Chain { shape: Chain::tape_shape(p.log_n), inputs: tape_in, y };
+    let hd_early = patch.map(|_| hd.clone());
     hd.h = chain.end(n);
     assert_eq!(hd.h, h, "chainEnd s n");
     lap("chain+sponge", &mut stages);
     if let Some(b) = build {
-        rec.tables = match built.flatten() {
-            Some(t) => t,
-            None => b(&hd, &|r: bool, o: usize, len: usize| (if r { &crec } else { &cmain })[o..o + len].to_vec()),
+        let rebuild = |hd: &Header| b(hd, &|r: bool, o: usize, len: usize| (if r { &crec } else { &cmain })[o..o + len].to_vec());
+        rec.tables = match (built.flatten(), patch.zip(hd_early.as_ref())) {
+            (Some(t), None) => t,
+            (Some(mut t), Some((f, from))) => {
+                let ok = f(from, &hd, &mut t);
+                if tl {
+                    eprintln!("lvm: recursion tables built on the placeholder h, {}", if ok { "patched" } else { "rebuilt (the patch does not apply)" });
+                }
+                if ok { t } else { rebuild(&hd) }
+            }
+            (None, _) => rebuild(&hd),
         };
         rec.tables.retain(crate::lvm::m3::active);
         let sh = crate::lvm::m3::shape(&rec.tables);
@@ -279,6 +374,23 @@ pub fn prove(p: &Params, mut hd: Header, mut rec: RecWitness, build: Option<&Bui
     lap("witness", &mut stages);
 
     // ---- commit
+    // The controls' build (cargo feature `np12-faults`) and debug builds check that nothing lies past the placements:
+    // C_main's words are written below `free_lo` (the fixed blocks) and in the placed table columns (`spans`), C_rec's
+    // in the stream, `σ'` and its placed columns.
+    #[cfg(any(debug_assertions, feature = "np12-faults"))]
+    {
+        let past_main = spans.iter().filter(|s| !s.0).map(|s| s.2).fold(lay.free_lo(), usize::max);
+        let past_rec = spans.iter().filter(|s| s.0).map(|s| s.2).fold(lay.rec_col(REC_STREAM_COLS) + rec.sigma.len(), usize::max);
+        #[cfg(feature = "np12-faults")]
+        if std::env::var_os("LVM_LANES_FAULT_PAST").is_some() {
+            eprintln!("lvm: np12-fault: a word of C_main past the placements");
+            cmain[past_main].0 ^= 1;
+        }
+        assert!(cmain[past_main..].iter().all(|w| w.0 == 0) && crec[past_rec..].iter().all(|w| w.0 == 0), "nothing past the placements");
+    }
+    if tl {
+        eprintln!("lvm: committed lanes: C_main {occ_main} of 64, C_rec {occ_rec} of 64");
+    }
     let header = hd.bytes();
     let mut ps = ProverState::seeded(&header);
     let (m0, r0) = (p.main_levels[0], p.rec_levels[0]);

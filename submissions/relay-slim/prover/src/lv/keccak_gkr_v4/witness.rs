@@ -469,6 +469,48 @@ impl Witness {
         Self::from_extents(shape, vec![extent], written, padding)
     }
 
+    /// [`Witness::generate_uncommitted`] for inputs that become available a block at a time while it runs
+    /// (P2: the tape behind the chain walk): `inputs(g)` returns block `g`'s inputs, instances `BLOCK·g ..
+    /// min(BLOCK·(g + 1), instances)`, waiting for them if need be, and is called once per block. `lanes` threads,
+    /// the calling one among them, take the blocks in order, lane `i` after `start(i)` returns (lane 0 is the
+    /// calling thread, which runs the padding block first).
+    pub fn generate_uncommitted_by<'a>(
+        shape: Shape,
+        instances: usize,
+        lanes: usize,
+        start: impl Fn(usize) + Sync,
+        inputs: impl Fn(usize) -> &'a [[u64; LANES]] + Sync,
+    ) -> Self {
+        assert!(instances <= shape.n());
+        let written = instances.div_ceil(BLOCK);
+        let mut extent = Extent::new(0, written, shape.depth);
+        let slots: Vec<std::sync::Mutex<Slot>> = extent.slots().into_iter().map(std::sync::Mutex::new).collect();
+        let next = std::sync::atomic::AtomicUsize::new(0);
+        let lane = |i: usize| {
+            start(i);
+            loop {
+                let g = next.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+                if g >= written {
+                    break;
+                }
+                let inputs = inputs(g);
+                assert_eq!(inputs.len(), BLOCK.min(instances - g * BLOCK), "block {g}'s inputs");
+                block(shape.depth, inputs, Some(&mut slots[g].lock().unwrap()), |_, _, _| {});
+            }
+        };
+        let padding = std::thread::scope(|sc| {
+            for i in 1..lanes.clamp(1, written.max(1)) {
+                let lane = &lane;
+                sc.spawn(move || lane(i));
+            }
+            let padding = padding(shape, written);
+            lane(0);
+            padding
+        });
+        drop(slots);
+        Self::from_extents(shape, vec![extent], written, padding.map(|(extent, _)| extent))
+    }
+
     /// Write the committed lanes of every block into `committed`, laid out as `generate` does.
     ///
     /// - Block `g`'s lanes are `lanes[g]`.
@@ -552,6 +594,16 @@ impl Witness {
 
     /// Blocks `written()..` of the batch are all the padding block, every instance of which is
     /// the all-zero input.
+    /// The scheduling's negative control (cargo feature `np12-faults`, never in the submitted build): flip bit 0 of the first
+    /// word of block `g`'s stored state at round `round`, in the first extent.
+    #[cfg(feature = "np12-faults")]
+    pub fn flip_word(&mut self, g: usize, round: usize) {
+        let e = &mut self.extents[0];
+        assert!(g < self.written && round <= ROUNDS);
+        let i = (round / e.every * e.blocks + g - e.first) * BLOCK_LEN;
+        e.words[i] ^= 1;
+    }
+
     pub fn written(&self) -> usize {
         self.written
     }

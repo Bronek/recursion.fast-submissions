@@ -97,3 +97,10 @@ Z2 (a commitment's root leaves carry its occupied lanes; `LvmCompile.Scheme.occ`
 | `pcs/whir.rs` | `commit` takes `leaf_words` (`n_lanes ≤ leaf_words ≤ 2^log_batch_size`) and keeps it in `ProverData`; a leaf is the image's last `leaf_words` words, and the L0 openings send those (`CutTree::open` with `leaf_words`) | a level-0 leaf is its stack's occupied words (`C_main` 49, 392 B at P20; `C_rec` 35, 280 B); the caller commits the stack truncated to them (the padding-free path) |
 | `pcs/merkle.rs` | `LeafHasher::Tail`: a leaf shorter than its row is the row's last `leaf_bytes`, hashed through `oracle::hash_tails` | the leaves leave out the row's leading zero lanes |
 | `fiat_shamir/transcript.rs` | `LEAF_LENS` (392, 312, 280, 384, 512): the leaf lengths `hint_merkle` accepts and the length rule reserves | the records' rows; 512 for `batch.rs` |
+
+P2 and P1, the prover scheduling (the tape's GKR witness behind the chain walk, the recursion tables from the start; prover-only, the same proof bytes):
+
+| file | edit | why |
+|---|---|---|
+| `keccak_gkr/witness.rs`, `keccak_gkr_v4/witness.rs` | `Witness::generate_uncommitted_by(shape, instances, lanes, start, inputs)`: `generate_uncommitted` on `lanes` scoped threads taking the blocks in order from one counter, lane `i` once `start(i)` returns, block `g`'s inputs from `inputs(g)`, which may wait for them; the padding block on the calling thread first | `lvm::tables::Feed`: each block runs as soon as the walk has passed it; P1: most lanes wait for the recursion tables |
+| `keccak_gkr/witness.rs`, `keccak_gkr_v4/witness.rs` | `Witness::flip_word`, compiled only with the cargo feature `np12-faults` | the negative control of the byte-identity check |

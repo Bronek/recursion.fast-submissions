@@ -156,6 +156,45 @@ impl Ctx {
         })
     }
 
+    /// P1: turn the tables [`Ctx::build_tables`] built for the header `from` into `to`'s, where the two differ
+    /// in `h` alone, so that `prove` can build them before the chain walk has ended. The cells of the public arrays
+    /// whose lane differs (`h`'s, and the statement's if an array selects it) are rewritten. Every other column is
+    /// the same for both headers when nothing uses those cells: no counted read in `from`'s run (`fin = g⁰`; the
+    /// program's reads then see the same values under `to`, so its run is the same, reads included), and no use
+    /// outside the program's reads (a free checksum's digest, a BITS word, a written array's cell). If anything does
+    /// use one, this returns false and leaves the tables to a rebuild.
+    pub fn patch_tables(&self, from: &Header, to: &Header, tables: &mut [crate::lvm::m3::TableW]) -> bool {
+        use crate::lvm::loopir::ArrKind;
+        let Some((_, Some(spec))) = &self.q else { return false };
+        let lanes = |hd: &Header| crate::lvm::m3::pub_lanes(&hd.bytes(), &stmt_of(hd));
+        let (old, new) = (lanes(from), lanes(to));
+        // the tables of `spec_tables`, in its order: groups, input arrays, BITS
+        let first = spec.groups.len();
+        assert_eq!(tables.len(), first + spec.arrs.len() + spec.bits.len(), "the M3 section's tables");
+        // (table, row, K cell, new value) of every public cell whose lane differs
+        let mut changed: Vec<(usize, usize, usize, u64)> = Vec::new();
+        for (k, a) in spec.arrs.iter().enumerate().filter(|(_, a)| a.kind == ArrKind::Public) {
+            for (x, &i) in a.sel.iter().enumerate() {
+                if old.get(i) != new.get(i) {
+                    changed.push((first + k, x, a.base + a.stride * x, new[i]));
+                }
+            }
+        }
+        let used = |e: usize| {
+            spec.free.iter().any(|&(_, _, cell)| (cell..cell + 4).contains(&e))
+                || spec.bits.iter().any(|b| b.wc.contains(&e))
+                || spec.arrs.iter().any(|a| a.kind == ArrKind::Written && (0..1usize << a.tau).any(|x| a.base + a.stride * x == e))
+        };
+        // a public K array's table: value, `fin`, address (`InArr::table`)
+        if changed.iter().any(|&(t, x, e, _)| tables[t].cols.len() != 3 || tables[t].cols[1][x] != F64::ONE || used(e)) {
+            return false;
+        }
+        for (t, x, _, v) in changed {
+            tables[t].cols[0][x] = F64(v);
+        }
+        true
+    }
+
     fn sign(&self, pi: Vec<u8>, tr: crate::oracle::Trace) -> Signed {
         let t = Instant::now();
         let sig = crate::proc::sign_checked(self.svc, &tr);
@@ -172,7 +211,26 @@ impl Ctx {
     fn s_proof(&self, hd: Header, rec: RecWitness, want: Option<&Digest>) -> (Signed, Digest, Acc) {
         let t = Instant::now();
         let b = self.builder();
-        let sp = prove(&self.p, hd.clone(), rec, b.as_ref().map(|f| f as &crate::lvm::prove::Build));
+        let patch = |from: &Header, to: &Header, tables: &mut [crate::lvm::m3::TableW]| {
+            #[cfg(feature = "np12-faults")]
+            if std::env::var_os("LVM_P1_SKIP_PATCH").is_some() {
+                eprintln!("lvm: np12-fault: the recursion tables keep the placeholder h");
+                return true;
+            }
+            #[cfg(feature = "np12-faults")]
+            if std::env::var_os("LVM_P1_REFUSE_PATCH").is_some() {
+                eprintln!("lvm: np12-fault: the patch is refused");
+                return false;
+            }
+            self.patch_tables(from, to, tables)
+        };
+        let sp = prove(
+            &self.p,
+            hd.clone(),
+            rec,
+            b.as_ref().map(|f| f as &crate::lvm::prove::Build),
+            b.as_ref().map(|_| &patch as &crate::lvm::prove::Patch),
+        );
         let sp_stages = sp.stages.clone();
         let mut hd = hd;
         hd.h = sp.h;

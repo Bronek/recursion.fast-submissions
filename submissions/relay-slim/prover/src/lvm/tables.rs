@@ -12,6 +12,7 @@
 //! `C_rec` (`2^(rec_rows_log + 5)` words): column `c` at `c·2^rec_rows_log`: the 17 stream columns `M_l`, then
 //! `σ'`, then 14 zero columns. With the recursion part zero (`b = 0` convention, WP-15b fills it) it is zero.
 
+use crate::lv::keccak_gkr::witness::BLOCK;
 use crate::lv::keccak_gkr::{Shape, Witness};
 use crate::lv::primitives::field::F64;
 use crate::lvm::layout;
@@ -221,9 +222,88 @@ impl Chain {
         }
         Self { shape: Shape::new(big, TAPE_DEPTH), inputs, y }
     }
+    /// The tape's batch: `2^log_n` rows of depth [`TAPE_DEPTH`].
+    pub fn tape_shape(log_n: usize) -> Shape {
+        Shape::new(1 << log_n, TAPE_DEPTH)
+    }
     /// `chainEnd s n` for `1 ≤ n ≤ 2^log_n`: lanes 0–3 of row `n − 1`.
     pub fn end(&self, n: usize) -> Digest {
         lanes_digest(&self.y[n - 1])
+    }
+}
+
+/// The gated walk ([`Chain::run_gated_notify`]) with the tape's GKR witness generated behind it: the walk writes
+/// the `Y` rows of each block of [`BLOCK`] rows and publishes the block; the witness's threads take blocks in
+/// order and write each block's chain inputs themselves (row `i`'s input is `Pad43(Y_{i−1})`, row 0's `Pad43(s)`),
+/// as soon as the walk has published the rows they read. The rows are those of [`Chain::run_gated_notify`]
+/// (`explicit`: the all-zero input on rows `≥ n`), so the witness, and the proof, are the same.
+pub struct Feed<'a> {
+    s: [u64; 4],
+    n: usize,
+    /// Block `g`'s `Y` rows, once the walk has written them.
+    done: Vec<std::sync::OnceLock<&'a [[u64; 4]]>>,
+}
+
+impl<'a> Feed<'a> {
+    pub fn new(s: &Digest, n: usize) -> Self {
+        Self { s: digest_lanes(s), n, done: (0..n.div_ceil(BLOCK)).map(|_| std::sync::OnceLock::new()).collect() }
+    }
+
+    /// Walk the `n` live rows into `y`, publishing every block as soon as its rows are written; returns
+    /// `chainEnd s n`'s lanes. The kernel is [`crate::chainwalk::select`]'s (`LVM_CHAIN_REF=1`: the loop of
+    /// [`Chain::run_gated_notify_ref`]).
+    pub fn walk(&self, y: &'a mut [[u64; 4]]) -> [u64; 4] {
+        assert_eq!(y.len(), self.n);
+        let reference = std::env::var_os("LVM_CHAIN_REF").is_some();
+        let k = crate::chainwalk::select();
+        let mut h = self.s;
+        for (rows, done) in y.chunks_mut(BLOCK).zip(&self.done) {
+            if reference {
+                for yi in rows.iter_mut() {
+                    let mut b = crate::keccak::chain_block(&lanes_digest(&h));
+                    crate::lv::primitives::hash::keccak_f(&mut b);
+                    h = [b[0], b[1], b[2], b[3]];
+                    *yi = h;
+                }
+            } else {
+                h = crate::chainwalk::walk_y(k, h, rows);
+            }
+            assert!(done.set(rows).is_ok(), "a block is published once");
+        }
+        h
+    }
+
+    /// `D` ([`write_d`]'s words: lane `m < 4` of row `i` at `m·2^log_n + i`, `d` holding the four lanes) of a walk that
+    /// has ended: the published rows, then `z = Keccak-f(0)[0..4)` on the dead rows.
+    pub fn write_d(&self, d: &mut [F64], z: [u64; 4]) {
+        assert!(d.len().is_multiple_of(4) && d.len() / 4 >= self.n);
+        let big = d.len() / 4;
+        for (m, lane) in d.chunks_exact_mut(big).enumerate() {
+            let (live, dead) = lane.split_at_mut(self.n);
+            for (words, done) in live.chunks_mut(BLOCK).zip(&self.done) {
+                let y = done.get().expect("the walk has published every block");
+                for (w, yi) in words.iter_mut().zip(*y) {
+                    *w = F64(yi[m]);
+                }
+            }
+            dead.fill(F64(z[m]));
+        }
+    }
+
+    /// Block `g`'s chain inputs (rows `BLOCK·g ..`, as many as `out` holds), written into `out` once the walk has
+    /// published the rows they read; rows `≥ n` hold the all-zero input.
+    pub fn inputs<'b>(&self, g: usize, out: &'b mut [[u64; LANES]]) -> &'b [[u64; LANES]] {
+        let lo = g * BLOCK;
+        let live = self.n.saturating_sub(lo).min(out.len());
+        if live > 0 {
+            let y = self.done[g].wait();
+            out[0] = crate::chainwalk::block_of_lanes(&if g == 0 { self.s } else { self.done[g - 1].wait()[BLOCK - 1] });
+            for (o, yi) in out[1..live].iter_mut().zip(*y) {
+                *o = crate::chainwalk::block_of_lanes(yi);
+            }
+        }
+        out[live..].fill([0u64; LANES]);
+        out
     }
 }
 
@@ -307,6 +387,36 @@ pub fn write_ks_lanes(lay: &Layout, ks: &Sponge, cmain: &mut [F64], crec: &mut [
         for i in 0..half {
             crec[lay.rec_col(l) + i] = F64(ks.msg[i][l]);
             cmain[lay.x(l) + i] = F64(ks.msg[half + i][l]);
+        }
+    }
+}
+
+/// The negative controls for P2 (cargo feature `np12-faults`, never in the submitted build).
+/// - `LVM_P2_FAULT_IN=g`: tape block `g` runs on inputs with one bit flipped (bit 0 of lane 0 of its first row), the
+///   chain's own inputs untouched, as a block run on rows the walk had not yet written would be.
+/// - `LVM_P2_FAULT_WORD=g`: one word of block `g`'s stored state (round 12) is flipped after the witness is built.
+#[cfg(feature = "np12-faults")]
+pub mod fault {
+    use crate::lvm::params::LANES;
+
+    fn block_of(var: &str) -> Option<usize> {
+        std::env::var(var).ok().and_then(|v| v.parse().ok())
+    }
+
+    pub fn tape_block<'b>(g: usize, inputs: &'b [[u64; LANES]]) -> &'b [[u64; LANES]] {
+        if block_of("LVM_P2_FAULT_IN") != Some(g) {
+            return inputs;
+        }
+        let mut bad = inputs.to_vec();
+        bad[0][0] ^= 1;
+        eprintln!("lvm: np12-fault: tape block {g} runs on a flipped input bit");
+        Box::leak(bad.into_boxed_slice())
+    }
+
+    pub fn tape_word(w: &mut crate::lv::keccak_gkr::Witness) {
+        if let Some(g) = block_of("LVM_P2_FAULT_WORD") {
+            w.flip_word(g, 12);
+            eprintln!("lvm: np12-fault: tape block {g}'s round-12 state has a flipped word");
         }
     }
 }

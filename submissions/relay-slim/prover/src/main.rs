@@ -360,7 +360,7 @@ fn cmd_sprove(args: &[String]) {
     };
     oracle::reset_stats();
     let t0 = Instant::now();
-    let sp = lvm::prove::prove(&p, hd, rec, if emu { Some(&emu_build as &lvm::prove::Build) } else { None });
+    let sp = lvm::prove::prove(&p, hd, rec, if emu { Some(&emu_build as &lvm::prove::Build) } else { None }, None);
     let prove_s = t0.elapsed().as_secs_f64();
     println!(
         "sprove {} n={n} prove_s={prove_s:.3} peak_rss_mib={:.0} proof_bytes={} qS={} h={}",
@@ -432,7 +432,7 @@ fn cmd_selftest() {
     let mut s = [0u8; 32];
     s[0] = 7;
     let hd = lvm::prove::Header { b: 0, vk: [0; 32], c_l: [0; 32], s, n: 300, h: [0; 32], sig_leaf: None, acc_in: lvm::acc::Acc::zero(p.acc_d(), lv::primitives::field::F192::ZERO) };
-    let sp = lvm::prove::prove(&p, hd, lvm::prove::RecWitness::zero(&p), None);
+    let sp = lvm::prove::prove(&p, hd, lvm::prove::RecWitness::zero(&p), None, None);
     let mut h = keccak::Keccak256::new();
     h.update(&b.proof).update(&sp.proof);
     for (q, a) in &sp.trace {
@@ -657,32 +657,41 @@ fn cmd_gbench(args: &[String]) {
     print!("{}", lv::tracing::report());
 }
 
-/// P-FIX2: `tsel` (a child of the stream's start-up): the tape's depth-24 GKR at n = 2^14 rows on a local oracle,
-/// the worker count from `LEANVM_NUM_THREADS`; prints `tsel <best of 3, s>`. The kernel phases' stand-in.
+/// P-FIX2: `tsel` (a child of `prover setup`): two of a step's phases, timed once on a local oracle with the worker
+/// count from `LEANVM_NUM_THREADS`: the tape's depth-24 GKR at n = 2^17 rows (its output claim included), then the
+/// commitment of a `C_main`-sized message (`2^nu_main` pseudo-random words, `C_main`'s level-0 rate and cap). Prints
+/// `tsel <s> <digest> gkr <s> commit <s>`; the digest covers the GKR's final claim and the commitment's cap.
+/// The local oracle hashes on the prover's own workers, where a step's service is another process on the same CPUs.
 fn cmd_tsel() {
+    use lv::primitives::field::F64;
     oracle::install(Box::new(oracle::Local::keyed(&[0x5A; 32])));
     lv::parallel::init();
     let p = lvm::params::Params::by_name("P20").unwrap();
-    let chain = lvm::tables::Chain::run_gated_notify_ref(p.log_n, &[7u8; 32], 1 << 14, false, |_| {});
+    let chain = lvm::tables::Chain::run_gated_notify_ref(p.log_n, &[7u8; 32], 1 << 17, false, |_| {});
     let w = lv::keccak_gkr::Witness::generate_uncommitted(chain.shape, &chain.inputs);
-    let mut best = f64::MAX;
-    let mut dig = String::new();
-    for _ in 0..3 {
-        let mut ps = lv::fiat_shamir::transcript::ProverState::seeded(b"tsel-tape-0123456");
-        let t = Instant::now();
-        let rr = ps.sample_vec(p.log_n);
-        let out = lv::keccak_gkr::OutputClaim::of_inputs_padded(chain.shape, &chain.inputs, rr);
-        ps.add_scalars(&out.lanes);
-        let fin = w.prove_tape(&mut ps, &out);
-        best = best.min(t.elapsed().as_secs_f64());
-        dig = format!("{:?}", fin.value);
-    }
-    println!("tsel {best:.6} {}", hex(&keccak::keccak256(dig.as_bytes())));
+    let msg: Vec<F64> = (0..1u64 << p.nu_main).map(|x| F64(x.wrapping_mul(0x9E37_79B9_7F4A_7C15) ^ (x << 29))).collect();
+    let mut ps = lv::fiat_shamir::transcript::ProverState::seeded(b"tsel-tape-0123456");
+    let t = Instant::now();
+    let rr = ps.sample_vec(p.log_n);
+    let out = lv::keccak_gkr::OutputClaim::of_inputs_padded(chain.shape, &chain.inputs, rr);
+    ps.add_scalars(&out.lanes);
+    let fin = w.prove_tape(&mut ps, &out);
+    let gkr = t.elapsed().as_secs_f64();
+    let m0 = p.main_levels[0];
+    let t = Instant::now();
+    let fold = lv::pcs::whir::INITIAL_FOLDING_FACTOR;
+    let (c, d) = lv::pcs::whir::commit(&msg, p.nu_main, fold, m0.rate, m0.cap, 1 << fold);
+    let commit = t.elapsed().as_secs_f64();
+    drop(d);
+    let dig = format!("{:?} {}", fin.value, hex(&c.cap[0]));
+    println!("tsel {:.6} {} gkr {gkr:.6} commit {commit:.6}", gkr + commit, hex(&keccak::keccak256(dig.as_bytes())));
 }
 
 /// `prover setup`'s worker count: 8, or 4 if `tsel` runs at least 3 % faster with 4. Each count is timed in its
 /// own child process on the chosen CPU variant, alternately, three times each (best of each); fewer than 8 CPUs
-/// or a failed child: 8. The proof bytes do not depend on the count (the field sums are exact).
+/// or a failed child: 8. The proof bytes do not depend on the count (the field sums are exact). `tsel` is sized so
+/// that a few per cent of difference between the counts, which a whole step shows, stands above run-to-run noise
+/// (about 0.45 s per child on a 4C/8T Zen 5); the logged line gives every child's time.
 fn select_threads(exe: &str, variant: &str, deadline: Instant) -> (usize, String) {
     let cpus = std::thread::available_parallelism().map_or(1, |n| n.get());
     if cpus < 8 {
@@ -719,19 +728,21 @@ fn select_threads(exe: &str, variant: &str, deadline: Instant) -> (usize, String
     };
     let (mut t8, mut t4) = (f64::MAX, f64::MAX);
     let mut digest: Option<String> = None;
+    let mut times = String::new();
     for k in [8, 4, 4, 8, 8, 4] {
         match run(k) {
-            // the claim the GKR ends at must not depend on the count
+            // the claim the GKR ends at, and the commitment, must not depend on the count
             Some((_, d)) if digest.as_ref().is_some_and(|x| *x != d) => return (8, format!("threads 8 (tsel's claim differs with {k})")),
             Some((t, d)) => {
                 digest = Some(d);
+                times += &format!(" {k}:{:.0}", t * 1e3);
                 if k == 8 { t8 = t8.min(t) } else { t4 = t4.min(t) }
             }
             None => return (8, format!("threads 8 (tsel failed or out of time with {k})")),
         }
     }
     let k = if t4 < 0.97 * t8 { 4 } else { 8 };
-    (k, format!("threads {k} (tsel: 8 {:.0} ms, 4 {:.0} ms; {:.1} s)", t8 * 1e3, t4 * 1e3, t0.elapsed().as_secs_f64()))
+    (k, format!("threads {k} (tsel: 8 {:.0} ms, 4 {:.0} ms, best of{times} ms; {:.1} s)", t8 * 1e3, t4 * 1e3, t0.elapsed().as_secs_f64()))
 }
 
 /// `first DIR` / `step DIR` (PROVER.md §3): connect, `ready`, wait for `go`, prove, write `proof.bin`, `done`.
