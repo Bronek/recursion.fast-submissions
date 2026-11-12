@@ -13,8 +13,14 @@ glue, the roots/inverses and the column weight (`colWG`); at the final level the
 residual's evaluation (`mleFold`), the weight `basis + Σ λ_i W_i` (`wsumG`) and the terminal check
 under the gate `g`. All fold and tail challenges are the `E` cells `pc + k` (`chLanes`' order).
 
-`lvOk C T Ls i f V` is the static side: message logs, row strides, position chunks covering `t`,
-coordinate chunks covering `κ`, lanes below `T`, final `κ ≥ 1`.
+`lvOk C T Ls i f V` is the static side: message logs, row strides, at level 0 a fold `ℓ ≥ 1` and a
+leaf of at most `2^ℓ` words, position chunks covering `t`, coordinate chunks covering `κ`, lanes
+below `T`, final `κ ≥ 1`. (At `ℓ = 0` the reversed table is the existing one-cell table, so the
+window would not start after the level's zero cells; no shipped level folds 0 variables.)
+
+A level-0 leaf of `w < 2^ℓ` words (the stack's occupied lanes, `Level.row = 8w`) is folded against a
+window of the reversed `eq` table followed by `2^ℓ − w` zero cells (`lvPre`), so that the loop keeps
+its `2^ℓ` iterations and word `k` meets `eq[w − 1 − k]`, `F`'s `foldRow0` of `w` words.
 -/
 
 set_option autoImplicit false
@@ -65,7 +71,14 @@ def lvPre (C : SCfg) (pc : Nat) (zc oc g : Cell) (zk : Nat) (L : Level) (nxt : O
   let q ← roundsG pc f V L.fold q
   let lam ← ldEW (ll.V3 + 5)
   let lp ← pows (Nat.clog 2 (pw (C.pch i))) lam oc zc
-  let er ← eqTab (fun j => ec (pc + f + j)) zc oc (decide (L.level = 0)) L.fold
+  let er0 ← eqTab (fun j => ec (pc + f + j)) zc oc (decide (L.level = 0)) L.fold
+  -- A level-0 leaf of `w < 2^ℓ` words (the stack's occupied lanes) is folded by the window `er0 + z`
+  -- of the reversed table and the `z = 2^ℓ − w` zero cells after it: word `k < w` meets
+  -- `eq[w − 1 − k]`, and the `z` lanes the loop reads past the leaf meet zero cells.
+  let er ← if L.level = 0 ∧ L.row / 8 < 2 ^ L.fold then do
+      let _ ← seqAll ((List.range (2 ^ L.fold - L.row / 8)).map fun _ => lin .E 0 0 zc zc)
+      pure (er0 + (2 ^ L.fold - L.row / 8))
+    else pure er0
   let enf ← foldsG (decide (L.level = 0)) L.fold (ll.V4 + 1) (oStr L) er lp L.t zc 0 (C.pch i)
   let it ← rdQ ll.V5 enf
   let cp ← getPtr
@@ -107,7 +120,8 @@ def lvOk (C : SCfg) (T : Nat) : List Level → Nat → Nat → Nat → Bool
   | [], _, _, _ => false
   | L :: rest, i, f, V =>
     let ll := lvLanes C.g C.ood L rest.head? V
-    decide (f + L.fold + L.kappa = C.nu) && decide (L.row % 8 = 0) && decide (1 ≤ L.t) &&
+    decide (f + L.fold + L.kappa = C.nu) && decide (L.row % 8 = 0) &&
+    decide (L.level ≠ 0 ∨ (0 < L.fold ∧ L.row / 8 ≤ 2 ^ L.fold)) && decide (1 ≤ L.t) &&
     decide (L.t ≤ pw (C.pch i)) &&
     (List.range (C.pch i).length).all (fun k => decide (pw ((C.pch i).take k) < L.t)) &&
     decide (csum (C.cch i) = L.kappa) &&

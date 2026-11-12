@@ -85,6 +85,12 @@ def okS (vk c : Digest) (x : List UInt8) : Bool :=
 /-- The cap level of a tree of `2^ht` leaves: `8` for `C_main`'s root, `7` for the others (P20). -/
 def capOfS (ht _w : ℕ) : ℕ := if ht = 19 then 8 else 7
 
+/-- The occupied words of a commitment of `2^ht` rows of `w` words: `49` for `C_main`'s root
+(`2^19` rows of 64 words; the node program's tables end in lane 49, so lanes 49–63 of the stack are
+empty), `35` for `C_rec`'s root (`2^15` rows of 64 words; the stream's 17 columns and `σ'` fill
+lanes 0–34), the whole row for the others (P20; `occOfS_P20` ties it to the schedule's rows). -/
+def occOfS (ht w : ℕ) : ℕ := if ht = 19 ∧ w = 64 then 49 else if ht = 15 ∧ w = 64 then 35 else w
+
 /-- **The `S` branch's scheme** for the program `P` under the key `vk`. -/
 def schemeS (vk : Digest) (P : List UInt8 → VerifierProgram Bool) : Scheme where
   Stmt := List UInt8
@@ -100,6 +106,7 @@ def schemeS (vk : Digest) (P : List UInt8 → VerifierProgram Bool) : Scheme whe
   decK := kOfBytes
   chal := chalOf
   chal_sum := chalOf_sum
+  occ := occOfS
 
 /-! ## `P_S` -/
 

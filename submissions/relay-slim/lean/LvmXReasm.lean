@@ -51,13 +51,13 @@ theorem ra_body (tr : Trace) (P : List PE) (hl : P.length = tr.length)
 
 /-! ## One entry -/
 
-/-- The planned class agrees with the planned length (the length rule): `q₀` 7 bytes, a leaf 384
-or 512, a node 64, an FS query none of these. -/
+/-- The planned class agrees with the planned length (the length rule): `q₀` 7 bytes, a leaf one of
+`leafLens` (`pX`'s rows), a node 64, an FS query none of these. -/
 def raOk (e : PE) : Bool :=
   match e.k with
   | .q0 => e.len == 7
-  | .fs _ => !(e.len == 7 || e.len == 64 || e.len == 384 || e.len == 512)
-  | .leaf => e.len == 384 || e.len == 512
+  | .fs _ => !(e.len == 7 || e.len == 64 || decide (e.len ∈ leafLens))
+  | .leaf => decide (e.len ∈ leafLens)
   | .node .. => e.len == 64
 
 theorem ra_contrib (tr : Trace) (i : ℕ) (e : PE) (prev : Digest) (hok : raOk e = true)
@@ -74,13 +74,16 @@ theorem ra_contrib (tr : Trace) (i : ℕ) (e : PE) (prev : Digest) (hok : raOk e
     subst hok
     rfl
   | fs st =>
-    simp only [raOk, Bool.not_eq_true', Bool.or_eq_false_iff, beq_eq_false_iff_ne] at hok
-    obtain ⟨⟨⟨h7, h64⟩, h384⟩, h512⟩ := hok
-    rw [ite_eq_right h7, ite_eq_right h64, ite_eq_right (by omega)]
+    simp only [raOk, Bool.not_eq_true', Bool.or_eq_false_iff, beq_eq_false_iff_ne,
+      decide_eq_false_iff_not] at hok
+    obtain ⟨⟨h7, h64⟩, hl⟩ := hok
+    rw [ite_eq_right h7, ite_eq_right h64, ite_eq_right hl]
     rfl
   | leaf =>
-    simp only [raOk, Bool.or_eq_true, beq_iff_eq] at hok
-    rw [ite_eq_right (by omega), ite_eq_right (by omega), ite_eq_left hok]
+    simp only [raOk, decide_eq_true_eq] at hok
+    have h64 := ne64_of_leaf hok
+    rw [ite_eq_right (by simp only [leafLens, List.mem_cons, List.not_mem_nil, or_false] at hok; omega),
+      ite_eq_right h64, ite_eq_left hok]
     rfl
   | node pe h j lvl cap =>
     simp only [raOk, beq_iff_eq] at hok
@@ -127,11 +130,12 @@ private theorem ra_items_ok (p : Params) : ∀ (its : List Item) (w : WS), (plan
   | [], _, h => h
   | it :: its, w, h => ra_item_ok p w it (ra_items_ok p its _ h)
 
-private theorem ra_ok_fs (st len : ℕ) (h : len != 64 && len != 384 && len != 512) (h32 : 32 ≤ len) :
+private theorem ra_ok_fs (st len : ℕ) (h : len != 64 && !decide (len ∈ leafLens)) (h32 : 32 ≤ len) :
     raOk ⟨.fs st, len⟩ = true := by
-  simp only [Bool.and_eq_true, bne_iff_ne, ne_eq] at h
-  simp only [raOk, Bool.not_eq_true', Bool.or_eq_false_iff, beq_eq_false_iff_ne, ne_eq]
-  omega
+  simp only [Bool.and_eq_true, bne_iff_ne, ne_eq, Bool.not_eq_true', decide_eq_false_iff_not] at h
+  simp only [raOk, Bool.not_eq_true', Bool.or_eq_false_iff, beq_eq_false_iff_ne, ne_eq,
+    decide_eq_false_iff_not]
+  exact ⟨⟨by omega, h.1⟩, h.2⟩
 
 private theorem ra_map_range {α : Type} (n : ℕ) (a : α) : (List.range n).map (fun _ => a) = List.replicate n a := by
   rw [List.map_const', List.length_range]

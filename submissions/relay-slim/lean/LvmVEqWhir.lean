@@ -55,23 +55,28 @@ open Lvm.M3 (tE_add tE_mul tE_zero tE_one FE_eq_of_beq)
 def wdOf (j fold : ℕ) : ℕ := if j = 0 then 2 ^ fold else 3 * 2 ^ fold
 
 /-- **A native level against a language level**, level `j` of an opening of `logN` variables after
-`F` folded variables, opening commitment `cidx c₀ n₀ j` of the table `cap shp`. -/
-structure LevelOK (cap : ℕ → ℕ → ℕ) (shp : ℕ → ℕ × ℕ) (logN c₀ n₀ j F : ℕ) (L : Level)
-    (W : Whir.Level) : Prop where
+`F` folded variables, opening commitment `cidx c₀ n₀ j` of the table `cap occ shp`: the native row
+is the leaf's occupied words (`occ`), and only the root's leaves may leave words out (later levels'
+rows are folded whole). -/
+structure LevelOK (cap : ℕ → ℕ → ℕ) (occ : ℕ → ℕ → ℕ) (shp : ℕ → ℕ × ℕ) (logN c₀ n₀ j F : ℕ)
+    (L : Level) (W : Whir.Level) : Prop where
   fold : L.fold = W.fold
   t : L.t = W.queries
   height : L.height = logN - (F + L.fold) + W.logInvRate
   level : L.level = 0 ↔ j = 0
   shp : shp (cidx c₀ n₀ j) = (L.height, wdOf j L.fold)
-  row : L.row = 8 * wdOf j L.fold
+  row : L.row = 8 * min (occ L.height (wdOf j L.fold)) (wdOf j L.fold)
+  full : j ≠ 0 → wdOf j L.fold ≤ occ L.height (wdOf j L.fold)
   path : L.path = L.height - cap L.height (wdOf j L.fold)
 
-instance (cap : ℕ → ℕ → ℕ) (shp : ℕ → ℕ × ℕ) (logN c₀ n₀ j F : ℕ) (L : Level) (W : Whir.Level) :
-    Decidable (LevelOK cap shp logN c₀ n₀ j F L W) :=
+instance (cap : ℕ → ℕ → ℕ) (occ : ℕ → ℕ → ℕ) (shp : ℕ → ℕ × ℕ) (logN c₀ n₀ j F : ℕ) (L : Level)
+    (W : Whir.Level) : Decidable (LevelOK cap occ shp logN c₀ n₀ j F L W) :=
   decidable_of_iff (L.fold = W.fold ∧ L.t = W.queries ∧ L.height = logN - (F + L.fold) + W.logInvRate ∧
       (L.level = 0 ↔ j = 0) ∧ shp (cidx c₀ n₀ j) = (L.height, wdOf j L.fold) ∧
-      L.row = 8 * wdOf j L.fold ∧ L.path = L.height - cap L.height (wdOf j L.fold))
-    ⟨fun ⟨a, b, c, d, e, f, g⟩ ↦ ⟨a, b, c, d, e, f, g⟩, fun ⟨a, b, c, d, e, f, g⟩ ↦ ⟨a, b, c, d, e, f, g⟩⟩
+      L.row = 8 * min (occ L.height (wdOf j L.fold)) (wdOf j L.fold) ∧
+      (j ≠ 0 → wdOf j L.fold ≤ occ L.height (wdOf j L.fold)) ∧ L.path = L.height - cap L.height (wdOf j L.fold))
+    ⟨fun ⟨a, b, c, d, e, f, g, h⟩ ↦ ⟨a, b, c, d, e, f, g, h⟩,
+      fun ⟨a, b, c, d, e, f, g, h⟩ ↦ ⟨a, b, c, d, e, f, g, h⟩⟩
 
 /-- The next level's cap: V_S skips `nodeBytes · 2^cap` bytes where the language reads the
 commitment of `2^(κ − ℓ' + R')` leaves of `3·2^ℓ'` words. -/
@@ -80,11 +85,11 @@ def NextOK (cap : ℕ → ℕ → ℕ) (logN F' : ℕ) : List Level → List Whi
   | _, _ => True
 
 /-- **The levels correspond**, from level `j` after `F` folded variables. -/
-def LevelsCorr (cap : ℕ → ℕ → ℕ) (shp : ℕ → ℕ × ℕ) (logN c₀ n₀ : ℕ) :
+def LevelsCorr (cap : ℕ → ℕ → ℕ) (occ : ℕ → ℕ → ℕ) (shp : ℕ → ℕ × ℕ) (logN c₀ n₀ : ℕ) :
     ℕ → ℕ → List Level → List Whir.Level → Prop
   | _, _, [], [] => True
-  | j, F, L :: Ls, W :: Ws => LevelOK cap shp logN c₀ n₀ j F L W ∧ NextOK cap logN (F + L.fold) Ls Ws ∧
-      LevelsCorr cap shp logN c₀ n₀ (j + 1) (F + L.fold) Ls Ws
+  | j, F, L :: Ls, W :: Ws => LevelOK cap occ shp logN c₀ n₀ j F L W ∧ NextOK cap logN (F + L.fold) Ls Ws ∧
+      LevelsCorr cap occ shp logN c₀ n₀ (j + 1) (F + L.fold) Ls Ws
   | _, _, _, _ => False
 
 /-! ## Steps that never clear a failed check -/
@@ -170,11 +175,11 @@ theorem monoD_dOpen (p : Params) (claims : List (Com × Lvm.BlockClaim)) : MonoD
 
 section Ref
 
-variable {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
+variable {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
 
 /-- A native step that never ends `ok`. -/
 theorem RefAt.require_false_bind {α β : Type} {k : Unit → DM β} {P : VerifierProgram α}
-    {R : β → α → Prop} (hk : ∀ u, MonoD (k u)) : RefAt cap shp sig (DM.require false >>= k) P R := by
+    {R : β → α → Prop} (hk : ∀ u, MonoD (k u)) : RefAt cap occ shp sig (DM.require false >>= k) P R := by
   intro s hok
   have hsplit : runD (DM.require false >>= k) sig s =
       runD (k ()) sig { s with ok := false && s.ok } := rfl
@@ -183,7 +188,7 @@ theorem RefAt.require_false_bind {α β : Type} {k : Unit → DM β} {P : Verifi
 
 /-- A native check that fails. -/
 theorem RefAt.require_false {α : Type} {P : VerifierProgram α} {R : Unit → α → Prop} :
-    RefAt cap shp sig (DM.require false) P R := by
+    RefAt cap occ shp sig (DM.require false) P R := by
   intro s hok
   have h : (runD (DM.require false) sig s).2.ok = (false && s.ok) := rfl
   rw [h] at hok
@@ -191,14 +196,14 @@ theorem RefAt.require_false {α : Type} {P : VerifierProgram α} {R : Unit → �
 
 /-- A fact on the native value, added to the relation. -/
 theorem RefAt.and_val {α β : Type} {d : DM β} {P : VerifierProgram α} {R : β → α → Prop}
-    {Q : β → Prop} (h : RefAt cap shp sig d P R) (hq : ∀ s, Q (runD d sig s).1) :
-    RefAt cap shp sig d P fun b a ↦ R b a ∧ Q b := fun s hok ↦ by
+    {Q : β → Prop} (h : RefAt cap occ shp sig d P R) (hq : ∀ s, Q (runD d sig s).1) :
+    RefAt cap occ shp sig d P fun b a ↦ R b a ∧ Q b := fun s hok ↦ by
   obtain ⟨a, h1, h2, h3, h4⟩ := h s hok
   exact ⟨a, h1, h2, h3, h4, hq s⟩
 
 /-- The round polynomial of a plain round (local copy of H1's `ref_sumcheckRoundPoly` at `none`). -/
 private theorem ref_rpW {claim : FE} {claim' : E} (h : claim' = FE.toExt3 claim) :
-    RefAt cap shp sig (Lvm.sumcheckRoundPoly 3 claim none) (Verifier.sumcheckRoundPoly 3 claim' none)
+    RefAt cap occ shp sig (Lvm.sumcheckRoundPoly 3 claim none) (Verifier.sumcheckRoundPoly 3 claim' none)
       (fun xs ys ↦ ys = xs.map FE.toExt3) := by
   subst h
   refine RefAt.bind (fun _ ↦ (monoD_readEs _).bind fun _ ↦ MonoD.pure _) ref_readE ?_
@@ -226,14 +231,14 @@ theorem positionsR_length (L : Level) (s : RS) : (runD (DM.positionsR L) sig s).
 
 /-- **The positions** of a level, with their count. -/
 theorem ref_positionsW (L : Level) {h' t' : ℕ} (hh : h' = L.height) (ht : t' = L.t) :
-    RefAt cap shp sig (DM.positionsR L) (Verifier.samplePositions positionsPerAnswer h' t')
+    RefAt cap occ shp sig (DM.positionsR L) (Verifier.samplePositions positionsPerAnswer h' t')
       (fun ps ps' ↦ ps' = ps ∧ ps.length = L.t) := by
   subst hh ht
   exact (ref_positionsR L).and_val (positionsR_length L)
 
 /-- **Before the proof of work** (PI-GRIND): the separator and the nonce (nothing at `g = 0`). -/
 theorem ref_grindPreR (g : ℕ) :
-    RefAt cap shp sig (DM.grindPreR g) (Verifier.grindPre g) fun _ _ ↦ True := by
+    RefAt cap occ shp sig (DM.grindPreR g) (Verifier.grindPre g) fun _ _ ↦ True := by
   unfold DM.grindPreR Verifier.grindPre
   by_cases hg : g = 0
   · simp only [hg, ↓reduceIte]
@@ -245,7 +250,7 @@ theorem ref_grindPreR (g : ℕ) :
 /-- **The proof of work** (PI-GRIND): the PoW challenge, the same top-`g`-bits check (`powOKR`
 against `powOK`, through `eToNat_toExt3`). -/
 theorem ref_powCheckR (g : ℕ) :
-    RefAt cap shp sig (DM.powCheckR g) (Verifier.powCheck g) fun _ _ ↦ True := by
+    RefAt cap occ shp sig (DM.powCheckR g) (Verifier.powCheck g) fun _ _ ↦ True := by
   unfold DM.powCheckR Verifier.powCheck
   by_cases hg : g = 0
   · simp only [hg, ↓reduceIte]
@@ -259,7 +264,7 @@ theorem ref_powCheckR (g : ℕ) :
 /-- **The fold rounds** of a level. -/
 theorem ref_foldRounds : ∀ (n : ℕ) (s : Lvm.WhirState) (t : WhirStateT) (lf : List FE) (lf' : List E),
     WRel s t → lf' = lf.map FE.toExt3 →
-    RefAt cap shp sig (Lvm.foldRounds n s lf) (foldRoundsT n t lf')
+    RefAt cap occ shp sig (Lvm.foldRounds n s lf) (foldRoundsT n t lf')
       (fun r r' ↦ WRel r.1 r'.1 ∧ r'.2 = r.2.map FE.toExt3 ∧ r.1.folds.length = s.folds.length + n ∧
         r.2.length = lf.length + n)
   | 0, _, _, _, _, hW, hl => RefAt.pure ⟨hW, hl, rfl, rfl⟩
@@ -281,7 +286,7 @@ theorem ref_foldRounds : ∀ (n : ℕ) (s : Lvm.WhirState) (t : WhirStateT) (lf 
 /-- **The tail rounds** (V_S's `tailRounds 0` never ends `ok`). -/
 theorem ref_tailRounds : ∀ (n : ℕ) (quad : List FE) (tgt : E) (quad' : List E),
     quad' = quad.map FE.toExt3 →
-    RefAt cap shp sig (Lvm.tailRounds n quad) (tailRoundsT n tgt quad')
+    RefAt cap occ shp sig (Lvm.tailRounds n quad) (tailRoundsT n tgt quad')
       (fun r r' ↦ r' = (r.1.map FE.toExt3, FE.toExt3 r.2))
   | 0, _, _, _, _ => RefAt.require_false_bind fun _ ↦ MonoD.pure _
   | 1, quad, tgt, quad', hq => by
@@ -301,23 +306,30 @@ theorem ref_tailRounds : ∀ (n : ℕ) (quad : List FE) (tgt : E) (quad' : List 
     exact RefAt.pure rfl
 
 /-- **The enforced sum** of a level: the DSL's rows (`row.reverse.map ofK` at level 0, `extRow`
-later) against V_S's folds read in place. -/
-theorem toExt3_enforced (L : Level) (j : ℕ) (hlev : L.level = 0 ↔ j = 0) (lf : List FE)
-    (hlf : lf.length = L.fold) (offs : List ℕ) (ws : List FE) (ws' : List E) (hws : ws' = ws.map FE.toExt3) :
-    Verifier.enforcedSum (if j = 0 then (offs.map fun o ↦ rowAt sig o (wdOf j L.fold)).map
-        (fun row ↦ row.reverse.map ofK) else (offs.map fun o ↦ rowAt sig o (wdOf j L.fold)).map Verifier.extRow)
+later; each the row of a leaf with `oc` occupied words, `padAt`) against V_S's folds read in place
+(the root's `L.row / 8` occupied words; later levels' whole rows). -/
+theorem toExt3_enforced (L : Level) (j oc : ℕ) (hlev : L.level = 0 ↔ j = 0) (lf : List FE)
+    (hlf : lf.length = L.fold) (hrow : L.row = 8 * min oc (wdOf j L.fold))
+    (hfull : j ≠ 0 → wdOf j L.fold ≤ oc) (offs : List ℕ) (ws : List FE) (ws' : List E)
+    (hws : ws' = ws.map FE.toExt3) :
+    Verifier.enforcedSum (if j = 0 then (offs.map fun o ↦ padAt sig o (wdOf j L.fold) oc).map
+        (fun row ↦ row.reverse.map ofK) else (offs.map fun o ↦ padAt sig o (wdOf j L.fold) oc).map Verifier.extRow)
       (lf.map FE.toExt3) ws' =
-    FE.toExt3 (Lvm.dot ws (offs.map fun o ↦ if L.level = 0 then foldRow0 sig (eqKernelA lf) o (2 ^ L.fold)
+    FE.toExt3 (Lvm.dot ws (offs.map fun o ↦ if L.level = 0 then foldRow0 sig (eqKernelA lf) o (L.row / 8)
       else foldRowE sig (eqKernelA lf) o (2 ^ L.fold))) := by
   subst hws
   by_cases hj : j = 0
   · have hl : L.level = 0 := hlev.2 hj
+    have hw : L.row / 8 = min oc (2 ^ lf.length) := by
+      rw [hrow, hj, hlf]; simp only [wdOf, ↓reduceIte]; omega
     simp only [hj, hl, ↓reduceIte, wdOf, List.map_map]
-    rw [toExt3_dot_rows ws offs _ (fun o ↦ (rowAt sig o (2 ^ L.fold)).reverse.map ofK) (lf.map FE.toExt3)
-      (fun o ↦ toExt3_foldRow0 sig lf o _ (by rw [hlf]))]
+    rw [toExt3_dot_rows ws offs _ (fun o ↦ (padAt sig o (2 ^ L.fold) oc).reverse.map ofK) (lf.map FE.toExt3)
+      (fun o ↦ by rw [hw, ← hlf]; exact toExt3_foldRow0_pad sig lf o oc)]
     rfl
   · have hl : ¬ L.level = 0 := fun h ↦ hj (hlev.1 h)
-    simp only [hj, hl, ↓reduceIte, wdOf, List.map_map]
+    have hfu := hfull hj
+    simp only [hj, hl, ↓reduceIte, wdOf, List.map_map] at hfu ⊢
+    simp only [padAt_full hfu]
     rw [toExt3_dot_rows ws offs _ (fun o ↦ Verifier.extRow (rowAt sig o (3 * 2 ^ L.fold))) (lf.map FE.toExt3)
       (fun o ↦ toExt3_foldRowE sig lf o _ (by rw [hlf]))]
     rfl
@@ -326,9 +338,9 @@ theorem toExt3_enforced (L : Level) (j : ℕ) (hlev : L.level = 0 ↔ j = 0) (lf
 polynomial, glue, tail rounds, terminal check. -/
 theorem ref_levelFinal (logN laneFolds c₀ n₀ g : ℕ) (ood : Bool) (eb : List FE → FE) (eb' : List E → E)
     (heb : ∀ xs, eb' (xs.map FE.toExt3) = FE.toExt3 (eb xs)) (L : Level) (W : Whir.Level) (j F : ℕ)
-    (s : Lvm.WhirState) (t : WhirStateT) (hL : LevelOK cap shp logN c₀ n₀ j F L W) (hW : WRel s t)
+    (s : Lvm.WhirState) (t : WhirStateT) (hL : LevelOK cap occ shp logN c₀ n₀ j F L W) (hW : WRel s t)
     (hF : s.folds.length = F) :
-    RefAt cap shp sig (Lvm.whirLevels logN laneFolds eb false g ood [L] s)
+    RefAt cap occ shp sig (Lvm.whirLevels logN laneFolds eb false g ood [L] s)
       (whirLevelsUd logN laneFolds positionsPerAnswer c₀ n₀ g false eb' j [W] t) (fun _ _ ↦ True) := by
   rw [Lvm.whirLevels, whirLevelsUd, ← hL.fold, ← hL.t]
   refine RefAt.bind ?_ (ref_foldRounds L.fold s t [] [] hW rfl) ?_
@@ -358,7 +370,8 @@ theorem ref_levelFinal (logN laneFolds c₀ n₀ g : ℕ) (ood : Bool) (eb : Lis
   rotate_left
   rintro offs _ rfl
   refine RefAt.read_left ?_
-  refine RefAt.bind ?_ (ref_rpW (toExt3_enforced L j hL.level lf hlf offs _ _ (map_powers _ _).symm)) ?_
+  refine RefAt.bind ?_ (ref_rpW (toExt3_enforced L j _ hL.level lf hlf hL.row hL.full offs _ _
+      (map_powers _ _).symm)) ?_
   rotate_left
   rintro intro _ rfl
   have hW2 : ∀ v, WRel (Lvm.glue lam s1 [(intro, fun x ↦
@@ -389,8 +402,8 @@ theorem ref_levelFinal (logN laneFolds c₀ n₀ g : ℕ) (ood : Bool) (eb : Lis
 theorem ref_whirLevels (logN laneFolds c₀ n₀ g : ℕ) (eb : List FE → FE) (eb' : List E → E)
     (heb : ∀ xs, eb' (xs.map FE.toExt3) = FE.toExt3 (eb xs)) :
     ∀ (Ls : List Level) (Ws : List Whir.Level) (j F : ℕ) (s : Lvm.WhirState) (t : WhirStateT),
-      LevelsCorr cap shp logN c₀ n₀ j F Ls Ws → WRel s t → s.folds.length = F →
-      RefAt cap shp sig (Lvm.whirLevels logN laneFolds eb false g false Ls s)
+      LevelsCorr cap occ shp logN c₀ n₀ j F Ls Ws → WRel s t → s.folds.length = F →
+      RefAt cap occ shp sig (Lvm.whirLevels logN laneFolds eb false g false Ls s)
         (whirLevelsUd logN laneFolds positionsPerAnswer c₀ n₀ g false eb' j Ws t) (fun _ _ ↦ True)
   | [], _, _, _, _, _, _, _, _ => by rw [Lvm.whirLevels]; exact RefAt.require_false
   | _ :: _, [], _, _, _, _, hc, _, _ => False.elim hc
@@ -431,7 +444,8 @@ theorem ref_whirLevels (logN laneFolds c₀ n₀ g : ℕ) (eb : List FE → FE) 
     rotate_left
     rintro offs _ rfl
     refine RefAt.read_left ?_
-    refine RefAt.bind ?_ (ref_rpW (toExt3_enforced L j hL.level lf hlf offs _ _ (map_powers _ _).symm)) ?_
+    refine RefAt.bind ?_ (ref_rpW (toExt3_enforced L j _ hL.level lf hlf hL.row hL.full offs _ _
+      (map_powers _ _).symm)) ?_
     rotate_left
     rintro intro _ rfl
     exact ih _ _ hc' (wrel_glue hW1 rfl rfl (fun xs ↦ by rw [toExt3_inducedWeight, map_powers]) _)
@@ -450,8 +464,8 @@ theorem ref_whirLevels (logN laneFolds c₀ n₀ g : ℕ) (eb : List FE → FE) 
 theorem ref_whirLevels' (logN laneFolds laneFolds' c₀ n₀ g : ℕ) (hlane : laneFolds' = laneFolds)
     (eb : List FE → FE) (eb' : List E → E) (heb : ∀ xs, eb' (xs.map FE.toExt3) = FE.toExt3 (eb xs))
     (Ls : List Level) (Ws : List Whir.Level) (s : Lvm.WhirState) (t : WhirStateT)
-    (hc : LevelsCorr cap shp logN c₀ n₀ 0 0 Ls Ws) (hW : WRel s t) (hF : s.folds.length = 0) :
-    RefAt cap shp sig (Lvm.whirLevels logN laneFolds eb false g false Ls s)
+    (hc : LevelsCorr cap occ shp logN c₀ n₀ 0 0 Ls Ws) (hW : WRel s t) (hF : s.folds.length = 0) :
+    RefAt cap occ shp sig (Lvm.whirLevels logN laneFolds eb false g false Ls s)
       (whirLevelsUd logN laneFolds' positionsPerAnswer c₀ n₀ g false eb' 0 Ws t) (fun _ _ ↦ True) := by
   subst hlane
   exact ref_whirLevels logN laneFolds' c₀ n₀ g eb eb' heb Ls Ws 0 0 s t hc hW hF
@@ -461,8 +475,8 @@ theorem ref_verifyWhir (levels : List Level) (cfg : UdConfig) (logN g : ℕ) (ta
     (eb : List FE → FE) (eb' : List E → E) (heb : ∀ xs, eb' (xs.map FE.toExt3) = FE.toExt3 (eb xs))
     (ht : target' = FE.toExt3 target) (hμ : cfg.μ = logN) (hper : cfg.per = positionsPerAnswer)
     (hdir : cfg.direct = false) (hg : cfg.grind = g)
-    (hc : LevelsCorr cap shp logN cfg.c₀ cfg.n₀ 0 0 levels cfg.levels) :
-    RefAt cap shp sig (Lvm.verifyWhir levels logN target eb false g false) (verifyWhirUd cfg target' eb')
+    (hc : LevelsCorr cap occ shp logN cfg.c₀ cfg.n₀ 0 0 levels cfg.levels) :
+    RefAt cap occ shp sig (Lvm.verifyWhir levels logN target eb false g false) (verifyWhirUd cfg target' eb')
       (fun _ _ ↦ True) := by
   obtain ⟨μ, Ws, per, c₀, n₀, direct, grind⟩ := cfg
   dsimp only at hμ hper hdir hg hc
@@ -488,8 +502,8 @@ challenge, then one WHIR opening. -/
 theorem ref_verifyStacked (levels : List Level) (cfg : UdConfig) (stackLog g : ℕ)
     (claims : List Lvm.StackClaim) (cl : List VStackClaim) (h : List.Forall₂ SCRel claims cl)
     (hμ : cfg.μ = stackLog) (hper : cfg.per = positionsPerAnswer) (hdir : cfg.direct = false)
-    (hg : cfg.grind = g) (hc : LevelsCorr cap shp stackLog cfg.c₀ cfg.n₀ 0 0 levels cfg.levels) :
-    RefAt cap shp sig (Lvm.verifyStackedOpening levels stackLog claims false g false)
+    (hg : cfg.grind = g) (hc : LevelsCorr cap occ shp stackLog cfg.c₀ cfg.n₀ 0 0 levels cfg.levels) :
+    RefAt cap occ shp sig (Lvm.verifyStackedOpening levels stackLog claims false g false)
       (verifyStackedUd cfg cl) (fun _ _ ↦ True) := by
   refine RefAt.bind (fun _ ↦ monoD_verifyWhir _ _ _ _ _ _ _) ref_sampleE ?_
   rintro c _ rfl
@@ -507,16 +521,16 @@ theorem ref_verifyStacked (levels : List Level) (cfg : UdConfig) (stackLog g : �
 
 /-- Re-association of a native bind (definitional). -/
 theorem RefAt.assoc {α β γ δ : Type} {d : DM γ} {f : γ → DM δ} {k : δ → DM β} {P : VerifierProgram α}
-    {R : β → α → Prop} (h : RefAt cap shp sig (d >>= fun x ↦ f x >>= k) P R) :
-    RefAt cap shp sig ((d >>= f) >>= k) P R := h
+    {R : β → α → Prop} (h : RefAt cap occ shp sig (d >>= fun x ↦ f x >>= k) P R) :
+    RefAt cap occ shp sig ((d >>= f) >>= k) P R := h
 
 /-- **The OOD step** (`oodStep true κ`) against `whirLevelsJ`'s: the `κ` samples of the point, the
 answer and the intro polynomial, then the rest with the pending claim `(intro, eq(z, ·))`. -/
 theorem ref_oodStep {α β : Type} (k : ℕ) {K : List (List FE × (List FE → FE)) → DM β}
     {P : List E → E → List E → VerifierProgram α} {R : β → α → Prop} (hK : ∀ oc, MonoD (K oc))
-    (h : ∀ (z : List FE) (y : FE) (i : List FE), RefAt cap shp sig (K [(i, fun x ↦ Lvm.eqEval z x)])
+    (h : ∀ (z : List FE) (y : FE) (i : List FE), RefAt cap occ shp sig (K [(i, fun x ↦ Lvm.eqEval z x)])
       (P (z.map FE.toExt3) (FE.toExt3 y) (i.map FE.toExt3)) R) :
-    RefAt cap shp sig (Lvm.oodStep true k >>= K)
+    RefAt cap occ shp sig (Lvm.oodStep true k >>= K)
       ((VerifierProgram.sampleChallenges k).bind fun z ↦ VerifierProgram.readScalar.bind fun y ↦
         (Verifier.sumcheckRoundPoly 3 y none).bind fun i ↦ P z y i) R := by
   rw [Lvm.oodStep, if_pos rfl]
@@ -558,8 +572,8 @@ correspondence, `direct = false`. The final level is `ref_levelFinal` (`whirLeve
 theorem ref_whirLevelsJ (logN laneFolds c₀ n₀ g : ℕ) (eb : List FE → FE) (eb' : List E → E)
     (heb : ∀ xs, eb' (xs.map FE.toExt3) = FE.toExt3 (eb xs)) :
     ∀ (Ls : List Level) (Ws : List Whir.Level) (j F : ℕ) (s : Lvm.WhirState) (t : WhirStateT),
-      LevelsCorr cap shp logN c₀ n₀ j F Ls Ws → WRel s t → s.folds.length = F →
-      RefAt cap shp sig (Lvm.whirLevels logN laneFolds eb false g true Ls s)
+      LevelsCorr cap occ shp logN c₀ n₀ j F Ls Ws → WRel s t → s.folds.length = F →
+      RefAt cap occ shp sig (Lvm.whirLevels logN laneFolds eb false g true Ls s)
         (whirLevelsJ logN laneFolds positionsPerAnswer c₀ n₀ g false eb' j Ws t) (fun _ _ ↦ True)
   | [], _, _, _, _, _, _, _, _ => by rw [Lvm.whirLevels]; exact RefAt.require_false
   | _ :: _, [], _, _, _, _, hc, _, _ => False.elim hc
@@ -601,7 +615,8 @@ theorem ref_whirLevelsJ (logN laneFolds c₀ n₀ g : ℕ) (eb : List FE → FE)
     rotate_left
     rintro offs _ rfl
     refine RefAt.read_left ?_
-    refine RefAt.bind ?_ (ref_rpW (toExt3_enforced L j hL.level lf hlf offs _ _ (map_powers _ _).symm)) ?_
+    refine RefAt.bind ?_ (ref_rpW (toExt3_enforced L j _ hL.level lf hlf hL.row hL.full offs _ _
+      (map_powers _ _).symm)) ?_
     rotate_left
     rintro intro _ rfl
     exact ih _ _ hc' (wrel_glue2 hW1 rfl rfl rfl (fun xs ↦ (toExt3_eqEval z xs).symm)
@@ -623,8 +638,8 @@ theorem ref_verifyWhirJ (levels : List Level) (cfg : WhirConfig) (logN g : ℕ) 
     (eb : List FE → FE) (eb' : List E → E) (heb : ∀ xs, eb' (xs.map FE.toExt3) = FE.toExt3 (eb xs))
     (ht : target' = FE.toExt3 target) (hood : cfg.ood = true) (hμ : cfg.μ = logN)
     (hper : cfg.per = positionsPerAnswer) (hdir : cfg.direct = false) (hg : cfg.grind = g)
-    (hc : LevelsCorr cap shp logN cfg.c₀ cfg.n₀ 0 0 levels cfg.levels) :
-    RefAt cap shp sig (Lvm.verifyWhir levels logN target eb false g true) (verifyWhirJ cfg target' eb')
+    (hc : LevelsCorr cap occ shp logN cfg.c₀ cfg.n₀ 0 0 levels cfg.levels) :
+    RefAt cap occ shp sig (Lvm.verifyWhir levels logN target eb false g true) (verifyWhirJ cfg target' eb')
       (fun _ _ ↦ True) := by
   obtain ⟨⟨μ, Ws, per, c₀, n₀, direct, grind⟩, ood⟩ := cfg
   dsimp only at hood hμ hper hdir hg hc
@@ -649,8 +664,8 @@ theorem ref_verifyStackedJ (levels : List Level) (cfg : WhirConfig) (stackLog g 
     (claims : List Lvm.StackClaim) (cl : List VStackClaim) (h : List.Forall₂ SCRel claims cl)
     (hood' : ood = true) (hood : cfg.ood = true) (hμ : cfg.μ = stackLog)
     (hper : cfg.per = positionsPerAnswer) (hdir : cfg.direct = false) (hg : cfg.grind = g)
-    (hc : LevelsCorr cap shp stackLog cfg.c₀ cfg.n₀ 0 0 levels cfg.levels) :
-    RefAt cap shp sig (Lvm.verifyStackedOpening levels stackLog claims false g ood)
+    (hc : LevelsCorr cap occ shp stackLog cfg.c₀ cfg.n₀ 0 0 levels cfg.levels) :
+    RefAt cap occ shp sig (Lvm.verifyStackedOpening levels stackLog claims false g ood)
       (verifyStackedJ cfg cl) (fun _ _ ↦ True) := by
   subst hood'
   refine RefAt.bind (fun _ ↦ monoD_verifyWhir _ _ _ _ _ _ _) ref_sampleE ?_
@@ -669,21 +684,22 @@ end Ref
 
 /-! ## P20 -/
 
-theorem recLevels_P20 : P20.recLevels = [⟨0, 6, 13, 2, 15, 7, 8, 170, 512⟩, ⟨1, 4, 9, 3, 12, 7, 5, 139, 384⟩] := by
+theorem recLevels_P20 : P20.recLevels = [⟨0, 6, 13, 2, 15, 7, 8, 170, 280⟩, ⟨1, 4, 9, 3, 12, 7, 5, 139, 384⟩] := by
   decide +kernel
 
 /-- `C_main`'s levels at P20 (J1: `t = 230, 115, 77`). -/
-theorem mainLevels_P20 : P20.mainLevels = [⟨0, 6, 18, 1, 19, 8, 11, 230, 512⟩,
+theorem mainLevels_P20 : P20.mainLevels = [⟨0, 6, 18, 1, 19, 8, 11, 230, 392⟩,
     ⟨1, 4, 14, 2, 16, 7, 9, 115, 384⟩, ⟨2, 4, 10, 3, 13, 7, 6, 77, 384⟩] := by decide +kernel
 
-/-- `C_rec`'s level against `cfgRec20G` (commitment 1, `(15, 64)`, cap 7). -/
-theorem corrRec20 : LevelsCorr capS shpS 19 1 2 0 0 P20.recLevels cfgRec20G.levels := by
+/-- `C_rec`'s level against `cfgRec20G` (commitment 1, `(15, 64)`, cap 7; the root's leaves carry
+`occS 15 64 = 35` words). -/
+theorem corrRec20 : LevelsCorr capS occS shpS 19 1 2 0 0 P20.recLevels cfgRec20G.levels := by
   rw [recLevels_P20]
   simp only [LevelsCorr, NextOK, cfgRec20G]
   decide
 
 /-- `C_main`'s levels against `cfgMain24J 3` (lvm2 JB-VQP J1; commitments 0, 2, 3; caps 8, 7, 7). -/
-theorem corrMain24 : LevelsCorr capS shpS 24 0 3 0 0 P20.mainLevels (cfgMain24J 3).levels := by
+theorem corrMain24 : LevelsCorr capS occS shpS 24 0 3 0 0 P20.mainLevels (cfgMain24J 3).levels := by
   rw [mainLevels_P20]
   simp only [LevelsCorr, NextOK, cfgMain24J]
   decide
@@ -707,20 +723,20 @@ theorem ref_dOpen {sig : ByteArray} (claims : List (Com × Lvm.BlockClaim))
 
 /-! ## P20G (PI-GRIND's test set: P20 with `g = 14`) -/
 
-theorem recLevels_P20G : P20G.recLevels = [⟨0, 6, 13, 2, 15, 7, 8, 170, 512⟩, ⟨1, 4, 9, 3, 12, 7, 5, 139, 384⟩] := by
+theorem recLevels_P20G : P20G.recLevels = [⟨0, 6, 13, 2, 15, 7, 8, 170, 280⟩, ⟨1, 4, 9, 3, 12, 7, 5, 139, 384⟩] := by
   decide +kernel
 
-theorem mainLevels_P20G : P20G.mainLevels = [⟨0, 6, 18, 1, 19, 8, 11, 278, 512⟩,
+theorem mainLevels_P20G : P20G.mainLevels = [⟨0, 6, 18, 1, 19, 8, 11, 278, 392⟩,
     ⟨1, 4, 14, 2, 16, 7, 9, 170, 384⟩, ⟨2, 4, 10, 3, 13, 7, 6, 139, 384⟩] := by decide +kernel
 
 /-- `C_rec`'s level against `cfgRec20G` (as `corrRec20`, `t = 170`). -/
-theorem corrRec20G : LevelsCorr capS shpS 19 1 2 0 0 P20G.recLevels cfgRec20G.levels := by
+theorem corrRec20G : LevelsCorr capS occS shpS 19 1 2 0 0 P20G.recLevels cfgRec20G.levels := by
   rw [recLevels_P20G]
   simp only [LevelsCorr, NextOK, cfgRec20G]
   decide
 
 /-- `C_main`'s levels against `cfgMain24G` (as `corrMain24`, `t = 278, 170, 139`). -/
-theorem corrMain24G : LevelsCorr capS shpS 24 0 3 0 0 P20G.mainLevels cfgMain24G.levels := by
+theorem corrMain24G : LevelsCorr capS occS shpS 24 0 3 0 0 P20G.mainLevels cfgMain24G.levels := by
   rw [mainLevels_P20G]
   simp only [LevelsCorr, NextOK, cfgMain24G]
   decide

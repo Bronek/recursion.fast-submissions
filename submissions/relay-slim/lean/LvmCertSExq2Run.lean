@@ -226,8 +226,9 @@ theorem trun_simK2 (S : Scheme) (L : Log) (B : List UInt8) : ∀ (ks : List K2)
 
 /-! ## One opening -/
 
-/-- The bytes one position of the commitment `ci` takes from the body: the row and the siblings. -/
-def posBytes (ci : CapI) : ℕ := 8 * ci.wd + 32 * (ci.ht - ci.lv)
+/-- The bytes one position of the commitment `ci` takes from the body: the leaf (the row's occupied
+words, `Scheme.lb`) and the siblings. -/
+def posBytes (S : Scheme) (ci : CapI) : ℕ := S.lb ci + 32 * (ci.ht - ci.lv)
 
 theorem climb_rest (S : Scheme) (L : Log) : ∀ (n : ℕ) (d : Digest) (q : ℕ) (body rest : Bytes)
     (top : Digest), (Scheme.climb n d q body).runLog L = some (some (top, rest)) →
@@ -251,7 +252,7 @@ theorem climb_rest (S : Scheme) (L : Log) : ∀ (n : ℕ) (d : Digest) (q : ℕ)
 
 theorem openOne_rest (S : Scheme) (L : Log) (ci : CapI) (q : ℕ) (body rest : Bytes) (row : List K)
     (h : (S.openOne ci q body).runLog L = some (some (row, rest))) :
-    posBytes ci ≤ body.length ∧ rest = body.drop (posBytes ci) := by
+    posBytes S ci ≤ body.length ∧ rest = body.drop (posBytes S ci) := by
   unfold Scheme.openOne at h
   split_ifs at h with hb
   · simp [OProg.runLog] at h
@@ -260,7 +261,7 @@ theorem openOne_rest (S : Scheme) (L : Log) (ci : CapI) (q : ℕ) (body rest : B
     | none => rw [hf] at h; simp at h
     | some e =>
       rw [hf, Option.bind_some, OProgFacts.runLog_bind] at h
-      cases hc : (Scheme.climb (ci.ht - ci.lv) e.2 (q % 2 ^ ci.ht) (body.drop (8 * ci.wd))).runLog L with
+      cases hc : (Scheme.climb (ci.ht - ci.lv) e.2 (q % 2 ^ ci.ht) (body.drop (S.lb ci))).runLog L with
       | none => rw [hc] at h; simp at h
       | some o =>
         rw [hc, Option.bind_some] at h
@@ -279,7 +280,7 @@ theorem openOne_rest (S : Scheme) (L : Log) (ci : CapI) (q : ℕ) (body rest : B
 
 theorem openAll_rest (S : Scheme) (L : Log) (ci : CapI) : ∀ (ps : List ℕ) (body rest : Bytes)
     (rows : List (List K)), (S.openAll ci ps body).runLog L = some (some (rows, rest)) →
-    ps.length * posBytes ci ≤ body.length ∧ rest = body.drop (ps.length * posBytes ci)
+    ps.length * posBytes S ci ≤ body.length ∧ rest = body.drop (ps.length * posBytes S ci)
   | [], body, rest, rows, h => by
     simp only [Scheme.openAll, OProg.runLog, Option.some.injEq, Prod.mk.injEq] at h
     exact ⟨by simp, by rw [← h.2]; simp⟩
@@ -307,15 +308,15 @@ theorem openAll_rest (S : Scheme) (L : Log) (ci : CapI) : ∀ (ps : List ℕ) (b
             refine ⟨by rw [Nat.succ_mul]; omega, by rw [← h.2, b2]; congr 1; ring⟩
 
 /-- **One opening** of `ps` positions of the commitment `caps[i]`: the event is `query rows`, the
-body advances by `|ps| · posBytes ci`, the state and the pending bytes are kept. -/
+body advances by `|ps| · posBytes S ci`, the state and the pending bytes are kept. -/
 theorem trun_query (S : Scheme) (L : Log) {i : ℕ} {ps : List ℕ}
     {k : List (List K) → VerifierProgram Bool} {st : Digest} {buf : Bytes} {caps : List CapI}
     {body : Bytes} {h : List Ev} {b : Bool} {e : Ev} {post : List Ev} {ci : CapI}
     (hc : caps[i]? = some ci)
     (ht : S.trun L (.query i ps k) st buf caps body h = some (b, h ++ e :: post)) :
     ∃ rows, e = .query rows ∧ (VerifierProgram.query i ps k).after [e] = some (k rows) ∧
-      ps.length * posBytes ci ≤ body.length ∧
-      S.trun L (k rows) st buf caps (body.drop (ps.length * posBytes ci)) (h ++ [e]) =
+      ps.length * posBytes S ci ≤ body.length ∧
+      S.trun L (k rows) st buf caps (body.drop (ps.length * posBytes S ci)) (h ++ [e]) =
         some (b, h ++ e :: post) := by
   have hcon : ∀ b', some (b', h) ≠ some (b, h ++ e :: post) := fun b' he => by
     simp only [Option.some.injEq, Prod.mk.injEq] at he
@@ -443,8 +444,8 @@ def recHeadB : List Item := (((phases P20).getD 7 default).2.drop 21).take 9
 evaluation, re-decided at every freeze). From the roots' end (body at `17912`, pending from `5624`):
 the middle phases and `C_rec`'s head (segment A1) absorb the chain's messages of positions 2–1302 and
 end at level 1's cap (`capRec1Off = 205280`); the cap, level 0's proof of work, positions and `λ` (A2)
-those of positions 1303–1327; after level 0's opening of `170 × (512 + 32 · 8)` bytes (body at
-`339960`, nothing pending), level 1's intro and fold rounds (B) those of positions 1328–1331, ending
+those of positions 1303–1327; after level 0's opening of `170 × (280 + 32 · 8)` bytes (body at
+`300520`, nothing pending), level 1's intro and fold rounds (B) those of positions 1328–1331, ending
 at `f2Off`. The segments' kinds. -/
 theorem openRec_P20 :
     fsPreK2 (itemK2 P20 shRec (midItems ++ recHead1)) 17912 5624 =
@@ -454,11 +455,11 @@ theorem openRec_P20 :
     fsPreK2 (itemK2 P20 shRec recHead2) 205280 205232 = ((Lvm.X.fsMsgs P20).drop 1302).take 25 ∧
     offK2 (itemK2 P20 shRec recHead2) 205280 = 209400 ∧
     pendK2 (itemK2 P20 shRec recHead2) 205280 205232 = 209400 ∧
-    209400 + 170 * (8 * 64 + 32 * (15 - 7)) = 339960 ∧
-    fsPreK2 (itemK2 P20 shRec recHeadB) 339960 339960 = ((Lvm.X.fsMsgs P20).drop 1327).take 4 ∧
-    offK2 (itemK2 P20 shRec recHeadB) 339960 = Lvm.X.f2Off P20 ∧
-    pendK2 (itemK2 P20 shRec recHeadB) 339960 339960 = 340152 ∧
-    Lvm.X.capRec1Off P20 = 205280 ∧ Lvm.X.f2Off P20 = 340200 ∧
+    209400 + 170 * (8 * 35 + 32 * (15 - 7)) = 300520 ∧
+    fsPreK2 (itemK2 P20 shRec recHeadB) 300520 300520 = ((Lvm.X.fsMsgs P20).drop 1327).take 4 ∧
+    offK2 (itemK2 P20 shRec recHeadB) 300520 = Lvm.X.f2Off P20 ∧
+    pendK2 (itemK2 P20 shRec recHeadB) 300520 300520 = 300712 ∧
+    Lvm.X.capRec1Off P20 = 205280 ∧ Lvm.X.f2Off P20 = 300760 ∧
     ((phases P20).getD 7 default).2.getD 20 default = .opening ⟨.crec, 0⟩ ∧
     (itemKinds midItems).count .sample = 1294 ∧ RSItems midItems = true ∧
     itemK2 P20 shRec recHead1 =

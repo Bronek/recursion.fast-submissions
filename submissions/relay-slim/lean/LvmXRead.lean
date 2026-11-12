@@ -7,7 +7,8 @@
 -- `copyIR_sem` and their `wf_`/`loK_`/`_nw` lemmas.
 -- New for lvm (WP-13b): the column reads of `C_rec` (BLUEPRINT §6.2 step 4), part 2. lvm's
 -- nodes are untagged 64-byte queries (a length check, no tag) and its leaves untagged rows (no
--- check; the copy keeps the query's `⌈|q|/8⌉` words and zeroes the rest up to 64).
+-- check; the row is `64 − crOcc` zero words, then the query's first `crOcc` words, zero past
+-- the query's `⌈|q|/8⌉`).
 import LvmXReadDefs
 
 /-!
@@ -21,7 +22,8 @@ On a domain tape of a SNARK proof (`RdDom`) with the sorted index `Xi` at `bX` (
   walk's state `crWalk` (the reading under the cap node is the reading under the current
   digest, or the walk has stopped and the reading is an erasure).
 * `cr_leaf_sem`: after the leaf lookup, `crQe` and `crX` are such that the copy stores the leaf
-  words of the reading (`crCpW`, `crLeafW`); `cr_copy_sem`: the copy of 64 words.
+  words of the reading (`crCpW`, `crLeafW`); `cr_zero_sem`: the row's `64 − crOcc` zero words;
+  `cr_copy_sem`: the row of 64 words, the zero prefix and then `crOcc` copied words (`crCpRow`).
 -/
 
 namespace Lvm.X
@@ -146,6 +148,19 @@ def crCpW (I : Array Word) (x : Word) (ql t : ℕ) : Word :=
   if 8 * t < ql then I.getD (x + toWord (1 + t)).toNat 0 else 0
 
 theorem crCpW_zero (I : Array Word) (x : Word) (t : ℕ) : crCpW I x 0 t = 0 := by simp [crCpW]
+
+/-- What the copy stores at row cell `i`: `0` in the first `64 − crOcc` cells, then copy word
+`i − (64 − crOcc)`. -/
+def crCpRow (I : Array Word) (x : Word) (ql i : ℕ) : Word :=
+  if i < 64 - crOcc then 0 else crCpW I x ql (i - (64 - crOcc))
+
+/-- **A copy of the leaf's words is a copy of its row** (`crRowW`). -/
+theorem crCpRow_of {I : Array Word} {x : Word} {ql : ℕ} {o : Option (List UInt8)}
+    (h : ∀ t, crCpW I x ql t = crLeafW o t) (i : ℕ) : crCpRow I x ql i = crRowW o i := by
+  rw [crCpRow, crRowW]
+  split_ifs
+  · rfl
+  · exact h _
 
 theorem cr_mask_ltu (v a b : Word) :
     XOp.and.eval v (XOp.sub.eval 0 (XOp.ltu.eval a b)) = if a < b then v else 0 := by
@@ -709,75 +724,202 @@ theorem cr_copyLoop (I : Array Word) {x : Word} {ql a nw : ℕ} (hql : ql < 2 ^ 
     · rw [d2 _ hy1 (by omega), dk _ (hy _ hy1), c2 _ hy1 (by omega)]
     · rw [d5, dk _ (by decide), c7]
 
+theorem cr_wf_zeroBody : WF crZeroBody := by
+  simp +decide only [crZeroBody, WF, Prim.dst, crWA, cTmp, and_true]
+
+theorem cr_wf_zero : WF crZero := by
+  simp +decide only [crZero, crZeroBody, WF, Writes, Prim.dst, crV, crWA, crNw, crCw, cTmp, regs,
+    List.mem_cons, List.mem_nil_iff, forall_eq_or_imp, forall_eq, or_false, and_true]
+
 theorem cr_wf_copy : WF crCopy := by
-  simp +decide only [crCopy, crCopyBody, WF, Writes, Prim.dst, crV, crMk, crK, crWA, crTA, cr8, crNw,
-    crCw, crX, cTmp, regs, List.mem_cons, List.mem_nil_iff, forall_eq_or_imp, forall_eq, or_false,
-    and_true]
+  simp +decide only [crCopy, crZero, crZeroBody, crCopyBody, WF, Writes, Prim.dst, crV, crMk, crK,
+    crWA, crTA, cr8, crNw, crCw, crX, cTmp, regs, List.mem_cons, List.mem_nil_iff, forall_eq_or_imp,
+    forall_eq, or_false, and_true]
+
+/-- The registers the zero prefix keeps. -/
+theorem cr_zero_nw {r : ℕ} (hr : r = crX ∨ r = crQe ∨ r = crP ∨ r = crTA ∨ r = cr8) :
+    ¬ Writes crZero r := by
+  rcases hr with rfl | rfl | rfl | rfl | rfl <;>
+  simp +decide only [crZero, crZeroBody, Writes, Prim.dst, crV, crWA, crNw, crCw, cTmp, crX, crQe,
+    crP, crTA, cr8, List.mem_cons, List.mem_nil_iff, exists_eq_or_imp, exists_eq_left, or_false,
+    not_or, exists_false, not_false_eq_true, and_self]
+
+/-- **The row's zero prefix**: from `crWA = a`, cells `a … a + 63 − crOcc` get `0`; every other
+heap cell is kept; `crWA` ends at `a + 64 − crOcc`. -/
+theorem cr_zero_sem (I : Array Word) (s : St) (hM : Inv s.M) {a : ℕ} (ha : regs ≤ a)
+    (ha2 : a + 64 < 2 ^ 64) (hsz : a + 64 ≤ s.M.size) (hA : rd s.M crWA = toWord a) :
+    (∀ i < 64 - crOcc, rd (semXIR I crZero s).M (a + i) = 0) ∧
+    (∀ y, regs ≤ y → (y < a ∨ a + (64 - crOcc) ≤ y) → rd (semXIR I crZero s).M y = rd s.M y) ∧
+    Inv (semXIR I crZero s).M ∧ rd (semXIR I crZero s).M crWA = toWord (a + (64 - crOcc)) := by
+  have hs := hM.1
+  have hc := crOcc_le
+  simp only [regs] at hs ha
+  rw [crZero, semXIR_seq]
+  have w0 : WF (.blk [.const crV 0, .const crNw (toWord (64 - crOcc))]) := by
+    simp +decide only [WF, Prim.dst, crV, crNw, List.mem_cons, List.mem_nil_iff, forall_eq_or_imp,
+      forall_eq, or_false, and_true]
+  have hM0 := inv_sem I w0 hM
+  have z0 := size_sem I (.blk [.const crV 0, .const crNw (toWord (64 - crOcc))]) s
+  have r0 : rd (semXIR I (.blk [.const crV 0, .const crNw (toWord (64 - crOcc))]) s).M crV = 0 ∧
+      rd (semXIR I (.blk [.const crV 0, .const crNw (toWord (64 - crOcc))]) s).M crNw =
+        toWord (64 - crOcc) ∧
+      rd (semXIR I (.blk [.const crV 0, .const crNw (toWord (64 - crOcc))]) s).M crWA =
+        toWord a := by
+    simp only [semXIR, runPrims, List.foldl, Prim.run]
+    refine ⟨?_, ?_, ?_⟩ <;>
+    simp (disch := first | decide | (simp only [size_set, crV, crNw, crWA]; omega)) only
+      [rd_set_self, rd_set_ne]
+    all_goals first | rfl | exact hA
+  have k0 : ∀ y, regs ≤ y →
+      rd (semXIR I (.blk [.const crV 0, .const crNw (toWord (64 - crOcc))]) s).M y = rd s.M y :=
+    hframe I _ s (by simp +decide only [Lo, Prim.dst, regs, crV, crNw, List.mem_cons,
+      List.mem_nil_iff, forall_eq_or_imp, forall_eq, or_false, and_true])
+  generalize semXIR I (.blk [.const crV 0, .const crNw (toWord (64 - crOcc))]) s = s0
+    at hM0 z0 r0 k0
+  obtain ⟨v0, n0, a0⟩ := r0
+  let P : ℕ → St → Prop := fun j s' => Inv s'.M ∧ s'.M.size = s.M.size ∧
+    rd s'.M crV = 0 ∧ rd s'.M crWA = toWord (a + j) ∧ (∀ i < j, rd s'.M (a + i) = 0) ∧
+    (∀ y, regs ≤ y → (y < a ∨ a + j ≤ y) → rd s'.M y = rd s.M y)
+  have hE : ∀ i, i ≠ crCw → i ≠ cTmp →
+      rd (entryK crCw crNw (toWord (64 - crOcc)) s0.M) i = rd s0.M i :=
+    fun i h1 h2 => entryK_frame _ (Ne.symm h1) (Ne.symm h2)
+  have h0 : P 0 ⟨entryK crCw crNw (toWord (64 - crOcc)) s0.M, s0.o⟩ := by
+    refine ⟨inv_entryK hM0 (by decide), by simp only [size_entryK, z0], ?_, ?_,
+      fun i hi => absurd hi (by omega), fun y hy _ => ?_⟩ <;> dsimp only
+    · rw [hE _ (by decide) (by decide), v0]
+    · rw [hE _ (by decide) (by decide), a0, Nat.add_zero]
+    · simp only [regs] at hy
+      rw [hE _ (by simp only [crCw]; omega) (by simp only [cTmp]; omega),
+        k0 y (by simp only [regs]; omega)]
+  have hstep : ∀ j s', j < 64 - crOcc → P j s' →
+      P (j + 1) (decS crCw (semXIR I crZeroBody s')) := by
+    rintro j s' hj ⟨i1, i2, i3, i4, i5, i6⟩
+    rw [crZeroBody, semXIR_seq]
+    obtain ⟨c1, c2, hM1⟩ := store_sem I s' i1 (p := crWA) (v := crV) (x := a + j) (by decide)
+      (by decide) i4 (by simp only [regs]; omega) (by omega) (by omega)
+    have z1 := size_sem I (.store crWA crV) s'
+    generalize semXIR I (.store crWA crV) s' = s1 at c1 c2 hM1 z1
+    have hs1 := hM1.1
+    simp only [regs] at hs1
+    have hdr : ∀ r, r < regs → r ≠ a + j := fun r hr => by simp only [regs] at hr; omega
+    have b2 : ∀ r, r ≠ crWA → rd (semXIR I (.blk [.op .add crWA crWA cOne]) s1).M r = rd s1.M r :=
+      fun r hr => by
+        simp only [semXIR, runPrims, List.foldl, Prim.run]; exact rd_set_ne (Ne.symm hr)
+    have hM2 := inv_sem I (P := .blk [.op .add crWA crWA cOne])
+      (by simp +decide only [WF, Prim.dst, crWA, List.mem_cons, List.mem_nil_iff, forall_eq_or_imp,
+        forall_eq, or_false, and_true]) hM1
+    have hd : ∀ y, y ≠ crCw → rd (decS crCw (semXIR I (.blk [.op .add crWA crWA cOne]) s1)).M y =
+        rd (semXIR I (.blk [.op .add crWA crWA cOne]) s1).M y := fun y hy => rd_decS (Ne.symm hy) _
+    have hx : ∀ y, regs ≤ y → y ≠ crCw ∧ y ≠ crWA ∧ y ≠ cTmp := fun y hy => by
+      simp only [regs, crCw, crWA, cTmp] at *; omega
+    refine ⟨inv_decS hM2 (by decide), by rw [size_decS, size_sem, z1, i2], ?_, ?_,
+      fun i hi => ?_, fun y hy hy2 => ?_⟩
+    · rw [hd _ (by decide), b2 _ (by decide), c2 _ (hdr _ (by decide)) (by decide), i3]
+    · rw [hd _ (by decide)]
+      simp only [semXIR, runPrims, List.foldl, Prim.run]
+      rw [rd_set_self (by simp only [crWA]; omega), c2 _ (hdr _ (by decide)) (by decide), i4,
+        c2 _ (hdr _ (by decide)) (by decide), show rd s'.M cOne = 1 from i1.2 0 (by decide),
+        add_one_toWord, Nat.add_assoc]
+    · obtain ⟨x1, x2, x3⟩ := hx (a + i) (by simp only [regs]; omega)
+      rw [hd _ x1, b2 _ x2]
+      by_cases hij : i = j
+      · subst hij; rw [c1, i3]
+      · rw [c2 _ (by omega) x3, i5 i (by omega)]
+    · obtain ⟨x1, x2, x3⟩ := hx y hy
+      rw [hd _ x1, b2 _ x2, c2 _ (by omega) x3, i6 y hy (by omega)]
+  have hfin := loopK_run I crZeroBody P s0 hM0 (c := crCw) (n := crNw) (K := 64 - crOcc)
+    (by decide) (by decide) (by decide) n0 (by omega) h0 hstep
+  exact ⟨hfin.2.2.2.2.1, hfin.2.2.2.2.2, hfin.1, hfin.2.2.2.1⟩
 
 /-- **The copy**: from `crX = x`, `crQe = ql`, `crWA = a`, cells `a … a + 63` get
-`crCpW I x ql ·`; every other heap cell is kept; `crWA` ends at `a + 64`. -/
+`crCpRow I x ql ·` (`64 − crOcc` zero words, then copy words `0 … crOcc − 1`); every other heap
+cell is kept; `crWA` ends at `a + 64`. -/
 theorem cr_copy_sem (I : Array Word) (s : St) (hM : Inv s.M) {x : Word} {ql a : ℕ}
     (hql : ql < 2 ^ 64) (ha : regs ≤ a) (ha2 : a + 64 + 2 < 2 ^ 64) (hsz : a + 64 ≤ s.M.size)
     (hX : rd s.M crX = x) (hQ : rd s.M crQe = toWord ql) (hA : rd s.M crWA = toWord a) :
-    (∀ i < 64, rd (semXIR I crCopy s).M (a + i) = crCpW I x ql i) ∧
+    (∀ i < 64, rd (semXIR I crCopy s).M (a + i) = crCpRow I x ql i) ∧
     (∀ y, regs ≤ y → (y < a ∨ a + 64 ≤ y) → rd (semXIR I crCopy s).M y = rd s.M y) ∧
     Inv (semXIR I crCopy s).M ∧ rd (semXIR I crCopy s).M crWA = toWord (a + 64) ∧
     rd (semXIR I crCopy s).M crP = rd s.M crP := by
-  have hs := hM.1
-  have h1 : rd s.M cOne = 1 := hM.2 0 (by decide)
+  have hc := crOcc_le
+  -- the zero prefix
+  obtain ⟨z1, z2, hMz, az⟩ := cr_zero_sem I s hM ha (by omega) hsz hA
+  have fz : ∀ r, (r = crX ∨ r = crQe ∨ r = crP ∨ r = crTA ∨ r = cr8) →
+      rd (semXIR I crZero s).M r = rd s.M r := fun r hr =>
+    frame I _ s cr_wf_zero hM r (by rcases hr with rfl | rfl | rfl | rfl | rfl <;> decide)
+      (cr_zero_nw hr)
+  have hszz := size_sem I crZero s
+  rw [crCopy, semXIR_seq]
+  generalize semXIR I crZero s = s1 at z1 z2 hMz az fz hszz
+  have hX1 : rd s1.M crX = x := (fz _ (.inl rfl)).trans hX
+  have hQ1 : rd s1.M crQe = toWord ql := (fz _ (.inr (.inl rfl))).trans hQ
+  have hP1 : rd s1.M crP = rd s.M crP := fz _ (.inr (.inr (.inl rfl)))
+  -- the copy of `crOcc` words to `a' = a + (64 − crOcc)`
+  have hs := hMz.1
+  have h1 : rd s1.M cOne = 1 := hMz.2 0 (by decide)
   simp only [regs] at hs
-  have wf0 : WF (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord 64)]) := by
+  have wf0 : WF (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord crOcc)]) := by
     simp +decide only [WF, Prim.dst, crTA, cr8, crNw, List.mem_cons, List.mem_nil_iff,
       forall_eq_or_imp, forall_eq, or_false, and_true]
-  have hM0 := inv_sem I wf0 hM
-  have hH0 := hframe I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord 64)]) s
+  have hM0 := inv_sem I wf0 hMz
+  have hH0 := hframe I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord crOcc)]) s1
     (by simp +decide only [Lo, Prim.dst, regs, crTA, cr8, crNw, List.mem_cons, List.mem_nil_iff,
       forall_eq_or_imp, forall_eq, or_false, and_true])
-  have hsz0 := size_sem I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord 64)]) s
-  have r0 : rd (semXIR I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord 64)])
-        s).M crTA = x + toWord (1 + 0) ∧
-      rd (semXIR I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord 64)])
-        s).M cr8 = toWord (8 * 0) ∧
-      rd (semXIR I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord 64)])
-        s).M crNw = toWord 64 ∧
-      rd (semXIR I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord 64)])
-        s).M crQe = toWord ql ∧
-      rd (semXIR I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord 64)])
-        s).M crWA = toWord (a + 0) ∧
-      rd (semXIR I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord 64)])
-        s).M crP = rd s.M crP := by
+  have hsz0 := size_sem I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord crOcc)])
+    s1
+  have r0 : rd (semXIR I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord crOcc)])
+        s1).M crTA = x + toWord (1 + 0) ∧
+      rd (semXIR I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord crOcc)])
+        s1).M cr8 = toWord (8 * 0) ∧
+      rd (semXIR I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord crOcc)])
+        s1).M crNw = toWord crOcc ∧
+      rd (semXIR I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord crOcc)])
+        s1).M crQe = toWord ql ∧
+      rd (semXIR I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord crOcc)])
+        s1).M crWA = toWord (a + (64 - crOcc) + 0) ∧
+      rd (semXIR I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord crOcc)])
+        s1).M crP = rd s1.M crP := by
     simp only [semXIR, runPrims, List.foldl, Prim.run]
     refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩ <;>
     simp (disch := first | decide | (simp only [size_set, crTA, cr8, crNw]; omega)) only
       [rd_set_self, rd_set_ne]
-    all_goals first | rfl | exact hQ | exact hA | (rw [hX, h1]; all_goals rfl)
-  rw [crCopy, semXIR_seq]
-  generalize semXIR I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord 64)])
-    s = s0 at hM0 hH0 hsz0 r0
+    all_goals first | rfl | exact hQ1 | exact az | (rw [hX1, h1]; all_goals rfl)
+  rw [semXIR_seq]
+  generalize semXIR I (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord crOcc)])
+    s1 = s0 at hM0 hH0 hsz0 r0
   obtain ⟨t0, e0, n0, q0, a0, p0⟩ := r0
-  have hE : ∀ i, i ≠ crCw → i ≠ cTmp → rd (entryK crCw crNw (toWord 64) s0.M) i = rd s0.M i :=
+  have hE : ∀ i, i ≠ crCw → i ≠ cTmp → rd (entryK crCw crNw (toWord crOcc) s0.M) i = rd s0.M i :=
     fun i h1 h2 => entryK_frame _ (Ne.symm h1) (Ne.symm h2)
-  have hcnt : rd (entryK crCw crNw (toWord 64) s0.M) crCw = toWord 64 :=
+  have hcnt : rd (entryK crCw crNw (toWord crOcc) s0.M) crCw = toWord crOcc :=
     entryK_count hM0 (by decide) (by decide) (by decide) n0
-  have hME := inv_entryK (c := crCw) (n := crNw) (K := toWord 64) hM0 (by decide)
-  have e : semXIR I (.loopK crCw crNw (toWord 64) crCopyBody) s0 =
-      iterL (semXIR I crCopyBody) crCw 64 ⟨entryK crCw crNw (toWord 64) s0.M, s0.o⟩ := by
-    simp only [semXIR, hcnt, toNat_toWord (show 64 < 2 ^ 64 by norm_num)]
+  have hME := inv_entryK (c := crCw) (n := crNw) (K := toWord crOcc) hM0 (by decide)
+  have e : semXIR I (.loopK crCw crNw (toWord crOcc) crCopyBody) s0 =
+      iterL (semXIR I crCopyBody) crCw crOcc ⟨entryK crCw crNw (toWord crOcc) s0.M, s0.o⟩ := by
+    simp only [semXIR, hcnt, toNat_toWord (show crOcc < 2 ^ 64 by omega)]
   rw [e]
   have hy : ∀ y, regs ≤ y → y ≠ crCw ∧ y ≠ cTmp := fun y hy => by
     simp only [crCw, cTmp, regs] at *; omega
-  obtain ⟨d1, d2, d3, d4, d5⟩ := cr_copyLoop I hql ha ha2 (by norm_num) 64 0
-    ⟨entryK crCw crNw (toWord 64) s0.M, s0.o⟩
+  obtain ⟨d1, d2, d3, d4, d5⟩ := cr_copyLoop I (a := a + (64 - crOcc)) (nw := crOcc) hql
+    (by omega) (by omega) (by omega) crOcc 0 ⟨entryK crCw crNw (toWord crOcc) s0.M, s0.o⟩
     (by omega) hME (by simp only [size_entryK]; omega) (by rw [hE _ (by decide) (by decide), a0])
     (by rw [hE _ (by decide) (by decide), t0]) (by rw [hE _ (by decide) (by decide), e0])
     (by rw [hE _ (by decide) (by decide), q0])
-  refine ⟨fun i hi => d1 i (by omega) (by omega), fun y hy1 hy2 => ?_, d3,
-    by rw [d4, Nat.zero_add], ?_⟩
-  · rw [d2 y hy1 (by omega)]
-    show rd (entryK crCw crNw (toWord 64) s0.M) y = rd s.M y
+  have back : ∀ y, regs ≤ y → (y < a + (64 - crOcc) ∨ a + 64 ≤ y) →
+      rd (iterL (semXIR I crCopyBody) crCw crOcc ⟨entryK crCw crNw (toWord crOcc) s0.M, s0.o⟩).M y =
+        rd s1.M y := fun y hy1 hy2 => by
+    rw [d2 y hy1 (by omega)]
+    show rd (entryK crCw crNw (toWord crOcc) s0.M) y = rd s1.M y
     rw [hE y (hy y hy1).1 (hy y hy1).2, hH0 y hy1]
+  refine ⟨fun i hi => ?_, fun y hy1 hy2 => ?_, d3, ?_, ?_⟩
+  · rw [crCpRow]
+    split_ifs with h
+    · rw [back _ (by simp only [regs] at ha ⊢; omega) (.inl (by omega)), z1 i h]
+    · rw [show a + i = a + (64 - crOcc) + (i - (64 - crOcc)) by omega]
+      exact d1 _ (by omega) (by omega)
+  · rw [back y hy1 (by omega), z2 y hy1 (by omega)]
+  · rw [d4, show a + (64 - crOcc) + (0 + crOcc) = a + 64 by omega]
   · rw [d5]
-    show rd (entryK crCw crNw (toWord 64) s0.M) crP = rd s.M crP
-    rw [hE _ (by decide) (by decide), p0]
+    show rd (entryK crCw crNw (toWord crOcc) s0.M) crP = rd s.M crP
+    rw [hE _ (by decide) (by decide), p0, hP1]
 
 end Lvm.X

@@ -124,8 +124,8 @@ def EvLen (T : List Tab) (evs : List (List FE × List FE)) : Prop :=
   ∀ j (h1 : j < T.length) (h2 : j < evs.length), evs[j].2.length = T[j].w
 
 /-- **Scalars**, with their count. -/
-theorem ref_readEsL {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray} :
-    ∀ n, RefAt cap shp sig (DM.readEs n) (VerifierProgram.readScalars n)
+theorem ref_readEsL {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray} :
+    ∀ n, RefAt cap occ shp sig (DM.readEs n) (VerifierProgram.readScalars n)
       fun xs ys ↦ ys = xs.map FE.toExt3 ∧ xs.length = n
   | 0 => RefAt.pure ⟨rfl, rfl⟩
   | n + 1 => by
@@ -136,10 +136,10 @@ theorem ref_readEsL {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig 
     exact RefAt.pure (by simp [hxy, hs, hl])
 
 /-- A native step whose value is mapped afterwards. -/
-theorem RefAt.map_left {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray} {α β β' : Type}
+theorem RefAt.map_left {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray} {α β β' : Type}
     {d : DM β} {k : β → DM β'} {g : β → β'} {P : VerifierProgram α} {R : β → α → Prop}
-    {R' : β' → α → Prop} (hk : ∀ b, k b = Pure.pure (g b)) (h : RefAt cap shp sig d P R)
-    (hR : ∀ b a, R b a → R' (g b) a) : RefAt cap shp sig (d >>= k) P R' := by
+    {R' : β' → α → Prop} (hk : ∀ b, k b = Pure.pure (g b)) (h : RefAt cap occ shp sig d P R)
+    (hR : ∀ b a, R b a → R' (g b) a) : RefAt cap occ shp sig (d >>= k) P R' := by
   intro s hok
   have e : runD (d >>= k) sig s = runD (k (runD d sig s).1) sig (runD d sig s).2 := rfl
   rw [e, hk] at hok ⊢
@@ -167,13 +167,13 @@ theorem map_value (f : List Lvm.Form) (ev : List FE) :
 
 section Ref
 
-variable {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
+variable {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
 
 /-- **The per-table loop** (`tableTerms` against `tableTermsClaims`, tables numbered from `k`). -/
 theorem ref_tableTerms (tables : List Verifier.Table) (cp fp point : List FE) :
     ∀ (T : List Tab) (fs : List (List Lvm.Form)) (ws : List FE) (k cursor : ℕ) (final : FE)
       (final' : E) (acc : List Verifier.ColumnClaim), final' = FE.toExt3 final →
-    RefAt cap shp sig (Lvm.tableTerms cp fp point (List.zip (T.map nativeTable) (List.zip fs ws)) cursor final)
+    RefAt cap occ shp sig (Lvm.tableTerms cp fp point (List.zip (T.map nativeTable) (List.zip fs ws)) cursor final)
       (Verifier.tableTermsClaims tables (cp.map FE.toExt3) (fp.map FE.toExt3) (point.map FE.toExt3)
         (List.zip (vTablesK k T) (List.zip (T.map (·.τ)) (List.zip (fs.map (·.map formE))
           (ws.map FE.toExt3)))) cursor final' acc)
@@ -211,11 +211,11 @@ theorem ref_tableSumcheck (T : List Tab) (rounds : ℕ) (hr : rounds = (T.map (�
     (hhs : hs = T.map (·.τ)) (hfs : fs' = fs.map (·.map formE)) (hcp : cp' = cp.map FE.toExt3)
     (hfp : fp' = fp.map FE.toExt3) (heqp : eqp' = eqp.map FE.toExt3)
     (ht : target' = FE.toExt3 target) :
-    RefAt cap shp sig (Lvm.tableSumcheck rounds (T.map nativeTable) fs cp fp eqp target)
+    RefAt cap occ shp sig (Lvm.tableSumcheck rounds (T.map nativeTable) fs cp fp eqp target)
       (Verifier.tableSumcheckClaims (vTables T) hs fs' cp' fp' eqp' target')
       (fun evs cl ↦ cl = claimsOfEvs T evs ∧ EvLen T evs) := by
   subst hr hhs hfs hcp hfp heqp ht
-  have hsc := ref_sumcheck (cap := cap) (shp := shp) (sig := sig) 4
+  have hsc := ref_sumcheck (cap := cap) (occ := occ) (shp := shp) (sig := sig) 4
     (List.replicate ((T.map (·.τ)).foldl max 0) none) target
   rw [map_replicate_none] at hsc
   refine RefAt.bind (fun ⟨_, _⟩ ↦ (monoD_tableTerms _ _ _ _ _ _).bind fun ⟨_, _⟩ ↦
@@ -223,7 +223,7 @@ theorem ref_tableSumcheck (T : List Tab) (rounds : ℕ) (hr : rounds = (T.map (�
   rintro ⟨ch, cl⟩ _ rfl
   have hlh : (T.map nativeTable).map (·.logHeight) = T.map (·.τ) := by
     simp only [List.map_map]; rfl
-  have htt := ref_tableTerms (cap := cap) (shp := shp) (sig := sig) (vTables T) cp fp ch.reverse T fs
+  have htt := ref_tableTerms (cap := cap) (occ := occ) (shp := shp) (sig := sig) (vTables T) cp fp ch.reverse T fs
     (Lvm.tableWeights (T.map (·.τ)) eqp ch.reverse) 0 0 0 0 [] Lvm.M3.tE_zero.symm
   rw [map_tableWeights, ← vTables_eq, List.map_reverse] at htt
   simp only [hlh]
@@ -251,10 +251,10 @@ theorem FE_beq_self (x : FE) : (x == x) = true := by
 
 /-- One scalar read as a list of `n = 1`. -/
 theorem ref_readEs_one {n : ℕ} (hn : n = 1) :
-    RefAt cap shp sig (DM.readEs n) VerifierProgram.readScalar fun xs z ↦ xs.map FE.toExt3 = [z] := by
+    RefAt cap occ shp sig (DM.readEs n) VerifierProgram.readScalar fun xs z ↦ xs.map FE.toExt3 = [z] := by
   subst hn
   intro s hok
-  obtain ⟨a, h1, h2, h3, h4⟩ := ref_readE (cap := cap) (shp := shp) (sig := sig) s hok
+  obtain ⟨a, h1, h2, h3, h4⟩ := ref_readE (cap := cap) (occ := occ) (shp := shp) (sig := sig) s hok
   exact ⟨a, h1, h2, h3, by rw [h4]; rfl⟩
 
 theorem monoD_dBus (p : Params) (m : M3) (pub : Pub) : MonoD (dBus p m pub) :=
@@ -268,7 +268,7 @@ theorem monoD_dTab (p : Params) (m : M3) (pub : Pub) (point : List FE) (bus : Bu
 
 /-- **Phase 2**: the native bus phase refines the lvm bus phase. -/
 theorem ref_dBus (p : Params) (tabs : Pub → List Tab) (pub : Pub) (hl : p.leafdecReads = 1) :
-    RefAt cap shp sig (dBus p (M3.real p tabs) pub) (lvmBusProg p.busDepth)
+    RefAt cap occ shp sig (dBus p (M3.real p tabs) pub) (lvmBusProg p.busDepth)
       (BusRel (sumcheckTabs (tabs pub))) := by
   simp only [lvmBusProg, LeanVM.Protocol.EndToEnd.Front.abProg, VerifierProgram.bind_assoc,
     VerifierProgram.ret_bind]
@@ -356,7 +356,7 @@ check; the claims are those of the native evaluations, for phase 3b). -/
 theorem ref_dTab (p : Params) (tabs : Pub → List Tab) (pub : Pub)
     (hr : p.tableRounds = ((sumcheckTabs (tabs pub)).map (·.τ)).foldl max 0)
     (pb : List FE × BusOut) (b : LBus) (hb : BusRel (sumcheckTabs (tabs pub)) pb b) :
-    RefAt cap shp sig (dTab p (M3.real p tabs) pub pb.1 pb.2 >>= fun ev ↦ pure (pb, ev))
+    RefAt cap occ shp sig (dTab p (M3.real p tabs) pub pb.1 pb.2 >>= fun ev ↦ pure (pb, ev))
       (Verifier.tablePhaseClaims (vTables (sumcheckTabs (tabs pub))) (vLayout (sumcheckTabs (tabs pub)))
           (busResV (sumcheckTabs (tabs pub)) b))
       (fun r cl ↦ r.1.2.claims = [] ∧
@@ -394,7 +394,7 @@ def TabRel (T : List Tab) (r : (List FE × BusOut) × List (List FE × List FE))
 /-- Phases 2–3 at a record with one leaf-decomposition scalar and the tallest table's rounds. -/
 theorem ref_busTabP (p : Params) (tabs : Pub → List Tab) (pub : Pub) (hl : p.leafdecReads = 1)
     (hr : p.tableRounds = ((sumcheckTabs (tabs pub)).map (·.τ)).foldl max 0) :
-    RefAt cap shp sig (dBus p (M3.real p tabs) pub >>= fun pb ↦
+    RefAt cap occ shp sig (dBus p (M3.real p tabs) pub >>= fun pb ↦
         dTab p (M3.real p tabs) pub pb.1 pb.2 >>= fun ev ↦ pure (pb, ev))
       (M3.lvmBusTableProg (vTables (sumcheckTabs (tabs pub))) (vLayout (sumcheckTabs (tabs pub)))
         p.busDepth (busResV (sumcheckTabs (tabs pub))))

@@ -54,19 +54,19 @@ theorem monoD_openingR (L : Level) : MonoD (DM.openingR L) := by
 
 section Prim
 
-variable {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
+variable {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
 
 /-- **A scalar.** -/
-theorem ref_readE : RefAt cap shp sig DM.readE VerifierProgram.readScalar fun x y ↦ y = FE.toExt3 x :=
+theorem ref_readE : RefAt cap occ shp sig DM.readE VerifierProgram.readScalar fun x y ↦ y = FE.toExt3 x :=
   fun s _ ↦ ⟨_, rfl, rfl, rfl, (toExt3_feAt sig _).symm⟩
 
 /-- **A challenge.** -/
 theorem ref_sampleE :
-    RefAt cap shp sig DM.sampleE VerifierProgram.sampleChallenge fun x y ↦ y = FE.toExt3 x :=
+    RefAt cap occ shp sig DM.sampleE VerifierProgram.sampleChallenge fun x y ↦ y = FE.toExt3 x :=
   fun s _ ↦ ⟨_, rfl, rfl, rfl, (toExt3_feAt_chal sig _).symm⟩
 
 /-- **Scalars.** -/
-theorem ref_readEs : ∀ n, RefAt cap shp sig (DM.readEs n) (VerifierProgram.readScalars n)
+theorem ref_readEs : ∀ n, RefAt cap occ shp sig (DM.readEs n) (VerifierProgram.readScalars n)
     fun xs ys ↦ ys = xs.map FE.toExt3
   | 0 => RefAt.pure rfl
   | n + 1 => by
@@ -77,7 +77,7 @@ theorem ref_readEs : ∀ n, RefAt cap shp sig (DM.readEs n) (VerifierProgram.rea
     exact RefAt.pure (by simp [hxy, hs])
 
 /-- **Challenges.** -/
-theorem ref_samples : ∀ n, RefAt cap shp sig (DM.samples n) (VerifierProgram.sampleChallenges n)
+theorem ref_samples : ∀ n, RefAt cap occ shp sig (DM.samples n) (VerifierProgram.sampleChallenges n)
     fun xs ys ↦ ys = xs.map FE.toExt3
   | 0 => RefAt.pure rfl
   | n + 1 => by
@@ -89,7 +89,7 @@ theorem ref_samples : ∀ n, RefAt cap shp sig (DM.samples n) (VerifierProgram.s
 
 /-- **A cap**: its bytes skipped. -/
 theorem ref_skip {ht w n : ℕ} (h : n = 32 * 2 ^ cap ht w) :
-    RefAt cap shp sig (DM.skip n) (VerifierProgram.readCommitment ht w) fun _ _ ↦ True := by
+    RefAt cap occ shp sig (DM.skip n) (VerifierProgram.readCommitment ht w) fun _ _ ↦ True := by
   intro s _
   subst h
   exact ⟨(), rfl, rfl, rfl, trivial⟩
@@ -97,7 +97,7 @@ theorem ref_skip {ht w n : ℕ} (h : n = 32 * 2 ^ cap ht w) :
 /-- **The positions**: `⌈t/8⌉` challenges, the same bit fields. -/
 theorem ref_positionsAux (h : ℕ) : ∀ (n fuel rem : ℕ), rem ≤ positionsPerAnswer * n → n ≤ fuel →
     (n = 0 ∨ positionsPerAnswer * (n - 1) < rem) →
-    RefAt cap shp sig (DM.positionsAux h n rem)
+    RefAt cap occ shp sig (DM.positionsAux h n rem)
       (LeanVM.Protocol.Verifier.samplePositionsAux positionsPerAnswer h fuel rem) fun ps ps' ↦ ps' = ps
   | 0, fuel, rem, h1, _, _ => by
     have hr : rem = 0 := by simpa [positionsPerAnswer] using h1
@@ -131,7 +131,7 @@ theorem ref_positionsAux (h : ℕ) : ∀ (n fuel rem : ℕ), rem ≤ positionsPe
 
 /-- **The positions of a level.** -/
 theorem ref_positionsR (L : Level) :
-    RefAt cap shp sig (DM.positionsR L)
+    RefAt cap occ shp sig (DM.positionsR L)
       (LeanVM.Protocol.Verifier.samplePositions positionsPerAnswer L.height L.t) fun ps ps' ↦ ps' = ps :=
   ref_positionsAux _ _ _ _ (by simp only [positionsPerAnswer]; omega)
     (by simp only [positionsPerAnswer]; omega)
@@ -147,31 +147,33 @@ theorem openingAux_succ (L : Level) (n : ℕ) (s : RS) :
         (runD (DM.openingAux L n) sig { s with ent := s.ent + 40 + L.row + 104 * L.path }).2) := rfl
 
 /-- The rows `openingAux` points at, read as the compiled verifier reads them. -/
-theorem opRows_openingAux (L : Level) (wd : ℕ) (hrow : L.row = 8 * wd) :
-    ∀ (n : ℕ) (s : RS), (opRows sig wd L.path n s.ent).2 = (runD (DM.openingAux L n) sig s).2.ent ∧
-      (opRows sig wd L.path n s.ent).1 =
-        (runD (DM.openingAux L n) sig s).1.map (fun o ↦ rowAt sig o wd) ∧
+theorem opRows_openingAux (L : Level) (wd oc : ℕ) (hrow : L.row = 8 * min oc wd) :
+    ∀ (n : ℕ) (s : RS), (opRows sig wd oc L.path n s.ent).2 = (runD (DM.openingAux L n) sig s).2.ent ∧
+      (opRows sig wd oc L.path n s.ent).1 =
+        (runD (DM.openingAux L n) sig s).1.map (fun o ↦ padAt sig o wd oc) ∧
       (runD (DM.openingAux L n) sig s).2.msg = s.msg
   | 0, s => ⟨rfl, rfl, rfl⟩
   | n + 1, s => by
-    obtain ⟨h1, h2, h3⟩ := opRows_openingAux L wd hrow n
+    obtain ⟨h1, h2, h3⟩ := opRows_openingAux L wd oc hrow n
       { s with ent := s.ent + 40 + L.row + 104 * L.path }
     rw [openingAux_succ]
     simp only [opRows, ← hrow]
     exact ⟨h1, by rw [h2]; rfl, h3⟩
 
-/-- **An opening**: the rows at V_S's row offsets, with the commitment's shape. -/
+/-- **An opening**: the rows at V_S's row offsets, with the commitment's shape and occupancy. -/
 theorem ref_openingR (L : Level) {i : ℕ} {ps : List ℕ} {wd : ℕ} (hshp : shp i = (L.height, wd))
-    (hrow : L.row = 8 * wd) (hpath : L.path = L.height - cap L.height wd) (hlen : ps.length = L.t) :
-    RefAt cap shp sig (DM.openingR L) (VerifierProgram.queryOpenings i ps)
-      fun offs rows ↦ rows = offs.map fun o ↦ rowAt sig o wd := by
+    (hrow : L.row = 8 * min (occ L.height wd) wd) (hpath : L.path = L.height - cap L.height wd)
+    (hlen : ps.length = L.t) :
+    RefAt cap occ shp sig (DM.openingR L) (VerifierProgram.queryOpenings i ps)
+      fun offs rows ↦ rows = offs.map fun o ↦ padAt sig o wd (occ L.height wd) := by
   intro s _
   have hsplit : runD (DM.openingR L) sig s =
       runD (DM.openingAux L L.t) sig { s with ok := s.ok && s.msg == 0 } := rfl
-  obtain ⟨h1, h2, h3⟩ := opRows_openingAux (sig := sig) L wd hrow L.t
+  obtain ⟨h1, h2, h3⟩ := opRows_openingAux (sig := sig) L wd (occ L.height wd) hrow L.t
     { s with ok := s.ok && s.msg == 0 }
-  have hiv : ivp cap shp (VerifierProgram.queryOpenings i ps) sig s =
-      (some (opRows sig wd L.path L.t s.ent).1, { s with ent := (opRows sig wd L.path L.t s.ent).2 }) := by
+  have hiv : ivp cap occ shp (VerifierProgram.queryOpenings i ps) sig s =
+      (some (opRows sig wd (occ L.height wd) L.path L.t s.ent).1,
+        { s with ent := (opRows sig wd (occ L.height wd) L.path L.t s.ent).2 }) := by
     simp only [VerifierProgram.queryOpenings, ivp, hshp, hlen, ← hpath]
   rw [hsplit, hiv]
   exact ⟨_, rfl, h1, h3.symm, h2⟩

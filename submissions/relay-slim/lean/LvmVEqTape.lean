@@ -131,20 +131,20 @@ def TapeRel (w : ℕ) (t : Lvm.TapeRes) (o : List E × List E × Verifier.Keccak
 
 section Ref
 
-variable {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
+variable {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
 
 /-- A native step followed by a pure map refines the program alone. -/
 theorem RefAt.bind_pure_left {α β β' : Type} {d : DM β} {g : β → β'} {P : VerifierProgram α}
-    {R : β → α → Prop} {R' : β' → α → Prop} (h : RefAt cap shp sig d P R)
+    {R : β → α → Prop} {R' : β' → α → Prop} (h : RefAt cap occ shp sig d P R)
     (hR : ∀ b a, R b a → R' (g b) a) :
-    RefAt cap shp sig (d >>= fun b ↦ Pure.pure (g b)) P R' := by
+    RefAt cap occ shp sig (d >>= fun b ↦ Pure.pure (g b)) P R' := by
   intro s hok
   obtain ⟨a, h1, h2, h3, h4⟩ := h s hok
   exact ⟨a, h1, h2, h3, hR _ _ h4⟩
 
 /-- **A layer at a shape.** -/
 theorem ref_verifyKeccakLayerG (depth segs logSteps step : ℕ) (c : Lvm.KeccakClaim) :
-    RefAt cap shp sig (verifyKeccakLayerG depth segs logSteps step c)
+    RefAt cap occ shp sig (verifyKeccakLayerG depth segs logSteps step c)
       (KeccakGkr.verifyKeccakLayerS ⟨depth, segs⟩ logSteps step (kcE c)) fun r r' ↦ r' = kcE r := by
   unfold verifyKeccakLayerG KeccakGkr.verifyKeccakLayerS
   refine RefAt.bind (fun _ ↦ (MonoD.require _).bind fun _ ↦ monoD_sampleE.bind fun _ ↦
@@ -164,14 +164,14 @@ theorem ref_verifyKeccakLayerG (depth segs logSteps step : ℕ) (c : Lvm.KeccakC
       (monoD_readEs _).bind fun _ ↦ (MonoD.require _).bind fun _ ↦ monoD_sampleE.bind fun _ ↦
         MonoD.pure _) ref_sampleE ?_
   rintro s _ rfl
-  have hp := ref_keccakPackRounds c.point (Lvm.polyEval product s) 1 (cap := cap) (shp := shp)
+  have hp := ref_keccakPackRounds c.point (Lvm.polyEval product s) 1 (cap := cap) (occ := occ) (shp := shp)
     (sig := sig)
   rw [toExt3_polyEval, tE_one] at hp
   refine RefAt.bind (fun ⟨_, _, _⟩ ↦ (monoD_sumcheck _ _ _).bind fun ⟨_, _⟩ ↦
       (monoD_readEs _).bind fun _ ↦ (MonoD.require _).bind fun _ ↦ monoD_sampleE.bind fun _ ↦
         MonoD.pure _) hp ?_
   rintro ⟨value, scale, point⟩ _ rfl
-  have hs := (ref_sumcheck 4 (List.replicate Lvm.localBits none) value (cap := cap) (shp := shp)
+  have hs := (ref_sumcheck 4 (List.replicate Lvm.localBits none) value (cap := cap) (occ := occ) (shp := shp)
     (sig := sig)).retD (retD_sumcheck 4 _ value)
   simp only [List.map_replicate, Option.map_none] at hs
   refine RefAt.bind (fun ⟨_, _⟩ ↦ (monoD_readEs _).bind fun _ ↦ (MonoD.require _).bind fun _ ↦
@@ -194,7 +194,7 @@ theorem ref_verifyKeccakLayerG (depth segs logSteps step : ℕ) (c : Lvm.KeccakC
 
 /-- **The layers at a shape.** -/
 theorem ref_keccakLayersG (depth segs logSteps : ℕ) : ∀ (steps : List ℕ) (c : Lvm.KeccakClaim),
-    RefAt cap shp sig (keccakLayersG depth segs logSteps steps c)
+    RefAt cap occ shp sig (keccakLayersG depth segs logSteps steps c)
       (KeccakGkr.keccakLayersS ⟨depth, segs⟩ logSteps steps (kcE c)) fun r r' ↦ r' = kcE r
   | [], _ => RefAt.pure rfl
   | s :: steps, c => by
@@ -206,7 +206,7 @@ theorem ref_keccakLayersG (depth segs logSteps : ℕ) : ∀ (steps : List ℕ) (
 
 /-- **T2**: the tape's GKR. -/
 theorem ref_tapeGkrF (logSteps : ℕ) (inst output : List FE) :
-    RefAt cap shp sig (tapeGkrF logSteps inst output)
+    RefAt cap occ shp sig (tapeGkrF logSteps inst output)
       (KeccakGkr.tapeGkr logSteps (inst.map FE.toExt3) (output.map FE.toExt3))
       fun r c ↦ c = kcE r.2 := by
   rw [KeccakGkr.tapeGkr_eq]
@@ -220,7 +220,7 @@ theorem ref_tapeGkrF (logSteps : ℕ) (inst output : List FE) :
 
 /-- **V_S's tape phase refines the tape caller's first three binds.** -/
 theorem ref_dTape (w : ℕ) :
-    RefAt cap shp sig (dTape w)
+    RefAt cap occ shp sig (dTape w)
       (VerifierProgram.sampleChallenges w >>= fun r ↦ VerifierProgram.readScalars 25 >>= fun v ↦
         KeccakGkr.tapeGkr w r v >>= fun claim ↦ VerifierProgram.ret (r, v, claim))
       (TapeRel w) := by

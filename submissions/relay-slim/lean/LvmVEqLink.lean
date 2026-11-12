@@ -40,7 +40,7 @@ theorem monoD_dKsLink (p : Params) (m : M3) (rk : List FE) (pub : Pub) : MonoD (
 
 section Ref
 
-variable {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
+variable {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
 
 namespace Lk
 
@@ -50,17 +50,17 @@ theorem forall₂_map_both {α β γ δ : Type} {R : γ → δ → Prop} {f : α
   List.forall₂_map_left_iff.2 (List.forall₂_map_right_iff.2 h)
 
 theorem ref_samplesL (n : ℕ) :
-    RefAt cap shp sig (DM.samples n) (Compile.VerifierProgram.sampleChallenges n)
+    RefAt cap occ shp sig (DM.samples n) (Compile.VerifierProgram.sampleChallenges n)
       fun xs ys ↦ ys = xs.map FE.toExt3 ∧ xs.length = n :=
   refAt_withD (ref_samples n) (Q := fun xs ↦ xs.length = n) (length_samples n sig)
 
 theorem ref_readEsL (n : ℕ) :
-    RefAt cap shp sig (DM.readEs n) (Compile.VerifierProgram.readScalars n)
+    RefAt cap occ shp sig (DM.readEs n) (Compile.VerifierProgram.readScalars n)
       fun xs ys ↦ ys = xs.map FE.toExt3 ∧ xs.length = n :=
   refAt_withD (ref_readEs n) (Q := fun xs ↦ xs.length = n) (length_readEs n sig)
 
 theorem ref_sumcheckL (count : ℕ) (eqs : List (Option FE)) (claim : FE) :
-    RefAt cap shp sig (Lvm.sumcheck claim count eqs)
+    RefAt cap occ shp sig (Lvm.sumcheck claim count eqs)
       (Verifier.sumcheck (FE.toExt3 claim) count (eqs.map (Option.map FE.toExt3)))
       fun r r' ↦ r' = (r.1.map FE.toExt3, FE.toExt3 r.2) ∧ r.1.length = eqs.length :=
   refAt_withD (ref_sumcheck count eqs claim) (Q := fun r ↦ r.1.length = eqs.length)
@@ -79,7 +79,7 @@ theorem ref_dKsLink (tabs : Pub → List M3.Tab) (rk : List FE) (pub : Pub) :
   rintro kchal _ ⟨rfl, hk⟩
   replace hk : kchal.length = 20 := hk
   -- the shift sumcheck (claim 0)
-  have h2 := ref_sumcheckL (cap := capS) (shp := shpS) (sig := sig) 3 (List.replicate 15 none) 0
+  have h2 := ref_sumcheckL (cap := capS) (occ := occS) (shp := shpS) (sig := sig) 3 (List.replicate 15 none) 0
   simp only [tE_zero, List.map_replicate, Option.map_none] at h2
   refine RefAt.bind (fun _ ↦ (monoD_readEs _).bind fun _ ↦
     (MonoD.require _).bind fun _ ↦ MonoD.pure _) h2 ?_

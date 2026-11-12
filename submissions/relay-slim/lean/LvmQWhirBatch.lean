@@ -119,6 +119,29 @@ def eqTabGo (al : Nat → Cell) (z : Cell) (rev : Bool) : List Nat → Nat → N
 
 variable {c : Ctx} {M : Mem}
 
+/-- With at least one coordinate to prepend, `eqTabGo` leaves the `E` pointer immediately
+after its final table of `2^(k + is.length)` cells. -/
+theorem eqTabGo_end (al : Nat → Cell) (z : Cell) (rev : Bool) :
+    ∀ (is : List Nat) (tb k : Nat) (p : Ptr), is ≠ [] →
+      (p.adv (eqTabGo al z rev is tb k p).2).e =
+        (eqTabGo al z rev is tb k p).1 + 2 ^ (k + is.length)
+  | [], _, _, _, hn => (hn rfl).elim
+  | i :: is, tb, k, p, _ => by
+    simp only [eqTabGo, bind_apply, getPtr, List.nil_append, Ptr.adv_nil,
+      Ptr.adv_append]
+    cases is with
+    | nil =>
+      simp only [eqTabGo, pure_apply, Ptr.adv_nil, List.length_cons, List.length_nil,
+        Nat.zero_add]
+      rw [loop_adv]
+      simp [ltw, LRow.w, Row.w, Row.writes, pow_succ]
+      omega
+    | cons j js =>
+      rw [eqTabGo_end al z rev (j :: js) _ (k + 1) _ (by simp)]
+      simp only [List.length_cons]
+      congr 2
+      omega
+
 theorem eqTabGo_spec (al : Nat → Cell) (z : Cell) (rev : Bool) (hz : z.val M = 0)
     (hal : ∀ i, (al i).ty = .E) :
     ∀ (is : List Nat) (tb k : Nat) (pt : List FE) (p : Ptr), pt.length = k →
@@ -176,6 +199,17 @@ theorem eqTabGo_spec (al : Nat → Cell) (z : Cell) (rev : Bool) (hz : z.val M =
 cell `one` holding `1`; the base cell of the `2^n` entries. -/
 def eqTab (al : Nat → Cell) (z one : Cell) (rev : Bool) (n : Nat) : BM Nat :=
   eqTabGo al z rev (List.range n).reverse one.n 0
+
+/-- For a positive number of coordinates, `eqTab` leaves the `E` pointer immediately after
+the returned table of `2^n` cells. -/
+theorem eqTab_end (al : Nat → Cell) (z one : Cell) (rev : Bool) {n : Nat}
+    (hn : 0 < n) (p : Ptr) :
+    (p.adv (eqTab al z one rev n p).2).e = (eqTab al z one rev n p).1 + 2 ^ n := by
+  simpa [eqTab] using eqTabGo_end al z rev (List.range n).reverse one.n 0 p (by
+    intro he
+    have := congrArg List.length he
+    simp at this
+    omega)
 
 theorem eqTab_spec (al : Nat → Cell) (z one : Cell) (rev : Bool) (n : Nat) {p : Ptr}
     (h : SegsHold c M p (eqTab al z one rev n p).2) (hz : z.val M = 0) (hal : ∀ i, (al i).ty = .E)

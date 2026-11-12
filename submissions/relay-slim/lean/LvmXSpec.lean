@@ -543,7 +543,7 @@ theorem EX_node (A : Digest → Digest → Signed → Bool) (c : Digest) (π : P
   rw [semXIR_seq, show a1cpIR = acp3IR (ansB + 4 * alpha1Pos pX 0) a1BX 4 from rfl]
   generalize semXIR I (acp3IR (ansB + 4 * alpha1Pos pX 0) a1BX 4) s7 = s8 at b1' b2 hM8 z8 o8
   -- 7. `f₂`
-  have hf2O : f2Off pX / 8 = 42525 := by rw [layout_P20.2.2.2.2.2.2.2.2.1]
+  have hf2O : f2Off pX / 8 = 37595 := by rw [layout_P20.2.2.2.2.2.2.2.2.1]
   have hf2 : f2WX = 5 + f2Off pX / 8 := rfl
   obtain ⟨f1, f2, hM9, z9, o9⟩ := thcpIR_sem I s8 hM8 (a := f2WX) (dst := f2BX) (n := 3 * 2 ^ 9)
     (by rw [hf2, hf2O]; norm_num) (by simp only [regs, f2BX]; norm_num)

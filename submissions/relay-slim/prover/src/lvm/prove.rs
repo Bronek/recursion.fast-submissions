@@ -232,9 +232,15 @@ pub fn prove(p: &Params, mut hd: Header, mut rec: RecWitness, build: Option<&Bui
         let sh = crate::lvm::m3::shape(&rec.tables);
         assert_eq!(sh, (p.bus_depth, p.leafdec_reads, p.table_rounds, p.table_evals), "the tables' M3 numbers are the record's");
     }
+    // A stack's root leaves carry its occupied lanes alone (the record's level-0 row, `params::occ_lanes`): the lanes
+    // past them hold no data, so they are not encoded, hashed or sent, and the verifier reads them as zero.
+    let (occ_main, occ_rec) = (params::occ_lanes(&p.main_levels), params::occ_lanes(&p.rec_levels));
+    let main_words = occ_main << (p.nu_main - INITIAL_FOLDING_FACTOR);
+    let rec_words = occ_rec << (p.nu_rec() - INITIAL_FOLDING_FACTOR);
     let rec_place = crate::lvm::m3::place(&rec.tables, lay.free_lo(), p.nu_main);
     // written placements (the prover's or the M3 section's) lie above WP-15a's tables or in C_rec's free
-    // columns (18–31), and do not overlap
+    // columns (18–31), below the stack's occupied lanes (so none lies in C_rec while its leaves carry the stream
+    // and σ' alone), and do not overlap
     let mut spans: Vec<(bool, usize, usize)> = Vec::new();
     for (tw, pl) in rec.tables.iter().zip(&rec_place) {
         for c in tw.committed() {
@@ -244,8 +250,11 @@ pub fn prove(p: &Params, mut hd: Header, mut rec: RecWitness, build: Option<&Bui
                 _ => None,
             };
             if let Some((r, o)) = w {
-                let (lo, hi) = if r { ((REC_STREAM_COLS + 1) << lay.rec_log, 1 << p.nu_rec()) } else { (lay.free_lo(), 1 << p.nu_main) };
-                assert!(lo <= o && o + (1 << tw.tau) <= hi, "a written table column stays in the free region");
+                let (lo, hi) = if r { ((REC_STREAM_COLS + 1) << lay.rec_log, rec_words) } else { (lay.free_lo(), main_words) };
+                assert!(
+                    lo <= o && o + (1 << tw.tau) <= hi,
+                    "a written table column stays in the free region, below its stack's occupied lanes"
+                );
                 spans.push((r, o, o + (1 << tw.tau)));
             }
         }
@@ -273,8 +282,15 @@ pub fn prove(p: &Params, mut hd: Header, mut rec: RecWitness, build: Option<&Bui
     let header = hd.bytes();
     let mut ps = ProverState::seeded(&header);
     let (m0, r0) = (p.main_levels[0], p.rec_levels[0]);
-    let (cm, main_data) = commit(&cmain, p.nu_main, INITIAL_FOLDING_FACTOR, m0.rate, m0.cap);
-    let (cr, rec_data) = commit(&crec, p.nu_rec(), INITIAL_FOLDING_FACTOR, r0.rate, r0.cap);
+    // Each stack is committed truncated to its occupied lanes (`main_words`, `rec_words`, above); every claim must lie
+    // in the committed lanes (`open_mixed_whir_stacked` asserts it).
+    #[cfg(feature = "selfcheck")]
+    {
+        assert!(cmain[main_words..].iter().all(|w| *w == F64::ZERO), "C_main past its {occ_main} occupied lanes is zero");
+        assert!(crec[rec_words..].iter().all(|w| *w == F64::ZERO), "C_rec past its {occ_rec} occupied lanes is zero");
+    }
+    let (cm, main_data) = commit(&cmain[..main_words], p.nu_main, INITIAL_FOLDING_FACTOR, m0.rate, m0.cap, occ_main);
+    let (cr, rec_data) = commit(&crec[..rec_words], p.nu_rec(), INITIAL_FOLDING_FACTOR, r0.rate, r0.cap, occ_rec);
     ps.add_cap(&cm.cap);
     ps.add_cap(&cr.cap);
     lap("commit", &mut stages);
@@ -362,7 +378,9 @@ pub fn prove(p: &Params, mut hd: Header, mut rec: RecWitness, build: Option<&Bui
     }
     // KS link order is [Y, in, M, X]: M is the C_rec one; the others keep their order on main.
 
-    // ---- openings: C_rec, then C_main
+    // ---- openings: C_rec, then C_main, each of its committed lanes
+    crec.truncate(rec_words);
+    cmain.truncate(main_words);
     open_mixed_whir_stacked(&mut ps, p.nu_rec(), crec, rec_data, &whir_config(&p.rec_levels, p.grind, false), rec_claims.into_iter().map(mixed).collect());
     lap("open rec", &mut stages);
     open_mixed_whir_stacked(&mut ps, p.nu_main, cmain, main_data, &whir_config(&p.main_levels, p.grind, p.main_ood), main_claims.into_iter().map(mixed).collect());

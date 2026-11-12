@@ -13,7 +13,7 @@ namespace Lvm.Q1
 
 open Lvm Lvm.Loop Lvm.Loop.Build
 
-theorem spongeBlocks_P8 : spongeBlocks P8 = 3247 := by
+theorem spongeBlocks_P8 : spongeBlocks P8 = 3157 := by
   rw [spongeBlocks, sizes_P8.2.2.2.2.2.2.2.1]
 
 /-! ## The template check does not read addresses -/
@@ -174,7 +174,7 @@ theorem loadsAt_shape (q s N : Nat) : (loadsAt q s N).map Ins.shape = (loadsAt 0
 def defOut : LoopOut := ⟨⟨0, 0⟩, [], []⟩
 
 theorem okE_P8 (Q : Nat) (gate : Cell) (sh : LoopOut) :
-    SLok (ksGlueE 14 Q (ksQV 14 Q) 3246 (2 ^ 13 + 399 + 31) (2 ^ 13 + 399) (rho'C sh 14) (sh.cell 2 13)
+    SLok (ksGlueE 14 Q (ksQV 14 Q) 3156 (2 ^ 13 + 399 + 31) (2 ^ 13 + 399) (rho'C sh 14) (sh.cell 2 13)
       (sh.cell 5 (14 - 1)) gate) = true := by
   rw [← SLok_shape]
   simp only [ksGlueE, List.map_append]

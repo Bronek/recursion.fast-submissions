@@ -13,13 +13,15 @@ whatever cell precedes the loop); then a loop of dims `[a]` taking differences o
 `lin`. Two pieces per chunk.
 
 * `rowFold0 l a lb S er`: word `k` of position `q` is the `K` cell `lb + k + S·q` (a stream lane);
-  `e[k]` is the `E` cell `er + k`, the **reversed** `eq` table (`eq(α, 2^l − 1 − k)`): `foldRow0`
-  pairs `eq[k]` with word `2^l − 1 − k`, and strides are non-negative.
+  `e[k]` is the `E` cell `er + k`. For an occupied width `w ≤ 2^l`, these cells hold
+  `eq[w − 1 − k]` for `k < w` and zero for `w ≤ k < 2^l`: `foldRow0` pairs `eq[k]` with
+  word `w − 1 − k`, and the loop's remaining lane reads meet zero weights.
 * `rowFoldE l a lb S er`: scalar `k` of position `q` is lanes `lb + 3k + S·q + (0, 1, 2)` (a
   `loadE` row); `e[k]` the `eq` table in natural order.
 
-Theorems: `rowFold0_spec`, `rowFoldE_spec` (fold cells = sums of cells) and **`rowFold0_eq`,
-`rowFoldE_eq`** (= `F`'s `foldRow0`/`foldRowE` on the stream: Q_arith_eq for the row folds).
+`rowFold0_spec` and `rowFoldE_spec` express the fold cells as sums of cells. `rowFold0_window`
+identifies the level-zero fold with `F`'s `foldRow0` of the `w` occupied words; `rowFoldE_eq`
+identifies the later-level fold with `F`'s `foldRowE` of the full row.
 -/
 
 set_option autoImplicit false
@@ -160,21 +162,29 @@ theorem rowFoldE_spec {p : Ptr} {l a lb S er : Nat} (h : SegsHold c M p (rowFold
 
 /-! ## Equivalence with `F` -/
 
-/-- **Q_arith_eq, level-0 row fold.** If the `K` cells hold the stream's lanes and `e[k]` the
-reversed `eq` table, fold cell `q` is `F`'s `foldRow0` of the row at byte `8 (lb + S q)`. -/
-theorem rowFold0_eq {p : Ptr} {l a lb S er : Nat} (h : SegsHold c M p (rowFold0 l a lb S er p).2)
-    (hp : 1 ≤ p.e) (sig : ByteArray) (eq : Array FE) {q : Nat} (hq : q < 2 ^ a)
-    (hS : ∀ k < 2 ^ l, M.k (lb + k + S * q) = lane sig (lb + k + S * q))
-    (he : ∀ k < 2 ^ l, M.e (er + k) = eq.getD (2 ^ l - 1 - k) 0) :
-    ((rowFold0 l a lb S er p).1 q).val M = foldRow0 sig eq (8 * (lb + S * q)) (2 ^ l) := by
+/-- **Q_arith_eq, the level-0 fold of a narrowed leaf** (Z2): when the table's cells `er + k` hold
+`eq[w − 1 − k]` for `k < w` and zero for `w ≤ k < 2^l`, the loop is `F`'s `foldRow0` of the leaf's
+`w` words at byte `8 (lb + S q)` (the lanes it reads past them meet zero cells). -/
+theorem rowFold0_window {p : Ptr} {l a lb S er : Nat} (h : SegsHold c M p (rowFold0 l a lb S er p).2)
+    (hp : 1 ≤ p.e) (sig : ByteArray) (eq : Array FE) {q w : Nat} (hq : q < 2 ^ a) (hw : w ≤ 2 ^ l)
+    (hS : ∀ k < w, M.k (lb + k + S * q) = lane sig (lb + k + S * q))
+    (he : ∀ k < w, M.e (er + k) = eq.getD (w - 1 - k) 0)
+    (hz : ∀ k, w ≤ k → k < 2 ^ l → M.e (er + k) = 0) :
+    ((rowFold0 l a lb S er p).1 q).val M = foldRow0 sig eq (8 * (lb + S * q)) w := by
   rw [rowFold0_spec h hp hq, foldRow0_eq]
   conv_rhs => rw [← Finset.sum_range_reflect]
-  refine Finset.sum_congr rfl fun k hk => ?_
-  have hk' := Finset.mem_range.mp hk
-  rw [hS k hk', he k hk', lane]
-  have : 2 ^ l - 1 - (2 ^ l - 1 - k) = k := by omega
-  -- `rw`, not `congr 1`: its `rfl` attempt on `kAt` unfolds the lane reads (15 s)
-  rw [this, show 8 * (lb + k + S * q) = 8 * (lb + S * q) + 8 * k by ring]
+  calc
+    _ = ∑ k ∈ Finset.range w, FE.ofK (M.k (lb + k + S * q)) * M.e (er + k) := by
+      symm
+      apply Finset.sum_subset (Finset.range_mono hw)
+      intro k hk hkw
+      rw [hz k (by simpa using hkw) (Finset.mem_range.mp hk), mul_zero]
+    _ = _ := by
+      refine Finset.sum_congr rfl fun k hk => ?_
+      have hk' := Finset.mem_range.mp hk
+      rw [hS k hk', he k hk', lane]
+      rw [show w - 1 - (w - 1 - k) = k by omega,
+        show 8 * (lb + k + S * q) = 8 * (lb + S * q) + 8 * k by ring]
 
 /-- **Q_arith_eq, later-level row fold**: `F`'s `foldRowE` of the row at byte `8 (lb + S q)`. -/
 theorem rowFoldE_eq {p : Ptr} {l a lb S er : Nat} (h : SegsHold c M p (rowFoldE l a lb S er p).2)

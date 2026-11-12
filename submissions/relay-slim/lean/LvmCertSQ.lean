@@ -139,4 +139,14 @@ theorem capOfS_P20 :
       ((P20.levels .crec).all fun L ↦ capOfS L.height 0 == L.cap) = true := by
   decide +kernel
 
+/-- **`schemeS`'s leaves are the schedule's rows** (Z2): for every level of both commitments at P20
+(rows of `2^ℓ` words at the root, `3·2^ℓ` later), the row the proof carries is `8 · occOfS` of its
+shape's words, all of them but at the roots. -/
+theorem occOfS_P20 :
+    ((P20.levels .main).all fun L ↦ let w := if L.level = 0 then 2 ^ L.fold else 3 * 2 ^ L.fold
+      L.row == 8 * min (occOfS L.height w) w && (L.level == 0 || occOfS L.height w == w)) = true ∧
+      ((P20.levels .crec).all fun L ↦ let w := if L.level = 0 then 2 ^ L.fold else 3 * 2 ^ L.fold
+        L.row == 8 * min (occOfS L.height w) w && (L.level == 0 || occOfS L.height w == w)) = true := by
+  decide +kernel
+
 end Lvm.ASM

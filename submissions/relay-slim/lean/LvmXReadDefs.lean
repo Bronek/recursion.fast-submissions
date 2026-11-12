@@ -16,36 +16,41 @@ import LvmXLoop
 
 `C_rec`'s Merkle tree has `2^15` leaves (positions `p < 2^15`), is binary, and has its cap at
 level 7 (`2^7 = 128` cap nodes, carried by π), so 8 levels separate a cap node from a leaf. A
-node is the answer of a 64-byte query `left ‖ right`; a leaf digest is the answer of the row's
-query (512 bytes: 64 little-endian `K` words).
+node is the answer of a 64-byte query `left ‖ right`; a leaf digest is the answer of the leaf's
+query. A row has 64 `K` words, of which the layout occupies only the last `crOcc = 35` (lane
+blocks `0 … 34`; row word `t` is lane block `63 − t`), so a leaf carries those `crOcc` words
+(280 bytes, little-endian) and the reader puts `64 − crOcc` zero words in front.
 
-**The reading** (`readRow L cap p`, WP-5's `wordOf` at `ht = 15`, `wd = 64`, `lv = 7`): from the
-cap node `cap[p / 2^8]`, 8 times (`n = 7, …, 0`) take the *first* log entry whose answer is the
-current digest (`xFindA`); it must be a 64-byte query, else the position is an erasure; the next
-digest is its left half when bit `n` of `p` is `0`, else its right half (`xDescend`). Then the
-first entry whose answer is the leaf digest (no size check): its query's bytes are the row,
-read as 64 little-endian 8-byte words, missing bytes as zero (`xLeafBytes`, `xRowOf`, `decLE`).
-A missing entry anywhere is an erasure: the row of the empty byte string, 64 zero words.
+**The reading** (`readRow L cap p`, WP-5's `wordOf` at `ht = 15`, `wd = 64`, `lv = 7` with
+`occ 15 64 = crOcc`): from the cap node `cap[p / 2^8]`, 8 times (`n = 7, …, 0`) take the
+*first* log entry whose answer is the current digest (`xFindA`); it must be a 64-byte query,
+else the position is an erasure; the next digest is its left half when bit `n` of `p` is `0`,
+else its right half (`xDescend`). Then the first entry whose answer is the leaf digest (no size
+check): the row is `64 − crOcc` zero words followed by the query's first `crOcc` little-endian
+8-byte words, missing bytes as zero (`xLeafBytes`, `xRowOf`, `decLE`). A missing entry anywhere
+is an erasure: the row of the empty byte string, 64 zero words.
 
 **WP-14's obligation.** The definitions below are WP-5's (branch `lvm/FS`, `LvmCompile.lean`:
-`qb`, `dg`, `win`, `findA`, `descend`, `leafBytes`, `rowOf`, `wordOf`), transcribed under other
-names at `ht = 15`, `wd = 64`, `lv = 7` with the decoder `decLE`. WP-14 must prove
+`qb`, `dg`, `win`, `findA`, `descend`, `leafBytes`, `rowOf`, `padRow`, `wordOf`), transcribed
+under other names at `ht = 15`, `wd = 64`, `lv = 7` with the decoder `decLE`. WP-14 must prove
 `readRow L cap p = S.wordOf L ⟨15, 64, 7, cap⟩ p` (`Lvm.FS.Scheme.wordOf`) for WP-5's scheme `S`
-with `S.decK = decLE`; every definition is the same term up to the names, so the proof is by
-unfolding (`xDescend` against `descend` by induction on the level).
+with `S.decK = decLE` and `S.occ 15 64 = crOcc`; `readRow_pad` restates `readRow` as `padRow`'s
+term, so the proof is by unfolding (`xDescend` against `descend` by induction on the level).
 
-**The program** `readIR bX pL capW wB`: for every `p < 2^15` it writes leaf word `t < 64` of
-position `p` at `wB + 64 p + t`; the sorted index at `bX`, `|L|` at tape word `pL`, cap node `c`'s
-four words at tape word `capW + 4 c`. Registers `117 … 135` (`crP` … `crAd`); the lookup
-`lookIR4` uses `64`, `75 … 116` and the compiler's scratch `4`.
+**The program** `readIR bX pL capW wB`: for every `p < 2^15` it writes row word `t < 64` of
+position `p` at `wB + 64 p + t` (`64 − crOcc` zero words, then the leaf's first `crOcc` words);
+the sorted index at `bX`, `|L|` at tape word `pL`, cap node `c`'s four words at tape word
+`capW + 4 c`. Registers `117 … 135` (`crP` … `crAd`); the lookup `lookIR4` uses `64`,
+`75 … 116` and the compiler's scratch `4`.
 
-* `readRow_length`, `readRow_erasure`, `readRow_getD`; `crLeafW` (a leaf word as the machine
-  stores it) and `crLeafW_readRow` (as a `K` element it is `readRow`'s word).
+* `readRow_length`, `readRow_erasure`, `readRow_getD`, `readRow_pad`; `crLeafW` (a leaf word as
+  the machine copies it) and `crLeafW_readRow` (as a `K` element it is `readRow`'s word
+  `64 − crOcc + t`); `crRowW` (a row word as the machine stores it) and `crRowW_readRow`.
 * `xFindA_some`, `xFindA_none`: the first preimage is the entry at `ansIdx`; `xDescend_succ`.
 * Tape facts: `cr_tape_query` (query words of an entry), `cr_win_getD` (a 32-byte half of a
   64-byte query packs to four of its words).
-* `WF`, `NoLoopT` (`safe_readIR`), `outs = 0`, 540 statements; **`cost_readIR`**: `14 + 2^15 · 60,415` steps
-  (`cost_crPos = 60,412` per position, `2^30.88` in all).
+* `WF`, `NoLoopT` (`safe_readIR`), `outs = 0`, 563 statements; **`cost_readIR`**:
+  `14 + 2^15 · 59,964` steps (`cost_crPos = 59,961` per position, `2^30.87` in all).
 -/
 
 namespace Lvm.X
@@ -89,13 +94,21 @@ def decLE (b : List UInt8) : BF64 := BF64.ofBitVec (toWord (ofLE b))
 def xRowOf (dec : List UInt8 → BF64) (w : ℕ) (b : List UInt8) : List BF64 :=
   (List.range w).map fun i => dec ((b.drop (8 * i)).take 8)
 
-/-- **The row the log holds under `C_rec`'s cap at position `p`**: the first-preimage reading,
-64 words; an erasure reads as the row of the empty byte string. WP-14 proves it equal to WP-5's
-`S.wordOf L ⟨15, 64, 7, cap⟩ p` (with `S.decK = decLE`). -/
-def readRow (L : Log) (cap : List Digest) (p : ℕ) : List BF64 :=
-  xRowOf decLE 64 ((xLeafBytes L cap p).getD [])
+/-- **The occupied words of a `C_rec` level-0 row**: a leaf carries the row's last `crOcc` words
+(lane blocks `0 … 34`: the 17 stream columns and `σ'`), the reader reads the first `64 − crOcc`
+as zero. The record's `recOcc` and the scheme's `occ 15 64`. -/
+def crOcc : ℕ := 35
 
-/-- **The word the decoder consumes** (`LvmXDec`'s `wd`): leaf word `t` at position `p`. -/
+theorem crOcc_le : crOcc ≤ 64 := by decide
+
+/-- **The row the log holds under `C_rec`'s cap at position `p`**: the first-preimage reading,
+`64 − crOcc` zero words and then the leaf's first `crOcc` words; an erasure reads as the row of
+the empty byte string. WP-14 proves it equal to WP-5's `S.wordOf L ⟨15, 64, 7, cap⟩ p` (with
+`S.decK = decLE`, `S.occ 15 64 = crOcc`). -/
+def readRow (L : Log) (cap : List Digest) (p : ℕ) : List BF64 :=
+  List.replicate (64 - crOcc) 0 ++ xRowOf decLE crOcc ((xLeafBytes L cap p).getD [])
+
+/-- **The word the decoder consumes** (`LvmXDec`'s `wd`): row word `t` at position `p`. -/
 def readWd (L : Log) (cap : List Digest) (p t : ℕ) : BF64 := (readRow L cap p).getD t 0
 
 /-! ## Facts about the reading -/
@@ -104,20 +117,57 @@ theorem decLE_nil : decLE [] = 0 := rfl
 
 @[simp] theorem readRow_length (L : Log) (cap : List Digest) (p : ℕ) :
     (readRow L cap p).length = 64 := by
-  simp [readRow, xRowOf]
+  simp [readRow, xRowOf, crOcc]
 
-/-- Word `t < 64` of the row. -/
+/-- Word `t < 64` of the row: zero below `64 − crOcc`, else leaf word `t − (64 − crOcc)`. -/
 theorem readRow_getD (L : Log) (cap : List Digest) (p : ℕ) {t : ℕ} (ht : t < 64) :
-    (readRow L cap p).getD t 0 = decLE ((((xLeafBytes L cap p).getD []).drop (8 * t)).take 8) := by
+    (readRow L cap p).getD t 0 = if t < 64 - crOcc then 0 else
+      decLE ((((xLeafBytes L cap p).getD []).drop (8 * (t - (64 - crOcc)))).take 8) := by
+  have hc := crOcc_le
   rw [List.getD_eq_getElem _ _ (by rw [readRow_length]; exact ht)]
-  simp [readRow, xRowOf]
+  simp only [readRow, xRowOf]
+  rw [List.getElem_append]
+  split_ifs with h1 h2 h2
+  · simp
+  · simp only [List.length_replicate] at h1; omega
+  · simp only [List.length_replicate] at h1; omega
+  · simp
+
+theorem decLE_zeros : decLE (List.replicate 8 0) = 0 := by decide
+
+/-- **The row is `Scheme.padRow`'s term** at `wd = 64`, `occ = crOcc`: the leaf's bytes after
+`8 · (64 − crOcc)` zero bytes, read as 64 words. -/
+theorem readRow_pad (L : Log) (cap : List Digest) (p : ℕ) :
+    readRow L cap p =
+      xRowOf decLE 64 (List.replicate (8 * (64 - crOcc)) 0 ++ (xLeafBytes L cap p).getD []) := by
+  have hc := crOcc_le
+  apply List.ext_getElem (by simp [xRowOf])
+  intro t h1 h2
+  have ht : t < 64 := by simpa [xRowOf] using h2
+  rw [← List.getD_eq_getElem _ 0 h1, readRow_getD L cap p ht]
+  simp only [xRowOf, List.getElem_map, List.getElem_range]
+  split_ifs with h
+  · rw [List.drop_append_of_le_length (by simp only [List.length_replicate]; omega),
+      List.take_append_of_le_length (by simp only [List.length_drop, List.length_replicate]; omega),
+      List.drop_replicate, List.take_replicate, Nat.min_eq_left (by omega)]
+    exact decLE_zeros.symm
+  · have hd : (List.replicate (8 * (64 - crOcc)) (0 : UInt8) ++ (xLeafBytes L cap p).getD []).drop
+        (8 * t) = ((xLeafBytes L cap p).getD []).drop (8 * (t - (64 - crOcc))) := by
+      rw [List.drop_append, List.drop_replicate, Nat.sub_eq_zero_of_le (by omega),
+        List.replicate_zero, List.nil_append, List.length_replicate,
+        show 8 * t - 8 * (64 - crOcc) = 8 * (t - (64 - crOcc)) by omega]
+    rw [hd]
 
 /-- **An erasure reads as 64 zero words.** -/
 theorem readRow_erasure {L : Log} {cap : List Digest} {p : ℕ} (h : xLeafBytes L cap p = none) :
     readRow L cap p = List.replicate 64 0 := by
   apply List.ext_getElem (by simp)
   intro i h1 h2
-  simp [readRow, xRowOf, h, decLE_nil]
+  rw [List.getElem_replicate, ← List.getD_eq_getElem _ 0 h1,
+    readRow_getD L cap p (by simpa using h2), h]
+  split_ifs
+  · rfl
+  · simp [decLE_nil]
 
 /-- The first preimage is the entry at `ansIdx`. -/
 theorem xFindA_eq_ansIdx (L : Log) (d : Digest) :
@@ -222,9 +272,9 @@ theorem cr_win_getD (q : ByteArray) {a : ℕ} (h : 8 * a + 32 ≤ q.size) {m : �
     show 32 = 8 * 4 from rfl,
     cr_pk_take8 _ hm, cr_pk_drop8]
 
-/-! ## The leaf word the machine stores -/
+/-! ## The words the machine stores -/
 
-/-- **Leaf word `t` of a reading** as the machine stores it: packed word `t` of the leaf bytes,
+/-- **Leaf word `t` of a reading** as the machine copies it: packed word `t` of the leaf bytes,
 `0` for an erasure. -/
 def crLeafW (o : Option (List UInt8)) (t : ℕ) : Word := (packBytes (o.getD [])).getD t 0
 
@@ -235,10 +285,27 @@ theorem wK_crLeafW (o : Option (List UInt8)) (t : ℕ) :
     wK (crLeafW o t) = decLE (((o.getD []).drop (8 * t)).take 8) := by
   rw [crLeafW, cr_pk_getD']; rfl
 
+/-- **The copied leaf word as a `K` element is the row's word `64 − crOcc + t`.** -/
+theorem crLeafW_readRow (L : Log) (cap : List Digest) (p : ℕ) {t : ℕ} (ht : t < crOcc) :
+    wK (crLeafW (xLeafBytes L cap p) t) = (readRow L cap p).getD (64 - crOcc + t) 0 := by
+  have hc := crOcc_le
+  rw [wK_crLeafW, readRow_getD L cap p (by omega), if_neg (by omega), Nat.add_sub_cancel_left]
+
+/-- **Row word `t` of a reading** as the machine stores it: `64 − crOcc` zero words, then the
+leaf words `0 … crOcc − 1`. -/
+def crRowW (o : Option (List UInt8)) (t : ℕ) : Word :=
+  if t < 64 - crOcc then 0 else crLeafW o (t - (64 - crOcc))
+
+theorem crRowW_none (t : ℕ) : crRowW none t = 0 := by
+  simp [crRowW, crLeafW_none]
+
 /-- **The stored word as a `K` element is the row's word.** -/
-theorem crLeafW_readRow (L : Log) (cap : List Digest) (p : ℕ) {t : ℕ} (ht : t < 64) :
-    wK (crLeafW (xLeafBytes L cap p) t) = (readRow L cap p).getD t 0 := by
-  rw [wK_crLeafW, readRow_getD L cap p ht]
+theorem crRowW_readRow (L : Log) (cap : List Digest) (p : ℕ) {t : ℕ} (ht : t < 64) :
+    wK (crRowW (xLeafBytes L cap p) t) = (readRow L cap p).getD t 0 := by
+  rw [readRow_getD L cap p ht, crRowW]
+  split_ifs
+  · rfl
+  · rw [wK_crLeafW]
 
 /-! ## The tape: query words -/
 
@@ -305,7 +372,7 @@ theorem cr_tape_query {pL : ℕ} (c : Digest) (π : Proof) (L : Log) (hs : 5 + (
 /-- `8 t` in the copy. -/ def cr8 : ℕ := 126
 /-- The copy's mask. -/ def crMk : ℕ := 127
 /-- The copy's counter. -/ def crCw : ℕ := 128
-/-- The copy's count (`64`). -/ def crNw : ℕ := 129
+/-- The copy's count (`64 − crOcc`, then `crOcc`). -/ def crNw : ℕ := 129
 /-- The position loop's counter. -/ def crCp : ℕ := 130
 /-- The position count (`2^15`). -/ def crNp : ℕ := 131
 /-- A tape word. -/ def crV : ℕ := 132
@@ -358,19 +425,29 @@ def crCopyBody : XIR :=
     .op .and crV crV crMk]) (.seq (.store crWA crV)
       (.blk [.op .add crWA crWA cOne, .op .add crTA crTA cOne, .const crK 8, .op .add cr8 cr8 crK])))
 
-/-- **The copy**: the 64 leaf words from tape word `X + 1` (`0` past the query). -/
-def crCopy : XIR :=
-  .seq (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord 64)])
-    (.loopK crCw crNw (toWord 64) crCopyBody)
+/-- One zero word: `M[crWA] := crV` (`crV` holds `0`); advance. -/
+def crZeroBody : XIR := .seq (.store crWA crV) (.blk [.op .add crWA crWA cOne])
 
-/-- **One position**: the cap node (from tape word `capW`), 8 steps down, the leaf, the copy of
-its 64 words, `p += 1`. -/
+/-- **The row's zero prefix**: `64 − crOcc` zero words from `crWA`. -/
+def crZero : XIR :=
+  .seq (.blk [.const crV 0, .const crNw (toWord (64 - crOcc))])
+    (.loopK crCw crNw (toWord (64 - crOcc)) crZeroBody)
+
+/-- **The copy**: the row's zero prefix, then the leaf's first `crOcc` words from tape word
+`X + 1` (`0` past the query). -/
+def crCopy : XIR :=
+  .seq crZero
+    (.seq (.blk [.op .add crTA crX cOne, .const cr8 0, .const crNw (toWord crOcc)])
+      (.loopK crCw crNw (toWord crOcc) crCopyBody))
+
+/-- **One position**: the cap node (from tape word `capW`), 8 steps down, the leaf, its row's
+64 words (the zero prefix and the copy), `p += 1`. -/
 def crPos (bX pL capW : ℕ) : XIR :=
   .seq (.seq (.blk (crCapPs capW)) crLd4) (.seq (.blk [.const crOk 1, .const crNH (toWord 8)])
     (.seq (.loopK crHc crNH (toWord 8) (crNode bX pL)) (.seq (crLeaf bX pL) (.seq crCopy
       (.blk [.op .add crP crP cOne])))))
 
-/-- **The column reads of `C_rec`**: positions `0 … 2^15 − 1`, leaf word `t` of position `p` at
+/-- **The column reads of `C_rec`**: positions `0 … 2^15 − 1`, row word `t` of position `p` at
 `wB + 64 p + t`; the sorted index at `bX`, `|L|` at tape word `pL`, the cap at tape word `capW`. -/
 def readIR (bX pL capW wB : ℕ) : XIR :=
   .seq (.blk [.const crP 0, .const crWA (toWord wB), .const crNp (toWord (2 ^ 15))])
@@ -401,9 +478,9 @@ theorem wf_readIR (bX pL capW wB : ℕ) : WF (readIR bX pL capW wB) := by
   have h2 : ¬ Writes (lookIR4 bX pL) 130 := cr_look_nw bX pL (by omega)
   have h3 : ¬ Writes (lookIR4 bX pL) 119 := cr_look_nw bX pL (by omega)
   simp +decide [readIR, crPos, crLd4, crCapPs, crGet, crChkPs, crChildPs, crNode, crLeaf,
-    crCopyBody, crCopy, WF, Writes, Prim.dst, crP, crOk, crHc, crNH, crX, crQn, crB, crTA, crWA,
-    cr8, crMk, crCw, crNw, crCp, crNp, crV, crK, crQe, crAd, rQ0, rQ1, rQ2, rQ3, cTmp, regs, h1, h2,
-    h3]
+    crCopyBody, crCopy, crZero, crZeroBody, WF, Writes, Prim.dst, crP, crOk, crHc, crNH, crX, crQn,
+    crB, crTA, crWA, cr8, crMk, crCw, crNw, crCp, crNp, crV, crK, crQe, crAd, rQ0, rQ1, rQ2, rQ3,
+    cTmp, regs, h1, h2, h3]
 
 /-- **The registers the read writes**: the compiler's scratch, `rA`, `75 … 135`; every other
 cell below `regs` is kept (`frame`). -/
@@ -411,29 +488,29 @@ theorem readIR_nw (bX pL capW wB : ℕ) {r : ℕ}
     (h : 136 ≤ r ∨ (5 ≤ r ∧ r < 64) ∨ (65 ≤ r ∧ r < 75)) : ¬ Writes (readIR bX pL capW wB) r := by
   have hl : ¬ Writes (lookIR4 bX pL) r := cr_look_nw bX pL (by omega)
   simp [readIR, crPos, crLd4, crCapPs, crGet, crChkPs, crChildPs, crNode, crLeaf, crCopyBody,
-    crCopy, Writes, Prim.dst, hl, crP, crOk, crHc, crNH, crX, crQn, crB, crTA, crWA, cr8, crMk, crCw,
-    crNw, crCp, crNp, crV, crK, crQe, crAd, rQ0, rQ1, rQ2, rQ3, cTmp]
+    crCopy, crZero, crZeroBody, Writes, Prim.dst, hl, crP, crOk, crHc, crNH, crX, crQn, crB, crTA,
+    crWA, cr8, crMk, crCw, crNw, crCp, crNp, crV, crK, crQe, crAd, rQ0, rQ1, rQ2, rQ3, cTmp]
   omega
 
 /-- No tape-length loop: the read's loops are all `loopK`. -/
 theorem noLoopT_readIR (bX pL capW wB : ℕ) : NoLoopT (readIR bX pL capW wB) := by
-  simp [readIR, crPos, crLd4, crGet, crNode, crLeaf, crCopyBody, crCopy, lookIR4, bsBody4,
-    ansLtIR, cmpTWord, eqTWord, foundIR4, aposIR, readAt, NoLoopT]
+  simp [readIR, crPos, crLd4, crGet, crNode, crLeaf, crCopyBody, crCopy, crZero, crZeroBody,
+    lookIR4, bsBody4, ansLtIR, cmpTWord, eqTWord, foundIR4, aposIR, readAt, NoLoopT]
 
 /-- Loop bounds hold on every tape (no `loopT`). -/
 theorem safe_readIR (I : Array Word) (t bX pL capW wB : ℕ) : Safe I t (readIR bX pL capW wB) :=
   safe_of_noLoopT (noLoopT_readIR bX pL capW wB)
 
 /-- The compiled statement count (`progCap` is `2^20`). -/
-theorem sizeIR_readIR (bX pL capW wB : ℕ) : sizeIR (readIR bX pL capW wB) = 540 := by
+theorem sizeIR_readIR (bX pL capW wB : ℕ) : sizeIR (readIR bX pL capW wB) = 563 := by
   simp only [readIR, crPos, crLd4, crCapPs, crGet, crChkPs, crChildPs, crNode, crLeaf, crCopyBody,
-    crCopy, lookIR4, bsBody4, ansLtIR, cmpTWord, eqTWord, foundIR4, aposIR, ceil8Ps, readAt, sizeIR,
-    blkSteps, List.length_cons, List.length_nil, List.length_append]
+    crCopy, crZero, crZeroBody, lookIR4, bsBody4, ansLtIR, cmpTWord, eqTWord, foundIR4, aposIR,
+    ceil8Ps, readAt, sizeIR, blkSteps, List.length_cons, List.length_nil, List.length_append]
   norm_num
 
 theorem outs_readIR (bX pL capW wB t : ℕ) : outs (readIR bX pL capW wB) t = 0 := by
-  simp [readIR, crPos, crLd4, crGet, crNode, crLeaf, crCopyBody, crCopy, lookIR4, bsBody4,
-    ansLtIR, cmpTWord, eqTWord, foundIR4, aposIR, readAt, outs]
+  simp [readIR, crPos, crLd4, crGet, crNode, crLeaf, crCopyBody, crCopy, crZero, crZeroBody,
+    lookIR4, bsBody4, ansLtIR, cmpTWord, eqTWord, foundIR4, aposIR, readAt, outs]
 
 /-- The lookup's cost (`LvmXModel`'s `cost_lookIR4`, proved again). -/
 theorem cr_cost_look (bX pL t : ℕ) : cost (lookIR4 bX pL) t = 6486 := by
@@ -441,20 +518,22 @@ theorem cr_cost_look (bX pL t : ℕ) : cost (lookIR4 bX pL) t = 6486 := by
     blkSteps, List.length_append, List.length_cons, List.length_nil]
   norm_num
 
-/-- **One position's cost**: 8 node steps (`8 + 8 · (6,529 + 3)`), the leaf (`6,500`), the copy
-(`1,614`), the cap node and the rest. -/
-theorem cost_crPos (bX pL capW t : ℕ) : cost (crPos bX pL capW) t = 60412 := by
+/-- **One position's cost**: 8 node steps (`8 + 8 · (6,529 + 3)`), the leaf (`6,500`), the row
+(`1,163`: the zero prefix `273` and the copy of `crOcc` words), the cap node and the rest. -/
+theorem cost_crPos (bX pL capW t : ℕ) : cost (crPos bX pL capW) t = 59961 := by
   have a1 : (toWord 8).toNat = 8 := toNat_toWord (by norm_num)
-  have a2 : (toWord 64).toNat = 64 := toNat_toWord (by norm_num)
-  simp only [crPos, crCapPs, crLd4, crNode, crGet, crChkPs, crChildPs, crLeaf, crCopy, crCopyBody,
-    cost, cr_cost_look, blkSteps, List.length_cons, List.length_nil, a1, a2]
+  have a2 : (toWord crOcc).toNat = 35 := toNat_toWord (by decide)
+  have a3 : (toWord (64 - crOcc)).toNat = 29 := toNat_toWord (by decide)
+  simp only [crPos, crCapPs, crLd4, crNode, crGet, crChkPs, crChildPs, crLeaf, crCopy, crZero,
+    crZeroBody, crCopyBody, cost, cr_cost_look, blkSteps, List.length_cons, List.length_nil, a1, a2,
+    a3]
   norm_num
 
-/-- **The read's cost**: `14 + 2^15 · (60,412 + 3) = 1,979,678,734 ≈ 2^30.88` steps, on every
+/-- **The read's cost**: `14 + 2^15 · (59,961 + 3) = 1,964,900,366 ≈ 2^30.87` steps, on every
 tape. -/
 theorem cost_readIR (bX pL capW wB t : ℕ) :
     cost (readIR bX pL capW wB) t = 14 + 2 ^ 15 * (cost (crPos bX pL capW) t + 3) ∧
-    cost (readIR bX pL capW wB) t = 1979678734 := by
+    cost (readIR bX pL capW wB) t = 1964900366 := by
   have a1 : (toWord (2 ^ 15)).toNat = 2 ^ 15 := toNat_toWord (by norm_num)
   have e : cost (readIR bX pL capW wB) t = 14 + 2 ^ 15 * (cost (crPos bX pL capW) t + 3) := by
     simp only [readIR, cost, blkSteps, List.length_cons, List.length_nil, a1]

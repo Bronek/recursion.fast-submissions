@@ -8,8 +8,9 @@ import LvmXReadDefs
 
 A toy log with one node query `dA ‖ dB` answered `dA`: every level's first preimage of `dA` is
 that 64-byte query, so position `0` (all bits `0`) descends through `dA` 8 times and reads the
-query itself as its leaf (8 words, then zeros), while a position whose bit 7 or bit 0 is `1`
-reaches `dB`, which has no preimage (an erasure). A 65-byte first preimage is not a node.
+query itself as its leaf (the row's `64 − crOcc` zero words, then 8 words, then zeros), while a
+position whose bit 7 or bit 0 is `1` reaches `dB`, which has no preimage (an erasure). A 65-byte
+first preimage is not a node.
 -/
 
 namespace Lvm.X.ReadControls
@@ -31,12 +32,19 @@ def toyL : Log := [(qAB, dA)]
 /-- The cap: `dA`, then `dB` 127 times. -/
 def toyCap : List Digest := dA :: List.replicate 127 dB
 
-/-- **Positive control**: position `0` reads `qAB` as its row: word `0` is bytes `1 … 8`, word `4`
-is bytes `101 … 108` (the right half), word `8` is past the query (`0`). -/
+/-- **Positive control**: position `0` reads `qAB` as its leaf: row words `0 … 28` are zero,
+word `29` is bytes `1 … 8`, word `33` is bytes `101 … 108` (the right half), word `37` is past
+the query (`0`). -/
 theorem readRow_toy :
-    (readRow toyL toyCap 0).getD 0 0 = decLE [1, 2, 3, 4, 5, 6, 7, 8] ∧
-    (readRow toyL toyCap 0).getD 4 0 = decLE [101, 102, 103, 104, 105, 106, 107, 108] ∧
-    (readRow toyL toyCap 0).getD 8 0 = 0 := by decide +kernel
+    (∀ t < 64 - crOcc, (readRow toyL toyCap 0).getD t 0 = 0) ∧
+    (readRow toyL toyCap 0).getD 29 0 = decLE [1, 2, 3, 4, 5, 6, 7, 8] ∧
+    (readRow toyL toyCap 0).getD 33 0 = decLE [101, 102, 103, 104, 105, 106, 107, 108] ∧
+    (readRow toyL toyCap 0).getD 37 0 = 0 := by decide +kernel
+
+/-- **Negative control**: the leaf's first word is not the row's first word; an unshifted
+reading of the leaf would fail here. -/
+theorem readRow_toy_shifted :
+    (readRow toyL toyCap 0).getD 0 0 ≠ decLE [1, 2, 3, 4, 5, 6, 7, 8] := by decide +kernel
 
 /-- **Negative controls**: bit 7 (the first step) or bit 0 (the last) set leads to `dB`, which
 has no preimage; position `256` starts at cap node `dB`; a 65-byte first preimage stops the

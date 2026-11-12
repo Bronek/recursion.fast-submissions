@@ -140,6 +140,54 @@ def numsOf (C : QCfg) (D : QData) : Nums :=
 def numsFrozen (C : QCfg) : Nums :=
   ⟨C.p.busDepth, C.p.leafdecReads, C.p.tableRounds, C.p.tableEvals, C.p.pubTab⟩
 
+/-! ## The occupied lanes (Z2)
+
+A commitment's root leaf carries only the stack's first `occ` lanes (`Level.row = 8 · occ`; the
+verifier reads the others as zero). Every column the program's tables commit must therefore end
+below lane `occ` of its stack: `C_main`'s, at the end of the record's placement (`past`), and
+`C_rec`'s, at the end of the input arrays aliased on it (the stream and `σ'`). -/
+
+/-- **Tool logic.** Every committed column of the program's tables: whether the record places it
+(a group's column, a finalize count, the written array's value column, a `BITS` class's column;
+`false` for an input array's aliased value column), its placement `(in C_rec, offset)` and its
+log-height. -/
+def columns (C : QCfg) (D : QData) : List (Bool × (Bool × Nat) × Nat) :=
+  let arrs := Har.arrsS C D
+  (D.groups.zipIdx.flatMap fun (g, i) => g.σ.committed.map fun u => (true, plOf D i u, g.τ)) ++
+  arrs.flatMap (fun a => (if a.pub.isSome then [] else a.val.map fun pl => (isWritten C a, pl, a.τ)) ++
+    [(true, a.fin, a.τ)]) ++
+  (bspecs C D).flatMap fun S => (bitsCom S).map fun pl => (true, pl, S.τ)
+
+/-- One commitment's occupancy: the first word past its columns, its lane (`2^(ν − ℓ₀)` words), the
+lanes its columns occupy, and the lanes its root leaves carry (`Level.row / 8`). -/
+structure Occ where
+  name : String
+  past : Nat
+  lane : Nat
+  used : Nat
+  occ : Nat
+
+instance : ToString Occ :=
+  ⟨fun o => s!"{o.name}: columns end at word {o.past}, lanes of {o.lane} words: {o.used} occupied \
+    (slack to the next lane {o.used * o.lane - o.past} words), leaves carry {o.occ} ({8 * o.occ} B)"⟩
+
+/-- The occupancy of `C_main` (`rec = false`) or `C_rec` from the columns. -/
+def occOf (C : QCfg) (cols : List (Bool × (Bool × Nat) × Nat)) (rec : Bool) : Occ :=
+  let L := if rec then C.p.recLevels else C.p.mainLevels
+  let ν := if rec then C.p.nuRec else C.p.nuMain
+  let lane := 2 ^ (ν - (L.headD default).fold)
+  let past := (cols.filter (·.2.1.1 == rec)).foldl (fun m c => max m (c.2.1.2 + 2 ^ c.2.2)) 0
+  ⟨if rec then "C_rec" else "C_main", past, lane, (past + lane - 1) / lane, (L.headD default).row / 8⟩
+
+/-- The schedule's numbers that the entry's Lean restates when the leaves change (README.md,
+"Occupied lanes"): `|π|`, its rows' bytes, `traceBytes`, the hashed length, the stream's lanes, the
+sponge blocks, the signed file, the `SIGN` body, the extractor's output words and `pLX`. -/
+def schedNums (p : Params) : String :=
+  let t := tally p
+  s!"piSize {piSize p}, rows {t.bRows} B, trace {t.trace}, hashedLen {hashedLen p}, \
+    streamLanes {streamLanes p}, spongeBlocks {spongeBlocks p} (minus one {spongeBlocks p - 1}), \
+    fileSize {fileSize p}, sign {t.sign}, eOutWords {eOutWords p}, pLX {5 + piSize p / 8}"
+
 /-- **The assembler's iteration** `D ↦ mkData C (QT C D)` from `D`, at most `fuel` steps: the fixed
 point and the program built from it, if it reaches one. The program is the specified `QAsm.QT`, the
 one the certificate is about (`QAsm.Q C = QT C (dataOf C)`), not its linear-time mirror `VF.QTF`. -/
@@ -293,7 +341,8 @@ def usage : String :=
   "usage: qasm SET OUTDIR HEADER [--start shipped|empty] [--max-iter N]\n" ++
   "  SET: P8 or P20; HEADER: a file whose text heads the record module (comment lines)\n" ++
   "  exit status: 0 done, 2 usage, 3 written but the frozen numbers (schedule, pubTab) differ,\n" ++
-  "  4 no fixed point (nothing written)"
+  "  4 no fixed point (nothing written), 5 written but a commitment's columns pass its leaves'\n" ++
+  "  occupied lanes or a table column is placed in C_rec, 7 written with both failures of 3 and 5"
 
 def parseOpts : List String → Except String (String × Nat)
   | [] => pure ("shipped", 8)
@@ -331,11 +380,29 @@ def main (args : List String) : IO UInt32 := do
       IO.FS.writeFile (System.FilePath.mk outDir / ps.dataFile) (renderData header ps.defName D)
       IO.FS.writeFile (System.FilePath.mk outDir / ps.blobFile) (← IO.ofExcept (renderBlob C Q D))
       IO.println s!"{set}: wrote {ps.dataFile} and {ps.blobFile} to {outDir}"
-      if ns != numsFrozen C then
+      let cols := columns C D
+      let occs := [occOf C cols false, occOf C cols true]
+      for o in occs do IO.println s!"{set}: {o}"
+      IO.println s!"{set}: the schedule: {schedNums C.p}"
+      let mut bad := false
+      for o in occs do
+        if o.used > o.occ then
+          IO.println s!"{set}: FAILED {o.name}: the columns occupy {o.used} lanes, the leaves carry \
+            {o.occ}: raise the record's occupied lanes (LvmParams, params.rs) or shrink the tables"
+          bad := true
+        else if o.used < o.occ then
+          IO.println s!"{set}: warning: {o.name}: the leaves carry {o.occ} lanes, the columns occupy \
+            {o.used}: the record's occupied lanes can drop to {o.used}"
+      let inRec := cols.filter fun c => c.1 && c.2.1.1
+      if !inRec.isEmpty then
+        IO.println s!"{set}: FAILED {inRec.length} table columns are placed in C_rec, whose \
+          occupied lanes are the stream's and σ''s"
+        bad := true
+      let off := ns != numsFrozen C
+      if off then
         IO.println s!"{set}: the numbers {ns} differ from the frozen {numsFrozen C}: the \
           parameter record must change too (README.md)"
-        pure 3
-      else pure 0
+      pure (if off && bad then 7 else if off then 3 else if bad then 5 else 0)
   | _ => IO.eprintln usage; pure 2
 
 end QAsmTool

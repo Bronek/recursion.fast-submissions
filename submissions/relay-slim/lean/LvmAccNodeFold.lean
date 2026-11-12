@@ -30,25 +30,25 @@ open Lvm.M3 (Tab claimsOfEvs colLoc vTables sumcheckTabs fixColsR fixSentR pubCh
 
 section Rules
 
-variable {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
+variable {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
 
 /-- **A native `require` with no language step**: the rest refines, knowing the check held. -/
 theorem RefAtP.require_left {α β : Type} {c : Bool} {d : Unit → DM β} {P : VerifierProgram α}
     {R : β → α → Prop} {Q : β → Prop} (hm : ∀ u, MonoD (d u))
-    (h : c = true → RefAtP cap shp sig (d ()) P R Q) : RefAtP cap shp sig (DM.require c >>= d) P R Q := by
+    (h : c = true → RefAtP cap occ shp sig (d ()) P R Q) : RefAtP cap occ shp sig (DM.require c >>= d) P R Q := by
   intro s hok hq
   have e : runD (DM.require c >>= d) sig s = runD (d ()) sig { s with ok := c && s.ok } := rfl
   rw [e] at hok hq ⊢
   have hc : c = true := (Bool.and_eq_true _ _ ▸ hm () sig _ hok).1
   obtain ⟨a, h1, h2, h3, h4⟩ := h hc _ hok hq
-  obtain ⟨c1, c2, c3⟩ := ivp_congr (cap := cap) (shp := shp) P sig
+  obtain ⟨c1, c2, c3⟩ := ivp_congr (cap := cap) (occ := occ) (shp := shp) P sig
     (s := s) (s' := { s with ok := c && s.ok }) rfl rfl
   exact ⟨a, c1.trans h1, c2.trans h2, c3.trans h3, h4⟩
 
 /-- **A language `require` against a native value**, justified by the promise and what is known. -/
 theorem RefAtP.pure_require {β : Type} {b : β} {q : Prop} [Decidable q] {Q : β → Prop}
     (hq : Q b → q) :
-    RefAtP cap shp sig (Pure.pure b : DM β) (VerifierProgram.require q) (fun _ _ ↦ True) Q := by
+    RefAtP cap occ shp sig (Pure.pure b : DM β) (VerifierProgram.require q) (fun _ _ ↦ True) Q := by
   intro s _ hQ
   have e : VerifierProgram.require q = VerifierProgram.ret () := by
     simp only [VerifierProgram.require, hq hQ, ↓reduceIte]
@@ -260,9 +260,9 @@ theorem ValP.any {β β' : Type} {d : DM β} {d' : β → DM β'} {P' : β' → 
 theorem ValP.pure {β : Type} {b : β} {P : β → Prop} (h : P b) : ValP (Pure.pure b : DM β) P :=
   fun _ _ ↦ h
 
-theorem RefAt.and_valP {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray} {α β : Type} {d : DM β}
-    {P : VerifierProgram α} {R : β → α → Prop} {V : β → Prop} (h : RefAt cap shp sig d P R)
-    (hv : ValP d V) : RefAt cap shp sig d P fun b a ↦ R b a ∧ V b :=
+theorem RefAt.and_valP {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray} {α β : Type}
+    {d : DM β} {P : VerifierProgram α} {R : β → α → Prop} {V : β → Prop} (h : RefAt cap occ shp sig d P R)
+    (hv : ValP d V) : RefAt cap occ shp sig d P fun b a ↦ R b a ∧ V b :=
   fun s hok ↦ by
     obtain ⟨a, h1, h2, h3, h4⟩ := h s hok
     exact ⟨a, h1, h2, h3, h4, hv sig s⟩
@@ -332,7 +332,7 @@ theorem ref_busTabL (sig : ByteArray) (tabs : Pub → List M3.Tab) (pub : Pub) (
 
 section Fold
 
-variable {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
+variable {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
 
 theorem real_pubCheck (p : Params) (tabs : Pub → List Tab) (pub : Pub) (evs : List (List FE × List FE)) :
     (M3.real p tabs).pubCheck pub evs = pubCheckR p.pubTab pub evs := rfl
@@ -353,7 +353,7 @@ theorem ref_accFold (tabs : Pub → List Tab) (pub : Pub) (evs : List (List FE �
     (hl : EvLen (sumcheckTabs (tabs pub)) evs) (hn : evs.length = (sumcheckTabs (tabs pub)).length)
     (hpt : P20.pubTab < (sumcheckTabs (tabs pub)).length)
     (hw : ∀ t ∈ sumcheckTabs (tabs pub), 0 < t.w) :
-    RefAtP cap shp sig (accFold P20 (M3.real P20 tabs) pub evs)
+    RefAtP cap occ shp sig (accFold P20 (M3.real P20 tabs) pub evs)
       (Lvm.Acc.accProgV P20 tabs pub (claimsOfEvs (sumcheckTabs (tabs pub)) evs)) (fun _ _ ↦ True)
       (fun a ↦ AccOk P20 (M3.real P20 tabs) pub a = true) := by
   unfold accFold Lvm.Acc.accProgV Lvm.Acc.accProg
@@ -400,7 +400,7 @@ theorem ref_accFold (tabs : Pub → List Tab) (pub : Pub) (evs : List (List FE �
 /-- **Phases 2–3b refine `busTabAccProg`** under the promise that phase 3b's folded claim holds. -/
 theorem ref_busTabAcc (sig : ByteArray) (tabs : Pub → List Tab) (pub : Pub) (F : Fit P20 (tabs pub))
     (hw : ∀ t ∈ sumcheckTabs (tabs pub), 0 < t.w) :
-    RefAtP capS shpS sig ((dBus P20 (M3.real P20 tabs) pub >>= fun pb ↦
+    RefAtP capS occS shpS sig ((dBus P20 (M3.real P20 tabs) pub >>= fun pb ↦
         dTab P20 (M3.real P20 tabs) pub pb.1 pb.2 >>= fun ev ↦ pure (pb, ev)) >>= fun bt ↦
           accFold P20 (M3.real P20 tabs) pub bt.2 >>= fun acc ↦ pure (bt, acc))
       (busTabAccProg tabs pub) (fun bta cl ↦ TabRel (sumcheckTabs (tabs pub)) bta.1 cl)

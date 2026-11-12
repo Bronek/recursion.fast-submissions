@@ -157,7 +157,7 @@ theorem toExt3_chOk (lam zeta mu rho rho' yS : List FE) (hl : lam.length = 3) (h
 
 /-- `contRows P20` is in `[1, 2^15)`. -/
 theorem contRows_bound : ∀ i ∈ contRows P20, 1 ≤ i ∧ i < 2 ^ 15 := by
-  have hs : spongeBlocks P20 = 9979 := sizes_P20.2.2.2.2.2.2.2.2
+  have hs : spongeBlocks P20 = 9486 := sizes_P20.2.2.2.2.2.2.2.2
   have h14 : P20.recRowsLog = 14 := rfl
   intro i hi
   simp only [contRows, List.mem_append, List.mem_map, List.mem_range, hs, h14, Nat.reducePow,
@@ -269,12 +269,12 @@ theorem length_sumcheck (count : ℕ) : ∀ (eqs : List (Option FE)) (claim : FE
 
 section Ref
 
-variable {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
+variable {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
 
 /-- A fact about the native step's value. -/
 theorem refAt_withD {α β : Type} {d : DM β} {P : LeanVM.Protocol.Compile.VerifierProgram α}
-    {R : β → α → Prop} {Q : β → Prop} (h : RefAt cap shp sig d P R) (hq : ∀ s, Q (runD d sig s).1) :
-    RefAt cap shp sig d P fun b a ↦ R b a ∧ Q b := fun s hok ↦ by
+    {R : β → α → Prop} {Q : β → Prop} (h : RefAt cap occ shp sig d P R) (hq : ∀ s, Q (runD d sig s).1) :
+    RefAt cap occ shp sig d P fun b a ↦ R b a ∧ Q b := fun s hok ↦ by
   obtain ⟨a, h1, h2, h3, h4⟩ := h s hok
   exact ⟨a, h1, h2, h3, h4, hq s⟩
 
@@ -284,7 +284,7 @@ theorem monoD_ringRaw (s : List FE) : MonoD (Lvm.ringRaw s) :=
 /-- **V_S's caller-placed ring switch** refines leanVM's `ringSwitch` at any point: the same
 target, the weight `ringWeight pt · coeffs` on the coefficients' images. -/
 theorem ref_ringRaw (s : List FE) (pt : List E) :
-    RefAt cap shp sig (Lvm.ringRaw s) (Verifier.ringSwitch pt (s.map FE.toExt3))
+    RefAt cap occ shp sig (Lvm.ringRaw s) (Verifier.ringSwitch pt (s.map FE.toExt3))
       fun r r' ↦ r' = (FE.toExt3 r.1, fun x ↦ Verifier.ringWeight pt x (r.2.map FE.toExt3)) := by
   refine RefAt.bind (fun _ ↦ MonoD.pure _) (ref_samples ringStages) ?_
   rintro ch _ rfl

@@ -10,8 +10,9 @@ import LvmReplayBase
 
 `climb_sim`: a Merkle climb of `j` levels: the same node queries (`cur ‖ sib` iff the position's bit
 is `0`), the body cursor `32·j` further, the stream cursor `104·j` further. `openAll_sim`: the
-openings of a list of positions of one commitment (leaf query = the row, the climb, the cap
-compare), with the compiled verifier's rows = the rows on the stream at the leaf entries.
+openings of a list of positions of one commitment (leaf query = the row's occupied words, the
+climb, the cap compare), with the compiled verifier's rows (`padRow`) = the rows on the stream at
+the leaf entries (`padAt`).
 -/
 
 set_option autoImplicit false
@@ -44,10 +45,10 @@ theorem size_digestBytes (d : Digest) : (digestBytes d).size = 32 := by
 theorem take_drop_blb {b : ByteArray} {o n : ℕ} (h : o + n ≤ b.size) :
     (((blb b).drop o).take n).length = n := by simp [length_blb]; omega
 
-theorem opRows_succ (sig : ByteArray) (wd path n e : ℕ) :
-    opRows sig wd path (n + 1) e =
-      (rowAt sig (e + 8) wd :: (opRows sig wd path n (e + 40 + 8 * wd + 104 * path)).1,
-        (opRows sig wd path n (e + 40 + 8 * wd + 104 * path)).2) := rfl
+theorem opRows_succ (sig : ByteArray) (wd oc path n e : ℕ) :
+    opRows sig wd oc path (n + 1) e =
+      (padAt sig (e + 8) wd oc :: (opRows sig wd oc path n (e + 40 + 8 * min oc wd + 104 * path)).1,
+        (opRows sig wd oc path n (e + 40 + 8 * min oc wd + 104 * path)).2) := rfl
 
 /-! ## Climbing -/
 
@@ -145,10 +146,11 @@ section Open
 
 variable (S : Scheme) (π : ByteArray) (tr : Trace)
 
-/-- **An opening in lockstep**: the driver's `openLoop` and the compiled `openAll` ask the same
-queries, and the compiled rows are the stream's (`opRows`). -/
+/-- **An opening in lockstep**: the driver's `openLoop` (leaves of `L.row` bytes) and the compiled
+`openAll` (leaves of the occupied words, `Scheme.lb`) ask the same queries, and the compiled rows are
+the stream's (`opRows`). -/
 theorem openAll_sim (hdecK : S.decK = kOfBytes) (L : Level) (capOff ht wd : ℕ)
-    (hht : L.height = ht) (hrow : L.row = 8 * wd) (hpath : L.path = ht - S.capOf ht wd)
+    (hht : L.height = ht) (hrow : L.row = 8 * min (S.occ ht wd) wd) (hpath : L.path = ht - S.capOf ht wd)
     (hlv : S.capOf ht wd ≤ ht) :
     ∀ (ps : List ℕ) (s : DSt) (i : ℕ) (k'' : DSt → OProg Bool),
       (∀ q ∈ ps, q < 2 ^ ht) →
@@ -156,14 +158,19 @@ theorem openAll_sim (hdecK : S.decK = kOfBytes) (L : Level) (capOff ht wd : ℕ)
       (openLoop π L capOff ps s k'').runSeq (tr.drop i) = some true →
       ∃ s' n, (k'' s').runSeq (tr.drop (i + n)) = some true ∧ s'.st = s.st ∧ s'.pend = s.pend ∧
         s'.caps = s.caps ∧ s'.pos = s.pos ∧ s.off ≤ s'.off ∧
-        (opRows (traceBytesB tr) wd L.path ps.length (entOff tr i)).2 = entOff tr (i + n) ∧
+        (opRows (traceBytesB tr) wd (S.occ ht wd) L.path ps.length (entOff tr i)).2 = entOff tr (i + n) ∧
         ∀ Kc : Option (List (List K) × List UInt8) → OProg Bool,
         ((S.openAll (S.capI ht wd ((blb π).drop capOff)) ps ((blb π).drop s.off)).bind Kc).runSeq
             (tr.drop i) =
-          (Kc (some ((opRows (traceBytesB tr) wd L.path ps.length (entOff tr i)).1,
-            (blb π).drop s'.off))).runSeq (tr.drop (i + n))
-  | [], s, i, k'', _, _, h => ⟨s, 0, h, rfl, rfl, rfl, rfl, le_rfl, rfl, fun Kc ↦ by simp [Scheme.openAll, OProg.bind, opRows]⟩
-  | q :: qs, s, i, k'', hps, hk, h => by
+          (Kc (some ((opRows (traceBytesB tr) wd (S.occ ht wd) L.path ps.length (entOff tr i)).1,
+            (blb π).drop s'.off))).runSeq (tr.drop (i + n)) := by
+  intro ps
+  induction ps with
+  | nil =>
+    intro s i k'' _ _ h
+    exact ⟨s, 0, h, rfl, rfl, rfl, rfl, le_rfl, rfl, fun Kc ↦ by simp [Scheme.openAll, OProg.bind, opRows]⟩
+  | cons q qs ih =>
+    intro s i k'' hps hk h
     obtain ⟨d₀, rest, hdrop, h'⟩ := ask_run h
     have hrest : tr.drop (i + 1) = rest := by rw [← List.drop_drop, hdrop]; rfl
     -- the climb's continuation reaches the next positions, whose run bounds the body
@@ -187,23 +194,22 @@ theorem openAll_sim (hdecK : S.decK = kOfBytes) (L : Level) (capOff ht wd : ℕ)
     split at h1
     · rename_i hcap
       have htop : top = digestAt π (capOff + nodeBytes * (q >>> L.path)) := by simpa using hcap
-      obtain ⟨s', n, h2, hst, hpe, hca, hpo, hle, he2, hc2⟩ := openAll_sim hdecK L capOff ht wd hht hrow hpath hlv
-        qs s₁ (i + 1 + n₁) k'' (fun q' hq' ↦ hps q' (List.mem_cons_of_mem _ hq')) hk h1
+      obtain ⟨s', n, h2, hst, hpe, hca, hpo, hle, he2, hc2⟩ := ih s₁ (i + 1 + n₁) k'' (fun q' hq' ↦ hps q' (List.mem_cons_of_mem _ hq')) hk h1
       refine ⟨s', n₁ + 1 + n, by rw [show i + (n₁ + 1 + n) = i + 1 + n₁ + n by omega]; exact h2,
         by rw [hst, hst1], by rw [hpe, hpe1], by rw [hca, hca1], by rw [hpo, hpo1], ?_, ?_, ?_⟩
       · have : s₁.off ≤ s'.off := hle
         omega
-      · have hsz : (π.extract s.off (s.off + L.row)).size = 8 * wd := by rw [size_extract_of hoff, hrow]
+      · have hsz : (π.extract s.off (s.off + L.row)).size = 8 * min (S.occ ht wd) wd := by rw [size_extract_of hoff, hrow]
         have he0 := (stream_entry hdrop).2.2
         rw [List.length_cons, opRows_succ]
         dsimp only
         rw [show i + (n₁ + 1 + n) = i + 1 + n₁ + n by omega, ← he2, he1, he0, hsz]
-        exact congrArg (fun e ↦ (opRows (traceBytesB tr) wd L.path qs.length e).2) (by ring)
+        exact congrArg (fun e ↦ (opRows (traceBytesB tr) wd (S.occ ht wd) L.path qs.length e).2) (by ring)
       · intro Kc
-        have hlen : ¬ ((blb π).drop s.off).length < 8 * wd := by
+        have hlen : ¬ ((blb π).drop s.off).length < 8 * min (S.occ ht wd) wd := by
           rw [List.length_drop, length_blb]; rw [hrow] at hoff; omega
-        have hq : toQ (((blb π).drop s.off).take (8 * wd)) = π.extract s.off (s.off + L.row) := by
-          apply toQ_eq; rw [blb_extract, hrow, show s.off + 8 * wd - s.off = 8 * wd by omega]
+        have hq : toQ (((blb π).drop s.off).take (8 * min (S.occ ht wd) wd)) = π.extract s.off (s.off + L.row) := by
+          apply toQ_eq; rw [blb_extract, hrow, show s.off + 8 * min (S.occ ht wd) wd - s.off = 8 * min (S.occ ht wd) wd by omega]
         have hq0 : q < 2 ^ ht := hps q List.mem_cons_self
         have hqmod : q % 2 ^ ht = q >>> 0 := by rw [Nat.mod_eq_of_lt hq0]; rfl
         have hcapk : (S.capI ht wd ((blb π).drop capOff)).cap[q % 2 ^ ht / 2 ^ (ht - S.capOf ht wd)]? =
@@ -212,27 +218,27 @@ theorem openAll_sim (hdecK : S.decK = kOfBytes) (L : Level) (capOff ht wd : ℕ)
           rw [Nat.div_lt_iff_lt_mul (Nat.two_pow_pos _), ← pow_add, Nat.add_comm,
             Nat.sub_add_cancel hlv]
           exact hq0
-        have hrow0 : rowOf S.decK wd (((blb π).drop s.off).take (8 * wd)) =
-            rowAt (traceBytesB tr) (entOff tr i + 8) wd := by
-          have hsz : (π.extract s.off (s.off + L.row)).size = 8 * wd := by
+        have hrow0 : padRowOf S.decK wd (S.occ ht wd) (((blb π).drop s.off).take (8 * min (S.occ ht wd) wd)) =
+            padAt (traceBytesB tr) (entOff tr i + 8) wd (S.occ ht wd) := by
+          have hsz : (π.extract s.off (s.off + L.row)).size = 8 * min (S.occ ht wd) wd := by
             rw [size_extract_of hoff, hrow]
-          have := (stream_entry hdrop).1 0 (8 * wd) (by rw [hsz]; omega)
+          have := (stream_entry hdrop).1 0 (8 * min (S.occ ht wd) wd) (by rw [hsz]; omega)
           simp only [Nat.add_zero, List.drop_zero] at this
-          rw [rowAt, hdecK, this, blb_extract, hrow, show s.off + 8 * wd - s.off = 8 * wd by omega,
+          rw [padAt, hdecK, this, blb_extract, hrow, show s.off + 8 * min (S.occ ht wd) wd - s.off = 8 * min (S.occ ht wd) wd by omega,
             List.take_take, min_self]
         rw [hqmod, ← hpath] at hcapk
-        have hdd : ((blb π).drop s.off).drop (8 * wd) = (blb π).drop (s.off + L.row) := by
+        have hdd : ((blb π).drop s.off).drop (8 * min (S.occ ht wd) wd) = (blb π).drop (s.off + L.row) := by
           rw [List.drop_drop, hrow]
         rw [Scheme.openAll, oprog_bind_assoc, Scheme.openOne,
-          if_neg (show ¬ ((blb π).drop s.off).length < 8 * (S.capI ht wd ((blb π).drop capOff)).wd from hlen)]
-        simp only [capI_wd, capI_ht, capI_lv, bind_query', hq, hdrop, runSeq_query_eq,
+          if_neg (show ¬ ((blb π).drop s.off).length < S.lb (S.capI ht wd ((blb π).drop capOff)) from hlen)]
+        simp only [Scheme.lb, Scheme.padRow, capI_wd, capI_ht, capI_lv, bind_query', hq, hdrop, runSeq_query_eq,
           oprog_bind_assoc, hqmod, ← hpath, hdd]
         simp only at hc1
         rw [← hrest, hc1]
         simp only [bind_ret', hcapk, ↓reduceIte, hrow0]
         rw [oprog_bind_assoc, hc2, bind_ret', List.length_cons, opRows_succ,
           show i + (n₁ + 1 + n) = i + 1 + n₁ + n by omega]
-        have hent : entOff tr (i + 1 + n₁) = entOff tr i + 40 + 8 * wd + 104 * L.path := by
+        have hent : entOff tr (i + 1 + n₁) = entOff tr i + 40 + 8 * min (S.occ ht wd) wd + 104 * L.path := by
           rw [he1, (stream_entry hdrop).2.2, size_extract_of hoff, hrow]; ring
         rw [hent]
     · exact absurd (runSeq_ret_true h1).2 (by simp)

@@ -23,6 +23,9 @@ path = "src/main.rs"
 # leanVM's cfg names, never enabled here (declared so the vendored `cfg`s stay as written)
 bench = []
 test-util = []
+# Test builds only (never in the submitted `.s`): `prove` asserts that each stack is zero past its
+# occupied lanes, the ones its root leaves carry.
+selfcheck = []
 
 [lints.rust]
 unexpected_cfgs = { level = "warn" }

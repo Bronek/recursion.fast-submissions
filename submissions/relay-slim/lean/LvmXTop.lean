@@ -60,8 +60,8 @@ def a1BX : ℕ := 2 ^ 19 + 24
 /-- `f₂`. -/
 def f2BX : ℕ := 2 ^ 23 + 2 ^ 22
 
-theorem layoutX : pLX = 97904 ∧ capWX = 1732 ∧ cap1WX = 25665 ∧ capRec1Off pX % 8 = 0 ∧
-    alphaPos pX 0 = 1297 ∧ f2WX = 42530 ∧ f2Off pX % 8 = 0 ∧ alpha1Pos pX 0 = 1328 := by
+theorem layoutX : pLX = 89524 ∧ capWX = 1732 ∧ cap1WX = 25665 ∧ capRec1Off pX % 8 = 0 ∧
+    alphaPos pX 0 = 1297 ∧ f2WX = 37600 ∧ f2Off pX % 8 = 0 ∧ alpha1Pos pX 0 = 1328 := by
   obtain ⟨-, -, h3, h4, h5, -, -, h8, h9, -⟩ := layout_P20
   refine ⟨?_, ?_, ?_, ?_, h3, ?_, ?_, h8⟩
   · rw [pLX, piSize_eq]; rfl
@@ -70,6 +70,11 @@ theorem layoutX : pLX = 97904 ∧ capWX = 1732 ∧ cap1WX = 25665 ∧ capRec1Off
   · rw [h4]
   · rw [f2WX, h9]
   · rw [h9]
+
+/-- **The reader's occupied width is the record's**: a level-0 leaf of `C_rec` carries
+`8 · crOcc` bytes at both sets (`mkParams`'s `recOcc`). -/
+theorem recRow_crOcc : (recL pX 0).row = 8 * crOcc ∧ (recL P8 0).row = 8 * crOcc := by
+  decide +kernel
 
 /-! ## The SNARK branch -/
 
@@ -274,9 +279,9 @@ private theorem segTSs : ∀ (u : ℕ) (bs : List Blk), segSize (blkTSegs u bs) 
   | u, b :: bs => by
     rw [blkTSegs, segSize, segTSs _ bs, segTS_u, List.map_cons, List.sum_cons, ← segTS b]; omega
 
-private theorem segAll : (segCost pSegL = 5517707 ∧ segCost trSegL = 6015976 ∧
+private theorem segAll : (segCost pSegL = 5216027 ∧ segCost trSegL = 5714296 ∧
       segCost (.cp 0 597) = 21506) ∧
-    (segOuts pSegL = 97899 ∧ segOuts trSegL = 169627 ∧ segOuts (.cp 0 597) = 597) ∧
+    (segOuts pSegL = 89519 ∧ segOuts trSegL = 161247 ∧ segOuts (.cp 0 597) = 597) ∧
     (segSize pSegL = 77981 ∧ segSize trSegL = 82295 ∧ segSize (.cp 0 597) = 50) := by
   obtain ⟨h1, h2, h3, h4, h5, h6⟩ := layout_all_P20.2.2.2.2.2.2.2
   refine ⟨⟨?_, ?_, rfl⟩, ⟨?_, ?_, rfl⟩, ⟨?_, ?_, rfl⟩⟩
@@ -287,7 +292,7 @@ private theorem segAll : (segCost pSegL = 5517707 ∧ segCost trSegL = 6015976 �
   · rw [pSegL, segSize, segSize, segPSs, h5]
   · rw [trSegL, segSize, segSize, segSize, segSize, segSize, segSize, segSize, segTSs, h6]; rfl
 
-theorem segCosts : segCost pSegL = 5517707 ∧ segCost trSegL = 6015976 ∧ segCost (.cp 0 597) = 21506 :=
+theorem segCosts : segCost pSegL = 5216027 ∧ segCost trSegL = 5714296 ∧ segCost (.cp 0 597) = 21506 :=
   segAll.1
 
 /-- **The node output's cost.** -/
@@ -349,7 +354,7 @@ theorem cost_decX (t : ℕ) : cost decX t ≤ 2 ^ 39 + t / 5 * 11895 + t * 168 :
 theorem outs_tcpIR (a n t : ℕ) (hn : n < 2 ^ 64) : outs (tcpIR a n) t = n := by
   simp [tcpIR, tcpBody, outs, toNat_toWord hn]
 
-theorem segOutsV : segOuts pSegL = 97899 ∧ segOuts trSegL = 169627 ∧ segOuts (.cp 0 597) = 597 :=
+theorem segOutsV : segOuts pSegL = 89519 ∧ segOuts trSegL = 161247 ∧ segOuts (.cp 0 597) = 597 :=
   segAll.2.1
 
 theorem outs_outIR (m t : ℕ) : outs (outIR m) t ≤ 268738 := by

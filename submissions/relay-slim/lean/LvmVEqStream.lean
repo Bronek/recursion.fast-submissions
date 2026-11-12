@@ -155,7 +155,7 @@ end RunK
 /-- An opening's level geometry is P20's commitment table. -/
 def geomOk (p : Params) (r : Ref) : Bool :=
   let sh := shpS (idxS r)
-  (p.level r).height == sh.1 && (p.level r).row == 8 * sh.2 &&
+  (p.level r).height == sh.1 && (p.level r).row == 8 * min (occS sh.1 sh.2) sh.2 &&
     (p.level r).path == sh.1 - capS sh.1 sh.2
 
 /-- **The static facts of the atoms** (pending bytes `pend`, committed oracles `cr` in order, the

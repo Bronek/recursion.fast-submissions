@@ -269,15 +269,15 @@ def WireRel (w : ℕ) (wo : WireOut) (out : Lvm.KG.WireChOut) : Prop :=
 
 section Ref
 
-variable {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
+variable {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
 
 /-- **`D`'s slot reduction.** -/
 theorem ref_dSlotD (claim : Lvm.KeccakClaim) (pt : List FE) (sb blk : ℕ) (v : FE) :
-    RefAt cap shp sig (dSlotD claim pt sb blk v)
+    RefAt cap occ shp sig (dSlotD claim pt sb blk v)
       (Lvm.KG.slotProg 2 sb blk (Lvm.KG.dW (claim.weights.map FE.toExt3)) (pt.map FE.toExt3)
         (FE.toExt3 v)) SlotRel := by
   unfold dSlotD Lvm.KG.slotProg
-  have hs := (ref_sumcheck 3 [none, none] v (cap := cap) (shp := shp) (sig := sig)).retD
+  have hs := (ref_sumcheck 3 [none, none] v (cap := cap) (occ := occ) (shp := shp) (sig := sig)).retD
     (retD_sumcheck 3 _ v)
   simp only [List.map_cons, List.map_nil, Option.map_none] at hs
   refine RefAt.bind (fun _ ↦ (monoD_readEs _).bind fun _ ↦ (MonoD.require _).bind fun _ ↦
@@ -290,7 +290,7 @@ theorem ref_dSlotD (claim : Lvm.KeccakClaim) (pt : List FE) (sb blk : ℕ) (v : 
   refine RefAt.bind (fun _ ↦ (monoD_ringSwitch _ _).bind fun _ ↦ MonoD.pure _)
     (RefAt.require fun hc ↦ req_of rfl (toExt3_slotDot _ _ _ hτ) hc) ?_
   rintro _ _ _
-  have hr := ref_ringSwitch (pt ++ τ ++ Lvm.selectorPoint blk sb) sv (cap := cap) (shp := shp)
+  have hr := ref_ringSwitch (pt ++ τ ++ Lvm.selectorPoint blk sb) sv (cap := cap) (occ := occ) (shp := shp)
     (sig := sig)
   rw [List.map_append, List.map_append, map_selectorPoint] at hr
   refine RefAt.bind (fun _ ↦ MonoD.pure _) hr ?_
@@ -301,11 +301,11 @@ theorem ref_dSlotD (claim : Lvm.KeccakClaim) (pt : List FE) (sb blk : ℕ) (v : 
 the digest `d`'s. -/
 theorem ref_dWire (p : Params) (pub : Pub) (claim : Lvm.KeccakClaim) (d : RecursionFast.Digest)
     (hs : pub.s = digestLanes d) :
-    RefAt cap shp sig (dWire p pub claim)
+    RefAt cap occ shp sig (dWire p pub claim)
       (Lvm.KG.wireChProg p.logN (dSelBits p) (dSel p) d pub.n (kcE claim)) (WireRel p.logN) := by
   rw [dWire_eq]
   unfold Lvm.KG.wireChProg
-  have h1 := (ref_sumcheck 3 (List.replicate p.logN none) (wireTargetF pub.s pub.n claim) (cap := cap)
+  have h1 := (ref_sumcheck 3 (List.replicate p.logN none) (wireTargetF pub.s pub.n claim) (cap := cap) (occ := occ)
     (shp := shp) (sig := sig)).retD (retD_sumcheck 3 _ _)
   rw [hs, toExt3_wireTargetF, List.map_replicate, Option.map_none] at h1
   rw [hs]

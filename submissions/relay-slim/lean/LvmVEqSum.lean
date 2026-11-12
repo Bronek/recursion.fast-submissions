@@ -54,11 +54,11 @@ theorem monoD_verifyGkrGrandProducts (depth : ℕ) : MonoD (Lvm.verifyGkrGrandPr
 
 section Ref
 
-variable {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
+variable {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
 
 /-- **A round polynomial**: its coefficients. -/
 theorem ref_sumcheckRoundPoly (count : ℕ) (claim : FE) : ∀ eq : Option FE,
-    RefAt cap shp sig (Lvm.sumcheckRoundPoly count claim eq)
+    RefAt cap occ shp sig (Lvm.sumcheckRoundPoly count claim eq)
       (Verifier.sumcheckRoundPoly count (FE.toExt3 claim) (eq.map FE.toExt3))
       (fun xs ys ↦ ys = xs.map FE.toExt3)
   | none => by
@@ -74,7 +74,7 @@ theorem ref_sumcheckRoundPoly (count : ℕ) (claim : FE) : ∀ eq : Option FE,
 
 /-- **The sumcheck**: its challenges and final claim. -/
 theorem ref_sumcheck (count : ℕ) : ∀ (eqs : List (Option FE)) (claim : FE),
-    RefAt cap shp sig (Lvm.sumcheck claim count eqs)
+    RefAt cap occ shp sig (Lvm.sumcheck claim count eqs)
       (Verifier.sumcheck (FE.toExt3 claim) count (eqs.map (Option.map FE.toExt3)))
       (fun r r' ↦ r' = (r.1.map FE.toExt3, FE.toExt3 r.2))
   | [], _ => RefAt.pure rfl
@@ -101,13 +101,13 @@ theorem map_some_map (l : List FE) :
 
 /-- **A GKR step.** -/
 theorem ref_gkrStep (step : ℕ) (s : Lvm.GkrState) :
-    RefAt cap shp sig (Lvm.gkrStep step s) (Verifier.gkrStep step (gsE s)) fun r r' ↦ r' = gsE r := by
+    RefAt cap occ shp sig (Lvm.gkrStep step s) (Verifier.gkrStep step (gsE s)) fun r r' ↦ r' = gsE r := by
   refine RefAt.bind (fun _ ↦ (monoD_sumcheck _ _ _).bind fun ⟨_, _⟩ ↦
     (monoD_readEs _).bind fun _ ↦ (monoD_readEs _).bind fun _ ↦ (monoD_readEs _).bind fun _ ↦
       (MonoD.require _).bind fun _ ↦ (monoD_samples _).bind fun _ ↦ MonoD.pure _) ref_sampleE ?_
   rintro c _ rfl
   have h := ref_sumcheck (2 ^ step + 1) (s.point.map some) (Lvm.polyEval s.values c)
-    (cap := cap) (shp := shp) (sig := sig)
+    (cap := cap) (occ := occ) (shp := shp) (sig := sig)
   rw [toExt3_polyEval, map_some_map] at h
   refine RefAt.bind (fun ⟨_, _⟩ ↦
     (monoD_readEs _).bind fun _ ↦ (monoD_readEs _).bind fun _ ↦ (monoD_readEs _).bind fun _ ↦
@@ -133,7 +133,7 @@ theorem ref_gkrStep (step : ℕ) (s : Lvm.GkrState) :
 
 /-- **The GKR layers** (the DSL's `gkrLayers 1` binds `gkrLayers 0` after the step). -/
 theorem ref_gkrLayers : ∀ (n : ℕ) (s : Lvm.GkrState),
-    RefAt cap shp sig (Lvm.gkrLayers n s) (Verifier.gkrLayers n (gsE s)) fun r r' ↦ r' = gsE r
+    RefAt cap occ shp sig (Lvm.gkrLayers n s) (Verifier.gkrLayers n (gsE s)) fun r r' ↦ r' = gsE r
   | 0, _ => RefAt.pure rfl
   | 1, s => by
     rw [Lvm.gkrLayers, ← bind_pure (Lvm.gkrStep 1 s)]
@@ -152,7 +152,7 @@ theorem ref_gkrLayers : ∀ (n : ℕ) (s : Lvm.GkrState),
 
 /-- **The grand-product GKR**: the count root, the point, the three trees' values. -/
 theorem ref_verifyGkrGrandProducts (depth : ℕ) :
-    RefAt cap shp sig (Lvm.verifyGkrGrandProducts depth) (Verifier.verifyGkrGrandProducts depth)
+    RefAt cap occ shp sig (Lvm.verifyGkrGrandProducts depth) (Verifier.verifyGkrGrandProducts depth)
       fun r r' ↦ r' = (FE.toExt3 r.1, r.2.1.map FE.toExt3, r.2.2.map FE.toExt3) := by
   refine RefAt.bind (fun _ ↦ monoD_readE.bind fun _ ↦ (monoD_gkrLayers _ _).bind fun _ ↦
     MonoD.pure _) ref_readE ?_

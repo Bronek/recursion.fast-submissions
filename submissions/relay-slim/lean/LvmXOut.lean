@@ -16,8 +16,9 @@ The decoded `C_rec` gives the child's stream `Σ = tagTrace ‖ traceBytes tr'` 
   and answer at its static lane; the length lanes are not read: the circuit fixes them, `Q_link`);
 * **`reassembleL tr`**: the proof a trace of `V_S` spells (BLUEPRINT §2.2): `'S' ‖ 0⁷`, then per entry
   by its length (the length rule, `LvmSchedule.lengthRule`): `q₀` nothing, a node query (64 B) its
-  half that is **not** the previous answer (its right half if the left one is), a leaf query (384
-  or 512 B) the row, every other query its message (`q` without the 32-byte state);
+  half that is **not** the previous answer (its right half if the left one is), a leaf query (a
+  length of `leafLens`, `pX`'s rows) the row, every other query its message (`q` without the 32-byte
+  state);
 * their output words: **`logWords_readTraceL`** (`trWords`), **`packBytes_reassembleL`** (`pWords`),
   **`size_reassembleL`** (`piSize`).
 
@@ -142,7 +143,7 @@ def entL : List (ℕ × ℕ) := walk 6 lensL
 def readTraceL (W : ℕ → Word) : Trace := q0Ent W :: entL.map fun x => entAt W x.1 x.2
 
 /-- The words of an entry's contribution, by its length. -/
-def pieceLen (len : ℕ) : ℕ := if len = 64 then 4 else if len = 384 ∨ len = 512 then len / 8 else (len - 32) / 8
+def pieceLen (len : ℕ) : ℕ := if len = 64 then 4 else if len ∈ leafLens then len / 8 else (len - 32) / 8
 
 /-! The static facts of `lensL` per block: `blocks pX` has about a thousand blocks, `lensL` about
 twelve thousand entries, so the kernel checks closed forms over the blocks (`blocks_lens`, with
@@ -294,13 +295,13 @@ open RecursionFast Lvm
 def header0 : List UInt8 := [0x53, 0, 0, 0, 0, 0, 0, 0]
 
 /-- An entry's contribution to the proof, after the previous answer `prev` (BLUEPRINT §2.2, by the
-query's length: `q₀` nothing, a node its half that is not `prev`, a leaf its row, else the message
-after the 32-byte state). -/
+query's length: `q₀` nothing, a node its half that is not `prev`, a leaf its row (a length of
+`leafLens`), else the message after the 32-byte state). -/
 def piece (prev : Digest) (e : ByteArray × Digest) : List UInt8 :=
   if e.1.data.toList.length = 7 then []
   else if e.1.data.toList.length = 64 then
     (if e.1.data.toList.take 32 = prev.toList then e.1.data.toList.drop 32 else e.1.data.toList.take 32)
-  else if e.1.data.toList.length = 384 ∨ e.1.data.toList.length = 512 then e.1.data.toList
+  else if e.1.data.toList.length ∈ leafLens then e.1.data.toList
   else e.1.data.toList.drop 32
 
 /-- The contributions of a trace's entries, each after the previous entry's answer. -/
@@ -319,7 +320,7 @@ def sibWs (W : ℕ → Word) (x : ℕ) : List Word :=
 /-- An entry's contribution in lanes. -/
 def pieceW (W : ℕ → Word) (u len : ℕ) : List Word :=
   if len = 64 then sibWs W u
-  else if len = 384 ∨ len = 512 then wsAt W (u + 1) (len / 8)
+  else if len ∈ leafLens then wsAt W (u + 1) (len / 8)
   else wsAt W (u + 5) ((len - 32) / 8)
 
 /-- **The proof's output words** (without the length word). -/
@@ -344,7 +345,7 @@ theorem piece_entAt (W : ℕ → Word) {u len : ℕ} (h8 : len % 8 = 0) (h32 : 3
     · rw [if_pos (by rw [he]), if_pos he]
     · rw [if_neg (fun h => he (wordsBytes_inj h)), if_neg he]
   · rw [if_neg h64, if_neg h64]
-    by_cases hr : len = 384 ∨ len = 512
+    by_cases hr : len ∈ leafLens
     · rw [if_pos hr, if_pos hr, hq]
     · have t3 : (wordsBytes (wsAt W (u + 1) (len / 8))).drop 32 =
           wordsBytes (wsAt W (u + 5) ((len - 32) / 8)) := by

@@ -13,9 +13,9 @@ import LvmQWhirBase
 
 * `map_subspaceRoots`, `toExt3_inducedWeight`: `subspaceRoots`/`inducedWeight` transported;
 * `rowAt_eq`: the compiled verifier's row (`rowOf kOfBytes`) is the native words at `o + 8 j`;
-* `toExt3_foldRow0`, `toExt3_foldRowE`: V_S's level-0 fold `Σ_k eq[k]·word[w−1−k]` is `dot` of the
-  DSL's `row.reverse.map ofK` with `eqKernel`, the later-level fold is `dot` of `extRow row` (rows of
-  `3·2^ℓ` words);
+* `toExt3_foldRow0_pad`, `toExt3_foldRowE`: V_S's level-0 fold of the occupied words is `dot` of
+  the DSL's zero-padded `row.reverse.map ofK` with `eqKernel`; the later-level fold is `dot` of
+  `extRow row` (rows of `3·2^ℓ` words);
 * `toExt3_dot_rows`: `dot queryWeights folds` is the DSL's `enforcedSum` shape;
 * `GRel`, `WRel`: glued claims and WHIR states (the DSL state's `target` is not related: V_S does not
   track it, and the DSL reads it only in `tailRoundsT 0`, where V_S's `tailRounds 0` fails);
@@ -178,16 +178,37 @@ theorem extRow_rowAt (sig : ByteArray) (o w : ℕ) :
 theorem toExt3_sum (s : Finset ℕ) (f : ℕ → FE) : FE.toExt3 (∑ k ∈ s, f k) = ∑ k ∈ s, FE.toExt3 (f k) :=
   map_sum FE.ringEquivExt3 f s
 
-/-- **The level-0 fold**: V_S's `foldRow0` is the DSL's `dot (row.reverse.map ofK) (eqKernel folds)`. -/
-theorem toExt3_foldRow0 (sig : ByteArray) (lf : List FE) (o w : ℕ) (hw : w = 2 ^ lf.length) :
-    FE.toExt3 (foldRow0 sig (eqKernelA lf) o w) =
-      Verifier.dot ((rowAt sig o w).reverse.map ofK) (Verifier.eqKernel (lf.map FE.toExt3)) := by
-  rw [Loop.foldRow0_eq, Whir.Sound.dot_eq_sum _ _ (by
-    simp [Whir.Sound.length_eqKernel, hw]), toExt3_sum]
-  simp only [List.length_map, List.length_reverse, length_rowAt]
-  refine Finset.sum_congr rfl fun k hk ↦ ?_
-  rw [Finset.mem_range] at hk
-  rw [rev_rowAt, getD_map_rangeWP _ hk, ← map_eqKernel, getD_map_toExt3, ← getD_eqKernelA, tE_mul]
+/-- **The level-0 fold of a narrowed leaf** (Z2): V_S's `foldRow0` of the leaf's `min oc 2^ℓ`
+occupied words is the DSL's `dot (row.reverse.map ofK) (eqKernel folds)` of the row they pad
+(`padAt`: zero words first, so they meet the top `eq` indices after the reverse). -/
+theorem toExt3_foldRow0_pad (sig : ByteArray) (lf : List FE) (o oc : ℕ) :
+    FE.toExt3 (foldRow0 sig (eqKernelA lf) o (min oc (2 ^ lf.length))) =
+      Verifier.dot ((padAt sig o (2 ^ lf.length) oc).reverse.map ofK) (Verifier.eqKernel (lf.map FE.toExt3)) := by
+  let w := min oc (2 ^ lf.length)
+  have hw : w ≤ 2 ^ lf.length := Nat.min_le_right _ _
+  have hr : (padAt sig o (2 ^ lf.length) oc).reverse.map ofK =
+      (rowAt sig o w).reverse.map ofK ++ List.replicate (2 ^ lf.length - w) 0 := by
+    simp [padAt, Lvm.FS.padRowOf, rowAt, w, List.reverse_append]
+  rw [Loop.foldRow0_eq, toExt3_sum, hr, Whir.Sound.dot_eq_sum _ _ (by
+    simp [Whir.Sound.length_eqKernel, Nat.add_sub_of_le hw])]
+  simp only [List.length_append, List.length_map, List.length_reverse, length_rowAt,
+    List.length_replicate, Nat.add_sub_of_le hw]
+  calc
+    _ = ∑ k ∈ Finset.range w,
+        ((rowAt sig o w).reverse.map ofK ++ List.replicate (2 ^ lf.length - w) 0).getD k 0 *
+          (Verifier.eqKernel (lf.map FE.toExt3)).getD k 0 := by
+      refine Finset.sum_congr rfl fun k hk => ?_
+      have hk' := Finset.mem_range.mp hk
+      rw [List.getD_append _ _ _ _ (by simpa using hk'), rev_rowAt,
+        getD_map_rangeWP _ hk', ← map_eqKernel, getD_map_toExt3, ← getD_eqKernelA, tE_mul]
+    _ = _ := by
+      apply Finset.sum_subset (Finset.range_mono hw)
+      intro k hk hkw
+      have hk' := Finset.mem_range.mp hk
+      have hkw' : w ≤ k := by simpa using hkw
+      rw [List.getD_append_right _ _ _ _ (by simpa using hkw')]
+      simp only [List.length_map, List.length_reverse, length_rowAt]
+      rw [List.getD_replicate 0 (by omega), zero_mul]
 
 /-- **A later-level fold**: V_S's `foldRowE` is the DSL's `dot (extRow row) (eqKernel folds)`. -/
 theorem toExt3_foldRowE (sig : ByteArray) (lf : List FE) (o w : ℕ) (hw : w = 2 ^ lf.length) :

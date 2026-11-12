@@ -20,7 +20,8 @@ scalars, `K` words and challenges (with the uniformity of the challenge map, `ch
   a `read` takes 24 bytes of the body into `buf`; a `commit` takes the cap (`2^c` digests,
   `c = capOf height width`) into `buf` and records it; a `sample` asks `st ‖ buf` (one query per
   challenge: the answer is the new state, its first 24 bytes the challenge, `chal`) and empties
-  `buf`; a `query` opens each position from the body: the row's bytes are a leaf query, each
+  `buf`; a `query` opens each position from the body: the leaf's bytes (the row's last `occ`
+  words, `Scheme.occ`; the words before them read as zero) are a leaf query, each
   sibling a node query `left ‖ right` (the position's bit at the level choosing the side), and the
   last answer must be the cap node above the position; `ret b` accepts iff `b` and the body is used
   up exactly; `fail` and `grind` (no proofs of work) reject;
@@ -29,7 +30,7 @@ scalars, `K` words and challenges (with the uniformity of the challenge map, `ch
 **The first-preimage reading** (`wordOf L ci`): the row at a position is read from the log by
 walking down from the cap node over the *first* entry whose answer is the node (`findA`), taking
 the half of a 64-byte query the position's bit names, then the first entry whose answer is the
-leaf digest: its query's bytes are the row (`rowOf`); a missing entry reads as the empty byte
+leaf digest: its query's bytes are the leaf, read as the row by `padRow`; a missing entry reads as the empty byte
 string (an erasure). Under no bad event (`LvmLog`) the reading of a cap absorbed into a query of
 the log never changes when the log grows (`LvmForest`), and agrees with every Merkle opening the
 verifier accepts.
@@ -88,6 +89,21 @@ def rowOf (dec : Bytes → K) (w : ℕ) (b : Bytes) : List K :=
 @[simp] theorem length_rowOf (dec : Bytes → K) (w : ℕ) (b : Bytes) : (rowOf dec w b).length = w := by
   simp [rowOf]
 
+/-- A row of `wd` words from a leaf that carries only the row's last `min oc wd` words (consecutive
+8-byte blocks of `b`): the words before them read as zero. -/
+def padRowOf (dec : Bytes → K) (wd oc : ℕ) (b : Bytes) : List K :=
+  List.replicate (wd - min oc wd) 0 ++ rowOf dec (min oc wd) b
+
+@[simp] theorem length_padRowOf (dec : Bytes → K) (wd oc : ℕ) (b : Bytes) :
+    (padRowOf dec wd oc b).length = wd := by
+  simp only [padRowOf, List.length_append, List.length_replicate, length_rowOf]
+  omega
+
+/-- A leaf that carries the whole row is the row. -/
+theorem padRowOf_full (dec : Bytes → K) {wd oc : ℕ} (h : wd ≤ oc) (b : Bytes) :
+    padRowOf dec wd oc b = rowOf dec wd b := by
+  rw [padRowOf, Nat.min_eq_right h, Nat.sub_self, List.replicate_zero, List.nil_append]
+
 /-- A commitment as the compiled verifier holds it: height, width, cap level, cap nodes. -/
 structure CapI where
   /-- `2^ht` rows. -/
@@ -125,6 +141,10 @@ structure Scheme where
   chal : Digest → E
   /-- Uniform answers give uniform challenges: every challenge has `2^64` answers. -/
   chal_sum : ∀ f : E → ℝ≥0, ∑ a : Digest, f (chal a) = 2 ^ 64 * ∑ c : E, f c
+  /-- The occupied words of a commitment of `2^height` rows of `width` words: a leaf carries only
+  the row's last `min (occ height width) width` words, and the verifier reads the others as zero
+  (the prover leaves them empty). By default every leaf carries its whole row. -/
+  occ : ℕ → ℕ → ℕ := fun _ w => w
 
 namespace Scheme
 
@@ -149,15 +169,33 @@ def climb : ℕ → Digest → ℕ → Bytes → OProg (Option (Digest × Bytes)
     .query (toQ (if q % 2 = 0 then d.toList ++ body.take 32 else body.take 32 ++ d.toList))
       fun d' => climb n d' (q / 2) (body.drop 32)
 
-/-- Open one position of a commitment: the row (`8·wd` bytes of the body) as a leaf query, then
-the climb to the cap level, compared with the cap node above the position. -/
+/-- The bytes a leaf of `ci` carries: its row's occupied words. -/
+def lb (ci : CapI) : ℕ := 8 * min (S.occ ci.ht ci.wd) ci.wd
+
+/-- The row of `ci` a leaf's bytes give: zero words, then the occupied words. -/
+def padRow (ci : CapI) (b : Bytes) : List K := padRowOf S.decK ci.wd (S.occ ci.ht ci.wd) b
+
+@[simp] theorem length_padRow (ci : CapI) (b : Bytes) : (S.padRow ci b).length = ci.wd :=
+  length_padRowOf _ _ _ _
+
+/-- A commitment whose leaves carry their whole rows reads them as before. -/
+theorem padRow_of_full (ci : CapI) (b : Bytes) (h : S.occ ci.ht ci.wd = ci.wd) :
+    S.padRow ci b = rowOf S.decK ci.wd b :=
+  padRowOf_full _ (le_of_eq h.symm) _
+
+theorem lb_of_full (ci : CapI) (h : S.occ ci.ht ci.wd = ci.wd) : S.lb ci = 8 * ci.wd := by
+  rw [lb, h, Nat.min_self]
+
+/-- Open one position of a commitment: the leaf (`lb ci` bytes of the body: the row's occupied
+words) as a leaf query, then the climb to the cap level, compared with the cap node above the
+position; the row is the leaf read by `padRow`. -/
 def openOne (ci : CapI) (p : ℕ) (body : Bytes) : OProg (Option (List K × Bytes)) :=
-  if body.length < 8 * ci.wd then .ret none else
-  .query (toQ (body.take (8 * ci.wd))) fun d₀ =>
-    (climb (ci.ht - ci.lv) d₀ (p % 2 ^ ci.ht) (body.drop (8 * ci.wd))).bind fun
+  if body.length < S.lb ci then .ret none else
+  .query (toQ (body.take (S.lb ci))) fun d₀ =>
+    (climb (ci.ht - ci.lv) d₀ (p % 2 ^ ci.ht) (body.drop (S.lb ci))).bind fun
       | some (top, rest) =>
         .ret (if ci.cap[p % 2 ^ ci.ht / 2 ^ (ci.ht - ci.lv)]? = some top then
-          some (rowOf S.decK ci.wd (body.take (8 * ci.wd)), rest) else none)
+          some (S.padRow ci (body.take (S.lb ci)), rest) else none)
       | none => .ret none
 
 /-- Open positions in order. -/
@@ -227,12 +265,12 @@ def leafBytes (L : Log) (ci : CapI) (p : ℕ) : Option Bytes :=
   (ci.cap[p % 2 ^ ci.ht / 2 ^ (ci.ht - ci.lv)]?).bind fun v =>
     (descend L (ci.ht - ci.lv) v (p % 2 ^ ci.ht)).bind fun d => (findA L d).map fun e => qb e.1
 
-/-- **The word a log holds under a commitment**: the first-preimage reading; an erasure reads as
-the row of the empty byte string. Every row has `wd` words. -/
-def wordOf (L : Log) (ci : CapI) : Word := fun p => rowOf S.decK ci.wd ((leafBytes L ci p).getD [])
+/-- **The word a log holds under a commitment**: the first-preimage reading of the leaf, read by
+`padRow`; an erasure reads as the row of the empty byte string. Every row has `wd` words. -/
+def wordOf (L : Log) (ci : CapI) : Word := fun p => S.padRow ci ((leafBytes L ci p).getD [])
 
 theorem wellShaped_wordOf (L : Log) (ci : CapI) : WellShaped ci.wd (S.wordOf L ci) :=
-  fun _ => length_rowOf _ _ _
+  fun _ => S.length_padRow _ _
 
 /-! ## The run on a log, as an interactive history -/
 

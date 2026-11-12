@@ -38,9 +38,10 @@ Options:
 - `--max-iter N`: maximum iterations, default 8.
 - `--check`: compare generated files with shipped files and report the first differing byte.
 
-Exit status is 0 only when every requested set reaches a fixed point with the frozen numbers
-and, with `--check`, every generated file matches. Otherwise it is 1, with a `FAILED` line for
-each generation or comparison failure. Files can be written before a frozen-number mismatch is
+Exit status is 0 only when every requested set reaches a fixed point with the frozen numbers,
+every commitment's columns fit the lanes its root leaves carry (see "Occupied lanes"), and, with
+`--check`, every generated file matches. Otherwise it is 1, with a `FAILED` line for each
+generation, occupancy or comparison failure. Files can be written before a frozen-number mismatch is
 reported; a run that does not reach a fixed point writes no files for that set.
 
 To check convergence from an empty record and repeat generation into a separate directory:
@@ -122,8 +123,8 @@ fixed points:
 | Quantity | P8 | P20 |
 |---|---:|---:|
 | Groups | 65 | 84 |
-| Program blocks | 641 | 649 |
-| Q's committed words | 2,862,540 | 4,726,504 |
+| Program blocks | 643 | 651 |
+| Q's committed words | 2,864,076 | 4,726,504 |
 | `busDepth` | 21 | 21 |
 | `leafdecReads` | 1 | 1 |
 | `tableRounds` | 16 | 16 |
@@ -151,7 +152,8 @@ report per-shape slack. It can be observed by logging the existing `padSegs` res
 `withPad` in a scratch copy, without restating the program. Verify that the instrumented copy
 still reproduces all four files before using its counts.
 
-At the shipped records, that observation gives these padding rows:
+At the c65 records (before the root leaves carried only their occupied lanes, which added the
+zero cells of each root's fold), that observation gave these padding rows:
 
 | Shape | P8 | P20 |
 |---|---:|---:|
@@ -166,6 +168,44 @@ At the shipped records, that observation gives these padding rows:
 The padding occupies 3,576 committed words at P8 and 20,776 at P20. These counts describe
 slack in the padded body, not a guarantee that an edit leaves the full record unchanged:
 piece membership and addresses can also change.
+
+## Occupied lanes
+
+A commitment's root leaf carries only the first `occ` lanes of its stack, `Level.row = 8 · occ`
+bytes (`LvmParams.mkParams`'s `mainOcc`, `recOcc`; the prover's `params.rs`); the verifier reads
+the other lanes as zero (`Lvm.FS.Scheme.occ`, `LvmCertS.occOfS`). Every committed column must
+therefore end below lane `occ`. For each set the tool prints, after the fixed point:
+
+- each commitment's end of data (`C_main`: the record's placement, which starts at the free
+  region; `C_rec`: the stream and `σ'` aliased on it), its lane size `2^(ν − ℓ₀)`, the lanes the
+  data occupies, the slack to the next lane, and the lanes its leaves carry;
+- the schedule's numbers that change with the leaves and that the entry's Lean restates:
+  `piSize`, the rows' bytes, `traceBytes`, the hashed length, the stream's lanes, the sponge
+  blocks (and that minus one, `okE_P8`, `okE_P20`), the signed file, the `SIGN` body, the
+  extractor's output words and `pLX = 5 + piSize / 8`.
+
+It fails (exit status 5 from `qasm`, 7 if the frozen numbers differ as well) when the data
+occupies more lanes than the leaves carry, or when the record places a table column in `C_rec`,
+and it warns when the leaves carry more lanes than the data occupies. At the shipped records:
+
+| | P8 | P20 |
+|---|---:|---:|
+| `C_main`: end of data, lane size | 5,010,592, 131,072 | 12,688,303, 262,144 |
+| `C_main`: occupied lanes, leaf | 39, 312 B | 49, 392 B |
+| `C_main`: slack to the next lane | 101,216 words | 156,753 words |
+| `C_rec`: end of data, lane size | 140,288, 4,096 | 279,552, 8,192 |
+| `C_rec`: occupied lanes, leaf | 35, 280 B | 35, 280 B |
+| `C_rec`: slack to the next lane | 3,072 words | 7,168 words |
+
+When the occupied lanes change, set them in `LvmParams` (`P20`, `P8`, `P20G`, `P8G`), in
+`LvmCertS.occOfS` and `LvmVEqRel.occS` (keyed on the commitment's shape) and in `params.rs`, and
+make `LvmXLayout.leafLens` the rows' lengths again (`leafLens_rows` decides it). `C_rec`'s count is
+also the extractor's (`LvmXReadDefs.crOcc`, tied to the record by `LvmXTop.recRow_crOcc`). The facts
+that fail to decide are the ones that restate the printed numbers (`LvmSchedule`, `LvmPlanP20`,
+`LvmQAsmArith2WhirP`, `LvmReplay`, `LvmVEqWhir`, `LvmXLayout`, `LvmXChainL`, `LvmXNode*`, `LvmXTop`,
+`LvmNodeSound*`, `LvmQLinkArithP8`, `LvmFinDec`, `LvmVEqLinkArith`, `LvmCertSExq2Run`, `LvmXSpec`),
+and the proof of `LvmCertSExq2.ext_eq_gen`, which uses π's offsets. The extractor's segment sums
+(`layout_all_P20`) are not printed: they are defined outside this tool's import closure.
 
 ## Changing the program
 

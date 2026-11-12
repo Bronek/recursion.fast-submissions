@@ -183,7 +183,7 @@ theorem take_drop_append (l : List UInt8) (a m n : ℕ) (h : a + m + n ≤ l.len
 
 /-- **The simulation.** -/
 theorem sim (hdecE : S.decE = eOfBytes) (hchal : S.chal = chalOf) (hdecK : S.decK = kOfBytes)
-    (hcap : S.capOf = capS) : ∀ (as : List Atom) {α : Type} (P : VerifierProgram α) (pp : List ℕ)
+    (hcap : S.capOf = capS) (hocc : S.occ = occS) : ∀ (as : List Atom) {α : Type} (P : VerifierProgram α) (pp : List ℕ)
     (Q : α → List ℕ → Prop) (s : DSt) (st : Digest) (buf : List UInt8) (caps : List CapI)
     (body : List UInt8) (rs : RS) (i : ℕ) (cr : List Ref) (hs : List ℕ) (k : DSt → OProg Bool)
     (a : α) (rs' : RS),
@@ -191,7 +191,7 @@ theorem sim (hdecE : S.decE = eOfBytes) (hchal : S.chal = chalOf) (hdecK : S.dec
     J S π tr s st buf caps body rs i cr → s.pos = pp → PosOK pp hs →
     (∀ s' n, (k s').runSeq (tr.drop n) = some true → s'.off ≤ π.size) →
     (driveAtoms p π as s k).runSeq (tr.drop i) = some true →
-    ivp capS shpS P (traceBytesB tr) rs = (some a, rs') →
+    ivp capS occS shpS P (traceBytesB tr) rs = (some a, rs') →
     ∃ s' st' buf' caps' body' i' cr', J S π tr s' st' buf' caps' body' rs' i' cr' ∧
       (k s').runSeq (tr.drop i') = some true ∧ Q a s'.pos ∧
       ∀ kS : α → Digest → List UInt8 → List CapI → List UInt8 → OProg Bool,
@@ -220,7 +220,7 @@ theorem sim (hdecE : S.decE = eOfBytes) (hchal : S.chal = chalOf) (hdecK : S.dec
         rw [hJ.ent, hJ.msg]
         exact msg_bytes hdrop (by simp only [pendA, eBytes] at hb ⊢; omega) hpo
           (by simp only [pendA, eBytes]; omega)
-      have hiv' : ivp capS shpS (k' (eOfBytes (((blb π).drop s.off).take 24))) (traceBytesB tr)
+      have hiv' : ivp capS occS shpS (k' (eOfBytes (((blb π).drop s.off).take 24))) (traceBytesB tr)
           { rs with msg := rs.msg + 24 } = (some a, rs') := by
         simp only [ivp, hval] at hiv; exact hiv
       have h24 : s.off + 24 ≤ π.size := by simp only [eBytes] at hb; omega
@@ -232,7 +232,7 @@ theorem sim (hdecE : S.decE = eOfBytes) (hchal : S.chal = chalOf) (hdecK : S.dec
         · simp only; rw [hJ.body, List.drop_drop]; simp [eBytes]
         · simp only [eBytes]; rw [hJ.msg]; omega
       obtain ⟨s', st', buf', caps', body', i', cr', h1, h2, h3, h4⟩ :=
-        sim hdecE hchal hdecK hcap as (k' _) pp Q _ st _ caps _ _ i cr hs k a rs' (hF' _)
+        sim hdecE hchal hdecK hcap hocc as (k' _) pp Q _ st _ caps _ _ i cr hs k a rs' (hF' _)
           (by simp only; rw [show s.off + eBytes - s.pend = s.off - s.pend + eBytes by omega]; exact hst')
           hJ' hpos hpk hk hd' hiv'
       refine ⟨s', st', buf', caps', body', i', cr', h1, h2, h3, fun kS ↦ ?_⟩
@@ -256,7 +256,7 @@ theorem sim (hdecE : S.decE = eOfBytes) (hchal : S.chal = chalOf) (hdecK : S.dec
       have hcb : S.capBytes ht w = nodeBytes * 2 ^ c := by
         simp only [Scheme.capBytes, hcap, hc, nodeBytes]
       have hoff : s.off + nodeBytes * 2 ^ c ≤ π.size := by omega
-      have hiv' : ivp capS shpS k' (traceBytesB tr) { rs with msg := rs.msg + nodeBytes * 2 ^ c } =
+      have hiv' : ivp capS occS shpS k' (traceBytesB tr) { rs with msg := rs.msg + nodeBytes * 2 ^ c } =
           (some a, rs') := by
         simp only [ivp, hc] at hiv; exact hiv
       have hJ' : J S π tr { s with caps := (r, s.off) :: s.caps, off := s.off + nodeBytes * 2 ^ c } st (buf ++ body.take (S.capBytes ht w)) (caps ++ [S.capI ht w body])
@@ -280,7 +280,7 @@ theorem sim (hdecE : S.decE = eOfBytes) (hchal : S.chal = chalOf) (hdecK : S.dec
           · exact List.nodup_append.mpr ⟨hnd, List.nodup_singleton r, by
               intro a ha b hb; rw [List.mem_singleton] at hb; rw [hb]; intro hab; rw [hab] at ha; exact hnot' ha⟩
       obtain ⟨s', st', buf', caps', body', i', cr', h1, h2, h3, h4⟩ :=
-        sim hdecE hchal hdecK hcap as k' pp Q _ st _ _ _ _ i (cr ++ [r]) hs k a rs' hF'
+        sim hdecE hchal hdecK hcap hocc as k' pp Q _ st _ _ _ _ i (cr ++ [r]) hs k a rs' hF'
           (by simp only; rw [show s.off + nodeBytes * 2 ^ c - s.pend = s.off - s.pend + nodeBytes * 2 ^ c by
             omega]; exact hst')
           hJ' hpos hpk hk hd' hiv'
@@ -300,11 +300,11 @@ theorem sim (hdecE : S.decE = eOfBytes) (hchal : S.chal = chalOf) (hdecK : S.dec
       obtain ⟨a₀, rest, hdrop, hd'⟩ := ask_run hd
       obtain ⟨hq, hbl⟩ := hJ.fsQ
       obtain ⟨hans, hrest, hJ1⟩ := hJ.fs hdrop
-      have hiv' : ivp capS shpS (k' (chalOf a₀)) (traceBytesB tr)
+      have hiv' : ivp capS occS shpS (k' (chalOf a₀)) (traceBytesB tr)
           { rs with ent := rs.ent + 72 + rs.msg, msg := 0 } = (some a, rs') := by
         simp only [ivp, hans] at hiv; exact hiv
       obtain ⟨s', st', buf', caps', body', i', cr', h1, h2, h3, h4⟩ :=
-        sim hdecE hchal hdecK hcap as (k' _) pp Q
+        sim hdecE hchal hdecK hcap hocc as (k' _) pp Q
           { s with log := (digestBytes s.st ++ π.extract s.pend s.off, a₀) :: s.log, st := a₀, pend := s.off }
           a₀ [] caps body _ (i + 1) cr hs k a rs' (hF' _)
           (by show stA p as (s.off - s.off) cr hs = true; rw [Nat.sub_self]; exact hst')
@@ -318,7 +318,7 @@ theorem sim (hdecE : S.decE = eOfBytes) (hchal : S.chal = chalOf) (hdecK : S.dec
     | _ => exact absurd hF (by simp [Fol])
   | .pclr :: as, α, P, pp, Q, s, st, buf, caps, body, rs, i, cr, hs, k, a, rs', hF, hst, hJ, hpos, hpk, hk, hd, hiv => by
     rw [fol_pclr] at hF
-    exact sim hdecE hchal hdecK hcap as P [] Q { s with pos := [] } st buf caps body rs i cr [] k a rs'
+    exact sim hdecE hchal hdecK hcap hocc as P [] Q { s with pos := [] } st buf caps body rs i cr [] k a rs'
       hF hst ⟨hJ.1, hJ.2, hJ.3, hJ.4, hJ.5, hJ.6, hJ.7, hJ.8⟩ rfl (fun _ h ↦ by simp at h) hk hd hiv
   | .ps h n :: as, α, P, pp, Q, s, st, buf, caps, body, rs, i, cr, hs, k, a, rs', hF, hst, hJ, hpos, hpk, hk, hd, hiv => by
     cases P with
@@ -331,13 +331,13 @@ theorem sim (hdecE : S.decE = eOfBytes) (hchal : S.chal = chalOf) (hdecK : S.dec
       obtain ⟨a₀, rest, hdrop, hd'⟩ := ask_run hd
       obtain ⟨hq, hbl⟩ := hJ.fsQ
       obtain ⟨hans, hrest, hJ1⟩ := hJ.fs hdrop
-      have hiv' : ivp capS shpS (k' (chalOf a₀)) (traceBytesB tr)
+      have hiv' : ivp capS occS shpS (k' (chalOf a₀)) (traceBytesB tr)
           { rs with ent := rs.ent + 72 + rs.msg, msg := 0 } = (some a, rs') := by
         simp only [ivp, hans] at hiv; exact hiv
       have hpos' : (pp ++ chunk h n (answerBits a₀)) =
           pp ++ chunk h n (LeanVM.Protocol.Verifier.eToNat (chalOf a₀)) := by rw [answerBits_eq]
       obtain ⟨s', st', buf', caps', body', i', cr', h1, h2, h3, h4⟩ :=
-        sim hdecE hchal hdecK hcap as (k' _) _ Q
+        sim hdecE hchal hdecK hcap hocc as (k' _) _ Q
           { s with log := (digestBytes s.st ++ π.extract s.pend s.off, a₀) :: s.log, st := a₀, pend := s.off, pos := s.pos ++ chunk h n (answerBits a₀) }
           a₀ [] caps body _ (i + 1) cr (h :: hs) k a rs' (hF' _)
           (by show stA p as (s.off - s.off) cr (h :: hs) = true; rw [Nat.sub_self]; exact hst')
@@ -386,14 +386,14 @@ theorem sim (hdecE : S.decE = eOfBytes) (hchal : S.chal = chalOf) (hdecK : S.dec
           rw [this] at hlt; exact hlt
         rw [hpos] at hd
         obtain ⟨s', n, h1, hst1, hpe1, hca1, hpo1, hle1, hent1, hrun1⟩ :=
-          openAll_sim S π tr hdecK (p.level r) capOff ht wd hht hrow (by rw [hpath, hcap])
+          openAll_sim S π tr hdecK (p.level r) capOff ht wd hht (by rw [hrow, hocc]) (by rw [hpath, hcap])
             (by rw [hcap]; exact capS_le _) ps s i _ hlt hk'' hd
         have hoff' : s'.off ≤ π.size := hk'' s' (i + n) h1
-        set rows := (opRows (traceBytesB tr) wd (p.level r).path ps.length (entOff tr i)).1
-        have hiv' : ivp capS shpS (k' rows) (traceBytesB tr) { rs with ent := entOff tr (i + n) } =
+        set rows := (opRows (traceBytesB tr) wd (S.occ ht wd) (p.level r).path ps.length (entOff tr i)).1
+        have hiv' : ivp capS occS shpS (k' rows) (traceBytesB tr) { rs with ent := entOff tr (i + n) } =
             (some a, rs') := by
           simp only [ivp] at hiv
-          rw [← hhtdef, ← hwddef, ← hpath, hJ.ent, hent1] at hiv
+          rw [← hhtdef, ← hwddef, ← hpath, show occS ht wd = S.occ ht wd by rw [hocc], hJ.ent, hent1] at hiv
           exact hiv
         have hJ' : J S π tr { s' with pend := s'.off } st [] caps ((blb π).drop s'.off)
             { rs with ent := entOff tr (i + n) } (i + n) cr := by
@@ -401,7 +401,7 @@ theorem sim (hdecE : S.decE = eOfBytes) (hchal : S.chal = chalOf) (hdecK : S.dec
           · show rs.msg = s'.off - s'.off; rw [hJ.msg, hoffp]; simp
           · show CapsJ S π caps s'.caps cr; rw [hca1]; exact hJ.caps
         obtain ⟨s'', st', buf', caps', body', i', cr', h2, h3, h4, h5⟩ :=
-          sim hdecE hchal hdecK hcap as (k' rows) ps Q { s' with pend := s'.off } st [] caps _ _ (i + n)
+          sim hdecE hchal hdecK hcap hocc as (k' rows) ps Q { s' with pend := s'.off } st [] caps _ _ (i + n)
             cr hs k a rs' (hF' rows) (by show stA p as (s'.off - s'.off) cr hs = true; rw [Nat.sub_self]; exact hst')
             hJ' (by show s'.pos = ps; rw [hpo1, hpos]) hpk hk h1 hiv'
         refine ⟨s'', st', buf', caps', body', i', cr', h2, h3, h4, fun kS ↦ ?_⟩

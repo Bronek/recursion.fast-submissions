@@ -100,7 +100,7 @@ theorem openRec_head : ((phases pX).getD 7 default).1 = .openRec ∧
         .sample, .read 2, .sample, .read 2, .cap 7 ⟨.crec, 1⟩, .sample, .read 1, .sample,
         .positions ⟨.crec, 0⟩, .sample, .opening ⟨.crec, 0⟩, .read 2, .sample, .read 2, .sample,
         .read 2, .sample, .read 2, .sample, .read 2, .read (2 ^ 9)] ∧
-    (recL pX 0).nPosQ = 22 ∧ (recL pX 0).t = 170 ∧ (recL pX 0).row = 512 ∧ (recL pX 0).path = 8 ∧
+    (recL pX 0).nPosQ = 22 ∧ (recL pX 0).t = 170 ∧ (recL pX 0).row = 280 ∧ (recL pX 0).path = 8 ∧
     (recL pX 1).fold = 4 ∧ (recL pX 0).fold = 6 ∧ gQs pX = 2 := by
   decide +kernel
 
@@ -166,9 +166,26 @@ def blkLensOkL : Blk → Bool
   | .one _ len => len % 8 == 0 && 32 ≤ len
   | .opn _ row _ => row % 8 == 0 && 32 ≤ row
 
+/-- **The leaf lengths at `pX`**: the rows of both commitments' levels (`leafLens_rows`), a leaf
+carrying its row's occupied words (`C_main`'s root: 49 of 64, 392 B; `C_rec`'s root: 35 of 64,
+280 B; the later levels' 48, 384 B). The reassembly copies a query of one of these lengths whole
+(a leaf), and the length rule (`LvmSchedule.lengthRule`) keeps every FS query off them. -/
+def leafLens : List ℕ := [392, 384, 280]
+
+/-- `leafLens` is the set of `pX`'s row lengths. -/
+theorem leafLens_rows :
+    leafLens.all (fun l => ((pX.mainLevels ++ pX.recLevels).map Level.row).contains l) = true ∧
+      ((pX.mainLevels ++ pX.recLevels).map Level.row).all (fun l => leafLens.contains l) = true := by
+  decide +kernel
+
+/-- A leaf is not a node query. -/
+theorem ne64_of_leaf {len : ℕ} (h : len ∈ leafLens) : len ≠ 64 := by
+  simp only [leafLens, List.mem_cons, List.not_mem_nil, or_false] at h
+  omega
+
 /-- The words a query of `len` bytes contributes to the proof (`LvmXOut`'s `pieceLen`). -/
 def pieceLenL (len : ℕ) : ℕ :=
-  if len = 64 then 4 else if len = 384 ∨ len = 512 then len / 8 else (len - 32) / 8
+  if len = 64 then 4 else if len ∈ leafLens then len / 8 else (len - 32) / 8
 
 /-- A block's contribution to the proof in words (`LvmXOut`'s `blkPieceLen`). -/
 def blkPieceLenL : Blk → ℕ
@@ -224,7 +241,7 @@ set_option maxRecDepth 100000 in
 theorem layout_all_P20 :
     (nPre pX = 1294 ∧ nChain pX = 1332 ∧ alphaPos pX 0 = 1297 ∧ capRec1Off pX = 205280 ∧
       capRecOff pX = 13816 ∧ (fsMsgs pX).length = 1481 ∧
-      (fsMsgs pX).getD 1331 (0, 0) = (340152, 12336) ∧ alpha1Pos pX 0 = 1328 ∧ f2Off pX = 340200 ∧
+      (fsMsgs pX).getD 1331 (0, 0) = (300712, 12336) ∧ alpha1Pos pX 0 = 1328 ∧ f2Off pX = 300760 ∧
       (fsMsgs pX).getD 1302 (0, 0) = (205232, 4144)) ∧
     (1 + ((blocks pX).map Blk.count).sum = qS pX ∧
       47 + ((blocks pX).map Blk.trBytes).sum = (tally pX).trace ∧
@@ -234,24 +251,24 @@ theorem layout_all_P20 :
       8 + ((blocks pX).map Blk.pBytes).sum = piSize pX ∧
       (blocks pX).all (fun b => match b with
         | .one _ len => len % 8 == 0 && 32 ≤ len | .opn _ row _ => row % 8 == 0) = true) ∧
-    piSize pX = 783192 ∧
+    piSize pX = 716152 ∧
     (fsMsgs pX).all (fun m => 32 + m.2 ≤ queryCap) = true ∧
     ((fsMsgs pX).take (nChain pX - 1)).all (fun m =>
       m.1 % 8 == 0 && m.2 % 8 == 0 && m.1 + m.2 ≤ piSize pX && 32 + m.2 ≤ queryCap) = true ∧
     ((blocks pX).all blkLensOkL = true ∧ 8 + 8 * ((blocks pX).map blkPieceLenL).sum = piSize pX) ∧
-    ((blocks pX).map blkPCostL).sum = 5517702 ∧ ((blocks pX).map blkTCostL).sum = 6015768 ∧
-    ((blocks pX).map blkPOutsL).sum = 97898 ∧ ((blocks pX).map blkTOutsL).sum = 169620 ∧
+    ((blocks pX).map blkPCostL).sum = 5216022 ∧ ((blocks pX).map blkTCostL).sum = 5714088 ∧
+    ((blocks pX).map blkPOutsL).sum = 89518 ∧ ((blocks pX).map blkTOutsL).sum = 161240 ∧
     ((blocks pX).map blkPSizeL).sum = 77976 ∧ ((blocks pX).map blkTSizeL).sum = 82195 := by
   decide +kernel
 
 /-- **The layout numbers at `P20`** (S4 on S2J, re-decided at every freeze): 1332 targets, `α₀_j` at
 positions 1297–1302, level 0's separator and PoW challenge at 1303–1304, its positions queries at
 1305–1326, `λ` at 1327, `α₁_j` at 1328–1331; level 1's cap at π byte 205,280 (absorbed by position
-1303, the separator), `f₂` at 340,200 (absorbed by position 1332, level 1's separator), `C_rec`'s cap
+1303, the separator), `f₂` at 300,760 (absorbed by position 1332, level 1's separator), `C_rec`'s cap
 at byte 13,816. -/
 theorem layout_P20 : nPre pX = 1294 ∧ nChain pX = 1332 ∧ alphaPos pX 0 = 1297 ∧
     capRec1Off pX = 205280 ∧ capRecOff pX = 13816 ∧ (fsMsgs pX).length = 1481 ∧
-    (fsMsgs pX).getD 1331 (0, 0) = (340152, 12336) ∧ alpha1Pos pX 0 = 1328 ∧ f2Off pX = 340200 ∧
+    (fsMsgs pX).getD 1331 (0, 0) = (300712, 12336) ∧ alpha1Pos pX 0 = 1328 ∧ f2Off pX = 300760 ∧
     (fsMsgs pX).getD 1302 (0, 0) = (205232, 4144) :=
   layout_all_P20.1
 

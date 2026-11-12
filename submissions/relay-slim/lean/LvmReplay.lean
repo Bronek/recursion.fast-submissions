@@ -141,15 +141,15 @@ theorem VS_replay (p : Params) (m : M3) (vk c : Digest) (hP : PlanOk p) (tr : Tr
 /-- `P20` with its WHIR levels written out (`levels_P20`, `t_P20`), so that the kernel does not
 recompute the query counts at every use. -/
 def P20L : Params := { P20 with
-  mainLevels := [⟨0, 6, 18, 1, 19, 8, 11, 230, 512⟩, ⟨1, 4, 14, 2, 16, 7, 9, 115, 384⟩,
+  mainLevels := [⟨0, 6, 18, 1, 19, 8, 11, 230, 392⟩, ⟨1, 4, 14, 2, 16, 7, 9, 115, 384⟩,
     ⟨2, 4, 10, 3, 13, 7, 6, 77, 384⟩]
-  recLevels := [⟨0, 6, 13, 2, 15, 7, 8, 170, 512⟩, ⟨1, 4, 9, 3, 12, 7, 5, 139, 384⟩] }
+  recLevels := [⟨0, 6, 13, 2, 15, 7, 8, 170, 280⟩, ⟨1, 4, 9, 3, 12, 7, 5, 139, 384⟩] }
 
 /-- `P8` with its WHIR levels written out. -/
 def P8L : Params := { P8 with
-  mainLevels := [⟨0, 6, 17, 1, 18, 4, 14, 33, 512⟩, ⟨1, 4, 13, 2, 15, 4, 11, 17, 384⟩,
+  mainLevels := [⟨0, 6, 17, 1, 18, 4, 14, 33, 312⟩, ⟨1, 4, 13, 2, 15, 4, 11, 17, 384⟩,
     ⟨2, 4, 9, 3, 12, 4, 8, 11, 384⟩]
-  recLevels := [⟨0, 6, 12, 2, 14, 4, 10, 24, 512⟩, ⟨1, 4, 8, 3, 11, 4, 7, 20, 384⟩] }
+  recLevels := [⟨0, 6, 12, 2, 14, 4, 10, 24, 280⟩, ⟨1, 4, 8, 3, 11, 4, 7, 20, 384⟩] }
 
 theorem P20_eq : P20 = P20L := by
   have h1 : P20.mainLevels = P20L.mainLevels := by decide +kernel

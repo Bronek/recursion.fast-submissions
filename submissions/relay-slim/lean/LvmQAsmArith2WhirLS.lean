@@ -110,12 +110,41 @@ theorem powOKR_of {g : Nat} (hg : g ≤ 64) (sig : ByteArray) (o : Nat)
     norm_num at this ⊢; omega
   nlinarith
 
-set_option maxHeartbeats 2000000 in
+/-- If `z` holds zero, the sequence of `n` zero rows in `lvPre` forces the `n` consecutive
+`E` cells from its incoming pointer to hold zero. -/
+theorem seqZeros_hold (z : Cell) (hz : z.val M = 0) : ∀ (n : Nat) (p : Ptr),
+    SegsHold c M p (seqAll ((List.range n).map fun _ => lin .E 0 0 z z) p).2 →
+      ∀ k < n, M.e (p.e + k) = 0
+  | 0, _, _, _, hk => by omega
+  | n + 1, p, h, k, hk => by
+    simp only [List.range_succ_eq_map, List.map_cons, List.map_map, Function.comp_def,
+      seqAll, bind_apply, pure_apply, List.append_nil] at h
+    rw [segsHold_append] at h
+    have hzero := lin_spec h.1
+    have hadv : p.adv (lin .E 0 0 z z p).2 = ⟨p.k, p.e + 1⟩ := by
+      simp [lin, rowRes, Ptr.adv, segsW, Seg.w, Row.w, Row.writes]
+    rw [hadv] at h
+    cases k with
+    | zero => simpa [lin, rowRes, Ptr.at, hz, ofK_zero] using hzero
+    | succ k =>
+      simpa [Nat.add_assoc, Nat.add_comm 1 k] using seqZeros_hold z hz n ⟨p.k, p.e + 1⟩ h.2 k (by omega)
+
+/-- Factor a shared builder continuation out of an `if`, whose true branch first runs `m`
+and whose branches return `a` and `b`, respectively. -/
+theorem ite_bind_eq_bind_ite {α β γ : Type} (P : Prop) [Decidable P] (m : BM α) (a b : β) (f : β → BM γ) :
+    (if P then m >>= fun _ => pure a >>= f else pure b >>= f) =
+      ((if P then m >>= fun _ => pure a else pure b) >>= f) := by
+  funext p
+  by_cases h : P <;>
+    simp only [h, ite_true, ite_false, bind_apply, pure_apply, List.append_nil,
+      List.nil_append, Ptr.adv_nil]
+
 theorem lvPre_spec (C : SCfg) {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed M sig T) (pc : Nat)
     (zc oc g : Cell) (zk : Nat) (hz : zc.val M = 0) (ho : oc.val M = 1) (hzE : zc.ty = .E)
     (hoE : oc.ty = .E) (hgK : g.ty = .K) (hg : g.val M = 1) (hzk : M.k zk = 0)
     (L : Level) (nxt : Option Level) (i f V : Nat) (q : Cell × Cell × Cell) (p : Ptr) (hp : 1 ≤ p.e)
-    (hν : f + L.fold + L.kappa = C.nu) (htc : L.t ≤ pw (C.pch i))
+    (hν : f + L.fold + L.kappa = C.nu) (hw0 : L.level ≠ 0 ∨ (0 < L.fold ∧ L.row / 8 ≤ 2 ^ L.fold))
+    (htc : L.t ≤ pw (C.pch i))
     (hch : ∀ k < (C.pch i).length, pw ((C.pch i).take k) < L.t) (hcs : csum (C.cch i) = L.kappa)
     (hT1 : (lvLanes C.g C.ood L nxt V).V4 + 1 + oStr L * (L.t - 1) + 3 * 2 ^ L.fold + 2 < T)
     (hT2 : (lvLanes C.g C.ood L nxt V).V6 + 8 < T) (hg64 : C.g ≤ 64)
@@ -137,7 +166,7 @@ theorem lvPre_spec (C : SCfg) {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed 
         [feAt sig (8 * (lvLanes C.g C.ood L nxt V).V5 + 40),
           Lvm.dot (powers (feAt sig (8 * (lvLanes C.g C.ood L nxt V).V3 + 40)) L.t) ((List.range L.t).map fun j =>
             if L.level = 0 then foldRow0 sig (eqKernelA (frC sig (8 * V) L.fold))
-              (8 * ((lvLanes C.g C.ood L nxt V).V4 + 1 + oStr L * j)) (2 ^ L.fold)
+              (8 * ((lvLanes C.g C.ood L nxt V).V4 + 1 + oStr L * j)) (L.row / 8)
             else foldRowE sig (eqKernelA (frC sig (8 * V) L.fold))
               (8 * ((lvLanes C.g C.ood L nxt V).V4 + 1 + oStr L * j)) (2 ^ L.fold)) +
             feAt sig (8 * (lvLanes C.g C.ood L nxt V).V5 + 64),
@@ -205,23 +234,68 @@ theorem lvPre_spec (C : SCfg) {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed 
   simp only [hlen] at e4
   have hp4 := le_trans hp3 (adv_e_le p3
     (eqTab (fun j => ec (pc + f + j)) zc oc (decide (L.level = 0)) L.fold p3).2)
-  generalize (eqTab (fun j => ec (pc + f + j)) zc oc (decide (L.level = 0)) L.fold p3).1 = er at h e4 ⊢
+  have hend := fun (hn : 0 < L.fold) =>
+    eqTab_end (fun j => ec (pc + f + j)) zc oc (decide (L.level = 0)) hn p3
+  generalize (eqTab (fun j => ec (pc + f + j)) zc oc (decide (L.level = 0)) L.fold p3).1 = er0
+    at h e4 hend ⊢
   generalize p3.adv (eqTab (fun j => ec (pc + f + j)) zc oc (decide (L.level = 0)) L.fold p3).2 = p4
-    at h hp4 ⊢
+    at h hp4 hend ⊢
+  rw [ite_bind_eq_bind_ite] at h ⊢
+  let win : BM Nat := if L.level = 0 ∧ L.row / 8 < 2 ^ L.fold then do
+      let _ ← seqAll ((List.range (2 ^ L.fold - L.row / 8)).map fun _ => lin .E 0 0 zc zc)
+      pure (er0 + (2 ^ L.fold - L.row / 8))
+    else pure er0
+  obtain ⟨hwin, h⟩ := okb h
+  rw [bind_apply]; dsimp only
+  change Lvm.QSig.Ok c M win p4 at hwin
+  have hww : decide (L.level = 0) = true → L.row / 8 ≤ 2 ^ L.fold := by
+    intro hl
+    have hl' : L.level = 0 := of_decide_eq_true hl
+    exact (hw0.resolve_left (by simp [hl'])).2
+  have e4w : ∀ k < 2 ^ L.fold, M.e ((win p4).1 + k) =
+      if decide (L.level = 0) then
+        if k < L.row / 8 then (eqKernelA (frC sig (8 * V) L.fold)).getD (L.row / 8 - 1 - k) 0 else 0
+      else (eqKernelA (frC sig (8 * V) L.fold)).getD k 0 := by
+    intro k hk
+    by_cases hnwin : L.level = 0 ∧ L.row / 8 < 2 ^ L.fold
+    · have hpositive := (hw0.resolve_left (by simp [hnwin.1])).1
+      have heEnd := hend hpositive
+      have hzwin := hwin
+      simp only [win, if_pos hnwin] at hzwin
+      have hzeros := seqZeros_hold zc hz (2 ^ L.fold - L.row / 8) p4 (okb hzwin).1.1
+      simp only [win, if_pos hnwin, bind_apply, pure_apply, hnwin.1, decide_true, ite_true]
+      by_cases hkw : k < L.row / 8
+      · rw [if_pos hkw]
+        have he := e4 (2 ^ L.fold - L.row / 8 + k) (by omega)
+        simpa only [hnwin.1, decide_true, ite_true,
+          show 2 ^ L.fold - 1 - (2 ^ L.fold - L.row / 8 + k) = L.row / 8 - 1 - k by omega,
+          Nat.add_assoc] using he
+      · rw [if_neg hkw, show er0 + (2 ^ L.fold - L.row / 8) + k = p4.e + (k - L.row / 8) by omega]
+        exact hzeros (k - L.row / 8) (by omega)
+    · simp only [win, if_neg hnwin, pure_apply]
+      by_cases hl : L.level = 0
+      · have hw : L.row / 8 = 2 ^ L.fold := by
+          have := (hw0.resolve_left (by simp [hl])).2
+          omega
+        simpa [hl, hw, hk] using e4 k hk
+      · simpa [hl] using e4 k hk
+  have hp4w := le_trans hp4 (adv_e_le p4 (win p4).2)
+  generalize (win p4).1 = er at h e4w ⊢
+  generalize p4.adv (win p4).2 = p4w at h hp4w ⊢
   -- 5. row folds and the enforced sum
   obtain ⟨h5, h⟩ := okb h
   rw [bind_apply]; dsimp only
-  have e5 := foldsG_spec hS hz (eqKernelA (frC sig (8 * V) L.fold)) (feAt sig (8 * V3 + 40)) e4 hlp
+  have e5 := foldsG_window_spec hS hz (eqKernelA (frC sig (8 * V) L.fold)) (feAt sig (8 * V3 + 40)) hww e4w hlp
     (fun k hk => by
       have : oStr L * k ≤ oStr L * (L.t - 1) := Nat.mul_le_mul_left _ (by omega)
       omega)
-    (C.pch i) 0 p4 hp4 (by simpa [pw] using htc) (fun k hk => by simpa [pw] using hch k hk) h5.1
-  have hp5 := le_trans hp4 (adv_e_le p4 (foldsG (decide (L.level = 0)) L.fold (V4 + 1) (oStr L) er lp
-    L.t zc 0 (C.pch i) p4).2)
-  generalize (foldsG (decide (L.level = 0)) L.fold (V4 + 1) (oStr L) er lp L.t zc 0 (C.pch i) p4).1 = enf
+    (C.pch i) 0 p4w hp4w (by simpa [pw] using htc) (fun k hk => by simpa [pw] using hch k hk) h5.1
+  have hp5 := le_trans hp4w (adv_e_le p4w (foldsG (decide (L.level = 0)) L.fold (V4 + 1) (oStr L) er lp
+    L.t zc 0 (C.pch i) p4w).2)
+  generalize (foldsG (decide (L.level = 0)) L.fold (V4 + 1) (oStr L) er lp L.t zc 0 (C.pch i) p4w).1 = enf
     at h e5 ⊢
-  generalize p4.adv (foldsG (decide (L.level = 0)) L.fold (V4 + 1) (oStr L) er lp L.t zc 0 (C.pch i)
-    p4).2 = p5 at h hp5 ⊢
+  generalize p4w.adv (foldsG (decide (L.level = 0)) L.fold (V4 + 1) (oStr L) er lp L.t zc 0 (C.pch i)
+    p4w).2 = p5 at h hp5 ⊢
   -- 6. the intro polynomial
   obtain ⟨h6, h⟩ := okb h
   rw [bind_apply]; dsimp only
@@ -342,6 +416,7 @@ theorem lvPre_spec (C : SCfg) {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed 
     · rw [eg1, e1, e6, e5, Cell.val_E, e2', dot_map_range, Finset.range_eq_Ico]
       simp only [decide_eq_true_eq]
     · simp only [List.map_cons, List.map_nil, Cell.val_E, e2', eW, one_mul]
+
 
 /-! ## Invariants of the level induction -/
 
@@ -503,14 +578,14 @@ theorem levels_run (C : SCfg) {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed 
     | nil =>
       simp only [lvOk, Bool.and_eq_true, decide_eq_true_eq, List.all_eq_true, List.mem_range,
         and_assoc, List.head?_nil, and_true] at hok
-      obtain ⟨hν, hrow, ht1, htc, hchk, hcs, hT1, hT2, hm, hg64⟩ := hok
+      obtain ⟨hν, hrow, hw0, ht1, htc, hchk, hcs, hT1, hT2, hm, hg64⟩ := hok
       replace hT1 := of_decide_eq_true hT1
       replace hT2 := of_decide_eq_true hT2
       have hfl : st.folds.length = f := by rw [hfo, List.length_take, ptv_length]; omega
       obtain ⟨l1, l2, l3, l4, l5, l6, l7, l8, l9, l10⟩ := lvLanes_facts C.g C.ood L none V
       simp only [levelsG, List.head?_nil] at h
       obtain ⟨hpre, h⟩ := okb h
-      have e := lvPre_spec C hS pc zc oc g zk hz ho hzE hoE hgK hg hzk L none i f V q p hp hν htc
+      have e := lvPre_spec C hS pc zc oc g zk hz ho hzE hoE hgK hg hzk L none i f V q p hp hν hw0 htc
         hchk hcs hT1 (by omega) hg64 (chOk_fold hch) (posOk_head hpo) (pwOk_head hpw) hpre
       generalize (lvPre C pc zc oc g zk L none i f V q p).1 = r at h e
       generalize p.adv (lvPre C pc zc oc g zk L none i f V q p).2 = p' at h
@@ -581,7 +656,7 @@ theorem levels_run (C : SCfg) {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed 
     | cons N rest' =>
       simp only [lvOk, Bool.and_eq_true, decide_eq_true_eq, List.all_eq_true, List.mem_range,
         and_assoc, List.head?_cons] at hok
-      obtain ⟨hν, hrow, ht1, htc, hchk, hcs, hT1, hT2, hm, hg64, hrest⟩ := hok
+      obtain ⟨hν, hrow, hw0, ht1, htc, hchk, hcs, hT1, hT2, hm, hg64, hrest⟩ := hok
       replace hT1 := of_decide_eq_true hT1
       replace hT2 := of_decide_eq_true hT2
       have hfl : st.folds.length = f := by rw [hfo, List.length_take, ptv_length]; omega
@@ -589,7 +664,7 @@ theorem levels_run (C : SCfg) {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed 
       rw [levelsG] at h
       simp only [List.head?_cons] at h
       obtain ⟨hpre, h⟩ := okb h
-      have e := lvPre_spec C hS pc zc oc g zk hz ho hzE hoE hgK hg hzk L (some N) i f V q p hp hν htc
+      have e := lvPre_spec C hS pc zc oc g zk hz ho hzE hoE hgK hg hzk L (some N) i f V q p hp hν hw0 htc
         hchk hcs hT1 (by omega) hg64 (chOk_fold hch) (posOk_head hpo) (pwOk_head hpw) hpre
       have hpr := le_trans hp (adv_e_le p (lvPre C pc zc oc g zk L (some N) i f V q p).2)
       generalize (lvPre C pc zc oc g zk L (some N) i f V q p).1 = r at h e

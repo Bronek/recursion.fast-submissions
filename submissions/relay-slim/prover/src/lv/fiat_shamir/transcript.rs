@@ -16,7 +16,8 @@
 //!   positions, which then all ask `st` ([`ProverState::grind`]);
 //! - opened rows and siblings are never absorbed (the driver's `pend := off` after an opening);
 //! - the length rule is a property of the schedule (`LvmSchedule.lengthRule`): every FS query is
-//!   asserted not to have a reserved length (64, 384, 512) or the seed's; nothing is ever split.
+//!   asserted not to have a reserved length (a node's, 64, or a leaf's, [`LEAF_LENS`]) or the seed's;
+//!   nothing is ever split.
 //!
 //! Besides the scalar stream and the Merkle phases (leanVM's [`Proof`]), the state keeps the proof
 //! body in schedule order (scalars, caps, and per opened position the row then the siblings
@@ -32,8 +33,13 @@ use crate::oracle::{self, Class, Digest};
 /// The first query: 7 bytes, so every later length is a whole number of lanes (BLUEPRINT §2.2).
 pub const Q0: &[u8; 7] = b"lvm/1\0\0";
 
-/// Query lengths a Fiat–Shamir query may not have (node, later-level leaf, level-0 leaf).
-const RESERVED: [usize; 3] = [64, 384, 512];
+/// The leaf lengths of the records (`LvmParams`): the rows of every level, a level-0 leaf carrying its stack's
+/// occupied lanes (`C_main`: 392 B at P20, 312 B at P8; `C_rec`: 280 B at both; later levels 384 B), and the
+/// full-width 512 B of the Keccak batch proof (`batch.rs`, whose stack has no empty lanes).
+pub const LEAF_LENS: [usize; 5] = [392, 312, 280, 384, 512];
+
+/// Query lengths a Fiat–Shamir query may not have (a node's, then the leaves').
+const RESERVED: [usize; 6] = [64, LEAF_LENS[0], LEAF_LENS[1], LEAF_LENS[2], LEAF_LENS[3], LEAF_LENS[4]];
 
 /// Positions per positions query.
 pub const POSITIONS_PER_QUERY: usize = 8;
@@ -223,7 +229,7 @@ impl ProverState {
             .map(|p| p.leaf.iter().flat_map(|w| w.0.to_le_bytes()).collect())
             .collect();
         let len = leaf_bytes.first().map_or(0, |b| b.len());
-        assert!(leaf_bytes.iter().all(|b| b.len() == len) && (len == 512 || len == 384), "leaf queries are 512 or 384 bytes");
+        assert!(leaf_bytes.iter().all(|b| b.len() == len) && LEAF_LENS.contains(&len), "leaf queries have a record's leaf length");
         let flat: Vec<u8> = leaf_bytes.concat();
         let mut cur = vec![[0u8; 32]; n];
         oracle::hash_items(Class::Leaf, &flat, len, &mut cur);

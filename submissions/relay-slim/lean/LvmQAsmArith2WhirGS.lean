@@ -6,11 +6,16 @@ import LvmQAsmArith2WhirG
 /-!
 # Phases 8–9: specs of the level gadgets
 
-Every spec has the form `SegsHold c M p (g p).2 → (g p).1 = F's value` (the frame property of QL's
-builder): `ldE_spec` (= `feAt`), `pev_spec` (= `polyEval`), `rdQ_spec` (= `sumcheckRoundPoly 3`),
-`roundsG_spec` (= `frQ`), `tailG_spec` (= `tlT`), `glueG_spec` (= `glue`'s update), `foldsG_spec`
-(= `Σ λ^q fold_q`), `colWG_spec` (= `inducedWeight` by `inducedWeight_pow`), `iwConsts_spec`,
+The specs relate each gadget's output to `F` under its `SegsHold` constraints and the
+hypotheses on its inputs: `ldE_spec` (= `feAt`), `pev_spec` (= `polyEval`), `rdQ_spec`
+(= `sumcheckRoundPoly 3`), `roundsG_spec` (= `frQ`), `tailG_spec` (= `tlT`), `glueG_spec`
+(= `glue`'s update), `colWG_spec` (= `inducedWeight` by `inducedWeight_pow`), `iwConsts_spec`,
 `wsumG_spec`, `copiesG_spec`, `preloadG_spec`; pointer lemmas `*_out`, `*_adv`, `adv_e_le`.
+
+`rowCh_window_spec` gives consecutive row-fold cells, and `foldsG_window_spec` gives their
+weighted sum `Σ λ^q fold_q`. At level zero, the reversed weights for the `w ≤ 2^l` occupied
+words are followed by zeros; at later levels, each row has `2^l` scalars and natural-order
+weights.
 -/
 
 set_option autoImplicit false
@@ -129,17 +134,19 @@ theorem rowFoldE_cell (l a lb S er : Nat) (p : Ptr) (q : Nat) :
   rw [loop_adv]
   simp [LoopOut.cell, loop_apply, lrank, ltw, LRow.w, Row.w, Row.writes, Ptr.at]
 
-/-- A chunk's row folds (`rowFold0` at level 0, else `rowFoldE`): affine cells, `F`'s folds. -/
-theorem rowCh_spec {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed M sig T) {lvl0 : Bool}
-    {l a lb S er : Nat} (eq : Array FE)
-    (he : ∀ k < 2 ^ l, M.e (er + k) = eq.getD (if lvl0 then 2 ^ l - 1 - k else k) 0)
+/-- A chunk returns consecutive fold cells: at level zero they fold the `w` occupied words
+against reversed weights followed by zeros; at later levels they fold all `2^l` scalars. -/
+theorem rowCh_window_spec {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed M sig T)
+    {lvl0 : Bool} {l a lb S er w : Nat} (eq : Array FE) (hw : lvl0 = true → w ≤ 2 ^ l)
+    (he : ∀ k < 2 ^ l, M.e (er + k) =
+      if lvl0 then if k < w then eq.getD (w - 1 - k) 0 else 0 else eq.getD k 0)
     {p : Ptr} (hp : 1 ≤ p.e)
     (h : SegsHold c M p ((if lvl0 then rowFold0 l a lb S er else rowFoldE l a lb S er) p).2) :
     (∀ i, ((if lvl0 then rowFold0 l a lb S er else rowFoldE l a lb S er) p).1 i =
-        ec ((((if lvl0 then rowFold0 l a lb S er else rowFoldE l a lb S er) p).1 0).n + i)) ∧
+      ec ((((if lvl0 then rowFold0 l a lb S er else rowFoldE l a lb S er) p).1 0).n + i)) ∧
     ∀ i < 2 ^ a, lb + S * i + 3 * 2 ^ l + 2 < T →
       (((if lvl0 then rowFold0 l a lb S er else rowFoldE l a lb S er) p).1 i).val M =
-        (if lvl0 then foldRow0 sig eq (8 * (lb + S * i)) (2 ^ l)
+        (if lvl0 then foldRow0 sig eq (8 * (lb + S * i)) w
           else foldRowE sig eq (8 * (lb + S * i)) (2 ^ l)) := by
   cases lvl0
   · simp only [Bool.false_eq_true, ite_false] at h he ⊢
@@ -147,9 +154,12 @@ theorem rowCh_spec {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed M sig T) {l
     refine rowFoldE_eq h hp sig eq hi (fun k hk c' hc => ?_) he
     rw [hS _ (by omega)]; rfl
   · simp only [ite_true] at h he ⊢
+    have hw' := hw rfl
     refine ⟨fun i => by rw [rowFold0_cell, rowFold0_cell]; simp, fun i hi hT => ?_⟩
-    refine rowFold0_eq h hp sig eq hi (fun k hk => ?_) he
-    rw [hS _ (by omega)]; rfl
+    refine rowFold0_window h hp sig eq hi hw' (fun k hk => ?_) (fun k hk => ?_) (fun k hk hkl => ?_)
+    · rw [hS _ (by omega)]; rfl
+    · simpa [hk] using he k (by omega)
+    · simpa [show ¬ k < w by omega] using he k hkl
 
 /-- A chunk of `min A (t − q₀)` terms followed by the rest from `q₀ + A` is the sum over `[q₀, t)`. -/
 theorem sum_chunk (G : Nat → FE) (q₀ A t : Nat) (h : q₀ < t) :
@@ -177,15 +187,18 @@ theorem foldsG_cons (lvl0 : Bool) (l lb S er lp t : Nat) (z : Cell) (q₀ a : Na
           foldsG lvl0 l lb S er lp t z (q₀ + 2 ^ a) as >>= fun rest => add d rest := by
   cases lvl0 <;> rfl
 
-theorem foldsG_spec {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed M sig T) {lvl0 : Bool}
-    {l lb S er lp t : Nat} {z : Cell} (hz : z.val M = 0) (eq : Array FE) (lam : FE)
-    (he : ∀ k < 2 ^ l, M.e (er + k) = eq.getD (if lvl0 then 2 ^ l - 1 - k else k) 0)
+/-- `foldsG` computes the sum of row folds weighted by powers of `lam` over `[q₀, t)`,
+using `w` occupied words per level-zero row and all `2^l` scalars at later levels. -/
+theorem foldsG_window_spec {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed M sig T) {lvl0 : Bool}
+    {l lb S er lp t w : Nat} {z : Cell} (hz : z.val M = 0) (eq : Array FE) (lam : FE)
+    (hw : lvl0 = true → w ≤ 2 ^ l)
+    (he : ∀ k < 2 ^ l, M.e (er + k) = if lvl0 then if k < w then eq.getD (w - 1 - k) 0 else 0 else eq.getD k 0)
     (hlp : ∀ q < t, M.e (lp + q) = lam ^ q) (hT : ∀ q < t, lb + S * q + 3 * 2 ^ l + 2 < T) :
     ∀ (as : List Nat) (q₀ : Nat) (p : Ptr), 1 ≤ p.e → t ≤ q₀ + (as.map (2 ^ ·)).sum →
       (∀ i < as.length, q₀ + ((as.take i).map (2 ^ ·)).sum < t) →
       SegsHold c M p (foldsG lvl0 l lb S er lp t z q₀ as p).2 →
       (foldsG lvl0 l lb S er lp t z q₀ as p).1.val M = ∑ q ∈ Finset.Ico q₀ t, lam ^ q *
-        (if lvl0 then foldRow0 sig eq (8 * (lb + S * q)) (2 ^ l) else foldRowE sig eq (8 * (lb + S * q)) (2 ^ l))
+        (if lvl0 then foldRow0 sig eq (8 * (lb + S * q)) w else foldRowE sig eq (8 * (lb + S * q)) (2 ^ l))
   | [], q₀, p, _, ht, _, _ => by
     simp only [foldsG, pure_apply, hz]
     rw [Finset.Ico_eq_empty (by simpa using ht), Finset.sum_empty]
@@ -195,10 +208,10 @@ theorem foldsG_spec {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed M sig T) {
     simp only [bind_apply] at h ⊢
     rw [segsHold_append, segsHold_append, segsHold_append] at h
     obtain ⟨hc, hd, hr, ha⟩ := h
-    have hcs := rowCh_spec (lb := lb + S * q₀) hS eq he hp hc
+    have hcs := rowCh_window_spec (lb := lb + S * q₀) hS eq hw he hp hc
     have hd' := dotG_spec hd (le_trans hp (adv_e_le _ _)) (Nat.le_min.mpr ⟨Nat.one_le_two_pow, by omega⟩)
       (min_le_left _ _)
-    have hr' := foldsG_spec hS hz eq lam he hlp hT as (q₀ + 2 ^ a) _
+    have hr' := foldsG_window_spec hS hz eq lam hw he hlp hT as (q₀ + 2 ^ a) _
       (le_trans hp (le_trans (adv_e_le _ _) (adv_e_le _ _))) ht' hch' hr
     simp only [add] at ha ⊢
     rw [lin_spec ha, hd', hr', ofK_one, ofK_zero, one_mul, add_zero]

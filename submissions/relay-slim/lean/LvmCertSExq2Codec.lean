@@ -12,7 +12,8 @@ import LvmXDecUd
 * `kOfBytes_eq`: `kOfBytes b = decLE (b.take 8)`; `eOfBytes_eq`, **`chalOf_eq_alphaE`**,
   **`f2E_eq`** (π's `f₂` coefficient `v` is `eOfBytes` of its 24 bytes at `f2Off + 24 v`);
 * **`readRow_eq_wordOf`** (O12): XD's `readRow L cap p` is WP-5's `S.wordOf L ⟨15, 64, 7, cap⟩ p`
-  for every scheme with `decK = kOfBytes`; **`readRow1_eq_wordOf`**: DEC's level-1 `readRow1 L cap p`
+  for every scheme with `decK = kOfBytes` whose `C_rec` leaves carry the reader's `crOcc` words (`occ`);
+  **`readRow1_eq_wordOf`**: DEC's level-1 `readRow1 L cap p`
   is `S.wordOf L ⟨12, 48, 7, cap⟩ p`, and `readWd1_eq_wdOf`: the decoder's word is `wdOf` of it;
 * **`capRec1_eq`**: the 128 digests of π's 4096 bytes at `capRec1Off` are `capRec1 π`.
 -/
@@ -129,31 +130,35 @@ theorem xDescend_eq (L : Log) : ∀ (n : ℕ) (v : Digest) (q : ℕ),
     rfl
 
 /-- **O12**: XD's `readRow L cap p` is WP-5's word under the cap `cap` (`⟨15, 64, 7, cap⟩`), for a
-scheme whose word decoder is `kOfBytes`. -/
-theorem readRow_eq_wordOf (S : Scheme) (hK : S.decK = kOfBytes) (L : Log) (cap : List Digest)
-    (p : ℕ) : Lvm.X.readRow L cap p = S.wordOf L ⟨15, 64, 7, cap⟩ p := by
+scheme whose word decoder is `kOfBytes` and whose `C_rec` leaves carry the reader's `crOcc` words:
+both are `64 − crOcc` zero words, then the leaf's first `crOcc` words (`Scheme.padRow`). -/
+theorem readRow_eq_wordOf (S : Scheme) (hK : S.decK = kOfBytes) (hO : S.occ 15 64 = Lvm.X.crOcc)
+    (L : Log) (cap : List Digest) (p : ℕ) : Lvm.X.readRow L cap p = S.wordOf L ⟨15, 64, 7, cap⟩ p := by
   have hl : Lvm.X.xLeafBytes L cap p = Scheme.leafBytes L ⟨15, 64, 7, cap⟩ p := by
     simp only [Lvm.X.xLeafBytes, Scheme.leafBytes, xDescend_eq]
     rfl
-  rw [Lvm.X.readRow, Scheme.wordOf, hl, hK]
+  rw [Lvm.X.readRow, Scheme.wordOf, Scheme.padRow, hl, hK]
+  show _ = padRowOf kOfBytes 64 (S.occ 15 64) _
+  rw [hO, padRowOf, Nat.min_eq_left Lvm.X.crOcc_le]
   simp only [Lvm.X.xRowOf, rowOf, kOfBytes_eq, List.take_take, Nat.min_self]
 
 /-- **O12 at level 1**: DEC's `readRow1 L cap p` is WP-5's word under the level-1 cap
-(`⟨12, 48, 7, cap⟩`), for a scheme whose word decoder is `kOfBytes`. -/
-theorem readRow1_eq_wordOf (S : Scheme) (hK : S.decK = kOfBytes) (L : Log) (cap : List Digest)
-    (p : ℕ) : Lvm.X.readRow1 L cap p = S.wordOf L ⟨12, 48, 7, cap⟩ p := by
+(`⟨12, 48, 7, cap⟩`), for a scheme whose word decoder is `kOfBytes` and whose level-1 leaves carry
+their whole rows. -/
+theorem readRow1_eq_wordOf (S : Scheme) (hK : S.decK = kOfBytes) (ho : S.occ 12 48 = 48) (L : Log)
+    (cap : List Digest) (p : ℕ) : Lvm.X.readRow1 L cap p = S.wordOf L ⟨12, 48, 7, cap⟩ p := by
   have hl : Lvm.X.xLeafBytes1 L cap p = Scheme.leafBytes L ⟨12, 48, 7, cap⟩ p := by
     simp only [Lvm.X.xLeafBytes1, Scheme.leafBytes, xDescend_eq]
     rfl
-  rw [Lvm.X.readRow1, Scheme.wordOf, hl, hK]
+  rw [Lvm.X.readRow1, Scheme.wordOf, S.padRow_of_full _ _ ho, hl, hK]
   simp only [Lvm.X.xRowOf, rowOf, kOfBytes_eq, List.take_take, Nat.min_self]
 
 /-- **The level-1 decoder's word** is `wdOf` of WP-5's word under the level-1 cap. -/
-theorem readWd1_eq_wdOf (S : Scheme) (hK : S.decK = kOfBytes) (L : Log) (cap : List Digest) :
-    Lvm.X.readWd1 L cap = Lvm.X.wdOf (S.wordOf L ⟨12, 48, 7, cap⟩) := by
+theorem readWd1_eq_wdOf (S : Scheme) (hK : S.decK = kOfBytes) (ho : S.occ 12 48 = 48) (L : Log)
+    (cap : List Digest) : Lvm.X.readWd1 L cap = Lvm.X.wdOf (S.wordOf L ⟨12, 48, 7, cap⟩) := by
   funext p t
   unfold Lvm.X.readWd1 Lvm.X.wdOf
-  rw [readRow1_eq_wordOf S hK]
+  rw [readRow1_eq_wordOf S hK ho]
 
 /-- **The level-1 cap** (O13 at level 1): the 128 digests of π's 4096 bytes at `capRec1Off`. -/
 theorem capRec1_eq (π : Proof) (hs : Lvm.X.capRec1Off Lvm.X.pX + 4096 ≤ π.size) :

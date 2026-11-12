@@ -55,9 +55,9 @@ theorem retD_sumcheck (count : ℕ) : ∀ (eqs : List (Option FE)) (claim : FE),
       (retD_sumcheck count eqs _).bind fun ⟨_, _⟩ h ↦ RetD.pure (by simp [h])
 
 /-- A refinement with a fact on the native value. -/
-theorem RefAt.retD {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray} {α β : Type} {d : DM β}
-    {P : VerifierProgram α} {R : β → α → Prop} {Q : β → Prop} (h : RefAt cap shp sig d P R)
-    (hq : RetD Q d) : RefAt cap shp sig d P fun b a ↦ R b a ∧ Q b := fun s hok ↦ by
+theorem RefAt.retD {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray} {α β : Type} {d : DM β}
+    {P : VerifierProgram α} {R : β → α → Prop} {Q : β → Prop} (h : RefAt cap occ shp sig d P R)
+    (hq : RetD Q d) : RefAt cap occ shp sig d P fun b a ↦ R b a ∧ Q b := fun s hok ↦ by
   obtain ⟨a, h1, h2, h3, h4⟩ := h s hok
   exact ⟨a, h1, h2, h3, h4, hq sig s⟩
 
@@ -136,11 +136,11 @@ def koE (ko : Lvm.KeccakOut) : List Verifier.ColumnClaim × List E × List E :=
 
 section Ref
 
-variable {cap : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
+variable {cap : ℕ → ℕ → ℕ} {occ : ℕ → ℕ → ℕ} {shp : ℕ → ℕ × ℕ} {sig : ByteArray}
 
 /-- **The pack and segment rounds of a layer.** -/
 theorem ref_keccakPackRounds : ∀ (rs : List FE) (value scale : FE),
-    RefAt cap shp sig (Lvm.keccakPackRounds rs value scale)
+    RefAt cap occ shp sig (Lvm.keccakPackRounds rs value scale)
       (Verifier.keccakPackRounds (rs.map FE.toExt3) (FE.toExt3 value) (FE.toExt3 scale))
       fun r r' ↦ r' = (FE.toExt3 r.1, FE.toExt3 r.2.1, r.2.2.map FE.toExt3)
   | [], _, _ => RefAt.pure rfl
@@ -160,7 +160,7 @@ theorem ref_keccakPackRounds : ∀ (rs : List FE) (value scale : FE),
 
 /-- **A layer**: the claim on the states a layer further down. -/
 theorem ref_verifyKeccakLayer (logSteps step : ℕ) (c : Lvm.KeccakClaim) :
-    RefAt cap shp sig (Lvm.verifyKeccakLayer logSteps step c)
+    RefAt cap occ shp sig (Lvm.verifyKeccakLayer logSteps step c)
       (Verifier.verifyKeccakLayer logSteps step (kcE c)) fun r r' ↦ r' = kcE r := by
   unfold Lvm.verifyKeccakLayer Verifier.verifyKeccakLayer
   refine RefAt.bind (fun _ ↦ (MonoD.require _).bind fun _ ↦ monoD_sampleE.bind fun _ ↦
@@ -180,14 +180,14 @@ theorem ref_verifyKeccakLayer (logSteps step : ℕ) (c : Lvm.KeccakClaim) :
       (monoD_readEs _).bind fun _ ↦ (MonoD.require _).bind fun _ ↦ monoD_sampleE.bind fun _ ↦
         MonoD.pure _) ref_sampleE ?_
   rintro s _ rfl
-  have hp := ref_keccakPackRounds c.point (Lvm.polyEval product s) 1 (cap := cap) (shp := shp)
+  have hp := ref_keccakPackRounds c.point (Lvm.polyEval product s) 1 (cap := cap) (occ := occ) (shp := shp)
     (sig := sig)
   rw [toExt3_polyEval, tE_one] at hp
   refine RefAt.bind (fun ⟨_, _, _⟩ ↦ (monoD_sumcheck _ _ _).bind fun ⟨_, _⟩ ↦
       (monoD_readEs _).bind fun _ ↦ (MonoD.require _).bind fun _ ↦ monoD_sampleE.bind fun _ ↦
         MonoD.pure _) hp ?_
   rintro ⟨value, scale, point⟩ _ rfl
-  have hs := (ref_sumcheck 4 (List.replicate Lvm.localBits none) value (cap := cap) (shp := shp)
+  have hs := (ref_sumcheck 4 (List.replicate Lvm.localBits none) value (cap := cap) (occ := occ) (shp := shp)
     (sig := sig)).retD (retD_sumcheck 4 _ value)
   simp only [List.map_replicate, Option.map_none] at hs
   refine RefAt.bind (fun ⟨_, _⟩ ↦ (monoD_readEs _).bind fun _ ↦ (MonoD.require _).bind fun _ ↦
@@ -210,7 +210,7 @@ theorem ref_verifyKeccakLayer (logSteps step : ℕ) (c : Lvm.KeccakClaim) :
 
 /-- **The layers.** -/
 theorem ref_keccakLayers (logSteps : ℕ) : ∀ (steps : List ℕ) (c : Lvm.KeccakClaim),
-    RefAt cap shp sig (Lvm.keccakLayers logSteps steps c)
+    RefAt cap occ shp sig (Lvm.keccakLayers logSteps steps c)
       (Verifier.keccakLayers logSteps steps (kcE c)) fun r r' ↦ r' = kcE r
   | [], _ => RefAt.pure rfl
   | s :: steps, c => by
@@ -222,12 +222,12 @@ theorem ref_keccakLayers (logSteps : ℕ) : ∀ (steps : List ℕ) (c : Lvm.Kecc
 
 /-- **An opening of `q_keccak`**: the slot, the weights there, what is left to match. -/
 theorem ref_keccakOpen (logSteps : ℕ) (c : Lvm.KeccakClaim) (first count : ℕ) (value : FE) :
-    RefAt cap shp sig (Lvm.keccakOpen logSteps c first count value)
+    RefAt cap occ shp sig (Lvm.keccakOpen logSteps c first count value)
       (Verifier.keccakOpen logSteps (kcE c) first count (FE.toExt3 value))
       fun r r' ↦ r' = (r.1.map FE.toExt3, r.2.1.map FE.toExt3, FE.toExt3 r.2.2) := by
   unfold Lvm.keccakOpen Verifier.keccakOpen
   rw [slotBits_eq]
-  have hs := ref_sumcheck 3 (List.replicate Verifier.qkeccakSlotBits none) value (cap := cap)
+  have hs := ref_sumcheck 3 (List.replicate Verifier.qkeccakSlotBits none) value (cap := cap) (occ := occ)
     (shp := shp) (sig := sig)
   simp only [List.map_replicate, Option.map_none] at hs
   refine RefAt.bind (fun ⟨_, _⟩ ↦ MonoD.pure _) hs ?_
@@ -239,7 +239,7 @@ theorem ref_keccakOpen (logSteps : ℕ) (c : Lvm.KeccakClaim) (first count : ℕ
 
 /-- **`verify_keccak`**: the committed-output word claim, the slice point and the slices. -/
 theorem ref_verifyKeccak (logSteps : ℕ) (inst output : List FE) :
-    RefAt cap shp sig (Lvm.verifyKeccak logSteps inst output)
+    RefAt cap occ shp sig (Lvm.verifyKeccak logSteps inst output)
       (Verifier.verifyKeccak logSteps (inst.map FE.toExt3) (output.map FE.toExt3))
       fun r r' ↦ r' = koE r := by
   unfold Lvm.verifyKeccak Verifier.verifyKeccak
@@ -284,7 +284,7 @@ theorem ref_verifyKeccak (logSteps : ℕ) (inst output : List FE) :
     (RefAt.require fun hc ↦ req_of (toExt3_mul_of (toExt3_headD _) rfl) rfl hc) ?_
   rintro _ _ _
   rw [pure_bind]
-  have hs := (ref_sumcheck 3 (List.replicate 4 none) claim.value (cap := cap) (shp := shp)
+  have hs := (ref_sumcheck 3 (List.replicate 4 none) claim.value (cap := cap) (occ := occ) (shp := shp)
     (sig := sig))
   simp only [List.map_replicate, Option.map_none] at hs
   refine RefAt.bind (fun _ ↦ (monoD_keccakOpen _ _ _ _ _).bind fun _ ↦ (monoD_readEs _).bind fun _ ↦
@@ -303,7 +303,7 @@ theorem ref_verifyKeccak (logSteps : ℕ) (inst output : List FE) :
 
 /-- **Ring switching**: the target, and the weight on every image point. -/
 theorem ref_ringSwitch (point s : List FE) :
-    RefAt cap shp sig (Lvm.ringSwitch point s)
+    RefAt cap occ shp sig (Lvm.ringSwitch point s)
       (Verifier.ringSwitch (point.map FE.toExt3) (s.map FE.toExt3))
       fun r r' ↦ r'.1 = FE.toExt3 r.1 ∧ ∀ xs, r'.2 (xs.map FE.toExt3) = FE.toExt3 (r.2 xs) := by
   unfold Lvm.ringSwitch Verifier.ringSwitch
@@ -327,7 +327,7 @@ def KecRel (h : ℕ) (r : List FE × List FE × Lvm.KeccakOut × (FE × (List FE
     co.2.2.2.1 = FE.toExt3 r.2.2.2.1 ∧ ∀ xs, co.2.2.2.2 (xs.map FE.toExt3) = FE.toExt3 (r.2.2.2.2 xs)
 
 /-- **V_S's phases 4 and 6 refine WP-8's caller program.** -/
-theorem ref_dKec (h : ℕ) : RefAt cap shp sig (dKec h) (Lvm.KG.callerProg h) (KecRel h) := by
+theorem ref_dKec (h : ℕ) : RefAt cap occ shp sig (dKec h) (Lvm.KG.callerProg h) (KecRel h) := by
   unfold dKec Lvm.KG.callerProg
   refine RefAt.bind (fun _ ↦ (monoD_readEs _).bind fun _ ↦ (monoD_verifyKeccak _ _ _).bind fun _ ↦
     (monoD_ringSwitch _ _).bind fun _ ↦ MonoD.pure _) ((ref_samples h).retD (retD_samples h)) ?_

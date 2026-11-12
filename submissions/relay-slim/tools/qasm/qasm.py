@@ -103,11 +103,13 @@ def main():
     for s in sets:
         cmd = [exe, s, out, os.path.realpath(a.header), "--start", a.start, "--max-iter", a.max_iter]
         rc = subprocess.run(cmd).returncode
-        if rc not in (0, 3):
+        if rc not in (0, 3, 5, 7):
             failed.append(f"{s}: qasm exited {rc}")
             continue
-        if rc == 3:
+        if rc in (3, 7):
             failed.append(f"{s}: the frozen numbers (schedule, pubTab) differ")
+        if rc in (5, 7):
+            failed.append(f"{s}: the tables' columns pass a commitment's occupied lanes, or lie in C_rec")
         if a.check:
             for name in SETS[s]:
                 got, want = open(os.path.join(out, name), "rb").read(), open(shipped(name), "rb").read()

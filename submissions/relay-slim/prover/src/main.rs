@@ -172,6 +172,9 @@ impl oracle::Oracle for Shared {
     fn ask_rows_here(&self, out: &mut [Digest], rows: &[u8], row_bytes: usize, pad: usize) {
         oracle::Oracle::ask_rows_here(self.0, out, rows, row_bytes, pad)
     }
+    fn ask_tails_here(&self, out: &mut [Digest], rows: &[u8], row_bytes: usize, skip: usize) {
+        oracle::Oracle::ask_tails_here(self.0, out, rows, row_bytes, skip)
+    }
 }
 
 /// `sprove --params P8|P20 [--local] [--n N] [--seed S] [--b 0|1] [--out FILE] [--trace FILE] [--sign FILE]`: one
@@ -259,7 +262,8 @@ fn cmd_pgbench(args: &[String]) {
     for r in 0..reps {
         oracle::reset_stats();
         let t = Instant::now();
-        let (c, d) = lv::pcs::whir::commit(&msg, nu, lv::pcs::whir::INITIAL_FOLDING_FACTOR, m0.rate, m0.cap);
+        let fold = lv::pcs::whir::INITIAL_FOLDING_FACTOR;
+        let (c, d) = lv::pcs::whir::commit(&msg, nu, fold, m0.rate, m0.cap, 1 << fold);
         let s = t.elapsed().as_secs_f64();
         println!("pgbench commit nu={nu} rep={r} wall_s={s:.3} cap0={:02x}", c.cap[0][0]);
         drop(d);

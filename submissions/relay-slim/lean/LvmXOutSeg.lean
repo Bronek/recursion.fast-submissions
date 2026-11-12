@@ -152,11 +152,11 @@ def blkPSegs : ℕ → List Blk → Seg
 def pSegL : Seg := .cat (.wd (toWord 0x53)) (blkPSegs 6 (blocks pX))
 
 /-- A block the extractor can reassemble: a seed or FS query (not a node's or a leaf's length), or
-an opening of 384- or 512-byte rows. -/
+an opening whose rows have a leaf length (`leafLens`). -/
 def blkOk : Blk → Bool
-  | .one .seed len | .one .fs len => len != 64 && len != 384 && len != 512
+  | .one .seed len | .one .fs len => len != 64 && !decide (len ∈ leafLens)
   | .one _ _ => false
-  | .opn _ row _ => row == 384 || row == 512
+  | .opn _ row _ => decide (row ∈ leafLens)
 
 /-! The static facts of the segments per block: the kernel checks `okSeg` block by block
 (`blocks_segs`) instead of evaluating the segments; the depths are bounded for every block list. -/
@@ -211,27 +211,27 @@ theorem segOut_blkPSeg (W : ℕ → Word) (κ : Bool) (b u : ℕ) (blk : Blk) (h
     segOut W κ b (blkPSeg u blk) = (walk (b + u) (lensB blk)).flatMap fun x => pieceW W x.1 x.2 := by
   cases blk with
   | one c len =>
-    have key : len ≠ 64 ∧ len ≠ 384 ∧ len ≠ 512 → segOut W κ b (.cp (u + 5) ((len - 32) / 8)) =
-        (walk (b + u) [len]).flatMap fun x => pieceW W x.1 x.2 := fun ⟨h1, h2, h3⟩ => by
-      have hr : ¬ (len = 384 ∨ len = 512) := by omega
+    have key : len ≠ 64 ∧ len ∉ leafLens → segOut W κ b (.cp (u + 5) ((len - 32) / 8)) =
+        (walk (b + u) [len]).flatMap fun x => pieceW W x.1 x.2 := fun ⟨h1, hr⟩ => by
       simp only [segOut, walk, List.flatMap_cons, List.flatMap_nil, List.append_nil, pieceW,
         if_neg h1, if_neg hr, wsAt]
       all_goals exact List.map_congr_left fun j _ => by congr 1 <;> omega
-    cases c <;> simp only [blkOk, Bool.and_eq_true, bne_iff_ne, ne_eq] at hb
+    cases c <;> simp only [blkOk, Bool.and_eq_true, bne_iff_ne, ne_eq, Bool.not_eq_true',
+      decide_eq_false_iff_not] at hb
     · exact absurd hb (by decide)
-    · exact key ⟨hb.1.1, hb.1.2, hb.2⟩
-    · exact key ⟨hb.1.1, hb.1.2, hb.2⟩
+    · exact key hb
+    · exact key hb
     · exact absurd hb (by decide)
     · exact absurd hb (by decide)
   | opn t row path =>
-    simp only [blkOk, Bool.or_eq_true, beq_iff_eq] at hb
-    have hr : row ≠ 64 := by omega
+    simp only [blkOk, decide_eq_true_eq] at hb
+    have hr : row ≠ 64 := ne64_of_leaf hb
     rw [lensB_opn, walk_reps, List.flatMap_assoc]
     simp only [blkPSeg, segOut]
     refine List.flatMap_congr fun j _ => ?_
     rw [walk, walk_rep64, List.flatMap_cons, List.flatMap_map]
     generalize opS row path * j = A
-    rw [pieceW, if_neg hr, if_pos hb]
+    rw [pieceW, if_neg hr, if_pos (by omega)]
     simp only [wsAt]
     congr 1
     · exact List.map_congr_left fun k _ => by congr 1 <;> omega

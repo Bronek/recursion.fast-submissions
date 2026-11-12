@@ -40,7 +40,8 @@ const STAGE_TILE_BYTES: usize = 16 << 10;
 
 /// A Merkle tree filled one aligned block of leaves at a time, from any thread.
 ///
-/// Leaf `i` is `zeros(leaf_words - row_words) ‖ row_i`.
+/// Leaf `i` is `zeros(leaf_words - row_words) ‖ row_i`, or `row_i`'s last `leaf_words` words when the leaf is
+/// shorter than the row (the row's leading words are zero lanes the leaf leaves out).
 ///
 /// Blocks must all have the same power-of-two size, and together cover every leaf once.
 pub(crate) struct MerkleBuilder {
@@ -55,7 +56,8 @@ pub(crate) struct MerkleBuilder {
 }
 
 impl MerkleBuilder {
-    /// An empty tree of `num_leaves` leaves of `leaf_words`, each committing `row_words`.
+    /// An empty tree of `num_leaves` leaves of `leaf_words`, each committing `row_words` (its last `leaf_words` when
+    /// `leaf_words < row_words`).
     ///
     /// A tree of `CUT_FROM` leaves or more is cut, so its blocks must hold whole leaf groups.
     pub fn new(num_leaves: usize, row_words: usize, leaf_words: usize) -> Self {
@@ -385,7 +387,7 @@ impl CutTree {
     /// The paths of `positions`, with `row(q)` the row at `q`.
     ///
     /// `group_rows` are the full rows of [`Self::group_positions`], `row_words` each, back to back, hashed
-    /// as the leaves `zeros(leaf_words - row_words) ‖ row`.
+    /// as the leaves `zeros(leaf_words - row_words) ‖ row` (each row's last `leaf_words` words when shorter).
     pub fn open<'a>(
         &self,
         positions: &[usize],
@@ -443,10 +445,15 @@ enum LeafHasher {
         state: [u64; STATE_LANES],
         zero_bytes: usize,
     },
+    /// The leaf is the row's last `leaf_bytes` (its leading zero lanes left out).
+    Tail { row_bytes: usize, leaf_bytes: usize },
 }
 
 impl LeafHasher {
     fn new(row_bytes: usize, leaf_bytes: usize) -> Self {
+        if 0 < leaf_bytes && leaf_bytes < row_bytes {
+            return Self::Tail { row_bytes, leaf_bytes };
+        }
         assert!(0 < row_bytes && row_bytes <= leaf_bytes, "a leaf holds its row");
         let zero_blocks = (leaf_bytes - row_bytes) / RATE;
         let state = zero_prefix_state(zero_blocks);
@@ -467,7 +474,7 @@ impl LeafHasher {
 
     fn row_bytes(&self) -> usize {
         match *self {
-            Self::Direct { row_bytes, .. } | Self::Staged { row_bytes, .. } => row_bytes,
+            Self::Direct { row_bytes, .. } | Self::Staged { row_bytes, .. } | Self::Tail { row_bytes, .. } => row_bytes,
         }
     }
 
@@ -476,12 +483,16 @@ impl LeafHasher {
     /// WP-4: through the oracle (BLUEPRINT §2.2: the leaf query is the whole `leaf_bytes` image, zeros then row),
     /// so the shared zero prefix cannot be absorbed once: the service hashes `k ‖ image`.
     fn hash(&self, rows: &[u8], out: &mut [MaybeUninit<Hash>]) {
-        let (row_bytes, leaf_bytes) = match *self {
-            Self::Direct { row_bytes, .. } => (row_bytes, row_bytes + self.zero_bytes()),
-            Self::Staged { row_bytes, image, .. } => (row_bytes, image + self.zero_bytes()),
-        };
         let mut tmp = vec![[0u8; OUT_LEN]; out.len()];
-        oracle::hash_padded(Class::Leaf, rows, row_bytes, leaf_bytes, &mut tmp);
+        match *self {
+            Self::Direct { row_bytes, .. } => {
+                oracle::hash_padded(Class::Leaf, rows, row_bytes, row_bytes + self.zero_bytes(), &mut tmp)
+            }
+            Self::Staged { row_bytes, image, .. } => {
+                oracle::hash_padded(Class::Leaf, rows, row_bytes, image + self.zero_bytes(), &mut tmp)
+            }
+            Self::Tail { row_bytes, leaf_bytes } => oracle::hash_tails(Class::Leaf, rows, row_bytes, leaf_bytes, &mut tmp),
+        }
         digests_as_bytes(out).copy_from_slice(tmp.as_flattened());
     }
 
@@ -489,6 +500,7 @@ impl LeafHasher {
     fn zero_bytes(&self) -> usize {
         match *self {
             Self::Direct { zero_bytes, .. } | Self::Staged { zero_bytes, .. } => zero_bytes,
+            Self::Tail { .. } => 0,
         }
     }
 
@@ -517,6 +529,7 @@ impl LeafHasher {
                     hash_many_from_state(images, image, &state, digests_as_bytes(out));
                 }
             }
+            Self::Tail { .. } => unreachable!("leanVM's local hasher has no short leaves"),
         }
     }
 }

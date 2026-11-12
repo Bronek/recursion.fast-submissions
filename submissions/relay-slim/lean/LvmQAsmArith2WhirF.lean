@@ -404,7 +404,7 @@ theorem whirLevels_step (ν lf : Nat) (B : List FE → FE) (g : Nat) (ood : Bool
               Lvm.dot (powers (feAt sig (8 * (lvLanes g ood L (some N) V).V3 + 40)) L.t)
                 ((List.range L.t).map fun j =>
                   if L.level = 0 then foldRow0 sig (eqKernelA (frC sig (8 * V) L.fold))
-                    (8 * ((lvLanes g ood L (some N) V).V4 + 1 + oStr L * j)) (2 ^ L.fold)
+                    (8 * ((lvLanes g ood L (some N) V).V4 + 1 + oStr L * j)) (L.row / 8)
                   else foldRowE sig (eqKernelA (frC sig (8 * V) L.fold))
                     (8 * ((lvLanes g ood L (some N) V).V4 + 1 + oStr L * j)) (2 ^ L.fold)) +
                 feAt sig (8 * (lvLanes g ood L (some N) V).V5 + 64),
@@ -444,7 +444,8 @@ theorem whirLevels_final (ν lf : Nat) (B : List FE → FE) (g : Nat) (ood : Boo
     let st' := glue lam ⟨frQ sig (8 * V) L.fold st.runningQuad, st.folds ++ frC sig (8 * V) L.fold, st.glued⟩
       [([feAt sig (8 * ll.V5 + 40),
           Lvm.dot (powers lam L.t) ((List.range L.t).map fun j =>
-              if L.level = 0 then foldRow0 sig (eqKernelA (frC sig (8 * V) L.fold)) (8 * (ll.V4 + 1 + oStr L * j)) (2 ^ L.fold)
+              if L.level = 0 then foldRow0 sig (eqKernelA (frC sig (8 * V) L.fold)) (8 * (ll.V4 + 1 + oStr L * j))
+                (L.row / 8)
               else foldRowE sig (eqKernelA (frC sig (8 * V) L.fold)) (8 * (ll.V4 + 1 + oStr L * j)) (2 ^ L.fold)) +
             feAt sig (8 * ll.V5 + 64),
           feAt sig (8 * ll.V5 + 64)],

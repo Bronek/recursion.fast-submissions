@@ -92,6 +92,8 @@ pub struct ProverData {
     codeword: Codeword,
     /// Words per codeword row: the committed lanes, with zero lanes in front up to the vector width.
     row_words: usize,
+    /// Words per Merkle leaf: the image's last `leaf_words` words (the committed lanes alone when equal to them).
+    leaf_words: usize,
     pub(crate) merkle_tree: merkle::CutTree,
 }
 
@@ -121,12 +123,19 @@ const KEEP_CODEWORD_MAX_BYTES: usize = 1 << 30;
 /// The encoded row is padded to a whole AVX-512 vector of lanes with zero lanes
 /// in front, so the NTT has no masked tail. The padding is the image's zeros and
 /// never rides the proof.
+///
+/// A leaf is the image's last `leaf_words` words (`n_lanes ≤ leaf_words ≤
+/// 2^log_batch_size`): the whole image at `2^log_batch_size`; at `n_lanes`, the
+/// committed lanes alone, so the absent lanes are neither hashed nor sent, and the
+/// verifier reads them as zero (the entry's record: a level-0 row of
+/// `8 · leaf_words` bytes).
 pub fn commit(
     message: &[F64],
     log_n: usize,
     log_batch_size: usize,
     log_inv_rate: usize,
     cap_log: usize,
+    leaf_words: usize,
 ) -> (Commitment, ProverData) {
     assert!(log_inv_rate >= 1, "log_inv_rate must be >= 1 for a non-trivial RS code");
     assert!(log_n > log_batch_size, "witness must be wider than the interleaving");
@@ -140,9 +149,13 @@ pub fn commit(
     let k_code = log_rows + log_inv_rate;
     let n_positions = 1usize << k_code;
     let row_words = n_lanes.next_multiple_of(8).min(1usize << log_batch_size);
+    assert!(
+        n_lanes <= leaf_words && leaf_words <= 1usize << log_batch_size,
+        "a leaf holds the committed lanes and at most 2^log_batch_size words"
+    );
 
     // Leaves are hashed as the encode finishes each block of rows.
-    let tree = merkle::MerkleBuilder::new(n_positions, row_words, 1usize << log_batch_size);
+    let tree = merkle::MerkleBuilder::new(n_positions, row_words, leaf_words);
     let ntt = AdditiveNttF64::standard(k_code);
     let codeword =
         crate::lv::tracing::info_span!("NTT", kind = "base encode", log_domain = k_code, lanes = row_words).in_scope(|| {
@@ -165,6 +178,7 @@ pub fn commit(
             ntt,
             codeword,
             row_words,
+            leaf_words,
             merkle_tree,
         },
     )
@@ -1121,7 +1135,7 @@ pub(crate) fn recursive_prover_with_prepared_basis(
         }
         let cap_0 = l0_tree.cap(config.cap_logs[0]);
         ps.hint_merkle(
-            l0_tree.open(&queries_0, row_words, num_interleaved_0, config.cap_logs[0], &group_rows_0, image),
+            l0_tree.open(&queries_0, row_words, prover_data.leaf_words, config.cap_logs[0], &group_rows_0, image),
             &cap_0,
         );
         drop((prover_data, stack));
@@ -1194,7 +1208,7 @@ pub(crate) fn recursive_prover_with_prepared_basis(
     }
     let cap_0 = l0_tree.cap(config.cap_logs[0]);
     ps.hint_merkle(
-        l0_tree.open(&queries_0, row_words, num_interleaved_0, config.cap_logs[0], &group_rows_0, image),
+        l0_tree.open(&queries_0, row_words, prover_data.leaf_words, config.cap_logs[0], &group_rows_0, image),
         &cap_0,
     );
     // Nothing reads the L0 codeword, its stack or its tree again, and the next levels' buffers can be served

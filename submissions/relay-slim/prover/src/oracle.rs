@@ -40,6 +40,13 @@ pub trait Oracle: Sync + Send {
             buf.extend_from_slice(&rows[i * row_bytes..][..row_bytes]);
         })
     }
+    /// `out[i] = H(rows[i·row_bytes + skip ..][.. row_bytes − skip])`, each row's tail, on the calling thread: as
+    /// `ask_rows_here` (the service overrides it and sends the tails without copying them).
+    fn ask_tails_here(&self, out: &mut [Digest], rows: &[u8], row_bytes: usize, skip: usize) {
+        self.ask_many_here(out, &|i, buf: &mut Vec<u8>| {
+            buf.extend_from_slice(&rows[i * row_bytes + skip..][..row_bytes - skip]);
+        })
+    }
 }
 
 /// P-QUICK lever 6: items at least this long go through `ask_rows_here` (the leaves); shorter ones (the
@@ -218,6 +225,21 @@ pub fn hash_padded(c: Class, rows: &[u8], row_bytes: usize, leaf_bytes: usize, o
             buf.resize(buf.len() + pad, 0);
             buf.extend_from_slice(&rows[i * row_bytes..][..row_bytes]);
         });
+    }
+    note(c, requests_for(out.len(), leaf_bytes * out.len()), std::iter::repeat_n(leaf_bytes, out.len()), t);
+}
+
+/// `out[i] = H(row_i[row_bytes − leaf_bytes ..])`, each row's last `leaf_bytes`, for the rows of `rows`
+/// (`row_bytes` each): leaves that leave out their rows' leading zero lanes.
+pub fn hash_tails(c: Class, rows: &[u8], row_bytes: usize, leaf_bytes: usize, out: &mut [Digest]) {
+    assert_eq!(rows.len(), row_bytes * out.len());
+    assert!(0 < leaf_bytes && leaf_bytes <= row_bytes);
+    let skip = row_bytes - leaf_bytes;
+    let t = Instant::now();
+    if leaf_bytes >= ROWS_MIN {
+        get().ask_tails_here(out, rows, row_bytes, skip);
+    } else {
+        get().ask_many_here(out, &|i, buf: &mut Vec<u8>| buf.extend_from_slice(&rows[i * row_bytes + skip..][..leaf_bytes]));
     }
     note(c, requests_for(out.len(), leaf_bytes * out.len()), std::iter::repeat_n(leaf_bytes, out.len()), t);
 }

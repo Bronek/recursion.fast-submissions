@@ -10,12 +10,13 @@ import LvmXRead
 
 On a domain tape of a SNARK proof, after the log index (`idxIR4 bX pL`, sorted by
 `idxIR4_sorted`), with `C_rec`'s cap (128 nodes) on the tape at `capW`, `readIR bX pL capW wB`
-leaves in cell `wB + 64 p + t` (`p < 2^15`, `t < 64`) leaf word `t` of the row the log holds
-under the cap at position `p`: as a `K` element, `(readRow L cap p).getD t 0` (zeros for an
-erasure). It keeps every heap cell outside `[wB, wB + 2^21)`, in particular the index at `bX`.
+leaves in cell `wB + 64 p + t` (`p < 2^15`, `t < 64`) word `t` of the row the log holds under
+the cap at position `p`: as a `K` element, `(readRow L cap p).getD t 0` (`64 − crOcc` zero
+words, then the leaf's words; zeros for an erasure). It keeps every heap cell outside
+`[wB, wB + 2^21)`, in particular the index at `bX`.
 
 * `cr_pos_sem`: one position; `cr_posLoop`: positions `j … j + m − 1`;
-* `readIR_sem4`: on any sorted index (`Sorted4`), words as `crLeafW`;
+* `readIR_sem4`: on any sorted index (`Sorted4`), words as `crRowW`;
 * **`readIR_sem`**: after `idxIR4`, words as `K` elements, the frame, the index and `Inv`.
 -/
 
@@ -31,7 +32,7 @@ variable {c : Digest} {π : Proof} {L : Log} {bX pL : ℕ}
 variable (hbX : regs ≤ bX) (hbX2 : bX ≤ 2 ^ 60) (hpL : pL ≤ 2 ^ 60)
 include hbX hbX2 hpL
 
-/-- **One position**: the leaf words of position `p` at `a … a + 63`; `crP := p + 1`,
+/-- **One position**: the row words of position `p` at `a … a + 63`; `crP := p + 1`,
 `crWA := a + 64`; every other heap cell kept. -/
 theorem cr_pos_sem (hD : RdDom pL c π L) {Xi : ℕ → Word} (hX : Sorted4 pL (crTape c π L) L Xi)
     (s : St) (hM : Inv s.M) (hXs : ∀ a < L.length, rd s.M (bX + a) = Xi a) {capW : ℕ}
@@ -41,7 +42,7 @@ theorem cr_pos_sem (hD : RdDom pL c π L) {Xi : ℕ → Word} (hX : Sorted4 pL (
     {p a : ℕ} (hp : p < 2 ^ 15) (hP : rd s.M crP = toWord p) (hA : rd s.M crWA = toWord a)
     (ha : regs ≤ a) (ha2 : a + 64 + 2 < 2 ^ 64) (hsz : a + 64 ≤ s.M.size) :
     (∀ t < 64, rd (semXIR (crTape c π L) (crPos bX pL capW) s).M (a + t) =
-      crLeafW (xLeafBytes L cap p) t) ∧
+      crRowW (xLeafBytes L cap p) t) ∧
     (∀ y, regs ≤ y → (y < a ∨ a + 64 ≤ y) →
       rd (semXIR (crTape c π L) (crPos bX pL capW) s).M y = rd s.M y) ∧
     Inv (semXIR (crTape c π L) (crPos bX pL capW) s).M ∧
@@ -173,13 +174,14 @@ theorem cr_pos_sem (hD : RdDom pL c π L) {Xi : ℕ → Word} (hX : Sorted4 pL (
     fun r hr => by
       simp only [semXIR, runPrims, List.foldl, Prim.run]; exact rd_set_ne (Ne.symm hr)
   refine ⟨fun t ht => ?_, fun y hy1 hy2 => ?_, inv_sem I wf6 k3, ?_, ?_⟩
-  · rw [r6 _ (by simp only [crP, regs] at *; omega), k1 t ht, c2, xLeafBytes_eq hp hpc]
+  · rw [r6 _ (by simp only [crP, regs] at *; omega), k1 t ht, crCpRow_of c2,
+      xLeafBytes_eq hp hpc]
   · rw [r6 _ (by simp only [crP, regs] at *; omega), k2 y hy1 hy2, hH4 y hy1, hH3 y hy1]
   · rw [r6 _ (by decide), k4]
   · simp only [semXIR, runPrims, List.foldl, Prim.run]
     rw [rd_set_self (by simp only [crP]; omega), k5, hP4, hc5, add_one_toWord]
 
-/-- **The position loop**: `m` positions from `j` fill their leaf words' cells. -/
+/-- **The position loop**: `m` positions from `j` fill their row words' cells. -/
 theorem cr_posLoop (hD : RdDom pL c π L) {Xi : ℕ → Word} (hX : Sorted4 pL (crTape c π L) L Xi)
     {capW wB : ℕ} {cap : List Digest} (hcl : cap.length = 128) (hcw : capW + 512 < 2 ^ 62)
     (hcap : ∀ e (he : e < cap.length), ∀ m < 4,
@@ -190,7 +192,7 @@ theorem cr_posLoop (hD : RdDom pL c π L) {Xi : ℕ → Word} (hX : Sorted4 pL (
       rd s.M crWA = toWord (wB + 64 * j) →
       (∀ q, j ≤ q → q < j + m → ∀ t < 64,
         rd (iterL (semXIR (crTape c π L) (crPos bX pL capW)) crCp m s).M (wB + 64 * q + t) =
-          crLeafW (xLeafBytes L cap q) t) ∧
+          crRowW (xLeafBytes L cap q) t) ∧
       (∀ y, regs ≤ y → (y < wB + 64 * j ∨ wB + 64 * (j + m) ≤ y) →
         rd (iterL (semXIR (crTape c π L) (crPos bX pL capW)) crCp m s).M y = rd s.M y) ∧
       Inv (iterL (semXIR (crTape c π L) (crPos bX pL capW)) crCp m s).M
@@ -224,7 +226,7 @@ theorem cr_posLoop (hD : RdDom pL c π L) {Xi : ℕ → Word} (hX : Sorted4 pL (
     · rw [d2 _ hy1 (by omega), dk _ (hy _ hy1), b2 _ hy1 (by omega)]
 
 /-- **The column reads' semantics on a sorted index**: `readIR bX pL capW wB` stores at
-`wB + 64 p + t` leaf word `t` of the reading at position `p < 2^15` (`crLeafW`, zeros for an
+`wB + 64 p + t` row word `t` of the reading at position `p < 2^15` (`crRowW`, zeros for an
 erasure) and keeps every heap cell outside `[wB, wB + 2^21)`. -/
 theorem readIR_sem4 (hD : RdDom pL c π L) {Xi : ℕ → Word} (hX : Sorted4 pL (crTape c π L) L Xi)
     (s : St) (hM : Inv s.M) (hXs : ∀ a < L.length, rd s.M (bX + a) = Xi a) {capW wB : ℕ}
@@ -234,7 +236,7 @@ theorem readIR_sem4 (hD : RdDom pL c π L) {Xi : ℕ → Word} (hX : Sorted4 pL 
     (hwB : regs ≤ wB) (hwB2 : wB + 2 ^ 21 ≤ bX) (hsz : bX ≤ s.M.size) :
     (∀ p < 2 ^ 15, ∀ t < 64,
       rd (semXIR (crTape c π L) (readIR bX pL capW wB) s).M (wB + 64 * p + t) =
-        crLeafW (xLeafBytes L cap p) t) ∧
+        crRowW (xLeafBytes L cap p) t) ∧
     (∀ y, regs ≤ y → (y < wB ∨ wB + 2 ^ 21 ≤ y) →
       rd (semXIR (crTape c π L) (readIR bX pL capW wB) s).M y = rd s.M y) ∧
     Inv (semXIR (crTape c π L) (readIR bX pL capW wB) s).M := by
@@ -305,9 +307,9 @@ end Read2
 at tape word `pL`, take a state `s₂` (memory of at least `bX` words) whose `X[0..|L|)` is the
 one `idxIR4 bX pL` left from `s`, with `C_rec`'s cap (128 nodes) on the tape at `capW`. After
 `readIR bX pL capW wB`, cell `wB + 64 p + t` holds, as a `K` element, word `t` of the row the
-log holds under the cap at position `p` (`readRow`, WP-5's first-preimage reading; zeros for an
-erasure), for every `p < 2^15`, `t < 64`; every heap cell outside `[wB, wB + 2^21)` is kept,
-in particular the index; `Inv` holds. -/
+log holds under the cap at position `p` (`readRow`, WP-5's first-preimage reading: `64 − crOcc`
+zero words, then the leaf's words; zeros for an erasure), for every `p < 2^15`, `t < 64`; every
+heap cell outside `[wB, wB + 2^21)` is kept, in particular the index; `Inv` holds. -/
 theorem readIR_sem {bX pL : ℕ} (hbX : regs ≤ bX) (hbX2 : bX ≤ 2 ^ 60) (hpL : pL ≤ 2 ^ 60)
     (c : Digest) (π : Proof) (L : Log) (hs : 5 + (π.size + 7) / 8 = pL)
     (hq : ∀ e ∈ L, e.1.size < 2 ^ 64) (ht : (extractorInput c π L).length ≤ 2 ^ 64)
@@ -337,7 +339,7 @@ theorem readIR_sem {bX pL : ℕ} (hbX : regs ≤ bX) (hbX2 : bX ≤ 2 ^ 60) (hpL
     hwB2 hsz₂
   refine ⟨fun p hp t ht' => ?_, w2, fun a _ => w2 _ (by simp only [regs] at hbX ⊢; omega)
     (.inr (by omega)), w3⟩
-  rw [rdK, w1 p hp t ht', crLeafW_readRow L cap p ht']
+  rw [rdK, w1 p hp t ht', crRowW_readRow L cap p ht']
 
 /-- **The word the decoder consumes** after the read: `readWd L cap p t` at `wB + 64 p + t`. -/
 theorem readIR_readWd {bX pL : ℕ} (hbX : regs ≤ bX) (hbX2 : bX ≤ 2 ^ 60) (hpL : pL ≤ 2 ^ 60)

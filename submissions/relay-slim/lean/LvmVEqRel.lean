@@ -25,6 +25,10 @@ open Lvm
 /-- The cap level of a tree of `2^ht` leaves at P20 (WP-14's `capOfS`). -/
 def capS (ht _w : ℕ) : ℕ := if ht = 19 then 8 else 7
 
+/-- The occupied words of a commitment of `2^ht` rows of `w` words at P20 (`LvmCertS.occOfS`): `49`
+for `C_main`'s root, `35` for `C_rec`'s, the whole row otherwise. -/
+def occS (ht w : ℕ) : ℕ := if ht = 19 ∧ w = 64 then 49 else if ht = 15 ∧ w = 64 then 35 else w
+
 /-- The five commitments' shapes `(height, width)` in commit order at P20 (S4: `C_rec`'s level 1 is
 commitment 2, opened before `C_main`'s levels). -/
 def shpS : ℕ → ℕ × ℕ
@@ -44,7 +48,7 @@ def idxS : Ref → ℕ
 
 /-- Refinement at P20's commitment table. -/
 abbrev Ref20 {α β : Type} (sig : ByteArray) (d : DM β) (P : LeanVM.Protocol.Compile.VerifierProgram α)
-    (R : β → α → Prop) : Prop := RefAt capS shpS sig d P R
+    (R : β → α → Prop) : Prop := RefAt capS occS shpS sig d P R
 
 /-- A native block claim and a language block claim agree. -/
 def BCRel (c : Lvm.BlockClaim) (c' : BClaim) : Prop :=

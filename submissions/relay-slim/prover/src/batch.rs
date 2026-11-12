@@ -99,7 +99,7 @@ pub fn prove(log_n: usize, seed: u64, vk: &Digest) -> Report {
     let mut ps = ProverState::seeded(&header(vk, seed, n as u64));
     lap("seed", &mut stages);
     let (commitment, prover_data) =
-        commit(&committed, mu, INITIAL_FOLDING_FACTOR, config.log_inv_rates[0], config.cap_logs[0]);
+        commit(&committed, mu, INITIAL_FOLDING_FACTOR, config.log_inv_rates[0], config.cap_logs[0], 1 << INITIAL_FOLDING_FACTOR);
     lap("commit", &mut stages);
     ps.add_cap(&commitment.cap);
 

@@ -29,6 +29,8 @@ open RecursionFast Lvm Lvm.FS LeanVM.Parameters LeanVM.Protocol.Compile
 
 theorem capOfS_eq : Lvm.ASM.capOfS = capS := rfl
 
+theorem occOfS_eq : Lvm.ASM.occOfS = occS := rfl
+
 theorem size_q0Query : q0Query.size = 7 := rfl
 
 theorem entOff_one (π : ByteArray) (a₀ st₀ : Digest) (rest : Trace) :
@@ -205,7 +207,7 @@ theorem refines_seqOf (hfit : ∀ pub, M3.fitsR P20 (tabs pub) = true)
     rw [← hpub]; exact decideF_acc hF
   obtain ⟨b, hb1, -, -, rfl⟩ :=
     ref_decide (traceBytesB tr) tabs vk c x hfit (hw x) hpub RS.start hok0 hacc
-  obtain ⟨⟨b0, rs'⟩, hivp⟩ : ∃ r, ivp capS shpS (Lvm.ASM.PSWith (midS tabs) x) (traceBytesB tr) RS.start = r :=
+  obtain ⟨⟨b0, rs'⟩, hivp⟩ : ∃ r, ivp capS occS shpS (Lvm.ASM.PSWith (midS tabs) x) (traceBytesB tr) RS.start = r :=
     ⟨_, rfl⟩
   rw [hivp] at hb1
   simp only at hb1
@@ -219,7 +221,7 @@ theorem refines_seqOf (hfit : ∀ pub, M3.fitsR P20 (tabs pub) = true)
       ⟨[], rfl, rfl, rfl, fun j hj ↦ absurd hj (by simp), List.nodup_nil⟩⟩
   obtain ⟨s', st', buf', caps', body', i', cr', hJ', hk', -, hrun⟩ :=
     sim (S := Lvm.ASM.schemeS vk (Lvm.ASM.PSWith (midS tabs))) (π := π) (tr := tr) (p := P20)
-      rfl rfl rfl capOfS_eq (atomsOf P20 (schedule P20)) (Lvm.ASM.PSWith (midS tabs) x) [] _ _ st₀ [] []
+      rfl rfl rfl capOfS_eq occOfS_eq (atomsOf P20 (schedule P20)) (Lvm.ASM.PSWith (midS tabs) x) [] _ _ st₀ [] []
       _ RS.start 2 [] [] _ true rs' (hfol x) (by simpa using stA_P20) hJ0 rfl
       (fun _ h ↦ by simp at h)
       (fun s'' m hm ↦ by

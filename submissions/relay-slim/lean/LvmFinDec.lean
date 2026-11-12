@@ -13,7 +13,7 @@ import LvmNodeSoundTr
 # The decided static facts at `P20`
 
 * **`okE_P20`**: `SLok` of `KS`'s glue block E at `ksLog = 15`, `recRowsLog = 14`,
-  `spongeBlocks P20 - 1 = 9978` (as `okE_P8`: the check reads only the template's shape), decided
+  `spongeBlocks P20 - 1 = 9485` (as `okE_P8`: the check reads only the template's shape), decided
   through the one-pass check `SLokF` (`SLok_of_F`).
 * **`HarNum C T P4 … P8`**: the fields of `HarStatic` that are numbers of `C.p` (positions of
   phases 4–7, lane bounds, sizes); **`harStatic_of`** builds `HarStatic` from it, the layer checks,
@@ -42,9 +42,9 @@ open Lvm.X (Blk blocks lensB lanesOf lanes_eq lensB_opn)
 
 /-! ## `KS`'s glue block at `P20` (`SLokF`, `SLok_of_F`: `LvmQAsmHarLink20`) -/
 
-/-- **`SLok` of `KS`'s block E at `P20`** (`ksLog = 15`, `recRowsLog = 14`, `9979` sponge blocks). -/
+/-- **`SLok` of `KS`'s block E at `P20`** (`ksLog = 15`, `recRowsLog = 14`, `9486` sponge blocks). -/
 theorem okE_P20 (Q : ℕ) (gate : Cell) (sh : LoopOut) :
-    SLok (ksGlueE 15 Q (ksQV 15 Q) 9978 (2 ^ 14 + 399 + 31) (2 ^ 14 + 399) (rho'C sh 15) (sh.cell 2 14)
+    SLok (ksGlueE 15 Q (ksQV 15 Q) 9485 (2 ^ 14 + 399 + 31) (2 ^ 14 + 399) (rho'C sh 15) (sh.cell 2 14)
       (sh.cell 5 (15 - 1)) gate) = true := by
   rw [← SLok_shape]
   simp only [ksGlueE, List.map_append]

@@ -512,7 +512,7 @@ theorem ext_eq_gen {mid : List UInt8 → VerifierProgram OpenClaims} {Good : Goo
   set S := schemeS vk (PSWith mid) with hSdef
   set B := π.data.toList with hBdef
   have hsize : π.size = Lvm.piSize Lvm.X.pX := hsz
-  have hpi : π.size = 783192 := by rw [hsize]; exact Lvm.X.piSize_eq
+  have hpi : π.size = 716152 := by rw [hsize]; exact Lvm.X.piSize_eq
   have hBlen : B.length = π.size := Array.length_toList
   have hb0 : π.data[0]? = some 0x53 := byte0_of_prefix hpre8
   have hhd : hdrOf ((B.drop 8).take hdrLen) = Header.ofProof π :=
@@ -704,13 +704,16 @@ theorem ext_eq_gen {mid : List UInt8 → VerifierProgram OpenClaims} {Good : Goo
     (show S.trun L (.query 1 qs K) stA2 (sl B 209400 (209400 - 209400)) _ (B.drop 209400) _ =
       some (true, _ ++ Ev.query w :: (lhq ++ (lf1 ++ (lres ++ rest)))) by
       rw [htA2]; simp only [List.append_assoc, List.cons_append, List.nil_append, List.singleton_append])
-  have hpb : qs.length * posBytes (S.capI 15 64 (B.drop 13816)) = 130560 := by
-    rw [hqs, capI_rec]; simp only [posBytes]
-  rw [hpb, List.drop_drop, show 209400 + 130560 = 339960 from rfl, sl_zero,
-    ← sl_zero B 339960, ← Nat.sub_self 339960] at htQ
+  have hpb : qs.length * posBytes S (S.capI 15 64 (B.drop 13816)) = 91120 := by
+    have ho : S.occ 15 64 = 35 := rfl
+    rw [hqs, capI_rec, posBytes, Scheme.lb]
+    simp only [ho]
+    decide
+  rw [hpb, List.drop_drop, show 209400 + 91120 = 300520 from rfl, sl_zero,
+    ← sl_zero B 300520, ← Nat.sub_self 300520] at htQ
   -- segment B: level 1's intro and fold rounds
-  obtain ⟨stB, p3, hsB, -, -, htB⟩ := trun_simK2 S L B (itemK2 P20 shRec recHeadB) (K rows) 339960
-    339960 stA2 _ _ (lhq ++ lf1) (lres ++ rest) true
+  obtain ⟨stB, p3, hsB, -, -, htB⟩ := trun_simK2 S L B (itemK2 P20 shRec recHeadB) (K rows) 300520
+    300520 stA2 _ _ (lhq ++ lf1) (lres ++ rest) true
     (fun ht w nb hm => by rw [kB] at hm; exact absurd hm (not_commit_toK2 _))
     le_rfl hkB (by rw [htQ]; simp only [List.append_assoc, List.cons_append, List.nil_append, List.singleton_append])
   rw [oBo, oBp] at htB
@@ -720,11 +723,11 @@ theorem ext_eq_gen {mid : List UInt8 → VerifierProgram OpenClaims} {Good : Goo
     show List.map (fun _ => EvK.read) res = _
     exact List.map_const'
   rw [oF2] at htB
-  obtain ⟨stR, -, -, hsimR, -, -⟩ := trun_simK S L B _ p3 340200 340152 stB _ _ lres rest true
+  obtain ⟨stR, -, -, hsimR, -, -⟩ := trun_simK S L B _ p3 300760 300712 stB _ _ lres rest true
     (fun hm => by cases (List.mem_replicate.1 hm).2) (by norm_num)
     hk2 (by rw [htB]; simp only [List.append_assoc, List.cons_append, List.nil_append, List.singleton_append])
   rw [simK_reads] at hsimR
-  have hresv : res = (List.range (2 ^ 9)).map fun i => eOfBytes (sl B (340200 + 24 * i) 24) := by
+  have hresv : res = (List.range (2 ^ 9)).map fun i => eOfBytes (sl B (300760 + 24 * i) 24) := by
     have e := (Prod.mk.inj (Option.some.inj hsimR)).1
     rw [hres'] at e
     apply List.map_injective_iff.2 (fun a b hab => Ev.read.inj hab)
@@ -763,7 +766,7 @@ theorem ext_eq_gen {mid : List UInt8 → VerifierProgram OpenClaims} {Good : Goo
     simp only [List.filterMap_append, List.length_append, hl₁n]
     rfl
   rw [hA2n] at fA2
-  have cB := simK2_chain S L B (Lvm.X.fsQL π) Lvm.X.zeroDL _ 339960 339960 stA2 1327 _ stB hsB fA2
+  have cB := simK2_chain S L B (Lvm.X.fsQL π) Lvm.X.zeroDL _ 300520 300520 stA2 1327 _ stB hsB fA2
     (chainT π (D := 1327) (N := 4) oB (by norm_num))
   simp only [smpOf_eq] at cB
   obtain ⟨cB, -⟩ := cB
@@ -830,7 +833,7 @@ theorem ext_eq_gen {mid : List UInt8 → VerifierProgram OpenClaims} {Good : Goo
       (Lvm.X.f2E π) = some m := by
     have ew : Lvm.X.readWd1 L (Lvm.X.capRec1 π) = Lvm.X.wdOf (Wr1Of h) := by
       rw [hWr1, hWc]
-      exact readWd1_eq_wdOf S rfl L _
+      exact readWd1_eq_wdOf S rfl rfl L _
     have ea : (fun i => Lvm.X.alphaE (α1d i)) = Lvm.X.alphaN1 fun i ↦ r₁.2.getD i 0 := by
       funext i
       unfold Lvm.X.alphaN1
@@ -843,7 +846,7 @@ theorem ext_eq_gen {mid : List UInt8 → VerifierProgram OpenClaims} {Good : Goo
     rw [ew, ea, decodeRec1_congr_f _ _ (f' := Lvm.X.fN2 (resMsg res)) ?_]
     · exact hdec1
     · intro v hv
-      have hf2 : Lvm.X.f2Off Lvm.X.pX = 340200 := Lvm.X.layout_P20.2.2.2.2.2.2.2.2.1
+      have hf2 : Lvm.X.f2Off Lvm.X.pX = 300760 := Lvm.X.layout_P20.2.2.2.2.2.2.2.2.1
       rw [f2E_eq π v (by rw [hf2, hpi]; omega), hf2]
       unfold Lvm.X.fN2
       rw [dif_pos hv]
@@ -858,7 +861,7 @@ theorem ext_eq_gen {mid : List UInt8 → VerifierProgram OpenClaims} {Good : Goo
       funext p' t
       rw [hWr]
       unfold Lvm.X.readWd Lvm.X.wdOf
-      rw [readRow_eq_wordOf S rfl]
+      rw [readRow_eq_wordOf S rfl rfl]
     have ea : (fun i => Lvm.X.alphaE (αd i)) = Lvm.X.alphaN fun i ↦ r.2.getD i 0 := by
       funext i
       unfold Lvm.X.alphaN

@@ -299,11 +299,21 @@ impl Service {
     /// `batches_on` for the queries `0^pad ‖ row_i` (one length each), the body written by `writev` straight
     /// from `rows`: per item the shared `len ‖ 0^pad` prefix and the row. The same bytes on the socket as
     /// `batches_on` would write, in batches of the same size rule (at most `IOV_ITEMS` items).
-    fn row_batches_on(&self, conn: &mut UnixStream, out: &mut [Digest], rows: &[u8], row_bytes: usize, pad: usize) {
+    /// Items `0^pad ‖ rows[k·row_bytes + skip ..][.. row_bytes − skip]`: each row's tail behind `pad` zeros.
+    #[allow(clippy::too_many_arguments)]
+    fn row_batches_on(
+        &self,
+        conn: &mut UnixStream,
+        out: &mut [Digest],
+        rows: &[u8],
+        row_bytes: usize,
+        pad: usize,
+        skip: usize,
+    ) {
         use std::io::IoSlice;
         /// 2 iovecs per item and the header stay within `IOV_MAX` = 1024.
         const IOV_ITEMS: usize = 511;
-        let len = pad + row_bytes;
+        let len = pad + row_bytes - skip;
         if len > QUERY_CAP {
             fatal(&format!("a query of {len} bytes is above the cap of {QUERY_CAP}"));
         }
@@ -326,7 +336,7 @@ impl Service {
             iov.push(IoSlice::new(&hdr));
             for k in i..i + count {
                 iov.push(IoSlice::new(&prefix));
-                iov.push(IoSlice::new(&rows[k * row_bytes..][..row_bytes]));
+                iov.push(IoSlice::new(&rows[k * row_bytes + skip..][..row_bytes - skip]));
             }
             let mut bufs = &mut iov[..];
             while !bufs.is_empty() {
@@ -453,7 +463,13 @@ impl Oracle for Service {
 
     fn ask_rows_here(&self, out: &mut [Digest], rows: &[u8], row_bytes: usize, pad: usize) {
         let mut conn = self.take();
-        self.row_batches_on(&mut conn, out, rows, row_bytes, pad);
+        self.row_batches_on(&mut conn, out, rows, row_bytes, pad, 0);
+        self.put(conn);
+    }
+
+    fn ask_tails_here(&self, out: &mut [Digest], rows: &[u8], row_bytes: usize, skip: usize) {
+        let mut conn = self.take();
+        self.row_batches_on(&mut conn, out, rows, row_bytes, 0, skip);
         self.put(conn);
     }
 }

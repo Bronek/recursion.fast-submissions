@@ -252,7 +252,7 @@ def whirLevels (logN laneFolds : Nat) (evaluateBasis : List FE → FE) (direct :
     let sig ← read
     let eq := eqKernelA levelFolds
     let folds := rowOffs.map fun o =>
-      if L.level = 0 then foldRow0 sig eq o (2 ^ L.fold) else foldRowE sig eq o (2 ^ L.fold)
+      if L.level = 0 then foldRow0 sig eq o (L.row / 8) else foldRowE sig eq o (2 ^ L.fold)
     let enforced := dot queryWeights folds
     let intro ← sumcheckRoundPoly 3 enforced none
     let s := glue lam s (oodClaims ++ [(intro, fun x => inducedWeight messageLog queries queryWeights x)])

@@ -691,16 +691,16 @@ theorem openOne_row {L : Log} (hc : (L.map Prod.snd).Nodup) (ci : CapI) (p : ℕ
     (h : (S.openOne ci p body).runLog L = some (some (row, rest))) :
     row = S.wordOf L ci (p % 2 ^ ci.ht) := by
   rw [openOne] at h
-  by_cases hl : body.length < 8 * ci.wd
+  by_cases hl : body.length < S.lb ci
   · rw [ite_eq_left hl] at h; exact absurd h (by simp [OProg.runLog])
   · rw [ite_eq_right hl, OProg.runLog] at h
-    cases hf : L.find? (fun e => decide (e.1 = toQ (body.take (8 * ci.wd)))) with
+    cases hf : L.find? (fun e => decide (e.1 = toQ (body.take (S.lb ci)))) with
     | none => rw [hf] at h; exact absurd h (by simp)
     | some e =>
       rw [hf, Option.bind_some, OProgFacts.runLog_bind] at h
       have he : e ∈ L := List.mem_of_find?_eq_some hf
-      have heq : e.1 = toQ (body.take (8 * ci.wd)) := by simpa using List.find?_some hf
-      cases hcl : (climb (ci.ht - ci.lv) e.2 (p % 2 ^ ci.ht) (body.drop (8 * ci.wd))).runLog L with
+      have heq : e.1 = toQ (body.take (S.lb ci)) := by simpa using List.find?_some hf
+      cases hcl : (climb (ci.ht - ci.lv) e.2 (p % 2 ^ ci.ht) (body.drop (S.lb ci))).runLog L with
       | none => rw [hcl] at h; exact absurd h (by simp)
       | some r =>
         rw [hcl, Option.bind_some] at h

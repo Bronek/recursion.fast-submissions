@@ -53,7 +53,7 @@ theorem msgL_ok {p : ℕ} (hp0 : 0 < p) (hp : p < nChain pX) :
 
 theorem nChain_eq : nChain pX = 1332 := layout_P20.2.1
 
-theorem msgL_last : (msgL (nChain pX)).1 = 340152 := by
+theorem msgL_last : (msgL (nChain pX)).1 = 300712 := by
   rw [layout_P20.2.1, msgL, show 1332 - 1 = 1331 from rfl, layout_P20.2.2.2.2.2.2.1]
 
 theorem digestBytes_size (d : Digest) : (digestBytes d).size = 32 := by
@@ -81,7 +81,7 @@ theorem packBytes_take8X (l : List UInt8) {n j : ℕ} (hj : j < n) :
   · rw [if_pos (by omega), if_pos h, Nat.min_eq_left (by omega)]
   · rw [if_neg (by omega), if_neg h]
 
-theorem piSize_eq : piSize pX = 783192 := layout_all_P20.2.2.2.1
+theorem piSize_eq : piSize pX = 716152 := layout_all_P20.2.2.2.1
 
 theorem extract_size (π : Proof) {o len : ℕ} (h : o + len ≤ π.size) :
     (π.extract o (o + len)).size = len := by
@@ -181,11 +181,11 @@ theorem extract_words (π : Proof) {a n : ℕ} (h : 8 * a + 8 * n ≤ π.size) {
 /-- **The table realises `V_S`'s chain** on every tape of a proof of `piSize` bytes. -/
 theorem tabW_chTabL (c : Digest) (π : Proof) (L : Log) (hs : π.size = piSize pX) :
     TabW (extractorInput c π L).toArray (fsQL π) (nChain pX) chTabL := by
-  have hp1 : π.size = 783192 := hs.trans piSize_eq
+  have hp1 : π.size = 716152 := hs.trans piSize_eq
   refine ⟨chTabL_length, fun p hp0 hpN => ⟨?_, fun hpN' st => ?_⟩⟩
   · rw [chTabL_getD hpN (by norm_num), tabEntL, if_neg (by omega)]
     show (toWord (5 + (msgL p).1 / 8)).toNat < 2 ^ 62
-    have : (msgL p).1 ≤ 783192 := by
+    have : (msgL p).1 ≤ 716152 := by
       rcases Nat.lt_or_ge p (nChain pX) with h | h
       · have := (msgL_ok hp0 h).2.2.1; rw [piSize_eq] at this; omega
       · have hpe : p = nChain pX := by omega

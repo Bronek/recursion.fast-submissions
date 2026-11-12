@@ -186,7 +186,7 @@ theorem ref_dTapeW (pub : Pub) (d : RecursionFast.Digest) (hs : pub.s = digestLa
   refine RefAt.bind (fun _ ↦ (monoD_dWire _ _ _).bind fun _ ↦ MonoD.pure _)
     (RefAt.require fun hc ↦ of_decide_eq_true hc) ?_
   rintro _ _ _
-  have hw := ref_dWire (cap := capS) (shp := shpS) (sig := sig) P20 pub tp.claim d hs
+  have hw := ref_dWire (cap := capS) (occ := occS) (shp := shpS) (sig := sig) P20 pub tp.claim d hs
   rw [dSel_P20, dSelBits_P20] at hw
   rw [h5]
   refine RefAt.bind (fun _ ↦ MonoD.pure _) hw ?_
@@ -216,7 +216,7 @@ theorem ref_dKg (tabs : Pub → List M3.Tab) (pub : Pub) (d : RecursionFast.Dige
 openings' stack claims per commitment agree. -/
 theorem ref_dMid (tabs : Pub → List M3.Tab) (x : List UInt8) (F : Fit P20 (tabs (pubX x)))
     (hw : ∀ t ∈ M3.sumcheckTabs (tabs (pubX x)), 0 < t.w) :
-    RefAtP capS shpS sig (dMid P20 (M3.real P20 tabs) (pubX x)) (midS tabs x)
+    RefAtP capS occS shpS sig (dMid P20 (M3.real P20 tabs) (pubX x)) (midS tabs x)
       (fun r cl ↦
         List.Forall₂ SCRel ((r.1.filter (·.1 == .crec)).map (·.2.onStack)) cl.1 ∧
           List.Forall₂ SCRel ((r.1.filter (·.1 == .main)).map (·.2.onStack)) cl.2)
@@ -250,7 +250,7 @@ theorem ref_decideOf
     (tabs : Pub → List M3.Tab) (vk c : RecursionFast.Digest) (x : List UInt8)
     (hfit : ∀ pub, M3.fitsR P20 (tabs pub) = true)
     (hw : ∀ t ∈ M3.sumcheckTabs (tabs (pubX x)), 0 < t.w) (hpub : pubOf vk c sig = pubX x) :
-    RefAtP capS shpS sig (decideProg P20 (M3.real P20 tabs) vk c) (Lvm.ASM.PSWith (midS tabs) x)
+    RefAtP capS occS shpS sig (decideProg P20 (M3.real P20 tabs) vk c) (Lvm.ASM.PSWith (midS tabs) x)
       (fun _ b ↦ b = true) (fun a ↦ AccOk P20 (M3.real P20 tabs) (pubX x) a = true) := by
   rw [decideProg_dTop]
   unfold dTop Lvm.ASM.PSWith
@@ -291,7 +291,7 @@ stream returns `true` at the same cursor. -/
 theorem ref_decide (sig : ByteArray) (tabs : Pub → List M3.Tab) (vk c : RecursionFast.Digest)
     (x : List UInt8) (hfit : ∀ pub, M3.fitsR P20 (tabs pub) = true)
     (hw : ∀ t ∈ M3.sumcheckTabs (tabs (pubX x)), 0 < t.w) (hpub : pubOf vk c sig = pubX x) :
-    RefAtP capS shpS sig (decideProg P20 (M3.real P20 tabs) vk c) (Lvm.ASM.PSWith (midS tabs) x)
+    RefAtP capS occS shpS sig (decideProg P20 (M3.real P20 tabs) vk c) (Lvm.ASM.PSWith (midS tabs) x)
       (fun _ b ↦ b = true) (fun a ↦ AccOk P20 (M3.real P20 tabs) (pubX x) a = true) :=
   ref_decideOf (fun claims cl h1 h2 ↦ ref_dOpen claims cl h1 h2) (monoD_dOpen P20) tabs vk c x hfit
     hw hpub
