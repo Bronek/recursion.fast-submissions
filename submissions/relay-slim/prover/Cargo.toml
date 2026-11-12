@@ -1,4 +1,4 @@
-# The native prover of the `leanvm-inspired` entry (BLUEPRINT §8). One std-only crate, no
+# The native prover of this entry (BLUEPRINT §8). One std-only crate, no
 # dependencies: leanVM's prover crates are vendored as modules under `src/lv/` (tools/vendor.py,
 # edits in src/lv/PATCHES.md). The submitted form is the generated `prover-*.s` (build-asm.sh).
 #   CARGO_TARGET_DIR=<outside this directory> cargo build --release --offline

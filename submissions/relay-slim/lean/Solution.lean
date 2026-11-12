@@ -1,6 +1,6 @@
 /-
   The solution of the challenge (`harness/challenge/Challenge.lean.in`, rendered from this entry's
-  `claim.json` by `harness/render-challenge.py`) for `leanvm-inspired`. Everything except
+  `claim.json` by `harness/render-challenge.py`) for this entry. Everything except
   `submission` and `certified` is the rendered stub, copied verbatim.
 
   `submission` is the guarded submission (`LvmFinGuard.subG`): `V` dispatches on `π[0]` (`'S'` → the
@@ -24,7 +24,7 @@ noncomputable def declared : Declared where
   qV := 16384
   fuel t := 70368744177664 + 8192 * t
 
-/-- The submission: `leanvm-inspired`, guarded by the static check of the node program; `V_S` compiled
+/-- The submission, guarded by the static check of the node program; `V_S` compiled
 as `VS20G` (`LvmVFast2`, `VS20G_eq : VS20G = VS20F`). -/
 def submission : Submission := Lvm.Fin.subG Lvm.Fin.staticOkB Lvm.VF.VS20G
 

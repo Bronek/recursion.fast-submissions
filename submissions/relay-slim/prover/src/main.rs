@@ -1,4 +1,4 @@
-//! `lvm-prover`: the native prover of the `leanvm-inspired` entry (BLUEPRINT §8; WP-4 skeleton).
+//! `lvm-prover`: the native prover of this entry (BLUEPRINT §8; WP-4 skeleton).
 //!
 //! The submitted program is several builds of this crate, one per CPU variant (`build-asm.sh`), each with its
 //! symbols suffixed, behind a `cpuid` stub (`dispatch.s`) that calls the variant's `lvm_main_<v>(argc, argv)`.

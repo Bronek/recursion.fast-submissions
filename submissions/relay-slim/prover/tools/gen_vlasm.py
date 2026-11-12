@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Vendored from relay-echo (scaraven/recursion.fast-submissions PR #12, submissions/relay-echo/src/gen_vlasm.py,
-# commit 7360e1c), licensed under the Apache License, Version 2.0 (see ../../LICENSE). Unmodified below this
+# commit 7360e1c), licensed under the Apache License, Version 2.0 (see the repository's LICENSE). Unmodified below this
 # header; gen_chain_vl.py imports its gen_body() and KERNELS to write src/keccak_vl.rs.
 """Generates keccak_vlasm.inc: the chain d <- Keccak-256(0x43 || d), n times, with AVX-512F/VL, as one GCC
 extended-asm statement whose registers are allocated here, in two kernels that differ only in chi.
