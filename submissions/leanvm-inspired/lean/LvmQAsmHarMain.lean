@@ -266,11 +266,12 @@ structure HarStatic (C : QCfg) (D : QData) (T P4 P5 P6 P7 P8 : Nat) : Prop where
   hT29 : 29 ≤ T
   hlog64 : C.p.logN ≤ 64
   /-- Phases 8–9 (`openPh_run`): the layouts, the start. -/
-  hlr : LayOk (cfgRec C.p (posBase C)) T = true
-  hlm : LayOk (cfgMain C.p (posBase C)) T = true
+  hlr : LayOk (cfgRec C.p (posBase C) (pwBase C)) T = true
+  hlm : LayOk (cfgMain C.p (posBase C) (pwBase C)) T = true
   hP8 : P8 = 8 * openU C.p
-  /-- Step A: no grinding (`g = 0`). -/
-  hgr : C.p.grind = 0
+  /-- The PoW class's rows cover the openings (`C_rec`'s levels, then `C_main`'s). -/
+  hop : C.p.recLevels.length ≤ (Lvm.QLink.opens C.p).length ∧
+    C.p.recLevels.length + C.p.mainLevels.length ≤ (Lvm.QLink.opens C.p).length
 
 /-! ## Phases 2, 3, 3b -/
 
@@ -443,25 +444,30 @@ theorem claims_at (C : QCfg) (D : QData) (G : M3.PG) (vk cL : Vector UInt8 32) {
 from phase 8's start `P8` with `ok`, keeps `ok`, reads `Σ'` to its end and leaves no message pending. -/
 theorem open_at (C : QCfg) (D : QData) {c : Ctx} {M : Mem} {sig : ByteArray} {T P4 P5 P6 P7 P8 : Nat}
     (hst : HarStatic C D T P4 P5 P6 P7 P8) (hS : Streamed M sig T) (hg : M.k (pbB C) = 1)
-    (hposr : PosOk (cfgRec C.p (posBase C)) M sig 0 C.p.recLevels (openU C.p + 15))
-    (hposm : PosOk (cfgMain C.p (posBase C)) M sig 0 C.p.mainLevels
-      (stackEndL C.p.recLevels (openU C.p + 15) + 15))
-    (hend : 8 * stackEndL C.p.mainLevels (stackEndL C.p.recLevels (openU C.p + 15) + 15) = sig.size)
+    (hposr : PosOk (cfgRec C.p (posBase C) (pwBase C)) M sig 0 C.p.recLevels (openU C.p + 15))
+    (hposm : PosOk (cfgMain C.p (posBase C) (pwBase C)) M sig 0 C.p.mainLevels
+      (stackEndL C.p.grind false C.p.recLevels (openU C.p + 15) + 15))
+    (hend : 8 * stackEndL C.p.grind C.p.mainOod C.p.mainLevels
+      (stackEndL C.p.grind false C.p.recLevels (openU C.p + 15) + 15) = sig.size)
+    (hpw : ∀ x < (Lvm.QLink.opens C.p).length, C.p.grind ≠ 0 → (M.k (pwB C + x)).val.toNat < 2 ^ (64 - C.p.grind))
     (cs : List CClaim) (hwr : ClaimsWF C.p.nuRec (onCom cs .crec) = true)
     (hwm : ClaimsWF C.p.nuMain (onCom cs .main) = true) {z one : Cell} (hzE : z.ty = .E) (hoE : one.ty = .E)
     (hz : z.val M = 0) (ho : one.val M = 1) {q : Ptr} (hq : 1 ≤ q.e)
-    (h : Lvm.QSig.Ok c M (openG (cfgRec C.p (posBase C)) (cfgMain C.p (posBase C)) cs z one (kc (pbB C))) q) :
+    (h : Lvm.QSig.Ok c M (openG (cfgRec C.p (posBase C) (pwBase C)) (cfgMain C.p (posBase C) (pwBase C)) cs z one (kc (pbB C))) q) :
     ∀ s : RS, pos s = P8 → s.ok = true →
       (openPh C.p (cs.map (CClaim.val M)) sig s).2.ok = true ∧
       (openPh C.p (cs.map (CClaim.val M)) sig s).2.ent = sig.size ∧
       (openPh C.p (cs.map (CClaim.val M)) sig s).2.msg = 0 := by
   intro s hs hok
-  obtain ⟨o1, o2, o3⟩ := openPh_run C.p (cfgRec C.p (posBase C)) (cfgMain C.p (posBase C)) cs z one (kc (pbB C))
-    hS rfl rfl rfl rfl hst.hgr rfl hst.hlr hst.hlm hwr hwm hz ho hzE hoE (gate_val C hg) rfl hposr hposm hq h s
+  obtain ⟨o1, o2, o3⟩ := openPh_run C.p (cfgRec C.p (posBase C) (pwBase C)) (cfgMain C.p (posBase C) (pwBase C)) cs z one (kc (pbB C))
+    hS rfl rfl rfl rfl rfl rfl rfl rfl rfl hst.hlr hst.hlm hwr hwm hz ho hzE hoE (gate_val C hg) rfl hposr hposm
+    (fun i hi hg0 => hpw (0 + i) (by have := hst.hop; simp only [cfgRec] at hi; omega) hg0)
+    (fun i hi hg0 => hpw (C.p.recLevels.length + (0 + i)) (by have := hst.hop; simp only [cfgMain] at hi; omega) hg0) hq h s
     (by rw [hs, hst.hP8]; rfl)
   refine ⟨o1.trans hok, ?_, o3⟩
   simp only [pos] at o2
-  have e : 8 * stackEndL (cfgMain C.p (posBase C)).levels ((cfgMain C.p (posBase C)).U + 15) = sig.size := hend
+  have e : 8 * stackEndL C.p.grind C.p.mainOod (cfgMain C.p (posBase C) (pwBase C)).levels
+      ((cfgMain C.p (posBase C) (pwBase C)).U + 15) = sig.size := hend
   omega
 
 /-! ## The composition -/
@@ -500,10 +506,12 @@ theorem harith_core (C : QCfg) (D : QData) (G : M3.PG) (vk cL : Vector UInt8 32)
     (hvk : ∀ i < 4, M.k (pbB C + 1 + i) = (digestLanes vk).getD i 0)
     (hsb : Lvm.Q1.SBitsS M.k (sigIn C).hd (bsB C)) (hnb : NBits M.k ((sigIn C).bn + 2) C.p.logN)
     (hn1 : 1 ≤ (pubOf vk cL sig).n) (hnN : (pubOf vk cL sig).n ≤ 2 ^ C.p.logN)
-    (hposr : PosOk (cfgRec C.p (posBase C)) M sig 0 C.p.recLevels (openU C.p + 15))
-    (hposm : PosOk (cfgMain C.p (posBase C)) M sig 0 C.p.mainLevels
-      (stackEndL C.p.recLevels (openU C.p + 15) + 15))
-    (hend : 8 * stackEndL C.p.mainLevels (stackEndL C.p.recLevels (openU C.p + 15) + 15) = sig.size)
+    (hposr : PosOk (cfgRec C.p (posBase C) (pwBase C)) M sig 0 C.p.recLevels (openU C.p + 15))
+    (hposm : PosOk (cfgMain C.p (posBase C) (pwBase C)) M sig 0 C.p.mainLevels
+      (stackEndL C.p.grind false C.p.recLevels (openU C.p + 15) + 15))
+    (hend : 8 * stackEndL C.p.grind C.p.mainOod C.p.mainLevels
+      (stackEndL C.p.grind false C.p.recLevels (openU C.p + 15) + 15) = sig.size)
+    (hpw : ∀ x < (Lvm.QLink.opens C.p).length, C.p.grind ≠ 0 → (M.k (pwB C + x)).val.toNat < 2 ^ (64 - C.p.grind))
     (hwr : ClaimsWF C.p.nuRec
       (onCom (qarithCs C D (phases47 C p2).1 (p2.adv (phases47 C p2).2)).1 .crec) = true)
     (hwm : ClaimsWF C.p.nuMain
@@ -584,7 +592,7 @@ theorem harith_core (C : QCfg) (D : QData) (G : M3.PG) (vk cL : Vector UInt8 32)
   refine core_of_phases C.p (M3.real C.p (tabs C G D)) vk cL sig (Nat.add_assoc _ _ _).symm hb hbok htb hac
     htp hwi hks hksl hokK ?_
   intro s hs hok
-  have e := open_at C D hst hS hg hposr hposm hend _ hwr hwm rfl rfl hzv hov hq hR s hs hok
+  have e := open_at C D hst hS hg hposr hposm hend hpw _ hwr hwm rfl rfl hzv hov hq hR s hs hok
   rw [hcl] at e
   exact e
 

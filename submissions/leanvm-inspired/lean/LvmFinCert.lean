@@ -47,8 +47,8 @@ theorem harStatic20 : Har.HarStatic cfg20 data20 (streamLanes P20) (Har.phaseByt
   · rw [cfg20_p]; exact Q1.layOk_15
   · rw [cfg20_p]; exact Q1.layOk_11
   · rw [cfg20_p, sizes_P20.2.2.2.2.2.2.2.2]; exact okE_P20 _ _
-  · rw [cfg20_p]; exact (Har.lay20 (Har.posBase cfg20)).1
-  · rw [cfg20_p]; exact (Har.lay20 (Har.posBase cfg20)).2.1
+  · rw [cfg20_p]; exact (Har.lay20 (Har.posBase cfg20) (Har.pwBase cfg20)).1
+  · rw [cfg20_p]; exact (Har.lay20 (Har.posBase cfg20) (Har.pwBase cfg20)).2.1
 
 /-! ## `NodeBase` of the `P20` node program -/
 
@@ -59,7 +59,8 @@ theorem hτL20 : ∀ x, ∀ t ∈ lvmTabs Q20n (plOf data20) data20.groups (arrs
 
 /-- The aux tables after Q_sig's six `BITS` tables (`haux20`): the position classes, the `s'` shifts. -/
 abbrev rest20 : List Tab :=
-  ((posSpecs cfg20 fun c => bplOf data20 (6 + c)) ++ [sSpec cfg20 (bplOf data20 (6 + nPosCls cfg20))]).map
+  ((posSpecs cfg20 fun c => bplOf data20 (6 + c)) ++ [sSpec cfg20 (bplOf data20 (6 + nPosCls cfg20)),
+    powSpec cfg20 (bplOf data20 (7 + nPosCls cfg20))]).map
     BitsTab.BSpec.tab
 
 /-- **QL's `hinb`** for the `P20` node program (INB's `hinb20` with A24's `hna`). -/
@@ -70,6 +71,9 @@ theorem hinbL20 (S : StaticFacts) :
         (hτL20 x) (stackOf lay26 qm qr))).inb = true :=
   hinb20 (D := data20) (hτ' := hτL20) hT20 (hst20 S) hQ20 hqlt20 posCellsLt20 S.hna
 
+theorem hnk20 : hashedLen P20 / 8 + 5 ≤ nK cfg20 := by
+  have h := hashedLen_nK20; rw [show cfg20.p = P20 from rfl] at h; exact h
+
 /-- **FIN-BV's memory facts** at the `P20` node program. -/
 theorem bv20 (S : StaticFacts) : BVFacts hτL20 hτT20 where
   sb vk c x qm qr P := sBits20 hT20 (hst20 S) (hinbL20 S) hbs20 vk c x qm qr P.ok P.b1 P.good
@@ -78,6 +82,8 @@ theorem bv20 (S : StaticFacts) : BVFacts hτL20 hτT20 where
     n1_20 hT20 (hst20 S) (hinbL20 S) hS20 haux20 hR20 hP20 vk c x qm qr P.ok P.b1 P.good P.inm P.ll
   nN vk c x qm qr P :=
     nN_20 hT20 (hst20 S) (hinbL20 S) hS20 haux20 hR20 hP20 vk c x qm qr P.ok P.b1 P.good P.inm P.ll
+  pw vk c x qm qr P := pw20 hT20 (hst20 S) (hinbL20 S) hS20 hnk20 powStatic20.1 powStatic20.2.1
+    powStatic20.2.2 vk c x qm qr P.ok P.b1 P.good
   posr vk c x qm qr P := posOkR20 hT20 (hst20 S) (hinbL20 S) hS20 hQ20 posCellsLt20 posLanesR20 vk c x qm qr
     P.ok P.b1 P.good P.inm P.ll
   posm vk c x qm qr P := posOkM20 hT20 (hst20 S) (hinbL20 S) hS20 hQ20 posCellsLt20 posLanesM20 vk c x qm qr

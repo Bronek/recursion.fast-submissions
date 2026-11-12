@@ -98,7 +98,7 @@ def raChk : List PE → List ℕ → Bool
 /-! The plan against the blocks: `planItems` and `itemBlks` walk the same items, so (when the walk's
 static flag holds, `PlanOk`) the plan's lengths are the blocks' and every class agrees with its
 length when every block is one the extractor reassembles (`blkOk`). Both facts are already decided
-(`planOk_P20`, `blocks_ok`), so the kernel evaluates neither the 9,916-entry plan nor `lensL` here
+(`planOk_P20`, `blocks_ok`), so the kernel evaluates neither the 8,295-entry plan nor `lensL` here
 (a `decide` took 10–14 s). -/
 
 private theorem ra_chk_of : ∀ (P : List PE) (L : List ℕ), P.map PE.len = L → P.all raOk = true → raChk P L = true

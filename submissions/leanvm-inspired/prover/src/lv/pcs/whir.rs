@@ -949,6 +949,12 @@ impl SumcheckProver {
         &self.combined_basis
     }
 
+    /// JB-VQP self-check, once every round is folded: the running claim (every glued claim, the OOD ones
+    /// included, carried through the rounds' messages) is the product of the fully folded witness and weight.
+    fn final_claim_holds(&self) -> bool {
+        self.f.len() == 1 && self.combined_basis.len() == 1 && self.t_r == self.f[0] * self.combined_basis[0]
+    }
+
     /// The folded witness, once the lane rounds are done.
     pub(crate) fn f_ext(&self) -> &[F192] {
         &self.f
@@ -1138,6 +1144,7 @@ pub(crate) fn recursive_prover_with_prepared_basis(
                 send_msg(ps, msg);
             }
         }
+        assert!(sc_prover.final_claim_holds(), "the batched sumcheck closes");
         return;
     }
 
@@ -1270,6 +1277,7 @@ pub(crate) fn recursive_prover_with_prepared_basis(
                     send_msg(ps, msg);
                 }
             }
+            assert!(sc_prover.final_claim_holds(), "the batched sumcheck closes");
             drop(span);
             return;
         }

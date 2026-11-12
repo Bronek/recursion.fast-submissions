@@ -157,7 +157,7 @@ theorem toExt3_chOk (lam zeta mu rho rho' yS : List FE) (hl : lam.length = 3) (h
 
 /-- `contRows P20` is in `[1, 2^15)`. -/
 theorem contRows_bound : ∀ i ∈ contRows P20, 1 ≤ i ∧ i < 2 ^ 15 := by
-  have hs : spongeBlocks P20 = 13096 := sizes_P20.2.2.2.2.2.2.2.2
+  have hs : spongeBlocks P20 = 9979 := sizes_P20.2.2.2.2.2.2.2.2
   have h14 : P20.recRowsLog = 14 := rfl
   intro i hi
   simp only [contRows, List.mem_append, List.mem_map, List.mem_range, hs, h14, Nat.reducePow,

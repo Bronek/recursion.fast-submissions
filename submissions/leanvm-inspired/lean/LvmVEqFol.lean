@@ -3,6 +3,7 @@
 -- switching, the unique-decoding WHIR opening; and the event kinds of an accepted run (`fol_after`).
 import LvmVEqShape
 import LvmWhirProg
+import LvmWhirProgJ
 import LvmCertSExqKinds
 
 /-!
@@ -21,6 +22,9 @@ openings (whose positions and openings read and set `pp`) is of this form; `FolP
   the positions the program returns;
 * `fol_whirLevelsUd`, `fol_verifyStackedUd`: the WHIR opening against `whirLevelsI`, `whirI`, given
   `LvMatch` (the configuration's levels are the schedule's, with the commitment table);
+* `fol_whirLevelsJ`, `fol_verifyStackedJ` (lvm2 JB-VQP): the opening with OOD samples
+  (`whirLevelsJ`, `verifyStackedJ`) against `whirLevelsIJ`, `whirIJ`, given `LvMatchJ` (`LvMatch` and
+  the schedule's `κ` per level with a next commitment);
 * `fol_after`: the event kinds of an accepted run of a program that follows `as` are `as`'s kinds
   (`atomKinds`); `atomKinds_atomsOf`: on reads and samples they are the items' (`itemKinds`).
 -/
@@ -559,6 +563,87 @@ theorem fol_verifyStackedUd (cfg : Verifier.UdConfig) (hper : cfg.per = 8) (com 
   rw [atomsOf_append, atomsOf_smp]
   unfold Verifier.verifyStackedUd
   exact Fol.bindP folP_sampleChallenge fun _ _ ↦ fol_verifyWhirUd cfg hper com Ls finalLog h _ _ pp
+
+/-! ### With out-of-domain samples (lvm2 JB-VQP; `whirLevelsJ` against `whirLevelsIJ`) -/
+
+variable (p cap shp idx) in
+/-- **`LvMatch` with the OOD points' lengths**: as `LvMatch`, and on every level with a next
+commitment the schedule's `κ` (`L.kappa`, the OOD samples of `levelIJ`) is the folded message's
+variables. -/
+def LvMatchJ (com : Com) (logN c₀ n₀ finalLog : ℕ) : ℕ → ℕ → List Whir.Level → List Level → Prop
+  | index, f, [w], [L] => LvOne p idx com logN c₀ n₀ index f w L ∧ logN - (f + w.fold) = finalLog
+  | index, f, w :: w' :: ws, L :: L' :: Ls => LvOne p idx com logN c₀ n₀ index f w L ∧
+      L.kappa = logN - (f + w.fold) ∧
+      cap (logN - (f + w.fold) - w'.fold + w'.logInvRate) (3 * 2 ^ w'.fold) = L'.cap ∧
+      shp (idx ⟨com, L.level + 1⟩) = (logN - (f + w.fold) - w'.fold + w'.logInvRate, 3 * 2 ^ w'.fold) ∧
+      LvMatchJ com logN c₀ n₀ finalLog (index + 1) (f + w.fold) (w' :: ws) (L' :: Ls)
+  | _, _, _, _ => False
+
+/-- **The WHIR levels with OOD samples against `whirLevelsIJ`** (`g` PoW bits per level). -/
+theorem fol_whirLevelsJ (com : Com) (logN laneFolds c₀ n₀ g finalLog : ℕ) (direct : Bool)
+    (eB : List E → E) : ∀ (Ls : List Level) (ws : List Whir.Level) (index : ℕ) (s : Verifier.WhirStateT),
+      LvMatchJ p cap shp idx com logN c₀ n₀ finalLog index s.folds.length ws Ls → ∀ pp,
+      Fol cap shp idx (Verifier.whirLevelsJ logN laneFolds 8 c₀ n₀ g direct eB index ws s)
+        (atomsOf p (whirLevelsIJ com finalLog g Ls)) pp fun _ _ ↦ True
+  | [L], [w], index, s, h, pp => by
+    have hI : whirLevelsIJ com finalLog g [L] = whirLevelsI com finalLog g [L] := rfl
+    rw [Verifier.whirLevelsJ_one, hI]
+    exact fol_whirLevelsUd com logN laneFolds c₀ n₀ g finalLog direct eB [L] [w] index s h pp
+  | L :: L' :: Ls, w :: w' :: ws, index, s, h, pp => by
+    obtain ⟨⟨hfold, hh, ht, hc⟩, hk, hcap, hshp, hrest⟩ := h
+    rw [whirLevelsIJ, atomsOf_append]
+    simp only [levelIJ, List.flatten_cons, List.flatten_nil, List.append_nil, atomsOf_append,
+      atomsOf_cons, itemAtoms, atomsOf_rd, atomsOf_smp, atomsOf_replicate, List.append_assoc,
+      List.cons_append, List.nil_append]
+    rw [nPosQ_eq ht, hh, ht, hk, ← hfold]
+    rw [Verifier.whirLevelsJ]
+    refine Fol.bindP (folP_foldRoundsT w.fold s []) fun ⟨s', lf⟩ hx ↦ ?_
+    dsimp only at hx ⊢
+    rw [hx]
+    refine Fol.bindP (folP_readCommitment hcap hshp) fun _ _ ↦ ?_
+    refine Fol.bindP (folP_sampleChallenges _) fun z _ ↦ ?_
+    refine Fol.bindP folP_readScalar fun y _ ↦ ?_
+    refine Fol.bindP (folP_sumcheckRoundPoly rfl (by norm_num) _ none) fun oi _ ↦ ?_
+    refine fol_grind p g ?_
+    refine Fol.bindQ (fol_samplePositions _ _ pp) fun qs pp' hq ↦ ?_
+    subst hq
+    refine Fol.bindP folP_sampleChallenge fun lam _ ↦ ?_
+    refine fol_queryBind hc rfl fun rows ↦ ?_
+    refine Fol.bindP (folP_sumcheckRoundPoly rfl (by norm_num) _ none) fun intro _ ↦ ?_
+    refine fol_whirLevelsJ com logN laneFolds c₀ n₀ g finalLog direct eB (L' :: Ls) (w' :: ws) (index + 1) _ ?_ _
+    rw [glueT_folds, hx]
+    exact hrest
+  | [], [], _, _, h, _ => (h : False).elim
+  | [], [_], _, _, h, _ => (h : False).elim
+  | [], _ :: _ :: _, _, _, h, _ => (h : False).elim
+  | [_], [], _, _, h, _ => (h : False).elim
+  | _ :: _ :: _, [], _, _, h, _ => (h : False).elim
+  | [_], _ :: _ :: _, _, _, h, _ => (h : False).elim
+  | _ :: _ :: _, [_], _, _, h, _ => (h : False).elim
+
+/-- **`verify_whir` with OOD samples** (`verifyWhirJ`, `cfg.ood = true`) against `whirIJ`. -/
+theorem fol_verifyWhirJ (cfg : Verifier.WhirConfig) (hood : cfg.ood = true) (hper : cfg.per = 8) (com : Com)
+    (Ls : List Level) (finalLog : ℕ)
+    (h : LvMatchJ p cap shp idx com cfg.μ cfg.c₀ cfg.n₀ finalLog 0 0 cfg.levels Ls)
+    (target : E) (eB : List E → E) (pp : List ℕ) :
+    Fol cap shp idx (Verifier.verifyWhirJ cfg target eB) (atomsOf p (whirIJ com Ls finalLog cfg.grind)) pp
+      fun _ _ ↦ True := by
+  rw [whirIJ, atomsOf_append, atomsOf_rd]
+  unfold Verifier.verifyWhirJ
+  rw [if_pos hood, hper]
+  exact Fol.bindP (folP_sumcheckRoundPoly rfl (by norm_num) _ none) fun _ _ ↦
+    fol_whirLevelsJ com _ _ _ _ _ finalLog _ eB Ls cfg.levels 0 _ h pp
+
+/-- **The stacked opening with OOD samples against `smp 1 ++ whirIJ`**. -/
+theorem fol_verifyStackedJ (cfg : Verifier.WhirConfig) (hood : cfg.ood = true) (hper : cfg.per = 8)
+    (com : Com) (Ls : List Level) (finalLog : ℕ)
+    (h : LvMatchJ p cap shp idx com cfg.μ cfg.c₀ cfg.n₀ finalLog 0 0 cfg.levels Ls)
+    (claims : List Verifier.StackClaim) (pp : List ℕ) :
+    Fol cap shp idx (Verifier.verifyStackedJ cfg claims)
+      (atomsOf p (smp 1 ++ whirIJ com Ls finalLog cfg.grind)) pp fun _ _ ↦ True := by
+  rw [atomsOf_append, atomsOf_smp]
+  unfold Verifier.verifyStackedJ
+  exact Fol.bindP folP_sampleChallenge fun _ _ ↦ fol_verifyWhirJ cfg hood hper com Ls finalLog h _ _ pp
 
 /-- **The root commitment** against its cap item. -/
 theorem folP_commitRootUd (cfg : Verifier.UdConfig) {w : Whir.Level} {ws : List Whir.Level}

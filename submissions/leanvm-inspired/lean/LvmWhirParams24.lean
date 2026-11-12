@@ -66,9 +66,10 @@ noncomputable def codesMain23 : ℕ → LevelCode
   | 1 => LevelCode.ud 13 2 (by norm_num) (by norm_num) (by norm_num)
   | _ => LevelCode.ud 9 3 (by norm_num) (by norm_num) (by norm_num)
 
-/-- The UD code of `C_rec` at S2 P8: `κ = 12`, `R = 2`. -/
+/-- The UD codes of `C_rec` at S2 P8: `κ = 12`, `R = 2`; level 1 (S4) `κ = 8`, `R = 3`. -/
 noncomputable def codesRec18 : ℕ → LevelCode
-  | _ => LevelCode.ud 12 2 (by norm_num) (by norm_num) (by norm_num)
+  | 0 => LevelCode.ud 12 2 (by norm_num) (by norm_num) (by norm_num)
+  | _ => LevelCode.ud 8 3 (by norm_num) (by norm_num) (by norm_num)
 
 /-! ## P20: per-group bounds (A13) -/
 

@@ -17,7 +17,8 @@ cache `M3.G20` only inside fixed columns' closures, which no check forces).
   `layOkB_aux`, `colsFitB_aux`), not column by column through `bplOf`'s `getD`s (WP-16b: 24.1 s →
   ≈ 6 s of kernel);
 * `posCellsB_P20`: the position classes' output cells below `nK cfg20`, through each opening's
-  region ends (`posBndB`, `posCell_lt`; WP-16b: 12.5 s → < 1 s of kernel);
+  region ends and the lane classes' spare end (`posCellsB`, `posCell_lt`; WP-16b: 12.5 s → < 1 s of kernel;
+  EV-DIET B: 2.3 s, of which ≈ 1.5 s evaluate `opens P20`);
 * `hashedLen_nK20`: the hashed stream below `nK cfg20` (≈ 1 s);
 * `inOkB_P20`: the input arrays tile the input cells, at `default` (< 1 s).
 -/
@@ -53,11 +54,11 @@ def auxOffB (nu : ℕ) (C : QCfg) (D : QData) : Bool :=
   (bspecs C D).zipIdx.all fun x => offOk x.1.τ nu 0 && (D.bpl.getD x.2 []).all (offOk x.1.τ nu)
 
 theorem posSpecs_length (C : QCfg) (bpl : ℕ → ℕ → Bool × ℕ) : (posSpecs C bpl).length = nPosCls C := by
-  simp [posSpecs, nPosCls, List.length_flatMap]
+  simp [posSpecs]
 
 theorem posSpecs_pl (C : QCfg) (bpl : ℕ → ℕ → Bool × ℕ) (i : ℕ) (h : i < (posSpecs C bpl).length) :
     ((posSpecs C bpl)[i]).pl = bpl i := by
-  simp only [posSpecs, List.getElem_map, List.getElem_zipIdx, Nat.zero_add]
+  simp only [posSpecs, List.getElem_map, List.getElem_range, posSpec_pl]
 
 theorem bspecs_pl (C : QCfg) (D : QData) (i : ℕ) (h : i < (bspecs C D).length) :
     ((bspecs C D)[i]).pl = bplOf D i := by
@@ -78,11 +79,15 @@ theorem bspecs_pl (C : QCfg) (D : QData) (i : ℕ) (h : i < (bspecs C D).length)
       omega
   · rename_i h1
     simp only [List.length_append, hs, posSpecs_length] at h1 h
-    simp only [List.length_append, hs, posSpecs_length, List.getElem_singleton]
-    show bplOf D (6 + nPosCls C) = bplOf D i
-    congr 1
-    simp at h
-    omega
+    simp only [List.length_cons, List.length_nil] at h
+    obtain ⟨k, rfl⟩ : ∃ k, i = 6 + nPosCls C + k := ⟨i - (6 + nPosCls C), by omega⟩
+    have hk : k < 2 := by omega
+    simp only [List.length_append, hs, posSpecs_length, Nat.add_sub_cancel_left]
+    interval_cases k
+    · show bplOf D (6 + nPosCls C) = bplOf D (6 + nPosCls C + 0)
+      rfl
+    · show bplOf D (7 + nPosCls C) = bplOf D (6 + nPosCls C + 1)
+      congr 1; omega
 
 theorem getD_mem_or {α : Type} (l : List α) (i : ℕ) (d : α) : l.getD i d ∈ l ∨ l.getD i d = d := by
   rcases Nat.lt_or_ge i l.length with hi | hi
@@ -159,7 +164,7 @@ def chkB0 (ts : List Tab) : Bool :=
   ts.all (fun t => (t.reads.all fun r => decide (r.1.val.length ≤ 13)) &&
     t.seeds.all fun s => decide (s.1.val.length ≤ 13)) &&
   ts.all (fun t => decide (0 < t.w)) &&
-  decide ((ts.map fun t => t.cons.length).sum ≤ 2 ^ 60) &&
+  decide ((ts.map fun t => t.cons.length).sum ≤ 2 ^ 56) &&
   ts.all (fun t => !t.cons.isEmpty || !t.reads.isEmpty || !t.seeds.isEmpty)
 
 theorem chkB_eq (L : Lay) (ts : List Tab) : chkB L ts = (chkB0 ts && layOkB L ts) := by
@@ -240,83 +245,16 @@ theorem shpOk_P20 : ShpOk P20 ((sumcheckTabs (M3.tabsP20 default)).map Tab.shape
 
 /-! ## The position classes' cells through their regions' ends
 
-`posCellsB` evaluates `posCell` at every output of every row (≈ 30 k cells, 12.5 s of kernel);
-`posBndB` checks per opening that its bit region, its spare cells and its fields end below `N`
-(`posCell_lt`: every output cell lies in one of them). -/
-
-/-- Every output of a lane's row is a bit `n < 8 H` (kind `0`) or a field of a position `i < 8`
-(kind `1` or `2`). -/
-theorem laneOuts_mem {H l : ℕ} {out : Bits.BOut × ℕ × ℕ} (h : out ∈ laneOuts H l) :
-    (out.2.1 = 0 ∧ out.2.2 < 8 * H) ∨ ((out.2.1 = 1 ∨ out.2.1 = 2) ∧ out.2.2 < 8) := by
-  simp only [laneOuts, List.mem_append, List.mem_map, List.mem_filter, List.mem_range,
-    List.mem_flatMap, decide_eq_true_eq] at h
-  rcases h with ⟨z, ⟨-, hlt⟩, rfl⟩ | ⟨i, hi, h⟩
-  · exact Or.inl ⟨rfl, hlt⟩
-  · right
-    rcases h with h | h <;> split at h <;> simp only [List.mem_singleton, List.not_mem_nil] at h <;>
-      subst h <;> simp [hi]
-
-theorem mul_add_lt {H a b r : ℕ} (hr : r < H) (hab : a < b) : H * a + r < H * b :=
-  lt_of_lt_of_le (by rw [Nat.mul_succ]; omega) (Nat.mul_le_mul_left H hab)
-
-/-- **An output cell's bound** from the opening's three region ends. -/
-theorem posCell_lt {C : QCfg} {k : ℕ} {o : QLink.OpenInfo} {l x N : ℕ} {out : Bits.BOut × ℕ × ℕ}
-    (hx : x < nRows o) (hout : out ∈ laneOuts o.L.height l)
-    (hb : bitBase C.p (lay C) k + o.L.height * padT o.L.t ≤ N)
-    (hs : spB C + spBefore C.p k + spOf o ≤ N)
-    (hf : flB C + 2 ^ C.pa + posIdx C.p k o.L.t ≤ N) :
-    posCell C k o x out < N := by
-  obtain ⟨b, kind, n⟩ := out
-  have hR : 8 * x + 8 ≤ 8 * nRows o := by omega
-  have hP : padT o.L.t ≤ 8 * nRows o := by unfold nRows; omega
-  rcases laneOuts_mem hout with ⟨hk, hn⟩ | ⟨hk, hn⟩ <;> simp only at hk hn
-  · subst hk
-    have hH : 0 < o.L.height := by
-      rcases Nat.eq_zero_or_pos o.L.height with h0 | h0
-      · rw [h0] at hn; omega
-      · exact h0
-    have hq : n / o.L.height < 8 := Nat.div_lt_of_lt_mul (by rwa [Nat.mul_comm])
-    have hm : n % o.L.height < o.L.height := Nat.mod_lt _ hH
-    simp only [posCell]
-    split
-    · have := mul_add_lt (H := o.L.height) (a := 8 * x + n / o.L.height) (b := padT o.L.t) hm ‹_›
-      omega
-    · have := mul_add_lt (H := o.L.height) (a := 8 * x + n / o.L.height - padT o.L.t)
-        (b := 8 * nRows o - padT o.L.t) hm (by omega)
-      unfold spOf at hs
-      omega
-  · rcases hk with rfl | rfl <;> simp only [posCell, ↓reduceIte, eq_false (by decide : ¬ (2:ℕ) = 1)] <;>
-      split <;> simp only [posIdx, spOf] at hf hs ⊢ <;> generalize 2 ^ C.pa = m at hf ⊢ <;> omega
-
-/-- `PosCellsLt`'s bounds per opening: the bit region, the spare cells and the fields end below `N`. -/
-def posBndB (C : QCfg) (N : ℕ) : Bool :=
-  (List.range (opens C.p).length).all fun k =>
-    let o := (opens C.p).getD k default
-    decide (nLanes o.L.height ≤ 4) && decide (bitBase C.p (lay C) k + o.L.height * padT o.L.t ≤ N) &&
-    decide (spB C + spBefore C.p k + spOf o ≤ N) && decide (flB C + 2 ^ C.pa + posIdx C.p k o.L.t ≤ N)
-
-theorem posCellsB_of_bnd {C : QCfg} {N : ℕ} (h : posBndB C N = true) : posCellsB C N = true := by
-  unfold posBndB at h
-  unfold posCellsB
-  rw [List.all_eq_true] at h ⊢
-  intro k hk
-  have hk' := h k hk
-  simp only [Bool.and_eq_true, decide_eq_true_eq] at hk' ⊢
-  obtain ⟨⟨⟨h4, hb⟩, hs⟩, hf⟩ := hk'
-  refine ⟨h4, ?_⟩
-  simp only [List.all_eq_true, List.mem_range, decide_eq_true_eq]
-  intro l _ x hx jo hjo
-  have hm : (laneOuts ((opens C.p).getD k default).L.height l).getD jo (.bit 0, 0, 0) ∈
-      laneOuts ((opens C.p).getD k default).L.height l := by
-    rw [List.getD_eq_getElem _ _ hjo]; exact List.getElem_mem hjo
-  exact posCell_lt hx hm hb hs hf
+`posCellsB` (`LvmQAsmFactsSk`) checks per opening that its bit region, its spare cells and its fields end
+below `N`, and that the lane classes' spare cells do (`posCell_lt`: every output cell lies in one of
+them; WP-16b: 12.5 s → < 1 s of kernel; with the lane classes' spare end 2.3 s). -/
 
 set_option maxRecDepth 200000 in
-/-- The position classes' output cells are input cells (decided per opening, `posBndB`). -/
+/-- The position classes' output cells are input cells (decided per opening and lane class, `posCellsB`). -/
 theorem posCellsB_P20 : posCellsB cfg20 (nK cfg20) = true := by
   show posCellsB ⟨P20, 14, 20, 11, 8, 18, 10, 13, 15⟩ (nK cfg20) = true
   rw [P20_eq]
-  exact posCellsB_of_bnd (by decide +kernel)
+  decide +kernel
 
 set_option maxRecDepth 200000 in
 /-- The hashed stream's lanes are input cells. -/

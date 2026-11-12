@@ -56,7 +56,10 @@ fn exact_ok(sec: usize, r: usize, t: usize) -> bool {
     b <= k || (b == k + 1 && popcount == 1)
 }
 
-fn mk_levels(sec: usize, nu: usize, spec: &[(usize, usize, usize)]) -> Vec<Level> {
+/// The levels of `spec`; `t` is `udQueries sec R`, or `ts[i]` when `ts` is non-empty (JB-VQP J1: `C_main` at the
+/// Johnson radius, the query counts given by the record).
+fn mk_levels(sec: usize, nu: usize, spec: &[(usize, usize, usize)], ts: &[usize]) -> Vec<Level> {
+    assert!(ts.is_empty() || ts.len() == spec.len(), "one query count per level");
     let mut k = nu;
     spec.iter()
         .enumerate()
@@ -71,7 +74,7 @@ fn mk_levels(sec: usize, nu: usize, spec: &[(usize, usize, usize)]) -> Vec<Level
                 height: h,
                 cap: c,
                 path: h - c,
-                t: ud_queries(sec, r),
+                t: if ts.is_empty() { ud_queries(sec, r) } else { ts[i] },
                 row: if i == 0 { 8 << l } else { 24 << l },
             }
         })
@@ -130,6 +133,9 @@ pub struct Params {
     /// counts are `udQueries (sec − g) R`.
     pub grind: usize,
     pub main_levels: Vec<Level>,
+    /// JB-VQP J1 (`whirLevelsJ`, JB-L §3): `C_main`'s opening takes one OOD sample on every level with a next
+    /// level (after the next cap: `κ` samples, the value `y`, the intro polynomial's two scalars). `C_rec` takes none.
+    pub main_ood: bool,
     pub rec_levels: Vec<Level>,
     pub bus_depth: usize,
     pub leafdec_reads: usize,
@@ -173,7 +179,8 @@ impl Params {
     }
 }
 
-/// `main` is the `C_main` levels, any number (S2: three, v1: four), in `refreeze2.py`'s form `[(fold, rate, cap), …]`.
+/// `main` is the `C_main` levels, any number (S2: three, v1: four), in `refreeze2.py`'s form `[(fold, rate, cap), …]`;
+/// `main_t` their query counts (`[]`: `udQueries (sec − g) R`), `main_ood` [`Params::main_ood`].
 #[allow(clippy::too_many_arguments)]
 fn mk(
     name: &'static str,
@@ -183,11 +190,13 @@ fn mk(
     rec_rows_log: usize,
     nu_main: usize,
     main: impl AsRef<[(usize, usize, usize)]>,
-    rec: (usize, usize, usize),
+    rec: impl AsRef<[(usize, usize, usize)]>,
     ks_log: usize,
     bits_log: usize,
     fb: (usize, usize, usize, usize),
     pub_tab: usize,
+    main_t: impl AsRef<[usize]>,
+    main_ood: bool,
 ) -> Params {
     assert!(grind <= 64 && grind < sec, "{name}: {grind} grinding bits (at most 64, and below sec = {sec})");
     Params {
@@ -199,8 +208,9 @@ fn mk(
         rec_rows_log,
         sec_bits: sec,
         grind,
-        main_levels: mk_levels(sec - grind, nu_main, main.as_ref()),
-        rec_levels: mk_levels(sec - grind, rec_rows_log + 5, &[rec]),
+        main_levels: mk_levels(sec - grind, nu_main, main.as_ref(), main_t.as_ref()),
+        main_ood,
+        rec_levels: mk_levels(sec - grind, rec_rows_log + 5, rec.as_ref(), &[]),
         bus_depth: fb.0,
         leafdec_reads: fb.1,
         table_rounds: fb.2,
@@ -213,11 +223,15 @@ fn mk(
 pub const GRIND_P20: usize = 14;
 pub const GRIND_P8: usize = 4;
 
-/// PI-GRIND's switch: `LVM_GRIND` unset or `0` gives the records without grinding (the defaults); `std` gives the
-/// set's grinding bits ([`GRIND_P20`], [`GRIND_P8`]); a number `g` gives `g` bits at either set.
-pub fn grind_env(std_bits: usize) -> usize {
+/// The frozen records' grinding bits (`refreeze2.py` writes them; the default when `LVM_GRIND` is unset).
+pub const FROZEN_GRIND_P20: usize = 14;
+pub const FROZEN_GRIND_P8: usize = 4;
+
+/// PI-GRIND's switch: `LVM_GRIND` unset gives the frozen record's bits (`frozen`); `std` gives the set's grinding
+/// bits ([`GRIND_P20`], [`GRIND_P8`]); empty or `0` gives none; a number `g` gives `g` bits at either set.
+pub fn grind_env(std_bits: usize, frozen: usize) -> usize {
     match std::env::var("LVM_GRIND") {
-        Err(_) => 0,
+        Err(_) => frozen,
         Ok(v) if v == "std" => std_bits,
         Ok(v) if v.is_empty() => 0,
         Ok(v) => v.parse().unwrap_or_else(|_| panic!("LVM_GRIND: std or a number of bits, not {v:?}")),
@@ -225,26 +239,33 @@ pub fn grind_env(std_bits: usize) -> usize {
 }
 
 /// `P20` (BLUEPRINT §3.1); the M3 numbers `(busDepth, leafdecReads, tableRounds, tableEvals)` are INT-2's
-/// freeze (`LvmParams.P20`, A21). Grinding bits from `LVM_GRIND` ([`grind_env`]; 0 by default).
+/// freeze (`LvmParams.P20`, A21). Grinding bits from `LVM_GRIND` ([`grind_env`]; the frozen record's by default).
 pub fn p20() -> Params {
-    p20_g(grind_env(GRIND_P20))
+    p20_g(grind_env(GRIND_P20, FROZEN_GRIND_P20))
 }
 
 /// `P20` with `g` grinding bits.
 pub fn p20_g(g: usize) -> Params {
     // S2 (BLUEPRINT2 §1.4): C_main at ν = 24, three levels
-    mk("P20", 20, 129, g, 14, 24, &[(6, 1, 8), (4, 2, 7), (4, 3, 7)], (6, 2, 7), 15, 13, (22, 1, 17, 3805), 124)
+    mk("P20", 20, 129, g, 14, 24, [(6, 1, 8), (4, 2, 7), (4, 3, 7)], [(6, 2, 7), (4, 3, 7)], 15, 13, (21, 1, 16, 2851), 127, [230, 115, 77], true)
 }
 
-/// `P8` (WP-0's test set). Grinding bits from `LVM_GRIND` ([`grind_env`]; 0 by default).
+/// `P8` (WP-0's test set). Grinding bits from `LVM_GRIND` ([`grind_env`]; the frozen record's by default).
 pub fn p8() -> Params {
-    p8_g(grind_env(GRIND_P8))
+    p8_g(grind_env(GRIND_P8, FROZEN_GRIND_P8))
 }
 
 /// `P8` with `g` grinding bits.
 pub fn p8_g(g: usize) -> Params {
     // S2 P8 (FRZ-0): rec rows 2^13 and KS 2^14 (the tape's trace overflows 2^12 blocks), three C_main levels
-    mk("P8", 9, 20, g, 13, 23, &[(6, 1, 4), (4, 2, 4), (4, 3, 4)], (6, 2, 4), 14, 12, (21, 1, 16, 3611), 118)
+    mk("P8", 9, 20, g, 13, 23, [(6, 1, 4), (4, 2, 4), (4, 3, 4)], [(6, 2, 4), (4, 3, 4)], 14, 12, (21, 1, 16, 2522), 108, [33, 17, 11], true)
+}
+
+/// `p` with `C_main` in the unique-decoding regime (PI-GRIND-P's S2G record): `t = udQueries (sec − g) R`, no OOD.
+pub fn ud_main(p: Params) -> Params {
+    let sec = p.sec_bits - p.grind;
+    let main_levels = p.main_levels.iter().map(|l| Level { t: ud_queries(sec, l.rate), ..*l }).collect();
+    Params { main_levels, main_ood: false, ..p }
 }
 
 // ------------------------------------------------------------------------------------------- the schedule
@@ -316,7 +337,7 @@ fn tail_i(n: usize) -> Vec<Item> {
 fn grind_i(g: usize) -> Vec<Item> {
     if g == 0 { vec![] } else { [smp(1), rd(1), smp(1)].concat() }
 }
-fn whir_i(com: Com, levels: &[Level], final_log: usize, g: usize) -> Vec<Item> {
+fn whir_i(com: Com, levels: &[Level], final_log: usize, g: usize, ood: bool) -> Vec<Item> {
     let mut v = rd(2);
     for (i, l) in levels.iter().enumerate() {
         for _ in 0..l.fold {
@@ -326,7 +347,15 @@ fn whir_i(com: Com, levels: &[Level], final_log: usize, g: usize) -> Vec<Item> {
         let next = levels.get(i + 1);
         match next {
             None => v.extend(rd(1 << final_log)),
-            Some(n) => v.push(Item::Cap(n.cap, com, l.level + 1)),
+            Some(n) => {
+                v.push(Item::Cap(n.cap, com, l.level + 1));
+                if ood {
+                    // JB-L §3: the OOD point (κ samples, κ = the folded message's variables), `y`, the intro poly
+                    v.extend(smp(l.kappa));
+                    v.extend(rd(1));
+                    v.extend(rd(2));
+                }
+            }
         }
         v.extend(grind_i(g));
         v.push(Item::Positions(com, l.level));
@@ -367,8 +396,8 @@ pub fn phases(p: &Params) -> Vec<(Phase, Vec<Item>)> {
         (Phase::Wire, [sumcheck_i(p.log_n, 2), rd(1), sumcheck_i(2, 2), rd(K_BITS), smp(RING_STAGES)].concat()),
         (Phase::Ks, [smp(p.ks_log), rd(LANES), keccak_i(p.ks_log), smp(RING_STAGES)].concat()),
         (Phase::KsLink, [smp(p.ks_log + LANE_BITS), sumcheck_i(p.ks_log, 2), rd(4)].concat()),
-        (Phase::OpenRec, [smp(1), whir_i(Com::Rec, &p.rec_levels, p.rec_final_log(), p.grind)].concat()),
-        (Phase::OpenMain, [smp(1), whir_i(Com::Main, &p.main_levels, p.main_final_log(), p.grind)].concat()),
+        (Phase::OpenRec, [smp(1), whir_i(Com::Rec, &p.rec_levels, p.rec_final_log(), p.grind, false)].concat()),
+        (Phase::OpenMain, [smp(1), whir_i(Com::Main, &p.main_levels, p.main_final_log(), p.grind, p.main_ood)].concat()),
     ]
 }
 
@@ -421,17 +450,25 @@ pub fn query_list(p: &Params) -> Vec<(QClass, usize)> {
     out
 }
 
-/// S2 dev check: `piSize`, `qS` and trace sponge blocks against `2^rec`, for P20 and P8, without grinding and at
-/// PI-GRIND's bits (with the query counts `t` and the positions queries `Σ ⌈t/8⌉`).
+/// S2 dev check: `piSize`, `qS` and trace sponge blocks against `2^rec`, for P20 and P8: the frozen records (J1:
+/// `C_main` at the Johnson radius with OOD, at `FROZEN_GRIND_*`), then `C_main` in UD at PI-GRIND's bits and without
+/// grinding (with the query counts `t` and the positions queries `Σ ⌈t/8⌉`).
 pub fn print_numbers() {
-    for p in [p20_g(0), p8_g(0), p20_g(GRIND_P20), p8_g(GRIND_P8)] {
+    for p in [
+        p20_g(FROZEN_GRIND_P20),
+        p8_g(FROZEN_GRIND_P8),
+        ud_main(p20_g(GRIND_P20)),
+        ud_main(p8_g(GRIND_P8)),
+        ud_main(p20_g(0)),
+        ud_main(p8_g(0)),
+    ] {
         let ql = query_list(&p);
         let l: usize = 1 + ql.iter().map(|(_, len)| 40 + len).sum::<usize>();
         let ts: Vec<usize> = p.rec_levels.iter().chain(&p.main_levels).map(|l| l.t).collect();
         let pos: usize = ts.iter().map(|t| t.div_ceil(POSITIONS_PER_ANSWER)).sum();
         println!(
-            "{} g {} piSize {} qS {} t (rec; main) {:?} positions queries {} trace blocks {} (2^rec = {})",
-            p.name, p.grind, pi_size(&p), ql.len(), ts, pos, l / 136 + 1, 1usize << p.rec_rows_log
+            "{} g {} main_ood {} piSize {} qS {} t (rec; main) {:?} positions queries {} trace blocks {} (2^rec = {})",
+            p.name, p.grind, p.main_ood, pi_size(&p), ql.len(), ts, pos, l / 136 + 1, 1usize << p.rec_rows_log
         );
     }
 }
@@ -458,31 +495,37 @@ mod tests {
     use super::*;
     #[test]
     fn frozen_numbers() {
-        let p = p20_g(0);
-        assert_eq!(p.main_levels.iter().map(|l| l.t).collect::<Vec<_>>(), vec![311, 191, 156]);
-        assert_eq!(p.rec_levels[0].t, 191);
+        // the frozen records (`refreeze2.py` writes their numbers and `FROZEN_GRIND_*`); `grind_numbers` names its
+        // sets `pg`/`qg` so that refreeze2's rewrites of `p`/`q` do not reach them
+        let p = p20_g(FROZEN_GRIND_P20);
+        assert_eq!(p.main_levels.iter().map(|l| l.t).collect::<Vec<_>>(), vec![230, 115, 77]);
+        assert_eq!(p.rec_levels[0].t, 170);
         // A21's record + A23 (D = 28: header + 696 B, phase 3b 12 queries and 30 scalars)
         // S2 (T-P1; BLUEPRINT2 §2.2's model: 9,916 and 1,103,704)
-        assert_eq!(query_list(&p).len(), 9916);
-        assert_eq!(pi_size(&p), 1094248);
-        let q = p8_g(0);
-        assert_eq!(q.main_levels.iter().map(|l| l.t).collect::<Vec<_>>(), vec![49, 30, 25]);
+        assert_eq!(query_list(&p).len(), 8295);
+        assert_eq!(pi_size(&p), 783192);
+        let q = p8_g(FROZEN_GRIND_P8);
+        assert_eq!(q.main_levels.iter().map(|l| l.t).collect::<Vec<_>>(), vec![33, 17, 11]);
         // S2 P8 (FRZ-0)
-        assert_eq!(query_list(&q).len(), 2711);
-        assert_eq!(pi_size(&q), 421952);
+        assert_eq!(query_list(&q).len(), 2321);
+        assert_eq!(pi_size(&q), 277760);
+        // JB-VQP J1: C_main's OOD (P20 κ 18, 14; P8 κ 17, 13) and the trace's sponge blocks
+        assert!(p.main_ood && q.main_ood);
+        let blocks = |p: &Params| (1 + query_list(p).iter().map(|(_, len)| 40 + len).sum::<usize>()) / 136 + 1;
+        assert_eq!((blocks(&p), blocks(&q)), (10533, 3926));
     }
 
     #[test]
     fn grind_numbers() {
-        // PI-GRIND Gate §3: t = udQueries (129 − 14) R
-        let p = p20_g(GRIND_P20);
-        assert_eq!(p.main_levels.iter().map(|l| l.t).collect::<Vec<_>>(), vec![278, 170, 139]);
-        assert_eq!(p.rec_levels[0].t, 170);
+        // PI-GRIND Gate §3: t = udQueries (129 − 14) R (C_main in UD, the S2G record)
+        let pg = ud_main(p20_g(GRIND_P20));
+        assert_eq!(pg.main_levels.iter().map(|l| l.t).collect::<Vec<_>>(), vec![278, 170, 139]);
+        assert_eq!(pg.rec_levels.iter().map(|l| l.t).collect::<Vec<_>>(), vec![170, 139]);
         // PI-GRIND-P's record at g > 0 (dev `s2check`)
-        assert_eq!((query_list(&p).len(), pi_size(&p)), (9000, 1025800));
-        let q = p8_g(GRIND_P8);
-        assert_eq!(q.main_levels.iter().map(|l| l.t).collect::<Vec<_>>(), vec![39, 24, 20]);
-        assert_eq!(q.rec_levels[0].t, 24);
-        assert_eq!((query_list(&q).len(), pi_size(&q)), (2381, 399840));
+        assert_eq!((query_list(&pg).len(), pi_size(&pg)), (9844, 897192));
+        let qg = ud_main(p8_g(GRIND_P8));
+        assert_eq!(qg.main_levels.iter().map(|l| l.t).collect::<Vec<_>>(), vec![39, 24, 20]);
+        assert_eq!(qg.rec_levels[0].t, 24);
+        assert_eq!((query_list(&qg).len(), pi_size(&qg)), (2547, 294288));
     }
 }

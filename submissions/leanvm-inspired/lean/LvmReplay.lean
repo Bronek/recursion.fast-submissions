@@ -141,15 +141,15 @@ theorem VS_replay (p : Params) (m : M3) (vk c : Digest) (hP : PlanOk p) (tr : Tr
 /-- `P20` with its WHIR levels written out (`levels_P20`, `t_P20`), so that the kernel does not
 recompute the query counts at every use. -/
 def P20L : Params := { P20 with
-  mainLevels := [⟨0, 6, 18, 1, 19, 8, 11, 311, 512⟩, ⟨1, 4, 14, 2, 16, 7, 9, 191, 384⟩,
-    ⟨2, 4, 10, 3, 13, 7, 6, 156, 384⟩]
-  recLevels := [⟨0, 6, 13, 2, 15, 7, 8, 191, 512⟩] }
+  mainLevels := [⟨0, 6, 18, 1, 19, 8, 11, 230, 512⟩, ⟨1, 4, 14, 2, 16, 7, 9, 115, 384⟩,
+    ⟨2, 4, 10, 3, 13, 7, 6, 77, 384⟩]
+  recLevels := [⟨0, 6, 13, 2, 15, 7, 8, 170, 512⟩, ⟨1, 4, 9, 3, 12, 7, 5, 139, 384⟩] }
 
 /-- `P8` with its WHIR levels written out. -/
 def P8L : Params := { P8 with
-  mainLevels := [⟨0, 6, 17, 1, 18, 4, 14, 49, 512⟩, ⟨1, 4, 13, 2, 15, 4, 11, 30, 384⟩,
-    ⟨2, 4, 9, 3, 12, 4, 8, 25, 384⟩]
-  recLevels := [⟨0, 6, 12, 2, 14, 4, 10, 30, 512⟩] }
+  mainLevels := [⟨0, 6, 17, 1, 18, 4, 14, 33, 512⟩, ⟨1, 4, 13, 2, 15, 4, 11, 17, 384⟩,
+    ⟨2, 4, 9, 3, 12, 4, 8, 11, 384⟩]
+  recLevels := [⟨0, 6, 12, 2, 14, 4, 10, 24, 512⟩, ⟨1, 4, 8, 3, 11, 4, 7, 20, 384⟩] }
 
 theorem P20_eq : P20 = P20L := by
   have h1 : P20.mainLevels = P20L.mainLevels := by decide +kernel
@@ -166,23 +166,23 @@ theorem P8_eq : P8 = P8L := by
 set_option maxRecDepth 200000 in
 /-- `PlanOk P20` and the walk's last entry (WP-16b: one decision; the plan's length from it by
 `plan_length`, `planItems_i`, without evaluating the entries). -/
-theorem planSt_P20 : PlanOk P20 ∧ (planAll P20).2.i = 9916 := by rw [P20_eq]; decide +kernel
+theorem planSt_P20 : PlanOk P20 ∧ (planAll P20).2.i = 8295 := by rw [P20_eq]; decide +kernel
 
 theorem planOk_P20 : PlanOk P20 := planSt_P20.1
 
 set_option maxRecDepth 200000 in
 theorem planOk_P8 : PlanOk P8 := by rw [P8_eq]; decide +kernel
 
-/-- The plan has `qS` entries (9,916 at `P20`; WP-0's frozen count). -/
-theorem plan_P20 : (plan P20).length = 9916 := by
+/-- The plan has `qS` entries (8,295 at `P20`; WP-0's frozen count). -/
+theorem plan_P20 : (plan P20).length = 8295 := by
   have h := planItems_i P20 w0 (schedule P20)
-  have h2 : (planItems P20 w0 (schedule P20)).2.i = 9916 := planSt_P20.2
+  have h2 : (planItems P20 w0 (schedule P20)).2.i = 8295 := planSt_P20.2
   have hw : w0.i = 2 := rfl
   rw [plan_length, planAll]
   omega
 
 set_option maxRecDepth 200000 in
-theorem plan_P8 : (plan P8).length = 2711 := by rw [P8_eq]; decide +kernel
+theorem plan_P8 : (plan P8).length = 2321 := by rw [P8_eq]; decide +kernel
 
 theorem VS20_replay (tabs : Pub → List M3.Tab) (vk c : Digest) (tr : Trace) (hL : LinkOk P20 tr)
     (hparse : parseOk P20 vk c (reassemble P20 tr) = true) :

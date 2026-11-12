@@ -13,7 +13,7 @@ import LvmNodeSoundTr
 # The decided static facts at `P20`
 
 * **`okE_P20`**: `SLok` of `KS`'s glue block E at `ksLog = 15`, `recRowsLog = 14`,
-  `spongeBlocks P20 - 1 = 13095` (as `okE_P8`: the check reads only the template's shape), decided
+  `spongeBlocks P20 - 1 = 9978` (as `okE_P8`: the check reads only the template's shape), decided
   through the one-pass check `SLokF` (`SLok_of_F`).
 * **`HarNum C T P4 … P8`**: the fields of `HarStatic` that are numbers of `C.p` (positions of
   phases 4–7, lane bounds, sizes); **`harStatic_of`** builds `HarStatic` from it, the layer checks,
@@ -24,7 +24,7 @@ import LvmNodeSoundTr
   32-byte queries: consecutive answers lie 9 lanes apart, `ansLane_run`); **`posLanesR_of_K`**:
   `PosLanesR` at `P20` from `PosLanesK`, the same facts on the extractor's 1,466 blocks (`lens_P20`;
   a block's entries and lanes are closed forms, `ansLane_blk`, `lens_run_blk`), so the decision never
-  evaluates the 9,916-entry plan (6.5 s of kernel against 20 s on the plan);
+  evaluates the 8,295-entry plan (6.5 s of kernel against 20 s on the plan);
   **`posLanesR20`**, **`posLanesM20`**, **`hbs20`** (one decision).
 
 Kernel (dev VM): `okE_P20` 1.2 s (16 s with `SLok`'s quadratic lookups), `harNum20` 1.1 s,
@@ -37,14 +37,14 @@ set_option autoImplicit false
 namespace Lvm.Fin
 
 open Lvm Lvm.Loop Lvm.Loop.Build Lvm.Q1 Lvm.Har Lvm.Replay Lvm.QLink
-open Lvm.QAsm (QCfg QData cfg20 data20 nK bsB clog2 nAns pbB)
+open Lvm.QAsm (QCfg QData cfg20 data20 nK bsB pwB clog2 nAns pbB)
 open Lvm.X (Blk blocks lensB lanesOf lanes_eq lensB_opn)
 
 /-! ## `KS`'s glue block at `P20` (`SLokF`, `SLok_of_F`: `LvmQAsmHarLink20`) -/
 
-/-- **`SLok` of `KS`'s block E at `P20`** (`ksLog = 15`, `recRowsLog = 14`, `13096` sponge blocks). -/
+/-- **`SLok` of `KS`'s block E at `P20`** (`ksLog = 15`, `recRowsLog = 14`, `9979` sponge blocks). -/
 theorem okE_P20 (Q : ℕ) (gate : Cell) (sh : LoopOut) :
-    SLok (ksGlueE 15 Q (ksQV 15 Q) 13095 (2 ^ 14 + 399 + 31) (2 ^ 14 + 399) (rho'C sh 15) (sh.cell 2 14)
+    SLok (ksGlueE 15 Q (ksQV 15 Q) 9978 (2 ^ 14 + 399 + 31) (2 ^ 14 + 399) (rho'C sh 15) (sh.cell 2 14)
       (sh.cell 5 (15 - 1)) gate) = true := by
   rw [← SLok_shape]
   simp only [ksGlueE, List.map_append]
@@ -78,7 +78,8 @@ def HarNum (C : QCfg) (T P4 P5 P6 P7 P8 : ℕ) : Prop :=
   1 ≤ spongeBlocks C.p ∧ spongeBlocks C.p ≤ 2 ^ C.p.ksLog ∧ 2 ^ C.p.recRowsLog + 431 ≤ 2 ^ C.p.ksLog ∧
   C.p.leafdecReads = 1 ∧ busPos C.p % 8 = 0 ∧ busEnd C.p (busPos C.p) + 40 ≤ 8 * T ∧
   tabPos C.p % 8 = 0 ∧ 10 ≤ C.p.tableRounds ∧ C.p.tableRounds ≤ accVars ∧ 1 ≤ C.p.accLog ∧
-  11 + pubLanes ≤ T ∧ 29 ≤ T ∧ C.p.logN ≤ 64 ∧ P8 = 8 * openU C.p ∧ C.p.grind = 0
+  11 + pubLanes ≤ T ∧ 29 ≤ T ∧ C.p.logN ≤ 64 ∧ P8 = 8 * openU C.p ∧
+  (C.p.recLevels.length ≤ (opens C.p).length ∧ C.p.recLevels.length + C.p.mainLevels.length ≤ (opens C.p).length)
 
 /-- **`HarStatic` from its numbers**, the layer checks, the glue check, the table shapes' facts and the
 WHIR layouts (any configuration, record, stream lanes and positions; phase 3b's `accZ0` written out). -/
@@ -96,14 +97,15 @@ theorem harStatic_of {C : QCfg} {D : QData} {T P4 P5 P6 P7 P8 : ℕ} (hN : HarNu
       5 + 2 < T)
     (hP4 : 8 * (tabEnd (shapesOf C D) C.p.tableRounds (tabPos C.p) / 8 + 9 * C.p.accLog + 3 * (accVars + 1) +
       9) + 24 = P4)
-    (hlr : LayOk (cfgRec C.p (posBase C)) T = true) (hlm : LayOk (cfgMain C.p (posBase C)) T = true) :
+    (hlr : LayOk (cfgRec C.p (posBase C) (pwBase C)) T = true)
+    (hlm : LayOk (cfgMain C.p (posBase C) (pwBase C)) T = true) :
     HarStatic C D T P4 P5 P6 P7 P8 := by
   obtain ⟨⟨e0, e1, e2, e5, w5, w6, ks0, ks1, ks2, ks7, l7, l8⟩, hn, hk, hr, hq, hqw, hqk, hTw, hTgk, hTr, hTv,
     hTrk, hTvk, hD, hDk, hTlk, hTlk', hB, hB2, hK, hld, hbP, hbT, htP, h10, hRacc, hdk1, hH, hT29, hlog,
-    hP8, hgr⟩ := hN
+    hP8, hop⟩ := hN
   exact ⟨⟨e0, e1, e2, e5, w5, w6, ks0, ks1, ks2, ks7, l7, l8⟩, hn, hk, hr, hlay, hlayk, hq, hqw, hqk, hTw, hTgk,
     hTr, hTv, hTrk, hTvk, hD, hDk, hTlk, hTlk', hB, hB2, hK, okE, hld, hbP, hbT, htP, htT,
-    hpubT, hpubτ, h10, hRmax, hRacc, hdk1, hnf, hzL, hH, hP4, hT29, hlog, hlr, hlm, hP8, hgr⟩
+    hpubT, hpubτ, h10, hRmax, hRacc, hdk1, hnf, hzL, hH, hP4, hT29, hlog, hlr, hlm, hP8, hop⟩
 
 set_option maxRecDepth 200000 in
 /-- **`HarStatic`'s numbers at `P20`** (`T` the stream's lanes, `P4 … P8` the first positions of phases
@@ -149,16 +151,16 @@ theorem ansLane_run {p : Params} (hS : streamOkL (plan p) = true) {e n : ℕ} (h
 /-- **`PosLanes` with one answer per opening**: level `i` is opening `k0 + i` (height at most 64), the
 opening's entries after its first positions entry carry 32-byte queries, and its first answer is at the
 level's positions lane. -/
-def PosLanesR (p : Params) (Ls : List Level) (V k0 : ℕ) : Prop :=
+def PosLanesR (p : Params) (g : ℕ) (ood : Bool) (Ls : List Level) (V k0 : ℕ) : Prop :=
   ∀ i < Ls.length, k0 + i < (opens p).length ∧ ((opens p).getD (k0 + i) default).L = Ls.getD i default ∧
     (Ls.getD i default).height ≤ 64 ∧ 1 ≤ ((opens p).getD (k0 + i) default).pe ∧
     ((lens p).drop (((opens p).getD (k0 + i) default).pe + 1)).take
         (nAns ((opens p).getD (k0 + i) default) - 1) =
       List.replicate (nAns ((opens p).getD (k0 + i) default) - 1) 32 ∧
-    8 * (posLanes Ls V).getD i 0 + 40 = 8 * ansLane p ((opens p).getD (k0 + i) default).pe
+    8 * (posLanes g ood Ls V).getD i 0 + 40 = 8 * ansLane p ((opens p).getD (k0 + i) default).pe
 
-theorem posLanes_of {p : Params} (hS : streamOkL (plan p) = true) {Ls : List Level} {V k0 : ℕ}
-    (h : PosLanesR p Ls V k0) : PosLanes p Ls V k0 := by
+theorem posLanes_of {p : Params} {g : ℕ} {ood : Bool} (hS : streamOkL (plan p) = true) {Ls : List Level} {V k0 : ℕ}
+    (h : PosLanesR p g ood Ls V k0) : PosLanes p g ood Ls V k0 := by
   intro i hi
   obtain ⟨h1, h2, h3, h4, h5, h6⟩ := h i hi
   refine ⟨h1, h2, h3, fun x hx => ?_⟩
@@ -170,7 +172,7 @@ theorem posLanes_of {p : Params} (hS : streamOkL (plan p) = true) {Ls : List Lev
 The plan's entries after `q₀` are the extractor's blocks' queries (`lens_P20`, `lensL`); a block's
 entries and lanes are numbers of the block (`bCnt`, `Blk.lanes`), so an opening's first answer lane
 is a sum over the blocks before it (`ansLane_blk`) and its run of 32-byte queries a run of blocks
-(`lens_run_blk`): the decision walks 1,466 blocks instead of 9,916 plan entries. -/
+(`lens_run_blk`): the decision walks 1,215 blocks instead of 8,295 plan entries. -/
 
 /-- A block's entries. -/
 def bCnt : Blk → ℕ
@@ -278,16 +280,16 @@ theorem lens_run_blk {j n : ℕ} {c : QClass} {len : ℕ} (hj : (blocks P20)[j]?
 
 /-- **`PosLanesR` at `P20` through the extractor's blocks** (`js`: the block of each opening's first
 positions entry). -/
-def PosLanesK (Ls : List Level) (V k0 : ℕ) (js : List ℕ) : Prop :=
+def PosLanesK (g : ℕ) (ood : Bool) (Ls : List Level) (V k0 : ℕ) (js : List ℕ) : Prop :=
   ∀ i < Ls.length, k0 + i < (opens P20).length ∧ ((opens P20).getD (k0 + i) default).L = Ls.getD i default ∧
     (Ls.getD i default).height ≤ 64 ∧
     1 + (((blocks P20).take (js.getD i 0)).map bCnt).sum = ((opens P20).getD (k0 + i) default).pe ∧
     ((blocks P20).drop (js.getD i 0 + 1)).take (nAns ((opens P20).getD (k0 + i) default) - 1) =
       List.replicate (nAns ((opens P20).getD (k0 + i) default) - 1) (.one .fs 32) ∧
-    blkAns (blocks P20) (js.getD i 0) = some ((posLanes Ls V).getD i 0 + 5)
+    blkAns (blocks P20) (js.getD i 0) = some ((posLanes g ood Ls V).getD i 0 + 5)
 
-theorem posLanesR_of_K {Ls : List Level} {V k0 : ℕ} {js : List ℕ} (h : PosLanesK Ls V k0 js) :
-    PosLanesR P20 Ls V k0 := by
+theorem posLanesR_of_K {g : ℕ} {ood : Bool} {Ls : List Level} {V k0 : ℕ} {js : List ℕ} (h : PosLanesK g ood Ls V k0 js) :
+    PosLanesR P20 g ood Ls V k0 := by
   intro i hi
   obtain ⟨h1, h2, h3, h4, h5, h6⟩ := h i hi
   obtain ⟨c, len, hj, -⟩ := blkAns_some h6
@@ -330,17 +332,17 @@ theorem blkAns_of_W {bs : List Blk} {j A : ℕ}
   · cases h
 
 /-- **`PosLanesK` as one Boolean**: each level's first positions block walked to once (`blkWalk`). -/
-def posLanesKB (Ls : List Level) (V k0 : ℕ) (js : List ℕ) : Bool :=
+def posLanesKB (g : ℕ) (ood : Bool) (Ls : List Level) (V k0 : ℕ) (js : List ℕ) : Bool :=
   (List.range Ls.length).all fun i =>
     let o := (opens P20).getD (k0 + i) default
     let w := blkWalk (blocks P20) (js.getD i 0) 0 0
     decide (k0 + i < (opens P20).length) && decide (o.L = Ls.getD i default) &&
     decide ((Ls.getD i default).height ≤ 64) && decide (1 + w.1 = o.pe) &&
     decide ((w.2.2.drop 1).take (nAns o - 1) = List.replicate (nAns o - 1) (.one .fs 32)) &&
-    blkAnsW w.2.1 w.2.2 ((posLanes Ls V).getD i 0 + 5)
+    blkAnsW w.2.1 w.2.2 ((posLanes g ood Ls V).getD i 0 + 5)
 
-theorem posLanesK_of_B {Ls : List Level} {V k0 : ℕ} {js : List ℕ} (h : posLanesKB Ls V k0 js = true) :
-    PosLanesK Ls V k0 js := by
+theorem posLanesK_of_B {g : ℕ} {ood : Bool} {Ls : List Level} {V k0 : ℕ} {js : List ℕ} (h : posLanesKB g ood Ls V k0 js = true) :
+    PosLanesK g ood Ls V k0 js := by
   intro i hi
   unfold posLanesKB at h
   have hi' := List.all_eq_true.mp h i (List.mem_range.mpr hi)
@@ -349,24 +351,36 @@ theorem posLanesK_of_B {Ls : List Level} {V k0 : ℕ} {js : List ℕ} (h : posLa
   exact ⟨h1, h2, h3, h4, h5, blkAns_of_W h6⟩
 
 set_option maxRecDepth 200000 in
-/-- The positions lanes of both openings (the blocks of their first positions entries: 1313; 1359, 1404,
-1434), and the `s'` bits' cells below `nK cfg20` (one decision, `posLanesKB`). -/
-theorem posLanesB20 : PosLanesK P20.recLevels (openU P20 + 15) 0 [1313] ∧
-    PosLanesK P20.mainLevels (stackEndL P20.recLevels (openU P20 + 15) + 15) 1 [1359, 1404, 1434] ∧
+/-- The positions lanes of both openings (the blocks of their first positions entries: 1304, 1334; 1390, 1441,
+1464), and the `s'` bits' cells below `nK cfg20` (one decision, `posLanesKB`). -/
+theorem posLanesB20 : PosLanesK P20.grind false P20.recLevels (openU P20 + 15) 0 [1304, 1334] ∧
+    PosLanesK P20.grind P20.mainOod P20.mainLevels (stackEndL P20.grind false P20.recLevels (openU P20 + 15) + 15) 2
+      [1390, 1441, 1464] ∧
     bsB cfg20 + 256 ≤ nK cfg20 := by
-  have h : (posLanesKB P20.recLevels (openU P20 + 15) 0 [1313] &&
-      posLanesKB P20.mainLevels (stackEndL P20.recLevels (openU P20 + 15) + 15) 1 [1359, 1404, 1434] &&
+  have h : (posLanesKB P20.grind false P20.recLevels (openU P20 + 15) 0 [1304, 1334] &&
+      posLanesKB P20.grind P20.mainOod P20.mainLevels (stackEndL P20.grind false P20.recLevels (openU P20 + 15) + 15) 2
+        [1390, 1441, 1464] &&
       decide (bsB cfg20 + 256 ≤ nK cfg20)) = true := by decide +kernel
   simp only [Bool.and_eq_true, decide_eq_true_eq] at h
   exact ⟨posLanesK_of_B h.1.1, posLanesK_of_B h.1.2, h.2⟩
 
 /-- **FIN-BV's `PosLanes` for `C_rec`** (`posOkR20`'s `hPL`). -/
-theorem posLanesR20 : PosLanes P20 P20.recLevels (openU P20 + 15) 0 :=
+theorem posLanesR20 : PosLanes P20 P20.grind false P20.recLevels (openU P20 + 15) 0 :=
   posLanes_of Lvm.QAsm.hS20.1 (posLanesR_of_K posLanesB20.1)
 
 /-- **FIN-BV's `PosLanes` for `C_main`** (`posOkM20`'s `hPL`). -/
-theorem posLanesM20 : PosLanes P20 P20.mainLevels (stackEndL P20.recLevels (openU P20 + 15) + 15) 1 :=
+theorem posLanesM20 : PosLanes P20 P20.grind P20.mainOod P20.mainLevels
+    (stackEndL P20.grind false P20.recLevels (openU P20 + 15) + 15) 2 :=
   posLanes_of Lvm.QAsm.hS20.1 (posLanesR_of_K posLanesB20.2.1)
+
+set_option maxRecDepth 200000 in
+/-- **The PoW class's static facts** (`pw20`): every opening's first positions entry is at index `≥ 2`
+inside the plan (its PoW entry is the one before), the PoW fields are input cells, `g < 64`. -/
+theorem powStatic20 : (∀ k < (opens P20).length, 2 ≤ ((opens P20).getD k default).pe ∧
+      ((opens P20).getD k default).pe < (plan P20).length) ∧
+    pwB cfg20 + (opens P20).length ≤ nK cfg20 ∧ 1 ≤ 64 - P20.grind := by
+  rw [Lvm.PlanChk.length_P20]
+  decide +kernel
 
 /-- **FIN-BV's `hbs`** (`sBits20`): the `s'` byte shifts' output cells are input cells. -/
 theorem hbs20 : bsB cfg20 + 256 ≤ nK cfg20 := posLanesB20.2.2

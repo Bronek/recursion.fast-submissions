@@ -34,7 +34,7 @@ def SCfg.lf (C : SCfg) : Nat := (C.levels.head?.map (·.fold)).getD 0
 
 /-- **One stacked opening** (see the module doc). -/
 def stackGW (C : SCfg) (cl : List CClaim) (zc oc g : Cell) : BM Unit := do
-  let pc ← preloadG (chLanes C.levels (C.U + 15))
+  let pc ← preloadG (chLanes C.g C.ood C.levels (C.U + 15))
   let sb ← ldEW (C.U + 5)
   let sp ← pows (Nat.clog 2 cl.length) sb oc zc
   let tgt ← targetG cl sp zc
@@ -47,7 +47,7 @@ def stackGW (C : SCfg) (cl : List CClaim) (zc oc g : Cell) : BM Unit := do
 
 /-- **The static layout checks of one stacked opening** (stream lanes below `T`). -/
 def LayOk (C : SCfg) (T : Nat) : Bool :=
-  lvOk C T C.levels 0 0 (C.U + 15) && (chLanes C.levels (C.U + 15)).all (fun v => decide (v + 2 < T)) &&
+  lvOk C T C.levels 0 0 (C.U + 15) && (chLanes C.g C.ood C.levels (C.U + 15)).all (fun v => decide (v + 2 < T)) &&
     decide (C.U + 20 < T) && decide (C.lf ≤ C.nu)
 
 /-- **The static checks of one stacked opening**: the layout and the claims' shapes. -/
@@ -76,12 +76,12 @@ set_option maxHeartbeats 1000000 in
 theorem stack_run (C : SCfg) (cl : List CClaim) (zc oc g : Cell) {sig : ByteArray} {T : Nat}
     (hS : Lvm.Q1.Streamed M sig T) (hok : StackOk C cl T = true) (hz : zc.val M = 0)
     (ho : oc.val M = 1) (hzE : zc.ty = .E) (hoE : oc.ty = .E) (hg : g.val M = 1) (hgK : g.ty = .K)
-    (hpos : PosOk C M sig 0 C.levels (C.U + 15)) {p : Ptr} (hp : 1 ≤ p.e)
+    (hpos : PosOk C M sig 0 C.levels (C.U + 15)) (hpw : PwOk C M 0 C.levels) {p : Ptr} (hp : 1 ≤ p.e)
     (h : Lvm.QSig.Ok c M (stackGW C cl zc oc g) p) (s : RS) (hs : pos s = 8 * C.U) :
-    (verifyStackedOpening C.levels C.nu (cl.map fun cc => (cc.val M).2.onStack) false 0 sig s).2.ok = s.ok ∧
-    pos (verifyStackedOpening C.levels C.nu (cl.map fun cc => (cc.val M).2.onStack) false 0 sig s).2 =
-      8 * stackEndL C.levels (C.U + 15) ∧
-    (verifyStackedOpening C.levels C.nu (cl.map fun cc => (cc.val M).2.onStack) false 0 sig s).2.msg = 0 := by
+    (verifyStackedOpening C.levels C.nu (cl.map fun cc => (cc.val M).2.onStack) false C.g C.ood sig s).2.ok = s.ok ∧
+    pos (verifyStackedOpening C.levels C.nu (cl.map fun cc => (cc.val M).2.onStack) false C.g C.ood sig s).2 =
+      8 * stackEndL C.g C.ood C.levels (C.U + 15) ∧
+    (verifyStackedOpening C.levels C.nu (cl.map fun cc => (cc.val M).2.onStack) false C.g C.ood sig s).2.msg = 0 := by
   simp only [StackOk, LayOk, Bool.and_eq_true, List.all_eq_true] at hok
   obtain ⟨⟨⟨⟨hlv, hch⟩, hU⟩, hlf⟩, hwf⟩ := hok
   replace hU := of_decide_eq_true hU
@@ -91,8 +91,8 @@ theorem stack_run (C : SCfg) (cl : List CClaim) (zc oc g : Cell) {sig : ByteArra
   obtain ⟨h1, h⟩ := okb h
   obtain ⟨epc, ech⟩ := preloadG_spec hS (fun v hv => of_decide_eq_true (hch v hv)) h1.1
   rw [epc] at h
-  have hp1 := le_trans hp (adv_e_le p (preloadG (chLanes C.levels (C.U + 15)) p).2)
-  generalize p.adv (preloadG (chLanes C.levels (C.U + 15)) p).2 = p1 at h hp1
+  have hp1 := le_trans hp (adv_e_le p (preloadG (chLanes C.g C.ood C.levels (C.U + 15)) p).2)
+  generalize p.adv (preloadG (chLanes C.g C.ood C.levels (C.U + 15)) p).2 = p1 at h hp1
   -- the batching challenge and its powers
   obtain ⟨h2, h⟩ := okb h
   have esb := ldE_spec hS (by omega) h2.1
@@ -160,7 +160,7 @@ theorem stack_run (C : SCfg) (cl : List CClaim) (zc oc g : Cell) {sig : ByteArra
   rw [dm_bind, srp3_run]
   dsimp only
   refine levels_run C hS p.e zc oc g p6.k bas hz ho hzE hoE hg hgK hzk C.lf _ ?_ C.levels 0 0 (C.U + 15)
-    q [] _ p8 hlv hp8 ?_ (by simp) (fun j hj => by rw [Nat.add_zero]; exact ech j hj) hpos
+    q [] _ p8 hlv hp8 ?_ (by simp) (fun j hj => by rw [Nat.add_zero]; exact ech j hj) hpos hpw
     ⟨by simp, by simp⟩ h _ ?_
   · rw [eb, hs]; simp only [List.map_map, List.length_map]; rfl
   · rw [eq0, et, pos_mk0, hs, List.length_map, List.map_map,
@@ -187,40 +187,45 @@ def openG (Cr Cm : SCfg) (cs : List CClaim) (zc oc g : Cell) : BM Unit := do
 `8 · stackEndL` of `C_main`, `msg = 0`. -/
 theorem openPh_run (p : Params) (Cr Cm : SCfg) (cs : List CClaim) (zc oc g : Cell) {sig : ByteArray}
     {T : Nat} (hS : Lvm.Q1.Streamed M sig T) (hr : Cr.levels = p.recLevels) (hrν : Cr.nu = p.nuRec)
-    (hm : Cm.levels = p.mainLevels) (hmν : Cm.nu = p.nuMain) (hgr : p.grind = 0)
-    (hU : Cm.U = stackEndL Cr.levels (Cr.U + 15)) (hlr : LayOk Cr T = true) (hlm : LayOk Cm T = true) (hwr : ClaimsWF Cr.nu (onCom cs .crec) = true)
+    (hm : Cm.levels = p.mainLevels) (hmν : Cm.nu = p.nuMain) (hrg : Cr.g = p.grind) (hro : Cr.ood = false)
+    (hmg : Cm.g = p.grind) (hmo : Cm.ood = p.mainOod)
+    (hU : Cm.U = stackEndL Cr.g Cr.ood Cr.levels (Cr.U + 15)) (hlr : LayOk Cr T = true) (hlm : LayOk Cm T = true) (hwr : ClaimsWF Cr.nu (onCom cs .crec) = true)
     (hwm : ClaimsWF Cm.nu (onCom cs .main) = true) (hz : zc.val M = 0) (ho : oc.val M = 1)
     (hzE : zc.ty = .E) (hoE : oc.ty = .E) (hg : g.val M = 1) (hgK : g.ty = .K)
     (hposr : PosOk Cr M sig 0 Cr.levels (Cr.U + 15)) (hposm : PosOk Cm M sig 0 Cm.levels (Cm.U + 15))
-    {ptr : Ptr} (hp : 1 ≤ ptr.e) (h : Lvm.QSig.Ok c M (openG Cr Cm cs zc oc g) ptr) (s : RS)
+    (hpwr : PwOk Cr M 0 Cr.levels) (hpwm : PwOk Cm M 0 Cm.levels) {ptr : Ptr} (hp : 1 ≤ ptr.e) (h : Lvm.QSig.Ok c M (openG Cr Cm cs zc oc g) ptr) (s : RS)
     (hs : pos s = 8 * Cr.U) :
     (openPh p (cs.map (CClaim.val M)) sig s).2.ok = s.ok ∧
-    pos (openPh p (cs.map (CClaim.val M)) sig s).2 = 8 * stackEndL Cm.levels (Cm.U + 15) ∧
+    pos (openPh p (cs.map (CClaim.val M)) sig s).2 = 8 * stackEndL p.grind p.mainOod Cm.levels (Cm.U + 15) ∧
     (openPh p (cs.map (CClaim.val M)) sig s).2.msg = 0 := by
   simp only [openG] at h
   obtain ⟨h1, h2⟩ := okb h
-  simp only [openPh, hgr]
+  simp only [openPh]
   rw [dm_bind, on_eq, on_eq, ← hr, ← hrν, ← hm, ← hmν]
   obtain ⟨o1, p1, -⟩ := stack_run Cr _ zc oc g hS (by simp [StackOk, hlr, hwr]) hz ho hzE hoE hg hgK
-    hposr hp h1 s hs
+    hposr hpwr hp h1 s hs
+  rw [hrg, hro] at o1 p1
+  rw [hrg, hro] at hU
   obtain ⟨o2, p2, m2⟩ := stack_run Cm _ zc oc g hS (by simp [StackOk, hlm, hwm]) hz ho hzE hoE hg hgK
-    hposm (le_trans hp (adv_e_le _ _)) h2 _ (by rw [p1, hU])
+    hposm hpwm (le_trans hp (adv_e_le _ _)) h2 _ (by rw [p1, hU])
+  rw [hmg, hmo] at o2 p2 m2
   exact ⟨o2.trans o1, p2, m2⟩
 
 /-- **Q_arith phases 8–9 replay `openPh`** (`Replays`, the soundness direction). -/
 theorem openPh_replays (p : Params) (Cr Cm : SCfg) (cs : List CClaim) (zc oc g : Cell) {sig : ByteArray}
     {T : Nat} (hS : Lvm.Q1.Streamed M sig T) (hr : Cr.levels = p.recLevels) (hrν : Cr.nu = p.nuRec)
-    (hm : Cm.levels = p.mainLevels) (hmν : Cm.nu = p.nuMain) (hgr : p.grind = 0)
-    (hU : Cm.U = stackEndL Cr.levels (Cr.U + 15)) (hlr : LayOk Cr T = true) (hlm : LayOk Cm T = true) (hwr : ClaimsWF Cr.nu (onCom cs .crec) = true)
+    (hm : Cm.levels = p.mainLevels) (hmν : Cm.nu = p.nuMain) (hrg : Cr.g = p.grind) (hro : Cr.ood = false)
+    (hmg : Cm.g = p.grind) (hmo : Cm.ood = p.mainOod)
+    (hU : Cm.U = stackEndL Cr.g Cr.ood Cr.levels (Cr.U + 15)) (hlr : LayOk Cr T = true) (hlm : LayOk Cm T = true) (hwr : ClaimsWF Cr.nu (onCom cs .crec) = true)
     (hwm : ClaimsWF Cm.nu (onCom cs .main) = true) (hz : zc.val M = 0) (ho : oc.val M = 1)
     (hzE : zc.ty = .E) (hoE : oc.ty = .E) (hg : g.val M = 1) (hgK : g.ty = .K)
     (hposr : PosOk Cr M sig 0 Cr.levels (Cr.U + 15)) (hposm : PosOk Cm M sig 0 Cm.levels (Cm.U + 15))
-    {ptr : Ptr} (hp : 1 ≤ ptr.e) :
+    (hpwr : PwOk Cr M 0 Cr.levels) (hpwm : PwOk Cm M 0 Cm.levels) {ptr : Ptr} (hp : 1 ≤ ptr.e) :
     Replays c M sig (openPh p (cs.map (CClaim.val M))) (openG Cr Cm cs zc oc g) ptr (8 * Cr.U)
-      (8 * stackEndL Cm.levels (Cm.U + 15)) (fun _ _ => True) := by
+      (8 * stackEndL p.grind p.mainOod Cm.levels (Cm.U + 15)) (fun _ _ => True) := by
   intro h s hs hok
-  obtain ⟨o, q, -⟩ := openPh_run p Cr Cm cs zc oc g hS hr hrν hm hmν hgr hU hlr hlm hwr hwm hz ho hzE hoE hg
-    hgK hposr hposm hp h s hs
+  obtain ⟨o, q, -⟩ := openPh_run p Cr Cm cs zc oc g hS hr hrν hm hmν hrg hro hmg hmo hU hlr hlm hwr hwm hz ho
+    hzE hoE hg hgK hposr hposm hpwr hpwm hp h s hs
   exact ⟨o.trans hok, q, trivial⟩
 
 /-! ## `F`'s positions as bit fields of the answers -/

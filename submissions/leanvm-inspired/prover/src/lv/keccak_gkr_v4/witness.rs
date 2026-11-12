@@ -1,0 +1,847 @@
+// Vendored from leanVM 0b850750 + the pr/all crate diff (04fba039b..edd857be9) `crates/keccak_gkr/src/witness.rs` (tools/vendor.py; edits: lv/PATCHES.md).
+//! The witness: every round's state before `chi`, sliced by bit position.
+//!
+//! A word holds one position of 64 instances, and a block is 512 instances: eight such words
+//! per position, laid out position after position. Only every `depth`-th state is committed,
+//! as lanes, and only every [`every`]-th state is stored: a layer's passes recompute the others
+//! from the one below them, a block at a time ([`Recompute`]).
+
+use crate::lv::primitives::field::F64;
+use crate::lv::primitives::hash::{PI, RC, RHO, ROUNDS};
+use crate::lv::primitives::stream::Stream;
+
+use crate::lv::keccak_gkr::keccak::{BITS, LANES, along};
+
+/// Instances a block holds, and the words one position of a block takes.
+pub const BLOCK: usize = 512;
+pub const BLOCK_WORDS: usize = 8;
+/// Words one block of one state takes.
+pub const BLOCK_LEN: usize = BITS * BLOCK_WORDS;
+
+/// The eight words of position `j` of a sliced block.
+#[inline(always)]
+pub(crate) fn words(block: &[u64], j: usize) -> &[u64; BLOCK_WORDS] {
+    block[j * BLOCK_WORDS..][..BLOCK_WORDS].try_into().expect("eight words")
+}
+
+/// Rounds between two stored states of a batch of depth `depth`: 1, every round is stored. On the
+/// 4C/8T Zen 4 target recomputing an unstored round in each layer's passes costs more than storing
+/// it, and the extra states fit the prover's memory cap.
+///
+/// lvm2 PORT-13: leanvm-fast-verify's (#15) value; `pr/all`'s was 4 at 8 threads or more, else 2.
+pub fn every(_depth: usize) -> usize {
+    1
+}
+
+/// Built only by [`Shape::new`], whose bounds keep the committed column's sizes from wrapping.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Shape {
+    /// `log2` of the number of instances, at least 9.
+    pub(crate) n_log: usize,
+    /// Rounds between two committed states. Divides 24.
+    pub(crate) depth: usize,
+}
+
+impl Shape {
+    pub const fn new(n_instances: usize, depth: usize) -> Self {
+        assert!(ROUNDS.is_multiple_of(depth), "depth must divide the round count");
+        let n = if n_instances < BLOCK { BLOCK } else { n_instances };
+        let n_log = n.next_power_of_two().ilog2() as usize;
+        let shape = Self { n_log, depth };
+        // Every size this crate derives is at most the `2^stack_log` words of the committed
+        // block (`slots <= 2^slot_log`), so bounding that one bounds them all; without it
+        // `slots * n` and `1 << stack_log` wrap, and a buffer too small for the writes passes
+        // the checks that guard them.
+        assert!(
+            shape.stack_log() < usize::BITS as usize,
+            "too many instances for one batch"
+        );
+        shape
+    }
+
+    pub const fn n_log(&self) -> usize {
+        self.n_log
+    }
+    pub const fn depth(&self) -> usize {
+        self.depth
+    }
+    pub const fn n(&self) -> usize {
+        1 << self.n_log
+    }
+    pub const fn n_blocks(&self) -> usize {
+        self.n() / BLOCK
+    }
+    pub const fn segments(&self) -> usize {
+        ROUNDS / self.depth
+    }
+    pub const fn seg_log(&self) -> usize {
+        self.segments().next_power_of_two().ilog2() as usize
+    }
+    /// Variables of a pack index: the instance index without its low four bits.
+    pub const fn pack_vars(&self) -> usize {
+        self.n_log - 4
+    }
+    /// Variables the layer sumcheck binds: a pack, then a segment.
+    pub const fn y_vars(&self) -> usize {
+        self.pack_vars() + self.seg_log()
+    }
+    /// Committed lanes per instance: the state each segment starts from.
+    pub const fn slots(&self) -> usize {
+        LANES * self.segments()
+    }
+    pub const fn slot_log(&self) -> usize {
+        self.slots().next_power_of_two().ilog2() as usize
+    }
+    /// `log2` of the committed stack, in words.
+    pub const fn stack_log(&self) -> usize {
+        self.n_log + self.slot_log()
+    }
+    /// The round whose output segment `segment` claims after `step` layers.
+    pub fn round(&self, segment: usize, step: usize) -> usize {
+        self.depth * (segment + 1) - step
+    }
+}
+
+/// A run of blocks, every `every`-th round after another: block `first + i` of round `r` (the
+/// input state being round 0) is at word `(r / every * blocks + i) * BLOCK_LEN`.
+pub struct Extent {
+    first: usize,
+    blocks: usize,
+    every: usize,
+    words: Vec<u64>,
+    /// Blocks every round of which [`block`] has written.
+    written: Vec<bool>,
+}
+
+/// The stored rounds of one block of an [`Extent`], which [`block`] writes, and its flag.
+pub struct Slot<'a> {
+    rounds: Vec<&'a mut [u64]>,
+    every: usize,
+    written: &'a mut bool,
+}
+
+impl Slot<'_> {
+    /// Write the state of round `round` of this slot's block, if the extent stores that round.
+    fn store(&mut self, stream: &Stream, round: usize, words: &[u64]) {
+        assert!(round <= ROUNDS);
+        if round.is_multiple_of(self.every) {
+            stream.copy(self.rounds[round / self.every], words);
+        }
+    }
+}
+
+impl Extent {
+    /// An extent for blocks `first .. first + blocks` of a batch of depth `depth`, none of them
+    /// run yet.
+    pub fn new(first: usize, blocks: usize, depth: usize) -> Self {
+        let every = every(depth);
+        // A wrapped length would leave `slot`'s offsets past the buffer.
+        assert!(first.checked_add(blocks).is_some(), "an extent's blocks are indexable");
+        let len = blocks
+            .checked_mul((ROUNDS / every + 1) * BLOCK_LEN)
+            .expect("an extent's words fit in memory");
+        // SAFETY: a block is read only once its `written` flag is set, which follows its last write.
+        let words = unsafe { crate::lv::primitives::uninit_vec::<u64>(len) };
+        Self {
+            first,
+            blocks,
+            every,
+            words,
+            written: vec![false; blocks],
+        }
+    }
+
+    pub fn end(&self) -> usize {
+        self.first + self.blocks
+    }
+
+    /// The slot of each block, in order.
+    pub fn slots(&mut self) -> Vec<Slot<'_>> {
+        let every = self.every;
+        let mut slots: Vec<Slot> = (self.written.iter_mut())
+            .map(|written| Slot {
+                rounds: Vec::with_capacity(ROUNDS / every + 1),
+                every,
+                written,
+            })
+            .collect();
+        for (i, round) in self.words.as_chunks_mut::<BLOCK_LEN>().0.iter_mut().enumerate() {
+            slots[i % self.blocks].rounds.push(round);
+        }
+        slots
+    }
+
+    fn round(&self, round: usize, g: usize) -> &[u64] {
+        assert!(round <= ROUNDS && self.written[g - self.first], "block {g} was not run");
+        assert!(round.is_multiple_of(self.every), "round {round} is not stored");
+        &self.words[(round / self.every * self.blocks + g - self.first) * BLOCK_LEN..][..BLOCK_LEN]
+    }
+}
+
+pub struct Witness {
+    pub shape: Shape,
+    /// The first `written` blocks of the batch, in order. The others are all `padding`.
+    extents: Vec<Extent>,
+    written: usize,
+    padding: Option<Extent>,
+    /// Rounds between two stored states, as the extents store them.
+    every: usize,
+}
+
+/// Transpose a 64 by 64 bit matrix: bit `c` of row `r` becomes bit `r` of row `c`.
+#[inline]
+pub fn transpose64(a: &mut [u64; 64]) {
+    cfg_select! {
+        all(
+            target_arch = "x86_64",
+            target_feature = "avx512f",
+            target_feature = "avx512vbmi",
+            target_feature = "gfni"
+        ) => {
+            // SAFETY: the features are enabled at compile time.
+            unsafe { x86::transpose64(a) }
+        }
+        all(target_arch = "x86_64", target_feature = "avx2", not(target_feature = "avx512f")) => {
+            // SAFETY: the feature is enabled at compile time.
+            unsafe { avx2::transpose64(a) }
+        }
+        target_arch = "aarch64" => {
+            // SAFETY: aarch64 always has NEON.
+            unsafe { neon::transpose64(a) }
+        }
+        _ => transpose64_portable(a),
+    }
+}
+
+pub fn transpose64_portable(a: &mut [u64; 64]) {
+    let mut j = 32;
+    let mut mask = 0x0000_0000_ffff_ffffu64;
+    while j != 0 {
+        for k in (0..64).filter(|k| k & j == 0) {
+            let t = ((a[k] >> j) ^ a[k + j]) & mask;
+            a[k + j] ^= t;
+            a[k] ^= t << j;
+        }
+        j >>= 1;
+        mask ^= mask << j;
+    }
+}
+
+type Word = [u64; BLOCK_WORDS];
+
+// The round works on runs of consecutive positions, flattened to words: a loop over positions of
+// `Word`s is vectorized across positions, with a gather per word.
+
+/// `out = a ^ b`, word by word.
+#[inline(always)]
+fn xor_run(out: &mut [Word], a: &[Word], b: &[Word]) {
+    for ((o, x), y) in out
+        .as_flattened_mut()
+        .iter_mut()
+        .zip(a.as_flattened())
+        .zip(b.as_flattened())
+    {
+        *o = x ^ y;
+    }
+}
+
+/// [`crate::lv::keccak_gkr::keccak::linear`] on a sliced block.
+fn linear(a: &[Word], out: &mut [Word]) {
+    let mut c = [[0u64; BLOCK_WORDS]; 5 * 64];
+    for (x, c) in c.as_chunks_mut::<64>().0.iter_mut().enumerate() {
+        xor_run(c, &a[64 * x..][..64], &a[64 * (x + 5)..][..64]);
+        for y in 2..5 {
+            for (c, a) in c
+                .as_flattened_mut()
+                .iter_mut()
+                .zip(a[64 * (x + 5 * y)..][..64].as_flattened())
+            {
+                *c ^= a;
+            }
+        }
+    }
+    let mut d = [[0u64; BLOCK_WORDS]; 5 * 64];
+    for x in 0..5 {
+        let (c4, c1) = (&c[64 * ((x + 4) % 5)..][..64], &c[64 * ((x + 1) % 5)..][..64]);
+        let d = &mut d[64 * x..][..64];
+        xor_run(&mut d[1..], &c4[1..], &c1[..63]);
+        xor_run(&mut d[..1], &c4[..1], &c1[63..]);
+    }
+    for lane in 0..LANES {
+        let rot = RHO[lane] as usize;
+        let (a, d, out) = (
+            &a[64 * lane..][..64],
+            &d[64 * (lane % 5)..][..64],
+            &mut out[64 * PI[lane]..][..64],
+        );
+        xor_run(&mut out[rot..], &a[..64 - rot], &d[..64 - rot]);
+        xor_run(&mut out[..rot], &a[64 - rot..], &d[64 - rot..]);
+    }
+}
+
+/// The state after round `round`, from the state `u` that round applies `chi` to.
+fn chi_iota(u: &[Word], round: usize, state: &mut [Word]) {
+    for lane in 0..LANES {
+        let (a, b, c) = (64 * lane, along(64 * lane, 1), along(64 * lane, 2));
+        let (x, y, w) = (
+            u[a..][..64].as_flattened(),
+            u[b..][..64].as_flattened(),
+            u[c..][..64].as_flattened(),
+        );
+        for (i, s) in state[a..][..64].as_flattened_mut().iter_mut().enumerate() {
+            *s = x[i] ^ (!y[i] & w[i]);
+        }
+    }
+    for z in (0..64).filter(|z| RC[round - 1] >> z & 1 == 1) {
+        state[z] = state[z].map(|w| !w);
+    }
+}
+
+/// Run one block of instances, padded with all-zero inputs, and write its input state and the
+/// state each round applies `chi` to, all sliced, into `slot` if there is one, those of the rounds it stores.
+///
+/// `commit(slot, w, lanes)` receives lane `slot % 25` of the state after `depth * (slot / 25)`
+/// rounds, for instances `64 * w ..` of the block: every state a segment starts from, the output
+/// not being committed. With no slot, the run ends at the last committed state.
+pub fn block(
+    depth: usize,
+    inputs: &[[u64; LANES]],
+    mut slot: Option<&mut Slot>,
+    mut commit: impl FnMut(usize, usize, &[u64; 64]),
+) {
+    assert!(inputs.len() <= BLOCK);
+    let mut state = vec![[0u64; BLOCK_WORDS]; BITS];
+    let mut u = vec![[0u64; BLOCK_WORDS]; BITS];
+    let mut rows = [0u64; 64];
+    for lane in 0..LANES {
+        for w in 0..BLOCK_WORDS {
+            for (i, row) in rows.iter_mut().enumerate() {
+                *row = inputs.get(64 * w + i).map_or(0, |x| x[lane]);
+            }
+            transpose64(&mut rows);
+            for z in 0..64 {
+                state[64 * lane + z][w] = rows[z];
+            }
+        }
+    }
+    let mut lanes = |m: usize, state: &[Word]| {
+        let mut rows = [0u64; 64];
+        for lane in 0..LANES {
+            for w in 0..BLOCK_WORDS {
+                for z in 0..64 {
+                    rows[z] = state[64 * lane + z][w];
+                }
+                transpose64(&mut rows);
+                commit(LANES * m + lane, w, &rows);
+            }
+        }
+    };
+    let last = if slot.is_some() { ROUNDS } else { ROUNDS - depth };
+    // A round's state is next read by the layer that proves it, long after this pass.
+    let stream = Stream::new();
+    let mut store = |round: usize, words: &[Word]| {
+        if let Some(slot) = &mut slot {
+            slot.store(&stream, round, words.as_flattened());
+        }
+    };
+    store(0, &state);
+    lanes(0, &state);
+    for round in 1..=last {
+        linear(&state, &mut u);
+        store(round, &u);
+        chi_iota(&u, round, &mut state);
+        if round.is_multiple_of(depth) && round < ROUNDS {
+            lanes(round / depth, &state);
+        }
+    }
+    // The fence of the streaming stores comes before the flag.
+    drop(stream);
+    if let Some(slot) = slot {
+        *slot.written = true;
+    }
+}
+
+/// Words [`block_lanes_into`] writes: a block of every committed slot.
+pub const fn lanes_len(depth: usize) -> usize {
+    LANES * (ROUNDS / depth) * BLOCK
+}
+
+/// [`block`], its committed lanes kept in `out`: slot `s` at `s * BLOCK ..`, a word per instance.
+fn block_lanes_into(depth: usize, inputs: &[[u64; LANES]], slot: Option<&mut Slot>, out: &mut [u64]) {
+    assert_eq!(out.len(), lanes_len(depth));
+    block(depth, inputs, slot, |slot, w, words| {
+        out[slot * BLOCK + 64 * w..][..64].copy_from_slice(words)
+    });
+}
+
+/// One block's committed lanes alone: slot `s` at `s * BLOCK ..`, a word per instance.
+///
+/// Its rounds are not kept: the reduction rebuilds them from the committed column.
+pub fn block_lanes(depth: usize, inputs: &[[u64; LANES]]) -> Vec<u64> {
+    // SAFETY: `block_lanes_into` writes every word.
+    unsafe { crate::lv::primitives::filled_vec(lanes_len(depth), |lanes| block_lanes_into(depth, inputs, None, lanes)) }
+}
+
+/// The padding block of a batch whose first `written` blocks hold its inputs, if blocks follow
+/// them: its one-block extent and its lanes.
+fn padding(shape: Shape, written: usize) -> Option<(Extent, Vec<u64>)> {
+    (written < shape.n_blocks()).then(|| {
+        let mut extent = Extent::new(written, 1, shape.depth);
+        // SAFETY: `block_lanes_into` writes every word.
+        let lanes = unsafe {
+            crate::lv::primitives::filled_vec(lanes_len(shape.depth), |lanes| {
+                block_lanes_into(shape.depth, &[], extent.slots().first_mut(), lanes)
+            })
+        };
+        (extent, lanes)
+    })
+}
+
+/// Blocks one task of [`place`] writes of a slot, at most.
+const RUN: usize = 16;
+
+/// Write the committed lanes of every block into `committed`: slot `s` of instance `i` at word
+/// `s * n + i`. Block `g` is `lanes[g]`, or `padding` past the end of `lanes`. Whatever
+/// `committed` has past the last slot is zeroed, so a caller whose spare slots carry other
+/// columns passes the states' prefix alone.
+fn place(shape: Shape, lanes: &[&[u64]], padding: Option<&[u64]>, committed: &mut [F64]) {
+    let (n, slots) = (shape.n(), shape.slots());
+    assert!(committed.len() >= slots * n && committed.len() <= 1 << shape.stack_log());
+    assert!(lanes.iter().chain(&padding).all(|l| l.len() == lanes_len(shape.depth)));
+    let (states, spare) = committed.split_at_mut(slots * n);
+    spare.fill(F64(0));
+    // A task writes a run of blocks of one slot, which lie side by side.
+    let run = shape.n_blocks().min(RUN);
+    crate::lv::parallel::chunks_mut(states, run * BLOCK, |task, dst| {
+        let (slot, first) = (task / (shape.n_blocks() / run), task % (shape.n_blocks() / run) * run);
+        let stream = Stream::new();
+        for (i, dst) in crate::lv::primitives::cast_slice_mut::<F64, u64>(dst)
+            .as_chunks_mut::<BLOCK>()
+            .0
+            .iter_mut()
+            .enumerate()
+        {
+            let src = lanes.get(first + i).copied().or(padding).expect("a padding block");
+            stream.copy(dst, &src[slot * BLOCK..][..BLOCK]);
+        }
+    });
+}
+
+impl Witness {
+    /// Run every instance, padding the batch with all-zero inputs, and write the committed
+    /// lanes into `committed`: lane `l` of the state after `depth * m` rounds, for `m` below the
+    /// segment count, is slot `25 * m + l`, one word per instance. Whatever `committed` has past
+    /// the last slot is zeroed, so a caller whose spare slots carry other columns (§cpu) passes
+    /// the states' prefix alone. The blocks after the last input are run once, as the padding block.
+    pub fn generate(shape: Shape, inputs: &[[u64; LANES]], committed: &mut [F64]) -> Self {
+        assert!(inputs.len() <= shape.n());
+        let written = inputs.len().div_ceil(BLOCK);
+        let mut extent = Extent::new(0, written, shape.depth);
+        let stride = lanes_len(shape.depth);
+        // SAFETY: `block_lanes_into` writes every word of its chunk.
+        let lanes = unsafe {
+            crate::lv::primitives::filled_vec(written * stride, |lanes| {
+                let mut jobs: Vec<_> = extent.slots().into_iter().zip(lanes.chunks_exact_mut(stride)).collect();
+                crate::lv::parallel::chunks_mut(&mut jobs, 1, |g, job| {
+                    let [(slot, out)] = job else { unreachable!() };
+                    let inputs = &inputs[g * BLOCK..((g + 1) * BLOCK).min(inputs.len())];
+                    block_lanes_into(shape.depth, inputs, Some(slot), out);
+                });
+            })
+        };
+        let lanes: Vec<&[u64]> = lanes.chunks_exact(stride).collect();
+        Self::from_blocks(shape, vec![extent], &lanes, committed)
+    }
+
+    /// lvm2 T-P1 (BLUEPRINT2 §2.2): [`Witness::generate`] with nothing committed, for a batch whose inputs are
+    /// virtual (the tape: the caller ties the input claim to its own columns). The blocks after the last input are
+    /// run once, as the padding block. PORT-13: on `pr/all`'s extents (`Extent::new(first, blocks, depth)`,
+    /// `slots()`), as [`Witness::from_committed`] runs them.
+    pub fn generate_uncommitted(shape: Shape, inputs: &[[u64; LANES]]) -> Self {
+        assert!(inputs.len() <= shape.n());
+        let written = inputs.len().div_ceil(BLOCK);
+        let mut extent = Extent::new(0, written, shape.depth);
+        crate::lv::parallel::chunks_mut(&mut extent.slots(), 1, |g, slot| {
+            let inputs = &inputs[g * BLOCK..((g + 1) * BLOCK).min(inputs.len())];
+            block(shape.depth, inputs, slot.first_mut(), |_, _, _| {});
+        });
+        let padding = padding(shape, written).map(|(extent, _)| extent);
+        Self::from_extents(shape, vec![extent], written, padding)
+    }
+
+    /// Write the committed lanes of every block into `committed`, laid out as `generate` does.
+    ///
+    /// - Block `g`'s lanes are `lanes[g]`.
+    /// - The blocks past them are the padding block.
+    pub fn write_committed(shape: Shape, lanes: &[Vec<u64>], committed: &mut [F64]) {
+        let padding = (lanes.len() < shape.n_blocks()).then(|| block_lanes(shape.depth, &[]));
+        let lanes: Vec<&[u64]> = lanes.iter().map(Vec::as_slice).collect();
+        place(shape, &lanes, padding.as_deref(), committed);
+    }
+
+    /// The witness of the first `instances` instances, rebuilt from their committed inputs.
+    ///
+    /// - `committed` is laid out as `generate` writes it.
+    /// - The blocks past the last input are the padding block.
+    pub fn from_committed(shape: Shape, instances: usize, committed: &[F64]) -> Self {
+        let n = shape.n();
+        assert!(instances <= n && committed.len() >= LANES * n);
+        let written = instances.div_ceil(BLOCK);
+        let mut extent = Extent::new(0, written, shape.depth);
+        crate::lv::parallel::chunks_mut(&mut extent.slots(), 1, |g, slot| {
+            // Slot `l` holds lane `l` of every input, a word per instance. A step past the last
+            // input reads the all-zero input the block pads with.
+            let inputs: Vec<[u64; LANES]> = (g * BLOCK..(g + 1) * BLOCK)
+                .map(|i| std::array::from_fn(|lane| committed[lane * n + i].0))
+                .collect();
+            block(shape.depth, &inputs, slot.first_mut(), |_, _, _| {});
+        });
+        let padding = padding(shape, written).map(|(extent, _)| extent);
+        Self::from_extents(shape, vec![extent], written, padding)
+    }
+
+    /// The witness of the blocks [`block_lanes_into`] ran into `extents`, consecutive from block 0,
+    /// block `g` having left `lanes[g]`, the batch's other blocks being the padding block. The
+    /// committed lanes are written into `committed` as [`Witness::generate`] writes them.
+    ///
+    /// # Panics
+    /// If a block below `lanes.len()` was not run. A `lanes[g]` that block `g` did not leave gives
+    /// the wrong witness.
+    pub fn from_blocks(shape: Shape, extents: Vec<Extent>, lanes: &[&[u64]], committed: &mut [F64]) -> Self {
+        let written = lanes.len();
+        let padding = padding(shape, written);
+        place(shape, lanes, padding.as_ref().map(|p| &p.1[..]), committed);
+        Self::from_extents(shape, extents, written, padding.map(|(extent, _)| extent))
+    }
+
+    /// The witness of extents whose first `written` blocks [`block`] ran: consecutive from
+    /// block 0, the batch's remaining blocks all being `padding`, a one-block extent of no
+    /// instance.
+    ///
+    /// # Panics
+    /// If a block below `written`, or the padding block, was not run.
+    pub(crate) fn from_extents(shape: Shape, extents: Vec<Extent>, written: usize, padding: Option<Extent>) -> Self {
+        let every = extents.iter().chain(&padding).next().map_or(1, |e| e.every);
+        assert!(shape.depth.is_multiple_of(every), "every committed state is stored");
+        let mut end = 0;
+        for extent in &extents {
+            assert_eq!(extent.first, end, "extents are consecutive");
+            assert_eq!(extent.every, every, "extents store the same rounds");
+            end = extent.end();
+        }
+        assert!(padding.as_ref().is_none_or(|p| p.every == every));
+        assert!(written <= end && written <= shape.n_blocks());
+        assert!(written == shape.n_blocks() || padding.as_ref().is_some_and(|p| p.blocks == 1));
+        let run = |e: &Extent, upto: usize| {
+            e.written[..e.blocks.min(upto.saturating_sub(e.first))]
+                .iter()
+                .all(|&w| w)
+        };
+        assert!(
+            extents.iter().all(|e| run(e, written)) && padding.iter().all(|p| run(p, usize::MAX)),
+            "a block of the witness was not run"
+        );
+        Self {
+            shape,
+            extents,
+            written,
+            padding,
+            every,
+        }
+    }
+
+    /// Blocks `written()..` of the batch are all the padding block, every instance of which is
+    /// the all-zero input.
+    pub fn written(&self) -> usize {
+        self.written
+    }
+
+    /// The blocks a layer reads: those written, then the padding block once, standing for every
+    /// block after them.
+    pub(crate) fn held(&self) -> usize {
+        self.written + usize::from(self.written < self.shape.n_blocks())
+    }
+
+    /// Block `g` of the state round `round` applies `chi` to, rounds counted from 1, or of the
+    /// input state for `round` 0, sliced: a stored round, or one recomputed into `scratch` from
+    /// the stored round below it.
+    pub(crate) fn state<'a>(&'a self, scratch: &'a mut Recompute, round: usize, g: usize) -> &'a [u64] {
+        let from = round - round % self.every;
+        let stored = self.layer(from, g);
+        if from == round {
+            return stored;
+        }
+        let stored = stored.as_chunks::<BLOCK_WORDS>().0;
+        let Recompute { state, u } = scratch;
+        if from > 0 {
+            chi_iota(stored, from, state);
+        }
+        for r in from + 1..=round {
+            let input: &[Word] = if r == 1 { stored } else { state };
+            linear(input, u);
+            if r < round {
+                chi_iota(u, r, state);
+            }
+        }
+        u.as_flattened()
+    }
+
+    /// Block `g` of the state round `round` applies `chi` to, rounds counted from 1, or of the
+    /// input state for `round` 0, sliced. The round must be stored.
+    pub fn layer(&self, round: usize, g: usize) -> &[u64] {
+        if g >= self.written {
+            let padding = self.padding.as_ref().expect("a block of the batch");
+            return padding.round(round, padding.first);
+        }
+        let extent = self.extents.iter().find(|e| g < e.end()).expect("a written block");
+        extent.round(round, g)
+    }
+}
+
+/// A worker's scratch for [`Witness::state`]: a block of a state and of the next round's input.
+pub(crate) struct Recompute {
+    state: Vec<Word>,
+    u: Vec<Word>,
+}
+
+impl Recompute {
+    pub(crate) fn new() -> Self {
+        // SAFETY: `Witness::state` writes every word before it reads it.
+        unsafe {
+            Self {
+                state: crate::lv::primitives::uninit_vec(BITS),
+                u: crate::lv::primitives::uninit_vec(BITS),
+            }
+        }
+    }
+}
+
+#[cfg(all(
+    target_arch = "x86_64",
+    target_feature = "avx512f",
+    target_feature = "avx512vbmi",
+    target_feature = "gfni"
+))]
+mod x86 {
+    use core::arch::x86_64::*;
+
+    use crate::lv::primitives::bits::bit_transpose_64bytes_m512;
+    use crate::lv::primitives::simd::{load, store};
+
+    /// The register of group `g` after the word transpose: groups 0, 1, 4, 5, 2, 3, 6, 7.
+    const ORDER: [usize; 8] = [0, 1, 4, 5, 2, 3, 6, 7];
+
+    /// Byte `8 * c + g` of eight output rows: byte `c` of group `g`'s word.
+    const SCATTER: [u8; 64] = {
+        let mut idx = [0u8; 64];
+        let mut i = 0;
+        while i < 64 {
+            idx[i] = (8 * ORDER[i % 8] + i / 8) as u8;
+            i += 1;
+        }
+        idx
+    };
+
+    /// An 8 by 8 grid of 8 by 8 blocks: a block's bytes gathered into a word, its bits
+    /// transposed there by an affine map, then the grid transposed, words across registers and
+    /// bytes within them.
+    #[target_feature(enable = "avx512f,avx512bw,avx512vbmi,gfni")]
+    #[inline]
+    pub fn transpose64(a: &mut [u64; 64]) {
+        // Word `b` of register `g`: the transposed block of rows `8 * g ..` and byte `b`.
+        let w: [__m512i; 8] = std::array::from_fn(|g| bit_transpose_64bytes_m512(load(&a[..], g)));
+        // Word `b` of every register into register `b`: halves, quarters, then words.
+        let mut r = w;
+        for g in 0..4 {
+            r[g] = _mm512_shuffle_i64x2::<0b01_00_01_00>(w[g], w[g + 4]);
+            r[g + 4] = _mm512_shuffle_i64x2::<0b11_10_11_10>(w[g], w[g + 4]);
+        }
+        let mut q = r;
+        for g in [0, 1, 4, 5] {
+            q[g] = _mm512_shuffle_i64x2::<0b10_00_10_00>(r[g], r[g + 2]);
+            q[g + 2] = _mm512_shuffle_i64x2::<0b11_01_11_01>(r[g], r[g + 2]);
+        }
+        let scatter = load(&SCATTER[..], 0);
+        for b in (0..8).step_by(2) {
+            let (lo, hi) = (
+                _mm512_unpacklo_epi64(q[b], q[b + 1]),
+                _mm512_unpackhi_epi64(q[b], q[b + 1]),
+            );
+            store(&mut a[..], b, _mm512_permutexvar_epi8(scatter, lo));
+            store(&mut a[..], b + 1, _mm512_permutexvar_epi8(scatter, hi));
+        }
+    }
+}
+
+#[cfg(all(target_arch = "x86_64", target_feature = "avx2", not(target_feature = "avx512f")))]
+mod avx2 {
+    use core::arch::x86_64::*;
+
+    use crate::lv::primitives::{load_at, store_at};
+
+    /// A 4 by 4 transpose of words.
+    #[target_feature(enable = "avx2")]
+    #[inline]
+    fn transpose4([a, b, c, d]: [__m256i; 4]) -> [__m256i; 4] {
+        let (ab0, ab1) = (_mm256_unpacklo_epi64(a, b), _mm256_unpackhi_epi64(a, b));
+        let (cd0, cd1) = (_mm256_unpacklo_epi64(c, d), _mm256_unpackhi_epi64(c, d));
+        [
+            _mm256_permute2x128_si256::<0x20>(ab0, cd0),
+            _mm256_permute2x128_si256::<0x20>(ab1, cd1),
+            _mm256_permute2x128_si256::<0x31>(ab0, cd0),
+            _mm256_permute2x128_si256::<0x31>(ab1, cd1),
+        ]
+    }
+
+    /// The portable form's swaps, which commute, with rows `i + 16 l` in lane `l` of register
+    /// `i`: those of `j` below 16 are across registers, a masked swap by shifts, and those of 16
+    /// and 32 within one, a permutation of its 16- and 32-bit fields.
+    #[target_feature(enable = "avx2")]
+    #[inline]
+    pub fn transpose64(a: &mut [u64; 64]) {
+        let mut r = [_mm256_setzero_si256(); 16];
+        for m in 0..4 {
+            let rows = std::array::from_fn(|l| load_at(&a[..], 4 * m + 16 * l));
+            r[4 * m..][..4].copy_from_slice(&transpose4(rows));
+        }
+        macro_rules! swap {
+            ($j:expr, $mask:expr) => {
+                let mask = _mm256_set1_epi64x($mask);
+                for i in (0..16).filter(|i| i & $j == 0) {
+                    let t = _mm256_and_si256(_mm256_xor_si256(_mm256_srli_epi64::<$j>(r[i]), r[i + $j]), mask);
+                    r[i + $j] = _mm256_xor_si256(r[i + $j], t);
+                    r[i] = _mm256_xor_si256(r[i], _mm256_slli_epi64::<$j>(t));
+                }
+            };
+        }
+        swap!(8, 0x00ff_00ff_00ff_00ff);
+        swap!(4, 0x0f0f_0f0f_0f0f_0f0f);
+        swap!(2, 0x3333_3333_3333_3333);
+        swap!(1, 0x5555_5555_5555_5555);
+        // Rows `k` and `k + 32` trade the high half of the one for the low half of the other,
+        // and rows `k` and `k + 16` the same of each 32-bit field.
+        let halves = _mm256_setr_epi32(0, 4, 2, 6, 1, 5, 3, 7);
+        let fields = _mm256_broadcastsi128_si256(_mm_setr_epi8(0, 1, 8, 9, 4, 5, 12, 13, 2, 3, 10, 11, 6, 7, 14, 15));
+        for x in &mut r {
+            *x = _mm256_shuffle_epi8(_mm256_permutevar8x32_epi32(*x, halves), fields);
+        }
+        for m in 0..4 {
+            let rows = transpose4(r[4 * m..][..4].try_into().unwrap());
+            for (l, row) in rows.into_iter().enumerate() {
+                store_at(&mut a[..], 4 * m + 16 * l, row);
+            }
+        }
+    }
+}
+
+#[cfg(target_arch = "aarch64")]
+mod neon {
+    use core::arch::aarch64::*;
+
+    use crate::lv::primitives::{load_at, store_at};
+
+    /// The portable form's swaps, two rows to a register: rows `k` and `k + j` exchange the
+    /// `j`-bit halves of each `2j`-bit field. For `j` of 8 and more that is a lane transpose of
+    /// the two registers at width `j`; below, a masked swap by shifts.
+    #[target_feature(enable = "neon")]
+    #[inline]
+    pub fn transpose64(a: &mut [u64; 64]) {
+        let mut v: [uint64x2_t; 32] = std::array::from_fn(|i| load_at(&a[..], 2 * i));
+        // Registers `i` and `i + d` hold rows `2i, 2i + 1` and `2i + 2d, 2i + 2d + 1`.
+        macro_rules! lanes {
+            ($d:expr, $trn1:ident, $trn2:ident, $as:ident, $back:ident) => {
+                for i in (0..32).filter(|i| i & $d == 0) {
+                    let (x, y) = ($as(v[i]), $as(v[i + $d]));
+                    (v[i], v[i + $d]) = ($back($trn1(x, y)), $back($trn2(x, y)));
+                }
+            };
+        }
+        lanes!(16, vtrn1q_u32, vtrn2q_u32, vreinterpretq_u32_u64, vreinterpretq_u64_u32);
+        lanes!(8, vtrn1q_u16, vtrn2q_u16, vreinterpretq_u16_u64, vreinterpretq_u64_u16);
+        lanes!(4, vtrn1q_u8, vtrn2q_u8, vreinterpretq_u8_u64, vreinterpretq_u64_u8);
+        macro_rules! swap {
+            ($d:expr, $j:expr, $mask:expr) => {
+                let mask = vdupq_n_u64($mask);
+                for i in (0..32).filter(|i| i & $d == 0) {
+                    let t = vandq_u64(veorq_u64(vshrq_n_u64::<$j>(v[i]), v[i + $d]), mask);
+                    v[i + $d] = veorq_u64(v[i + $d], t);
+                    v[i] = veorq_u64(v[i], vshlq_n_u64::<$j>(t));
+                }
+            };
+        }
+        swap!(2, 4, 0x0f0f_0f0f_0f0f_0f0f);
+        swap!(1, 2, 0x3333_3333_3333_3333);
+        // Rows `2i` and `2i + 1` share a register: swap its halves to pair them across.
+        let mask = vdupq_n_u64(0x5555_5555_5555_5555);
+        for x in &mut v {
+            let partner = vextq_u64::<1>(*x, *x);
+            let t = vandq_u64(veorq_u64(vshrq_n_u64::<1>(*x), partner), mask);
+            // Lane 0 is row `k`, taking `t << 1`; lane 1 is row `k + 1`, taking `t`.
+            let t = vcombine_u64(vget_low_u64(vshlq_n_u64::<1>(t)), vget_low_u64(t));
+            *x = veorq_u64(*x, t);
+        }
+        for (i, x) in v.iter().enumerate() {
+            store_at(&mut a[..], 2 * i, *x);
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::lv::keccak_gkr::keccak::{along, iota_bit, linear};
+    use crate::lv::primitives::test_rng::Rng;
+
+    #[test]
+    fn transpose_matches_the_portable_one() {
+        let mut rng = Rng::new(8);
+        let a: [u64; 64] = std::array::from_fn(|_| rng.next_u64());
+        let (mut fast, mut slow) = (a, a);
+        transpose64(&mut fast);
+        transpose64_portable(&mut slow);
+        assert_eq!(fast, slow);
+        for r in 0..64 {
+            for c in 0..64 {
+                assert_eq!(slow[c] >> r & 1, a[r] >> c & 1);
+            }
+        }
+    }
+
+    #[test]
+    fn committed_states_follow_the_permutation() {
+        let mut rng = Rng::new(9);
+        let inputs: Vec<[u64; LANES]> = (0..1100).map(|_| std::array::from_fn(|_| rng.next_u64())).collect();
+        let shape = Shape::new(inputs.len(), 8);
+        let mut committed = vec![F64(1); 1 << shape.stack_log()];
+        Witness::generate(shape, &inputs, &mut committed);
+        let n = shape.n();
+        for x in (0..n).step_by(37) {
+            let state = inputs.get(x).copied().unwrap_or([0; LANES]);
+            for lane in 0..LANES {
+                assert_eq!(committed[lane * n + x].0, state[lane]);
+            }
+            // The state after 16 rounds, bit by bit.
+            let mut bits: Vec<bool> = (0..BITS).map(|j| state[j / 64] >> (j % 64) & 1 == 1).collect();
+            for round in 1..=16 {
+                let mut u = vec![false; BITS];
+                linear(&bits, &mut u, |a, b| a ^ b);
+                for j in 0..BITS {
+                    bits[j] = u[j] ^ (!u[along(j, 1)] & u[along(j, 2)]) ^ (j < 64 && iota_bit(round, j));
+                }
+            }
+            for lane in 0..LANES {
+                let word = (0..64).fold(0u64, |w, z| w | (bits[64 * lane + z] as u64) << z);
+                assert_eq!(committed[(2 * LANES + lane) * n + x].0, word, "instance {x}");
+            }
+        }
+        assert!(committed[shape.slots() * n..].iter().all(|w| w.0 == 0));
+    }
+
+    /// A shape whose committed block would not fit a `usize` is refused, rather than wrapping
+    /// into sizes that let an undersized buffer pass the checks the raw writes rely on.
+    #[test]
+    #[should_panic(expected = "too many instances")]
+    fn an_unrepresentable_batch_is_refused() {
+        Shape::new(1usize << 63, 12);
+    }
+}

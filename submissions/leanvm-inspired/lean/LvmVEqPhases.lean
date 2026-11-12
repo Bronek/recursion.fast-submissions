@@ -87,8 +87,8 @@ def dKsLink (p : Params) (m : M3) (rk : List FE) (pub : Pub) : DM (List (Com × 
 /-- The openings (phases 8–9). -/
 def dOpen (p : Params) (claims : List (Com × BlockClaim)) : DM Unit := do
   let on (com : Com) := (claims.filter (·.1 == com)).map (·.2.onStack)
-  verifyStackedOpening p.recLevels p.nuRec (on .crec) false p.grind
-  verifyStackedOpening p.mainLevels p.nuMain (on .main) false p.grind
+  verifyStackedOpening p.recLevels p.nuRec (on .crec) false p.grind false
+  verifyStackedOpening p.mainLevels p.nuMain (on .main) false p.grind p.mainOod
 
 /-- The claims of phases 2–7 (`decideProg`'s list; lvm2 S2: the tape's claims in place of `CH`'s
 and the `CH` link's). -/

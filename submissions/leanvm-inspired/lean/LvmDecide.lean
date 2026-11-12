@@ -26,8 +26,9 @@ import LvmSchedule
 6. **KS**: the same GKR on `2^ksLog` instances; claims: `M3.ksOutputClaims`, the word, the ring;
 7. **KS link** ([model], `M3.ksLink`): `ρ, λ`, the shift sumcheck, 4 scalars;
 8. **openings**: `C_rec`'s claims batched into its one-level WHIR, then `C_main`'s into its
-   four-level WHIR (leanVM `verifyStackedOpening`; WHIR's glue and terminal check of the final, no
-   direct check of the opened positions: A20 drops A10's for `C_rec`).
+   three-level WHIR (leanVM `verifyStackedOpening`; WHIR's glue and terminal check of the final, no
+   direct check of the opened positions: A20 drops A10's for `C_rec`). `C_main`'s opening takes the
+   out-of-domain samples when `p.mainOod` (lvm2 JB-VQP, J1: the Johnson radius); `C_rec`'s none.
 
 `F` accepts iff every check held and the reading ended exactly at the end of `Σ` (so its reading
 and the driver's writing follow one schedule) (`decideCore`), and the folded claim holds
@@ -176,8 +177,8 @@ def decideProg (p : Params) (m : M3) (vk c : Vector UInt8 32) : DM Acc := do
     bus.claims ++ m.tableClaims pub evals ++ (tapeClaims p tp wo pub ++ ksClaims).map (.main, ·) ++
       m.ksOutputClaims rk vks ++ kLinkClaims
   let on (com : Com) := (claims.filter (·.1 == com)).map (·.2.onStack)
-  verifyStackedOpening p.recLevels p.nuRec (on .crec) false p.grind
-  verifyStackedOpening p.mainLevels p.nuMain (on .main) false p.grind
+  verifyStackedOpening p.recLevels p.nuRec (on .crec) false p.grind false
+  verifyStackedOpening p.mainLevels p.nuMain (on .main) false p.grind p.mainOod
   pure accOut
 
 /-- **`decideCore`**: every check of the decision program held and it read `Σ` to the end

@@ -159,8 +159,8 @@ theorem cg_kgProgS (s : RecursionFast.Digest) (n : ℕ) : NoCG (Lvm.VEq.kgProgS 
 
 /-! ## `kgSpec`'s error side conditions at `εS` -/
 
-theorem errE_le_εS {d : ℕ} (hd : d ≤ 2 ^ 63) : errE d ≤ εS := by
-  unfold errE εS
+theorem errE_le_129 {d : ℕ} (hd : d ≤ 2 ^ 63) : errE d ≤ (2 : ℝ≥0∞)⁻¹ ^ 129 := by
+  unfold errE
   rw [BF64.card_ext3, Nat.cast_pow, Nat.cast_ofNat]
   have h1 : (d : ℝ≥0∞) ≤ (2 : ℝ≥0∞) ^ 63 := by exact_mod_cast hd
   have h2 : (2 : ℝ≥0∞) ^ 63 * ((2 : ℝ≥0∞) ^ 192)⁻¹ = (2 : ℝ≥0∞)⁻¹ ^ 129 := by
@@ -170,6 +170,9 @@ theorem errE_le_εS {d : ℕ} (hd : d ≤ 2 ^ 63) : errE d ≤ εS := by
       one_mul, ENNReal.inv_pow]
   calc (d : ℝ≥0∞) * ((2 : ℝ≥0∞) ^ 192)⁻¹ ≤ (2 : ℝ≥0∞) ^ 63 * ((2 : ℝ≥0∞) ^ 192)⁻¹ := by gcongr
     _ = _ := h2
+
+/-- Every group of at most `2^63` over `|E|` is within `εS` (`≤ 2^-129`). -/
+theorem errE_le_εS {d : ℕ} (hd : d ≤ 2 ^ 63) : errE d ≤ εS := (errE_le_129 hd).trans pow129_le_εS
 
 theorem errE_add (a b : ℕ) : errE a + errE b = errE (a + b) := by
   unfold errE; push_cast; rw [add_mul]
@@ -181,18 +184,21 @@ theorem sum6 : (∑ _i ∈ Finset.range 6, ((1 : ℕ) : ℝ≥0∞) * errE 1) = 
   rw [Finset.sum_const, Finset.card_range, nsmul_eq_mul, Nat.cast_one, one_mul,
     show ((6 : ℕ) : ℝ≥0∞) = (6 : ℝ≥0∞) from rfl, ← Nat.cast_ofNat, errE_smul]
 
-/-- **`kgSpecS`'s side conditions at P20 with one candidate pair** (`L₀ = 1`, the tape at `w = 20`,
-`Pk + 4 = 15`), and its lead `20 · errE 1 ≤ εS`. -/
+/-- `Σ_{6} L₀·errE 1` (ring switching's six challenges with `L₀` candidate pairs). -/
+theorem sum6L (L : ℕ) : (∑ _i ∈ Finset.range 6, (L : ℝ≥0∞) * errE 1) = errE (6 * (L * 1)) := by
+  rw [Finset.sum_const, Finset.card_range, nsmul_eq_mul, errE_smul, errE_smul]
+
+/-- **`kgSpecS`'s side conditions at P20 with `98` candidate pairs** (lvm2 JB-VQP, J1: `L₀ = 98`,
+`candPairs_ncard_le`; the tape at `w = 20`, `Pk + 4 = 15`), and its lead `20·98·errE 1 ≤ εS`. -/
 theorem kg_errs :
-    ((1 : ℕ) : ℝ≥0∞) * errE 46 ≤ εS ∧ ((1 : ℕ) : ℝ≥0∞) * errE 2 + 0 ≤ εS ∧
-    (∑ _i ∈ Finset.range 6, ((1 : ℕ) : ℝ≥0∞) * errE 1) +
-      (((11 + 4 : ℕ) : ℝ≥0∞) * (((1 : ℕ) : ℝ≥0∞) * errE 1) + 0) ≤ εS ∧
-    (∑ _i ∈ Finset.range 6, ((1 : ℕ) : ℝ≥0∞) * errE 1) +
-      (((11 + 4 + 5 : ℕ) : ℝ≥0∞) * (((1 : ℕ) : ℝ≥0∞) * errE 1) + 0) ≤ εS ∧
-    ((15 + 5 : ℕ) : ℝ≥0∞) * (((1 : ℕ) : ℝ≥0∞) * errE 1) + 0 ≤ εS := by
-  simp only [Nat.cast_one, one_mul, add_zero]
-  rw [show (∑ _i ∈ Finset.range 6, errE 1) = errE 6 by simpa using sum6]
-  simp only [errE_smul, errE_add]
+    ((98 : ℕ) : ℝ≥0∞) * errE 46 ≤ εS ∧ ((98 : ℕ) : ℝ≥0∞) * errE 2 + 0 ≤ εS ∧
+    (∑ _i ∈ Finset.range 6, ((98 : ℕ) : ℝ≥0∞) * errE 1) +
+      (((11 + 4 : ℕ) : ℝ≥0∞) * (((98 : ℕ) : ℝ≥0∞) * errE 1) + 0) ≤ εS ∧
+    (∑ _i ∈ Finset.range 6, ((98 : ℕ) : ℝ≥0∞) * errE 1) +
+      (((11 + 4 + 5 : ℕ) : ℝ≥0∞) * (((98 : ℕ) : ℝ≥0∞) * errE 1) + 0) ≤ εS ∧
+    ((15 + 5 : ℕ) : ℝ≥0∞) * (((98 : ℕ) : ℝ≥0∞) * errE 1) + 0 ≤ εS := by
+  rw [sum6L]
+  simp only [errE_smul, errE_add, add_zero]
   exact ⟨errE_le_εS (by norm_num), errE_le_εS (by norm_num), errE_le_εS (by norm_num),
     errE_le_εS (by norm_num), errE_le_εS (by norm_num)⟩
 

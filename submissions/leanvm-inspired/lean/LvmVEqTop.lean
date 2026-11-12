@@ -18,7 +18,7 @@ only), the two caps, the middle phases `dMid` (phases 2–7, grouped as `midS`: 
 phase 3b, then `dKg` grouped as `kgProgS`) returning `dClaims` and the accumulator, then `dOpen`
 (`decideProg_dTop`). A23: the refinement is under the promise that the accumulator passes `AccOk`
 (`RefAtP`; V_S checks it after the run, the language in phase 3b: `LvmAccNodeFold.ref_busTabAcc`). Against
-`PSWith (midS tabs) x`: the caps by `ref_skip` (`commitRootUd cfgMain24/cfgRec20` read the caps of
+`PSWith (midS tabs) x`: the caps by `ref_skip` (`commitRootUd cfgMain24G/cfgRec20G` read the caps of
 `(19, 64)` and `(15, 64)`, `32 · 2^8` and `32 · 2^7` bytes), phases 2–3 by H1's `ref_busTab`,
 phases 4/6 by H2's `ref_dKec`, (lvm2 S2) phases 4–5 by `ref_dTapeW` (`ref_dTape`, `ref_dWire`), phase 7 by `ref_dKsLink`; the native claim list
 `dClaims` is `CRel`-related to `assembleS`'s list (`dClaims_rel`), so `on_rel` relates the two
@@ -31,7 +31,7 @@ set_option autoImplicit false
 namespace Lvm.VEq
 
 open Lvm DM LeanVM.Parameters LeanVM.Protocol LeanVM.Protocol.Compile Lk
-open LeanVM.Protocol.Whir.Sound (cfgRec20 cfgMain24)
+open LeanVM.Protocol.Whir.Sound (cfgRec20G cfgMain24G cfgMain24J)
 
 /-! ## `decideProg` grouped as `P_S` -/
 
@@ -233,9 +233,9 @@ theorem ref_dMid (tabs : Pub → List M3.Tab) (x : List UInt8) (F : Fit P20 (tab
     have h := dClaims_rel tabs (pubX x) bt.1 cl hb ht kg kg' hk
     exact RefAt.pure ⟨on_rel h .crec, on_rel h .main⟩
 
-theorem commitRootUd_main : Verifier.commitRootUd cfgMain24 = VerifierProgram.readCommitment 19 64 := rfl
+theorem commitRootUd_main : Verifier.commitRootUd cfgMain24G = VerifierProgram.readCommitment 19 64 := rfl
 
-theorem commitRootUd_rec : Verifier.commitRootUd cfgRec20 = VerifierProgram.readCommitment 15 64 := rfl
+theorem commitRootUd_rec : Verifier.commitRootUd cfgRec20G = VerifierProgram.readCommitment 15 64 := rfl
 
 /-- **V_S refines `P_S`** under the promise that its value (phase 3b's accumulator) passes
 `AccOk`, given the openings' refinement (H4's `ref_dOpen`, `monoD_dOpen`). -/
@@ -244,7 +244,7 @@ theorem ref_decideOf
       List.Forall₂ SCRel ((claims.filter (·.1 == .crec)).map (·.2.onStack)) cl.1 →
       List.Forall₂ SCRel ((claims.filter (·.1 == .main)).map (·.2.onStack)) cl.2 →
       Ref20 sig (dOpen P20 claims)
-        (Verifier.verifyStackedUd cfgRec20 cl.1 >>= fun _ ↦ Verifier.verifyStackedUd cfgMain24 cl.2)
+        (Verifier.verifyStackedUd cfgRec20G cl.1 >>= fun _ ↦ Verifier.verifyStackedJ (cfgMain24J 3) cl.2)
         fun _ _ ↦ True)
     (hmO : ∀ claims, MonoD (dOpen P20 claims))
     (tabs : Pub → List M3.Tab) (vk c : RecursionFast.Digest) (x : List UInt8)
@@ -278,9 +278,9 @@ theorem ref_decideOf
   -- the openings
   have h := RefAt.bind (fun _ ↦ MonoD.pure _) (hO r.1 cl h1 h2)
     fun _ _ _ ↦ RefAt.pure (R := fun (_ : Acc) (b : Bool) ↦ b = true) (b := r.2) (a := true) rfl
-  have e : ((Verifier.verifyStackedUd cfgRec20 cl.1 >>= fun _ ↦
-      Verifier.verifyStackedUd cfgMain24 cl.2).bind fun _ ↦ VerifierProgram.ret true) =
-      (Verifier.verifyStackedUd cfgRec20 cl.1 >>= fun _ ↦ Verifier.verifyStackedUd cfgMain24 cl.2 >>=
+  have e : ((Verifier.verifyStackedUd cfgRec20G cl.1 >>= fun _ ↦
+      Verifier.verifyStackedJ (cfgMain24J 3) cl.2).bind fun _ ↦ VerifierProgram.ret true) =
+      (Verifier.verifyStackedUd cfgRec20G cl.1 >>= fun _ ↦ Verifier.verifyStackedJ (cfgMain24J 3) cl.2 >>=
         fun _ ↦ pure true) := VerifierProgram.bind_assoc _ _ _
   rw [e] at h
   exact h.toP _

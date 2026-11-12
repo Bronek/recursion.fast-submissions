@@ -7,7 +7,7 @@ import LvmVFastQ
 
 `VS20 = VSL P20 M3.tabsP20` builds the node program's tables `M3.tabsP20 pub` five times per check
 (`M3.real`'s fields), and every build recomputes Q_link's static table `qltData` (≈ 4.5 s); the
-closed forms of the 12 position `BITS` classes call `posCell`/`ansLane` per cell, which walk the
+closed forms of the position `BITS` classes call `posCell`/`ansLane` per cell, which walk the
 schedule each time (≈ 67 s per sweep). Here:
 
 * `posCellF`: `posCell` with its schedule-derived bases passed in (`posCellF_eq`);
@@ -196,45 +196,82 @@ theorem posCellF_eq (C : QCfg) (k : Nat) (o : OpenInfo) (x : Nat) (u : BOut × N
     simp only [posCellF, posCell]
     rw [hp]
 
-/-- **The position classes' tables, cached** (`posSpecs`' classes; caches over `max n 1` rows). -/
+/-- `posOc C l U r j` with the column's output `u = U[j]`, the opening's bases
+`b = (bitBase, spB + spBefore, posIdx … 0)`, its row's outputs `LO = laneOuts H l`, `fl = flB C` and
+`pa2 = 2^pa` passed in. -/
+def posOcF (l : Nat) (u : BOut) (LO : List (BOut × Nat × Nat)) (fl pa2 : Nat) (b : Nat × Nat × Nat)
+    (r : Nat × OpenInfo × Nat × Nat) (j : Nat) : Nat :=
+  match LO.find? (fun e => e.1 == u) with
+  | some e => posCellF r.2.1.L.height r.2.1.L.t (padT r.2.1.L.t) (nRows r.2.1) b.1 b.2.1 fl pa2 b.2.2 r.2.2.1 e
+  | none => r.2.2.2 + (j - QAsm.laneBits r.2.1.L.height l)
+
+theorem posOcF_eq (C : QCfg) (l : Nat) (U : List BOut) (r : Nat × OpenInfo × Nat × Nat) (j : Nat) :
+    posOcF l (U.getD j (.bit 0)) (laneOuts r.2.1.L.height l) (flB C) (2 ^ C.pa)
+      (bitBase C.p (lay C) r.1, spB C + spBefore C.p r.1, posIdx C.p r.1 0) r j = posOc C l U r j := by
+  unfold posOcF posOc
+  generalize (laneOuts r.2.1.L.height l).find? (fun e => e.1 == U.getD j (.bit 0)) = d
+  cases d with
+  | none => rfl
+  | some e => exact posCellF_eq C r.1 r.2.1 r.2.2.1 e
+
+/-- **The position classes' tables, cached** (`posSpecs`' lane classes; caches over `max n 1` rows; the
+openings' bases computed once). -/
 def posTabsA (C : QCfg) (bpl : Nat → Nat → Bool × Nat) : List Tab :=
   let O0 := offs C.p
   let PA := (plan C.p).toArray
-  let cls := (List.range (opens C.p).length).flatMap fun k =>
-    let o := (opens C.p).getD k default
-    (List.range (nLanes o.L.height)).map fun l => (k, o, l)
-  cls.zipIdx.map fun ((k, o, l), c) =>
-    let outs := laneOuts o.L.height l
-    let m := max (nRows o) 1
-    let bb := bitBase C.p (lay C) k
-    let sb := spB C + spBefore C.p k
-    let fl := flB C
-    let px := posIdx C.p k 0
-    let W := ((List.range m).map fun x => FK.x ^ (ansLaneF O0 PA C.p (o.pe + x) + l)).toArray
-    let O := (outs.map fun u => ((List.range m).map fun x =>
-      FK.x ^ posCellF o.L.height o.L.t (padT o.L.t) (nRows o) bb sb fl (2 ^ C.pa) px x u).toArray).toArray
-    tabA ⟨clog2 (nRows o), nRows o, outs.map (·.1), true, fun x => ansLane C.p (o.pe + x) + l,
-      fun j x => posCell C k o x (outs.getD j (.bit 0, 0, 0)), bpl c⟩ W O
+  let fl := flB C
+  let pa2 := 2 ^ C.pa
+  let BA := ((List.range (opens C.p).length).map fun k =>
+    (bitBase C.p (lay C) k, spB C + spBefore C.p k, posIdx C.p k 0)).toArray
+  let bs : Nat → Nat × Nat × Nat := fun k => match BA[k]? with
+    | some b => b
+    | none => (bitBase C.p (lay C) k, spB C + spBefore C.p k, posIdx C.p k 0)
+  (List.range (nPosCls C)).map fun l =>
+    let U := lnOuts C.p l
+    let UA := U.toArray
+    let R := posRows C l
+    let RA := R.toArray
+    let m := max R.length 1
+    let RD := ((List.range m).map fun y => let r := RA.getD y default;
+      (r, laneOuts r.2.1.L.height l, bs r.1)).toArray
+    let W := ((List.range m).map fun y => let r := (RD.getD y default).1;
+      FK.x ^ (ansLaneF O0 PA C.p (r.2.1.pe + r.2.2.1) + l)).toArray
+    let O := ((List.range U.length).map fun j => ((List.range m).map fun y =>
+      let d := RD.getD y default; FK.x ^ posOcF l (UA.getD j (.bit 0)) d.2.1 fl pa2 d.2.2 d.1 j).toArray).toArray
+    tabA (posSpec C bpl l) W O
 
 theorem posTabsA_eq (C : QCfg) (bpl : Nat → Nat → Bool × Nat) :
     posTabsA C bpl = (posSpecs C bpl).map BSpec.tab := by
+  have hbs : ∀ k, (match (((List.range (opens C.p).length).map fun k =>
+      (bitBase C.p (lay C) k, spB C + spBefore C.p k, posIdx C.p k 0)).toArray)[k]? with
+    | some b => b
+    | none => (bitBase C.p (lay C) k, spB C + spBefore C.p k, posIdx C.p k 0)) =
+      (bitBase C.p (lay C) k, spB C + spBefore C.p k, posIdx C.p k 0) := fun k => by
+    rw [List.getElem?_toArray, List.getElem?_map]
+    by_cases hk : k < (opens C.p).length <;> simp [hk]
   unfold posTabsA posSpecs
   rw [List.map_map]
   apply List.map_congr_left
-  rintro ⟨⟨k, o, l⟩, c⟩ -
-  simp only [Function.comp, ansLaneF_eq']
+  intro l _
+  simp only [Function.comp]
   apply tabA_eq
-  · intro x hx; exact getD_range _ _ _ _ hx
-  · intro j hj x hx
-    simp only [List.length_map] at hj
-    dsimp only
-    rw [getD_map_toArray _ _ j _ hj, getD_range _ _ _ _ hx, posCellF_eq, List.getD_eq_getElem?_getD,
-      List.getElem?_eq_getElem hj, Option.getD_some]
+  · intro y hy
+    rw [posSpec_n] at hy
+    rw [posSpec_wc]
+    simp only [getD_range _ _ _ _ hy, ansLaneF_eq']
+    simp only [toArray_getD]
+  · intro j hj y hy
+    rw [posSpec_n] at hy
+    rw [posSpec_outs] at hj
+    rw [posSpec_oc, getD_map_toArray _ _ j _ (by simpa using hj)]
+    simp only [List.getElem_range, getD_range _ _ _ _ hy, hbs]
+    simp only [toArray_getD, posOcF_eq]
 
-/-- The aux tables with the position classes cached (then the `s'` byte-shift class, `sSpec`). -/
+/-- The aux tables with the position classes cached (then the `s'` bit class `sSpec` and the PoW class
+`powSpec`). -/
 def auxF (C : QCfg) (D : QData) : List Tab :=
   (sigSpecs (sigIn C) (sigOut C) (bplOf D)).map cacheTab ++ posTabsA C (fun c => bplOf D (6 + c)) ++
-    [cacheTab (sSpec C (bplOf D (6 + nPosCls C)))]
+    [cacheTab (sSpec C (bplOf D (6 + nPosCls C))), cacheTab (powSpec C (bplOf D (7 + nPosCls C)))]
 
 theorem auxF_eq (C : QCfg) (D : QData) : auxF C D = aux C D := by
   unfold auxF aux bspecs
@@ -948,8 +985,8 @@ def decideProgB (p : Params) (m : M3) (bb : BusIn → BusOutB) (vk c : Vector UI
     bus.claims ++ m.tableClaims pub evals ++ (tapeClaims p tp wo pub ++ ksClaims).map (.main, ·) ++
       m.ksOutputClaims rk vks ++ kLinkClaims
   let on (com : Com) := (claims.filter (·.1 == com)).map (·.2.onStack)
-  verifyStackedOpening p.recLevels p.nuRec (on .crec) false p.grind
-  verifyStackedOpening p.mainLevels p.nuMain (on .main) false p.grind
+  verifyStackedOpening p.recLevels p.nuRec (on .crec) false p.grind false
+  verifyStackedOpening p.mainLevels p.nuMain (on .main) false p.grind p.mainOod
   pure accOut
 
 theorem decideProgB_eq (p : Params) (m : M3) (bb : BusIn → BusOutB) (h : BusAgree m bb) (vk c : Vector UInt8 32) :

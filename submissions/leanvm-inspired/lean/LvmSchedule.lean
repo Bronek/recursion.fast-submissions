@@ -155,6 +155,31 @@ def whirLevelsI (com : Com) (finalLog g : Nat) : List Level → List Item
   | [L] => levelI com finalLog g L none
   | L :: N :: rest => levelI com finalLog g L (some N) ++ whirLevelsI com finalLog g (N :: rest)
 
+/-- **One WHIR level with an out-of-domain sample** (lvm2 JB-VQP; `LvmWhirProgJ.whirLevelsJ`, JB-L
+§3): as `levelI`, and on a level with a next commitment, right after the next cap, the OOD point
+(`κ` samples, `κ` the folded message's variables), its answer (`rd 1`) and its intro polynomial
+(`rd 2`), before the proof of work. -/
+def levelIJ (com : Com) (finalLog g : Nat) (L : Level) (next : Option Level) : List Item :=
+  List.flatten [(List.replicate L.fold (smp 1 ++ rd 2)).flatten,
+    (match next with
+      | none => rd (2 ^ finalLog)
+      | some N => [.cap N.cap ⟨com, L.level + 1⟩] ++ smp L.kappa ++ rd 1 ++ rd 2),
+    grindI g,
+    [.positions ⟨com, L.level⟩], smp 1, [.opening ⟨com, L.level⟩], rd 2,
+    (match next with
+      | none => tailI finalLog
+      | some _ => [])]
+
+/-- The levels of a WHIR opening with OOD samples. -/
+def whirLevelsIJ (com : Com) (finalLog g : Nat) : List Level → List Item
+  | [] => []
+  | [L] => levelIJ com finalLog g L none
+  | L :: N :: rest => levelIJ com finalLog g L (some N) ++ whirLevelsIJ com finalLog g (N :: rest)
+
+/-- `verify_whir` with OOD samples (`verifyWhirJ`, `ood = true`). -/
+def whirIJ (com : Com) (levels : List Level) (finalLog g : Nat) : List Item :=
+  rd 2 ++ whirLevelsIJ com finalLog g levels
+
 /-- `verify_whir`: the initial round (2 scalars), then the levels (`g` PoW bits each). -/
 def whirI (com : Com) (levels : List Level) (finalLog g : Nat) : List Item :=
   rd 2 ++ whirLevelsI com finalLog g levels
@@ -178,7 +203,7 @@ def phases (p : Params) : List (Phase × List Item) :=
    (.ks, List.flatten [smp p.ksLog, rd lanes, keccakI p.ksLog, smp ringStages]),
    (.ksLink, List.flatten [smp (p.ksLog + laneBits), sumcheckI p.ksLog 2, rd 4]),
    (.openRec, smp 1 ++ whirI .crec p.recLevels p.recFinalLog p.grind),
-   (.openMain, smp 1 ++ whirI .main p.mainLevels p.mainFinalLog p.grind)]
+   (.openMain, smp 1 ++ (if p.mainOod then whirIJ else whirI) .main p.mainLevels p.mainFinalLog p.grind)]
 
 /-- **The schedule**: the items of every phase, in order. -/
 def schedule (p : Params) : List Item := (phases p).flatMap (·.2)
@@ -353,87 +378,87 @@ def queryList (p : Params) : List (QClass × Nat) :=
 set_option maxRecDepth 100000 in
 /-- All the `P20` checks below in one kernel check, so that `tally P20` is evaluated once
 (BS-1: the eight separate checks took 16 s of kernel time, the two combined 7 s). -/
-private theorem checks_P20 : (qS P20 = 9916 ∧ (tally P20).nFS = 1461 ∧ (tally P20).nLeaf = 849 ∧
-    (tally P20).nNode = 7604 ∧ (tally P20).nPos = 107 ∧ (tally P20).nScalars = 18106) ∧
-    (piSize P20 = 1094248 ∧ (tally P20).bScalars = 434544 ∧
-    (tally P20).bCaps = 20480 ∧ (tally P20).bRows = 390272 ∧ (tally P20).bSibs = 243328 ∧
-    hashedLen P20 = 1781000 ∧ streamLanes P20 = 222625 ∧ streamCap P20 = 278528 ∧
-    spongeBlocks P20 = 13096) ∧
-    (fileSize P20 = 2880039 ∧ (tally P20).sign = 1424023 ∧
-    eOutWords P20 = 360620 ∧ (tally P20).maxQ = 196688 ∧ seedLen = 5648) ∧
+private theorem checks_P20 : (qS P20 = 8295 ∧ (tally P20).nFS = 1480 ∧ (tally P20).nLeaf = 731 ∧
+    (tally P20).nNode = 6082 ∧ (tally P20).nPos = 94 ∧ (tally P20).nScalars = 9436) ∧
+    (piSize P20 = 783192 ∧ (tally P20).bScalars = 226464 ∧
+    (tally P20).bCaps = 24576 ∧ (tally P20).bRows = 331904 ∧ (tally P20).bSibs = 194624 ∧
+    hashedLen P20 = 1357008 ∧ streamLanes P20 = 169626 ∧ streamCap P20 = 278528 ∧
+    spongeBlocks P20 = 9979) ∧
+    (fileSize P20 = 2144991 ∧ (tally P20).sign = 1058387 ∧
+    eOutWords P20 = 268739 ∧ (tally P20).maxQ = 68456 ∧ seedLen = 5648) ∧
     (lengthRule P20 = true ∧ (tally P20).fsLens =
-    [32, 56, 80, 104, 128, 320, 632, 728, 1160, 1184, 1568, 4176, 12320, 24656, 91352, 196688]) ∧
+    [32, 56, 80, 104, 128, 176, 320, 632, 728, 1160, 1184, 1568, 4176, 12320, 12368, 24656, 68456]) ∧
     (phaseFirst P20 =
-    [(.bus, 2, 5736), (.tables, 150, 42456), (.tape, 180, 137880), (.wire, 901, 256656),
-     (.ks, 929, 261288), (.ksLink, 1272, 319752), (.openRec, 1307, 322992),
-     (.openMain, 3071, 788240)]) ∧
+    [(.bus, 2, 5736), (.tables, 139, 40560), (.tape, 169, 113016), (.wire, 890, 231792),
+     (.ks, 918, 236424), (.ksLink, 1261, 294888), (.openRec, 1296, 298128),
+     (.openMain, 3726, 686912)]) ∧
     (100 * streamLanes P20 ≤ 95 * streamCap P20 ∧ 100 * qS P20 ≤ 95 * 16384 ∧
     100 * (tally P20).maxQ ≤ 95 * 2 ^ 20 ∧ 100 * spongeBlocks P20 ≤ 95 * 2 ^ P20.recRowsLog) := by
   decide +kernel
 
 /-- All the `P8` checks below in one kernel check, so that `tally P8` is evaluated once. -/
-private theorem checks_P8 : (qS P8 = 2711 ∧ (tally P8).nFS = 1059 ∧ (tally P8).nLeaf = 134 ∧
-    (tally P8).nNode = 1516 ∧ (tally P8).nPos = 19 ∧ (tally P8).nScalars = 12675 ∧
-    piSize P8 = 421952 ∧ hashedLen P8 = 612824 ∧ streamLanes P8 = 76603 ∧
-    streamCap P8 = 139264 ∧ (tally P8).maxQ = 98384 ∧ fileSize P8 = 1039567 ∧
-    (tally P8).sign = 515227 ∧ eOutWords P8 = 130561) ∧
+private theorem checks_P8 : (qS P8 = 2321 ∧ (tally P8).nFS = 1097 ∧ (tally P8).nLeaf = 105 ∧
+    (tally P8).nNode = 1117 ∧ (tally P8).nPos = 16 ∧ (tally P8).nScalars = 7759 ∧
+    piSize P8 = 277760 ∧ hashedLen P8 = 441480 ∧ streamLanes P8 = 55185 ∧
+    streamCap P8 = 139264 ∧ (tally P8).maxQ = 60560 ∧ fileSize P8 = 724031 ∧
+    (tally P8).sign = 357923 ∧ eOutWords P8 = 91119) ∧
     (lengthRule P8 = true ∧ (tally P8).fsLens =
-    [32, 56, 80, 104, 128, 176, 320, 592, 632, 728, 1056, 1160, 1184, 1568, 12368, 86696, 98384]) := by
+    [32, 56, 80, 104, 128, 176, 320, 592, 632, 728, 1056, 1160, 1184, 1568, 6224, 12368, 60560]) := by
   decide +kernel
 
-/-- `P20`: `qS = 9,916` = 1 + 1 + 1,461 FS + 849 leaf + 7,604 node; 107 positions queries;
-18,106 scalars. -/
-theorem qS_P20 : qS P20 = 9916 ∧ (tally P20).nFS = 1461 ∧ (tally P20).nLeaf = 849 ∧
-    (tally P20).nNode = 7604 ∧ (tally P20).nPos = 107 ∧ (tally P20).nScalars = 18106 :=
+/-- `P20`: `qS = 8,295` = 1 + 1 + 1,480 FS + 849 leaf + 6,082 node; 107 positions queries;
+9,436 scalars. -/
+theorem qS_P20 : qS P20 = 8295 ∧ (tally P20).nFS = 1480 ∧ (tally P20).nLeaf = 731 ∧
+    (tally P20).nNode = 6082 ∧ (tally P20).nPos = 94 ∧ (tally P20).nScalars = 9436 :=
   checks_P20.1
 
-/-- `P20`: `piSize = 1,094,248` B (scalars 434,544, caps 20,480, rows 390,272, siblings
-243,328), `L = 1,781,000`, `T = 222,625` lanes of a capacity of 278,528. -/
-theorem sizes_P20 : piSize P20 = 1094248 ∧ (tally P20).bScalars = 434544 ∧
-    (tally P20).bCaps = 20480 ∧ (tally P20).bRows = 390272 ∧ (tally P20).bSibs = 243328 ∧
-    hashedLen P20 = 1781000 ∧ streamLanes P20 = 222625 ∧ streamCap P20 = 278528 ∧
-    spongeBlocks P20 = 13096 :=
+/-- `P20`: `piSize = 783,192` B (scalars 226,464, caps 24,576, rows 331,904, siblings
+194,624), `L = 1,357,008`, `T = 169,626` lanes of a capacity of 331,904. -/
+theorem sizes_P20 : piSize P20 = 783192 ∧ (tally P20).bScalars = 226464 ∧
+    (tally P20).bCaps = 24576 ∧ (tally P20).bRows = 331904 ∧ (tally P20).bSibs = 194624 ∧
+    hashedLen P20 = 1357008 ∧ streamLanes P20 = 169626 ∧ streamCap P20 = 278528 ∧
+    spongeBlocks P20 = 9979 :=
   checks_P20.2.1
 
-/-- `P20`: signed file 2,880,039 B, SIGN body 1,424,023 B, `E` output 360,620 words, largest
-query 196,688 B, seed 5,648 B. -/
-theorem files_P20 : fileSize P20 = 2880039 ∧ (tally P20).sign = 1424023 ∧
-    eOutWords P20 = 360620 ∧ (tally P20).maxQ = 196688 ∧ seedLen = 5648 :=
+/-- `P20`: signed file 2,144,991 B, SIGN body 1,058,387 B, `E` output 268,739 words, largest
+query 68,456 B, seed 5,648 B. -/
+theorem files_P20 : fileSize P20 = 2144991 ∧ (tally P20).sign = 1058387 ∧
+    eOutWords P20 = 268739 ∧ (tally P20).maxQ = 68456 ∧ seedLen = 5648 :=
   checks_P20.2.2.1
 
 /-- `P20`: the length rule holds, and the distinct FS lengths are sixteen. -/
 theorem lengthRule_P20 : lengthRule P20 = true ∧ (tally P20).fsLens =
-    [32, 56, 80, 104, 128, 320, 632, 728, 1160, 1184, 1568, 4176, 12320, 24656, 91352, 196688] :=
+    [32, 56, 80, 104, 128, 176, 320, 632, 728, 1160, 1184, 1568, 4176, 12320, 12368, 24656, 68456] :=
   checks_P20.2.2.2.1
 
 /-- `P20`: the first entry of each phase (FRZ-0, "Sizes per phase"). -/
 theorem phaseFirst_P20 : phaseFirst P20 =
-    [(.bus, 2, 5736), (.tables, 150, 42456), (.tape, 180, 137880), (.wire, 901, 256656),
-     (.ks, 929, 261288), (.ksLink, 1272, 319752), (.openRec, 1307, 322992),
-     (.openMain, 3071, 788240)] :=
+    [(.bus, 2, 5736), (.tables, 139, 40560), (.tape, 169, 113016), (.wire, 890, 231792),
+     (.ks, 918, 236424), (.ksLink, 1261, 294888), (.openRec, 1296, 298128),
+     (.openMain, 3726, 686912)] :=
   checks_P20.2.2.2.2.1
 
-/-- `P8`: `qS = 2,711` (1,059 FS, 134 leaf, 1,516 node; 19 positions), 12,675 scalars,
-`piSize = 421,952`, `L = 612,824`, `T = 76,603` of 139,264, largest query 98,384. -/
-theorem sizes_P8 : qS P8 = 2711 ∧ (tally P8).nFS = 1059 ∧ (tally P8).nLeaf = 134 ∧
-    (tally P8).nNode = 1516 ∧ (tally P8).nPos = 19 ∧ (tally P8).nScalars = 12675 ∧
-    piSize P8 = 421952 ∧ hashedLen P8 = 612824 ∧ streamLanes P8 = 76603 ∧
-    streamCap P8 = 139264 ∧ (tally P8).maxQ = 98384 ∧ fileSize P8 = 1039567 ∧
-    (tally P8).sign = 515227 ∧ eOutWords P8 = 130561 :=
+/-- `P8`: `qS = 2,321` (1,097 FS, 134 leaf, 977 node; 19 positions), 7,759 scalars,
+`piSize = 277,760`, `L = 441,480`, `T = 55,185` of 139,264, largest query 60,560. -/
+theorem sizes_P8 : qS P8 = 2321 ∧ (tally P8).nFS = 1097 ∧ (tally P8).nLeaf = 105 ∧
+    (tally P8).nNode = 1117 ∧ (tally P8).nPos = 16 ∧ (tally P8).nScalars = 7759 ∧
+    piSize P8 = 277760 ∧ hashedLen P8 = 441480 ∧ streamLanes P8 = 55185 ∧
+    streamCap P8 = 139264 ∧ (tally P8).maxQ = 60560 ∧ fileSize P8 = 724031 ∧
+    (tally P8).sign = 357923 ∧ eOutWords P8 = 91119 :=
   checks_P8.1
 
 /-- `P8`: the length rule and seventeen distinct FS lengths. -/
 theorem lengthRule_P8 : lengthRule P8 = true ∧ (tally P8).fsLens =
-    [32, 56, 80, 104, 128, 176, 320, 592, 632, 728, 1056, 1160, 1184, 1568, 12368, 86696, 98384] :=
+    [32, 56, 80, 104, 128, 176, 320, 592, 632, 728, 1056, 1160, 1184, 1568, 6224, 12368, 60560] :=
   checks_P8.2
 
 /-- The grinding test sets (PI-GRIND, not frozen): the length rule holds (the separator's FS query
 absorbs a cap or a final, the PoW challenge's is 56 B, the positions' first 32 B), and their sizes:
-P20G `qS = 9,000`, `piSize = 1,025,800`, `T = 206,193`; P8G `qS = 2,381`, `piSize = 399,840`,
-`T = 70,977`. -/
-theorem checks_G : lengthRule P20G = true ∧ qS P20G = 9000 ∧ piSize P20G = 1025800 ∧
-    streamLanes P20G = 206193 ∧ lengthRule P8G = true ∧ qS P8G = 2381 ∧ piSize P8G = 399840 ∧
-    streamLanes P8G = 70977 := by
+P20G `qS = 9,844`, `piSize = 897,192`, `T = 197,157`; P8G `qS = 2,547`, `piSize = 294,288`,
+`T = 59,197` (S4: two `C_rec` levels) (UD, no OOD: PI-GRIND's sets, not J1's). -/
+theorem checks_G : lengthRule P20G = true ∧ qS P20G = 9844 ∧ piSize P20G = 897192 ∧
+    streamLanes P20G = 197157 ∧ lengthRule P8G = true ∧ qS P8G = 2547 ∧ piSize P8G = 294288 ∧
+    streamLanes P8G = 59197 := by
   decide +kernel
 
 /-- The capacities of BLUEPRINT §3.3 with WP-0's 5 % margin: `T ≤ 0.95 ·` the stream capacity,

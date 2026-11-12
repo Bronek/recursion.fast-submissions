@@ -1,11 +1,11 @@
--- WP-13b: the decoder's correctness from WP-7's extraction facts (`LvmWhirDoom.ud_extract_rec20`); new.
+-- WP-13b: the decoder's correctness from WP-7's extraction facts (`LvmWhirDoom.ud_extract_rec20_l0`); new.
 import LvmXDecLv
 import LvmWhirDoom
 
 /-!
 # The decoder returns the unique candidate's message
 
-WP-7's `ud_extract_rec20`: for a committed word `W` of `C_rec` (`μ = 19`, `R = 2`, threshold
+WP-7's `ud_extract_rec20_l0`: for a committed word `W` of `C_rec` (`μ = 19`, `R = 2`, threshold
 `udThr 13 2`), the fold challenges `α ∈ E^6` and the final residual `f`, if neither the commitment
 nor the residual is doomed, there is exactly one candidate `q` (a `K`-valued stack whose lane-wise
 encoding agrees with `W` on `≥ thr` columns), it is good, `f = foldMsg α q`, and off the luck
@@ -128,7 +128,7 @@ theorem fN_foldMsg (α : Fin laneBits → E) (q : Column 19) {v : ℕ} (hv : v <
 /-! ## The theorem -/
 
 /-- **The decoder returns the unique candidate's message** (BLUEPRINT §6.2, from WP-7's
-`ud_extract_rec20`): not doomed after the commitment and after the residual, and not lucky. -/
+`ud_extract_rec20_l0`): not doomed after the commitment and after the residual, and not lucky. -/
 theorem decodeRec_of_ud (Good : Column 19 → Prop) (W : Compile.Word) (α : Fin laneBits → E)
     (f : (Fin (19 - laneBits) → Bool) → E) (hW : ∀ v < 2 ^ 15, (W v).length = 64)
     (hC : ¬ CommitDoomUd 19 2 (udThr 13 2) Good W)
@@ -137,7 +137,7 @@ theorem decodeRec_of_ud (Good : Column 19 → Prop) (W : Compile.Word) (α : Fin
       (∀ q' ∈ Candidates 19 2 (udThr 13 2) W, q' = q) ∧
       (¬ FoldAllLuck α (laneRows 19 2 W) (encRows 19 2 q) →
         decodeRec (wdOf W) (alphaN α) (fNr f) = some ((List.range (2 ^ 19)).map (msgOf q))) := by
-  obtain ⟨q, hq, hG, huniq, hf, hcard, hluck⟩ := ud_extract_rec20 Good W α f hC hF
+  obtain ⟨q, hq, hG, huniq, hf, hcard, hluck⟩ := ud_extract_rec20_l0 Good W α f hC hF
   refine ⟨q, hq, hG, huniq, fun hL => ?_⟩
   have hfx : ∀ x : Fin (2 ^ (19 - laneBits + 2)),
       x ∈ agreeSet (laneRows 19 2 W) (encRows 19 2 q) ↔

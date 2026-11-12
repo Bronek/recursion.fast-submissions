@@ -220,12 +220,12 @@ def layOf (p : Params) (aQ K m pa : Nat) : Layout :=
 /-- The input cells of the standalone layout. -/
 def nInKOf (lay : Layout) : Nat := lay.fl + 2 * 2 ^ lay.pa
 
-/-- At `P20`: 2^11 QLT iterations (1,471 entries), step array 2^8, `readd` region 2^18 lanes, 2^10
+/-- At `P20`: 2^11 QLT iterations (1,500 entries), step array 2^8, `readd` region 2^18 lanes, 2^10
 position cells (991 positions). -/
 def lay20 : Layout := layOf P20 11 8 18 10
 
 /-- At `P8`: 2^10 QLT iterations (914 entries), step array 2^5, `readd` region 2^17 lanes (the
-stream's 76,603 lanes pass 2^16; as `LvmQAsmLay.cfg8`), 2^8 position cells (156 positions). -/
+stream's 55,185 lanes pass 2^16; as `LvmQAsmLay.cfg8`), 2^8 position cells (156 positions). -/
 def lay8 : Layout := layOf P8 11 5 17 8
 
 theorem ksLog_P20 : P20.ksLog = P20.recRowsLog + 1 := by decide

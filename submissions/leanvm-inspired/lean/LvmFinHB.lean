@@ -123,11 +123,13 @@ structure BVFacts : Prop where
   n1 : ∀ vk c x qm qr, HBPrem hτ' hτT vk c x qm qr → 1 ≤ (pubOf vk (hdrOf x).cL (sig20 qr)).n
   nN : ∀ vk c x qm qr, HBPrem hτ' hτT vk c x qm qr → (pubOf vk (hdrOf x).cL (sig20 qr)).n ≤ 2 ^ P20.logN
   posr : ∀ vk c x qm qr, HBPrem hτ' hτT vk c x qm qr →
-    Lvm.Har.PosOk (Lvm.Har.cfgRec P20 (Lvm.Har.posBase cfg20)) (mem20 hτ' x qm qr) (sig20 qr) 0
-      P20.recLevels (Lvm.Har.openU P20 + 15)
+    Lvm.Har.PosOk (Lvm.Har.cfgRec P20 (Lvm.Har.posBase cfg20) (Lvm.Har.pwBase cfg20)) (mem20 hτ' x qm qr)
+      (sig20 qr) 0 P20.recLevels (Lvm.Har.openU P20 + 15)
   posm : ∀ vk c x qm qr, HBPrem hτ' hτT vk c x qm qr →
-    Lvm.Har.PosOk (Lvm.Har.cfgMain P20 (Lvm.Har.posBase cfg20)) (mem20 hτ' x qm qr) (sig20 qr) 0
-      P20.mainLevels (Lvm.Har.stackEndL P20.recLevels (Lvm.Har.openU P20 + 15) + 15)
+    Lvm.Har.PosOk (Lvm.Har.cfgMain P20 (Lvm.Har.posBase cfg20) (Lvm.Har.pwBase cfg20)) (mem20 hτ' x qm qr)
+      (sig20 qr) 0 P20.mainLevels (Lvm.Har.stackEndL P20.grind false P20.recLevels (Lvm.Har.openU P20 + 15) + 15)
+  pw : ∀ vk c x qm qr, HBPrem hτ' hτT vk c x qm qr → ∀ k < (Lvm.QLink.opens P20).length,
+    ((mem20 hτ' x qm qr).k (Lvm.QAsm.pwB cfg20 + k)).val.toNat < 2 ^ (64 - P20.grind)
 
 variable {hτ' hτT}
 
@@ -164,20 +166,23 @@ theorem harith20 {P4 P5 P6 P7 P8 : ℕ}
   -- the `PUB` cells
   have hpub : ∀ j < pubLanes, (mem20 hτ' x qm qr).k (pbB cfg20 + j) = hdrLane x j := hin.pub
   -- the end of `Σ'`
-  have hend : 8 * Lvm.Har.stackEndL cfg20.p.mainLevels
-      (Lvm.Har.stackEndL cfg20.p.recLevels (Lvm.Har.openU cfg20.p + 15) + 15) = (sig20 qr).size := by
-    rw [show cfg20.p = P20 from rfl, (Lvm.Har.lay20 (Lvm.Har.posBase cfg20)).2.2.2.1, sig20,
+  have hend : 8 * Lvm.Har.stackEndL cfg20.p.grind cfg20.p.mainOod cfg20.p.mainLevels
+      (Lvm.Har.stackEndL cfg20.p.grind false cfg20.p.recLevels (Lvm.Har.openU cfg20.p + 15) + 15) =
+        (sig20 qr).size := by
+    rw [show cfg20.p = P20 from rfl, (Lvm.Har.lay20 (Lvm.Har.posBase cfg20) (Lvm.Har.pwBase cfg20)).2.2.2.1, sig20,
       traceBytesB_decode hS20 hL, sigma_size hsz]
   -- `BV`'s position facts at `cfg20.p` (a rewrite: the kernel compares the stack ends syntactically)
-  have hposr : Lvm.Har.PosOk (Lvm.Har.cfgRec cfg20.p (Lvm.Har.posBase cfg20)) (mem20 hτ' x qm qr) (sig20 qr) 0
-      cfg20.p.recLevels (Lvm.Har.openU cfg20.p + 15) := by
+  have hposr : Lvm.Har.PosOk (Lvm.Har.cfgRec cfg20.p (Lvm.Har.posBase cfg20) (Lvm.Har.pwBase cfg20))
+      (mem20 hτ' x qm qr) (sig20 qr) 0 cfg20.p.recLevels (Lvm.Har.openU cfg20.p + 15) := by
     rw [show cfg20.p = P20 from rfl]; exact BV.posr vk c x qm qr P
-  have hposm : Lvm.Har.PosOk (Lvm.Har.cfgMain cfg20.p (Lvm.Har.posBase cfg20)) (mem20 hτ' x qm qr) (sig20 qr) 0
-      cfg20.p.mainLevels (Lvm.Har.stackEndL cfg20.p.recLevels (Lvm.Har.openU cfg20.p + 15) + 15) := by
+  have hposm : Lvm.Har.PosOk (Lvm.Har.cfgMain cfg20.p (Lvm.Har.posBase cfg20) (Lvm.Har.pwBase cfg20))
+      (mem20 hτ' x qm qr) (sig20 qr) 0 cfg20.p.mainLevels
+      (Lvm.Har.stackEndL cfg20.p.grind false cfg20.p.recLevels (Lvm.Har.openU cfg20.p + 15) + 15) := by
     rw [show cfg20.p = P20 from rfl]; exact BV.posm vk c x qm qr P
   obtain ⟨h1, h2⟩ := Lvm.Har.harith_core cfg20 data20 M3.G20 vk (hdrOf x).cL hH h hS hin.flag
     (vk_cells hpub (okS_vk hok)) (BV.sb vk c x qm qr P) (BV.nb vk c x qm qr P) (BV.n1 vk c x qm qr P)
-    (BV.nN vk c x qm qr P) hposr hposm hend S.hwr S.hwm
+    (BV.nN vk c x qm qr P) hposr hposm hend
+    (fun k hk _ => by rw [show cfg20.p = P20 from rfl] at hk ⊢; exact BV.pw vk c x qm qr P k hk) S.hwr S.hwm
   rw [real_cfg20] at h1 h2
   exact ⟨h1, h2.trans (accC_eq hpub)⟩
 

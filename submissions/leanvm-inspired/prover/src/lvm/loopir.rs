@@ -512,6 +512,8 @@ pub struct Compiled {
     pub gp: Vec<F64>,
     /// P-FIX: the fixed columns of every table group built so far (`m3::group_table`), by `(tau, members)`.
     fcache: FixedCache,
+    /// P-FIX2: the input-independent read counts of `tables_ext` (computed once, at the first build).
+    counts: std::sync::OnceLock<Counts>,
 }
 
 type FixedCache = std::sync::Mutex<HashMap<(usize, Vec<(usize, usize)>), std::sync::Arc<Vec<Vec<F64>>>>>;
@@ -522,7 +524,7 @@ impl Compiled {
         let pieces = q.pieces();
         let n = cells[0].max(cells[1]) + 2;
         let gp = crate::lv::primitives::field::g_powers(n);
-        let mut c = Compiled { q, lay, cells, pieces, glue_mat: Vec::new(), gp, fcache: Default::default() };
+        let mut c = Compiled { q, lay, cells, pieces, glue_mat: Vec::new(), gp, fcache: Default::default(), counts: Default::default() };
         let mut gm = Vec::new();
         for p in c.pieces.iter().filter(|p| c.q.glue.contains(&p.blk)) {
             for col in p.shape.fcols().into_iter().filter(|&f| f != FCol::F) {
@@ -730,6 +732,17 @@ impl Compiled {
     /// `aux_read`: the BITS words and outputs, padding rows included), numbered after the program's reads
     /// of the same cell; the finalize counts include them.
     pub fn tables_ext(&self, run: &Run, extra: &[usize]) -> Tables {
+        let t = self.tables_fast(run, extra);
+        if std::env::var_os("LVM_TABLES_REF").is_some() {
+            let r = self.tables_ext_ref(run, extra);
+            assert!(t.cols == r.cols && t.in_fin == r.in_fin && t.reads == r.reads && t.extra_cnt == r.extra_cnt, "P-FIX2 tables = the reference tables");
+            eprintln!("lvm: LVM_TABLES_REF: the tables equal the reference");
+        }
+        t
+    }
+
+    /// The single serial pass (P-QUICK lever 5b), kept as the reference of [`Compiled::tables_ext`].
+    pub fn tables_ext_ref(&self, run: &Run, extra: &[usize]) -> Tables {
         let mut reads = [vec![0u32; self.cells[0]], vec![0u32; self.cells[1]]];
         let mut dlog: HashMap<(usize, u32), HashMap<u64, usize>> = HashMap::new();
         let mut cols: Vec<Vec<Vec<F64>>> = Vec::with_capacity(self.pieces.len());
@@ -952,4 +965,269 @@ pub fn synthetic(n_in: usize, big: usize, small: usize) -> Program {
         .collect();
     blocks.push(Block { dims: vec![], tpl: glue });
     Program { n_in: [n_in, 0], blocks, glue: vec![] }
+}
+
+// ---------------------------------------------------------------- P-FIX2: the read counts before `ready`
+
+/// The input-independent part of `tables_ext`'s read counts. Every read of a statically addressed cell gets the
+/// count of the reads of that cell before it, in the program's order (pieces, rows, arguments, then a `Readd`
+/// row's own read). Only `Readd` reads have data-dependent cells (a discrete log of their argument), and they
+/// always land in their table `[lo, lo + 2^m)`: so the static reads' counts, *without* the `Readd` reads, are
+/// computed once, and each build adds the `Readd` reads that precede a static read of the same cell.
+pub struct Counts {
+    /// Per piece: `(column, count per row)` of every `Cnt` column (`u32::MAX`: the row does not read; the column
+    /// holds zero there).
+    cnt: Vec<Vec<(usize, Vec<u32>)>>,
+    /// Per piece: its `Dcnt` column, if it has `Readd` rows.
+    dcnt: Vec<Option<usize>>,
+    /// Static reads per cell, per memory.
+    total: [Vec<u32>; 2],
+    /// The `Readd` reads in order: `(sequence number, piece, row, memory, lo, m, the argument's K cell)`.
+    readd: Vec<(u64, usize, usize, usize, usize, u32, usize)>,
+    /// The static reads of every cell some `Readd` table covers, in order: `(memory, cell) ->
+    /// [(sequence number, piece, column, row, static count)]`.
+    sites: HashMap<(usize, usize), Vec<(u64, usize, usize, usize, u32)>>,
+    /// The writer pieces' result cells (for `Fin`): `(piece, column, memory type, cells)`.
+    fin_of: Vec<(usize, usize, Ty, Vec<usize>)>,
+}
+
+/// Worker threads of the value pass and the count conversion (plain scoped threads: the build runs beside the
+/// tape witness's dispatch on the pool).
+const BUILD_THREADS: usize = 6;
+
+/// `f(i)` for `i < n` on `BUILD_THREADS` scoped threads taking indices in turn; the results in index order.
+fn par_map<T: Send>(n: usize, f: impl Fn(usize) -> T + Sync) -> Vec<T> {
+    let threads = BUILD_THREADS.min(crate::lv::parallel::num_threads()).min(n);
+    if threads <= 1 {
+        return (0..n).map(&f).collect();
+    }
+    let next = std::sync::atomic::AtomicUsize::new(0);
+    let mut out: Vec<Option<T>> = (0..n).map(|_| None).collect();
+    std::thread::scope(|sc| {
+        let hs: Vec<_> = (0..threads)
+            .map(|_| {
+                sc.spawn(|| {
+                    let mut mine = Vec::new();
+                    loop {
+                        let i = next.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+                        if i >= n {
+                            break mine;
+                        }
+                        mine.push((i, f(i)));
+                    }
+                })
+            })
+            .collect();
+        for h in hs {
+            for (i, t) in h.join().expect("a build task") {
+                out[i] = Some(t);
+            }
+        }
+    });
+    out.into_iter().map(|t| t.expect("every task")).collect()
+}
+
+impl Compiled {
+    /// The row walk of `tables_ext`: for every row `x` of piece `n`, its block indices, template and clock cells.
+    #[inline(always)]
+    fn rows_of(&self, n: usize, mut f: impl FnMut(usize, &[usize], &Row, [usize; 2])) {
+        let p = &self.pieces[n];
+        let h = 1usize << self.height(p);
+        let lay = &self.lay[p.blk];
+        let blk = &self.q.blocks[p.blk];
+        let mut j = vec![0usize; blk.dims.len()];
+        for x in 0..h {
+            let jf = x % lay.size;
+            let t = p.ts[x / lay.size];
+            let mut rest = jf;
+            for (jk, &d) in j.iter_mut().zip(&blk.dims) {
+                *jk = rest % (1 << d);
+                rest >>= d;
+            }
+            let clock: [usize; 2] = [0, 1].map(|k| lay.start[k] + lay.tw[k] * jf + lay.rank[t][k]);
+            f(x, &j, &blk.tpl[t], clock);
+        }
+    }
+
+    /// Piece `n`'s committed-column positions of `Res`, `Arg`, `Cnt`, `Dcnt` and `Fin` (`usize::MAX` if absent:
+    /// a use panics, as in the reference).
+    #[allow(clippy::type_complexity)]
+    fn positions(&self, n: usize) -> ([usize; 3], Vec<[usize; 3]>, Vec<usize>, usize, usize) {
+        let p = &self.pieces[n];
+        let com = p.shape.committed();
+        let pos = |v: Var| com.iter().position(|&u| u == v).unwrap_or(usize::MAX);
+        let n_args = p.shape.args.len().max(self.q.blocks[p.blk].tpl.iter().map(|r| r.args.len()).max().unwrap_or(0));
+        (
+            std::array::from_fn(|l| pos(Var::Res(l))),
+            (0..n_args).map(|o| std::array::from_fn(|l| pos(Var::Arg(o, l)))).collect(),
+            (0..n_args).map(|o| pos(Var::Cnt(o))).collect(),
+            pos(Var::Dcnt),
+            pos(Var::Fin),
+        )
+    }
+
+    fn counts(&self) -> &Counts {
+        self.counts.get_or_init(|| {
+            let mut total = [vec![0u32; self.cells[0]], vec![0u32; self.cells[1]]];
+            // the cells some `Readd` table covers
+            let mut covered: [Vec<bool>; 2] = [vec![false; self.cells[0]], vec![false; self.cells[1]]];
+            for p in &self.pieces {
+                for r in &self.q.blocks[p.blk].tpl {
+                    if let Op::Readd(lo, m) = r.op {
+                        for e in lo..(lo + (1usize << m)).min(self.cells[r.ty.ix()]) {
+                            covered[r.ty.ix()][e] = true;
+                        }
+                    }
+                }
+            }
+            let (mut cnt, mut dcnt, mut readd, mut fin_of) = (Vec::new(), Vec::new(), Vec::new(), Vec::new());
+            let mut sites: HashMap<(usize, usize), Vec<(u64, usize, usize, usize, u32)>> = HashMap::new();
+            let mut seq = 0u64;
+            for n in 0..self.pieces.len() {
+                let p = &self.pieces[n];
+                let h = 1usize << self.height(p);
+                let (_, _, cnt_pos, dcnt_pos, fin_pos) = self.positions(n);
+                let mut cols: Vec<(usize, Vec<u32>)> = Vec::new();
+                let mut col_of = vec![usize::MAX; cnt_pos.len()];
+                let mut fin_cells = Vec::new();
+                let mut has_readd = false;
+                self.rows_of(n, |x, j, r, clock| {
+                    if let Some(t) = r.writes() {
+                        fin_cells.push(clock[t.ix()]);
+                    }
+                    for (o, a) in r.args.iter().enumerate() {
+                        let (k, e) = (a.ty.ix(), a.at(j));
+                        if col_of[o] == usize::MAX {
+                            assert!(cnt_pos[o] != usize::MAX, "a read's count column");
+                            col_of[o] = cols.len();
+                            cols.push((cnt_pos[o], vec![u32::MAX; h]));
+                        }
+                        let c = &mut total[k][e];
+                        cols[col_of[o]].1[x] = *c;
+                        if covered[k][e] {
+                            sites.entry((k, e)).or_default().push((seq, n, cnt_pos[o], x, *c));
+                        }
+                        *c += 1;
+                        seq += 1;
+                    }
+                    if let Op::Readd(lo, m) = r.op {
+                        assert!(dcnt_pos != usize::MAX, "a Readd row's count column");
+                        has_readd = true;
+                        readd.push((seq, n, x, r.ty.ix(), lo, m, r.args[0].at(j)));
+                        seq += 1;
+                    }
+                });
+                if p.shape.writes() {
+                    fin_of.push((n, fin_pos, p.shape.ty, fin_cells));
+                }
+                cnt.push(cols);
+                dcnt.push(has_readd.then_some(dcnt_pos));
+            }
+            if std::env::var_os("LVM_LOG").is_some() {
+                eprintln!(
+                    "lvm: read counts: {seq} reads, {} Readd, {} covered cells with {} static reads",
+                    readd.len(),
+                    sites.len(),
+                    sites.values().map(|v| v.len()).sum::<usize>()
+                );
+            }
+            Counts { cnt, dcnt, total, readd, sites, fin_of }
+        })
+    }
+
+    /// [`Compiled::tables_ext_ref`]'s tables from the cached static counts, the `Readd` reads added; the value
+    /// columns and the count columns are filled per piece on worker threads.
+    fn tables_fast(&self, run: &Run, extra: &[usize]) -> Tables {
+        let cs = self.counts();
+        let mut reads = cs.total.clone();
+        // the `Readd` reads in order: their cells, their counts, and per cell the sequence numbers of its reads
+        let mut dlog: HashMap<(usize, u32), HashMap<u64, usize>> = HashMap::new();
+        let mut events: HashMap<(usize, usize), Vec<u64>> = HashMap::new();
+        let mut dval: Vec<(usize, usize, u32)> = Vec::with_capacity(cs.readd.len());
+        for &(seq, n, x, k, lo, m, arg) in &cs.readd {
+            let alpha = run.rd(Ty::K, arg).c0;
+            let tab = dlog.entry((lo, m)).or_insert_with(|| (0..1usize << m).map(|i| (self.g(lo + i).0, lo + i)).collect());
+            let e = *tab.get(&alpha).expect("readd: the cell (interp.inb)");
+            let ev = events.entry((k, e)).or_default();
+            let before_static = cs.sites.get(&(k, e)).map_or(0, |v| v.partition_point(|s| s.0 < seq));
+            dval.push((n, x, (before_static + ev.len()) as u32));
+            ev.push(seq);
+            reads[k][e] += 1;
+        }
+        // the patches: a static read after `d` `Readd` reads of its cell counts `d` more
+        let mut patch: Vec<Vec<(usize, usize, u32)>> = vec![Vec::new(); self.pieces.len()];
+        for (key, ev) in &events {
+            for &(seq, n, col, x, c) in cs.sites.get(key).map_or(&[][..], |v| &v[..]) {
+                let d = ev.partition_point(|&t| t < seq);
+                if d > 0 {
+                    patch[n].push((col, x, c + d as u32));
+                }
+            }
+        }
+        let mut dby: Vec<Vec<(usize, u32)>> = vec![Vec::new(); self.pieces.len()];
+        for &(n, x, c) in &dval {
+            dby[n].push((x, c));
+        }
+        let g = |c: u32| if c == u32::MAX { F64::ZERO } else { self.g(c as usize) };
+        let mut cols: Vec<Vec<Vec<F64>>> = par_map(self.pieces.len(), |n| {
+            let p = &self.pieces[n];
+            let h = 1usize << self.height(p);
+            let (res_pos, arg_pos, _, _, _) = self.positions(n);
+            let mut c: Vec<Vec<F64>> = vec![Vec::new(); p.shape.committed().len()];
+            let col = |c: &mut Vec<Vec<F64>>, at: usize| -> usize {
+                if c[at].is_empty() {
+                    c[at] = vec![F64::ZERO; h];
+                }
+                at
+            };
+            self.rows_of(n, |x, j, r, clock| {
+                if let Some(t) = r.writes() {
+                    let v = limbs(t, run.rd(t, clock[t.ix()]));
+                    for l in 0..t.limbs() {
+                        let at = col(&mut c, res_pos[l]);
+                        c[at][x] = F64(v[l]);
+                    }
+                }
+                for (o, a) in r.args.iter().enumerate() {
+                    let v = limbs(a.ty, run.rd(a.ty, a.at(j)));
+                    for l in 0..a.ty.limbs() {
+                        let at = col(&mut c, arg_pos[o][l]);
+                        c[at][x] = F64(v[l]);
+                    }
+                }
+            });
+            for (at, counts) in &cs.cnt[n] {
+                c[*at] = counts.iter().map(|&k| g(k)).collect();
+            }
+            for &(at, x, k) in &patch[n] {
+                c[at][x] = g(k);
+            }
+            if let Some(at) = cs.dcnt[n] {
+                let at = col(&mut c, at);
+                for &(x, k) in &dby[n] {
+                    c[at][x] = g(k);
+                }
+            }
+            for v in c.iter_mut().filter(|v| v.is_empty()) {
+                *v = vec![F64::ZERO; h];
+            }
+            c
+        });
+        let extra_cnt = extra
+            .iter()
+            .map(|&e| {
+                let k = &mut reads[0][e];
+                let c = self.g(*k as usize);
+                *k += 1;
+                c
+            })
+            .collect();
+        for (n, col, t, cells) in &cs.fin_of {
+            let r = &reads[t.ix()];
+            let fin: Vec<F64> = cells.iter().map(|&e| self.g(r[e] as usize)).collect();
+            cols[*n][*col][..fin.len()].copy_from_slice(&fin);
+        }
+        let in_fin = [0, 1].map(|k| (0..self.q.n_in[k]).map(|e| self.g(reads[k][e] as usize)).collect());
+        Tables { cols, in_fin, reads, extra_cnt }
+    }
 }

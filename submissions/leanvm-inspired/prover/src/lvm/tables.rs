@@ -168,7 +168,37 @@ impl Chain {
         Self::run_gated_notify(log_n, s, n, explicit, |_| {})
     }
     /// [`Chain::run_gated`], calling `at_end(chainEnd s n)` as soon as row `n − 1` is done (P-QUICK lever 3).
+    ///
+    /// P-FIX2: the walk is PORT-12's `chainwalk::walk` (the kernel chosen once before `ready`: lv `keccak_f`, or
+    /// relay-echo's `avx512vl` chain kernel; the same rows either way). `LVM_CHAIN_REF=1`: the loop of
+    /// [`Chain::run_gated_notify_ref`].
     pub fn run_gated_notify(log_n: usize, s: &Digest, n: usize, explicit: bool, mut at_end: impl FnMut(Digest)) -> Self {
+        if std::env::var_os("LVM_CHAIN_REF").is_some() {
+            return Self::run_gated_notify_ref(log_n, s, n, explicit, at_end);
+        }
+        let big = 1usize << log_n;
+        if n == 0 {
+            at_end(*s);
+        }
+        let (mut inputs, mut y) = crate::chainwalk::walk_cap(
+            crate::chainwalk::select(),
+            digest_lanes(s),
+            n,
+            n,
+            if explicit { big } else { n },
+            big,
+            |h| at_end(lanes_digest(&h)),
+        );
+        let mut z = [0u64; LANES];
+        crate::lv::primitives::hash::keccak_f(&mut z);
+        y.resize(big, [z[0], z[1], z[2], z[3]]);
+        if explicit {
+            inputs.resize(big, [0u64; LANES]);
+        }
+        Self { shape: Shape::new(big, TAPE_DEPTH), inputs, y }
+    }
+    /// The walk before P-FIX2 (P-QUICK lever 2's loop), kept as the reference.
+    pub fn run_gated_notify_ref(log_n: usize, s: &Digest, n: usize, explicit: bool, mut at_end: impl FnMut(Digest)) -> Self {
         let big = 1usize << log_n;
         let mut inputs = Vec::with_capacity(if explicit { big } else { n });
         let mut y = Vec::with_capacity(big);

@@ -166,7 +166,8 @@ noncomputable def codesMain20 : ℕ → LevelCode
 
 /-- The UD code of `C_rec` at P20: `κ = 13`, `R = 2`. -/
 noncomputable def codesRec20 : ℕ → LevelCode
-  | _ => LevelCode.ud 13 2 (by norm_num) (by norm_num) (by norm_num)
+  | 0 => LevelCode.ud 13 2 (by norm_num) (by norm_num) (by norm_num)
+  | _ => LevelCode.ud 9 3 (by norm_num) (by norm_num) (by norm_num)
 
 /-- The UD codes of `C_main` at P8: `κ = 17, 13, 9, 5`, `R = 1, 2, 3, 4`. -/
 noncomputable def codesMain8 : ℕ → LevelCode
@@ -209,6 +210,10 @@ theorem eQuery_main20 :
       eQueryFinal (codesMain20 3) 142 ≤ (2 : ENNReal)⁻¹ ^ 129 := by
   refine ⟨eQueryUd_ud_le _ _ ?_, eQueryUd_ud_le _ _ ?_, eQueryUd_ud_le _ _ ?_,
     eQueryFinal_ud_le _ _ ?_⟩ <;> simp only [udThr] <;> norm_num
+
+/-- **Fold of `C_rec`'s level 1** (S4: `κ = 9`, `R = 3`, four folds): `≤ 2^-166` per challenge. -/
+theorem eFold_rec20_1 : eFold (codesRec20 1) 4 ≤ (2 : ENNReal)⁻¹ ^ 166 :=
+  eFold_ud_le _ _ (by simp only [udMca, mcaUd, udThr]; norm_num)
 
 /-- The query group of `C_rec` at P20. -/
 theorem eQuery_rec20 : eQueryFinal (codesRec20 0) 191 ≤ (2 : ENNReal)⁻¹ ^ 129 :=

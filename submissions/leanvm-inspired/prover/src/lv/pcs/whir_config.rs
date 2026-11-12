@@ -1091,8 +1091,9 @@ pub fn ud_config(log_n: usize) -> ProverConfig {
 
 /// WP-15a: the configuration of a parameter record's levels (`LvmParams.Level`: fold, rate, cap, queries),
 /// one level allowed (`C_rec`: its final is the level-0 fold in the clear). PI-GRIND: `grind` bits at every
-/// level (`ProverState::grind`; 0 = none).
-pub fn config_of_levels(levels: &[(usize, usize, usize, usize)], grind: usize) -> ProverConfig {
+/// level (`ProverState::grind`; 0 = none). JB-VQP J1: with `ood`, one OOD sample on every level's next oracle
+/// (`ood_samples = [0, 1, …, 1]`: leanVM's `send_ood` after each next cap; the root takes none).
+pub fn config_of_levels(levels: &[(usize, usize, usize, usize)], grind: usize, ood: bool) -> ProverConfig {
     assert!(!levels.is_empty());
     assert_eq!(levels[0].0, INITIAL_FOLDING_FACTOR, "level 0 folds the 64 lanes of a leaf");
     ProverConfig {
@@ -1102,7 +1103,7 @@ pub fn config_of_levels(levels: &[(usize, usize, usize, usize)], grind: usize) -
         level_ks: levels[1..].iter().map(|l| l.0).collect(),
         queries: levels.iter().map(|l| l.3).collect(),
         grinding_bits: vec![grind; levels.len()],
-        ood_samples: vec![0; levels.len()],
+        ood_samples: (0..levels.len()).map(|i| usize::from(ood && i > 0)).collect(),
         cap_logs: levels.iter().map(|l| l.2).collect(),
     }
 }

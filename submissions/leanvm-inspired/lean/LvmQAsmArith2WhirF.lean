@@ -324,49 +324,122 @@ theorem openingR_mk (L : Level) (sig : ByteArray) (a : Nat) (o : Bool) :
     openingR L sig ⟨a, 0, o⟩ = ((List.range L.t).map (fun j => a + 8 + (40 + L.row + 104 * L.path) * j),
       ⟨a + (40 + L.row + 104 * L.path) * L.t, 0, o⟩) := openingR_run L sig _ rfl
 
+/-! ## The OOD items and the grinding (JB-L §3, PI-GRIND) -/
+
+/-- The OOD point `z` of a level: `κ` samples from position `Pc`. -/
+def oodZ (sig : ByteArray) (Pc κ : Nat) : List FE := (List.range κ).map fun j => feAt sig (Pc + 72 * j + 40)
+
+/-- `F`'s OOD claims of a level (`oodStep`) from position `Pc` (after the next cap): with `ood`, the
+intro polynomial `[c₀, y + c₂, c₂]` and the weight `eq(z, ·)`; none without. -/
+def oodF (sig : ByteArray) (ood : Bool) (κ Pc : Nat) : List (List FE × (List FE → FE)) :=
+  if ood then [([feAt sig (Pc + 72 * κ + 24 + 40), feAt sig (Pc + 72 * κ + 40) + feAt sig (Pc + 72 * κ + 24 + 64),
+    feAt sig (Pc + 72 * κ + 24 + 64)], fun x => eqEval (oodZ sig Pc κ) x)] else []
+
+/-- `F`'s proof-of-work check of a level whose grinding starts at position `Po`: the PoW challenge is the
+answer at `Po + 136` (after the separator and the nonce). -/
+def powF (sig : ByteArray) (g Po : Nat) : Bool := if g = 0 then true else powOKR g (feAt sig (Po + 136))
+
+theorem samples_succ_run (sig : ByteArray) : ∀ (n : Nat) (s : RS),
+    samples (n + 1) sig s = ((List.range (n + 1)).map fun j => feAt sig (pos s + 72 * j + 40),
+      ⟨pos s + 72 * (n + 1), 0, s.ok⟩)
+  | 0, s => by
+    rw [samples, dm_bind, sampleE_run]
+    show ([feAt sig (pos s + 40)], (⟨pos s + 72, 0, s.ok⟩ : RS)) = _
+    simp
+  | n + 1, s => by
+    have e : samples (n + 1 + 1) sig s =
+        (feAt sig (pos s + 40) :: (samples (n + 1) sig ⟨pos s + 72, 0, s.ok⟩).1,
+          (samples (n + 1) sig ⟨pos s + 72, 0, s.ok⟩).2) := by
+      show (sampleE >>= fun x => samples (n + 1) >>= fun xs => pure (x :: xs)) sig s = _
+      rw [dm_bind, sampleE_run]; rfl
+    rw [e, samples_succ_run sig n, pos_mk0]
+    refine Prod.ext ?_ ?_
+    · show feAt sig (pos s + 40) :: _ = _
+      apply List.ext_getElem (by simp)
+      intro i h1 h2
+      cases i with
+      | zero => simp
+      | succ i =>
+        simp only [List.getElem_cons_succ, List.getElem_map, List.getElem_range]
+        congr 1; ring
+    · show (⟨_, _, _⟩ : RS) = ⟨_, _, _⟩
+      rw [RS.mk.injEq]; exact ⟨by ring, rfl, rfl⟩
+
+theorem oodStep_true (κ : Nat) (hκ : 1 ≤ κ) (sig : ByteArray) (s : RS) :
+    oodStep true κ sig s = (oodF sig true κ (pos s), ⟨pos s + 72 * κ, 72, s.ok⟩) := by
+  obtain ⟨m, rfl⟩ : ∃ m, κ = m + 1 := ⟨κ - 1, by omega⟩
+  show (samples (m + 1) >>= fun z => readE >>= fun y => sumcheckRoundPoly 3 y none >>= fun intro =>
+    pure [(intro, fun x => eqEval z x)]) sig s = _
+  rw [dm_bind, samples_succ_run, dm_bind, readE_run, dm_bind, srp3_run, dm_pure]
+  simp only [oodF, ↓reduceIte, oodZ, pos_mk0, pos_msg]
+  rfl
+
+theorem oodStep_false (κ : Nat) (sig : ByteArray) (s : RS) : oodStep false κ sig s = ([], s) := rfl
+
+theorem grindPreR_run (g : Nat) (hg : g ≠ 0) (sig : ByteArray) (s : RS) :
+    grindPreR g sig s = ((), ⟨pos s + 72, 24, s.ok⟩) := by
+  simp only [grindPreR, hg, ↓reduceIte, dm_bind, sampleE_run, readE_run, dm_pure]
+
+theorem powCheckR_run (g : Nat) (hg : g ≠ 0) (sig : ByteArray) (s : RS) :
+    powCheckR g sig s = ((), ⟨pos s + 72, 0, powOKR g (feAt sig (pos s + 40)) && s.ok⟩) := by
+  simp only [powCheckR, hg, ↓reduceIte, dm_bind, sampleE_run, require_runW]
+
+theorem pos_mk72 (a : Nat) (o : Bool) : pos ⟨a, 72, o⟩ = a + 72 := rfl
+theorem pos_mk24 (a : Nat) (o : Bool) : pos ⟨a, 24, o⟩ = a + 24 := rfl
+
+theorem grindPreR_zero (sig : ByteArray) (s : RS) : grindPreR 0 sig s = ((), s) := rfl
+theorem powCheckR_zero (sig : ByteArray) (s : RS) : powCheckR 0 sig s = ((), s) := rfl
+
 /-! ## One level of `whirLevels` -/
 
-theorem whirLevels_step (ν lf : Nat) (B : List FE → FE) (L N : Level) (rest : List Level) (st : WhirState)
-    (sig : ByteArray) (s : RS) (V : Nat) (hs : pos s = 8 * V) (hrow : L.row % 8 = 0) :
-    whirLevels ν lf B false 0 (L :: N :: rest) st sig s =
-      whirLevels ν lf B false 0 (N :: rest)
-        (glue (feAt sig (8 * (lvLanes L (some N) V).V3 + 40))
+theorem whirLevels_step (ν lf : Nat) (B : List FE → FE) (g : Nat) (ood : Bool) (L N : Level) (rest : List Level)
+    (st : WhirState) (sig : ByteArray) (s : RS) (V : Nat) (hs : pos s = 8 * V) (hrow : L.row % 8 = 0)
+    (hκ : L.kappa = ν - (st.folds.length + L.fold)) (hκ1 : 1 ≤ L.kappa) :
+    whirLevels ν lf B false g ood (L :: N :: rest) st sig s =
+      whirLevels ν lf B false g ood (N :: rest)
+        (glue (feAt sig (8 * (lvLanes g ood L (some N) V).V3 + 40))
           ⟨frQ sig (8 * V) L.fold st.runningQuad, st.folds ++ frC sig (8 * V) L.fold, st.glued⟩
-          [([feAt sig (8 * (lvLanes L (some N) V).V5 + 40),
-              Lvm.dot (powers (feAt sig (8 * (lvLanes L (some N) V).V3 + 40)) L.t)
+          (oodF sig ood L.kappa (8 * (lvLanes g ood L (some N) V).Vc) ++
+          [([feAt sig (8 * (lvLanes g ood L (some N) V).V5 + 40),
+              Lvm.dot (powers (feAt sig (8 * (lvLanes g ood L (some N) V).V3 + 40)) L.t)
                 ((List.range L.t).map fun j =>
                   if L.level = 0 then foldRow0 sig (eqKernelA (frC sig (8 * V) L.fold))
-                    (8 * ((lvLanes L (some N) V).V4 + 1 + oStr L * j)) (2 ^ L.fold)
+                    (8 * ((lvLanes g ood L (some N) V).V4 + 1 + oStr L * j)) (2 ^ L.fold)
                   else foldRowE sig (eqKernelA (frC sig (8 * V) L.fold))
-                    (8 * ((lvLanes L (some N) V).V4 + 1 + oStr L * j)) (2 ^ L.fold)) +
-                feAt sig (8 * (lvLanes L (some N) V).V5 + 64),
-              feAt sig (8 * (lvLanes L (some N) V).V5 + 64)],
-            fun x => inducedWeight (ν - (st.folds.length + L.fold))
-              (qsAt sig (8 * (lvLanes L (some N) V).V2) L)
-              (powers (feAt sig (8 * (lvLanes L (some N) V).V3 + 40)) L.t) x)])
-        sig ⟨8 * (lvLanes L (some N) V).V5, 48, s.ok⟩ := by
+                    (8 * ((lvLanes g ood L (some N) V).V4 + 1 + oStr L * j)) (2 ^ L.fold)) +
+                feAt sig (8 * (lvLanes g ood L (some N) V).V5 + 64),
+              feAt sig (8 * (lvLanes g ood L (some N) V).V5 + 64)],
+            fun x => inducedWeight L.kappa
+              (qsAt sig (8 * (lvLanes g ood L (some N) V).V2) L)
+              (powers (feAt sig (8 * (lvLanes g ood L (some N) V).V3 + 40)) L.t) x)]))
+        sig ⟨8 * (lvLanes g ood L (some N) V).V5, 48, powF sig g (8 * (lvLanes g ood L (some N) V).Vo) && s.ok⟩ := by
   have hD : 40 + L.row + 104 * L.path = 8 * oStr L := by unfold oStr; omega
   conv_lhs => rw [whirLevels]
-  simp only [grindPreR, powCheckR, ↓reduceIte, dm_bind, dm_pure, skip_run, read_run, sampleE_run, srp3_run, foldRounds_fst, foldRounds_pos,
-    foldRounds_ok, positionsR_fst, positionsR_pos, positionsR_ok, pos_upd, pos_mk0, openingR_mk, hs,
-    List.nil_append, List.length_append, frC_length, qsAt_length, List.map_map, Nat.zero_add,
-    Function.comp_def]
-  have e2 : 8 * V + 120 * L.fold + nodeBytes * 2 ^ N.cap = 8 * (lvLanes L (some N) V).V2 := by
-    simp only [lvLanes, nodeBytes]; ring
-  have e3 : 8 * (lvLanes L (some N) V).V2 + 72 * ((L.t + positionsPerAnswer - 1) / positionsPerAnswer) =
-      8 * (lvLanes L (some N) V).V3 := by simp only [lvLanes]; ring
-  have e4 : 8 * (lvLanes L (some N) V).V3 + 72 = 8 * (lvLanes L (some N) V).V4 := by
-    simp only [lvLanes]; ring
-  have e5 : 8 * (lvLanes L (some N) V).V4 + 8 * oStr L * L.t = 8 * (lvLanes L (some N) V).V5 := by
-    simp only [lvLanes]; ring
-  rw [e2, e3, e4, hD, e5]
-  simp only [Nat.mul_add, Nat.mul_one, Nat.mul_assoc]
+  have hfl : ∀ (x : List FE), (st.folds ++ x).length = st.folds.length + x.length := fun x => List.length_append
+  have base := fun (h1 : List (List FE × (List FE → FE)) → Prop) => h1
+  cases ood <;> rcases Nat.eq_zero_or_pos g with rfl | hg
+  all_goals first
+    | (have hg0 : g ≠ 0 := Nat.pos_iff_ne_zero.mp hg
+       simp only [oodStep_true _ hκ1, oodStep_false, grindPreR_run _ hg0, powCheckR_run _ hg0,
+        dm_bind, dm_pure, skip_run, read_run, sampleE_run, srp3_run, foldRounds_fst, foldRounds_pos,
+        foldRounds_ok, positionsR_fst, positionsR_pos, positionsR_ok, pos_upd, pos_mk0, pos_mk72, pos_mk24, pos_mk48,
+        openingR_mk, hs, List.nil_append, hfl, frC_length, qsAt_length, List.map_map, Nat.zero_add, Function.comp_def, ← hκ]
+       simp only [lvLanes, oodF, powF, nodeBytes, hg0, Bool.and_true, Bool.true_and, Bool.and_false,
+        Option.isSome_some, ↓reduceIte, Bool.false_eq_true, List.nil_append, hD]
+       ring_nf)
+    | (simp only [oodStep_true _ hκ1, oodStep_false, grindPreR_zero, powCheckR_zero,
+        dm_bind, dm_pure, skip_run, read_run, sampleE_run, srp3_run, foldRounds_fst, foldRounds_pos,
+        foldRounds_ok, positionsR_fst, positionsR_pos, positionsR_ok, pos_upd, pos_mk0, pos_mk72, pos_mk24, pos_mk48,
+        openingR_mk, hs, List.nil_append, hfl, frC_length, qsAt_length, List.map_map, Nat.zero_add, Function.comp_def, ← hκ]
+       simp only [lvLanes, oodF, powF, nodeBytes, Bool.and_true, Bool.true_and, Bool.and_false,
+        Option.isSome_some, ↓reduceIte, Bool.false_eq_true, List.nil_append, hD]
+       ring_nf)
 
 /-- The final level of `whirLevels` from position `8V`, explicitly (`m` = the message log). -/
-theorem whirLevels_final (ν lf : Nat) (B : List FE → FE) (L : Level) (st : WhirState)
+theorem whirLevels_final (ν lf : Nat) (B : List FE → FE) (g : Nat) (ood : Bool) (L : Level) (st : WhirState)
     (sig : ByteArray) (s : RS) (V : Nat) (hs : pos s = 8 * V) (hrow : L.row % 8 = 0)
     (hκ : L.kappa = ν - (st.folds.length + L.fold)) (hm : 1 ≤ L.kappa) :
-    let ll := lvLanes L none V
+    let ll := lvLanes g ood L none V
     let lam := feAt sig (8 * ll.V3 + 40)
     let st' := glue lam ⟨frQ sig (8 * V) L.fold st.runningQuad, st.folds ++ frC sig (8 * V) L.fold, st.glued⟩
       [([feAt sig (8 * ll.V5 + 40),
@@ -381,26 +454,29 @@ theorem whirLevels_final (ν lf : Nat) (B : List FE → FE) (L : Level) (st : Wh
     let weight := st'.glued.foldl
       (fun w cl => w + cl.scalar * cl.weightAt (st'.folds.drop cl.foldStart ++ tf))
       (B (point.drop lf ++ point.take lf))
-    whirLevels ν lf B false 0 [L] st sig s =
+    whirLevels ν lf B false g ood [L] st sig s =
       ((), ⟨8 * ll.V6 + 120 * (L.kappa - 1) + 72, 0,
         (weight * multilinearEval ((List.range (2 ^ L.kappa)).map fun i => feAt sig (8 * ll.V1 + 40 + 24 * i)) tf ==
-          tlT sig (8 * ll.V6) L.kappa st'.runningQuad) && s.ok⟩) := by
+          tlT sig (8 * ll.V6) L.kappa st'.runningQuad) && (powF sig g (8 * ll.Vo) && s.ok)⟩) := by
   dsimp only
   have hD : 40 + L.row + 104 * L.path = 8 * oStr L := by unfold oStr; omega
   conv_lhs => rw [whirLevels]
-  simp only [grindPreR, powCheckR, ↓reduceIte, dm_bind, dm_pure, read_run, sampleE_run, srp3_run, readEs_run, require_runW, foldRounds_fst,
-    foldRounds_pos, foldRounds_ok, positionsR_fst, positionsR_pos, positionsR_ok, pos_upd, pos_mk0, pos_mk48,
-    openingR_mk, hs, List.nil_append, List.length_append, frC_length, qsAt_length, List.map_map, Nat.zero_add,
-    Function.comp_def, ← hκ, tailRounds_run L.kappa hm, Bool.false_eq_true, ↓reduceIte]
-  have e1 : 8 * V + 120 * L.fold = 8 * (lvLanes L none V).V1 := by simp only [lvLanes]; ring
-  have e2 : 8 * (lvLanes L none V).V1 + 24 * 2 ^ L.kappa = 8 * (lvLanes L none V).V2 := by
-    simp only [lvLanes]; ring
-  have e3 : 8 * (lvLanes L none V).V2 + 72 * ((L.t + positionsPerAnswer - 1) / positionsPerAnswer) =
-      8 * (lvLanes L none V).V3 := by simp only [lvLanes]; ring
-  have e4 : 8 * (lvLanes L none V).V3 + 72 = 8 * (lvLanes L none V).V4 := by simp only [lvLanes]; ring
-  have e5 : 8 * (lvLanes L none V).V4 + 8 * oStr L * L.t = 8 * (lvLanes L none V).V5 := by
-    simp only [lvLanes]; ring
-  have e6 : 8 * (lvLanes L none V).V5 + 48 = 8 * (lvLanes L none V).V6 := by simp only [lvLanes]; ring
-  rw [e1, e2, e3, e4, hD, e5, e6]
-  simp only [Nat.mul_add, Nat.mul_one, Nat.mul_assoc]
+  have hfl : ∀ (x : List FE), (st.folds ++ x).length = st.folds.length + x.length := fun x => List.length_append
+  rcases Nat.eq_zero_or_pos g with rfl | hg
+  all_goals first
+    | (have hg0 : g ≠ 0 := Nat.pos_iff_ne_zero.mp hg
+       simp only [grindPreR_run _ hg0, powCheckR_run _ hg0, dm_bind, dm_pure, read_run, sampleE_run, srp3_run,
+        readEs_run, require_runW, foldRounds_fst, foldRounds_pos, foldRounds_ok, positionsR_fst, positionsR_pos,
+        positionsR_ok, pos_upd, pos_mk0, pos_mk24, pos_mk48, openingR_mk, hs, List.nil_append, hfl, frC_length,
+        qsAt_length, List.map_map, Nat.zero_add, Function.comp_def, ← hκ, tailRounds_run L.kappa hm,
+        Bool.false_eq_true, ↓reduceIte, pos_msg]
+       simp only [lvLanes, powF, hg0, Bool.and_false, Option.isSome_none, Bool.false_eq_true, ↓reduceIte, hD]
+       ring_nf)
+    | (simp only [grindPreR_zero, powCheckR_zero, dm_bind, dm_pure, read_run, sampleE_run, srp3_run,
+        readEs_run, require_runW, foldRounds_fst, foldRounds_pos, foldRounds_ok, positionsR_fst, positionsR_pos,
+        positionsR_ok, pos_upd, pos_mk0, pos_mk24, pos_mk48, openingR_mk, hs, List.nil_append, hfl, frC_length,
+        qsAt_length, List.map_map, Nat.zero_add, Function.comp_def, ← hκ, tailRounds_run L.kappa hm,
+        Bool.false_eq_true, ↓reduceIte, pos_msg]
+       simp only [lvLanes, powF, Bool.and_false, Option.isSome_none, Bool.false_eq_true, ↓reduceIte, hD, Bool.true_and]
+       ring_nf)
 end Lvm.Har

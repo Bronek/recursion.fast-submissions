@@ -200,9 +200,11 @@ theorem ud_extract {μ R A : ℕ} (hμ : laneBits ≤ μ) (h64 : μ - laneBits +
   · rw [heq]
     exact agreeSet_foldAll_eq (not_not.mp hluck)
 
-/-- **The extractor's facts for `C_rec` at P20** (`μ = 19`, `R = 2`, threshold `udThr 13 2`;
-`2^15` columns, `2^13`-scalar residual). -/
-theorem ud_extract_rec20 (Good : Column 19 → Prop) (W : Word) (α : Fin laneBits → E)
+/-- **The level-0 extractor's facts for `C_rec` at P20** (`μ = 19`, `R = 2`, threshold `udThr 13 2`;
+`2^15` columns, `2^13`-scalar level-0 fold). With S4's second level the fold `f` is not sent; it is
+the level-1 word's decoded message (`LvmWhirDoom2.ud_extract_rec20`), and `¬ FinalDoomUd` holds for
+it (`not_finalDoomUd_foldMsg`). -/
+theorem ud_extract_rec20_l0 (Good : Column 19 → Prop) (W : Word) (α : Fin laneBits → E)
     (f : (Fin (19 - laneBits) → Bool) → E)
     (hC : ¬ CommitDoomUd 19 2 (udThr 13 2) Good W)
     (hF : ¬ FinalDoomUd 19 2 (udThr 13 2) (by norm_num) W α f) :
@@ -214,8 +216,8 @@ theorem ud_extract_rec20 (Good : Column 19 → Prop) (W : Word) (α : Fin laneBi
           agreeSet (laneRows 19 2 W) (encRows 19 2 q)) :=
   ud_extract (by norm_num) (by norm_num) (by norm_num [udThr]) Good W α f hC hF
 
-/-- **The extractor's facts for `C_rec` at P8** (`μ = 17`, `R = 2`, threshold `udThr 11 2`). -/
-theorem ud_extract_rec8 (Good : Column 17 → Prop) (W : Word) (α : Fin laneBits → E)
+/-- **The level-0 extractor's facts for `C_rec` at P8** (`μ = 17`, `R = 2`, threshold `udThr 11 2`). -/
+theorem ud_extract_rec8_l0 (Good : Column 17 → Prop) (W : Word) (α : Fin laneBits → E)
     (f : (Fin (17 - laneBits) → Bool) → E)
     (hC : ¬ CommitDoomUd 17 2 (udThr 11 2) Good W)
     (hF : ¬ FinalDoomUd 17 2 (udThr 11 2) (by norm_num) W α f) :
@@ -241,9 +243,9 @@ private theorem blockOf_zeroCol (μ : ℕ) (u : Fin (2 ^ laneBits)) : blockOf (z
     Array.getElem?_replicate]
   split_ifs <;> simp
 
-/-- **Non-vacuity of `ud_extract_rec20`**: the all-zero root word, with the zero stack as the good
+/-- **Non-vacuity of `ud_extract_rec20_l0`**: the all-zero root word, with the zero stack as the good
 candidate and the zero residual, satisfies both hypotheses (the honest instance), for every `α`. -/
-theorem ud_extract_rec20_nonvacuous (α : Fin laneBits → E) :
+theorem ud_extract_rec20_l0_nonvacuous (α : Fin laneBits → E) :
     ¬ CommitDoomUd 19 2 (udThr 13 2) (fun q ↦ q = zeroCol 19) zeroWord ∧
       ¬ FinalDoomUd 19 2 (udThr 13 2) (by norm_num) zeroWord α 0 := by
   have hA : udThr 13 2 ≤ (univ : Finset (Fin (2 ^ (19 - laneBits + 2)))).card := by

@@ -156,11 +156,12 @@ decided as `qOkF`). -/
 theorem hQ20 : QOk P20 (lay cfg20) :=
   qOk_of Lvm.QLink.streamOk_P20 (by rw [← qOkF_eq, P20_eq]; decide +kernel)
 
-/-- **`aux` is Q_sig's six `BITS` tables, then the position classes and the `s'` byte shifts.** -/
+/-- **`aux` is Q_sig's six `BITS` tables, then the position classes, the `s'` bits and the PoW fields.** -/
 theorem haux20 : aux cfg20 data20 =
     (sigSpecs (sigIn cfg20) (qsig (sigIn cfg20) (p1 (lay cfg20) (nK cfg20) 0)).1 (bplOf data20)).map
       BitsTab.BSpec.tab ++ ((posSpecs cfg20 fun c => bplOf data20 (6 + c)) ++
-        [sSpec cfg20 (bplOf data20 (6 + nPosCls cfg20))]).map BitsTab.BSpec.tab := by
+        [sSpec cfg20 (bplOf data20 (6 + nPosCls cfg20)), powSpec cfg20 (bplOf data20 (7 + nPosCls cfg20))]).map
+          BitsTab.BSpec.tab := by
   unfold aux bspecs
   rw [List.append_assoc, List.map_append]
   rfl

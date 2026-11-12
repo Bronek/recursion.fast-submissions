@@ -40,7 +40,7 @@ def oStr (L : Level) : Nat := (40 + L.row + 104 * L.path) / 8
 structure LvLanes where
   /-- After the fold rounds. -/
   V1 : Nat
-  /-- After the residual (final level) or the next level's cap. -/
+  /-- The positions' first answer (after the residual or the next cap, the OOD items, the grinding). -/
   V2 : Nat
   /-- After the positions. -/
   V3 : Nat
@@ -50,42 +50,50 @@ structure LvLanes where
   V5 : Nat
   /-- After the intro polynomial. -/
   V6 : Nat
+  /-- After the residual (final level) or the next level's cap. -/
+  Vc : Nat
+  /-- After the OOD items (JB-L §3: `κ` samples, the answer, the intro polynomial; `= Vc` without). -/
+  Vo : Nat
 
-/-- The lanes of level `L` from lane `V` (`nxt`: the next level, `none` for the final level). -/
-def lvLanes (L : Level) (nxt : Option Level) (V : Nat) : LvLanes :=
+/-- The lanes of level `L` from lane `V` (`nxt`: the next level, `none` for the final level; `g`: the
+PoW bits, PI-GRIND: with `g > 0` the separator (9 lanes), the nonce (3), the PoW challenge (9) before
+the positions; `ood`: the OOD items after a next cap, JB-L §3). -/
+def lvLanes (g : Nat) (ood : Bool) (L : Level) (nxt : Option Level) (V : Nat) : LvLanes :=
   let V1 := V + 15 * L.fold
-  let V2 := match nxt with
+  let Vc := match nxt with
     | none => V1 + 3 * 2 ^ L.kappa
     | some N => V1 + 4 * 2 ^ N.cap
+  let Vo := if ood && nxt.isSome then Vc + 9 * L.kappa + 9 else Vc
+  let V2 := if g = 0 then Vo else Vo + 21
   let V3 := V2 + 9 * ((L.t + positionsPerAnswer - 1) / positionsPerAnswer)
   let V4 := V3 + 9
   let V5 := V4 + oStr L * L.t
-  ⟨V1, V2, V3, V4, V5, V5 + 6⟩
+  ⟨V1, V2, V3, V4, V5, V5 + 6, Vc, Vo⟩
 
 /-- The lanes of the fold and tail challenges of the levels from lane `V`, in `F`'s order. -/
-def chLanes : List Level → Nat → List Nat
+def chLanes (g : Nat) (ood : Bool) : List Level → Nat → List Nat
   | [], _ => []
   | L :: rest, V =>
     (List.range L.fold).map (fun j => V + 15 * j + 5) ++
     match rest with
-    | [] => (List.range L.kappa).map (fun j => (lvLanes L none V).V6 + 15 * j + 5)
-    | N :: rest' => chLanes (N :: rest') (lvLanes L (some N) V).V6
+    | [] => (List.range L.kappa).map (fun j => (lvLanes g ood L none V).V6 + 15 * j + 5)
+    | N :: rest' => chLanes g ood (N :: rest') (lvLanes g ood L (some N) V).V6
 
 /-- The lanes of the levels' positions queries (`8 V2`). -/
-def posLanes : List Level → Nat → List Nat
+def posLanes (g : Nat) (ood : Bool) : List Level → Nat → List Nat
   | [], _ => []
   | L :: rest, V =>
     match rest with
-    | [] => [(lvLanes L none V).V2]
-    | N :: rest' => (lvLanes L (some N) V).V2 :: posLanes (N :: rest') (lvLanes L (some N) V).V6
+    | [] => [(lvLanes g ood L none V).V2]
+    | N :: rest' => (lvLanes g ood L (some N) V).V2 :: posLanes g ood (N :: rest') (lvLanes g ood L (some N) V).V6
 
 /-- The lane after the levels from lane `V` (the final level ends with a challenge). -/
-def stackEndL : List Level → Nat → Nat
+def stackEndL (g : Nat) (ood : Bool) : List Level → Nat → Nat
   | [], V => V
   | L :: rest, V =>
     match rest with
-    | [] => (lvLanes L none V).V6 + 15 * (L.kappa - 1) + 9
-    | N :: rest' => stackEndL (N :: rest') (lvLanes L (some N) V).V6
+    | [] => (lvLanes g ood L none V).V6 + 15 * (L.kappa - 1) + 9
+    | N :: rest' => stackEndL g ood (N :: rest') (lvLanes g ood L (some N) V).V6
 
 /-! ## `F`'s values -/
 
@@ -191,6 +199,15 @@ def wsumG : Cell → List (Cell × Cell) → BM Cell
   | w, (lam, W) :: gl => do
     let w' ← mulAdd .E lam W w
     wsumG w' gl
+
+/-- `acc · Π_j (1 + a_j + b_j)` (the OOD weight `eq(z, x)`, `eqEval`, char 2) over the pairs `ab`
+(`zc` a zero cell). -/
+def eqZG (zc : Cell) : List (Cell × Cell) → Cell → BM Cell
+  | [], acc => pure acc
+  | (a, b) :: ab, acc => do
+    let s ← lin .E 1 1 a b
+    let acc' ← mulAdd .E acc s zc
+    eqZG zc ab acc'
 
 /-- Copies of `cells` at consecutive `E` cells from the returned one. -/
 def copiesG (cells : List Cell) : BM Nat := do

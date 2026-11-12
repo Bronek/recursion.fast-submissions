@@ -109,7 +109,8 @@ theorem hi_mem (H : ℕ) {i : ℕ} (hi : i < 8) :
   refine List.mem_append_right _ (List.mem_flatMap.mpr ⟨i, List.mem_range.mpr hi, ?_⟩)
   simp
 
-/-- A field output of a position class's row, in `Out1` form: the entry `e` of lane `l`'s outputs. -/
+/-- An output of a position class's row, in `Out1` form: the output `e` of opening `k`'s lane-`l` row
+(`laneOuts`), written by a row of lane class `l` (`posSpecs_hit`). -/
 theorem out1_entry {Q : Program} {pl : ℕ → Var → Bool × ℕ} {groups : List Grp} {arrs : List InArr}
     {aux : List Tab} {L : Lay} {hτ : ∀ t ∈ lvmTabs Q pl groups arrs aux, t.τ ≤ L.μ} {q : Column L.μ}
     (H : AuxHyps Q pl groups arrs aux L hτ q) (C : QCfg) (bpl : ℕ → ℕ → Bool × ℕ)
@@ -117,20 +118,10 @@ theorem out1_entry {Q : Program} {pl : ℕ → Var → Bool × ℕ} {groups : Li
     (hk : k < (opens C.p).length) (ho : (opens C.p).getD k default = o) (hl : l < QAsm.nLanes o.L.height)
     (hx : x < nRows o) {e : BOut × ℕ × ℕ} (he : e ∈ laneOuts o.L.height l) (hv : e.1.Valid) :
     Out1 (memK Q pl groups arrs aux L hτ q) (ansLane C.p (o.pe + x) + l) e.1 (posCell C k o x e) := by
-  have hl' : l < QAsm.nLanes ((opens C.p).getD k default).L.height := by rw [ho]; exact hl
-  have hx' : x < nRows ((opens C.p).getD k default) := by rw [ho]; exact hx
-  obtain ⟨c, hS⟩ := mem_posSpecs C bpl hk hl'
-  have hpc := hpc k hk l hl' x hx'
-  rw [ho] at hS hpc
-  obtain ⟨jo, hjo, hget⟩ := List.mem_iff_getElem.mp he
-  have hjo' : jo < ((laneOuts o.L.height l).map (·.1)).length := by
-    rw [List.length_map]; exact hjo
-  have hB : posCell C k o x ((laneOuts o.L.height l).getD jo (.bit 0, 0, 0)) = posCell C k o x e := by
-    rw [List.getD_eq_getElem _ _ hjo, hget]
-  have hb : ((laneOuts o.L.height l).map (·.1)).getD jo (.bit 0) = e.1 := by
-    rw [List.getD_eq_getElem _ _ hjo', List.getElem_map, hget]
-  exact out1_at Q pl groups arrs aux L hτ q H _ (haux _ hS) (le_two_pow_clog2 _) rfl x jo hx hjo'
-    ⟨fun _ => hpc.1, fun jo hjo => hpc.2 jo (by simpa using hjo)⟩ rfl hB hb hv
+  subst ho
+  obtain ⟨S, hS, hτS, hrd, y, hy, hwc, jo, hjo, hout, hoc⟩ := posSpecs_hit C bpl hk hl hx he
+  exact out1_at Q pl groups arrs aux L hτ q H S (haux _ hS) hτS hrd y jo hy hjo
+    (posCellsLt_spec hpc bpl hS hy) hwc hoc hout hv
 
 /-- **A position's two field cells add up to `kOf (posL …)`** in the interpreter's memory (the position
 classes' `fld` outputs on the answer lanes, the stream cells `hs`). -/
@@ -198,15 +189,15 @@ theorem posVal_of {Q : Program} {pl : ℕ → Var → Bool × ℕ} {groups : Lis
 decidable on the frozen parameter set): level `i` of `Ls` (positions lanes from `V`) is opening `k0 + i`
 of the plan, of height at most 64, and `F` reads that opening's positions answers (72 bytes each) at the
 answers' lanes. -/
-def PosLanes (p : Params) (Ls : List Level) (V k0 : ℕ) : Prop :=
+def PosLanes (p : Params) (g : ℕ) (ood : Bool) (Ls : List Level) (V k0 : ℕ) : Prop :=
   ∀ i < Ls.length, k0 + i < (opens p).length ∧ ((opens p).getD (k0 + i) default).L = Ls.getD i default ∧
     (Ls.getD i default).height ≤ 64 ∧
     ∀ x < nAns ((opens p).getD (k0 + i) default),
-      8 * (posLanes Ls V).getD i 0 + 72 * x + 40 = 8 * ansLane p (((opens p).getD (k0 + i) default).pe + x)
+      8 * (posLanes g ood Ls V).getD i 0 + 72 * x + 40 = 8 * ansLane p (((opens p).getD (k0 + i) default).pe + x)
 
 /-- **`PosOk` from the position cells' values** (`F`'s positions are `posL`, `qsAt_posL`). -/
 theorem posOk_of (C : SCfg) (k0 : ℕ) (hpb : ∀ i, C.pb i = posBase cfg20 (k0 + i)) {Ls : List Level} {V : ℕ}
-    (hPL : PosLanes P20 Ls V k0) {M : Mem} {ws : List Word} (hS : StreamOk P20) (hL : LaneLink P20 ws)
+    (hPL : PosLanes P20 C.g C.ood Ls V k0) {M : Mem} {ws : List Word} (hS : StreamOk P20) (hL : LaneLink P20 ws)
     (hQ : QOk P20 (lay cfg20))
     (hcell : ∀ k < (opens P20).length, ((opens P20).getD k default).L.height ≤ 64 →
       ∀ j < ((opens P20).getD k default).L.t, M.k (nK cfg20 + posIdx P20 k j) =
@@ -294,11 +285,11 @@ theorem posOkR20
           lay26 (hτ' x) (stackOf lay26 qm qr))).inb = true)
     (hS : StreamOk P20) (hQ : QOk P20 (lay cfg20))
     (hpc : PosCellsLt (Qn (lay cfg20) (sigIn cfg20) (qarith cfg20) (nK cfg20) 0) cfg20)
-    (hPL : PosLanes P20 P20.recLevels (openU P20 + 15) 0) :
+    (hPL : PosLanes P20 P20.grind false P20.recLevels (openU P20 + 15) 0) :
     ∀ vk c x qm qr, okS vk c x = true → (hdrOf x).b = 1 → GoodN T hτ x qm qr →
       InMapN (lay cfg20) (sigIn cfg20) (qarith cfg20) (nK cfg20) 0 pl groups arrsX (aux cfg20 D) hτ' vk x qm qr →
       LaneLink P20 (wsOf (Lvm.X.laneOf (wOfCol qr))) →
-      PosOk (cfgRec P20 (posBase cfg20))
+      PosOk (cfgRec P20 (posBase cfg20) (pwBase cfg20))
         (memX (lay cfg20) (sigIn cfg20) (qarith cfg20) (nK cfg20) 0 pl groups arrsX (aux cfg20 D) hτ' x qm qr)
         (traceBytesB (decode P20 (wsOf (Lvm.X.laneOf (wOfCol qr))))) 0 P20.recLevels (openU P20 + 15) := by
   intro vk c x qm qr hok hb hG mp hL
@@ -319,16 +310,19 @@ theorem posOkM20
           lay26 (hτ' x) (stackOf lay26 qm qr))).inb = true)
     (hS : StreamOk P20) (hQ : QOk P20 (lay cfg20))
     (hpc : PosCellsLt (Qn (lay cfg20) (sigIn cfg20) (qarith cfg20) (nK cfg20) 0) cfg20)
-    (hPL : PosLanes P20 P20.mainLevels (stackEndL P20.recLevels (openU P20 + 15) + 15) 1) :
+    (hPL : PosLanes P20 P20.grind P20.mainOod P20.mainLevels
+      (stackEndL P20.grind false P20.recLevels (openU P20 + 15) + 15) 2) :
     ∀ vk c x qm qr, okS vk c x = true → (hdrOf x).b = 1 → GoodN T hτ x qm qr →
       InMapN (lay cfg20) (sigIn cfg20) (qarith cfg20) (nK cfg20) 0 pl groups arrsX (aux cfg20 D) hτ' vk x qm qr →
       LaneLink P20 (wsOf (Lvm.X.laneOf (wOfCol qr))) →
-      PosOk (cfgMain P20 (posBase cfg20))
+      PosOk (cfgMain P20 (posBase cfg20) (pwBase cfg20))
         (memX (lay cfg20) (sigIn cfg20) (qarith cfg20) (nK cfg20) 0 pl groups arrsX (aux cfg20 D) hτ' x qm qr)
         (traceBytesB (decode P20 (wsOf (Lvm.X.laneOf (wOfCol qr))))) 0 P20.mainLevels
-        (stackEndL P20.recLevels (openU P20 + 15) + 15) := by
+        (stackEndL P20.grind false P20.recLevels (openU P20 + 15) + 15) := by
   intro vk c x qm qr hok hb hG mp hL
-  exact posOk_of _ 1 (fun _ => rfl) hPL hS hL hQ (posCells20 hT hst hinb hS hQ hpc hok hb hG mp)
+  have h2 : P20.recLevels.length = 2 := by decide +kernel
+  exact posOk_of _ 2 (fun i => by show posBase cfg20 (P20.recLevels.length + i) = _; rw [h2]) hPL hS hL hQ
+    (posCells20 hT hst hinb hS hQ hpc hok hb hG mp)
 
 end P20
 

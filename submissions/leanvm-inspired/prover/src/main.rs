@@ -18,9 +18,11 @@
 
 mod alloc;
 mod batch;
+mod chainwalk;
 mod format;
 mod kat;
 mod keccak;
+mod keccak_vl;
 mod lv;
 mod lvm;
 mod oracle;
@@ -443,6 +445,8 @@ fn cmd_selftest() {
 /// `LVM_SELFTEST_FAIL=v4[,v4p]` makes those children fail (a test of the fallback).
 fn cmd_setup(dir: &str) -> i32 {
     let t0 = Instant::now();
+    // P-FIX2: no worker count from an earlier setup survives this one (written below; absent: 8)
+    let _ = std::fs::remove_file(format!("{dir}/lvm-threads"));
     let exe = std::env::current_exe().map(|p| p.to_string_lossy().into_owned()).unwrap_or_else(|_| "/prover/prover".into());
     let inject = std::env::var("LVM_SELFTEST_FAIL").unwrap_or_default();
     let budget = |v: &str| -> u64 {
@@ -537,6 +541,16 @@ fn cmd_setup(dir: &str) -> i32 {
         return 1;
     }
     log += &format!("cap: {chosen} ({:.1} s)\n", t0.elapsed().as_secs_f64());
+    // P-FIX2: the worker count of the steps, timed on the chosen variant (`DIR/lvm-threads`)
+    let (k, msg) = if t0.elapsed().as_secs() < 180 {
+        select_threads(&exe, chosen, t0 + std::time::Duration::from_secs(225))
+    } else {
+        (8, "threads 8 (no setup time left)".to_string())
+    };
+    if let Err(e) = std::fs::write(format!("{dir}/lvm-threads"), format!("{k}\n")) {
+        eprintln!("setup: {dir}/lvm-threads: {e}");
+    }
+    log += &format!("{msg}\n");
     let _ = std::fs::write(format!("{dir}/lvm-selftest.txt"), &log);
     eprint!("{log}");
     0
@@ -593,7 +607,8 @@ fn cmd_gbench(args: &[String]) {
     lv::parallel::init();
     let p = lvm::params::Params::by_name("P20").unwrap();
     let chain = lvm::tables::Chain::run_gated(p.log_n, &[7u8; 32], n, false);
-    for r in 0..reps {
+    let tape_reps = if std::env::var_os("GB_NOTAPE").is_some() { 0 } else { reps };
+    for r in 0..tape_reps {
         let t = Instant::now();
         let w = lv::keccak_gkr::Witness::generate_uncommitted(chain.shape, &chain.inputs);
         let tw = t.elapsed().as_secs_f64();
@@ -612,8 +627,11 @@ fn cmd_gbench(args: &[String]) {
         print!("{}", lv::tracing::report());
         return;
     }
+    // KS14-G: `GB_KSLOG=L` runs KS at 2^L rows (`rec_rows_log = L − 1`), the rest of P20 unchanged
+    let kl: usize = std::env::var("GB_KSLOG").ok().and_then(|v| v.parse().ok()).unwrap_or(p.ks_log);
+    let p = lvm::params::Params { ks_log: kl, rec_rows_log: kl - 1, ..p };
     let lay = lvm::tables::Layout::new(&p);
-    let cont = lvm::tables::cont_column(p.ks_log, p.rec_rows_log, lvm::prove::sponge_blocks(&p));
+    let cont = lvm::tables::cont_column(p.ks_log, p.rec_rows_log, lvm::prove::sponge_blocks(&p).min(1 << p.rec_rows_log));
     let ks = lvm::tables::Sponge::run(p.ks_log, cont, vec![[0u64; lvm::params::REC_STREAM_COLS]; 1 << p.ks_log]);
     let mut cmain = vec![F64::ZERO; 1 << p.nu_main];
     let mut crec = vec![F64::ZERO; 1 << p.nu_rec()];
@@ -627,19 +645,111 @@ fn cmd_gbench(args: &[String]) {
         ps.add_scalars(&kout.lanes);
         let t = Instant::now();
         let _ = ks_w.prove(&mut ps, &cmain[lay.ks_off..lay.ks_off + (1 << lay.ks_vars())], &kout);
-        println!("gbench KS rep {r}: out {to:.3} gkr {:.3} s", t.elapsed().as_secs_f64());
+        let tg = t.elapsed().as_secs_f64();
+        let t = Instant::now();
+        let _ = lvm::link::prove_ks(&mut ps, &lay, &ks);
+        println!("gbench KS 2^{kl} rep {r}: out {to:.3} gkr {tg:.3} link {:.3} s", t.elapsed().as_secs_f64());
     }
     print!("{}", lv::tracing::report());
+}
+
+/// P-FIX2: `tsel` (a child of the stream's start-up): the tape's depth-24 GKR at n = 2^14 rows on a local oracle,
+/// the worker count from `LEANVM_NUM_THREADS`; prints `tsel <best of 3, s>`. The kernel phases' stand-in.
+fn cmd_tsel() {
+    oracle::install(Box::new(oracle::Local::keyed(&[0x5A; 32])));
+    lv::parallel::init();
+    let p = lvm::params::Params::by_name("P20").unwrap();
+    let chain = lvm::tables::Chain::run_gated_notify_ref(p.log_n, &[7u8; 32], 1 << 14, false, |_| {});
+    let w = lv::keccak_gkr::Witness::generate_uncommitted(chain.shape, &chain.inputs);
+    let mut best = f64::MAX;
+    let mut dig = String::new();
+    for _ in 0..3 {
+        let mut ps = lv::fiat_shamir::transcript::ProverState::seeded(b"tsel-tape-0123456");
+        let t = Instant::now();
+        let rr = ps.sample_vec(p.log_n);
+        let out = lv::keccak_gkr::OutputClaim::of_inputs_padded(chain.shape, &chain.inputs, rr);
+        ps.add_scalars(&out.lanes);
+        let fin = w.prove_tape(&mut ps, &out);
+        best = best.min(t.elapsed().as_secs_f64());
+        dig = format!("{:?}", fin.value);
+    }
+    println!("tsel {best:.6} {}", hex(&keccak::keccak256(dig.as_bytes())));
+}
+
+/// `prover setup`'s worker count: 8, or 4 if `tsel` runs at least 3 % faster with 4. Each count is timed in its
+/// own child process on the chosen CPU variant, alternately, three times each (best of each); fewer than 8 CPUs
+/// or a failed child: 8. The proof bytes do not depend on the count (the field sums are exact).
+fn select_threads(exe: &str, variant: &str, deadline: Instant) -> (usize, String) {
+    let cpus = std::thread::available_parallelism().map_or(1, |n| n.get());
+    if cpus < 8 {
+        return (8, format!("threads 8 ({cpus} CPUs: not timed)"));
+    }
+    let t0 = Instant::now();
+    let run = |k: usize| -> Option<(f64, String)> {
+        let mut ch = std::process::Command::new(exe)
+            .arg("tsel")
+            .env("LVM_CPU", variant)
+            .env("LEANVM_NUM_THREADS", k.to_string())
+            .env_remove("RF_SETUP")
+            .stdin(std::process::Stdio::null())
+            .stdout(std::process::Stdio::piped())
+            .stderr(std::process::Stdio::null())
+            .spawn()
+            .ok()?;
+        let deadline = deadline.min(Instant::now() + std::time::Duration::from_secs(30));
+        loop {
+            match ch.try_wait() {
+                Ok(Some(st)) if st.success() => break,
+                Ok(None) if Instant::now() < deadline => std::thread::sleep(std::time::Duration::from_millis(5)),
+                _ => {
+                    let _ = ch.kill();
+                    let _ = ch.wait();
+                    return None;
+                }
+            }
+        }
+        let mut out = String::new();
+        std::io::Read::read_to_string(ch.stdout.as_mut()?, &mut out).ok()?;
+        let mut f = out.trim().strip_prefix("tsel ")?.split_whitespace();
+        Some((f.next()?.parse().ok()?, f.next()?.to_string()))
+    };
+    let (mut t8, mut t4) = (f64::MAX, f64::MAX);
+    let mut digest: Option<String> = None;
+    for k in [8, 4, 4, 8, 8, 4] {
+        match run(k) {
+            // the claim the GKR ends at must not depend on the count
+            Some((_, d)) if digest.as_ref().is_some_and(|x| *x != d) => return (8, format!("threads 8 (tsel's claim differs with {k})")),
+            Some((t, d)) => {
+                digest = Some(d);
+                if k == 8 { t8 = t8.min(t) } else { t4 = t4.min(t) }
+            }
+            None => return (8, format!("threads 8 (tsel failed or out of time with {k})")),
+        }
+    }
+    let k = if t4 < 0.97 * t8 { 4 } else { 8 };
+    (k, format!("threads {k} (tsel: 8 {:.0} ms, 4 {:.0} ms; {:.1} s)", t8 * 1e3, t4 * 1e3, t0.elapsed().as_secs_f64()))
 }
 
 /// `first DIR` / `step DIR` (PROVER.md §3): connect, `ready`, wait for `go`, prove, write `proof.bin`, `done`.
 /// Parameter set `P20` (`LVM_PARAMS=P8` for local tests), 8 threads unless `LEANVM_NUM_THREADS` says otherwise.
 fn cmd_stream(mode: &str, dir: &str) {
     let t_start = Instant::now();
-    if std::env::var_os("LEANVM_NUM_THREADS").is_none() {
+    let tsel = if std::env::var_os("LEANVM_NUM_THREADS").is_none() {
+        // P-FIX2 (SYN2 §3.3 item 3): the worker count `prover setup` timed on this machine (`$RF_SETUP/lvm-threads`;
+        // `LVM_TSEL=N` overrides), else 8
+        let file = std::env::var("RF_SETUP").ok().and_then(|d| std::fs::read_to_string(format!("{d}/lvm-threads")).ok());
+        let pick = |v: Option<String>| v.and_then(|x| x.trim().parse::<usize>().ok()).filter(|&k| (1..=64).contains(&k));
+        let (k, from) = match (pick(std::env::var("LVM_TSEL").ok()), pick(file)) {
+            (Some(k), _) => (k, "LVM_TSEL"),
+            (None, Some(k)) => (k, "setup"),
+            _ => (8, "default"),
+        };
         // SAFETY: single-threaded here (no worker pool, no other thread yet).
-        unsafe { std::env::set_var("LEANVM_NUM_THREADS", "8") };
-    }
+        unsafe { std::env::set_var("LEANVM_NUM_THREADS", k.to_string()) };
+        format!("threads {k} ({from})")
+    } else {
+        String::from("threads set by LEANVM_NUM_THREADS")
+    };
     let p = lvm::params::Params::by_name(&std::env::var("LVM_PARAMS").unwrap_or_else(|_| "P20".into()))
         .unwrap_or_else(|| service::fatal("LVM_PARAMS: P8 | P20"));
     let _ = std::env::set_current_dir(dir);
@@ -662,9 +772,10 @@ fn cmd_stream(mode: &str, dir: &str) {
     proc::heap_setup(pf);
     // P-QUICK lever 1: the node program (blob parse, compile, zero table build, Φ's columns) depends on no
     // input, so it is built before `ready` (untimed) instead of after `go`
+    crate::chainwalk::select(); // PORT-12 / P-FIX2: the chain walk's kernel, timed before `ready`
     let ctx = lvm::stream::Ctx { p, svc, vk, log, q: None, phi0: lv::primitives::field::F192::ZERO }.with_loop();
     if log {
-        eprintln!("lvm: {mode} {} {} start-up {:.3} s", ctx.p.name, kat::info(), t_start.elapsed().as_secs_f64());
+        eprintln!("lvm: {mode} {} {} start-up {:.3} s; {tsel}", ctx.p.name, kat::info(), t_start.elapsed().as_secs_f64());
     }
     say("ready");
     wait_go();
@@ -699,6 +810,7 @@ fn run(args: Vec<String>) -> i32 {
         Some("sprove") => cmd_sprove(&args),
         Some("tbench") => cmd_tbench(&args),
         Some("gbench") => cmd_gbench(&args),
+        Some("tsel") => cmd_tsel(),
         Some("pgbench") => cmd_pgbench(&args),
         Some("s2check") => {
             lvm::wire::check::closed_forms_match_brute_force();

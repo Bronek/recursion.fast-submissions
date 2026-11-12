@@ -11,7 +11,7 @@ import LvmQSig
 * `p1C`, `sigOut`, `p2C`: Q_sig's pointer and output cells (after Q_link).
 * `QData` (placement record, dumped by the assembler), `plOf`, `bplOf`.
 * `arrs C D pub`: the input arrays of `LvmQAsmLay`'s table (aliased, public, written); `aux C D`:
-  Q_sig's six `BITS` tables, then the position classes.
+  Q_sig's six `BITS` tables, then the position (lane) classes, the `s'` bits and the PoW fields.
 * **`tabs C G D pub = lvmTabsC G (plOf D) D.groups (arrs C D pub) (aux C D)`**, `G = cacheG (Q C)`.
 -/
 
@@ -78,10 +78,11 @@ def arrs (C : QCfg) (D : QData) (P : Pub) : List InArr :=
    pubArr C.aQT (qtB C) 1 (false, 0) (fin D 44) (qltData C.p (lay C)),
    ⟨.K, C.bo, obB C, 1, [(false, D.aval)], fin D 45, none⟩]
 
-/-- The `BITS` classes: Q_sig's six, the position classes, the `s'` byte shifts (`sSpec`). -/
+/-- The `BITS` classes: Q_sig's six, the position (lane) classes, the `s'` bit class (`sSpec`), the PoW
+class (`powSpec`). -/
 def bspecs (C : QCfg) (D : QData) : List BSpec :=
   sigSpecs (sigIn C) (sigOut C) (bplOf D) ++ posSpecs C (fun c => bplOf D (6 + c)) ++
-    [sSpec C (bplOf D (6 + nPosCls C))]
+    [sSpec C (bplOf D (6 + nPosCls C)), powSpec C (bplOf D (7 + nPosCls C))]
 
 /-- **The aux tables.** -/
 def aux (C : QCfg) (D : QData) : List Tab := (bspecs C D).map BSpec.tab

@@ -3,7 +3,7 @@
 -- `simK` (each read the scalar of the next 24 bytes, each sample the challenge of the first log
 -- entry for `state ‖ pending bytes`), and its samples are the first-match chain of WP-13a
 -- (`fmAns`) whose targets absorb the slices `fsPreK` (WP-13a's `fsPre` on kinds).
-import LvmCertSLuck
+import LvmCompile
 import LvmCertSExqKinds
 import LvmXChainL
 
@@ -27,6 +27,12 @@ namespace Lvm.ASM
 open RecursionFast Lvm.FS
 open LeanVM.Parameters
 open LeanVM.Protocol.Compile hiding Proof Bytes
+
+/-- The challenge of a sample event (`LvmCertSLuck.sampleOf`, restated here so that the replay
+does not import the certificate's modules). -/
+def smpOf : Ev → Option E
+  | .sample c => some c
+  | _ => none
 
 /-- The slice `B[a, a + n)`. -/
 def sl (B : List UInt8) (a n : ℕ) : List UInt8 := (B.drop a).take n
@@ -247,9 +253,9 @@ theorem simK_chain (S : Scheme) (L : Log) (B : List UInt8) (T : ℕ → Digest �
     Lvm.X.fmAns T st₀ L j = some st →
     (∀ i (hi : i < (fsPreK ks off pend).length) (s : Digest),
       T (j + 1 + i) s = toQ (s.toList ++ sl B ((fsPreK ks off pend)[i]).1 ((fsPreK ks off pend)[i]).2)) →
-    (∀ i (hi : i < (pre.filterMap sampleOf).length), ∃ a,
-      Lvm.X.fmAns T st₀ L (j + 1 + i) = some a ∧ (pre.filterMap sampleOf)[i] = S.chal a) ∧
-    Lvm.X.fmAns T st₀ L (j + (pre.filterMap sampleOf).length) = some st' := by
+    (∀ i (hi : i < (pre.filterMap smpOf).length), ∃ a,
+      Lvm.X.fmAns T st₀ L (j + 1 + i) = some a ∧ (pre.filterMap smpOf)[i] = S.chal a) ∧
+    Lvm.X.fmAns T st₀ L (j + (pre.filterMap smpOf).length) = some st' := by
   intro ks
   induction ks with
   | nil =>
@@ -269,7 +275,7 @@ theorem simK_chain (S : Scheme) (L : Log) (B : List UInt8) (T : ℕ → Digest �
         rw [hr, Option.map_some, Option.some.injEq, Prod.mk.injEq] at hs
         obtain ⟨rfl, rfl⟩ := hs
         have := ih (off + 24) pend st j pre₁ st₁ hr hj (fun i hi s => hT i hi s)
-        have e : (Ev.read (S.decE (sl B off 24)) :: pre₁).filterMap sampleOf = pre₁.filterMap sampleOf := rfl
+        have e : (Ev.read (S.decE (sl B off 24)) :: pre₁).filterMap smpOf = pre₁.filterMap smpOf := rfl
         rw [e]
         exact this
     | sample =>
@@ -295,14 +301,14 @@ theorem simK_chain (S : Scheme) (L : Log) (B : List UInt8) (T : ℕ → Digest �
             exact this)
           refine ⟨fun i hi => ?_, ?_⟩
           · rcases i with _ | i
-            · exact ⟨e.2, by simpa using hj1, by simp [sampleOf]⟩
-            · simp only [List.filterMap_cons, sampleOf, List.length_cons] at hi
+            · exact ⟨e.2, by simpa using hj1, by simp [smpOf]⟩
+            · simp only [List.filterMap_cons, smpOf, List.length_cons] at hi
               obtain ⟨a, ha, he⟩ := h1 i (by omega)
               refine ⟨a, by rw [show j + 1 + (i + 1) = j + 1 + 1 + i by omega]; exact ha, ?_⟩
-              simpa [sampleOf] using he
-          · simp only [List.filterMap_cons, sampleOf, List.length_cons]
-            rw [show j + (List.length (List.filterMap sampleOf pre₁) + 1) =
-              j + 1 + (List.filterMap sampleOf pre₁).length by omega]
+              simpa [smpOf] using he
+          · simp only [List.filterMap_cons, smpOf, List.length_cons]
+            rw [show j + (List.length (List.filterMap smpOf pre₁) + 1) =
+              j + 1 + (List.filterMap smpOf pre₁).length by omega]
             exact h2
     | other => simp [simK] at hs
 

@@ -3,6 +3,7 @@
 import LvmXTop
 import LvmLog
 import LvmXReasm
+import LvmXRead1
 
 /-!
 # What the extractor returns (BLUEPRINT §6.2)
@@ -11,10 +12,11 @@ On an `S` proof (`π[0] = 'S'`, `|π| = piSize`):
 
 * **`EX_leaf`** (`b = 0`, every log): `leafW π = leaf s n` from the header;
 * **`EX_node`** (`b ≠ 0`, in the domain): if the log has no state hit (`notStateHit_of_notBad`: implied
-  by WP-5's `¬ Bad`), the first-match chain answers the six fold challenges (`αd`), and the decoder of
-  `C_rec` (WP-13b's `decodeRec` on the first-preimage reading `readWd` under π's cap, the challenges
-  `alphaE (αd i)` and π's final `f1E π`) returns `out`, then `EX = some (Xwit π w)`, `w` the words of
-  `out`: the node `c_L, leafStmt h n` with the child `⟨reassembleL tr', tr', σ'⟩` read off the decoded
+  by WP-5's `¬ Bad`), the first-match chain answers the six level-0 fold challenges (`αd`) and the four
+  level-1 ones (`α1d`), the level-1 decoder (lvm2 S4, `decodeRec1` on the reading `readWd1` under π's
+  level-1 cap, `alphaE (α1d i)` and π's final `f2E π`) returns `f₁`, and the level-0 decoder
+  (WP-13b's `decodeRec` on `readWd` under π's cap, `alphaE (αd i)` and `f₁`) returns `out`, then
+  `EX = some (Xwit π w)`, `w` the words of `out`: the node `c_L, leafStmt h n` with the child `⟨reassembleL tr', tr', σ'⟩` read off the decoded
   stream and the right leaf `⟨encode (leaf s n), [], σ_leaf⟩`;
 * **`EX_node_out`** (`b ≠ 0`, outside the domain): the search under π's `vk`.
 -/
@@ -31,14 +33,19 @@ def dw (d : Digest) (m : ℕ) : Word := (packBytes d.toList).getD m 0
 /-- A fold challenge from its chain answer: lanes 0–2 as an `E` element (`rdE`'s coordinates). -/
 def alphaE (d : Digest) : BF64.Ext3 := mkE (wK (dw d 0)) (wK (dw d 1)) (wK (dw d 2))
 
-/-- `f₁`'s coefficient `v` from π (`E` scalars of 3 words at π word `f1Off / 8`). -/
-def f1E (π : Proof) (v : ℕ) : BF64.Ext3 :=
-  mkE (wK (pw π (f1Off pX / 8 + 3 * v))) (wK (pw π (f1Off pX / 8 + 3 * v + 1)))
-    (wK (pw π (f1Off pX / 8 + 3 * v + 2)))
+/-- `f₂`'s coefficient `v` from π (`E` scalars of 3 words at π word `f2Off / 8`; lvm2 S4: `C_rec`'s
+final after its level 1). -/
+def f2E (π : Proof) (v : ℕ) : BF64.Ext3 :=
+  mkE (wK (pw π (f2Off pX / 8 + 3 * v))) (wK (pw π (f2Off pX / 8 + 3 * v + 1)))
+    (wK (pw π (f2Off pX / 8 + 3 * v + 2)))
 
-/-- `C_rec`'s cap from π: 128 digests at π word `capRecOff / 8`. -/
+/-- `C_rec`'s (level 0's) cap from π: 128 digests at π word `capRecOff / 8`. -/
 def capRec (π : Proof) : List Digest :=
   (List.range 128).map fun e => hdD π (capRecOff pX / 8 + 4 * e)
+
+/-- `C_rec`'s level-1 cap from π: 128 digests at π word `capRec1Off / 8`. -/
+def capRec1 (π : Proof) : List Digest :=
+  (List.range 128).map fun e => hdD π (capRec1Off pX / 8 + 4 * e)
 
 /-- The decoded message's words. -/
 def wOut (out : List BF64) (i : ℕ) : Word := BF64.toBitVec (out.getD i 0)
@@ -228,7 +235,7 @@ theorem rdK_toBitVec (M : Mem) (a : ℕ) : BF64.toBitVec (rdK M a) = rd M a := r
 
 theorem rdE_eq (M : Mem) (a : ℕ) : rdE M a = mkE (wK (rd M a)) (wK (rd M (a + 1))) (wK (rd M (a + 2))) := rfl
 
-theorem alphaPos_eq (j : ℕ) : alphaPos pX j = 1308 + j := by
+theorem alphaPos_eq (j : ℕ) : alphaPos pX j = 1297 + j := by
   rw [alphaPos, layout_P20.1]
 
 /-- One 3-word copy of the `α` copies. -/
@@ -248,38 +255,38 @@ theorem acpIR_sem (I : Array Word) (s : St) (hM : Inv s.M) (hsz : 2 ^ 25 ≤ s.M
     (∀ j < 6, ∀ m < 3, rd (semXIR I acpIR s).M (aBX + 3 * j + m) = rd s.M (ansB + 4 * alphaPos pX j + m)) ∧
     (∀ r, regs ≤ r → (r < aBX ∨ aBX + 18 ≤ r) → rd (semXIR I acpIR s).M r = rd s.M r) ∧
     Inv (semXIR I acpIR s).M ∧ (semXIR I acpIR s).M.size = s.M.size ∧ (semXIR I acpIR s).o = s.o := by
-  have hA : ∀ j, ansB + 4 * alphaPos pX j = 16793600 + 4 * (1308 + j) := fun j => by
+  have hA : ∀ j, ansB + 4 * alphaPos pX j = 16793600 + 4 * (1297 + j) := fun j => by
     rw [alphaPos_eq, ansB_eq]
   simp only [acpIR, hA]
   simp only [aBX]
-  obtain ⟨p1, q1, i1, z1, o1⟩ := mcp3 I s hM hsz (src := 16793600 + 4 * (1308 + 0)) (dst := 2 ^ 19)
+  obtain ⟨p1, q1, i1, z1, o1⟩ := mcp3 I s hM hsz (src := 16793600 + 4 * (1297 + 0)) (dst := 2 ^ 19)
     (by simp only [regs]; norm_num) (by norm_num) (by norm_num) (by norm_num)
   rw [semXIR_seq]
-  generalize semXIR I (mcpIR 3 (16793600 + 4 * (1308 + 0)) 1 (2 ^ 19)) s = s1 at p1 q1 i1 z1 o1
-  obtain ⟨p2, q2, i2, z2, o2⟩ := mcp3 I s1 i1 (by omega) (src := 16793600 + 4 * (1308 + 1))
+  generalize semXIR I (mcpIR 3 (16793600 + 4 * (1297 + 0)) 1 (2 ^ 19)) s = s1 at p1 q1 i1 z1 o1
+  obtain ⟨p2, q2, i2, z2, o2⟩ := mcp3 I s1 i1 (by omega) (src := 16793600 + 4 * (1297 + 1))
     (dst := 2 ^ 19 + 3) (by simp only [regs]; norm_num) (by norm_num) (by norm_num) (by norm_num)
   rw [semXIR_seq]
-  generalize semXIR I (mcpIR 3 (16793600 + 4 * (1308 + 1)) 1 (2 ^ 19 + 3)) s1 = s2 at p2 q2 i2 z2 o2
-  obtain ⟨p3, q3, i3, z3, o3⟩ := mcp3 I s2 i2 (by omega) (src := 16793600 + 4 * (1308 + 2))
+  generalize semXIR I (mcpIR 3 (16793600 + 4 * (1297 + 1)) 1 (2 ^ 19 + 3)) s1 = s2 at p2 q2 i2 z2 o2
+  obtain ⟨p3, q3, i3, z3, o3⟩ := mcp3 I s2 i2 (by omega) (src := 16793600 + 4 * (1297 + 2))
     (dst := 2 ^ 19 + 6) (by simp only [regs]; norm_num) (by norm_num) (by norm_num) (by norm_num)
   rw [semXIR_seq]
-  generalize semXIR I (mcpIR 3 (16793600 + 4 * (1308 + 2)) 1 (2 ^ 19 + 6)) s2 = s3 at p3 q3 i3 z3 o3
-  obtain ⟨p4, q4, i4, z4, o4⟩ := mcp3 I s3 i3 (by omega) (src := 16793600 + 4 * (1308 + 3))
+  generalize semXIR I (mcpIR 3 (16793600 + 4 * (1297 + 2)) 1 (2 ^ 19 + 6)) s2 = s3 at p3 q3 i3 z3 o3
+  obtain ⟨p4, q4, i4, z4, o4⟩ := mcp3 I s3 i3 (by omega) (src := 16793600 + 4 * (1297 + 3))
     (dst := 2 ^ 19 + 9) (by simp only [regs]; norm_num) (by norm_num) (by norm_num) (by norm_num)
   rw [semXIR_seq]
-  generalize semXIR I (mcpIR 3 (16793600 + 4 * (1308 + 3)) 1 (2 ^ 19 + 9)) s3 = s4 at p4 q4 i4 z4 o4
-  obtain ⟨p5, q5, i5, z5, o5⟩ := mcp3 I s4 i4 (by omega) (src := 16793600 + 4 * (1308 + 4))
+  generalize semXIR I (mcpIR 3 (16793600 + 4 * (1297 + 3)) 1 (2 ^ 19 + 9)) s3 = s4 at p4 q4 i4 z4 o4
+  obtain ⟨p5, q5, i5, z5, o5⟩ := mcp3 I s4 i4 (by omega) (src := 16793600 + 4 * (1297 + 4))
     (dst := 2 ^ 19 + 12) (by simp only [regs]; norm_num) (by norm_num) (by norm_num) (by norm_num)
   rw [semXIR_seq]
-  generalize semXIR I (mcpIR 3 (16793600 + 4 * (1308 + 4)) 1 (2 ^ 19 + 12)) s4 = s5 at p5 q5 i5 z5 o5
-  obtain ⟨p6, q6, i6, z6, o6⟩ := mcp3 I s5 i5 (by omega) (src := 16793600 + 4 * (1308 + 5))
+  generalize semXIR I (mcpIR 3 (16793600 + 4 * (1297 + 4)) 1 (2 ^ 19 + 12)) s4 = s5 at p5 q5 i5 z5 o5
+  obtain ⟨p6, q6, i6, z6, o6⟩ := mcp3 I s5 i5 (by omega) (src := 16793600 + 4 * (1297 + 5))
     (dst := 2 ^ 19 + 15) (by simp only [regs]; norm_num) (by norm_num) (by norm_num) (by norm_num)
-  generalize semXIR I (mcpIR 3 (16793600 + 4 * (1308 + 5)) 1 (2 ^ 19 + 15)) s5 = s6 at p6 q6 i6 z6 o6
+  generalize semXIR I (mcpIR 3 (16793600 + 4 * (1297 + 5)) 1 (2 ^ 19 + 15)) s5 = s6 at p6 q6 i6 z6 o6
   have hR : ∀ r, regs ≤ r → (r < 2 ^ 19 ∨ 2 ^ 19 + 18 ≤ r) → rd s6.M r = rd s.M r := fun r hr h => by
     rw [q6 r hr (by omega), q5 r hr (by omega), q4 r hr (by omega), q3 r hr (by omega), q2 r hr (by omega),
       q1 r hr (by omega)]
-  have hsrc : ∀ j < 6, ∀ m < 3, regs ≤ 16793600 + 4 * (1308 + j) + m ∧
-      (16793600 + 4 * (1308 + j) + m < 2 ^ 19 ∨ 2 ^ 19 + 18 ≤ 16793600 + 4 * (1308 + j) + m) :=
+  have hsrc : ∀ j < 6, ∀ m < 3, regs ≤ 16793600 + 4 * (1297 + j) + m ∧
+      (16793600 + 4 * (1297 + j) + m < 2 ^ 19 ∨ 2 ^ 19 + 18 ≤ 16793600 + 4 * (1297 + j) + m) :=
     fun j _ m _ => ⟨by simp only [regs]; omega, .inr (by omega)⟩
   refine ⟨fun j hj m hm => ?_, hR, i6, by rw [z6, z5, z4, z3, z2, z1], by rw [o6, o5, o4, o3, o2, o1]⟩
   have hr : regs ≤ 2 ^ 19 + 3 * j + m := by simp only [regs]; omega
@@ -343,14 +350,108 @@ theorem okXIR_sem (c : Digest) (π : Proof) (L : Log) (hs : π.size = piSize pX)
   rw [outIR_sem c π L hs s10 hM10 (mB := mB dBX) (by simp only [regs, mB, dBX]; norm_num)
     (by simp only [mB, dBX, sgB]; norm_num) hsz10 w hw10, o10, o9]
 
-/-- **`EX` on an `S` node proof in the domain** (BLUEPRINT §6.2): with no state hit, the six fold
-challenges answered by the first-match chain, and the decoder returning `out`, the node witness
-`Xwit π (wOut out)`. -/
+/-- **The `α₁` copies** (generic): three words of each of `n` chain answers. -/
+theorem acp3IR_sem (I : Array Word) (s : St) (hM : Inv s.M) (hsz : 2 ^ 25 ≤ s.M.size) {src dst : ℕ}
+    (hd : regs ≤ dst) (hsr : 2 ^ 24 ≤ src) : ∀ n, dst + 3 * n ≤ 2 ^ 24 → src + 4 * n ≤ 2 ^ 25 →
+    (∀ j < n, ∀ m < 3, rd (semXIR I (acp3IR src dst n) s).M (dst + 3 * j + m) = rd s.M (src + 4 * j + m)) ∧
+    (∀ r, regs ≤ r → (r < dst ∨ dst + 3 * n ≤ r) → rd (semXIR I (acp3IR src dst n) s).M r = rd s.M r) ∧
+    Inv (semXIR I (acp3IR src dst n) s).M ∧ (semXIR I (acp3IR src dst n) s).M.size = s.M.size ∧
+    (semXIR I (acp3IR src dst n) s).o = s.o
+  | 0, _, _ => ⟨fun j hj => absurd hj (Nat.not_lt_zero _), fun _ _ _ => rfl, hM, rfl, rfl⟩
+  | n + 1, h1, h2 => by
+    obtain ⟨p1, q1, i1, z1, o1⟩ := acp3IR_sem I s hM hsz hd hsr n (by omega) (by omega)
+    rw [acp3IR, semXIR_seq]
+    generalize semXIR I (acp3IR src dst n) s = s1 at p1 q1 i1 z1 o1
+    obtain ⟨p2, q2, i2, z2, o2⟩ := mcp3 I s1 i1 (by rw [z1]; exact hsz) (src := src + 4 * n)
+      (dst := dst + 3 * n) (by omega) (by omega) (by omega) (by omega)
+    refine ⟨fun j hj m hm => ?_, fun r hr h => ?_, i2, by rw [z2, z1], by rw [o2, o1]⟩
+    · rcases Nat.lt_succ_iff_lt_or_eq.mp hj with hj | rfl
+      · rw [q2 _ (by omega) (.inl (by omega)), p1 j hj m hm]
+      · rw [p2 m hm, q1 _ (by simp only [regs] at hd ⊢; omega) (.inr (by omega))]
+    · rw [q2 r hr (by omega), q1 r hr (by omega)]
+
+theorem alpha1Pos_eq (j : ℕ) : alpha1Pos pX j = 1328 + j := by
+  have h := layout_P20.2.2.2.2.2.2.2.1
+  simp only [alpha1Pos] at h ⊢
+  omega
+
+/-- **After the level-1 decoder**: with its flag set, `C_rec`'s level-0 word, `α₀` and `f₁` in v1's
+decoder layout, and the level-0 decoder returning `out`, the node output. -/
+theorem ok1XIR_sem (c : Digest) (π : Proof) (L : Log) (hs : π.size = piSize pX) (s : St)
+    (hM : Inv s.M) (hsz : 2 ^ 25 ≤ s.M.size) (hf : rd s.M (ok1B d1BX) = 1)
+    (wd : ℕ → ℕ → BF64) (α f₁ : ℕ → BF64.Ext3)
+    (hW : ∀ q < 2 ^ 15, ∀ t < 64, rdK s.M (wBX + 64 * q + t) = wd q t)
+    (hA : ∀ i < 6, rdE s.M (aBX + 3 * i) = α i) (hF : ∀ v < 2 ^ 13, rdE s.M (fBX + 3 * v) = f₁ v)
+    (out : List BF64) (hdec : decodeRec wd α f₁ = some out) :
+    (semXIR (extractorInput c π L).toArray ok1XIR s).o.toList = s.o.toList ++ outWords π (wOut out) := by
+  set I := (extractorInput c π L).toArray
+  have hs0 := hM.1
+  simp only [regs] at hs0
+  rw [ok1XIR, semXIR_seq]
+  have e1 := blk_const_val I s hM (d := eA) (by decide) (toWord (ok1B d1BX))
+  have g1 : ∀ y, y ≠ eA → rd (semXIR I (.blk [.const eA (toWord (ok1B d1BX))]) s).M y = rd s.M y :=
+    fun y hy => blk_const_ne _ s _ hy
+  have hM9 := inv_sem I (P := .blk [.const eA (toWord (ok1B d1BX))]) (by simp +decide [WF, Prim.dst, eA]) hM
+  have z9 := size_sem I (.blk [.const eA (toWord (ok1B d1BX))]) s
+  have o9 : (semXIR I (.blk [.const eA (toWord (ok1B d1BX))]) s).o = s.o := rfl
+  generalize semXIR I (.blk [.const eA (toWord (ok1B d1BX))]) s = s9 at e1 g1 hM9 z9 o9
+  have hok64 : ok1B d1BX < 2 ^ 64 := by simp only [ok1B, d1BX]; norm_num
+  have hs9 := hM9.1
+  simp only [regs] at hs9
+  have eL : semXIR I (.load eW eA) s9 = ⟨s9.M.setIfInBounds eW (rd s9.M (rd s9.M eA).toNat), s9.o⟩ := rfl
+  have l1 : rd (semXIR I (.load eW eA) s9).M eW = rd s9.M (ok1B d1BX) := by
+    rw [eL]; show rd (s9.M.setIfInBounds eW _) eW = _
+    rw [rd_set_self (by simp only [eW]; omega), e1, toNat_toWord hok64]
+  have l2 : ∀ i, i ≠ eW → rd (semXIR I (.load eW eA) s9).M i = rd s9.M i :=
+    fun i hi => by rw [eL]; exact rd_set_ne (Ne.symm hi)
+  have hM10 := inv_sem I (P := .load eW eA) (show 4 ≤ eW by decide) hM9
+  have z10 := size_sem I (.load eW eA) s9
+  have o10 : (semXIR I (.load eW eA) s9).o = s9.o := rfl
+  rw [semXIR_seq]
+  generalize semXIR I (.load eW eA) s9 = s10 at l1 l2 hM10 z10 o10
+  have hflag : rd s10.M eW ≠ 0 := by
+    rw [l1, g1 _ (by simp only [ok1B, d1BX, eA]; omega), hf]; decide
+  rw [semXIR_ite, if_neg hflag, semXIR_seq]
+  have hfr : ∀ y, regs ≤ y → rd s10.M y = rd s.M y := fun y hy => by
+    simp only [regs] at hy
+    rw [l2 _ (by simp only [eW]; omega), g1 _ (by simp only [eA]; omega)]
+  have hsz10 : 2 ^ 25 ≤ s10.M.size := by rw [z10, z9]; exact hsz
+  have hW' : ∀ q < 2 ^ 15, ∀ t < 64, rdK s10.M (wBX + 64 * q + t) = wd q t := fun q hq t ht => by
+    simp only [rdK]; rw [hfr _ (by simp only [regs, wBX]; omega)]; exact hW q hq t ht
+  have hA' : ∀ i < 6, rdE s10.M (aBX + 3 * i) = α i := fun i hi => by
+    rw [← hA i hi, rdE_eq, rdE_eq, hfr _ (by simp only [regs, aBX]; omega),
+      hfr _ (by simp only [regs, aBX]; omega), hfr _ (by simp only [regs, aBX]; omega)]
+  have hF' : ∀ v < 2 ^ 13, rdE s10.M (fBX + 3 * v) = f₁ v := fun v hv => by
+    rw [← hF v hv, rdE_eq, rdE_eq, hfr _ (by simp only [regs, fBX]; omega),
+      hfr _ (by simp only [regs, fBX]; omega), hfr _ (by simp only [regs, fBX]; omega)]
+  obtain ⟨d1, d2, d3, hM8⟩ := decIR_sem I s10 hM10
+    (show DecLay dBX wBX aBX fBX s10.M.size from decLay_example _ hsz10) wd α f₁ hW' hA' hF'
+  have z8 := size_sem I (decIR dBX wBX aBX fBX) s10
+  have o8 := decIR_o I s10 dBX wBX aBX fBX
+  have hok : 2 ^ 13 ≤ (agreeL wd α f₁).length := by
+    by_contra hn
+    rw [decodeRec, if_neg hn] at hdec
+    cases hdec
+  rw [decide_eq_true hok] at d1
+  have hmsg := d2 out hdec
+  generalize semXIR I (decIR dBX wBX aBX fBX) s10 = s8 at d1 hmsg d3 hM8 z8 o8
+  have hsz8 : sgB + nCp ≤ s8.M.size := by
+    rw [z8]; simp only [sgB, nCp]; omega
+  have hw : ∀ i < 2 ^ 19, rd s8.M (mB dBX + i) = wOut out i := fun i hi => by
+    rw [← rdK_toBitVec, hmsg i hi]; rfl
+  rw [okXIR_sem c π L hs s8 hM8 hsz8 d1 (wOut out) hw, o8, o10, o9]
+
+/-- **`EX` on an `S` node proof in the domain** (BLUEPRINT §6.2, lvm2 S4): with no state hit, the
+six level-0 and four level-1 fold challenges answered by the first-match chain, the level-1 decoder
+returning `f₁` and the level-0 decoder returning `out` on it, the node witness `Xwit π (wOut out)`. -/
 theorem EX_node (A : Digest → Digest → Signed → Bool) (c : Digest) (π : Proof) (L : Log)
     (hD : InDomE c π L) (hs : π.size = piSize pX) (h0 : π.data[0]? = some 0x53) (hb : pw π 1 ≠ 0)
     (hS : ¬ StateHit L) (αd : ℕ → Digest)
-    (hα : ∀ j < 6, fmAns (fsQL π) zeroDL L (alphaPos pX j) = some (αd j)) (out : List BF64)
-    (hdec : decodeRec (readWd L (capRec π)) (fun i => alphaE (αd i)) (f1E π) = some out) :
+    (hα : ∀ j < 6, fmAns (fsQL π) zeroDL L (alphaPos pX j) = some (αd j)) (α1d : ℕ → Digest)
+    (hα1 : ∀ j < 4, fmAns (fsQL π) zeroDL L (alpha1Pos pX j) = some (α1d j)) (f₁ : ℕ → BF64.Ext3)
+    (hdec1 : decodeRec1 (readWd1 L (capRec1 π)) (fun i => alphaE (α1d i)) (f2E π) = some f₁)
+    (out : List BF64)
+    (hdec : decodeRec (readWd L (capRec π)) (fun i => alphaE (αd i)) f₁ = some out) :
     EX A c π L = some (Xwit π (wOut out)) := by
   obtain ⟨hπ, hq, ht⟩ := hD
   rw [EX, if_pos ⟨hπ, hq, ht⟩, EdX, Eden]
@@ -383,7 +484,7 @@ theorem EX_node (A : Digest → Digest → Signed → Bool) (c : Digest) (π : P
   have o4 := sem_o I chainL s3 hasOut_chainL
   rw [semXIR_seq]
   generalize semXIR I chainL s3 = s4 at ch1 ch2 hM4 z4 o4
-  -- 3. the column reads
+  -- 3. the column reads of level 0
   have hcO : capRecOff pX / 8 = 1727 := by rw [layout_P20.2.2.2.2.1]
   have hcap : ∀ e (he : e < (capRec π).length), ∀ m < 4,
       I.getD (capWX + 4 * e + m) 0 = (packBytes (capRec π)[e].toList).getD m 0 := fun e he m hm => by
@@ -405,63 +506,126 @@ theorem EX_node (A : Digest → Digest → Signed → Bool) (c : Digest) (π : P
   have o5 := readIR_o I s4 memX pLX capWX wBX
   rw [semXIR_seq]
   generalize semXIR I (readIR memX pLX capWX wBX) s4 = s5 at r1 r2 r3 hM5 z5 o5
-  -- 4. the fold challenges
+  -- 4. the level-0 fold challenges
   have hsz5 : 2 ^ 25 ≤ s5.M.size := by rw [z5, z4, z3, z2, z1]; omega
   obtain ⟨a1, a2, hM6, z6, o6⟩ := acpIR_sem I s5 hM5 hsz5
   rw [semXIR_seq]
   generalize semXIR I acpIR s5 = s6 at a1 a2 hM6 z6 o6
-  -- 5. `f₁`
-  have hf1 : f1WX = 5 + f1Off pX / 8 := by rw [layoutX.2.2.1, layout_P20.2.2.2.1]
-  obtain ⟨f1, f2, hM7, z7, o7⟩ := thcpIR_sem I s6 hM6 (a := f1WX) (dst := fBX) (n := 3 * 2 ^ 13)
-    (by rw [layoutX.2.2.1]; norm_num) (by simp only [regs, fBX]; norm_num)
-    (by simp only [fBX]; norm_num) (by rw [z6]; simp only [fBX]; omega)
+  -- 5. the column reads of level 1
+  have hc1O : capRec1Off pX / 8 = 25660 := by rw [layout_P20.2.2.2.1]
+  have hcap1 : ∀ e (he : e < (capRec1 π).length), ∀ m < 4,
+      I.getD (cap1WX + 4 * e + m) 0 = (packBytes (capRec1 π)[e].toList).getD m 0 := fun e he m hm => by
+    have he' : e < 128 := by simpa [capRec1] using he
+    simp only [capRec1, List.getElem_map, List.getElem_range, hdD, packBytes_digW (length_wsAt _ _ _)]
+    rw [List.getD_eq_getElem _ _ (by simpa using hm)]
+    simp only [wsAt, List.getElem_map, List.getElem_range]
+    rw [show cap1WX + 4 * e + m = 5 + (capRec1Off pX / 8 + 4 * e + m) by simp only [cap1WX]; omega,
+      tape_pw c π L hs (by rw [hc1O]; omega)]
+  have hX6 : ∀ a < L.length, rd s6.M (memX + a) = rd (semXIR I (idxIR4 memX pLX) s2).M (memX + a) :=
+    fun a ha => by
+      rw [a2 _ (by simp only [regs, memX]; omega) (.inr (by simp only [aBX, memX]; omega)), r3 a ha,
+        hX4 a ha]
+  obtain ⟨q1, q2, -, hM7⟩ := read1IR_sem (bX := memX) (pL := pLX) (by simp only [regs, memX]; norm_num)
+    (by simp only [memX]; norm_num) (by rw [layoutX.1]; norm_num) c π L (hs_posL hs) hq ht
+    s2 hM2 (by rw [z2, z1]; simp only [memX]; omega) s6 hM6 (by rw [z6, z5, z4, z3, z2, z1]; simp only [memX]; omega)
+    hX6 (capW := cap1WX) (wB := w1BX) (cap := capRec1 π) (by simp [capRec1])
+    (by simp only [cap1WX, hc1O]; norm_num) hcap1
+    (by simp only [regs, w1BX]; norm_num) (by simp only [w1BX, memX]; norm_num)
+  have z7 := size_sem I (read1IR memX pLX cap1WX w1BX) s6
+  have o7 := sem_o I (read1IR memX pLX cap1WX w1BX) s6 rfl
   rw [semXIR_seq]
-  generalize semXIR I (thcpIR f1WX fBX (3 * 2 ^ 13)) s6 = s7 at f1 f2 hM7 z7 o7
+  generalize semXIR I (read1IR memX pLX cap1WX w1BX) s6 = s7 at q1 q2 hM7 z7 o7
+  -- 6. the level-1 fold challenges
   have hsz7 : 2 ^ 25 ≤ s7.M.size := by rw [z7, z6]; exact hsz5
-  -- the decoder's inputs
-  have hW : ∀ q < 2 ^ 15, ∀ t < 64, rdK s7.M (wBX + 64 * q + t) = readWd L (capRec π) q t :=
+  obtain ⟨b1', b2, hM8, z8, o8⟩ := acp3IR_sem I s7 hM7 hsz7 (src := ansB + 4 * alpha1Pos pX 0)
+    (dst := a1BX) (by simp only [regs, a1BX]; norm_num) (by rw [alpha1Pos_eq, ansB_eq]; omega) 4
+    (by simp only [a1BX]; norm_num) (by rw [alpha1Pos_eq, ansB_eq]; omega)
+  rw [semXIR_seq, show a1cpIR = acp3IR (ansB + 4 * alpha1Pos pX 0) a1BX 4 from rfl]
+  generalize semXIR I (acp3IR (ansB + 4 * alpha1Pos pX 0) a1BX 4) s7 = s8 at b1' b2 hM8 z8 o8
+  -- 7. `f₂`
+  have hf2O : f2Off pX / 8 = 42525 := by rw [layout_P20.2.2.2.2.2.2.2.2.1]
+  have hf2 : f2WX = 5 + f2Off pX / 8 := rfl
+  obtain ⟨f1, f2, hM9, z9, o9⟩ := thcpIR_sem I s8 hM8 (a := f2WX) (dst := f2BX) (n := 3 * 2 ^ 9)
+    (by rw [hf2, hf2O]; norm_num) (by simp only [regs, f2BX]; norm_num)
+    (by simp only [f2BX]; norm_num) (by rw [z8]; simp only [f2BX]; omega)
+  rw [semXIR_seq]
+  generalize semXIR I (thcpIR f2WX f2BX (3 * 2 ^ 9)) s8 = s9 at f1 f2 hM9 z9 o9
+  have hsz9 : 2 ^ 25 ≤ s9.M.size := by rw [z9, z8]; exact hsz7
+  -- the level-1 decoder's inputs
+  have hW1 : ∀ q < 2 ^ 12, ∀ t < 48, rdK s9.M (w1BX + 48 * q + t) = readWd1 L (capRec1 π) q t :=
+    fun q hq t ht' => by
+      have hx : regs ≤ w1BX + 48 * q + t := by simp only [regs, w1BX]; omega
+      simp only [rdK]
+      rw [f2 _ hx (.inl (by simp only [f2BX, w1BX]; omega)),
+        b2 _ hx (.inr (by simp only [a1BX, w1BX]; omega))]
+      exact q1 q hq t ht'
+  have hAl1 : ∀ i < 4, rdE s9.M (a1BX + 3 * i) = alphaE (α1d i) := fun i hi => by
+    have hc : ∀ m < 3, rd s9.M (a1BX + 3 * i + m) = dw (α1d i) m := fun m hm => by
+      have hp : alpha1Pos pX i < nChain pX := by rw [alpha1Pos_eq, nChain_eq]; omega
+      rw [f2 _ (by simp only [regs, a1BX]; omega) (.inl (by simp only [a1BX, f2BX]; omega)),
+        b1' i hi m hm,
+        q2 _ (by simp only [regs, ansB_eq]; omega) (.inr (by rw [alpha1Pos_eq, ansB_eq]; simp only [w1BX]; omega)),
+        a2 _ (by simp only [regs, ansB_eq]; omega) (.inr (by rw [alpha1Pos_eq, ansB_eq]; simp only [aBX]; omega)),
+        r2 _ (by simp only [regs, ansB_eq]; omega) (.inr (by rw [alpha1Pos_eq, ansB_eq]; simp only [wBX]; omega)),
+        show ansB + 4 * alpha1Pos pX 0 + 4 * i + m = ansB + 4 * alpha1Pos pX i + m by
+          rw [alpha1Pos_eq, alpha1Pos_eq]; omega,
+        ch1 _ hp _ (hα1 i hi) m (by omega)]
+      rfl
+    have c0 := hc 0 (by norm_num)
+    rw [Nat.add_zero] at c0
+    rw [rdE_eq, alphaE, ← c0, ← hc 1 (by norm_num), ← hc 2 (by norm_num)]
+  have hF2 : ∀ v < 2 ^ 9, rdE s9.M (f2BX + 3 * v) = f2E π v := fun v hv => by
+    have hc : ∀ m < 3, rd s9.M (f2BX + 3 * v + m) = pw π (f2Off pX / 8 + 3 * v + m) := fun m hm => by
+      rw [Nat.add_assoc, f1 _ (by omega), hf2, show 5 + f2Off pX / 8 + (3 * v + m) =
+        5 + (f2Off pX / 8 + 3 * v + m) by omega, tape_pw c π L hs (by rw [hf2O]; omega)]
+    have c0 := hc 0 (by norm_num)
+    rw [Nat.add_zero, Nat.add_zero] at c0
+    rw [rdE_eq, f2E, ← c0, ← hc 1 (by norm_num), ← hc 2 (by norm_num)]
+  -- 8. the level-1 decoder
+  obtain ⟨e1, e2, e3, hM10⟩ := dec1IR_sem I s9 hM9
+    (show Dec1Lay d1BX w1BX a1BX f2BX fBX s9.M.size from dec1Lay_example _ hsz9) (readWd1 L (capRec1 π))
+    (fun i => alphaE (α1d i)) (f2E π) hW1 hAl1 hF2
+  have z10 := size_sem I (dec1IR d1BX w1BX a1BX f2BX fBX) s9
+  have o10 := dec1IR_o I s9 d1BX w1BX a1BX f2BX fBX
+  have hok1 : 2 ^ 9 ≤ (agree1L (readWd1 L (capRec1 π)) (fun i => alphaE (α1d i)) (f2E π)).length := by
+    by_contra hn
+    rw [decodeRec1, if_neg hn] at hdec1
+    cases hdec1
+  rw [decide_eq_true hok1] at e1
+  have hf₁ := e2 f₁ hdec1
+  generalize semXIR I (dec1IR d1BX w1BX a1BX f2BX fBX) s9 = s10 at e1 hf₁ e3 hM10 z10 o10
+  have hsz10 : 2 ^ 25 ≤ s10.M.size := by rw [z10]; exact hsz9
+  -- the level-0 decoder's inputs, kept since step 3
+  have hk : ∀ x, regs ≤ x → x < 2 ^ 19 + 24 → rd s10.M x = rd s6.M x := fun x hx h => by
+    rw [e3 x hx (.inl (by simp only [d1BX]; omega)) (.inl (by simp only [fBX]; omega)),
+      f2 x hx (.inl (by simp only [f2BX]; omega)), b2 x hx (.inl (by simp only [a1BX]; omega)),
+      q2 x hx (.inl (by simp only [w1BX]; omega))]
+  have hk' : ∀ x, regs ≤ x → 2 ^ 20 ≤ x → x < 2 ^ 20 + 2 ^ 21 → rd s10.M x = rd s6.M x :=
+    fun x hx h h' => by
+      rw [e3 x hx (.inl (by simp only [d1BX]; omega)) (.inr (by simp only [fBX]; omega)),
+        f2 x hx (.inl (by simp only [f2BX]; omega)), b2 x hx (.inr (by simp only [a1BX]; omega)),
+        q2 x hx (.inl (by simp only [w1BX]; omega))]
+  have hW : ∀ q < 2 ^ 15, ∀ t < 64, rdK s10.M (wBX + 64 * q + t) = readWd L (capRec π) q t :=
     fun q hq t ht' => by
       have hx : regs ≤ wBX + 64 * q + t := by simp only [regs, wBX]; omega
       simp only [rdK]
-      rw [f2 _ hx (.inr (by simp only [fBX, wBX]; omega)), a2 _ hx (.inr (by simp only [aBX, wBX]; omega))]
+      rw [hk' _ hx (by simp only [wBX]; omega) (by simp only [wBX]; omega),
+        a2 _ hx (.inr (by simp only [aBX, wBX]; omega))]
       exact r1 q hq t ht'
-  have hAl : ∀ i < 6, rdE s7.M (aBX + 3 * i) = alphaE (αd i) := fun i hi => by
-    have hc : ∀ m < 3, rd s7.M (aBX + 3 * i + m) = dw (αd i) m := fun m hm => by
+  have hAl : ∀ i < 6, rdE s10.M (aBX + 3 * i) = alphaE (αd i) := fun i hi => by
+    have hc : ∀ m < 3, rd s10.M (aBX + 3 * i + m) = dw (αd i) m := fun m hm => by
       have hp : alphaPos pX i < nChain pX := by rw [alphaPos_eq, nChain_eq]; omega
-      rw [f2 _ (by simp only [regs, aBX]; omega) (.inl (by simp only [aBX, fBX]; omega)), a1 i hi m hm,
+      rw [hk _ (by simp only [regs, aBX]; omega) (by simp only [aBX]; omega), a1 i hi m hm,
         r2 _ (by simp only [regs, ansB_eq]; omega) (.inr (by simp only [wBX, ansB_eq]; omega)),
         ch1 _ hp _ (hα i hi) m (by omega)]
       rfl
     have c0 := hc 0 (by norm_num)
     rw [Nat.add_zero] at c0
     rw [rdE_eq, alphaE, ← c0, ← hc 1 (by norm_num), ← hc 2 (by norm_num)]
-  have hF : ∀ v < 2 ^ 13, rdE s7.M (fBX + 3 * v) = f1E π v := fun v hv => by
-    have hc : ∀ m < 3, rd s7.M (fBX + 3 * v + m) = pw π (f1Off pX / 8 + 3 * v + m) := fun m hm => by
-      rw [Nat.add_assoc, f1 _ (by omega), hf1, show 5 + f1Off pX / 8 + (3 * v + m) =
-        5 + (f1Off pX / 8 + 3 * v + m) by omega, tape_pw c π L hs (by rw [layout_P20.2.2.2.1]; omega)]
-    have c0 := hc 0 (by norm_num)
-    rw [Nat.add_zero, Nat.add_zero] at c0
-    rw [rdE_eq, f1E, ← c0, ← hc 1 (by norm_num), ← hc 2 (by norm_num)]
-  -- 6. the decoder
-  obtain ⟨d1, d2, d3, hM8⟩ := decIR_sem I s7 hM7
-    (show DecLay dBX wBX aBX fBX s7.M.size from decLay_example _ hsz7) (readWd L (capRec π))
-    (fun i => alphaE (αd i)) (f1E π) hW hAl hF
-  have z8 := size_sem I (decIR dBX wBX aBX fBX) s7
-  have o8 := decIR_o I s7 dBX wBX aBX fBX
-  have hok : 2 ^ 13 ≤ (agreeL (readWd L (capRec π)) (fun i => alphaE (αd i)) (f1E π)).length := by
-    by_contra hn
-    rw [decodeRec, if_neg hn] at hdec
-    cases hdec
-  rw [decide_eq_true hok] at d1
-  have hmsg := d2 out hdec
-  generalize semXIR I (decIR dBX wBX aBX fBX) s7 = s8 at d1 hmsg d3 hM8 z8 o8
-  -- 7. the flag and the node output
-  have hsz8 : sgB + nCp ≤ s8.M.size := by
-    rw [z8, z7, z6, z5, z4, z3, z2, z1]; simp only [sgB, nCp]; omega
-  have hw : ∀ i < 2 ^ 19, rd s8.M (mB dBX + i) = wOut out i := fun i hi => by
-    rw [← rdK_toBitVec, hmsg i hi]; rfl
-  rw [okXIR_sem c π L hs s8 hM8 hsz8 d1 (wOut out) hw, o8, o7, o6, o5, o4, o3, bo, ho1,
-    Array.toList_empty, List.nil_append]
+  have hflag : rd s10.M (ok1B d1BX) = 1 := by rw [e1]; rfl
+  -- 9. the flag, the level-0 decoder and the node output
+  rw [ok1XIR_sem c π L hs s10 hM10 hsz10 hflag _ _ _ hW hAl hf₁ out hdec, o10, o9, o8, o7, o6, o5, o4,
+    o3, bo, ho1, Array.toList_empty, List.nil_append]
   exact decodeWit_outWords π (wOut out)
 
 /-! ## The `W` kind (FR `run_W_tape`, `run_W`, `E_W`) -/

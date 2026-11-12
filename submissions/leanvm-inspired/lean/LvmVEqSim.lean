@@ -132,7 +132,7 @@ theorem buf_ext (l : List UInt8) {pend off : ℕ} (h : pend ≤ off) (n : ℕ) :
     show pend + (off - pend) = off by omega]
 
 theorem capS_le (i : ℕ) : capS (shpS i).1 (shpS i).2 ≤ (shpS i).1 := by
-  rcases i with _ | _ | _ | _ | i <;> simp [capS, shpS]
+  rcases i with _ | _ | _ | _ | _ | i <;> simp [capS, shpS]
 
 section FS
 

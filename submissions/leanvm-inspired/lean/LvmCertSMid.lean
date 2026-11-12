@@ -44,7 +44,7 @@ theorem openPost_of {x : List UInt8} {a : α} {k : κ} {h : List Ev}
     (hasm : ∀ p : Pair, (∀ c ∈ (asm x a k).1, StackClaim.Holds 19 c p.2) →
       (∀ c ∈ (asm x a k).2, StackClaim.Holds CMain.nu20 c p.1) → Kc k p ∧ B x a p)
     (hside : (∀ c ∈ (asm x a k).1, IsMultiaffine 19 c.1) ∧ (∀ c ∈ (asm x a k).2, IsMultiaffine CMain.nu20 c.1) ∧
-      (asm x a k).1.length ≤ 2 ^ 63 ∧ (asm x a k).2.length ≤ 2 ^ 63)
+      (asm x a k).1.length ≤ 2 ^ 63 ∧ (asm x a k).2.length ≤ 2 ^ 40)
     (hD : Doomed candPairs (fun p ↦ Kc k p ∧ B x a p) h) (hR : RootShape h) :
     OpenPost (asm x a k) h := by
   refine ⟨fun p hp ↦ ?_, hR, hside⟩
@@ -64,7 +64,7 @@ noncomputable def midSpecOf
       (∀ c ∈ (asm x a k).2, StackClaim.Holds CMain.nu20 c p.1) → Kc k p ∧ B x a p)
     (hside : ∀ x a k, (∀ c ∈ (asm x a k).1, IsMultiaffine 19 c.1) ∧
       (∀ c ∈ (asm x a k).2, IsMultiaffine CMain.nu20 c.1) ∧ (asm x a k).1.length ≤ 2 ^ 63 ∧
-      (asm x a k).2.length ≤ 2 ^ 63) :
+      (asm x a k).2.length ≤ 2 ^ 40) :
     MidSpec (fun x ↦ busP x >>= fun a ↦ kgP >>= fun k ↦ VerifierProgram.ret (asm x a k))
       (fun x qm qr ↦ Gb x (qm, qr) ∧ Gk (qm, qr)) εS Lb := fun x T hT ↦
   ⟨((SB x Lk hLk).bind' fun a ↦

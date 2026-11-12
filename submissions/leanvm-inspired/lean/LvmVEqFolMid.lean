@@ -50,8 +50,9 @@ def ksI : List Item := List.flatten [smp p.ksLog, rd lanes, keccakI p.ksLog, smp
 def ksLinkI : List Item := List.flatten [smp (p.ksLog + laneBits), sumcheckI p.ksLog 2, rd 4]
 /-- `C_rec`'s opening. -/
 def openRecI : List Item := smp 1 ++ whirI .crec p.recLevels p.recFinalLog p.grind
-/-- `C_main`'s opening. -/
-def openMainI : List Item := smp 1 ++ whirI .main p.mainLevels p.mainFinalLog p.grind
+/-- `C_main`'s opening (with the OOD samples when `p.mainOod`, lvm2 JB-VQP). -/
+def openMainI : List Item :=
+  smp 1 ++ (if p.mainOod then whirIJ else whirI) .main p.mainLevels p.mainFinalLog p.grind
 
 theorem phases_eq : phases p = [(.commit, commitI p), (.bus, busI p), (.tables, tablesI p), (.tape, tapeI p),
     (.wire, wireI p), (.ks, ksI p), (.ksLink, ksLinkI p), (.openRec, openRecI p),

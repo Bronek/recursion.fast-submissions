@@ -67,7 +67,7 @@ theorem width20 : ∀ x, ∀ t ∈ TS M3.tabsP20 x, 0 < t.w := fun x => by
   unfold TS; rw [sumcheck20]; exact chkB_width (chk20 _)
 
 /-- `MidHyp.cons`. -/
-theorem cons20 : ∀ x, ((TS M3.tabsP20 x).map fun t => t.cons.length).sum ≤ 2 ^ 60 := fun x => by
+theorem cons20 : ∀ x, ((TS M3.tabsP20 x).map fun t => t.cons.length).sum ≤ 2 ^ 56 := fun x => by
   unfold TS; rw [sumcheck20]; exact chkB_cons (chk20 _)
 
 /-- **`MidHyp.fix`**: every fixed column's closed form is its cells' extension (WP-9b's

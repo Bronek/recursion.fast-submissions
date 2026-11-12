@@ -51,50 +51,121 @@ theorem dot_map_range (lam : FE) (t : Nat) (φ : Nat → FE) :
   rw [List.getD_eq_getElem?_getD, List.getElem?_map, List.getElem?_range (Finset.mem_range.mp hq)]
   rfl
 
-theorem lvLanes_facts (L : Level) (nxt : Option Level) (V : Nat) :
-    (lvLanes L nxt V).V1 = V + 15 * L.fold ∧ (lvLanes L nxt V).V1 ≤ (lvLanes L nxt V).V2 ∧
-    (lvLanes L nxt V).V2 ≤ (lvLanes L nxt V).V3 ∧ (lvLanes L nxt V).V4 = (lvLanes L nxt V).V3 + 9 ∧
-    (lvLanes L nxt V).V5 = (lvLanes L nxt V).V4 + oStr L * L.t ∧
-    (lvLanes L nxt V).V6 = (lvLanes L nxt V).V5 + 6 := by
-  cases nxt <;> simp [lvLanes]
+theorem lvLanes_facts (g : Nat) (ood : Bool) (L : Level) (nxt : Option Level) (V : Nat) :
+    (lvLanes g ood L nxt V).V1 = V + 15 * L.fold ∧ (lvLanes g ood L nxt V).V1 ≤ (lvLanes g ood L nxt V).Vc ∧
+    (lvLanes g ood L nxt V).V2 ≤ (lvLanes g ood L nxt V).V3 ∧ (lvLanes g ood L nxt V).V4 = (lvLanes g ood L nxt V).V3 + 9 ∧
+    (lvLanes g ood L nxt V).V5 = (lvLanes g ood L nxt V).V4 + oStr L * L.t ∧
+    (lvLanes g ood L nxt V).V6 = (lvLanes g ood L nxt V).V5 + 6 ∧
+    (lvLanes g ood L nxt V).Vc ≤ (lvLanes g ood L nxt V).Vo ∧
+    (lvLanes g ood L nxt V).Vo = (if ood && nxt.isSome then (lvLanes g ood L nxt V).Vc + 9 * L.kappa + 9
+      else (lvLanes g ood L nxt V).Vc) ∧
+    (lvLanes g ood L nxt V).V2 = (if g = 0 then (lvLanes g ood L nxt V).Vo else (lvLanes g ood L nxt V).Vo + 21) ∧
+    (lvLanes g ood L nxt V).Vo ≤ (lvLanes g ood L nxt V).V2 := by
+  cases nxt <;> cases ood <;> by_cases hg : g = 0 <;> simp [lvLanes, hg] <;> omega
 
-set_option maxHeartbeats 1000000 in
+/-! ## The OOD weight and the PoW check -/
+
+theorem eqZG_spec {zc : Cell} : ∀ (ab : List (Cell × Cell)) (acc : Cell) (p : Ptr),
+    SegsHold c M p (eqZG zc ab acc p).2 → zc.val M = 0 →
+    (eqZG zc ab acc p).1.val M = acc.val M * (ab.map fun x => 1 + x.1.val M + x.2.val M).prod
+  | [], acc, p, _, _ => by simp [eqZG, pure_apply]
+  | (a, b) :: ab, acc, p, h, hz => by
+    simp only [eqZG, bind_apply] at h ⊢
+    rw [segsHold_append] at h
+    obtain ⟨h1, h⟩ := h
+    rw [segsHold_append] at h
+    obtain ⟨h2, h⟩ := h
+    rw [eqZG_spec ab _ _ h hz, mulAdd_spec h2, lin_spec h1, hz, ofK_one, one_mul, add_zero]
+    simp only [List.map_cons, List.prod_cons]
+    ring
+
+theorem eqEval_range (κ : Nat) (zf xf : Nat → FE) :
+    eqEval ((List.range κ).map zf) ((List.range κ).map xf) =
+      ((List.range κ).map fun j => 1 + zf j + xf j).prod := by
+  rw [eqEval, List.zipWith_map, List.zipWith_self, ← List.prod_eq_foldl]
+
+theorem eqZG_range {zc acc : Cell} {κ : Nat} {cz cx : Nat → Cell} {p : Ptr}
+    (h : SegsHold c M p (eqZG zc ((List.range κ).map fun j => (cz j, cx j)) acc p).2) (hz : zc.val M = 0)
+    (hacc : acc.val M = 1) :
+    (eqZG zc ((List.range κ).map fun j => (cz j, cx j)) acc p).1.val M =
+      eqEval ((List.range κ).map fun j => (cz j).val M) ((List.range κ).map fun j => (cx j).val M) := by
+  rw [eqZG_spec _ _ _ h hz, hacc, one_mul, eqEval_range, List.map_map]
+  rfl
+
+/-- **The PoW check from the lane bound** (PI-GRIND): lane 2 of the answer below `2^(64−g)` makes
+`eToNat c < 2^(192−g)`. -/
+theorem powOKR_of {g : Nat} (hg : g ≤ 64) (sig : ByteArray) (o : Nat)
+    (h : (kAt sig (o + 16)).val.toNat < 2 ^ (64 - g)) : powOKR g (feAt sig o) = true := by
+  unfold powOKR eToNat feAt kToNat
+  apply decide_eq_true
+  dsimp only
+  have h0 := (kAt sig o).val.toNat_lt
+  have h1 := (kAt sig (o + 8)).val.toNat_lt
+  have e : 2 ^ (192 - g) = 2 ^ 128 * 2 ^ (64 - g) := by rw [← pow_add]; congr 1; omega
+  rw [e]
+  have h2 : (kAt sig (o + 16)).val.toNat + 1 ≤ 2 ^ (64 - g) := h
+  have h3 : 2 ^ 128 * ((kAt sig (o + 16)).val.toNat + 1) ≤ 2 ^ 128 * 2 ^ (64 - g) := Nat.mul_le_mul_left _ h2
+  have : (kAt sig o).val.toNat + 2 ^ 64 * (kAt sig (o + 8)).val.toNat < 2 ^ 128 := by
+    have : 2 ^ 64 * (kAt sig (o + 8)).val.toNat ≤ 2 ^ 64 * (2 ^ 64 - 1) := Nat.mul_le_mul_left _ (by omega)
+    norm_num at this ⊢; omega
+  nlinarith
+
+set_option maxHeartbeats 2000000 in
 theorem lvPre_spec (C : SCfg) {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed M sig T) (pc : Nat)
     (zc oc g : Cell) (zk : Nat) (hz : zc.val M = 0) (ho : oc.val M = 1) (hzE : zc.ty = .E)
-    (hoE : oc.ty = .E) (hgK : g.ty = .K) (hzk : M.k zk = 0)
+    (hoE : oc.ty = .E) (hgK : g.ty = .K) (hg : g.val M = 1) (hzk : M.k zk = 0)
     (L : Level) (nxt : Option Level) (i f V : Nat) (q : Cell × Cell × Cell) (p : Ptr) (hp : 1 ≤ p.e)
     (hν : f + L.fold + L.kappa = C.nu) (htc : L.t ≤ pw (C.pch i))
     (hch : ∀ k < (C.pch i).length, pw ((C.pch i).take k) < L.t) (hcs : csum (C.cch i) = L.kappa)
-    (hT1 : (lvLanes L nxt V).V4 + 1 + oStr L * (L.t - 1) + 3 * 2 ^ L.fold + 2 < T)
-    (hT2 : (lvLanes L nxt V).V6 + 8 < T)
+    (hT1 : (lvLanes C.g C.ood L nxt V).V4 + 1 + oStr L * (L.t - 1) + 3 * 2 ^ L.fold + 2 < T)
+    (hT2 : (lvLanes C.g C.ood L nxt V).V6 + 8 < T) (hg64 : C.g ≤ 64)
     (hfold : ∀ j < L.fold, M.e (pc + f + j) = feAt sig (8 * V + 120 * j + 40))
     (hpos : ∀ j < L.t, FE.ofK (M.k (C.pb i + j)) =
-      eOfNat ((qsAt sig (8 * (lvLanes L nxt V).V2) L).getD j 0))
+      eOfNat ((qsAt sig (8 * (lvLanes C.g C.ood L nxt V).V2) L).getD j 0))
+    (hpw : C.g ≠ 0 → (M.k (C.pw i)).val.toNat < 2 ^ (64 - C.g))
     (h : Lvm.QSig.Ok c M (lvPre C pc zc oc g zk L nxt i f V q) p) :
     qv M (lvPre C pc zc oc g zk L nxt i f V q p).1.1 =
-      List.zipWith (fun a b => a + 1 * feAt sig (8 * (lvLanes L nxt V).V3 + 40) * b)
-        (frQ sig (8 * V) L.fold (qv M q))
-        [feAt sig (8 * (lvLanes L nxt V).V5 + 40),
-          Lvm.dot (powers (feAt sig (8 * (lvLanes L nxt V).V3 + 40)) L.t) ((List.range L.t).map fun j =>
+      (if C.ood && nxt.isSome then
+        List.zipWith (fun a b => a + 1 * feAt sig (8 * (lvLanes C.g C.ood L nxt V).V3 + 40) *
+            feAt sig (8 * (lvLanes C.g C.ood L nxt V).V3 + 40) * b)
+          (List.zipWith (fun a b => a + 1 * feAt sig (8 * (lvLanes C.g C.ood L nxt V).V3 + 40) * b)
+            (frQ sig (8 * V) L.fold (qv M q))
+            ((oodF sig true L.kappa (8 * (lvLanes C.g C.ood L nxt V).Vc)).headD ([], fun _ => 0)).1)
+      else
+        List.zipWith (fun a b => a + 1 * feAt sig (8 * (lvLanes C.g C.ood L nxt V).V3 + 40) * b)
+          (frQ sig (8 * V) L.fold (qv M q)))
+        [feAt sig (8 * (lvLanes C.g C.ood L nxt V).V5 + 40),
+          Lvm.dot (powers (feAt sig (8 * (lvLanes C.g C.ood L nxt V).V3 + 40)) L.t) ((List.range L.t).map fun j =>
             if L.level = 0 then foldRow0 sig (eqKernelA (frC sig (8 * V) L.fold))
-              (8 * ((lvLanes L nxt V).V4 + 1 + oStr L * j)) (2 ^ L.fold)
+              (8 * ((lvLanes C.g C.ood L nxt V).V4 + 1 + oStr L * j)) (2 ^ L.fold)
             else foldRowE sig (eqKernelA (frC sig (8 * V) L.fold))
-              (8 * ((lvLanes L nxt V).V4 + 1 + oStr L * j)) (2 ^ L.fold)) +
-            feAt sig (8 * (lvLanes L nxt V).V5 + 64),
-          feAt sig (8 * (lvLanes L nxt V).V5 + 64)] ∧
-    (lvPre C pc zc oc g zk L nxt i f V q p).1.2.1.val M = feAt sig (8 * (lvLanes L nxt V).V3 + 40) ∧
-    (lvPre C pc zc oc g zk L nxt i f V q p).1.2.2.val M =
-      inducedWeight L.kappa (qsAt sig (8 * (lvLanes L nxt V).V2) L)
-        (powers (feAt sig (8 * (lvLanes L nxt V).V3 + 40)) L.t) ((ptv M pc C.nu).drop (f + L.fold)) := by
-  obtain ⟨l1, l2, l3, l4, l5, l6⟩ := lvLanes_facts L nxt V
+              (8 * ((lvLanes C.g C.ood L nxt V).V4 + 1 + oStr L * j)) (2 ^ L.fold)) +
+            feAt sig (8 * (lvLanes C.g C.ood L nxt V).V5 + 64),
+          feAt sig (8 * (lvLanes C.g C.ood L nxt V).V5 + 64)] ∧
+    (lvPre C pc zc oc g zk L nxt i f V q p).1.2.map (fun x => (x.1.val M, x.2.val M)) =
+      (if C.ood && nxt.isSome then
+        [(1 * feAt sig (8 * (lvLanes C.g C.ood L nxt V).V3 + 40),
+            eqEval (oodZ sig (8 * (lvLanes C.g C.ood L nxt V).Vc) L.kappa) ((ptv M pc C.nu).drop (f + L.fold))),
+          (1 * feAt sig (8 * (lvLanes C.g C.ood L nxt V).V3 + 40) * feAt sig (8 * (lvLanes C.g C.ood L nxt V).V3 + 40),
+            inducedWeight L.kappa (qsAt sig (8 * (lvLanes C.g C.ood L nxt V).V2) L)
+              (powers (feAt sig (8 * (lvLanes C.g C.ood L nxt V).V3 + 40)) L.t) ((ptv M pc C.nu).drop (f + L.fold)))]
+      else
+        [(1 * feAt sig (8 * (lvLanes C.g C.ood L nxt V).V3 + 40),
+          inducedWeight L.kappa (qsAt sig (8 * (lvLanes C.g C.ood L nxt V).V2) L)
+            (powers (feAt sig (8 * (lvLanes C.g C.ood L nxt V).V3 + 40)) L.t) ((ptv M pc C.nu).drop (f + L.fold)))]) ∧
+    powF sig C.g (8 * (lvLanes C.g C.ood L nxt V).Vo) = true := by
+  have lf := lvLanes_facts C.g C.ood L nxt V
+  obtain ⟨l1, l2, l3, l4, l5, l6, l7, l8, l9, l10⟩ := lf
   simp only [lvPre] at h ⊢
-  generalize (lvLanes L nxt V).V1 = V1 at *
-  generalize (lvLanes L nxt V).V2 = V2 at *
-  generalize (lvLanes L nxt V).V3 = V3 at *
-  generalize (lvLanes L nxt V).V4 = V4 at *
-  generalize (lvLanes L nxt V).V5 = V5 at *
-  generalize (lvLanes L nxt V).V6 = V6 at *
-  have hpw : L.t ≤ 2 ^ Nat.clog 2 (pw (C.pch i)) := le_trans htc (Nat.le_pow_clog (by norm_num) _)
+  generalize (lvLanes C.g C.ood L nxt V).V1 = V1 at *
+  generalize (lvLanes C.g C.ood L nxt V).V2 = V2 at *
+  generalize (lvLanes C.g C.ood L nxt V).V3 = V3 at *
+  generalize (lvLanes C.g C.ood L nxt V).V4 = V4 at *
+  generalize (lvLanes C.g C.ood L nxt V).V5 = V5 at *
+  generalize (lvLanes C.g C.ood L nxt V).V6 = V6 at *
+  generalize (lvLanes C.g C.ood L nxt V).Vc = Vc at *
+  generalize (lvLanes C.g C.ood L nxt V).Vo = Vo at *
+  have hpw2 : L.t ≤ 2 ^ Nat.clog 2 (pw (C.pch i)) := le_trans htc (Nat.le_pow_clog (by norm_num) _)
   -- 1. fold rounds
   obtain ⟨h1, h⟩ := okb h
   rw [bind_apply]; dsimp only
@@ -158,49 +229,145 @@ theorem lvPre_spec (C : SCfg) {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed 
   have hp6 := le_trans hp5 (adv_e_le p5 (rdQ V5 enf p5).2)
   generalize (rdQ V5 enf p5).1 = it at h e6 ⊢
   generalize p5.adv (rdQ V5 enf p5).2 = p6 at h hp6 ⊢
-  -- 7. glue
-  obtain ⟨h7, h⟩ := okb h
-  rw [bind_apply]; dsimp only
-  have e7 := glueG_spec h7.1
-  have hp7 := le_trans hp6 (adv_e_le p6 (glueG (ec p1.e) q1 it p6).2)
-  generalize (glueG (ec p1.e) q1 it p6).1 = q2 at h e7 ⊢
-  generalize p6.adv (glueG (ec p1.e) q1 it p6).2 = p7 at h hp7 ⊢
-  -- 8. pointer, 9. roots and inverses
+  -- 7. pointer, 8. roots and inverses
   obtain ⟨-, h⟩ := okb h
   rw [bind_apply]; dsimp only [getPtr] at h ⊢
   rw [Ptr.adv_nil] at h ⊢
-  obtain ⟨h9, h⟩ := okb h
+  obtain ⟨h8, h⟩ := okb h
   rw [bind_apply]; dsimp only
-  have e9 := iwConsts_spec L.kappa hgK h9.1
-  have hp9 := le_trans hp7 (adv_e_le p7 (iwConsts L.kappa g p7).2)
-  generalize p7.adv (iwConsts L.kappa g p7).2 = p9 at h hp9 ⊢
-  -- 10. the column weight
-  obtain ⟨h10, h⟩ := okb h
+  have e8 := iwConsts_spec L.kappa hgK h8.1
+  have hp8 := le_trans hp6 (adv_e_le p6 (iwConsts L.kappa g p6).2)
+  generalize p6.adv (iwConsts L.kappa g p6).2 = p8 at h hp8 ⊢
+  -- 9. the column weight
+  obtain ⟨h9, h⟩ := okb h
   rw [bind_apply]; dsimp only
   have hptl : ((ptv M pc C.nu).drop (f + L.fold)).length = L.kappa := by
     rw [List.length_drop, ptv_length]; omega
-  have e10 := colWG_spec hzE hz hzk L.kappa (qsAt sig (8 * V2) L) (feAt sig (8 * V3 + 40))
+  have e9 := colWG_spec hzE hz hzk L.kappa (qsAt sig (8 * V2) L) (feAt sig (8 * V3 + 40))
     ((ptv M pc C.nu).drop (f + L.fold)) (by rw [hptl, hcs])
     (fun k hk => by rw [ptv_getD _ _ _ _ (by omega)])
-    (fun k hk => by rw [hptl] at hk; exact (e9 k hk).2)
-    (fun k hk => by rw [hptl] at hk; exact (e9 k hk).1) hlp hpos (C.pch i) 0 p9
-    hp9 (by simpa [pw] using htc) (fun k hk => by simpa [pw] using hch k hk) h10.1
-  simp only [pure_apply]
-  refine ⟨?_, by rw [Cell.val_E, e2'], ?_⟩
-  · rw [e7, e1, e6, e5, Cell.val_E, e2', dot_map_range, Finset.range_eq_Ico]
-    simp only [decide_eq_true_eq]
-  · rw [e10, ← Finset.range_eq_Ico, ← qsAt_length sig (8 * V2) L, inducedWeight_pow]
+    (fun k hk => by rw [hptl] at hk; exact (e8 k hk).2)
+    (fun k hk => by rw [hptl] at hk; exact (e8 k hk).1) hlp hpos (C.pch i) 0 p8
+    hp8 (by simpa [pw] using htc) (fun k hk => by simpa [pw] using hch k hk) h9.1
+  have eW : (colWG (C.cch i) (pc + (f + L.fold)) (p6.k + L.kappa) p6.k lp (C.pb i) L.t zc zk 0 (C.pch i)
+      p8).1.val M = inducedWeight L.kappa (qsAt sig (8 * V2) L) (powers (feAt sig (8 * V3 + 40)) L.t)
+        ((ptv M pc C.nu).drop (f + L.fold)) := by
+    rw [e9, ← Finset.range_eq_Ico, ← qsAt_length sig (8 * V2) L, inducedWeight_pow]
+  have hp9 := le_trans hp8 (adv_e_le p8 (colWG (C.cch i) (pc + (f + L.fold)) (p6.k + L.kappa) p6.k lp
+    (C.pb i) L.t zc zk 0 (C.pch i) p8).2)
+  generalize (colWG (C.cch i) (pc + (f + L.fold)) (p6.k + L.kappa) p6.k lp (C.pb i) L.t zc zk 0 (C.pch i)
+    p8).1 = W at h eW ⊢
+  generalize p8.adv (colWG (C.cch i) (pc + (f + L.fold)) (p6.k + L.kappa) p6.k lp (C.pb i) L.t zc zk 0
+    (C.pch i) p8).2 = p9 at h hp9 ⊢
+  -- 10. the PoW check
+  obtain ⟨h10, h⟩ := okb h
+  rw [bind_apply]; dsimp only
+  have hpow : powF sig C.g (8 * Vo) = true := by
+    unfold powF
+    split_ifs with hg0
+    · rfl
+    · obtain ⟨gt, gn⟩ := g
+      cases hgK
+      have hV2 : V2 = Vo + 21 := by rw [l9]; simp [hg0]
+      simp only [powG, hg0, ↓reduceIte] at h10
+      have e := assertEqKK_spec h10.1 h10.2 (ofK_inj (hg.trans ofK_one.symm))
+      have hl := hS (V2 - 2) (by omega)
+      rw [hl] at e
+      apply powOKR_of hg64
+      rw [show 8 * Vo + 136 + 16 = 8 * (V2 - 2) by omega, e]
+      exact hpw hg0
+  have hp10 := le_trans hp9 (adv_e_le p9 (powG C V2 i g p9).2)
+  generalize p9.adv (powG C V2 i g p9).2 = p10 at h hp10 ⊢
+  -- 11. the OOD items and the glue
+  by_cases hod : (C.ood && nxt.isSome) = true
+  · simp only [hod, ↓reduceIte] at h ⊢
+    have hVo : Vo = Vc + 9 * L.kappa + 9 := by rw [l8]; simp [hod]
+    obtain ⟨g1, h⟩ := okb h
+    rw [bind_apply]; dsimp only
+    obtain ⟨ezb, ez⟩ := preloadG_spec hS (fun v hv => by
+      simp only [List.mem_map, List.mem_range] at hv; obtain ⟨j, hj, rfl⟩ := hv; omega) g1.1
+    rw [ezb] at h ⊢
+    rw [preloadG_adv] at h ⊢
+    obtain ⟨g2, h⟩ := okb h
+    rw [bind_apply]; dsimp only
+    have ey := ldE_spec hS (by omega) g2.1
+    rw [ldE_out] at ey h ⊢
+    rw [ldEW_adv] at h ⊢
+    obtain ⟨g3, h⟩ := okb h
+    rw [bind_apply]; dsimp only
+    have eio := rdQ_spec hS (by omega) g3.1
+    rw [rdQ_adv] at h ⊢
+    obtain ⟨g4, h⟩ := okb h
+    rw [bind_apply]; dsimp only
+    have el2 := mulAdd_spec g4.1
+    obtain ⟨g5, h⟩ := okb h
+    rw [bind_apply]; dsimp only
+    have eg1 := glueG_spec g5.1
+    obtain ⟨g6, h⟩ := okb h
+    rw [bind_apply]; dsimp only
+    have eg2 := glueG_spec g6.1
+    obtain ⟨g7, -⟩ := okb h
+    rw [bind_apply]; dsimp only
+    have eo := eqZG_range g7.1 hz ho
+    simp only [pure_apply]
+    refine ⟨?_, ?_, hpow⟩
+    · rw [eg2, eg1, eio, e1, e6, e5, el2, ey, hz, add_zero, Cell.val_E, e2']
+      simp only [oodF, ↓reduceIte, List.headD_cons]
+      rw [show 8 * (Vc + 9 * L.kappa + 3) + 40 = 8 * Vc + 72 * L.kappa + 24 + 40 by ring,
+        show 8 * (Vc + 9 * L.kappa + 3) + 64 = 8 * Vc + 72 * L.kappa + 24 + 64 by ring,
+        show 8 * (Vc + 9 * L.kappa + 5) = 8 * Vc + 72 * L.kappa + 40 by ring, dot_map_range,
+        Finset.range_eq_Ico]
+      simp only [decide_eq_true_eq, mul_one, one_mul, mul_assoc]
+    · simp only [List.map_cons, List.map_nil, el2, Cell.val_E, e2', hz, add_zero, eW, eo, one_mul]
+      refine List.cons_eq_cons.mpr ⟨?_, rfl⟩
+      congr 1
+      congr 1
+      · simp only [oodZ]
+        refine List.map_congr_left fun j hj => ?_
+        rw [ez j (by simpa using hj)]
+        simp only [List.getD_eq_getElem?_getD, List.getElem?_map, List.getElem?_range (List.mem_range.mp hj),
+          Option.map_some, Option.getD_some]
+        congr 1; ring
+      · apply List.ext_getElem (by simp [ptv_length]; omega)
+        intro k h1 h2
+        simp only [List.length_map, List.length_range] at h1
+        rw [List.getElem_map, List.getElem_range, ← List.getD_eq_getElem _ 0,
+          ptv_getD _ _ _ _ (by omega)]
+  · simp only [hod, Bool.false_eq_true, ↓reduceIte] at h ⊢
+    obtain ⟨g5, -⟩ := okb h
+    rw [bind_apply]; dsimp only
+    have eg1 := glueG_spec g5.1
+    simp only [pure_apply]
+    refine ⟨?_, ?_, hpow⟩
+    · rw [eg1, e1, e6, e5, Cell.val_E, e2', dot_map_range, Finset.range_eq_Ico]
+      simp only [decide_eq_true_eq]
+    · simp only [List.map_cons, List.map_nil, Cell.val_E, e2', eW, one_mul]
 
 /-! ## Invariants of the level induction -/
 
 /-- The challenge cells from `pc + f` hold `F`'s challenges of the levels `Ls` from lane `V`. -/
-def ChOk (M : Mem) (sig : ByteArray) (pc f : Nat) (Ls : List Level) (V : Nat) : Prop :=
-  ∀ j < (chLanes Ls V).length, M.e (pc + f + j) = feAt sig (8 * (chLanes Ls V).getD j 0)
+def ChOk (g : Nat) (ood : Bool) (M : Mem) (sig : ByteArray) (pc f : Nat) (Ls : List Level) (V : Nat) : Prop :=
+  ∀ j < (chLanes g ood Ls V).length, M.e (pc + f + j) = feAt sig (8 * (chLanes g ood Ls V).getD j 0)
 
 /-- The position cells of the levels `Ls` (level `i` first) hold `F`'s positions. -/
 def PosOk (C : SCfg) (M : Mem) (sig : ByteArray) (i : Nat) (Ls : List Level) (V : Nat) : Prop :=
   ∀ i' < Ls.length, ∀ j < (Ls.getD i' default).t, FE.ofK (M.k (C.pb (i + i') + j)) =
-    eOfNat ((qsAt sig (8 * (posLanes Ls V).getD i' 0) (Ls.getD i' default)).getD j 0)
+    eOfNat ((qsAt sig (8 * (posLanes C.g C.ood Ls V).getD i' 0) (Ls.getD i' default)).getD j 0)
+
+/-- The PoW fields of the levels `Ls` (level `i` first) are below `2^(64−g)` (the `BITS` class
+`powSpec`'s `fld 0 (64−g) 0` outputs). -/
+def PwOk (C : SCfg) (M : Mem) (i : Nat) (Ls : List Level) : Prop :=
+  ∀ i' < Ls.length, C.g ≠ 0 → (M.k (C.pw (i + i'))).val.toNat < 2 ^ (64 - C.g)
+
+theorem pwOk_head {C : SCfg} {M : Mem} {i : Nat} {L : Level} {rest : List Level} (h : PwOk C M i (L :: rest)) :
+    C.g ≠ 0 → (M.k (C.pw i)).val.toNat < 2 ^ (64 - C.g) := by
+  have := h 0 (by simp); simpa using this
+
+theorem pwOk_next {C : SCfg} {M : Mem} {i : Nat} {L : Level} {rest : List Level} (h : PwOk C M i (L :: rest)) :
+    PwOk C M (i + 1) rest := by
+  intro i' hi' hg
+  have := h (i' + 1) (by simp; omega) hg
+  rwa [show i + (i' + 1) = i + 1 + i' by ring] at this
 
 /-- The glued claims are the `(λ, W)` cells (weights at the point's suffix). -/
 def GlOk (M : Mem) (pc ν f : Nat) (st : WhirState) (gl : List (Cell × Cell)) : Prop :=
@@ -217,50 +384,51 @@ theorem getD_map_range {α : Type} (n j : Nat) (φ : Nat → α) (d : α) (h : j
     ((List.range n).map φ).getD j d = φ j := by
   simp [List.getD_eq_getElem?_getD, h]
 
-theorem chOk_fold {M : Mem} {sig : ByteArray} {pc f : Nat} {L : Level} {rest : List Level} {V : Nat}
-    (h : ChOk M sig pc f (L :: rest) V) : ∀ j < L.fold, M.e (pc + f + j) = feAt sig (8 * V + 120 * j + 40) := by
+theorem chOk_fold {g : Nat} {ood : Bool} {M : Mem} {sig : ByteArray} {pc f : Nat} {L : Level} {rest : List Level} {V : Nat}
+    (h : ChOk g ood M sig pc f (L :: rest) V) : ∀ j < L.fold, M.e (pc + f + j) = feAt sig (8 * V + 120 * j + 40) := by
   intro j hj
-  have hl : j < (chLanes (L :: rest) V).length := by
+  have hl : j < (chLanes g ood (L :: rest) V).length := by
     cases rest <;> simp [chLanes] <;> omega
   rw [h j hl]
-  have : (chLanes (L :: rest) V).getD j 0 = V + 15 * j + 5 := by
+  have : (chLanes g ood (L :: rest) V).getD j 0 = V + 15 * j + 5 := by
     cases rest <;> (simp only [chLanes]; rw [getD_app_left _ _ _ (by simpa using hj), getD_map_range _ _ _ _ hj])
   rw [this]; congr 1; ring
 
-theorem chOk_next {M : Mem} {sig : ByteArray} {pc f : Nat} {L N : Level} {rest : List Level} {V : Nat}
-    (h : ChOk M sig pc f (L :: N :: rest) V) : ChOk M sig pc (f + L.fold) (N :: rest) (lvLanes L (some N) V).V6 := by
+theorem chOk_next {g : Nat} {ood : Bool} {M : Mem} {sig : ByteArray} {pc f : Nat} {L N : Level} {rest : List Level} {V : Nat}
+    (h : ChOk g ood M sig pc f (L :: N :: rest) V) :
+    ChOk g ood M sig pc (f + L.fold) (N :: rest) (lvLanes g ood L (some N) V).V6 := by
   intro j hj
   have e := h (L.fold + j) (by simp only [chLanes] at hj ⊢; simp; omega)
   simp only [chLanes] at e ⊢
   have hlen : ((List.range L.fold).map (fun j => V + 15 * j + 5)).length = L.fold := by simp
   have ga := getD_app_right ((List.range L.fold).map (fun j => V + 15 * j + 5))
-    (chLanes (N :: rest) (lvLanes L (some N) V).V6) j
+    (chLanes g ood (N :: rest) (lvLanes g ood L (some N) V).V6) j
   rw [hlen] at ga
   rw [ga] at e
   rw [show pc + (f + L.fold) + j = pc + f + (L.fold + j) by ring]; exact e
 
-theorem chOk_tail {M : Mem} {sig : ByteArray} {pc f : Nat} {L : Level} {V : Nat}
-    (h : ChOk M sig pc f [L] V) :
-    ∀ j < L.kappa, M.e (pc + (f + L.fold) + j) = feAt sig (8 * (lvLanes L none V).V6 + 120 * j + 40) := by
+theorem chOk_tail {g : Nat} {ood : Bool} {M : Mem} {sig : ByteArray} {pc f : Nat} {L : Level} {V : Nat}
+    (h : ChOk g ood M sig pc f [L] V) :
+    ∀ j < L.kappa, M.e (pc + (f + L.fold) + j) = feAt sig (8 * (lvLanes g ood L none V).V6 + 120 * j + 40) := by
   intro j hj
   have e := h (L.fold + j) (by simp [chLanes]; omega)
   simp only [chLanes] at e
   have hlen : ((List.range L.fold).map (fun j => V + 15 * j + 5)).length = L.fold := by simp
   have ga := getD_app_right ((List.range L.fold).map (fun j => V + 15 * j + 5))
-    ((List.range L.kappa).map (fun j => (lvLanes L none V).V6 + 15 * j + 5)) j
+    ((List.range L.kappa).map (fun j => (lvLanes g ood L none V).V6 + 15 * j + 5)) j
   rw [hlen] at ga
   rw [ga, getD_map_range _ _ _ _ hj] at e
   rw [show pc + (f + L.fold) + j = pc + f + (L.fold + j) by ring, e]; congr 1; ring
 
 theorem posOk_head {C : SCfg} {M : Mem} {sig : ByteArray} {i : Nat} {L : Level} {rest : List Level} {V : Nat}
     (h : PosOk C M sig i (L :: rest) V) : ∀ j < L.t, FE.ofK (M.k (C.pb i + j)) =
-      eOfNat ((qsAt sig (8 * (lvLanes L rest.head? V).V2) L).getD j 0) := by
+      eOfNat ((qsAt sig (8 * (lvLanes C.g C.ood L rest.head? V).V2) L).getD j 0) := by
   intro j hj
   have e := h 0 (by simp) j (by simpa using hj)
   cases rest <;> simpa [posLanes] using e
 
 theorem posOk_next {C : SCfg} {M : Mem} {sig : ByteArray} {i : Nat} {L N : Level} {rest : List Level} {V : Nat}
-    (h : PosOk C M sig i (L :: N :: rest) V) : PosOk C M sig (i + 1) (N :: rest) (lvLanes L (some N) V).V6 := by
+    (h : PosOk C M sig i (L :: N :: rest) V) : PosOk C M sig (i + 1) (N :: rest) (lvLanes C.g C.ood L (some N) V).V6 := by
   intro i' hi' j hj
   have e := h (i' + 1) (by simp at hi' ⊢; omega) j (by simpa using hj)
   simp only [posLanes] at e
@@ -270,6 +438,11 @@ theorem posOk_next {C : SCfg} {M : Mem} {sig : ByteArray} {i : Nat} {L N : Level
 theorem glue_one (lam : FE) (st : WhirState) (i : List FE) (w : List FE → FE) :
     glue lam st [(i, w)] = ⟨List.zipWith (fun q i => q + 1 * lam * i) st.runningQuad i, st.folds,
       st.glued ++ [⟨1 * lam, st.folds.length, w⟩]⟩ := rfl
+
+theorem glue_two (lam : FE) (st : WhirState) (i₁ i₂ : List FE) (w₁ w₂ : List FE → FE) :
+    glue lam st [(i₁, w₁), (i₂, w₂)] = ⟨List.zipWith (fun q i => q + 1 * lam * lam * i)
+      (List.zipWith (fun q i => q + 1 * lam * i) st.runningQuad i₁) i₂, st.folds,
+      st.glued ++ [⟨1 * lam, st.folds.length, w₁⟩] ++ [⟨1 * lam * lam, st.folds.length, w₂⟩]⟩ := rfl
 
 theorem ptv_take_append {M : Mem} {pc ν f n : Nat} {a : List FE} (ha : a.length = n) (hν : f + n ≤ ν)
     (h : ∀ j < n, M.e (pc + f + j) = a.getD j 0) : (ptv M pc ν).take f ++ a = (ptv M pc ν).take (f + n) := by
@@ -306,90 +479,95 @@ theorem glued_foldl (gs : List GluedClaim) (fl tf pt : List FE) (b : FE) (hpt : 
     rw [ih _ (fun g hg => hfs g (List.mem_cons_of_mem _ hg)), ← hpt,
       List.drop_append_of_le_length (hfs gc List.mem_cons_self)]
 
-set_option maxHeartbeats 2000000 in
+set_option maxHeartbeats 4000000 in
 theorem levels_run (C : SCfg) {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed M sig T) (pc : Nat)
     (zc oc g : Cell) (zk : Nat) (bas : Cell) (hz : zc.val M = 0) (ho : oc.val M = 1) (hzE : zc.ty = .E)
     (hoE : oc.ty = .E) (hg : g.val M = 1) (hgK : g.ty = .K) (hzk : M.k zk = 0) (lf : Nat)
     (B : List FE → FE) (hbas : bas.val M = B ((ptv M pc C.nu).drop lf ++ (ptv M pc C.nu).take lf)) :
     ∀ (Ls : List Level) (i f V : Nat) (q : Cell × Cell × Cell) (gl : List (Cell × Cell)) (st : WhirState)
       (p : Ptr), lvOk C T Ls i f V = true → 1 ≤ p.e → qv M q = st.runningQuad →
-      st.folds = (ptv M pc C.nu).take f → ChOk M sig pc f Ls V → PosOk C M sig i Ls V →
-      GlOk M pc C.nu f st gl → Lvm.QSig.Ok c M (levelsG C pc zc oc g zk bas Ls i f V q gl) p →
+      st.folds = (ptv M pc C.nu).take f → ChOk C.g C.ood M sig pc f Ls V → PosOk C M sig i Ls V →
+      PwOk C M i Ls → GlOk M pc C.nu f st gl → Lvm.QSig.Ok c M (levelsG C pc zc oc g zk bas Ls i f V q gl) p →
       ∀ s : RS, pos s = 8 * V →
-        (whirLevels C.nu lf B false 0 Ls st sig s).2.ok = s.ok ∧
-        pos (whirLevels C.nu lf B false 0 Ls st sig s).2 = 8 * stackEndL Ls V ∧
-        (whirLevels C.nu lf B false 0 Ls st sig s).2.msg = 0 := by
+        (whirLevels C.nu lf B false C.g C.ood Ls st sig s).2.ok = s.ok ∧
+        pos (whirLevels C.nu lf B false C.g C.ood Ls st sig s).2 = 8 * stackEndL C.g C.ood Ls V ∧
+        (whirLevels C.nu lf B false C.g C.ood Ls st sig s).2.msg = 0 := by
   intro Ls
   induction Ls with
   | nil => intro i f V q gl st p hok; simp [lvOk] at hok
   | cons L rest ih =>
-    intro i f V q gl st p hok hp hq hfo hch hpo hgl h s hs
+    intro i f V q gl st p hok hp hq hfo hch hpo hpw hgl h s hs
     have hA := fun (n : Nat) (hn : f + L.fold + n = C.nu) => ptv_take_append (M := M) (pc := pc) (ν := C.nu) (f := f)
       (frC_length sig (8 * V) L.fold) (by omega) (fun j hj => by rw [frC_getD _ _ _ _ hj, chOk_fold hch j hj])
     cases rest with
     | nil =>
       simp only [lvOk, Bool.and_eq_true, decide_eq_true_eq, List.all_eq_true, List.mem_range,
-        and_assoc, List.head?_nil] at hok
-      obtain ⟨hν, hrow, ht1, htc, hchk, hcs, hT1, hT2, hm⟩ := hok
+        and_assoc, List.head?_nil, and_true] at hok
+      obtain ⟨hν, hrow, ht1, htc, hchk, hcs, hT1, hT2, hm, hg64⟩ := hok
       replace hT1 := of_decide_eq_true hT1
       replace hT2 := of_decide_eq_true hT2
       have hfl : st.folds.length = f := by rw [hfo, List.length_take, ptv_length]; omega
-      obtain ⟨l1, l2, l3, l4, l5, l6⟩ := lvLanes_facts L none V
-      have hV2 : (lvLanes L none V).V2 = (lvLanes L none V).V1 + 3 * 2 ^ L.kappa := by simp [lvLanes]
+      obtain ⟨l1, l2, l3, l4, l5, l6, l7, l8, l9, l10⟩ := lvLanes_facts C.g C.ood L none V
       simp only [levelsG, List.head?_nil] at h
       obtain ⟨hpre, h⟩ := okb h
-      have e := lvPre_spec C hS pc zc oc g zk hz ho hzE hoE hgK hzk L none i f V q p hp hν htc
-        hchk hcs hT1 (by omega) (chOk_fold hch) (posOk_head hpo) hpre
+      have e := lvPre_spec C hS pc zc oc g zk hz ho hzE hoE hgK hg hzk L none i f V q p hp hν htc
+        hchk hcs hT1 (by omega) hg64 (chOk_fold hch) (posOk_head hpo) (pwOk_head hpw) hpre
       generalize (lvPre C pc zc oc g zk L none i f V q p).1 = r at h e
       generalize p.adv (lvPre C pc zc oc g zk L none i f V q p).2 = p' at h
-      obtain ⟨eq, el, eW⟩ := e
+      obtain ⟨eq, el, epw⟩ := e
+      simp only [Option.isSome_none, Bool.and_false, Bool.false_eq_true, ↓reduceIte] at eq el
       rw [hq] at eq
       obtain ⟨ht, h⟩ := okb h
-      have et := tailG_spec hS L.kappa (f + L.fold) (lvLanes L none V).V6 r.1 p' hm (by omega)
+      have et := tailG_spec hS L.kappa (f + L.fold) (lvLanes C.g C.ood L none V).V6 r.1 p' hm (by omega)
         (fun j hj => chOk_tail hch j hj) ht.1
-      generalize (tailG pc (f + L.fold) (lvLanes L none V).V6 L.kappa r.1 p').1 = tgt at h et
-      generalize p'.adv (tailG pc (f + L.fold) (lvLanes L none V).V6 L.kappa r.1 p').2 = p2 at h
+      generalize (tailG pc (f + L.fold) (lvLanes C.g C.ood L none V).V6 L.kappa r.1 p').1 = tgt at h et
+      generalize p'.adv (tailG pc (f + L.fold) (lvLanes C.g C.ood L none V).V6 L.kappa r.1 p').2 = p2 at h
       obtain ⟨hmf, h⟩ := okb h
+      have hVc : (lvLanes C.g C.ood L none V).Vc = (lvLanes C.g C.ood L none V).V1 + 3 * 2 ^ L.kappa := by
+        simp [lvLanes]
+      have hVcV2 : (lvLanes C.g C.ood L none V).Vc ≤ (lvLanes C.g C.ood L none V).V2 := by
+        rw [l9]; split_ifs <;> omega
       have em := mleFold_eq hmf.1 sig
-        ((List.range (2 ^ L.kappa)).map fun i => feAt sig (8 * (lvLanes L none V).V1 + 40 + 24 * i))
-        (frC sig (8 * (lvLanes L none V).V6) L.kappa) (by simp) (frC_length _ _ _)
+        ((List.range (2 ^ L.kappa)).map fun i => feAt sig (8 * (lvLanes C.g C.ood L none V).V1 + 40 + 24 * i))
+        (frC sig (8 * (lvLanes C.g C.ood L none V).V6) L.kappa) (by simp) (frC_length _ _ _)
         (fun j hj => by rw [Cell.val_E, frC_getD _ _ _ _ hj, chOk_tail hch j hj])
         (fun v hv k hk => by
           have : 3 * v < 3 * 2 ^ L.kappa := by omega
           rw [hS _ (by omega)]; rfl)
         (fun v hv => by rw [getD_map_range _ _ _ _ hv]; congr 1; ring)
-      generalize (mleFold L.kappa ((lvLanes L none V).V1 + 5) (fun j => ec (pc + (f + L.fold) + j)) p2).1
+      generalize (mleFold L.kappa ((lvLanes C.g C.ood L none V).V1 + 5) (fun j => ec (pc + (f + L.fold) + j)) p2).1
         = mle at h em
-      generalize p2.adv (mleFold L.kappa ((lvLanes L none V).V1 + 5)
+      generalize p2.adv (mleFold L.kappa ((lvLanes C.g C.ood L none V).V1 + 5)
         (fun j => ec (pc + (f + L.fold) + j)) p2).2 = p3 at h
       obtain ⟨hw, h⟩ := okb h
-      have ew := wsumG_spec (gl ++ [(r.2.1, r.2.2)]) bas p3 hw.1
-      generalize (wsumG bas (gl ++ [(r.2.1, r.2.2)]) p3).1 = w at h ew
-      generalize p3.adv (wsumG bas (gl ++ [(r.2.1, r.2.2)]) p3).2 = p4 at h
+      have ew := wsumG_spec (gl ++ r.2) bas p3 hw.1
+      generalize (wsumG bas (gl ++ r.2) p3).1 = w at h ew
+      generalize p3.adv (wsumG bas (gl ++ r.2) p3).2 = p4 at h
       have hfin := (terminalCheck_iff h.1 hg).mp h.2
-      have hF := whirLevels_final C.nu lf B L st sig s V hs hrow (by omega) hm
+      have hF := whirLevels_final C.nu lf B C.g C.ood L st sig s V hs hrow (by omega) hm
       dsimp only at hF
       rw [hF]
       refine ⟨?_, ?_, rfl⟩
-      · rw [Bool.and_eq_right_iff_imp]
+      · rw [epw, Bool.true_and, Bool.and_eq_right_iff_imp]
         intro _
         rw [wh_fe_beq, glue_one]
         dsimp only
         rw [← eq, ← et, ← em, hfo, hA L.kappa (by omega)]
         have hB := ptv_take_append (M := M) (pc := pc) (ν := C.nu) (f := f + L.fold)
-          (frC_length sig (8 * (lvLanes L none V).V6) L.kappa) (by omega)
+          (frC_length sig (8 * (lvLanes C.g C.ood L none V).V6) L.kappa) (by omega)
           (fun j hj => by rw [frC_getD _ _ _ _ hj, chOk_tail hch j hj])
         rw [List.take_of_length_le (l := ptv M pc C.nu) (i := f + L.fold + L.kappa)
           (by rw [ptv_length]; omega)] at hB
         rw [glued_foldl _ _ _ _ _ hB (fun gc hgc => ?_), hB, ← hbas]
         · rw [List.map_append, hgl.1]
-          have hnew : ([⟨1 * feAt sig (8 * (lvLanes L none V).V3 + 40),
+          have hnew : ([⟨1 * feAt sig (8 * (lvLanes C.g C.ood L none V).V3 + 40),
               ((ptv M pc C.nu).take (f + L.fold)).length, fun x => inducedWeight L.kappa
-                (qsAt sig (8 * (lvLanes L none V).V2) L)
-                (powers (feAt sig (8 * (lvLanes L none V).V3 + 40)) L.t) x⟩] : List GluedClaim).map
+                (qsAt sig (8 * (lvLanes C.g C.ood L none V).V2) L)
+                (powers (feAt sig (8 * (lvLanes C.g C.ood L none V).V3 + 40)) L.t) x⟩] : List GluedClaim).map
               (fun gc => (gc.scalar, gc.weightAt ((ptv M pc C.nu).drop gc.foldStart))) =
-              [(r.2.1, r.2.2)].map (fun x => (x.1.val M, x.2.val M)) := by
-            simp only [List.map_cons, List.map_nil, List.length_take, ptv_length, el, eW, one_mul]
+              r.2.map (fun x => (x.1.val M, x.2.val M)) := by
+            rw [el]
+            simp only [List.map_cons, List.map_nil, List.length_take, ptv_length]
             rw [show min (f + L.fold) C.nu = f + L.fold by omega]
           rw [hnew, ← List.map_append, List.foldl_map, ← ew]
           exact hfin
@@ -403,34 +581,57 @@ theorem levels_run (C : SCfg) {sig : ByteArray} {T : Nat} (hS : Lvm.Q1.Streamed 
     | cons N rest' =>
       simp only [lvOk, Bool.and_eq_true, decide_eq_true_eq, List.all_eq_true, List.mem_range,
         and_assoc, List.head?_cons] at hok
-      obtain ⟨hν, hrow, ht1, htc, hchk, hcs, hT1, hT2, hrest⟩ := hok
+      obtain ⟨hν, hrow, ht1, htc, hchk, hcs, hT1, hT2, hm, hg64, hrest⟩ := hok
       replace hT1 := of_decide_eq_true hT1
       replace hT2 := of_decide_eq_true hT2
       have hfl : st.folds.length = f := by rw [hfo, List.length_take, ptv_length]; omega
-      obtain ⟨l1, l2, l3, l4, l5, l6⟩ := lvLanes_facts L (some N) V
+      obtain ⟨l1, l2, l3, l4, l5, l6, l7, l8, l9, l10⟩ := lvLanes_facts C.g C.ood L (some N) V
       rw [levelsG] at h
       simp only [List.head?_cons] at h
       obtain ⟨hpre, h⟩ := okb h
-      have e := lvPre_spec C hS pc zc oc g zk hz ho hzE hoE hgK hzk L (some N) i f V q p hp hν htc
-        hchk hcs hT1 (by omega) (chOk_fold hch) (posOk_head hpo) hpre
+      have e := lvPre_spec C hS pc zc oc g zk hz ho hzE hoE hgK hg hzk L (some N) i f V q p hp hν htc
+        hchk hcs hT1 (by omega) hg64 (chOk_fold hch) (posOk_head hpo) (pwOk_head hpw) hpre
       have hpr := le_trans hp (adv_e_le p (lvPre C pc zc oc g zk L (some N) i f V q p).2)
       generalize (lvPre C pc zc oc g zk L (some N) i f V q p).1 = r at h e
       generalize p.adv (lvPre C pc zc oc g zk L (some N) i f V q p).2 = p' at h hpr
-      obtain ⟨eq, el, eW⟩ := e
+      obtain ⟨eq, el, epw⟩ := e
+      simp only [Option.isSome_some, Bool.and_true] at eq el
       rw [hq] at eq
-      rw [whirLevels_step C.nu lf B L N rest' st sig s V hs hrow, glue_one]
+      rw [whirLevels_step C.nu lf B C.g C.ood L N rest' st sig s V hs hrow (by omega) hm, epw, Bool.true_and]
       simp only [stackEndL]
-      exact ih (i + 1) (f + L.fold) (lvLanes L (some N) V).V6 r.1 (gl ++ [(r.2.1, r.2.2)]) _ p' hrest hpr
-        (by exact eq) (by show st.folds ++ frC sig (8 * V) L.fold = _; rw [hfo]; exact hA L.kappa (by omega))
-        (chOk_next hch) (posOk_next hpo)
-        (by
-          dsimp only [GlOk]
-          refine ⟨?_, ?_⟩
-          · rw [List.map_append, hgl.1, List.map_append]
-            simp only [List.map_cons, List.map_nil, List.length_append, frC_length, hfl, el, eW, one_mul]
-            rw [show C.nu - (f + L.fold) = L.kappa by omega]
-          · intro gc hgc
-            rcases List.mem_append.mp hgc with h1 | h1
-            · exact le_trans (hgl.2 gc h1) (by omega)
-            · simp only [List.mem_singleton] at h1; subst h1; simp [frC_length, hfl])
-        h _ (by simp only [pos]; omega)
+      have hfo' : st.folds ++ frC sig (8 * V) L.fold = (ptv M pc C.nu).take (f + L.fold) := by
+        rw [hfo]; exact hA L.kappa (by omega)
+      by_cases hod : C.ood = true
+      · rw [if_pos hod] at eq el
+        rw [show oodF sig C.ood = oodF sig true by rw [hod]]
+        simp only [oodF, ↓reduceIte, List.headD_cons, List.cons_append, List.nil_append, glue_two] at eq ⊢
+        exact ih (i + 1) (f + L.fold) (lvLanes C.g C.ood L (some N) V).V6 r.1 (gl ++ r.2) _ p' hrest hpr
+          (by exact eq) (by exact hfo') (chOk_next hch) (posOk_next hpo) (pwOk_next hpw)
+          (by
+            dsimp only [GlOk]
+            refine ⟨?_, ?_⟩
+            · rw [List.map_append, List.map_append, hgl.1, List.map_append, el]
+              simp only [List.map_cons, List.map_nil, List.length_append, frC_length, hfl, List.append_assoc,
+                List.singleton_append]
+            · intro gc hgc
+              simp only [List.mem_append, List.mem_singleton] at hgc
+              rcases hgc with (h1 | h1) | h1
+              · exact le_trans (hgl.2 gc h1) (by omega)
+              · subst h1; simp [frC_length, hfl]
+              · subst h1; simp [frC_length, hfl])
+          h _ (by simp only [pos]; omega)
+      · rw [if_neg hod] at eq el
+        rw [show oodF sig C.ood = oodF sig false by simp only [Bool.not_eq_true] at hod; rw [hod]]
+        simp only [oodF, Bool.false_eq_true, ↓reduceIte, List.nil_append, glue_one]
+        exact ih (i + 1) (f + L.fold) (lvLanes C.g C.ood L (some N) V).V6 r.1 (gl ++ r.2) _ p' hrest hpr
+          (by exact eq) (by exact hfo') (chOk_next hch) (posOk_next hpo) (pwOk_next hpw)
+          (by
+            dsimp only [GlOk]
+            refine ⟨?_, ?_⟩
+            · rw [List.map_append, hgl.1, List.map_append, el]
+              simp only [List.map_cons, List.map_nil, List.length_append, frC_length, hfl]
+            · intro gc hgc
+              rcases List.mem_append.mp hgc with h1 | h1
+              · exact le_trans (hgl.2 gc h1) (by omega)
+              · simp only [List.mem_singleton] at h1; subst h1; simp [frC_length, hfl])
+          h _ (by simp only [pos]; omega)

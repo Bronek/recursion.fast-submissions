@@ -25,19 +25,22 @@ open Lvm
 /-- The cap level of a tree of `2^ht` leaves at P20 (WP-14's `capOfS`). -/
 def capS (ht _w : ℕ) : ℕ := if ht = 19 then 8 else 7
 
-/-- The five commitments' shapes `(height, width)` in commit order at P20. -/
+/-- The five commitments' shapes `(height, width)` in commit order at P20 (S4: `C_rec`'s level 1 is
+commitment 2, opened before `C_main`'s levels). -/
 def shpS : ℕ → ℕ × ℕ
   | 0 => (19, 64)
   | 1 => (15, 64)
-  | 2 => (16, 48)
+  | 2 => (12, 48)
+  | 3 => (16, 48)
   | _ => (13, 48)
 
-/-- An oracle's commitment index (`C_main`'s root 0, `C_rec`'s root 1, `C_main`'s level `j + 1` at
-`j + 2`; WHIR's `cidx`). -/
+/-- An oracle's commitment index (`C_main`'s root 0, `C_rec`'s root 1, `C_rec`'s level 1 at 2,
+`C_main`'s level `j + 1` at `j + 3`; WHIR's `cidx`). -/
 def idxS : Ref → ℕ
   | ⟨.main, 0⟩ => 0
   | ⟨.crec, 0⟩ => 1
-  | ⟨_, j + 1⟩ => j + 2
+  | ⟨.crec, j + 1⟩ => j + 2
+  | ⟨.main, j + 1⟩ => j + 3
 
 /-- Refinement at P20's commitment table. -/
 abbrev Ref20 {α β : Type} (sig : ByteArray) (d : DM β) (P : LeanVM.Protocol.Compile.VerifierProgram α)

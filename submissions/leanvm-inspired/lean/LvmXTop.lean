@@ -5,6 +5,7 @@ import LvmXNodeIR
 import LvmXSearch
 import LvmXDecCost
 import LvmXRead2
+import LvmXDec1Cost
 
 /-!
 # The extractor program and `Computes` (BLUEPRINT §6.2, §6.3)
@@ -13,13 +14,16 @@ import LvmXRead2
 → nothing, else the `W` copy). The SNARK branch `decX` reads the flag `b` (π word 1):
 
 * `b = 0`: `leafIR` outputs `witWords (leaf s n)` (π words 10–14);
-* `b ≠ 0`: `nodeIR`: the log index (`idxIR4`, WP-3), the chain scan (`chainL`), the column reads of
-  `C_rec` (`readIR`, WP-13b), `α` and `f₁` copied to the decoder's inputs, the decoder (`decIR`,
-  WP-13b), and if it succeeded the node output (`outIR`).
+* `b ≠ 0`: `nodeIR`: the log index (`idxIR4`, WP-3), the chain scan (`chainL`, through `α₁`), the
+  column reads of `C_rec`'s level 0 (`readIR`, WP-13b), `α₀` copied, the column reads of level 1
+  (`read1IR`, lvm2 X-REC2 DEC), `α₁` and `f₂` copied, the level-1 decoder (`dec1IR`) writing `f₁`
+  where v1's decoder reads it, and if it succeeded (`ok1B`) the level-0 decoder (`decIR`, WP-13b)
+  and, if that succeeded too (`okB`), the node output (`outIR`).
 
-Heap layout (all below `memX = 2^25`): the decoder's (`decLay_example`: `aB = 2^19`, `fB = aB + 64`,
-`wB = 2^20`, `dB = 2^22`, message at `dB + 2^20`), the chain's at `2^24`, the stream buffer at
-`2^24 + 2^16`; the log index at `memX`.
+Heap layout (all below `memX = 2^25`): level 0's decoder (`decLay_example`: `aB = 2^19`,
+`fB = aB + 64`, `wB = 2^20`, `dB = 2^22`, message at `dB + 2^20`); level 1's (`dec1Lay_example`:
+`a1B = 2^19 + 24`, word `w1B = 2^23`, workspace `d1B = 2^23 + 2^21`, `f2B = 2^23 + 2^22`, output
+`fB`); the chain's at `2^24`, the stream buffer at `2^24 + 2^16`; the log index at `memX`.
 
 **`decOk_decX`**, **`computesX`**: `Computes extX (EX A) fuel` with the declared fuel
 `fuel t = 2^46 + 2^13 t` (`LvmXComputes.fuel`); `extX_caps`: within the budget and `progCap`.
@@ -43,16 +47,29 @@ def aBX : ℕ := 2 ^ 19
 def fBX : ℕ := 2 ^ 19 + 64
 /-- The tape word of `C_rec`'s cap. -/
 def capWX : ℕ := 5 + capRecOff pX / 8
-/-- The tape word of `f₁`. -/
-def f1WX : ℕ := 5 + f1Off pX / 8
+/-- The tape word of `C_rec`'s level-1 cap. -/
+def cap1WX : ℕ := 5 + capRec1Off pX / 8
+/-- The tape word of `f₂`. -/
+def f2WX : ℕ := 5 + f2Off pX / 8
+/-- Level 1's read word. -/
+def w1BX : ℕ := 2 ^ 23
+/-- Level 1's decoder workspace. -/
+def d1BX : ℕ := 2 ^ 23 + 2 ^ 21
+/-- `α₁`. -/
+def a1BX : ℕ := 2 ^ 19 + 24
+/-- `f₂`. -/
+def f2BX : ℕ := 2 ^ 23 + 2 ^ 22
 
-theorem layoutX : pLX = 136786 ∧ capWX = 1732 ∧ f1WX = 28674 ∧ f1Off pX % 8 = 0 ∧
-    alphaPos pX 0 = 1308 := by
-  refine ⟨?_, ?_, ?_, ?_, layout_P20.2.2.1⟩
+theorem layoutX : pLX = 97904 ∧ capWX = 1732 ∧ cap1WX = 25665 ∧ capRec1Off pX % 8 = 0 ∧
+    alphaPos pX 0 = 1297 ∧ f2WX = 42530 ∧ f2Off pX % 8 = 0 ∧ alpha1Pos pX 0 = 1328 := by
+  obtain ⟨-, -, h3, h4, h5, -, -, h8, h9, -⟩ := layout_P20
+  refine ⟨?_, ?_, ?_, ?_, h3, ?_, ?_, h8⟩
   · rw [pLX, piSize_eq]; rfl
-  · rw [capWX, layout_P20.2.2.2.2.1]
-  · rw [f1WX, layout_P20.2.2.2.1]
-  · rw [layout_P20.2.2.2.1]
+  · rw [capWX, h5]
+  · rw [cap1WX, h4]
+  · rw [h4]
+  · rw [f2WX, h9]
+  · rw [h9]
 
 /-! ## The SNARK branch -/
 
@@ -68,14 +85,28 @@ def acpIR : XIR :=
   (.seq (mcpIR 3 (ansB + 4 * alphaPos pX 2) 1 (aBX + 6)) (.seq (mcpIR 3 (ansB + 4 * alphaPos pX 3) 1 (aBX + 9))
   (.seq (mcpIR 3 (ansB + 4 * alphaPos pX 4) 1 (aBX + 12)) (mcpIR 3 (ansB + 4 * alphaPos pX 5) 1 (aBX + 15))))))
 
+/-- Three words of each of `n` chain answers (answer `j` at `src + 4j`) to `dst + 3j`. -/
+def acp3IR (src dst : ℕ) : ℕ → XIR
+  | 0 => .blk []
+  | n + 1 => .seq (acp3IR src dst n) (mcpIR 3 (src + 4 * n) 1 (dst + 3 * n))
+
+/-- `α₁_j` (answer words 0–2 of chain position `alpha1Pos j`) to `a1B + 3j`, `j < 4`. -/
+def a1cpIR : XIR := acp3IR (ansB + 4 * alpha1Pos pX 0) a1BX 4
+
 /-- After the decoder: the node output if it succeeded. -/
 def okXIR : XIR :=
   .seq (.blk [.const eA (toWord (okB dBX))]) (.seq (.load eW eA) (.ite eW (outIR (mB dBX)) (.blk [])))
 
+/-- After the level-1 decoder: if it succeeded, the level-0 decoder and `okXIR`. -/
+def ok1XIR : XIR :=
+  .seq (.blk [.const eA (toWord (ok1B d1BX))]) (.seq (.load eW eA)
+    (.ite eW (.seq (decIR dBX wBX aBX fBX) okXIR) (.blk [])))
+
 /-- **The node branch.** -/
 def nodeIR : XIR :=
   .seq (idxIR4 memX pLX) (.seq chainL (.seq (readIR memX pLX capWX wBX) (.seq acpIR
-    (.seq (thcpIR f1WX fBX (3 * 2 ^ 13)) (.seq (decIR dBX wBX aBX fBX) okXIR)))))
+    (.seq (read1IR memX pLX cap1WX w1BX) (.seq a1cpIR (.seq (thcpIR f2WX f2BX (3 * 2 ^ 9))
+      (.seq (dec1IR d1BX w1BX a1BX f2BX fBX) ok1XIR)))))))
 
 /-- **The SNARK branch**: by the flag `b` (tape word 6). -/
 def decX : XIR := .seq (readAt rBb 6) (.ite rBb nodeIR leafIR)
@@ -100,9 +131,18 @@ theorem wf_outIR (m : ℕ) : WF (outIR m) := by
 theorem wf_okXIR : WF okXIR := by
   refine ⟨by simp +decide [WF, Prim.dst, eA], show 4 ≤ eW by decide, wf_outIR _, by simp [WF]⟩
 
+theorem wf_acp3IR (src dst : ℕ) : ∀ n, WF (acp3IR src dst n)
+  | 0 => by simp [acp3IR, WF]
+  | n + 1 => ⟨wf_acp3IR src dst n, wf_mcpIR ..⟩
+
+theorem wf_ok1XIR : WF ok1XIR := by
+  refine ⟨by simp +decide [WF, Prim.dst, eA], show 4 ≤ eW by decide, ⟨wf_decIR _ _ _ _, wf_okXIR⟩,
+    by simp [WF]⟩
+
 theorem wf_nodeIR : WF nodeIR :=
   ⟨wf_idxIR4 _ _, wf_chainIR _ _ _ wf_sdL (nw_sdL _ (by decide) (by decide) (by decide)),
-    wf_readIR _ _ _ _, wf_acpIR, wf_thcpIR _ _ _, wf_decIR _ _ _ _, wf_okXIR⟩
+    wf_readIR _ _ _ _, wf_acpIR, wf_read1IR _ _ _ _, wf_acp3IR _ _ _, wf_thcpIR _ _ _,
+    wf_dec1IR _ _ _ _ _, wf_ok1XIR⟩
 
 theorem wf_decX : WF decX := by
   refine ⟨?_, wf_nodeIR, wf_leafIR⟩
@@ -125,6 +165,13 @@ theorem noLoopT_acpIR : NoLoopT acpIR :=
 
 theorem noLoopT_okXIR : NoLoopT okXIR := ⟨trivial, trivial, noLoopT_outIR _, trivial⟩
 
+theorem noLoopT_acp3IR (src dst : ℕ) : ∀ n, NoLoopT (acp3IR src dst n)
+  | 0 => trivial
+  | n + 1 => ⟨noLoopT_acp3IR src dst n, noLoopT_mcpIR ..⟩
+
+theorem noLoopT_ok1XIR : NoLoopT ok1XIR :=
+  ⟨trivial, trivial, ⟨noLoopT_decIR .., noLoopT_okXIR⟩, trivial⟩
+
 theorem noLoopT_sdL : NoLoopT sdL := ⟨trivial, trivial⟩
 
 /-- **The SNARK branch's loop bounds** on every domain tape of an `S` proof. -/
@@ -135,8 +182,9 @@ theorem safe_decX (c : Digest) (π : Proof) (L : Log) (hs : π.size = piSize pX)
   refine .seq (safe_of_noLoopT (by simp [readAt, NoLoopT])) (.ite ?_ (safe_of_noLoopT
     ⟨noLoopT_emitIR _, noLoopT_tcpIR _ _⟩))
   refine .seq ((decOk_idx hpz).safe c π L hs hq ht) (.seq ?_ (.seq (safe_of_noLoopT (noLoopT_readIR ..))
-    (.seq (safe_of_noLoopT noLoopT_acpIR) (.seq (safe_of_noLoopT (noLoopT_thcpIR ..))
-      (.seq (safe_of_noLoopT (noLoopT_decIR ..)) (safe_of_noLoopT noLoopT_okXIR))))))
+    (.seq (safe_of_noLoopT noLoopT_acpIR) (.seq (safe_of_noLoopT (noLoopT_read1IR ..))
+      (.seq (safe_of_noLoopT (noLoopT_acp3IR ..)) (.seq (safe_of_noLoopT (noLoopT_thcpIR ..))
+        (.seq (safe_of_noLoopT (noLoopT_dec1IR ..)) (safe_of_noLoopT noLoopT_ok1XIR))))))))
   exact safe_chainIR c π L (hs_posL hs) hq ht _ _ noLoopT_sdL wf_sdL
     (nw_sdL _ (by decide) (by decide) (by decide))
 
@@ -226,10 +274,10 @@ private theorem segTSs : ∀ (u : ℕ) (bs : List Blk), segSize (blkTSegs u bs) 
   | u, b :: bs => by
     rw [blkTSegs, segSize, segTSs _ bs, segTS_u, List.map_cons, List.sum_cons, ← segTS b]; omega
 
-private theorem segAll : (segCost pSegL = 7408213 ∧ segCost trSegL = 7907744 ∧
+private theorem segAll : (segCost pSegL = 5517707 ∧ segCost trSegL = 6015976 ∧
       segCost (.cp 0 597) = 21506) ∧
-    (segOuts pSegL = 136781 ∧ segOuts trSegL = 222626 ∧ segOuts (.cp 0 597) = 597) ∧
-    (segSize pSegL = 76523 ∧ segSize trSegL = 81102 ∧ segSize (.cp 0 597) = 50) := by
+    (segOuts pSegL = 97899 ∧ segOuts trSegL = 169627 ∧ segOuts (.cp 0 597) = 597) ∧
+    (segSize pSegL = 77981 ∧ segSize trSegL = 82295 ∧ segSize (.cp 0 597) = 50) := by
   obtain ⟨h1, h2, h3, h4, h5, h6⟩ := layout_all_P20.2.2.2.2.2.2.2
   refine ⟨⟨?_, ?_, rfl⟩, ⟨?_, ?_, rfl⟩, ⟨?_, ?_, rfl⟩⟩
   · rw [pSegL, segCost, segCost, segPCs, h1]
@@ -239,11 +287,11 @@ private theorem segAll : (segCost pSegL = 7408213 ∧ segCost trSegL = 7907744 �
   · rw [pSegL, segSize, segSize, segPSs, h5]
   · rw [trSegL, segSize, segSize, segSize, segSize, segSize, segSize, segSize, segTSs, h6]; rfl
 
-theorem segCosts : segCost pSegL = 7408213 ∧ segCost trSegL = 7907744 ∧ segCost (.cp 0 597) = 21506 :=
+theorem segCosts : segCost pSegL = 5517707 ∧ segCost trSegL = 6015976 ∧ segCost (.cp 0 597) = 21506 :=
   segAll.1
 
 /-- **The node output's cost.** -/
-theorem cost_outIR (m t : ℕ) : cost (outIR m) t ≤ 24100000 := by
+theorem cost_outIR (m t : ℕ) : cost (outIR m) t ≤ 20300000 := by
   have h1 := cost_segIR apC pSegL 0 t
   have h2 := cost_segIR apC trSegL 0 t
   have h3 := cost_segIR apC (.cp 0 597) 0 t
@@ -260,30 +308,51 @@ theorem cost_acpIR (t : ℕ) : cost acpIR t = 335 := by
 theorem cost_sdL (t : ℕ) : cost sdL t = 8 := by
   simp only [sdL, cost, blkSteps, List.length_cons, List.length_nil]; norm_num
 
-theorem chTabL_len : chTabL.length = 5260 := by rw [chTabL_length, nChain_eq]
+theorem chTabL_len : chTabL.length = 5332 := by rw [chTabL_length, nChain_eq]
 
-/-- **The SNARK branch's cost**: the fixed `≈ 2^37.95` (decoder) plus `≈ 2,547` steps a word. -/
-theorem cost_decX (t : ℕ) : cost decX t ≤ 2 ^ 39 + t / 5 * 11895 + t * 168 := by
+theorem cost_acp3IR (src dst t : ℕ) : ∀ n, cost (acp3IR src dst n) t = 1 + 56 * n
+  | 0 => rfl
+  | n + 1 => by
+    rw [acp3IR, cost, cost_acp3IR src dst t n, cost_mcpIR _ _ _ _ t (by norm_num)]; ring
+
+/-- The level-1 phase: reads, `α₁`, `f₂`, decoder. -/
+theorem cost_lvl1 (t : ℕ) :
+    cost (read1IR memX pLX cap1WX w1BX) t + cost a1cpIR t + cost (thcpIR f2WX f2BX 1536) t +
+      cost (dec1IR d1BX w1BX a1BX f2BX fBX) t ≤ 2 ^ 32 + 20300 := by
+  have h1 := dec1_fixed_le memX pLX cap1WX w1BX d1BX a1BX f2BX fBX t
+  rw [a1cpIR, cost_acp3IR, cost_thcpIR _ _ _ t (by norm_num)]
+  omega
+
+/-- The flag test of level 1, v1's decoder and the output. -/
+theorem cost_ok1XIR (t : ℕ) : cost ok1XIR t ≤ 265710864928 + 21100000 + 200 := by
   have hO := cost_outIR (mB dBX) t
+  simp only [ok1XIR, okXIR, cost, blkSteps, List.length_cons, List.length_nil, cost_decIR,
+    Nat.max_def]
+  split_ifs <;> omega
+
+/-- **The SNARK branch's cost**: the fixed `≈ 2^37.95` (level-0 decoder) plus `< 2^32` (level 1)
+plus `≈ 2,547` steps a word. -/
+theorem cost_decX (t : ℕ) : cost decX t ≤ 2 ^ 39 + t / 5 * 11895 + t * 168 := by
   have hC := cost_chainIR (posL (piSize pX)) (nChain pX) t chTabL sdL
   rw [chTabL_len, cost_sdL] at hC
   have hR := (cost_readIR memX pLX capWX wBX t).2
-  simp only [decX, nodeIR, okXIR, leafIR, readAt, cost, blkSteps, List.length_cons, List.length_nil,
-    cost_idxIR4, show chainL = chainIR (posL (piSize pX)) (nChain pX) chTabL sdL from rfl, hC, hR,
-    cost_acpIR, cost_thcpIR _ _ _ t (show 3 * 2 ^ 13 < 2 ^ 64 by norm_num), cost_decIR,
-    cost_tcpIR _ _ t (show 5 < 2 ^ 64 by norm_num), emitIR]
-  norm_num
-  omega
+  have h1 := cost_lvl1 t
+  have h2 := cost_ok1XIR t
+  simp only [decX, nodeIR, leafIR, readAt, cost, blkSteps, List.length_cons,
+    List.length_nil, cost_idxIR4, show chainL = chainIR (posL (piSize pX)) (nChain pX) chTabL sdL
+      from rfl, hC, hR, cost_acpIR, cost_tcpIR _ _ t (show 5 < 2 ^ 64 by norm_num), emitIR,
+    show 3 * 2 ^ 9 = 1536 from rfl, Nat.max_def]
+  split_ifs <;> omega
 
 /-! ## Output, size -/
 
 theorem outs_tcpIR (a n t : ℕ) (hn : n < 2 ^ 64) : outs (tcpIR a n) t = n := by
   simp [tcpIR, tcpBody, outs, toNat_toWord hn]
 
-theorem segOutsV : segOuts pSegL = 136781 ∧ segOuts trSegL = 222626 ∧ segOuts (.cp 0 597) = 597 :=
+theorem segOutsV : segOuts pSegL = 97899 ∧ segOuts trSegL = 169627 ∧ segOuts (.cp 0 597) = 597 :=
   segAll.2.1
 
-theorem outs_outIR (m t : ℕ) : outs (outIR m) t ≤ 360619 := by
+theorem outs_outIR (m t : ℕ) : outs (outIR m) t ≤ 268738 := by
   have h1 := outs_segIR apC pSegL 0 t
   have h2 := outs_segIR apC trSegL 0 t
   have h3 := outs_segIR apC (.cp 0 597) 0 t
@@ -294,16 +363,21 @@ theorem outs_outIR (m t : ℕ) : outs (outIR m) t ≤ 360619 := by
   simp [outs] at *
   omega
 
+theorem outs_acp3IR (src dst t : ℕ) : ∀ n, outs (acp3IR src dst n) t = 0
+  | 0 => rfl
+  | n + 1 => by rw [acp3IR, outs, outs_acp3IR src dst t n, outs_mcpIR]
+
 theorem outs_decX (t : ℕ) : outs decX t ≤ outCap := by
   have h := outs_outIR (mB dBX) t
-  simp only [decX, nodeIR, okXIR, leafIR, readAt, outs, outs_idxIR4, outs_readIR, outs_decIR,
+  simp only [decX, nodeIR, ok1XIR, okXIR, leafIR, readAt, outs, outs_idxIR4, outs_readIR, outs_decIR,
     emitIR, outs_tcpIR _ _ t (show 5 < 2 ^ 64 by norm_num), show chainL = chainIR (posL (piSize pX))
       (nChain pX) chTabL sdL from rfl, outs_chainIR (posL (piSize pX)) (nChain pX) t chTabL
       (show outs sdL t = 0 by simp [sdL, outs])]
-  simp [acpIR, outs_mcpIR, thcpIR, thcpBody, outs, outCap] at *
+  simp [acpIR, outs_mcpIR, thcpIR, thcpBody, outs, outCap, outs_read1IR, outs_dec1IR,
+    outs_acp3IR, a1cpIR] at *
   omega
 
-theorem segSizes : segSize pSegL = 76523 ∧ segSize trSegL = 81102 ∧ segSize (.cp 0 597) = 50 :=
+theorem segSizes : segSize pSegL = 77981 ∧ segSize trSegL = 82295 ∧ segSize (.cp 0 597) = 50 :=
   segAll.2.2
 
 theorem sizeIR_idxX : sizeIR (idxIR4 memX pLX) = 294 := by decide +kernel
@@ -320,14 +394,30 @@ private theorem szSeq (p q : XIR) : sizeIR (.seq p q) = sizeIR p + sizeIR q + 1 
 private theorem szIte (c : ℕ) (p q : XIR) : sizeIR (.ite c p q) = sizeIR p + sizeIR q + 1 := by
   rw [sizeIR]
 
+theorem sizeIR_acp3IR (src dst : ℕ) : ∀ n, sizeIR (acp3IR src dst n) = 1 + 31 * n
+  | 0 => rfl
+  | n + 1 => by
+    rw [acp3IR, szSeq, sizeIR_acp3IR src dst n]
+    simp only [mcpIR, mcpLoop, mcpBody, szSeq, sizeIR, blkSteps, List.length_cons, List.length_nil]
+    simp
+    omega
+
+theorem sizeIR_read1X : sizeIR (read1IR memX pLX cap1WX w1BX) ≤ 2 ^ 12 := by decide +kernel
+
+theorem sizeIR_dec1X : sizeIR (dec1IR d1BX w1BX a1BX f2BX fBX) ≤ 2 ^ 14 := by decide +kernel
+
 theorem sizeIR_decX : sizeIR decX ≤ 2 ^ 19 := by
-  simp only [decX, nodeIR, okXIR, leafIR, outIR, readAt, emitIR, setR, acpIR, szBlk, szLoad, szStore,
-    szInput, szOut, szSeq, szIte, blkSteps,
+  have h1 := sizeIR_read1X
+  have h2 := sizeIR_dec1X
+  have h3 := sizeIR_acp3IR (ansB + 4 * alpha1Pos pX 0) a1BX 4
+  simp only [decX, nodeIR, okXIR, ok1XIR, leafIR, outIR, readAt, emitIR, setR, acpIR, a1cpIR, szBlk,
+    szLoad, szStore, szInput, szOut, szSeq, szIte, blkSteps,
     List.length_cons, List.length_nil, sizeIR_idxX, show chainL = chainIR (posL (piSize pX))
       (nChain pX) chTabL sdL from rfl, sizeIR_chainIR, chTabL_len, sizeIR_readIR, sizeIR_decIR,
     sizeIR_leafStmtIR, sizeIR_segIR, segSizes.1, segSizes.2.1, segSizes.2.2]
   simp [tcpIR, tcpBody, copyIR, copyBody, cpAddrPs, thcpIR, thcpBody, mcpIR, mcpLoop, mcpBody, sdL,
     sizeIR, blkSteps]
+  omega
 
 /-! ## `DecOk` and `Computes` -/
 

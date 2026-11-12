@@ -100,7 +100,7 @@ theorem nodeSound_goodA {VS : Lvm.T.SProg} {vk : RecursionFast.Digest} {tabs : P
 /-- **Phase 3b's facts at every statement** (`AccInst` of the statement's sumcheck tables). -/
 def AccMidHyp (tabs : Pub → List Tab) : Prop := ∀ x, AccInst Lvm.P20 (TS tabs x) (pubX x)
 
-theorem accLog_P20 : Lvm.P20.accLog = 11 := by decide
+theorem accLog_P20 : Lvm.P20.accLog = 12 := by decide
 
 /-- The running maximum of a list from `0` is `0` or one of its elements. -/
 theorem foldl_max_mem : ∀ (l : List ℕ) (a : ℕ), l.foldl max a = a ∨ l.foldl max a ∈ l
@@ -152,11 +152,11 @@ theorem accMidHyp_of {tabs : Pub → List Tab} (H : MidHyp tabs)
     AccMidHyp tabs := fun x ↦
   accInst_of_fit (fit_of Lvm.P20 _ (H.fit (pubX x))) (H.width x) (H.fix x) (length_accIn_pt x) (hpub x)
 
-/-- **Phase 3b's errors at `εS`**: its lead `11/|E|` is below the follower's `LkS = 20/|E|`, so the
+/-- **Phase 3b's errors at `εS`**: its lead `12/|E|` is below the follower's `LkS = 20/|E|`, so the
 table phase's follower lead is unchanged, and `t`'s `28/|E|` is below `εS`. -/
 theorem acc_errs : max (Lvm.P20.accLog * errE 1) LkS = LkS ∧ errE accVars ≤ εS := by
   refine ⟨max_eq_right ?_, errE_le_εS (by decide)⟩
-  rw [accLog_P20, LkS_eq, show ((11 : ℕ) : ℝ≥0∞) * errE 1 = errE (11 * 1) from errE_smul 11 1]
+  rw [accLog_P20, LkS_eq, show ((12 : ℕ) : ℝ≥0∞) * errE 1 = errE (12 * 1) from errE_smul 12 1]
   exact errE_mono (by norm_num)
 
 /-! ## The middle phases with phase 3b -/
@@ -182,9 +182,9 @@ noncomputable def specBusA (H : MidHyp tabs) (HA : AccMidHyp tabs) (x : List UIn
   have e := bus_errs (inst lay26 (TS tabs x) (H.hτ x)) (by rw [hμeq']; exact F.busLe)
     (le_trans (B_inst_le _ _ _) (H.cons _)) (((vLayout (TS tabs x)).tableLogHeights.foldl max 0))
   have ea := acc_errs
-  have S0 := midBusTableAccSpecS Lvm.P20 tabs (pubX x) (H.hτ x) (L₀ := 1) (εmax := εS)
+  have S0 := midBusTableAccSpecS Lvm.P20 tabs (pubX x) (H.hτ x) (L₀ := 98) (εmax := εS)
     (fun p ↦ BndS x p.1 ∧ GkS x p) F.layOk F.allSc (HA x) (H.keys _) (H.width _)
-    candPairs_ncard_le_one (by rw [hμeq]; have := F.busPos; omega) e.1 e.2.2.1 e.2.2.2.1
+    candPairs_ncard_le (by rw [hμeq]; have := F.busPos; omega) e.1 e.2.2.1 e.2.2.2.1
     e.2.2.2.2.1 (T := LkS) (by rw [ea.1]; exact e.2.2.2.2.2.1) (by rw [ea.1]; exact e.2.2.2.2.2.2.1)
     (by rw [ea.1]; exact e.2.2.2.2.2.2.2) ea.2 e.2.2.2.2.2.2.1
   (hμeq ▸ S0).mono (fun _ hp ↦ ⟨hp.1, Doomed.mono hp.2 fun _ hq ↦

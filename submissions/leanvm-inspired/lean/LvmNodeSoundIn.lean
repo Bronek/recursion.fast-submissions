@@ -267,7 +267,7 @@ theorem md_cells
     (hb : Bundle arrs 4 0 I.md false fun l => CMain.ksOff20 + 2 ^ 15 * (50 + l) + (spongeBlocks P20 - 1)) :
     ∀ l < 4, (memN lay I qa nK nE pl groups arrs aux lay26 hτ (stackOf lay26 qm qr)).k (I.md + l) =
       FK.ofBF64 (Yq qm (spongeBlocks P20 - 1) l) := fun l hl => by
-  have hB : spongeBlocks P20 = 13096 := sizes_P20.2.2.2.2.2.2.2.2
+  have hB : spongeBlocks P20 = 9979 := sizes_P20.2.2.2.2.2.2.2.2
   rw [memN_bundle H hlay hb (by omega), Nat.mod_eq_of_lt hl, Nat.div_eq_of_lt hl, Nat.add_zero,
     comCell_main (L := lay26) qm qr (by show _ < 2 ^ 24; simp only [CMain.ksOff20]; rw [hB]; omega), Yq_eq qm _ hl]
 

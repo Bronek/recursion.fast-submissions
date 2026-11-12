@@ -173,6 +173,10 @@ structure Params where
   is no grinding (v1's levels and reading); with `g > 0` each level's `t` is `udQueries (sec − g) R`
   and the level reads a separating challenge, a nonce and a PoW challenge before its positions. -/
   grind : Nat
+  /-- `C_main`'s WHIR levels take an out-of-domain sample on every level with a next commitment
+  (lvm2 JB-VQP, J1: `C_main` at the Johnson radius, `whirLevelsJ`); `C_rec` stays in unique
+  decoding. -/
+  mainOod : Bool := false
   deriving Repr, Inhabited
 
 namespace Params
@@ -192,12 +196,18 @@ def accLog (p : Params) : Nat := accVars - p.tableRounds
 
 end Params
 
+/-- The levels with their query counts replaced by `ts` (none replaced when `ts = []`): the Johnson
+regime's counts (JB-DES §1.2) are not `udQueries`. -/
+def withT (ls : List Level) (ts : List Nat) : List Level :=
+  if ts = [] then ls else List.zipWith (fun L t => { L with t := t }) ls ts
+
 /-- A parameter set from its free choices (`params.py`, `make`). With `grind = g > 0` (PI-GRIND)
 every level's query count is `udQueries (secBits − g) R`: the PoW challenge's `g` zero bits take
 `2^-g` off each group's escape. -/
 def mkParams (name : String) (logN secBits recRowsLog nuMain : Nat)
     (mainFolds mainRates mainCaps recFolds recRates recCaps : List Nat) (ksLog bitsLog : Nat)
-    (busDepth leafdecReads tableRounds tableEvals pubTab : Nat) (grind : Nat := 0) : Params where
+    (busDepth leafdecReads tableRounds tableEvals pubTab : Nat) (grind : Nat := 0)
+    (mainT : List Nat := []) (mainOod : Bool := false) : Params where
   name := name
   logN := logN
   ksLog := ksLog
@@ -205,7 +215,7 @@ def mkParams (name : String) (logN secBits recRowsLog nuMain : Nat)
   nuMain := nuMain
   recRowsLog := recRowsLog
   secBits := secBits
-  mainLevels := mkLevels (secBits - grind) 0 nuMain (mainFolds.zip (mainRates.zip mainCaps))
+  mainLevels := withT (mkLevels (secBits - grind) 0 nuMain (mainFolds.zip (mainRates.zip mainCaps))) mainT
   recLevels := mkLevels (secBits - grind) 0 (recRowsLog + 5) (recFolds.zip (recRates.zip recCaps))
   busDepth := busDepth
   leafdecReads := leafdecReads
@@ -213,23 +223,26 @@ def mkParams (name : String) (logN secBits recRowsLog nuMain : Nat)
   tableEvals := tableEvals
   pubTab := pubTab
   grind := grind
+  mainOod := mainOod
 
-/-- **The production set** (BLUEPRINT §3.1; lvm2 BLUEPRINT2 §1.4, §2.2: stage S2; FRZ-0's record,
+/-- **The production set** (lvm2 JB-VQP, J1: `C_main` at the Johnson radius, `cfgMain24J`'s counts
+`230, 115, 77` and OOD samples; `C_rec` unique decoding at `g = 14`) (BLUEPRINT §3.1; lvm2 BLUEPRINT2 §1.4, §2.2: stage S2; FRZ-0's record,
 `docs/lvm2/ref/params.py`, `S2P20`). `C_main` has `2^24` words (16 slots of `2^20`: `D` 4, `KS` 2,
 `KSY2`/`X` 1, the recursion tables 9) and three WHIR levels `(ℓ, R, c) = (6,1,8) (4,2,7) (4,3,7)`
 (`cfgMain24`, final `2^10`); `C_rec` and `KS` as v1. The five LoopIR feedback values are FRZ-1's (T-Q's S2
-node program at its fixpoint, `qasm gen`: `22, 1, 17, 3805`, `PUB` table 124). -/
+node program at its fixpoint, `qasm gen`, stage S4 on S2GJ1 with EV-DIET's shared position classes (R5): `21, 1, 16, 2851`, `PUB` table 127). -/
 def P20 : Params :=
-  mkParams "P20" 20 129 14 24 [6, 4, 4] [1, 2, 3] [8, 7, 7] [6] [2] [7] 15 13
-    22 1 17 3805 124
+  mkParams "P20" 20 129 14 24 [6, 4, 4] [1, 2, 3] [8, 7, 7] [6, 4] [2, 3] [7, 7] 15 13
+    21 1 16 2851 127 14 [230, 115, 77] true
 
-/-- **The test set** (lvm2 FRZ-0, `S2P8`): the tape has `2^9` rows (leanVM's minimum Keccak batch),
+/-- **The test set** (lvm2 JB-VQP, J1 at P8: Johnson counts `33, 17, 11` at 20-bit security, `g = 4`,
+smallest `η` with `ηn ≥ 1`; JB-DES's model) (lvm2 FRZ-0, `S2P8`): the tape has `2^9` rows (leanVM's minimum Keccak batch),
 20-bit query security, `C_main` `2^23` with three levels (caps `2^4`, final `2^9`), and, since the
 depth-24 tape overflows v1's stream, `C_rec` 32 × 2^13 (`ν = 18`, final `2^12`) and `KS` `2^14`
-(FRZ-0 "P8 deviation"). The feedback values are FRZ-1's (`21, 1, 16, 3611`, `PUB` 118). -/
+(FRZ-0 "P8 deviation"). The feedback values are FRZ-1's (stage S4 with EV-DIET (R5): `21, 1, 16, 2522`, `PUB` 108). -/
 def P8 : Params :=
-  mkParams "P8" 9 20 13 23 [6, 4, 4] [1, 2, 3] [4, 4, 4] [6] [2] [4] 14 12
-    21 1 16 3611 118
+  mkParams "P8" 9 20 13 23 [6, 4, 4] [1, 2, 3] [4, 4, 4] [6, 4] [2, 3] [4, 4] 14 12
+    21 1 16 2522 108 4 [33, 17, 11] true
 
 /-! ## Test sets with grinding (PI-GRIND; not frozen)
 
@@ -240,31 +253,31 @@ challenges (the separator, the PoW challenge). Not a frozen record: FRZ-1 re-fre
 
 /-- `P20` with `g = 14`: `C_main` `t = 278, 170, 139`, `C_rec` `t = 170` (PI-GRIND §3). -/
 def P20G : Params :=
-  mkParams "P20G" 20 129 14 24 [6, 4, 4] [1, 2, 3] [8, 7, 7] [6] [2] [7] 15 13
-    22 1 17 3805 124 14
+  mkParams "P20G" 20 129 14 24 [6, 4, 4] [1, 2, 3] [8, 7, 7] [6, 4] [2, 3] [7, 7] 15 13
+    21 1 16 2851 127 14
 
 /-- `P8` with `g = 4`: the test set of the end-to-end grinding test. -/
 def P8G : Params :=
-  mkParams "P8G" 9 20 13 23 [6, 4, 4] [1, 2, 3] [4, 4, 4] [6] [2] [4] 14 12
-    21 1 16 3611 118 4
+  mkParams "P8G" 9 20 13 23 [6, 4, 4] [1, 2, 3] [4, 4, 4] [6, 4] [2, 3] [4, 4] 14 12
+    21 1 16 2522 108 4
 
 /-! ## Checks against WP-0 (`ref/sizes.md`, Parameters table) -/
 
 /-- The header is 5,624 B: WP-0's 4,928 (`sizes.md`; BLUEPRINT said 4,936) and `acc_in`'s 696 (A23). -/
 theorem headerBytes_eq : headerBytes = 5624 := by decide
 
-/-- A23's accumulator: `D = 28`, `acc_in` at byte 4,928; `dk = 11` at `P20`, `12` at `P8`;
-`PUB` is sumcheck table 124 at `P20`, 118 at `P8` (after the groups). -/
-theorem acc_P20_P8 : accVars = 28 ∧ offAcc = 4928 ∧ P20.accLog = 11 ∧ P8.accLog = 12 ∧
-    P20.pubTab = 124 ∧ P8.pubTab = 118 := by decide
+/-- A23's accumulator: `D = 28`, `acc_in` at byte 4,928; `dk = 12` at `P20` and `P8`;
+`PUB` is sumcheck table 127 at `P20`, 108 at `P8` (after the groups). -/
+theorem acc_P20_P8 : accVars = 28 ∧ offAcc = 4928 ∧ P20.accLog = 12 ∧ P8.accLog = 12 ∧
+    P20.pubTab = 127 ∧ P8.pubTab = 108 := by decide
 
-/-- The query counts of `P20`: 311, 191, 156 (`C_main`) and 191 (`C_rec`). -/
-theorem t_P20 : P20.mainLevels.map Level.t = [311, 191, 156] ∧
-    P20.recLevels.map Level.t = [191] := by decide +kernel
+/-- The query counts of `P20`: 230, 115, 77 (`C_main`) and 170, 139 (`C_rec`, S4). -/
+theorem t_P20 : P20.mainLevels.map Level.t = [230, 115, 77] ∧
+    P20.recLevels.map Level.t = [170, 139] := by decide +kernel
 
-/-- The query counts of `P8`: 49, 30, 25 and 30. -/
-theorem t_P8 : P8.mainLevels.map Level.t = [49, 30, 25] ∧
-    P8.recLevels.map Level.t = [30] := by decide +kernel
+/-- The query counts of `P8`: 33, 17, 11 and 24, 20 (S4). -/
+theorem t_P8 : P8.mainLevels.map Level.t = [33, 17, 11] ∧
+    P8.recLevels.map Level.t = [24, 20] := by decide +kernel
 
 /-- A level's geometry `[ℓ, κ, R, height, cap, path, row]`, the columns of `sizes.md`. -/
 def Level.shape (L : Level) : List Nat := [L.fold, L.kappa, L.rate, L.height, L.cap, L.path, L.row]
@@ -274,16 +287,16 @@ theorem levels_P20 :
     P20.mainLevels.map Level.shape =
       [[6, 18, 1, 19, 8, 11, 512], [4, 14, 2, 16, 7, 9, 384], [4, 10, 3, 13, 7, 6, 384]] ∧
     P20.recLevels.map Level.shape =
-      [[6, 13, 2, 15, 7, 8, 512]] ∧
-    P20.mainFinalLog = 10 ∧ P20.recFinalLog = 13 ∧ P20.nuRec = 19 := by decide +kernel
+      [[6, 13, 2, 15, 7, 8, 512], [4, 9, 3, 12, 7, 5, 384]] ∧
+    P20.mainFinalLog = 10 ∧ P20.recFinalLog = 9 ∧ P20.nuRec = 19 := by decide +kernel
 
 /-- `P8`'s levels, as in lvm2 `ref/sizes.md` (FRZ-0). -/
 theorem levels_P8 :
     P8.mainLevels.map Level.shape =
       [[6, 17, 1, 18, 4, 14, 512], [4, 13, 2, 15, 4, 11, 384], [4, 9, 3, 12, 4, 8, 384]] ∧
     P8.recLevels.map Level.shape =
-      [[6, 12, 2, 14, 4, 10, 512]] ∧
-    P8.mainFinalLog = 9 ∧ P8.recFinalLog = 12 ∧ P8.nuRec = 18 := by decide +kernel
+      [[6, 12, 2, 14, 4, 10, 512], [4, 8, 3, 11, 4, 7, 384]] ∧
+    P8.mainFinalLog = 9 ∧ P8.recFinalLog = 8 ∧ P8.nuRec = 18 := by decide +kernel
 
 /-- The test sets are the frozen sets but for `t` and `grind` (so they cannot drift apart silently). -/
 theorem shapes_G : P20G.mainLevels.map Level.shape = P20.mainLevels.map Level.shape ∧
@@ -300,13 +313,14 @@ theorem shapes_G : P20G.mainLevels.map Level.shape = P20.mainLevels.map Level.sh
       P8.leafdecReads, P8.tableRounds, P8.tableEvals, P8.pubTab] := by
   decide +kernel
 
-/-- No grinding in the frozen sets. -/
-theorem grind_P20_P8 : P20.grind = 0 ∧ P8.grind = 0 := ⟨rfl, rfl⟩
+/-- The frozen sets grind (lvm2 S2G: PI-GRIND's `g = 14` at `P20`, `g = 4` at `P8`; `refreeze2.py --stage S2G`),
+and equal the test sets but for the name. -/
+theorem grind_P20_P8 : P20.grind = 14 ∧ P8.grind = 4 := ⟨rfl, rfl⟩
 
 /-- The query counts of `P20G` (`udQueries 115 R`) and `P8G` (`udQueries 16 R`). -/
 theorem t_P20G_P8G : P20G.mainLevels.map Level.t = [278, 170, 139] ∧
-    P20G.recLevels.map Level.t = [170] ∧ P20G.grind = 14 ∧
-    P8G.mainLevels.map Level.t = [39, 24, 20] ∧ P8G.recLevels.map Level.t = [24] ∧ P8G.grind = 4 := by
+    P20G.recLevels.map Level.t = [170, 139] ∧ P20G.grind = 14 ∧
+    P8G.mainLevels.map Level.t = [39, 24, 20] ∧ P8G.recLevels.map Level.t = [24, 20] ∧ P8G.grind = 4 := by
   decide +kernel
 
 /-- Every positions answer carries 8 positions: `8 · height ≤ 192` on every level of both sets. -/

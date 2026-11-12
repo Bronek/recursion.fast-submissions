@@ -17,9 +17,9 @@ import LvmWhirParams24
 | opening | `μ` | levels `(ℓ, R, t)` | `g` | root `c₀` of `n₀` |
 |---|---|---|---|---|
 | `cfgMain24G` (`C_main`, P20) | 24 | (6,1,278) (4,2,170) (4,3,139) | 14 | 0 of 2 |
-| `cfgRec20G` (`C_rec`, P20) | 19 | (6,2,170) | 14 | 1 of 2 |
+| `cfgRec20G` (`C_rec`, P20; S4) | 19 | (6,2,170) (4,3,139) | 14 | 1 of 2 |
 | `cfgMain23G` (`C_main`, P8) | 23 | (6,1,39) (4,2,24) (4,3,20) | 4 | 0 of 2 |
-| `cfgRec18G` (`C_rec`, P8) | 18 | (6,2,24) | 4 | 1 of 2 |
+| `cfgRec18G` (`C_rec`, P8; S4) | 18 | (6,2,24) (4,3,20) | 4 | 1 of 2 |
 
 `t = udQueries (sec − g) R` (`sec = 129` at P20, `20` at P8). The query groups (positions and `λ`)
 escape with at most `2^-(sec − g)` before the discount (`eQuery_main24G`, …), so at most `2^-sec`
@@ -43,16 +43,16 @@ theorem disc_le {x : ENNReal} {c : ℕ} (g : ℕ) (h : x ≤ (2 : ENNReal)⁻¹ 
 /-! ## The configurations -/
 
 /-- `C_main` at S2 P20 with grinding: levels `(6,1,278) (4,2,170) (4,3,139)`, `g = 14`. -/
-def cfgMain24G : UdConfig := ⟨24, [⟨6, 1, 278⟩, ⟨4, 2, 170⟩, ⟨4, 3, 139⟩], 8, 0, 2, false, 14⟩
+def cfgMain24G : UdConfig := ⟨24, [⟨6, 1, 278⟩, ⟨4, 2, 170⟩, ⟨4, 3, 139⟩], 8, 0, 3, false, 14⟩
 
 /-- `C_rec` at P20 with grinding: one level `(6,2,170)`, `g = 14`. -/
-def cfgRec20G : UdConfig := ⟨19, [⟨6, 2, 170⟩], 8, 1, 2, false, 14⟩
+def cfgRec20G : UdConfig := ⟨19, [⟨6, 2, 170⟩, ⟨4, 3, 139⟩], 8, 1, 2, false, 14⟩
 
 /-- `C_main` at S2 P8 with grinding: levels `(6,1,39) (4,2,24) (4,3,20)`, `g = 4`. -/
-def cfgMain23G : UdConfig := ⟨23, [⟨6, 1, 39⟩, ⟨4, 2, 24⟩, ⟨4, 3, 20⟩], 8, 0, 2, false, 4⟩
+def cfgMain23G : UdConfig := ⟨23, [⟨6, 1, 39⟩, ⟨4, 2, 24⟩, ⟨4, 3, 20⟩], 8, 0, 3, false, 4⟩
 
 /-- `C_rec` at S2 P8 with grinding: one level `(6,2,24)`, `g = 4`. -/
-def cfgRec18G : UdConfig := ⟨18, [⟨6, 2, 24⟩], 8, 1, 2, false, 4⟩
+def cfgRec18G : UdConfig := ⟨18, [⟨6, 2, 24⟩, ⟨4, 3, 20⟩], 8, 1, 2, false, 4⟩
 
 /-! ## P20 -/
 
@@ -76,12 +76,21 @@ theorem whirEps_main24G :
     f2.trans (inv_two_pow_anti (by norm_num)), disc_le 14 q2,
     eTail_le.trans (inv_two_pow_anti (by norm_num))⟩
 
-/-- **`εmax` of `C_rec` at P20 with grinding.** -/
+/-- The query groups of `C_rec`'s two levels at P20 with `g = 14` (S4): `≤ 2^-115` before the
+discount. -/
+theorem eQuery_rec20G :
+    eQueryUd (codesRec20 0) (codesRec20 1) 170 ≤ (2 : ENNReal)⁻¹ ^ 115 ∧
+      eQueryFinal (codesRec20 1) 139 ≤ (2 : ENNReal)⁻¹ ^ 115 :=
+  ⟨eQueryUd_ud_le _ _ (by simp only [udThr]; norm_num), eQueryFinal_ud_le _ _ (by simp only [udThr]; norm_num)⟩
+
+/-- **`εmax` of `C_rec` at P20 with grinding** (S4: two levels). -/
 theorem whirEps_rec20G :
     whirEpsUd codesRec20 cfgRec20G.grind cfgRec20G.levels ≤ (2 : ENNReal)⁻¹ ^ 129 := by
   obtain ⟨-, -, -, -, f⟩ := eFold_P20
+  obtain ⟨q0, q1⟩ := eQuery_rec20G
   simp only [whirEpsUd, cfgRec20G, levelEpsUd, max_le_iff]
-  exact ⟨f.trans (inv_two_pow_anti (by norm_num)), disc_le 14 eQuery_main24G.2.2.2,
+  exact ⟨⟨f.trans (inv_two_pow_anti (by norm_num)), disc_le 14 q0⟩,
+    eFold_rec20_1.trans (inv_two_pow_anti (by norm_num)), disc_le 14 q1,
     eTail_le.trans (inv_two_pow_anti (by norm_num))⟩
 
 /-- **The levels' arithmetic of `C_main` at S2 P20 with grinding.** -/
@@ -95,8 +104,10 @@ theorem ladderArith_main24G :
 
 /-- **The levels' arithmetic of `C_rec` at P20 with grinding.** -/
 theorem ladderArith_rec20G :
-    LadderArithUd cfgRec20G.μ cfgRec20G.per codesRec20 0 0 cfgRec20G.levels :=
-  ⟨rfl, rfl, eQuery_main24G.2.2.2.trans_lt (inv_two_pow_lt_one (by norm_num)),
+    LadderArithUd cfgRec20G.μ cfgRec20G.per codesRec20 0 0 cfgRec20G.levels := by
+  obtain ⟨q0, q1⟩ := eQuery_rec20G
+  have h := inv_two_pow_lt_one (c := 115) (by norm_num)
+  exact ⟨rfl, rfl, q0.trans_lt h, by norm_num [cfgRec20G, codesRec20], le_rfl, rfl, rfl, q1.trans_lt h,
     by norm_num [cfgRec20G, codesRec20]⟩
 
 /-! ## P8 -/
@@ -119,13 +130,19 @@ theorem whirEps_main23G :
     eFold_ud_le _ _ ?_, disc_le 4 q2, eTail_le.trans (inv_two_pow_anti (by norm_num))⟩ <;>
     simp only [udMca, mcaUd, udThr] <;> norm_num
 
-/-- **`εmax` of `C_rec` at S2 P8 with grinding.** -/
+/-- The query groups of `C_rec`'s two levels at S2 P8 with `g = 4` (S4). -/
+theorem eQuery_rec18G :
+    eQueryUd (codesRec18 0) (codesRec18 1) 24 ≤ (2 : ENNReal)⁻¹ ^ 16 ∧
+      eQueryFinal (codesRec18 1) 20 ≤ (2 : ENNReal)⁻¹ ^ 16 :=
+  ⟨eQueryUd_ud_le _ _ (by simp only [udThr]; norm_num), eQueryFinal_ud_le _ _ (by simp only [udThr]; norm_num)⟩
+
+/-- **`εmax` of `C_rec` at S2 P8 with grinding** (S4: two levels). -/
 theorem whirEps_rec18G :
     whirEpsUd codesRec18 cfgRec18G.grind cfgRec18G.levels ≤ (2 : ENNReal)⁻¹ ^ 20 := by
+  obtain ⟨q0, q1⟩ := eQuery_rec18G
   simp only [whirEpsUd, cfgRec18G, levelEpsUd, max_le_iff]
-  refine ⟨eFold_ud_le _ _ ?_, disc_le 4 eQuery_P8G.2.2.2,
-    eTail_le.trans (inv_two_pow_anti (by norm_num))⟩
-  simp only [udMca, mcaUd, udThr]; norm_num
+  refine ⟨⟨eFold_ud_le _ _ ?_, disc_le 4 q0⟩, eFold_ud_le _ _ ?_, disc_le 4 q1,
+    eTail_le.trans (inv_two_pow_anti (by norm_num))⟩ <;> simp only [udMca, mcaUd, udThr] <;> norm_num
 
 /-- **The levels' arithmetic of `C_main` at S2 P8 with grinding.** -/
 theorem ladderArith_main23G :
@@ -138,8 +155,10 @@ theorem ladderArith_main23G :
 
 /-- **The levels' arithmetic of `C_rec` at S2 P8 with grinding.** -/
 theorem ladderArith_rec18G :
-    LadderArithUd cfgRec18G.μ cfgRec18G.per codesRec18 0 0 cfgRec18G.levels :=
-  ⟨rfl, rfl, eQuery_P8G.2.2.2.trans_lt (inv_two_pow_lt_one (by norm_num)),
+    LadderArithUd cfgRec18G.μ cfgRec18G.per codesRec18 0 0 cfgRec18G.levels := by
+  obtain ⟨q0, q1⟩ := eQuery_rec18G
+  have h := inv_two_pow_lt_one (c := 16) (by norm_num)
+  exact ⟨rfl, rfl, q0.trans_lt h, by norm_num [cfgRec18G, codesRec18], le_rfl, rfl, rfl, q1.trans_lt h,
     by norm_num [cfgRec18G, codesRec18]⟩
 
 /-! ## The stacked openings -/

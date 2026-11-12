@@ -75,7 +75,49 @@ pub fn keccak() {
     }
     crate::keccak::keccak_f_x8(&mut s8);
     assert_eq!(s8, w8, "keccak_f_x8 ({})", crate::keccak::x8_tier());
-    println!("kat keccak: ok (leanVM batch width {}, x8 tier {})", hash::LANES, crate::keccak::x8_tier());
+    // PORT-12: both chain-walk kernels (and relay-echo's two-chain call) against `keccak::chain_step`, on
+    // chains of 0 … 40 and 5000 steps from random starts, the walk's blocks and inputs included
+    use crate::chainwalk::{Kernel, block_of_lanes, walk, walk_y};
+    let lanes = |d: &[u8; 32]| -> [u64; 4] { std::array::from_fn(|i| u64::from_le_bytes(d[8 * i..8 * i + 8].try_into().unwrap())) };
+    let mut rng = Rng(0x5EED_0012);
+    for (t, n) in (0..=40usize).chain([1023, 1024, 1025, 5000]).enumerate() {
+        let s: [u8; 32] = std::array::from_fn(|_| rng.next() as u8);
+        let s2: [u8; 32] = std::array::from_fn(|_| rng.next() as u8);
+        let mut want = Vec::with_capacity(n);
+        let mut want2 = Vec::with_capacity(n);
+        let (mut d, mut d2) = (s, s2);
+        for _ in 0..n {
+            d = crate::keccak::chain_step(&d);
+            d2 = crate::keccak::chain_step(&d2);
+            want.push(lanes(&d));
+            want2.push(lanes(&d2));
+        }
+        for k in [Kernel::Lv, Kernel::Vl] {
+            let mut y = vec![[0u64; 4]; n];
+            let e = walk_y(k, lanes(&s), &mut y);
+            assert!(y == want && e == if n > 0 { want[n - 1] } else { lanes(&s) }, "chain walk {k:?}, n = {n}");
+            // the cut: none (production's `Chain::run`), mid-walk, the end, or past it (never called)
+            let cut = [0, (7 * t) % (n + 1), n, n + 1][t % 4];
+            let mut got_end = None;
+            let (inp, y) = walk(k, lanes(&s), n, cut, |h| got_end = Some(h));
+            assert!(y == want && inp.len() == n, "walk {k:?}, n = {n}");
+            for i in 0..n {
+                let prev = if i == 0 { lanes(&s) } else { want[i - 1] };
+                assert_eq!(inp[i], block_of_lanes(&prev), "walk inputs {k:?}, n = {n}, row {i}");
+                assert_eq!(inp[i], crate::keccak::chain_block(&crate::lvm::tables::lanes_digest(&prev)), "chain_block");
+            }
+            assert_eq!(got_end, if cut > 0 && cut <= n { Some(want[cut - 1]) } else { None }, "walk at_end {k:?}, n = {n}, cut {cut}");
+        }
+        #[cfg(all(target_arch = "x86_64", target_feature = "avx512f", target_feature = "avx512vl", target_feature = "avx512dq"))]
+        {
+            let mut ya = vec![[0u64; 4]; n];
+            let mut yb = vec![[0u64; 4]; n];
+            crate::keccak_vl::walk2(lanes(&s), lanes(&s2), &mut ya, &mut yb);
+            assert!(ya == want && yb == want2, "keccak_vl::walk2, n = {n}");
+        }
+    }
+    println!("kat keccak: ok (leanVM batch width {}, x8 tier {}, vl chain kernel {})", hash::LANES, crate::keccak::x8_tier(),
+        if crate::keccak_vl::AVAILABLE { "tested" } else { "not in this build" });
 }
 
 /// The reference product: the bit loop, then long division by `x^64 + x^4 + x^3 + x + 1`.
@@ -251,10 +293,11 @@ pub fn info() -> String {
     .collect::<Vec<_>>()
     .join(",");
     format!(
-        "variant {} (compile-time: {feats}); K product: {}; Keccak batch width {}; threads {}",
+        "variant {} (compile-time: {feats}); K product: {}; Keccak batch width {}; threads {}; {}",
         crate::VARIANT,
         current_tier(),
         hash::LANES,
-        crate::lv::parallel::num_threads()
+        crate::lv::parallel::num_threads(),
+        crate::chainwalk::info()
     )
 }

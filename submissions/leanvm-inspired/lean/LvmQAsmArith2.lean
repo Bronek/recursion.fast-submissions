@@ -124,6 +124,9 @@ def withPad {α : Type} (zK zE : Cell) (m : BM α) : BM α := fun p =>
 /-- The position cells of opening `k` (`C_rec` 0, `C_main`'s levels 1…): Q_link's `pt.k + posIdx p k j`. -/
 def posBase (C : QCfg) (k : Nat) : Nat := nK C + posIdx C.p k 0
 
+/-- Opening `k`'s PoW field (`powSpec`'s output). -/
+def pwBase (C : QCfg) (k : Nat) : Nat := pwB C + k
+
 /-- **The rest of Q_arith built from a placement record `D`** (the assembler iterates
 `D ↦ mkData (QT C D)` to a fixed point): phase 2, phase 3, `Q_acc`, the ring switches and claims,
 phases 8–9, padded per row shape (`withPad`: the assembler's iteration settles). The table shapes `S`
@@ -146,7 +149,7 @@ def qarithT (C : QCfg) (D : QData) (o : P47Out) : BM Unit := do
     let clK ← ksLinkG p (aLane p 7) z.n one.n
     let cs := claimsC (tabClaims S tab z) (tapeClaimsC p z.n one.n o) (kClaimsC ksB o.kko rgK)
       (ksOutC p o.rk o.vk z.n one.n) clK
-    openG (cfgRec p (posBase C)) (cfgMain p (posBase C)) cs z one g
+    openG (cfgRec p (posBase C) (pwBase C)) (cfgMain p (posBase C) (pwBase C)) cs z one g
 
 /-- **The rest of Q_arith** on the configuration's own record. -/
 def qarithRest (C : QCfg) (o : P47Out) : BM Unit := qarithT C (dataOf C) o

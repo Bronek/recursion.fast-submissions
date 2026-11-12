@@ -10,6 +10,7 @@
 -/
 import RecursionFast.Contract
 import LvmFinCert
+import LvmVFast2
 
 namespace RecursionFast.Challenge
 open RecursionFast
@@ -23,10 +24,14 @@ noncomputable def declared : Declared where
   qV := 16384
   fuel t := 70368744177664 + 8192 * t
 
-/-- The submission: `leanvm-inspired`, guarded by the static check of the node program. -/
-def submission : Submission := Lvm.Fin.subG Lvm.Fin.staticOkB Lvm.VF.VS20F
+/-- The submission: `leanvm-inspired`, guarded by the static check of the node program; `V_S` compiled
+as `VS20G` (`LvmVFast2`, `VS20G_eq : VS20G = VS20F`). -/
+def submission : Submission := Lvm.Fin.subG Lvm.Fin.staticOkB Lvm.VF.VS20G
 
 /-- **The certificate against the rendered claim** (`Contract/Certificate.lean`). -/
-theorem certified : CertificateR declared submission := Lvm.Fin.certificateFin
+theorem certified : CertificateR declared submission := by
+  unfold submission
+  rw [Lvm.VF.VS20G_eq]
+  exact Lvm.Fin.certificateFin
 
 end RecursionFast.Challenge

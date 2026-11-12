@@ -18,14 +18,17 @@ The node program's `K` input cells, in order (every region an input array, the a
 | trace digest (`I.md`) | `4` | 4-bundle `τ = 0`, `KS` row `B − 1` |
 | `PUB` (`pb`) | `2^10` | public: the header's 615 lanes (`b, vk, c_L, s, n, h, σ_leaf`) |
 | `QLT` (`qt`) | `2^aQT` | public: Q_link's static table `qltData` |
-| `BITS` outputs (`ob`) | `2^bo` | written: Q_sig's regions, the position bits, the position fields |
+| `BITS` outputs (`ob`) | `2^bo` | written: Q_sig's regions, the position bits, fields and spares, `s'`'s bits, the PoW fields, the lane classes' spares (`nsB … spEnd`) |
 
 `Q_sig`'s flag, `vk`, `c_L`, `σ_leaf` are `PUB` lanes `0`, `1`, `5`, `18`; Q_link's flag is `PUB`
-lane `0`. The position classes (`posSpecs`): per opening `k` and answer lane `l`, one `BITS` row per
-positions answer: the bits of the lane that belong to positions (`bit`, into Q_link's bit region,
-the form of `LvmQLinkBits.PosBits`; every padded position of Q_link's bit region, `nRows`) and the fields
-of the positions that start or end in the lane (`fld`, A20: `lo` at `fl + g`, `hi` at `fl + 2^pa + g`;
-positions past `t` write two spare cells, bits past the padded region spare cells, `spOf`).
+lane `0`. The position classes (`posSpecs`; lvm2 EV-DIET B: one class per answer lane, shared by all
+openings): an opening's row per positions answer and lane `l` writes the bits of the lane that belong to
+positions (`bit`, into Q_link's bit region, the form of `LvmQLinkBits.PosBits`; every padded position of
+Q_link's bit region, `nRows`) and the fields of the positions that start or end in the lane (`fld`, A20:
+`lo` at `fl + g`, `hi` at `fl + 2^pa + g`; positions past `t` write two spare cells, bits past the padded
+region spare cells, `spOf`): its `laneOuts`. Lane `l`'s class has the rows of every opening that uses the
+lane (in `opens` order) and the union of their outputs (`lnOuts`); a row's output that is not one of its
+opening's goes to a spare cell of its own (`posOc`, the region `nsB` after the PoW fields).
 -/
 
 set_option autoImplicit false
@@ -81,7 +84,8 @@ def obB : Nat := qtB C + 2 ^ C.aQT
 /-- The `K` input cells. -/
 def nK : Nat := obB C + 2 ^ C.bo
 
-/-! Q_sig's output regions (sizes as `SigRegLt`), then the position bits, fields and spares. -/
+/-! Q_sig's output regions (sizes as `SigRegLt`), then the position bits, fields and spares (then `s'`'s
+bits `bsB`, the PoW fields `pwB` and the lane classes' spares `nsB`, below). -/
 def biB : Nat := obB C
 def bdB : Nat := biB C + 18
 def bcB : Nat := bdB C + 256
@@ -148,15 +152,24 @@ def fields (H i : Nat) : (Nat × Nat × Nat × Nat) × (Nat × Nat × Nat × Nat
   let m₁ := if s / 64 = (s + H - 1) / 64 then H - 1 else 64 - s % 64
   ((s / 64, s % 64, m₁, 0), ((s + m₁) / 64, (s + m₁) % 64, H - m₁, m₁))
 
-/-- The outputs of lane `l`'s row: the bits `n ∈ [64 l, min (64 l + 64) (8 H))`, then the fields of
-the positions with a part in the lane (`lo` before `hi`, positions in order). Each output is tagged:
-`(out, kind, n or i)` with kind `0` bit `n`, `1` field `lo` of position `i`, `2` its `hi`. -/
-def laneOuts (H l : Nat) : List (BOut × Nat × Nat) :=
-  ((List.range 64).filter (fun z => 64 * l + z < 8 * H)).map (fun z => (.bit z, 0, 64 * l + z)) ++
+/-- The field outputs of lane `l`'s row: the fields of the positions with a part in the lane (`lo`
+before `hi`, positions in order), tagged `(out, kind, i)`, kind `1` field `lo` of position `i`, `2` its
+`hi`. -/
+def laneFlds (H l : Nat) : List (BOut × Nat × Nat) :=
   (List.range 8).flatMap fun i =>
     let f := fields H i
     (if f.1.1 = l then [(.fld f.1.2.1 f.1.2.2.1 f.1.2.2.2, 1, i)] else []) ++
     (if f.2.1 = l then [(.fld f.2.2.1 f.2.2.2.1 f.2.2.2.2, 2, i)] else [])
+
+/-- The outputs of lane `l`'s row: the bits `n ∈ [64 l, min (64 l + 64) (8 H))`, then the fields
+(`laneFlds`). Each output is tagged: `(out, kind, n or i)` with kind `0` bit `n`, `1` field `lo` of
+position `i`, `2` its `hi`. -/
+def laneOuts (H l : Nat) : List (BOut × Nat × Nat) :=
+  ((List.range 64).filter (fun z => 64 * l + z < 8 * H)).map (fun z => (.bit z, 0, 64 * l + z)) ++
+    laneFlds H l
+
+/-- The number of bit outputs of lane `l`'s row (`laneOuts`' first outputs). -/
+def laneBits (H l : Nat) : Nat := min 64 (8 * H - 64 * l)
 
 /-- The lanes an opening's position bits occupy (`8 H ≤ 192`: lanes `0..2`). -/
 def nLanes (H : Nat) : Nat := (8 * H + 63) / 64
@@ -182,21 +195,6 @@ def posCell (C : QCfg) (k : Nat) (o : OpenInfo) (x : Nat) : BOut × Nat × Nat �
 /-- `⌈log₂ n⌉`. -/
 def clog2 (n : Nat) : Nat := if n ≤ 1 then 0 else (n - 1).log2 + 1
 
-/-- **The position classes**: per opening `k` and lane `l < nLanes H`, one row per answer. Class
-`c` (in this order) is placed by `bpl c`. -/
-def posSpecs (C : QCfg) (bpl : Nat → Nat → Bool × Nat) : List BSpec :=
-  let cls := (List.range (opens C.p).length).flatMap fun k =>
-    let o := (opens C.p).getD k default
-    (List.range (nLanes o.L.height)).map fun l => (k, o, l)
-  cls.zipIdx.map fun ((k, o, l), c) =>
-    let outs := laneOuts o.L.height l
-    ⟨clog2 (nRows o), nRows o, outs.map (·.1), true, fun x => ansLane C.p (o.pe + x) + l,
-      fun j x => posCell C k o x (outs.getD j (.bit 0, 0, 0)), bpl c⟩
-
-/-- The number of position classes. -/
-def nPosCls (C : QCfg) : Nat :=
-  ((List.range (opens C.p).length).map fun k => nLanes ((opens C.p).getD k default).L.height).sum
-
 /-- The bit outputs of the child's chain start `s'` (lvm2 S2: the wiring target's `⟨ω, Pad43(s')⟩`):
 256 cells after the spares, bit `z` of lane `l` at `bsB + 64 l + z`. -/
 def bsB (C : QCfg) : Nat := spB C + spBefore C.p (opens C.p).length
@@ -206,5 +204,105 @@ start claims): 4 rows, row `l` reads the stream lane `hd + 9 + l` (the child's h
 outputs its 64 bits (`.bit z`). -/
 def sSpec (C : QCfg) (pl : Nat → Bool × Nat) : BSpec :=
   ⟨2, 4, (List.range 64).map BOut.bit, true, fun x => (sigIn C).hd + 9 + x, fun j x => bsB C + 64 * x + j, pl⟩
+
+/-- The PoW fields (PI-GRIND): one `K` cell per opening after `s'`'s 256 bits. -/
+def pwB (C : QCfg) : Nat := bsB C + 256
+
+/-- **The PoW class** (PI-GRIND; T-Q step B): one row per opening `x` (`opens`: `C_rec`'s level, then
+`C_main`'s), reading lane 2 of its PoW challenge's answer (the entry before its first positions entry) and
+writing the field of its low `64 − g` bits at `pwB + x`: the circuit asserts that the lane equals it, so the
+lane is below `2^(64−g)`. -/
+def powSpec (C : QCfg) (pl : Nat → Bool × Nat) : BSpec :=
+  ⟨clog2 (opens C.p).length, (opens C.p).length, [BOut.fld 0 (64 - C.p.grind) 0], true,
+    fun x => ansLane C.p (((opens C.p).getD x default).pe - 1) + 2, fun _ x => pwB C + x, pl⟩
+
+/-! ## The lane classes (lvm2 EV-DIET B)
+
+Lane `l`'s class: the rows of every opening whose positions use lane `l` (`lnOps`, in `opens` order;
+`nRows o` rows each), the outputs `lnOuts` (bits `0 … nb − 1`, `nb` the most bits any of them has in the
+lane, then every field output of theirs once). Output `j` of a row of opening `k` goes to `posCell` of the
+opening's output with the same word function (`laneOuts` has no two outputs with one word function), else
+to the row's spare cell `sb + j − laneBits` (`posOc`): a row of `o` has `|lnOuts| − laneBits` spare cells
+from `sb`, the openings' rows one after the other from `spBase l` (`posRowsAux`), the classes one after
+the other from `nsB` (after the PoW fields). -/
+
+/-- The openings whose positions use lane `l`, with their index (in `opens` order). -/
+def lnOps (p : Params) (l : Nat) : List (Nat × OpenInfo) :=
+  ((List.range (opens p).length).map fun k => (k, (opens p).getD k default)).filter
+    fun ko => decide (l < nLanes ko.2.L.height)
+
+/-- The number of lane classes: the most lanes an opening uses. -/
+def nPosCls (C : QCfg) : Nat := ((opens C.p).map fun o => nLanes o.L.height).foldl max 0
+
+/-- `u` appended unless present. -/
+def addNew (a : List BOut) (u : BOut) : List BOut := if u ∈ a then a else a ++ [u]
+
+/-- The bit outputs of lane `l`'s class: the most bits any of its openings has in the lane. -/
+def lnBits (p : Params) (l : Nat) : Nat := ((lnOps p l).map fun ko => laneBits ko.2.L.height l).foldl max 0
+
+/-- **Lane `l`'s class outputs**: `bit 0 … bit (lnBits − 1)`, then the field outputs of its openings,
+each once, in order of first appearance. -/
+def lnOuts (p : Params) (l : Nat) : List BOut :=
+  (List.range (lnBits p l)).map BOut.bit ++
+    (lnOps p l).foldl (fun a ko => (laneFlds ko.2.L.height l).foldl (fun a e => addNew a e.1) a) []
+
+/-- The rows of a lane class from spare cell `b` on (`u` the class's outputs): per opening `(k, o)` of
+`ops`, its rows `(k, o, x, sb)`, `x < nRows o`, `sb` the row's first spare cell (`u − laneBits` per row). -/
+def posRowsAux (u l : Nat) : Nat → List (Nat × OpenInfo) → List (Nat × OpenInfo × Nat × Nat)
+  | _, [] => []
+  | b, (k, o) :: r =>
+    (List.range (nRows o)).map (fun x => (k, o, x, b + x * (u - laneBits o.L.height l))) ++
+      posRowsAux u l (b + nRows o * (u - laneBits o.L.height l)) r
+
+/-- The spare cells of a lane class's rows (`posRowsAux`). -/
+def spTot (u l : Nat) (ops : List (Nat × OpenInfo)) : Nat :=
+  (ops.map fun ko => nRows ko.2 * (u - laneBits ko.2.L.height l)).sum
+
+/-- The lane classes' spare cells: after the PoW fields. -/
+def nsB (C : QCfg) : Nat := pwB C + (opens C.p).length
+
+/-- Where lane class `l`'s spare cells start. -/
+def spBase (C : QCfg) : Nat → Nat
+  | 0 => nsB C
+  | l + 1 => spBase C l + spTot (lnOuts C.p l).length l (lnOps C.p l)
+
+/-- **Lane class `l`'s rows** `(k, o, x, sb)`. -/
+def posRows (C : QCfg) (l : Nat) : List (Nat × OpenInfo × Nat × Nat) :=
+  posRowsAux (lnOuts C.p l).length l (spBase C l) (lnOps C.p l)
+
+/-- **Output `j`'s cell at a class row** `r = (k, o, x, sb)` of lane `l` (`U` the class's outputs): the
+`posCell` of the opening's output with `U[j]`'s word function, else the spare cell `sb + j − laneBits`. -/
+def posOc (C : QCfg) (l : Nat) (U : List BOut) (r : Nat × OpenInfo × Nat × Nat) (j : Nat) : Nat :=
+  match (laneOuts r.2.1.L.height l).find? (fun e => e.1 == U.getD j (.bit 0)) with
+  | some e => posCell C r.1 r.2.1 r.2.2.1 e
+  | none => r.2.2.2 + (j - laneBits r.2.1.L.height l)
+
+/-- **Lane class `l`**: row `y` is the class row `r = posRows[y]`, reading the opening's answer lane
+`ansLane (pe + x) + l`, writing `lnOuts` to `posOc`; placed by `bpl l`. -/
+def posSpec (C : QCfg) (bpl : Nat → Nat → Bool × Nat) (l : Nat) : BSpec :=
+  let U := lnOuts C.p l
+  let R := posRows C l
+  ⟨clog2 R.length, R.length, U, true, fun y => ansLane C.p ((R.getD y default).2.1.pe + (R.getD y default).2.2.1) + l,
+    fun j y => posOc C l U (R.getD y default) j, bpl l⟩
+
+/-- **The position classes**: one per lane `l < nPosCls` (`posSpec`). -/
+def posSpecs (C : QCfg) (bpl : Nat → Nat → Bool × Nat) : List BSpec :=
+  (List.range (nPosCls C)).map (posSpec C bpl)
+
+section
+variable (C : QCfg) (bpl : Nat → Nat → Bool × Nat) (l : Nat)
+theorem posSpec_τ : (posSpec C bpl l).τ = clog2 (posRows C l).length := rfl
+theorem posSpec_n : (posSpec C bpl l).n = (posRows C l).length := rfl
+theorem posSpec_outs : (posSpec C bpl l).outs = lnOuts C.p l := rfl
+theorem posSpec_rd : (posSpec C bpl l).rd = true := rfl
+theorem posSpec_wc (y : Nat) : (posSpec C bpl l).wc y =
+    ansLane C.p (((posRows C l).getD y default).2.1.pe + ((posRows C l).getD y default).2.2.1) + l := rfl
+theorem posSpec_oc (j y : Nat) : (posSpec C bpl l).oc j y = posOc C l (lnOuts C.p l) ((posRows C l).getD y default) j := by
+  dsimp only [posSpec]
+theorem posSpec_pl : (posSpec C bpl l).pl = bpl l := rfl
+end
+
+/-- The end of the lane classes' spare cells. -/
+def spEnd (C : QCfg) : Nat := spBase C (nPosCls C)
 
 end Lvm.QAsm

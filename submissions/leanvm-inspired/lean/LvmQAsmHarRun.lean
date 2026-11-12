@@ -91,8 +91,8 @@ def claimsOf (p : Params) (m : M3) (pub : Pub) (bus : BusOut) (evals : List (Lis
 /-- **Phases 8–9**: the two stacked openings. -/
 def openPh (p : Params) (claims : List (Com × BlockClaim)) : DM Unit := do
   let on (com : Com) := (claims.filter (·.1 == com)).map (·.2.onStack)
-  verifyStackedOpening p.recLevels p.nuRec (on .crec) false p.grind
-  verifyStackedOpening p.mainLevels p.nuMain (on .main) false p.grind
+  verifyStackedOpening p.recLevels p.nuRec (on .crec) false p.grind false
+  verifyStackedOpening p.mainLevels p.nuMain (on .main) false p.grind p.mainOod
 
 /-- **`decideProg` by phases.** -/
 def decideProgH (p : Params) (m : M3) (vk c : Vector UInt8 32) : DM Acc := do

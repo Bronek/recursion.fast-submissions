@@ -88,8 +88,8 @@ fn mixed(c: Claim) -> MixedClaim {
     }
 }
 
-fn whir_config(levels: &[Level], grind: usize) -> crate::lv::pcs::whir::ProverConfig {
-    config_of_levels(&levels.iter().map(|l| (l.fold, l.rate, l.cap, l.t)).collect::<Vec<_>>(), grind)
+fn whir_config(levels: &[Level], grind: usize, ood: bool) -> crate::lv::pcs::whir::ProverConfig {
+    config_of_levels(&levels.iter().map(|l| (l.fold, l.rate, l.cap, l.t)).collect::<Vec<_>>(), grind, ood)
 }
 
 /// Builds the recursion tables once the commitments' fixed contents are written (CH, KS, the stream, `σ'`)
@@ -363,9 +363,9 @@ pub fn prove(p: &Params, mut hd: Header, mut rec: RecWitness, build: Option<&Bui
     // KS link order is [Y, in, M, X]: M is the C_rec one; the others keep their order on main.
 
     // ---- openings: C_rec, then C_main
-    open_mixed_whir_stacked(&mut ps, p.nu_rec(), crec, rec_data, &whir_config(&p.rec_levels, p.grind), rec_claims.into_iter().map(mixed).collect());
+    open_mixed_whir_stacked(&mut ps, p.nu_rec(), crec, rec_data, &whir_config(&p.rec_levels, p.grind, false), rec_claims.into_iter().map(mixed).collect());
     lap("open rec", &mut stages);
-    open_mixed_whir_stacked(&mut ps, p.nu_main, cmain, main_data, &whir_config(&p.main_levels, p.grind), main_claims.into_iter().map(mixed).collect());
+    open_mixed_whir_stacked(&mut ps, p.nu_main, cmain, main_data, &whir_config(&p.main_levels, p.grind, p.main_ood), main_claims.into_iter().map(mixed).collect());
     lap("open main", &mut stages);
 
     assert!(ps.nothing_pending(), "the schedule ends with an FS query");

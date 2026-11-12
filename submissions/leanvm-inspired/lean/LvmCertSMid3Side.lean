@@ -259,10 +259,10 @@ theorem length_h_lt_main (T : List Lvm.M3.Tab) (pub : Lvm.Pub) (cl : List Column
 /-- **`assembleS`'s side conditions**, when `pub.h` has at most `2^61` lanes. -/
 theorem side_assembleS (T : List Lvm.M3.Tab) (pub : Lvm.Pub) (cl : List ColumnClaim)
     (kg : KgOut) (hlay : Lvm.M3.LayOk Lvm.M3.lay26 T) (hret : TabRet T cl)
-    (hn : (T.map (·.w)).sum ≤ 2 ^ 62) (hk : KgRet kg) (hh : pub.h.length ≤ 2 ^ 61) :
+    (hn : (T.map (·.w)).sum ≤ 2 ^ 38) (hk : KgRet kg) (hh : pub.h.length ≤ 2 ^ 38) :
     (∀ c ∈ (assembleS T pub cl kg).1, IsMultiaffine 19 c.1) ∧
     (∀ c ∈ (assembleS T pub cl kg).2, IsMultiaffine CMain.nu20 c.1) ∧
-    (assembleS T pub cl kg).1.length ≤ 2 ^ 63 ∧ (assembleS T pub cl kg).2.length ≤ 2 ^ 63 := by
+    (assembleS T pub cl kg).1.length ≤ 2 ^ 63 ∧ (assembleS T pub cl kg).2.length ≤ 2 ^ 40 := by
   have hok := okC_claimsS T pub cl kg hlay hk
   have hcl := hret.2
   have hk2 := hk.2.2.2.2.1

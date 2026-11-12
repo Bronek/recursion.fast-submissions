@@ -60,7 +60,7 @@ theorem midSpecOfR
       (∀ c ∈ (asm x a k).2, StackClaim.Holds CMain.nu20 c p.1) → Kc k p ∧ B x a p)
     (hside : ∀ x a k, Qa x a → Qk k → (∀ c ∈ (asm x a k).1, IsMultiaffine 19 c.1) ∧
       (∀ c ∈ (asm x a k).2, IsMultiaffine CMain.nu20 c.1) ∧ (asm x a k).1.length ≤ 2 ^ 63 ∧
-      (asm x a k).2.length ≤ 2 ^ 63) :
+      (asm x a k).2.length ≤ 2 ^ 40) :
     MidSpec (fun x ↦ busP x >>= fun a ↦ kgP x >>= fun k ↦ VerifierProgram.ret (asm x a k))
       (fun x qm qr ↦ Gb x (qm, qr) ∧ Gk x (qm, qr)) εS Lb := fun x T hT ↦
   ⟨((Lvm.KG.specWithRet (SB x) (hQa x)).bind' fun a ↦
@@ -108,40 +108,40 @@ theorem coe_div_card (d : ℕ) :
 theorem coe_overE (d : ℕ) : ((LeanVM.Protocol.overE d : ℝ≥0) : ℝ≥0∞) = errE d := by
   rw [LeanVM.Protocol.overE, ← Nat.card_eq_fintype_card, coe_div_card]
 
-theorem εS_lt_one : εS < 1 := by
-  unfold εS
-  exact pow_lt_one₀ (by simp) (ENNReal.inv_lt_one.mpr (by norm_num)) (by norm_num)
+theorem εS_lt_one : εS < 1 :=
+  lt_of_le_of_lt εS_le_128 (pow_lt_one₀ (by simp) (ENNReal.inv_lt_one.mpr (by norm_num)) (by norm_num))
 
-/-- The Keccak phases' lead at P20 with one candidate pair (lvm2 S2: the tape's `w = 20` zero-test
-samples). -/
-noncomputable abbrev LkS : ℝ≥0∞ := ((15 + 5 : ℕ) : ℝ≥0∞) * (((1 : ℕ) : ℝ≥0∞) * errE 1) + 0
+/-- The Keccak phases' lead at P20 with `98` candidate pairs (lvm2 S2: the tape's `w = 20` zero-test
+samples; JB-VQP J1: `L₀ = 98`). -/
+noncomputable abbrev LkS : ℝ≥0∞ := ((15 + 5 : ℕ) : ℝ≥0∞) * (((98 : ℕ) : ℝ≥0∞) * errE 1) + 0
 
-theorem LkS_eq : LkS = errE 20 := by
-  simp only [LkS, Nat.cast_one, one_mul, add_zero, errE_smul]
+theorem LkS_eq : LkS = errE ((15 + 5) * (98 * 1)) := by
+  simp only [LkS, add_zero, errE_smul]
 
-/-- **`midBusTableSpecS`'s error side conditions at `εS`**, one candidate pair, follower `LkS`. -/
-theorem bus_errs (I : LeanVM.Protocol.M3Instance) (hμ : I.μBus ≤ 22) (hB : I.B ≤ 2 ^ 60) (m : ℕ) :
-    abError I 1 < 1 ∧ abError I 1 + 0 ≤ εS ∧ roundError 1 4 ≤ εS ∧
-    interpLead 1 2 (lambdaError 1) ≤ εS ∧ lambdaError 1 + 0 ≤ εS ∧
-    roundError 1 3 + LkS ≤ εS ∧ LkS ≤ εS ∧
-    xiError I 1 + sumcheckLead (List.replicate m none) LkS ≤ εS := by
-  have hab : abError I 1 = errE (4 * 2 ^ I.μBus) := by
-    rw [abError, coe_overE, Nat.cast_one, one_mul]
-  have hab' : abError I 1 ≤ εS := by
+/-- **`midBusTableSpecS`'s error side conditions at `εS`**, `98` candidate pairs (JB-VQP J1),
+follower `LkS`. -/
+theorem bus_errs (I : LeanVM.Protocol.M3Instance) (hμ : I.μBus ≤ 22) (hB : I.B ≤ 2 ^ 56) (m : ℕ) :
+    abError I 98 < 1 ∧ abError I 98 + 0 ≤ εS ∧ roundError 98 4 ≤ εS ∧
+    interpLead 98 2 (lambdaError 98) ≤ εS ∧ lambdaError 98 + 0 ≤ εS ∧
+    roundError 98 3 + LkS ≤ εS ∧ LkS ≤ εS ∧
+    xiError I 98 + sumcheckLead (List.replicate m none) LkS ≤ εS := by
+  have hab : abError I 98 = errE (98 * (4 * 2 ^ I.μBus)) := by
+    rw [abError, coe_overE, errE_smul]
+  have hab' : abError I 98 ≤ εS := by
     rw [hab]
-    refine errE_le_εS (le_trans (Nat.mul_le_mul_left 4 (Nat.pow_le_pow_right (by norm_num) hμ))
-      (by norm_num))
-  have hr : ∀ d, roundError 1 d = errE d := fun d ↦ by
-    rw [roundError, coe_div_card, Nat.cast_one, one_mul]
-  have hl : lambdaError 1 = errE 2 := by
-    rw [lambdaError, coe_div_card, Nat.cast_one, one_mul]
-  have hu : unitError 1 = errE 1 := by simp [unitError, errE]
-  have hx : xiError I 1 = errE (I.B + 3 - 1) := by
-    rw [xiError, coe_div_card, Nat.cast_one, one_mul]
+    refine errE_le_εS (le_trans (Nat.mul_le_mul_left 98 (Nat.mul_le_mul_left 4
+      (Nat.pow_le_pow_right (by norm_num) hμ))) (by norm_num))
+  have hr : ∀ d, roundError 98 d = errE (98 * d) := fun d ↦ by
+    rw [roundError, coe_div_card, errE_smul]
+  have hl : lambdaError 98 = errE (98 * 2) := by
+    rw [lambdaError, coe_div_card, errE_smul]
+  have hu : unitError 98 = errE (98 * 1) := by
+    rw [← errE_smul]; simp [unitError, errE]
+  have hx : xiError I 98 = errE (98 * (I.B + 3 - 1)) := by
+    rw [xiError, coe_div_card, errE_smul]
   refine ⟨lt_of_le_of_lt hab' εS_lt_one, by rw [add_zero]; exact hab', ?_, ?_, ?_, ?_, ?_, ?_⟩
   · rw [hr]; exact errE_le_εS (by norm_num)
-  · rw [interpLead_eq, hu, hl, show ((2 : ℕ) : ℝ≥0∞) = ((2 : ℕ) : ℝ≥0∞) from rfl, errE_smul,
-      errE_add]
+  · rw [interpLead_eq, hu, hl, errE_smul, errE_add]
     exact errE_le_εS (by norm_num)
   · rw [hl, add_zero]; exact errE_le_εS (by norm_num)
   · rw [hr, LkS_eq, errE_add]; exact errE_le_εS (by norm_num)
@@ -163,10 +163,11 @@ structure MidHyp (tabs : Lvm.Pub → List Tab) : Prop where
   keys : ∀ x, KeysOk (TS tabs x)
   width : ∀ x, ∀ t ∈ TS tabs x, 0 < t.w
   fix : ∀ x, FixOk (TS tabs x)
-  cons : ∀ x, ((TS tabs x).map fun t ↦ t.cons.length).sum ≤ 2 ^ 60
+  cons : ∀ x, ((TS tabs x).map fun t ↦ t.cons.length).sum ≤ 2 ^ 56
 
-/-- The record's table evaluations are few. -/
-theorem tableEvals_P20_le : Lvm.P20.tableEvals ≤ 2 ^ 62 := by decide
+/-- The record's table evaluations are few (`≤ 2^38`: `C_main`'s claims stay under `2^40`, the
+Johnson batching's `(J − 1)·98/|E|`). -/
+theorem tableEvals_P20_le : Lvm.P20.tableEvals ≤ 2 ^ 38 := by decide
 
 variable {tabs : Lvm.Pub → List Tab}
 
@@ -199,9 +200,9 @@ noncomputable def specBusS (H : MidHyp tabs) (x : List UInt8) :
   have hμeq : (inst lay26 (TS tabs x) (H.hτ x)).μBus = Lvm.P20.busDepth := F.μBus_eq (H.hτ x)
   have e := bus_errs (inst lay26 (TS tabs x) (H.hτ x)) (by rw [hμeq]; exact F.busLe)
     (le_trans (B_inst_le _ _ _) (H.cons _)) (((vLayout (TS tabs x)).tableLogHeights.foldl max 0))
-  have S0 := midBusTableSpecS (TS tabs x) (H.hτ x) (L₀ := 1) (εmax := εS)
+  have S0 := midBusTableSpecS (TS tabs x) (H.hτ x) (L₀ := 98) (εmax := εS)
     (fun p ↦ BndS x p.1 ∧ GkS x p) F.layOk F.allSc (H.keys _) (H.width _) (H.fix _)
-    candPairs_ncard_le_one (by rw [hμeq]; have := F.busPos; omega) e.1 e.2.2.1 e.2.2.2.1
+    candPairs_ncard_le (by rw [hμeq]; have := F.busPos; omega) e.1 e.2.2.1 e.2.2.2.1
     e.2.2.2.2.1 (T := LkS) e.2.2.2.2.2.1 e.2.2.2.2.2.2.1 e.2.2.2.2.2.2.2
   (hμeq ▸ S0).mono (fun _ hp ↦ ⟨hp.1, Doomed.mono hp.2 fun _ hq ↦ ⟨⟨hq.1, hq.2.1⟩, hq.2.2⟩⟩)
     (fun _ _ hp ↦ ⟨Doomed.mono hp.1 fun _ hq ↦ ⟨hq.1.1, hq.1.2, hq.2⟩, hp.2⟩) le_rfl e.2.1 le_rfl
@@ -212,7 +213,7 @@ noncomputable def specKgS (x : List UInt8) (a : List ColumnClaim) (T : ℝ≥0�
       (fun k h ↦ Doomed candPairs (fun p ↦ KcS k p ∧ BS tabs x a p) h) εS LkS T :=
   have e := kg_errs
   have s := kg_struct
-  (kgSpecS (C := candPairs) (L₀ := 1) (εmax := εS) (T := T) candPairs_stable candPairs_ncard_le_one
+  (kgSpecS (C := candPairs) (L₀ := 98) (εmax := εS) (T := T) candPairs_stable candPairs_ncard_le
     (hdX x).s (pubX x).n 11 14 ksY2 s.1 (Lvm.contRows Lvm.P20) s.2.1 s.2.2
     (fun q ↦ colM q.1) (fun q ↦ colM q.1) (fun q ↦ ksCol q.1) (fun q ↦ msgM q.2)
     (fun q ↦ msgX q.1) (BS tabs x a) e.1 e.2.1 e.2.2.1 e.2.2.2.1 hT).mono
@@ -249,7 +250,7 @@ theorem side_midS (H : MidHyp tabs) (x : List UInt8) (a : List ColumnClaim) (k :
     (∀ c ∈ (assembleS (TS tabs x) (pubX x) a k).1, IsMultiaffine 19 c.1) ∧
     (∀ c ∈ (assembleS (TS tabs x) (pubX x) a k).2, IsMultiaffine CMain.nu20 c.1) ∧
     (assembleS (TS tabs x) (pubX x) a k).1.length ≤ 2 ^ 63 ∧
-    (assembleS (TS tabs x) (pubX x) a k).2.length ≤ 2 ^ 63 :=
+    (assembleS (TS tabs x) (pubX x) a k).2.length ≤ 2 ^ 40 :=
   have F := fit_of Lvm.P20 _ (H.fit (pubX x))
   side_assembleS _ _ a k F.layOk ha (F.evals ▸ tableEvals_P20_le) hk (by rw [length_pubX_h]; norm_num)
 

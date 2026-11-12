@@ -109,7 +109,7 @@ theorem fits_Xwit (π : Proof) (w : ℕ → Word) : (Xwit π w).Fits := by
     · simp [q0Ent, wordBytes_length]
     · obtain ⟨-, h2⟩ := walk_lt 6 lensL x (hx)
       have h3 := lanes_T
-      have h4 : streamLanes pX = 222625 := sizes_P20.2.2.2.2.2.2.1
+      have h4 : streamLanes pX = 169626 := sizes_P20.2.2.2.2.2.2.1
       simp only [entAt, bArr_size, wordsBytes_length, length_wsAt]
       omega
   · exact (sigCol w 0).isLt

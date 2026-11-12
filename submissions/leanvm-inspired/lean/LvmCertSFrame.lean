@@ -174,6 +174,75 @@ noncomputable def orStable {A M : List Ev → Prop} (S : Spec p A (fun _ _ ↦ F
         _ ≤ εmax := by rw [one_mul]; exact (min_le_right _ _).trans hT
 
 open Classical in
+/-- **Carry a predicate across a sub-program that never returns in doom, changing it at the
+return** (new for lvm2, `orStable` with the carried predicate checked only at the returns): from
+`A ∨ M`, doom is `S`'s where `A` holds at the start, otherwise `M` (of the start); the
+postcondition is `M'`, which every completed run turns `M` into. `C_main`'s opening precondition
+crosses `C_rec`'s two-level opening this way: that opening adds exactly one commitment. -/
+noncomputable def orStableRet {A M M' : List Ev → Prop} (S : Spec p A (fun _ _ ↦ False) εmax L T)
+    (hM : ∀ h₀ l a, p.Reach h₀ l → p.after l = some (.ret a) → M h₀ → M' (h₀ ++ l))
+    (hT : T ≤ εmax) :
+    Spec p (fun h ↦ A h ∨ M h) (fun _ h ↦ M' h) εmax (max L T) T where
+  D h₀ l := if A h₀ then S.D h₀ l else M h₀
+  V h₀ l := if A h₀ then S.V h₀ l else if M h₀ then min 1 T else 1
+  le_one h₀ l := by split_ifs; exacts [S.le_one _ _, min_le_left _ _, le_rfl]
+  start_D h₀ h := by
+    by_cases hA : A h₀
+    · simp only [hA, ↓reduceIte]; exact S.start_D h₀ hA
+    · simp only [hA, ↓reduceIte]; exact h.resolve_left hA
+  start_V h₀ h := by
+    by_cases hA : A h₀
+    · simp only [hA, ↓reduceIte]; exact (S.start_V h₀ hA).trans (le_max_left _ _)
+    · simp only [hA, h.resolve_left hA, ↓reduceIte]
+      exact (min_le_right _ _).trans (le_max_right _ _)
+  read {h₀ _ _} x hl ha hD := by
+    by_cases hA : A h₀
+    · simp only [hA, ↓reduceIte] at hD ⊢; exact S.read x hl ha hD
+    · simp only [hA, ↓reduceIte] at hD ⊢; exact hD
+  grind {h₀ _ _ _} hl ha hD := by
+    by_cases hA : A h₀
+    · simp only [hA, ↓reduceIte] at hD ⊢; exact S.grind hl ha hD
+    · simp only [hA, ↓reduceIte] at hD ⊢; exact hD
+  commit {h₀ _ _ _ _} word hl ha hw hD := by
+    by_cases hA : A h₀
+    · simp only [hA, ↓reduceIte] at hD ⊢; exact S.commit word hl ha hw hD
+    · simp only [hA, ↓reduceIte] at hD ⊢; exact hD
+  sample {h₀ _ _} hl ha := by
+    by_cases hA : A h₀
+    · simp only [hA, ↓reduceIte]; exact S.sample hl ha
+    · by_cases hM0 : M h₀
+      · simp only [hA, hM0, ↓reduceIte, avg_const, le_refl]
+      · simp only [hA, hM0, ↓reduceIte]; exact avg_le_one _ fun _ ↦ le_rfl
+  query {h₀ _ _ _ _ _} hl ha hans := by
+    by_cases hA : A h₀
+    · simp only [hA, ↓reduceIte]; exact S.query hl ha hans
+    · simp only [hA, ↓reduceIte]; exact le_rfl
+  moveEnd {h₀ _ _} hl ha hm hD := by
+    by_cases hA : A h₀
+    · simp only [hA, ↓reduceIte] at hD ⊢; exact S.moveEnd hl ha hm hD
+    · simp only [hA, ↓reduceIte] at hD ⊢; simp [hD]
+  retEnd {h₀ _ _} hl ha hD := by
+    by_cases hA : A h₀
+    · simp only [hA, ↓reduceIte] at hD ⊢; exact S.retEnd hl ha hD
+    · simp only [hA, ↓reduceIte] at hD ⊢; simp [hD]
+  retDoom {h₀ _ _} hl ha hD := by
+    by_cases hA : A h₀
+    · simp only [hA, ↓reduceIte] at hD ⊢; exact S.retDoom hl ha hD
+    · simp only [hA, ↓reduceIte] at hD ⊢; simp [hD]
+  post {h₀ _ _} hl ha hD := by
+    by_cases hA : A h₀
+    · simp only [hA, ↓reduceIte] at hD; exact (S.post hl ha hD).elim
+    · simp only [hA, ↓reduceIte] at hD; exact hM _ _ _ hl ha hD
+  bound {h₀ _} hl hne hm hD := by
+    by_cases hA : A h₀
+    · simp only [hA, ↓reduceIte] at hD ⊢; exact S.bound hl hne hm hD
+    · simp only [hA, ↓reduceIte] at hD ⊢
+      simp only [hD, ↓reduceIte]
+      calc (2 : ENNReal)⁻¹ ^ grindBits _ * min 1 T ≤ 1 * min 1 T := by
+            gcongr; exact pow_le_one₀ (by simp) (ENNReal.inv_le_one.2 (by norm_num))
+        _ ≤ εmax := by rw [one_mul]; exact (min_le_right _ _).trans hT
+
+open Classical in
 /-- **The union of two dooms** (new): doom is either's, the potential the smaller one. -/
 noncomputable def or {Pre₁ Pre₂ : List Ev → Prop} {Post₁ Post₂ : α → List Ev → Prop}
     (S₁ : Spec p Pre₁ Post₁ εmax L T) (S₂ : Spec p Pre₂ Post₂ εmax L T) :

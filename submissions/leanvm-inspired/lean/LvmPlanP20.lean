@@ -168,19 +168,19 @@ theorem entF_sound (P : List PE) (lk : ℕ → ℕ) (hlk : ∀ c, lk c = (P.getD
 /-! ## The decision at `P20` -/
 
 /-- The cap entries at `P20` and their lengths (the FS queries that absorb the caps). -/
-def tbl20 : List (ℕ × ℕ) := [(2, 12320), (3078, 4176), (6854, 4176)]
+def tbl20 : List (ℕ × ℕ) := [(2, 12320), (1303, 4176), (3733, 4176), (6547, 4176)]
 
 set_option maxRecDepth 200000 in
-/-- **The one decision**: the plan at `P20` passes, with 9,916 entries, `Σ clenC = 1094240`,
-`Σ (40 + len) = 1780999`. -/
-theorem passR_P20 : passR (capLk tbl20) 9916 1094240 1780999 (plan P20) tbl20 0 0 0 = true := by
+/-- **The one decision**: the plan at `P20` passes, with 8,295 entries, `Σ clenC = 783184`,
+`Σ (40 + len) = 1357007`. -/
+theorem passR_P20 : passR (capLk tbl20) 8295 783184 1357007 (plan P20) tbl20 0 0 0 = true := by
   rw [P20_eq]; decide +kernel
 
 theorem sound_P20 :
     (∀ k (hk : k < (plan P20).length), elemF (capLk tbl20) (plan P20)[k] k = true) ∧
     (∀ x ∈ tbl20, ((plan P20).getD x.1 default).len = x.2) ∧
-    (plan P20).length = 9916 ∧ ((plan P20).map clenC).sum = 1094240 ∧
-    ((plan P20).map fun e => 40 + e.len).sum = 1780999 := by
+    (plan P20).length = 8295 ∧ ((plan P20).map clenC).sum = 783184 ∧
+    ((plan P20).map fun e => 40 + e.len).sum = 1357007 := by
   obtain ⟨h1, h2, h3, h4, h5⟩ := passR_sound _ _ _ _ _ _ _ _ _ passR_P20
   refine ⟨fun k hk => ?_, fun x hx => ?_, by rw [Nat.zero_add] at h3; exact h3,
     by rw [Nat.zero_add] at h4; exact h4, by rw [Nat.zero_add] at h5; exact h5⟩
@@ -213,13 +213,13 @@ theorem streamOkL_P20 : streamOkL (plan P20) = true := by
     exact entF_sound _ _ hlk _ _ h.1.2
 
 /-- `Σ (40 + len)` over the plan's lengths at `P20` (the second half of `StreamOk P20`). -/
-theorem slen_P20 : slenS (lens P20) = 1780999 := by
+theorem slen_P20 : slenS (lens P20) = 1357007 := by
   rw [slenS, lens, List.map_map]
   exact sound_P20.2.2.2.2
 
-theorem length_P20 : (plan P20).length = 9916 := sound_P20.2.2.1
+theorem length_P20 : (plan P20).length = 8295 := sound_P20.2.2.1
 
-theorem clen_P20 : ((plan P20).map clenC).sum = 1094240 := sound_P20.2.2.2.1
+theorem clen_P20 : ((plan P20).map clenC).sum = 783184 := sound_P20.2.2.2.1
 
 /-- Every planned query is within `queryCap`. -/
 theorem cap_P20 : ∀ e ∈ plan P20, e.len ≤ queryCap := by

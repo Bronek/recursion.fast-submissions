@@ -73,7 +73,7 @@ def chkB (L : Lay) (ts : List Tab) : Bool :=
   ts.all (fun t => (t.reads.all fun r => decide (r.1.val.length ≤ 13)) &&
     t.seeds.all fun s => decide (s.1.val.length ≤ 13)) &&
   ts.all (fun t => decide (0 < t.w)) &&
-  decide ((ts.map fun t => t.cons.length).sum ≤ 2 ^ 60) &&
+  decide ((ts.map fun t => t.cons.length).sum ≤ 2 ^ 56) &&
   ts.all (fun t => !t.cons.isEmpty || !t.reads.isEmpty || !t.seeds.isEmpty)
 
 theorem colOkB_sk (L : Lay) (τ : ℕ) (c : ColSrc) : colOkB L τ (colSk c) = colOkB L τ c := by
@@ -167,7 +167,7 @@ theorem chkB_width : ∀ t ∈ ts, 0 < t.w := by
   simp only [chkB, Bool.and_eq_true, List.all_eq_true, decide_eq_true_eq] at h
   exact h.1.1.2
 
-theorem chkB_cons : (ts.map fun t => t.cons.length).sum ≤ 2 ^ 60 := by
+theorem chkB_cons : (ts.map fun t => t.cons.length).sum ≤ 2 ^ 56 := by
   simp only [chkB, Bool.and_eq_true, decide_eq_true_eq] at h
   exact h.1.2
 
@@ -204,23 +204,88 @@ theorem ansLane_le {p : Params} (hS : StreamOk p) (i : ℕ) : ansLane p i ≤ ha
       show _ + 1 + 0 / 8 ≤ _
       omega
 
-/-- `PosCellsLt`'s output-cell bounds below `N`, as a Boolean (the word cells by `ansLane_le`). -/
+/-- Every output of a lane's row is a bit `n < 8 H` (kind `0`) or a field of a position `i < 8`
+(kind `1` or `2`). -/
+theorem laneOuts_mem {H l : ℕ} {out : Bits.BOut × ℕ × ℕ} (h : out ∈ laneOuts H l) :
+    (out.2.1 = 0 ∧ out.2.2 < 8 * H) ∨ ((out.2.1 = 1 ∨ out.2.1 = 2) ∧ out.2.2 < 8) := by
+  rcases mem_laneOuts h with ⟨z, hz, rfl⟩ | ⟨i, hi, ⟨-, rfl⟩ | ⟨-, rfl⟩⟩
+  · left; simp only [laneBits] at hz; exact ⟨rfl, show 64 * l + z < 8 * H by omega⟩
+  · exact Or.inr ⟨Or.inl rfl, hi⟩
+  · exact Or.inr ⟨Or.inr rfl, hi⟩
+
+theorem mul_add_lt {H a b r : ℕ} (hr : r < H) (hab : a < b) : H * a + r < H * b :=
+  lt_of_lt_of_le (by rw [Nat.mul_succ]; omega) (Nat.mul_le_mul_left H hab)
+
+/-- **An output cell's bound** from the opening's three region ends. -/
+theorem posCell_lt {C : QCfg} {k : ℕ} {o : QLink.OpenInfo} {l x N : ℕ} {out : Bits.BOut × ℕ × ℕ}
+    (hx : x < nRows o) (hout : out ∈ laneOuts o.L.height l)
+    (hb : bitBase C.p (lay C) k + o.L.height * padT o.L.t ≤ N)
+    (hs : spB C + spBefore C.p k + spOf o ≤ N)
+    (hf : flB C + 2 ^ C.pa + posIdx C.p k o.L.t ≤ N) :
+    posCell C k o x out < N := by
+  obtain ⟨b, kind, n⟩ := out
+  have hR : 8 * x + 8 ≤ 8 * nRows o := by omega
+  have hP : padT o.L.t ≤ 8 * nRows o := by unfold nRows; omega
+  rcases laneOuts_mem hout with ⟨hk, hn⟩ | ⟨hk, hn⟩ <;> simp only at hk hn
+  · subst hk
+    have hH : 0 < o.L.height := by
+      rcases Nat.eq_zero_or_pos o.L.height with h0 | h0
+      · rw [h0] at hn; omega
+      · exact h0
+    have hq : n / o.L.height < 8 := Nat.div_lt_of_lt_mul (by rwa [Nat.mul_comm])
+    have hm : n % o.L.height < o.L.height := Nat.mod_lt _ hH
+    simp only [posCell]
+    split
+    · have := mul_add_lt (H := o.L.height) (a := 8 * x + n / o.L.height) (b := padT o.L.t) hm ‹_›
+      omega
+    · have := mul_add_lt (H := o.L.height) (a := 8 * x + n / o.L.height - padT o.L.t)
+        (b := 8 * nRows o - padT o.L.t) hm (by omega)
+      unfold spOf at hs
+      omega
+  · rcases hk with rfl | rfl <;> simp only [posCell, ↓reduceIte, eq_false (by decide : ¬ (2:ℕ) = 1)] <;>
+      split <;> simp only [posIdx, spOf] at hf hs ⊢ <;> generalize 2 ^ C.pa = m at hf ⊢ <;> omega
+
+theorem spBase_mono (C : QCfg) {l : ℕ} : ∀ {m : ℕ}, l ≤ m → spBase C l ≤ spBase C m
+  | 0, h => by rw [Nat.le_zero.mp h]
+  | m + 1, h => by
+    rcases Nat.eq_or_lt_of_le h with rfl | h
+    · exact le_refl _
+    · exact le_trans (spBase_mono C (Nat.lt_succ_iff.mp h)) (by simp only [spBase]; omega)
+
+/-- **`PosCellsLt`'s bounds as a Boolean** (WP-16b: through region ends, not cell by cell): per opening,
+at most 4 lanes and its bit region, its spare cells and its fields end below `N`; the lane classes' spare
+cells end below `N`. -/
 def posCellsB (C : QCfg) (N : ℕ) : Bool :=
-  (List.range (opens C.p).length).all fun k =>
+  (List.range (opens C.p).length).all (fun k =>
     let o := (opens C.p).getD k default
-    decide (nLanes o.L.height ≤ 4) &&
-    (List.range (nLanes o.L.height)).all fun l =>
-      (List.range (nRows o)).all fun x =>
-        (List.range (laneOuts o.L.height l).length).all fun jo =>
-          decide (posCell C k o x ((laneOuts o.L.height l).getD jo (.bit 0, 0, 0)) < N)
+    decide (nLanes o.L.height ≤ 4) && decide (bitBase C.p (lay C) k + o.L.height * padT o.L.t ≤ N) &&
+    decide (spB C + spBefore C.p k + spOf o ≤ N) && decide (flB C + 2 ^ C.pa + posIdx C.p k o.L.t ≤ N)) &&
+  decide (spEnd C ≤ N)
 
 theorem posCellsLt_of {Q : Program} {C : QCfg} {N : ℕ} (h : posCellsB C N = true) (hS : StreamOk C.p)
     (hL : hashedLen C.p / 8 + 5 ≤ N) (hN : N ≤ Q.cells .K) : PosCellsLt Q C := by
-  intro k hk l hl x hx
-  simp only [posCellsB, List.all_eq_true, List.mem_range, Bool.and_eq_true, decide_eq_true_eq] at h
-  obtain ⟨h4, h2⟩ := h k hk
-  have ha := ansLane_le hS (((opens C.p).getD k default).pe + x)
-  exact ⟨by omega, fun jo hjo => by have := h2 l hl x hx jo hjo; omega⟩
+  simp only [posCellsB, Bool.and_eq_true, List.all_eq_true, List.mem_range, decide_eq_true_eq] at h
+  obtain ⟨hk, hsp⟩ := h
+  intro l hl r hr
+  rcases r with ⟨k, o, x, sb⟩
+  obtain ⟨hmem, hx, -, hw⟩ := mem_posRowsAux _ _ _ _ hr
+  obtain ⟨hk', ho, hlan⟩ := mem_lnOps.mp hmem
+  simp only at hmem hx hw hk' ho hlan ⊢
+  obtain ⟨⟨⟨h4, hbit⟩, hsp1⟩, hfl⟩ := hk k hk'
+  rw [← ho] at h4 hbit hsp1 hfl
+  have hend : spBase C l + spTot (lnOuts C.p l).length l (lnOps C.p l) ≤ N :=
+    le_trans (spBase_mono C (m := nPosCls C) hl) hsp
+  refine ⟨?_, fun j hj => ?_⟩
+  · have := ansLane_le hS (o.pe + x); omega
+  · unfold posOc
+    dsimp only
+    split
+    · rename_i e he
+      exact lt_of_lt_of_le (posCell_lt hx (List.mem_of_find?_eq_some he) hbit hsp1 hfl) hN
+    · rename_i hn
+      have := laneBits_le_of_find hmem hn
+      dsimp only at this
+      omega
 
 /-! ## The input arrays' check, for every public input -/
 
